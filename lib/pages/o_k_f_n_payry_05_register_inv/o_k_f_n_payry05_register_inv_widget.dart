@@ -601,7 +601,10 @@ class _OKFNPayry05RegisterInvWidgetState
                                                   FFAppState().registerName =
                                                       _model.nameFieldController
                                                           .text;
-
+                                                  FFAppState().registerEmail =
+                                                      _model
+                                                          .emailFieldController
+                                                          .text;
                                                   GoRouter.of(context)
                                                       .prepareAuthEvent();
                                                   if (_model

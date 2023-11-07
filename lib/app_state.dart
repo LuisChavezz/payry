@@ -122,6 +122,12 @@ class FFAppState extends ChangeNotifier {
     _packageName = _value;
     prefs.setString('ff_packageName', _value);
   }
+
+  String _registerEmail = '';
+  String get registerEmail => _registerEmail;
+  set registerEmail(String _value) {
+    _registerEmail = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
