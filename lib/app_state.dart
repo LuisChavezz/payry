@@ -35,6 +35,12 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _androidAPN = prefs.getString('ff_androidAPN') ?? _androidAPN;
     });
+    _safeInit(() {
+      _appleID = prefs.getString('ff_appleID') ?? _appleID;
+    });
+    _safeInit(() {
+      _packageName = prefs.getString('ff_packageName') ?? _packageName;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -101,6 +107,20 @@ class FFAppState extends ChangeNotifier {
   String get registerName => _registerName;
   set registerName(String _value) {
     _registerName = _value;
+  }
+
+  String _appleID = '6471020825';
+  String get appleID => _appleID;
+  set appleID(String _value) {
+    _appleID = _value;
+    prefs.setString('ff_appleID', _value);
+  }
+
+  String _packageName = 'com.flutterflow.payry';
+  String get packageName => _packageName;
+  set packageName(String _value) {
+    _packageName = _value;
+    prefs.setString('ff_packageName', _value);
   }
 
   String _registerEmail = '';
