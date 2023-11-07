@@ -289,7 +289,7 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                           query: {
                                             'subject': 'Invitation email',
                                             'body':
-                                                'Registrate como mi usuario afiliado siguiendo el siguiente enlace: ${FFAppState().dynamicLinkPrefix}${FFAppState().dynamicLinkBase}registerinv/${_model.existUserInvitation?.reference.id}&apn=${FFAppState().androidAPN}',
+                                                'Registrate como mi usuario afiliado siguiendo el siguiente enlace: ${FFAppState().dynamicLinkPrefix}${FFAppState().dynamicLinkBase}registerinv/${_model.existUserInvitation?.reference.id}&apn=${FFAppState().packageName}&isi=${FFAppState().appleID}&ibi=${FFAppState().packageName}',
                                           }
                                               .entries
                                               .map((MapEntry<String, String>
@@ -339,7 +339,7 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                         query: {
                                           'subject': 'Invitation email',
                                           'body':
-                                              'Registrate como mi usuario afiliado siguiendo el siguiente enlace: ${FFAppState().dynamicLinkPrefix}${FFAppState().dynamicLinkBase}registerinv/${_model.createdUserInvitation?.reference.id}&apn=${FFAppState().androidAPN}',
+                                              'Registrate como mi usuario afiliado siguiendo el siguiente enlace: ${FFAppState().dynamicLinkPrefix}${FFAppState().dynamicLinkBase}registerinv/${_model.existUserInvitation?.reference.id}&apn=${FFAppState().packageName}&isi=${FFAppState().appleID}&ibi=${FFAppState().packageName}',
                                         }
                                             .entries
                                             .map((MapEntry<String, String> e) =>
