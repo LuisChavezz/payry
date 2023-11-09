@@ -435,7 +435,7 @@ class _OKFNPayry15EditProfileWidgetState
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium,
                                                 keyboardType:
-                                                    TextInputType.number,
+                                                    TextInputType.phone,
                                                 validator: _model
                                                     .phoneFieldControllerValidator
                                                     .asValidator(context),
