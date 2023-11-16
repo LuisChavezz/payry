@@ -307,41 +307,6 @@ class _OKFNPayry20DatosBancariosWidgetState
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(-1.00, 0.00),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 12.0, 0.0, 12.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  FFLocalizations.of(context).getText(
-                                    'ig3f51x4' /* Estatus */,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Lexend',
-                                        color: Color(0xFF8788A5),
-                                      ),
-                                ),
-                                Text(
-                                  FFLocalizations.of(context).getText(
-                                    'esijg8i4' /* SIN VALIDAR */,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Lexend',
-                                        color: Color(0xFFFF8A71),
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Align(
                           alignment: AlignmentDirectional(0.00, 0.00),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
@@ -376,6 +341,11 @@ class _OKFNPayry20DatosBancariosWidgetState
                                     .update(createCompaniesRecordData(
                                   clabe: _model.clabeFieldController.text,
                                   bank: _model.bankFieldController.text,
+                                ));
+
+                                await currentUserReference!
+                                    .update(createUsersRecordData(
+                                  isCompanyComplete: true,
                                 ));
                                 context.safePop();
 

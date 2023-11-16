@@ -628,6 +628,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': 'Unternehmen',
       'en': 'Company',
     },
+    '2lpa9baa': {
+      'es': 'Verificar email',
+      'ar': '',
+      'de': '',
+      'en': '',
+    },
     'phzcs2ky': {
       'es': 'Notificaciones',
       'ar': 'إشعارات',
@@ -1458,18 +1464,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
       'de': '',
       'en': '',
-    },
-    'ig3f51x4': {
-      'es': 'Estatus',
-      'ar': 'حالة',
-      'de': 'Status',
-      'en': 'Status',
-    },
-    'esijg8i4': {
-      'es': 'SIN VALIDAR',
-      'ar': 'غير معتمد',
-      'de': 'NICHT VALIDIERT',
-      'en': 'UNVALIDATED',
     },
     '1jp6ppa3': {
       'es': 'Guardar',
@@ -2945,24 +2939,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': 'MXN',
       'en': 'MXN',
     },
-    'tul0et5t': {
-      'es': 'QR',
-      'ar': 'ريال قطري',
-      'de': 'QR',
-      'en': 'QR',
-    },
-    'hnmyluar': {
-      'es': 'SMS',
-      'ar': '',
-      'de': '',
-      'en': '',
-    },
-    'z9noocir': {
-      'es': 'Más',
-      'ar': 'إضافي',
-      'de': 'Weiter',
-      'en': 'Further',
-    },
     '3lc6ioqs': {
       'es': ' QR\'s',
       'ar': 'QR',
@@ -3074,7 +3050,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': '',
       'en': '',
     },
-    'pbhm9ipn': {
+    'kj1wcrkp': {
       'es': 'Crea tu cuenta',
       'ar': '',
       'de': '',
