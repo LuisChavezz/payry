@@ -1724,18 +1724,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': 'Geben Sie den Betrag ein...',
       'en': 'Enter the amount...',
     },
-    'h5lvxwfm': {
-      'es': 'Estatus',
-      'ar': 'حالة',
-      'de': 'Status',
-      'en': 'Status',
-    },
-    'l34z5d7d': {
-      'es': 'ESTATUS',
-      'ar': 'حالة',
-      'de': 'STATUS',
-      'en': 'STATUS',
-    },
     'r6vi2thx': {
       'es': 'Generar QR',
       'ar': 'توليد ريال قطري',
@@ -2164,18 +2152,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'أدخل المبلغ...',
       'de': 'Geben Sie den Betrag ein...',
       'en': 'Enter the amount...',
-    },
-    'v9modxww': {
-      'es': 'Estatus',
-      'ar': 'حالة',
-      'de': 'Status',
-      'en': 'Status',
-    },
-    'q9d1sed3': {
-      'es': 'ESTATUS',
-      'ar': 'حالة',
-      'de': 'STATUS',
-      'en': 'STATUS',
     },
     '33dkmjdy': {
       'es': 'Solicitar Pago con SMS',

@@ -744,7 +744,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      15.0, 15.0, 15.0, 1.0),
+                                                      15.0, 15.0, 15.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
