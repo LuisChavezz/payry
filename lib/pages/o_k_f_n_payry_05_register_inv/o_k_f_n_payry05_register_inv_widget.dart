@@ -693,6 +693,8 @@ class _OKFNPayry05RegisterInvWidgetState
                                                         readTransfers: false,
                                                         createRefunds: false,
                                                       ));
+                                                  await authManager
+                                                      .sendEmailVerification();
 
                                                   context.goNamedAuth(
                                                       'OK_FN_Payry_06_confirmacionRegistro',
@@ -701,7 +703,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                 text:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'pbhm9ipn' /* Crea tu cuenta */,
+                                                  'kj1wcrkp' /* Crea tu cuenta */,
                                                 ),
                                                 options: FFButtonOptions(
                                                   width:
@@ -742,7 +744,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      15.0, 15.0, 15.0, 0.0),
+                                                      15.0, 15.0, 15.0, 1.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:

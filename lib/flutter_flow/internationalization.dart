@@ -628,6 +628,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': 'Unternehmen',
       'en': 'Company',
     },
+    '2lpa9baa': {
+      'es': 'Verificar email',
+      'ar': '',
+      'de': '',
+      'en': '',
+    },
     'phzcs2ky': {
       'es': 'Notificaciones',
       'ar': 'إشعارات',
@@ -1459,18 +1465,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': '',
       'en': '',
     },
-    'ig3f51x4': {
-      'es': 'Estatus',
-      'ar': 'حالة',
-      'de': 'Status',
-      'en': 'Status',
-    },
-    'esijg8i4': {
-      'es': 'SIN VALIDAR',
-      'ar': 'غير معتمد',
-      'de': 'NICHT VALIDIERT',
-      'en': 'UNVALIDATED',
-    },
     '1jp6ppa3': {
       'es': 'Guardar',
       'ar': 'يحفظ',
@@ -1729,18 +1723,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'أدخل المبلغ...',
       'de': 'Geben Sie den Betrag ein...',
       'en': 'Enter the amount...',
-    },
-    'h5lvxwfm': {
-      'es': 'Estatus',
-      'ar': 'حالة',
-      'de': 'Status',
-      'en': 'Status',
-    },
-    'l34z5d7d': {
-      'es': 'ESTATUS',
-      'ar': 'حالة',
-      'de': 'STATUS',
-      'en': 'STATUS',
     },
     'r6vi2thx': {
       'es': 'Generar QR',
@@ -2170,18 +2152,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'أدخل المبلغ...',
       'de': 'Geben Sie den Betrag ein...',
       'en': 'Enter the amount...',
-    },
-    'v9modxww': {
-      'es': 'Estatus',
-      'ar': 'حالة',
-      'de': 'Status',
-      'en': 'Status',
-    },
-    'q9d1sed3': {
-      'es': 'ESTATUS',
-      'ar': 'حالة',
-      'de': 'STATUS',
-      'en': 'STATUS',
     },
     '33dkmjdy': {
       'es': 'Solicitar Pago con SMS',
@@ -2945,24 +2915,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': 'MXN',
       'en': 'MXN',
     },
-    'tul0et5t': {
-      'es': 'QR',
-      'ar': 'ريال قطري',
-      'de': 'QR',
-      'en': 'QR',
-    },
-    'hnmyluar': {
-      'es': 'SMS',
-      'ar': '',
-      'de': '',
-      'en': '',
-    },
-    'z9noocir': {
-      'es': 'Más',
-      'ar': 'إضافي',
-      'de': 'Weiter',
-      'en': 'Further',
-    },
     '3lc6ioqs': {
       'es': ' QR\'s',
       'ar': 'QR',
@@ -3074,7 +3026,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': '',
       'en': '',
     },
-    'pbhm9ipn': {
+    'kj1wcrkp': {
       'es': 'Crea tu cuenta',
       'ar': '',
       'de': '',

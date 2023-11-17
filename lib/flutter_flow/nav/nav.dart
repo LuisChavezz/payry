@@ -87,7 +87,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       errorBuilder: (context, state) => _RouteErrorBuilder(
         state: state,
         child: appStateNotifier.loggedIn
-            ? OKFNPayry26DashboardWidget()
+            ? OKFNPayry13MenumasWidget()
             : OKFNPayry08IniciasesionWidget(),
       ),
       routes: [
@@ -95,7 +95,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? OKFNPayry26DashboardWidget()
+              ? OKFNPayry13MenumasWidget()
               : OKFNPayry08IniciasesionWidget(),
           routes: [
             FFRoute(

@@ -467,7 +467,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                                         .toString();
 
                                                 context.pushNamedAuth(
-                                                    'OK_FN_Payry_26_Dashboard',
+                                                    'OK_FN_Payry_13_Menumas',
                                                     context.mounted);
 
                                                 setState(() {});

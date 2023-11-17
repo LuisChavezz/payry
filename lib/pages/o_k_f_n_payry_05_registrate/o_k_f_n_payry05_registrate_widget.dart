@@ -601,6 +601,8 @@ class _OKFNPayry05RegistrateWidgetState
                                                     readTransfers: false,
                                                     createRefunds: false,
                                                   ));
+                                              await authManager
+                                                  .sendEmailVerification();
 
                                               context.goNamedAuth(
                                                   'OK_FN_Payry_06_confirmacionRegistro',
