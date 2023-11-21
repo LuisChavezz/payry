@@ -318,6 +318,11 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                                 '',
                                                 ParamType.String,
                                               ),
+                                              'phoneNumber': serializeParam(
+                                                _model
+                                                    .phoneFieldController.text,
+                                                ParamType.String,
+                                              ),
                                             }.withoutNulls,
                                             ignoreRedirect: true,
                                           );

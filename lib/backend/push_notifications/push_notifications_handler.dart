@@ -130,6 +130,7 @@ final parametersBuilderMap =
   'OK_FN_Payry_17_verificarOTP': (data) async => ParameterData(
         allParams: {
           'otpCode': getParameter<String>(data, 'otpCode'),
+          'phoneNumber': getParameter<String>(data, 'phoneNumber'),
         },
       ),
   'OK_FN_Payry_19_formularioEmpresa': ParameterData.none(),
