@@ -16,6 +16,7 @@ class OKFNPayry08IniciasesionModel
     extends FlutterFlowModel<OKFNPayry08IniciasesionWidget> {
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   // State field(s) for emailField widget.
   FocusNode? emailFieldFocusNode;
@@ -71,6 +72,7 @@ class OKFNPayry08IniciasesionModel
   }
 
   void dispose() {
+    unfocusNode.dispose();
     emailFieldFocusNode?.dispose();
     emailFieldController?.dispose();
 

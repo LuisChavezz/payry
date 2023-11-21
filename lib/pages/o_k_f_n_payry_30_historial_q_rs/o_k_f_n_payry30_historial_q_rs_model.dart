@@ -18,6 +18,7 @@ class OKFNPayry30HistorialQRsModel
     extends FlutterFlowModel<OKFNPayry30HistorialQRsWidget> {
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   // State field(s) for SearchField widget.
   FocusNode? searchFieldFocusNode;
   TextEditingController? searchFieldController;
@@ -29,6 +30,7 @@ class OKFNPayry30HistorialQRsModel
   void initState(BuildContext context) {}
 
   void dispose() {
+    unfocusNode.dispose();
     searchFieldFocusNode?.dispose();
     searchFieldController?.dispose();
   }

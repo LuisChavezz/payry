@@ -128,246 +128,136 @@ class _OKFNPayry31DetallesdeQRWidgetState
               centerTitle: false,
               elevation: 0.0,
             ),
-            body: Align(
-              alignment: AlignmentDirectional(0.00, 0.00),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 18.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                      child: Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [Color(0xFF965EBE), Color(0xFF601C80)],
-                            stops: [0.0, 1.0],
-                            begin: AlignmentDirectional(-1.0, 0.0),
-                            end: AlignmentDirectional(1.0, 0),
+            body: SafeArea(
+              top: true,
+              child: Align(
+                alignment: AlignmentDirectional(0.00, 0.00),
+                child: Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 18.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Color(0xFF965EBE), Color(0xFF601C80)],
+                              stops: [0.0, 1.0],
+                              begin: AlignmentDirectional(-1.0, 0.0),
+                              end: AlignmentDirectional(1.0, 0),
+                            ),
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(0.0),
+                              bottomRight: Radius.circular(0.0),
+                              topLeft: Radius.circular(16.0),
+                              topRight: Radius.circular(16.0),
+                            ),
                           ),
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(0.0),
-                            bottomRight: Radius.circular(0.0),
-                            topLeft: Radius.circular(16.0),
-                            topRight: Radius.circular(16.0),
-                          ),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              12.0, 40.0, 12.0, 40.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 8.0),
-                                    child: Text(
-                                      '${formatNumber(
-                                        oKFNPayry31DetallesdeQRQrRecord.amount,
-                                        formatType: FormatType.custom,
-                                        currency: '\$',
-                                        format: '#,###.00##',
-                                        locale: 'es_MX',
-                                      )} MXN',
-                                      textAlign: TextAlign.center,
-                                      style: FlutterFlowTheme.of(context)
-                                          .headlineLarge
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: Colors.white,
-                                          ),
-                                    ),
-                                  ),
-                                  Text(
-                                    '${dateTimeFormat(
-                                      'd MMM y',
-                                      oKFNPayry31DetallesdeQRQrRecord
-                                          .createdTime,
-                                      locale: FFLocalizations.of(context)
-                                          .languageCode,
-                                    )} a las ${dateTimeFormat(
-                                      'h:mm a',
-                                      oKFNPayry31DetallesdeQRQrRecord
-                                          .createdTime,
-                                      locale: FFLocalizations.of(context)
-                                          .languageCode,
-                                    )}',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodySmall
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: Colors.white,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(16.0),
-                            bottomRight: Radius.circular(16.0),
-                            topLeft: Radius.circular(0.0),
-                            topRight: Radius.circular(0.0),
-                          ),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Column(
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                12.0, 40.0, 12.0, 40.0),
+                            child: Column(
                               mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 20.0, 20.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            FFLocalizations.of(context).getText(
-                                              'mm5hpk78' /* Concepto */,
+                                          0.0, 0.0, 0.0, 8.0),
+                                      child: Text(
+                                        '${formatNumber(
+                                          oKFNPayry31DetallesdeQRQrRecord
+                                              .amount,
+                                          formatType: FormatType.custom,
+                                          currency: '\$',
+                                          format: '#,###.00##',
+                                          locale: 'es_MX',
+                                        )} MXN',
+                                        textAlign: TextAlign.center,
+                                        style: FlutterFlowTheme.of(context)
+                                            .headlineLarge
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color: Colors.white,
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodySmall
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
-                                          ),
-                                          Text(
-                                            oKFNPayry31DetallesdeQRQrRecord
-                                                .concept,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .accent3,
-                                                ),
-                                          ),
-                                        ],
                                       ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 20.0, 20.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            FFLocalizations.of(context).getText(
-                                              'kvcrg8nj' /* Estatus */,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodySmall
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
+                                    Text(
+                                      '${dateTimeFormat(
+                                        'd MMM y',
+                                        oKFNPayry31DetallesdeQRQrRecord
+                                            .createdTime,
+                                        locale: FFLocalizations.of(context)
+                                            .languageCode,
+                                      )} a las ${dateTimeFormat(
+                                        'h:mm a',
+                                        oKFNPayry31DetallesdeQRQrRecord
+                                            .createdTime,
+                                        locale: FFLocalizations.of(context)
+                                            .languageCode,
+                                      )}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodySmall
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            color: Colors.white,
                                           ),
-                                          Text(
-                                            oKFNPayry31DetallesdeQRQrRecord
-                                                .status,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .accent3,
-                                                ),
-                                          ),
-                                        ],
-                                      ),
                                     ),
                                   ],
                                 ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      20.0, 20.0, 20.0, 0.0),
-                                  child: Column(
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(16.0),
+                              bottomRight: Radius.circular(16.0),
+                              topLeft: Radius.circular(0.0),
+                              topRight: Radius.circular(0.0),
+                            ),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Column(
                                     mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Divider(
-                                        thickness: 1.0,
-                                        color: FlutterFlowTheme.of(context)
-                                            .accent4,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 16.0, 16.0, 0.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
                                     children: [
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 8.0),
+                                            20.0, 20.0, 20.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
-                                              MainAxisAlignment.start,
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 8.0, 16.0, 8.0),
-                                              child: Icon(
-                                                FFIcons.khoja,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                size: 20.0,
+                                            Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'mm5hpk78' /* Concepto */,
                                               ),
-                                            ),
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 12.0, 0.0),
-                                                child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'j7p86qgo' /* Ver recibo */,
-                                                  ),
-                                                  textAlign: TextAlign.start,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
                                                       .override(
                                                         fontFamily: 'Lexend',
                                                         color:
@@ -375,288 +265,251 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                                     context)
                                                                 .primaryText,
                                                       ),
-                                                ),
+                                            ),
+                                            Text(
+                                              oKFNPayry31DetallesdeQRQrRecord
+                                                  .concept,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent3,
+                                                      ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20.0, 20.0, 20.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'kvcrg8nj' /* Estatus */,
                                               ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                      ),
+                                            ),
+                                            Text(
+                                              oKFNPayry31DetallesdeQRQrRecord
+                                                  .status,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent3,
+                                                      ),
                                             ),
                                           ],
                                         ),
                                       ),
                                     ],
                                   ),
-                                ),
-                              ],
-                            ),
-                            if (oKFNPayry31DetallesdeQRQrRecord.status !=
-                                'CANCELADO')
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 20.0, 20.0, 20.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Row(
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        20.0, 20.0, 20.0, 0.0),
+                                    child: Column(
                                       mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(-1.00, 0.00),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 10.0, 0.0, 10.0),
-                                            child: FFButtonWidget(
-                                              onPressed: () async {
-                                                var confirmDialogResponse =
-                                                    await showDialog<bool>(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Cancelar QR'),
-                                                              content: Text(
-                                                                  '¿Estás seguro de querer cancelar este QR?'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          false),
-                                                                  child: Text(
-                                                                      'No'),
-                                                                ),
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          true),
-                                                                  child: Text(
-                                                                      'Si'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        ) ??
-                                                        false;
-                                                if (confirmDialogResponse) {
-                                                  await oKFNPayry31DetallesdeQRQrRecord
-                                                      .reference
-                                                      .update(
-                                                          createQrRecordData(
-                                                    status: 'CANCELADO',
-                                                  ));
-
-                                                  await QrHistoryRecord
-                                                      .collection
-                                                      .doc()
-                                                      .set({
-                                                    ...createQrHistoryRecordData(
-                                                      qrId:
-                                                          oKFNPayry31DetallesdeQRQrRecord
-                                                              .reference.id,
-                                                      status: 'CANCELADO',
-                                                      modifiedBy:
-                                                          currentUserUid,
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: FlutterFlowTheme.of(context)
+                                              .accent4,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 16.0, 16.0, 0.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 8.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 8.0, 16.0, 8.0),
+                                                child: Icon(
+                                                  FFIcons.khoja,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  size: 20.0,
+                                                ),
+                                              ),
+                                              Expanded(
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 12.0, 0.0),
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'j7p86qgo' /* Ver recibo */,
                                                     ),
-                                                    ...mapToFirestore(
-                                                      {
-                                                        'created_time': FieldValue
-                                                            .serverTimestamp(),
-                                                      },
-                                                    ),
-                                                  });
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(
-                                                    SnackBar(
-                                                      content: Text(
-                                                        'El QR ha sido cancelado',
-                                                        style: TextStyle(
+                                                    textAlign: TextAlign.start,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
                                                         ),
-                                                      ),
-                                                      duration: Duration(
-                                                          milliseconds: 4000),
-                                                      backgroundColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondary,
-                                                    ),
-                                                  );
-                                                  return;
-                                                } else {
-                                                  return;
-                                                }
-                                              },
-                                              text: FFLocalizations.of(context)
-                                                  .getText(
-                                                'ydw72xtl' /* Cancelar QR */,
-                                              ),
-                                              options: FFButtonOptions(
-                                                width: 150.0,
-                                                height: 50.0,
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 0.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
-                                                color: Color(0xFFFF8A71),
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily: 'Lexend',
-                                                          color: Colors.white,
-                                                        ),
-                                                elevation: 3.0,
-                                                borderSide: BorderSide(
-                                                  color: Colors.transparent,
-                                                  width: 1.0,
+                                                  ),
                                                 ),
-                                                borderRadius:
-                                                    BorderRadius.circular(10.0),
                                               ),
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(1.00, 0.00),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 10.0, 0.0, 10.0),
-                                            child: FFButtonWidget(
-                                              onPressed: () {
-                                                print('Button pressed ...');
-                                              },
-                                              text: FFLocalizations.of(context)
-                                                  .getText(
-                                                'gdrwosru' /* Devolver */,
-                                              ),
-                                              options: FFButtonOptions(
-                                                width: 150.0,
-                                                height: 50.0,
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 0.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent4,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily: 'Lexend',
-                                                          color:
-                                                              Color(0xFF5E4A98),
-                                                        ),
-                                                elevation: 3.0,
-                                                borderSide: BorderSide(
-                                                  color: Colors.transparent,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(10.0),
-                                              ),
-                                            ),
+                                            ],
                                           ),
                                         ),
                                       ],
                                     ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(-1.00, 0.00),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 10.0, 0.0, 10.0),
-                                            child: FFButtonWidget(
-                                              onPressed: () async {
-                                                await actions
-                                                    .downloadFileFromUrl(
-                                                  functions.imagePathToString(
-                                                      oKFNPayry31DetallesdeQRQrRecord
-                                                          .qrUrl),
-                                                );
-                                              },
-                                              text: FFLocalizations.of(context)
-                                                  .getText(
-                                                '25n3if0w' /* Descargar */,
-                                              ),
-                                              options: FFButtonOptions(
-                                                width: 150.0,
-                                                height: 50.0,
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 0.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent4,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily: 'Lexend',
-                                                          color:
-                                                              Color(0xFF5E4A98),
-                                                        ),
-                                                elevation: 3.0,
-                                                borderSide: BorderSide(
-                                                  color: Colors.transparent,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(10.0),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(1.00, 0.00),
-                                          child: Builder(
-                                            builder: (context) => Padding(
+                                  ),
+                                ],
+                              ),
+                              if (oKFNPayry31DetallesdeQRQrRecord.status !=
+                                  'CANCELADO')
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20.0, 20.0, 20.0, 20.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                -1.00, 0.00),
+                                            child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 10.0, 0.0, 10.0),
                                               child: FFButtonWidget(
                                                 onPressed: () async {
-                                                  await Share.share(
-                                                    functions.formatSharedQRText(
-                                                        oKFNPayry31DetallesdeQRQrRecord
-                                                            .qrUrl,
-                                                        oKFNPayry31DetallesdeQRQrRecord
-                                                            .amount,
-                                                        oKFNPayry31DetallesdeQRQrRecord
-                                                            .concept)!,
-                                                    sharePositionOrigin:
-                                                        getWidgetBoundingBox(
-                                                            context),
-                                                  );
+                                                  var confirmDialogResponse =
+                                                      await showDialog<bool>(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Cancelar QR'),
+                                                                content: Text(
+                                                                    '¿Estás seguro de querer cancelar este QR?'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            false),
+                                                                    child: Text(
+                                                                        'No'),
+                                                                  ),
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            true),
+                                                                    child: Text(
+                                                                        'Si'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          ) ??
+                                                          false;
+                                                  if (confirmDialogResponse) {
+                                                    await oKFNPayry31DetallesdeQRQrRecord
+                                                        .reference
+                                                        .update(
+                                                            createQrRecordData(
+                                                      status: 'CANCELADO',
+                                                    ));
+
+                                                    await QrHistoryRecord
+                                                        .collection
+                                                        .doc()
+                                                        .set({
+                                                      ...createQrHistoryRecordData(
+                                                        qrId:
+                                                            oKFNPayry31DetallesdeQRQrRecord
+                                                                .reference.id,
+                                                        status: 'CANCELADO',
+                                                        modifiedBy:
+                                                            currentUserUid,
+                                                      ),
+                                                      ...mapToFirestore(
+                                                        {
+                                                          'created_time': FieldValue
+                                                              .serverTimestamp(),
+                                                        },
+                                                      ),
+                                                    });
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(
+                                                      SnackBar(
+                                                        content: Text(
+                                                          'El QR ha sido cancelado',
+                                                          style: TextStyle(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText,
+                                                          ),
+                                                        ),
+                                                        duration: Duration(
+                                                            milliseconds: 4000),
+                                                        backgroundColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondary,
+                                                      ),
+                                                    );
+                                                    return;
+                                                  } else {
+                                                    return;
+                                                  }
                                                 },
                                                 text:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'uasq3vqt' /* Compartir */,
+                                                  'ydw72xtl' /* Cancelar QR */,
                                                 ),
                                                 options: FFButtonOptions(
                                                   width: 150.0,
@@ -668,7 +521,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                       EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
-                                                  color: Color(0xFF5E4A98),
+                                                  color: Color(0xFFFF8A71),
                                                   textStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .titleSmall
@@ -688,17 +541,187 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                               ),
                                             ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                1.00, 0.00),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 10.0, 0.0, 10.0),
+                                              child: FFButtonWidget(
+                                                onPressed: () {
+                                                  print('Button pressed ...');
+                                                },
+                                                text:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  'gdrwosru' /* Devolver */,
+                                                ),
+                                                options: FFButtonOptions(
+                                                  width: 150.0,
+                                                  height: 50.0,
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 0.0),
+                                                  iconPadding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(0.0, 0.0,
+                                                              0.0, 0.0),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .accent4,
+                                                  textStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color:
+                                                            Color(0xFF5E4A98),
+                                                      ),
+                                                  elevation: 3.0,
+                                                  borderSide: BorderSide(
+                                                    color: Colors.transparent,
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10.0),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                -1.00, 0.00),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 10.0, 0.0, 10.0),
+                                              child: FFButtonWidget(
+                                                onPressed: () async {
+                                                  await actions
+                                                      .downloadFileFromUrl(
+                                                    functions.imagePathToString(
+                                                        oKFNPayry31DetallesdeQRQrRecord
+                                                            .qrUrl),
+                                                  );
+                                                },
+                                                text:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  '25n3if0w' /* Descargar */,
+                                                ),
+                                                options: FFButtonOptions(
+                                                  width: 150.0,
+                                                  height: 50.0,
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 0.0),
+                                                  iconPadding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(0.0, 0.0,
+                                                              0.0, 0.0),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .accent4,
+                                                  textStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color:
+                                                            Color(0xFF5E4A98),
+                                                      ),
+                                                  elevation: 3.0,
+                                                  borderSide: BorderSide(
+                                                    color: Colors.transparent,
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10.0),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                1.00, 0.00),
+                                            child: Builder(
+                                              builder: (context) => Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 10.0, 0.0, 10.0),
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    await Share.share(
+                                                      functions.formatSharedQRText(
+                                                          oKFNPayry31DetallesdeQRQrRecord
+                                                              .qrUrl,
+                                                          oKFNPayry31DetallesdeQRQrRecord
+                                                              .amount,
+                                                          oKFNPayry31DetallesdeQRQrRecord
+                                                              .concept)!,
+                                                      sharePositionOrigin:
+                                                          getWidgetBoundingBox(
+                                                              context),
+                                                    );
+                                                  },
+                                                  text: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'uasq3vqt' /* Compartir */,
+                                                  ),
+                                                  options: FFButtonOptions(
+                                                    width: 150.0,
+                                                    height: 50.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: Color(0xFF5E4A98),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: Colors.white,
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.0),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

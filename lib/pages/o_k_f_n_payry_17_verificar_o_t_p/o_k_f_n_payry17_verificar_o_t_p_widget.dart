@@ -224,7 +224,7 @@ class _OKFNPayry17VerificarOTPWidgetState
                                 if (shouldUpdate) setState(() {});
                               },
                               onEnded: () async {
-                                context.safePop();
+                                context.pop();
                                 await showDialog(
                                   context: context,
                                   builder: (alertDialogContext) {
