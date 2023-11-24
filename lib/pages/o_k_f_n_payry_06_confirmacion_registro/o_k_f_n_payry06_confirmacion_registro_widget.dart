@@ -161,7 +161,7 @@ para v... */
                                     child: FFButtonWidget(
                                       onPressed: () async {
                                         context.pushNamed(
-                                            'OK_FN_Payry_26_Dashboard');
+                                            'OK_FN_Payry_13_Menumas');
                                       },
                                       text: FFLocalizations.of(context).getText(
                                         'w15h5dfo' /* Aceptar */,

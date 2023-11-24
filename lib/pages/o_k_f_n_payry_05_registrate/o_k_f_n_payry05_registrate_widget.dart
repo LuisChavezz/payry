@@ -1,9 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -628,10 +630,41 @@ class _OKFNPayry05RegistrateWidgetState
                                                     ));
                                                 await authManager
                                                     .sendEmailVerification();
+                                                try {
+                                                  final result =
+                                                      await FirebaseFunctions
+                                                          .instance
+                                                          .httpsCallable(
+                                                              'generateToken')
+                                                          .call({
+                                                    "uid": currentUserUid,
+                                                  });
+                                                  _model.cloudFunctionGT =
+                                                      GenerateTokenCloudFunctionCallResponse(
+                                                    data: result.data,
+                                                    succeeded: true,
+                                                    resultAsString:
+                                                        result.data.toString(),
+                                                    jsonBody: result.data,
+                                                  );
+                                                } on FirebaseFunctionsException catch (error) {
+                                                  _model.cloudFunctionGT =
+                                                      GenerateTokenCloudFunctionCallResponse(
+                                                    errorCode: error.code,
+                                                    succeeded: false,
+                                                  );
+                                                }
+
+                                                FFAppState().serverToken =
+                                                    _model.cloudFunctionGT!
+                                                        .jsonBody!
+                                                        .toString();
 
                                                 context.goNamedAuth(
                                                     'OK_FN_Payry_06_confirmacionRegistro',
                                                     context.mounted);
+
+                                                setState(() {});
                                               },
                                               text: FFLocalizations.of(context)
                                                   .getText(
