@@ -95,211 +95,256 @@ class _OKFNPayry14PerfilPENDSWWidgetState
           centerTitle: false,
           elevation: 0.0,
         ),
-        body: Align(
-          alignment: AlignmentDirectional(0.00, 0.00),
-          child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 18.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                  child: Container(
-                    width: MediaQuery.sizeOf(context).width * 1.0,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Color(0xFF965EBE), Color(0xFF601C80)],
-                        stops: [0.0, 1.0],
-                        begin: AlignmentDirectional(-1.0, 0.0),
-                        end: AlignmentDirectional(1.0, 0),
+        body: SafeArea(
+          top: true,
+          child: Align(
+            alignment: AlignmentDirectional(0.00, 0.00),
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 18.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                    child: Container(
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Color(0xFF965EBE), Color(0xFF601C80)],
+                          stops: [0.0, 1.0],
+                          begin: AlignmentDirectional(-1.0, 0.0),
+                          end: AlignmentDirectional(1.0, 0),
+                        ),
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(0.0),
+                          bottomRight: Radius.circular(0.0),
+                          topLeft: Radius.circular(16.0),
+                          topRight: Radius.circular(16.0),
+                        ),
                       ),
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(0.0),
-                        bottomRight: Radius.circular(0.0),
-                        topLeft: Radius.circular(16.0),
-                        topRight: Radius.circular(16.0),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          12.0, 40.0, 12.0, 40.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Align(
-                            alignment: AlignmentDirectional(0.00, 0.00),
-                            child: AuthUserStreamWidget(
-                              builder: (context) => Container(
-                                width: 100.0,
-                                height: 100.0,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: Image.network(
-                                      valueOrDefault<String>(
-                                        currentUserPhoto,
-                                        'https://res.cloudinary.com/dshn8thfr/image/upload/v1694029660/blank-profile-picture-973460_1920_lc1bnn.png',
-                                      ),
-                                    ).image,
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            12.0, 40.0, 12.0, 40.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Align(
+                              alignment: AlignmentDirectional(0.00, 0.00),
+                              child: AuthUserStreamWidget(
+                                builder: (context) => Container(
+                                  width: 100.0,
+                                  height: 100.0,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: Image.network(
+                                        valueOrDefault<String>(
+                                          currentUserPhoto,
+                                          'https://res.cloudinary.com/dshn8thfr/image/upload/v1694029660/blank-profile-picture-973460_1920_lc1bnn.png',
+                                        ),
+                                      ).image,
+                                    ),
+                                    shape: BoxShape.circle,
                                   ),
-                                  shape: BoxShape.circle,
                                 ),
                               ),
                             ),
-                          ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 16.0, 0.0, 4.0),
-                                child: AuthUserStreamWidget(
-                                  builder: (context) => Text(
-                                    currentUserDisplayName,
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .headlineSmall
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: Colors.white,
-                                        ),
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                currentUserEmail,
-                                style: FlutterFlowTheme.of(context)
-                                    .labelLarge
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: Colors.white,
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 3.0,
-                          color: Color(0x33000000),
-                          offset: Offset(0.0, -1.0),
-                        )
-                      ],
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(16.0),
-                        bottomRight: Radius.circular(16.0),
-                        topLeft: Radius.circular(0.0),
-                        topRight: Radius.circular(0.0),
-                      ),
-                    ),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 16.0, 16.0, 0.0),
-                            child: Column(
+                            Column(
                               mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 8.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      context.pushNamed(
-                                          'OK_FN_Payry_15_EditProfile');
-                                    },
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 8.0, 16.0, 8.0),
-                                          child: Icon(
-                                            FFIcons.kusuario,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 20.0,
+                                      0.0, 16.0, 0.0, 4.0),
+                                  child: AuthUserStreamWidget(
+                                    builder: (context) => Text(
+                                      currentUserDisplayName,
+                                      textAlign: TextAlign.center,
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineSmall
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            color: Colors.white,
                                           ),
-                                        ),
-                                        Expanded(
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 12.0, 0.0),
-                                            child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'z1ujavtg' /* Información personal */,
-                                              ),
-                                              textAlign: TextAlign.start,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                      ),
-                                            ),
-                                          ),
-                                        ),
-                                        Icon(
-                                          Icons.chevron_right_rounded,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          size: 24.0,
-                                        ),
-                                      ],
                                     ),
                                   ),
                                 ),
-                                if (valueOrDefault<bool>(
-                                    currentUserDocument?.isAdmin, false))
+                                Text(
+                                  currentUserEmail,
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelLarge
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: Colors.white,
+                                      ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 3.0,
+                            color: Color(0x33000000),
+                            offset: Offset(0.0, -1.0),
+                          )
+                        ],
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(16.0),
+                          bottomRight: Radius.circular(16.0),
+                          topLeft: Radius.circular(0.0),
+                          topRight: Radius.circular(0.0),
+                        ),
+                      ),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 16.0, 16.0, 0.0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 8.0),
-                                    child: AuthUserStreamWidget(
-                                      builder: (context) => InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          if (currentUserEmailVerified) {
-                                            if (valueOrDefault<bool>(
-                                                    currentUserDocument
-                                                        ?.isValidPhoneNumber,
-                                                    false) ==
-                                                true) {
-                                              context.pushNamed(
-                                                  'OK_FN_Payry_19_formularioEmpresa');
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        context.pushNamed(
+                                            'OK_FN_Payry_15_EditProfile');
+                                      },
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 8.0, 16.0, 8.0),
+                                            child: Icon(
+                                              FFIcons.kusuario,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 12.0, 0.0),
+                                              child: Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'z1ujavtg' /* Información personal */,
+                                                ),
+                                                textAlign: TextAlign.start,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                              ),
+                                            ),
+                                          ),
+                                          Icon(
+                                            Icons.chevron_right_rounded,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 24.0,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  if (valueOrDefault<bool>(
+                                      currentUserDocument?.isAdmin, false))
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 8.0),
+                                      child: AuthUserStreamWidget(
+                                        builder: (context) => InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            if (currentUserEmailVerified) {
+                                              if (valueOrDefault<bool>(
+                                                      currentUserDocument
+                                                          ?.isValidPhoneNumber,
+                                                      false) ==
+                                                  true) {
+                                                context.pushNamed(
+                                                    'OK_FN_Payry_19_formularioEmpresa');
 
-                                              return;
+                                                return;
+                                              } else {
+                                                var confirmDialogResponse =
+                                                    await showDialog<bool>(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Acceso denegado'),
+                                                              content: Text(
+                                                                  'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          false),
+                                                                  child: Text(
+                                                                      'Cancel'),
+                                                                ),
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          true),
+                                                                  child: Text(
+                                                                      'Verificar número'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        ) ??
+                                                        false;
+                                                if (confirmDialogResponse) {
+                                                  context.pushNamed(
+                                                      'OK_FN_Payry_15_EditProfile');
+
+                                                  return;
+                                                } else {
+                                                  return;
+                                                }
+                                              }
                                             } else {
                                               var confirmDialogResponse =
                                                   await showDialog<bool>(
@@ -310,7 +355,7 @@ class _OKFNPayry14PerfilPENDSWWidgetState
                                                             title: Text(
                                                                 'Acceso denegado'),
                                                             content: Text(
-                                                                'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
+                                                                'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
                                                             actions: [
                                                               TextButton(
                                                                 onPressed: () =>
@@ -326,7 +371,7 @@ class _OKFNPayry14PerfilPENDSWWidgetState
                                                                         alertDialogContext,
                                                                         true),
                                                                 child: Text(
-                                                                    'Verificar número'),
+                                                                    'Reenviar'),
                                                               ),
                                                             ],
                                                           );
@@ -334,15 +379,97 @@ class _OKFNPayry14PerfilPENDSWWidgetState
                                                       ) ??
                                                       false;
                                               if (confirmDialogResponse) {
-                                                context.pushNamed(
-                                                    'OK_FN_Payry_15_EditProfile');
-
+                                                await authManager
+                                                    .sendEmailVerification();
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  SnackBar(
+                                                    content: Text(
+                                                      'Se ha enviado la verificación a tu correo electrónico.',
+                                                      style: TextStyle(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                      ),
+                                                    ),
+                                                    duration: Duration(
+                                                        milliseconds: 4000),
+                                                    backgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondary,
+                                                  ),
+                                                );
                                                 return;
                                               } else {
                                                 return;
                                               }
                                             }
-                                          } else {
+                                          },
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 8.0, 16.0, 8.0),
+                                                child: Icon(
+                                                  FFIcons.kempresa,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  size: 20.0,
+                                                ),
+                                              ),
+                                              Expanded(
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 12.0, 0.0),
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'fcfe1ibo' /* Empresa */,
+                                                    ),
+                                                    textAlign: TextAlign.start,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Icon(
+                                                Icons.chevron_right_rounded,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                size: 24.0,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  if (!currentUserEmailVerified)
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 8.0),
+                                      child: AuthUserStreamWidget(
+                                        builder: (context) => InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
                                             var confirmDialogResponse =
                                                 await showDialog<bool>(
                                                       context: context,
@@ -350,9 +477,9 @@ class _OKFNPayry14PerfilPENDSWWidgetState
                                                           (alertDialogContext) {
                                                         return AlertDialog(
                                                           title: Text(
-                                                              'Acceso denegado'),
+                                                              'Verificar correo electrónico'),
                                                           content: Text(
-                                                              'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
+                                                              '¿Deseas recibir un correo electrónico de verficación?'),
                                                           actions: [
                                                             TextButton(
                                                               onPressed: () =>
@@ -360,7 +487,7 @@ class _OKFNPayry14PerfilPENDSWWidgetState
                                                                       alertDialogContext,
                                                                       false),
                                                               child: Text(
-                                                                  'Cancel'),
+                                                                  'Cancelar'),
                                                             ),
                                                             TextButton(
                                                               onPressed: () =>
@@ -368,7 +495,7 @@ class _OKFNPayry14PerfilPENDSWWidgetState
                                                                       alertDialogContext,
                                                                       true),
                                                               child: Text(
-                                                                  'Reenviar'),
+                                                                  'Aceptar'),
                                                             ),
                                                           ],
                                                         );
@@ -402,255 +529,56 @@ class _OKFNPayry14PerfilPENDSWWidgetState
                                             } else {
                                               return;
                                             }
-                                          }
-                                        },
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 8.0, 16.0, 8.0),
-                                              child: Icon(
-                                                FFIcons.kempresa,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                size: 20.0,
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: Padding(
+                                          },
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 0.0, 12.0, 0.0),
-                                                child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'fcfe1ibo' /* Empresa */,
-                                                  ),
-                                                  textAlign: TextAlign.start,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                            Icon(
-                                              Icons.chevron_right_rounded,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 24.0,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                if (!currentUserEmailVerified)
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 8.0),
-                                    child: AuthUserStreamWidget(
-                                      builder: (context) => InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          var confirmDialogResponse =
-                                              await showDialog<bool>(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        title: Text(
-                                                            'Verificar correo electrónico'),
-                                                        content: Text(
-                                                            '¿Deseas recibir un correo electrónico de verficación?'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    false),
-                                                            child: Text(
-                                                                'Cancelar'),
-                                                          ),
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    true),
-                                                            child:
-                                                                Text('Aceptar'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  ) ??
-                                                  false;
-                                          if (confirmDialogResponse) {
-                                            await authManager
-                                                .sendEmailVerification();
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'Se ha enviado la verificación a tu correo electrónico.',
-                                                  style: TextStyle(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                  ),
-                                                ),
-                                                duration: Duration(
-                                                    milliseconds: 4000),
-                                                backgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondary,
-                                              ),
-                                            );
-                                            return;
-                                          } else {
-                                            return;
-                                          }
-                                        },
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 8.0, 16.0, 8.0),
-                                              child: Icon(
-                                                Icons.mark_email_read_outlined,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                size: 20.0,
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 12.0, 0.0),
-                                                child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    '2lpa9baa' /* Verificar email */,
-                                                  ),
-                                                  textAlign: TextAlign.start,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 8.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 8.0, 16.0, 8.0),
-                                        child: Icon(
-                                          FFIcons.knotificaciones,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          size: 20.0,
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 12.0, 0.0),
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              'phzcs2ky' /* Notificaciones */,
-                                            ),
-                                            textAlign: TextAlign.start,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
+                                                        0.0, 8.0, 16.0, 8.0),
+                                                child: Icon(
+                                                  Icons
+                                                      .mark_email_read_outlined,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
+                                                  size: 20.0,
                                                 ),
+                                              ),
+                                              Expanded(
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 12.0, 0.0),
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      '2lpa9baa' /* Verificar email */,
+                                                    ),
+                                                    textAlign: TextAlign.start,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ),
-                                      Switch.adaptive(
-                                        value: _model.switchValue ??= true,
-                                        onChanged: (newValue) async {
-                                          setState(() =>
-                                              _model.switchValue = newValue!);
-                                        },
-                                        activeColor:
-                                            FlutterFlowTheme.of(context)
-                                                .success,
-                                        activeTrackColor:
-                                            FlutterFlowTheme.of(context)
-                                                .accent1,
-                                        inactiveTrackColor:
-                                            FlutterFlowTheme.of(context)
-                                                .accent4,
-                                        inactiveThumbColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 8.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      FFAppState().serverToken = '';
-                                      GoRouter.of(context).prepareAuthEvent();
-                                      await authManager.signOut();
-                                      GoRouter.of(context)
-                                          .clearRedirectLocation();
-
-                                      context.goNamedAuth(
-                                          'OK_FN_Payry_08_iniciasesion',
-                                          context.mounted);
-                                    },
+                                    ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 8.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -661,8 +589,9 @@ class _OKFNPayry14PerfilPENDSWWidgetState
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 8.0, 16.0, 8.0),
                                           child: Icon(
-                                            FFIcons.kcerrarSesion,
-                                            color: Color(0xFF0FB978),
+                                            FFIcons.knotificaciones,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
                                             size: 20.0,
                                           ),
                                         ),
@@ -674,7 +603,7 @@ class _OKFNPayry14PerfilPENDSWWidgetState
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'w8lkg9yx' /* Cerrar sesión */,
+                                                'phzcs2ky' /* Notificaciones */,
                                               ),
                                               textAlign: TextAlign.start,
                                               style:
@@ -683,24 +612,105 @@ class _OKFNPayry14PerfilPENDSWWidgetState
                                                       .override(
                                                         fontFamily: 'Lexend',
                                                         color:
-                                                            Color(0xFF0FB978),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
                                                       ),
                                             ),
                                           ),
                                         ),
+                                        Switch.adaptive(
+                                          value: _model.switchValue ??= true,
+                                          onChanged: (newValue) async {
+                                            setState(() =>
+                                                _model.switchValue = newValue!);
+                                          },
+                                          activeColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .success,
+                                          activeTrackColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .accent1,
+                                          inactiveTrackColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .accent4,
+                                          inactiveThumbColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
+                                        ),
                                       ],
                                     ),
                                   ),
-                                ),
-                              ],
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 8.0),
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        FFAppState().serverToken = '';
+                                        GoRouter.of(context).prepareAuthEvent();
+                                        await authManager.signOut();
+                                        GoRouter.of(context)
+                                            .clearRedirectLocation();
+
+                                        context.goNamedAuth(
+                                            'OK_FN_Payry_08_iniciasesion',
+                                            context.mounted);
+                                      },
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 8.0, 16.0, 8.0),
+                                            child: Icon(
+                                              FFIcons.kcerrarSesion,
+                                              color: Color(0xFF0FB978),
+                                              size: 20.0,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 12.0, 0.0),
+                                              child: Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'w8lkg9yx' /* Cerrar sesión */,
+                                                ),
+                                                textAlign: TextAlign.start,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color:
+                                                              Color(0xFF0FB978),
+                                                        ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

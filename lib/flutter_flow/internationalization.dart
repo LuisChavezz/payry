@@ -835,18 +835,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': 'Verifizieren',
       'en': 'Verify',
     },
-    'e4z8lvjq': {
-      'es': '¿No recibiste ningún código?',
-      'ar': 'لم تتلق أي رمز؟',
-      'de': 'Haben Sie keinen Code erhalten?',
-      'en': 'Didn\'t you receive any code?',
-    },
-    'r6ks2e4a': {
-      'es': 'Reenviar',
-      'ar': 'إعادة إرسال',
-      'de': 'Erneut senden',
-      'en': 'Resend',
-    },
     'e9n3ppnb': {
       'es': 'Verifica tu número de teléfono',
       'ar': 'اكد على رقم هاتفك او جوالك',

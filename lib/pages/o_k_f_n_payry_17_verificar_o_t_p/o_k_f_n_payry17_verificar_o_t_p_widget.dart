@@ -20,9 +20,11 @@ class OKFNPayry17VerificarOTPWidget extends StatefulWidget {
   const OKFNPayry17VerificarOTPWidget({
     Key? key,
     required this.otpCode,
+    required this.phoneNumber,
   }) : super(key: key);
 
   final String? otpCode;
+  final String? phoneNumber;
 
   @override
   _OKFNPayry17VerificarOTPWidgetState createState() =>
@@ -221,6 +223,26 @@ class _OKFNPayry17VerificarOTPWidgetState
                                 _model.timerValue = displayTime;
                                 if (shouldUpdate) setState(() {});
                               },
+                              onEnded: () async {
+                                context.pop();
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('Tiempo expirado'),
+                                      content: Text(
+                                          'El tiempo para ingresar el código de verificación ha expirado. Vuelva a intenter enviado un nuevo código.'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Aceptar'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
                               textAlign: TextAlign.start,
                               style: FlutterFlowTheme.of(context)
                                   .headlineSmall
@@ -323,6 +345,7 @@ class _OKFNPayry17VerificarOTPWidgetState
                                       .tempUserReference!
                                       .update(createUsersRecordData(
                                         isValidPhoneNumber: true,
+                                        phoneNumber: widget.phoneNumber,
                                       ));
                                   await currentUserReference!.delete();
                                   await authManager.deleteUser(context);
@@ -373,54 +396,6 @@ class _OKFNPayry17VerificarOTPWidgetState
                             ),
                           ),
                         ),
-                        if (_model.timerMilliseconds <= 0)
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 10.0, 0.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Align(
-                                  alignment: AlignmentDirectional(-1.00, 0.00),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 6.0, 0.0),
-                                    child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        'e4z8lvjq' /* ¿No recibiste ningún código? */,
-                                      ),
-                                      textAlign: TextAlign.start,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Lexend',
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            fontSize: 12.0,
-                                          ),
-                                    ),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: AlignmentDirectional(-1.00, 0.00),
-                                  child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      'r6ks2e4a' /* Reenviar */,
-                                    ),
-                                    textAlign: TextAlign.start,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: Color(0xFF0FB978),
-                                          fontSize: 12.0,
-                                        ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
                       ],
                     ),
                   ),

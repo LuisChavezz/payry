@@ -49,12 +49,14 @@ class _OKFNPayry06ConfirmacionRegistroWidgetState
 
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      body: SafeArea(
-        top: true,
-        child: Column(
+    return GestureDetector(
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        body: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -159,7 +161,7 @@ para v... */
                                     child: FFButtonWidget(
                                       onPressed: () async {
                                         context.pushNamed(
-                                            'OK_FN_Payry_26_Dashboard');
+                                            'OK_FN_Payry_13_Menumas');
                                       },
                                       text: FFLocalizations.of(context).getText(
                                         'w15h5dfo' /* Aceptar */,

@@ -11,11 +11,17 @@ import 'package:provider/provider.dart';
 
 class OKFNPayry06ConfirmacionRegistroModel
     extends FlutterFlowModel<OKFNPayry06ConfirmacionRegistroWidget> {
+  ///  State fields for stateful widgets in this page.
+
+  final unfocusNode = FocusNode();
+
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
 
-  void dispose() {}
+  void dispose() {
+    unfocusNode.dispose();
+  }
 
   /// Action blocks are added here.
 

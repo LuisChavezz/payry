@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -12,7 +13,12 @@ import 'nav_bar_floting_model.dart';
 export 'nav_bar_floting_model.dart';
 
 class NavBarFlotingWidget extends StatefulWidget {
-  const NavBarFlotingWidget({Key? key}) : super(key: key);
+  const NavBarFlotingWidget({
+    Key? key,
+    required this.userPermissions,
+  }) : super(key: key);
+
+  final UserPermissionsRecord? userPermissions;
 
   @override
   _NavBarFlotingWidgetState createState() => _NavBarFlotingWidgetState();
@@ -89,20 +95,58 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                         size: 25.0,
                       ),
                       onPressed: () async {
-                        if (currentUserEmailVerified) {
-                          if (valueOrDefault<bool>(
-                                  currentUserDocument?.isValidPhoneNumber,
-                                  false) ==
-                              true) {
+                        if (valueOrDefault<bool>(
+                                currentUserDocument?.isAdmin, false) ||
+                            widget.userPermissions!.readQr ||
+                            widget.userPermissions!.readSms) {
+                          if (currentUserEmailVerified) {
                             if (valueOrDefault<bool>(
-                                    currentUserDocument?.isAdmin, false)
-                                ? valueOrDefault<bool>(
-                                    currentUserDocument?.isCompanyComplete,
-                                    false)
-                                : true) {
-                              context.pushNamed('OK_FN_Payry_26_Dashboard');
+                                    currentUserDocument?.isValidPhoneNumber,
+                                    false) ==
+                                true) {
+                              if (valueOrDefault<bool>(
+                                      currentUserDocument?.isAdmin, false)
+                                  ? valueOrDefault<bool>(
+                                      currentUserDocument?.isCompanyComplete,
+                                      false)
+                                  : true) {
+                                context.pushNamed('OK_FN_Payry_26_Dashboard');
 
-                              return;
+                                return;
+                              } else {
+                                var confirmDialogResponse = await showDialog<
+                                        bool>(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text('Acceso denegado'),
+                                          content: Text(
+                                              'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext, false),
+                                              child: Text('Cancel'),
+                                            ),
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext, true),
+                                              child: Text('Registrar empresa'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    ) ??
+                                    false;
+                                if (confirmDialogResponse) {
+                                  context.pushNamed(
+                                      'OK_FN_Payry_19_formularioEmpresa');
+
+                                  return;
+                                } else {
+                                  return;
+                                }
+                              }
                             } else {
                               var confirmDialogResponse =
                                   await showDialog<bool>(
@@ -111,7 +155,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                           return AlertDialog(
                                             title: Text('Acceso denegado'),
                                             content: Text(
-                                                'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                                'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
                                             actions: [
                                               TextButton(
                                                 onPressed: () => Navigator.pop(
@@ -121,8 +165,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                               TextButton(
                                                 onPressed: () => Navigator.pop(
                                                     alertDialogContext, true),
-                                                child:
-                                                    Text('Registrar empresa'),
+                                                child: Text('Verificar número'),
                                               ),
                                             ],
                                           );
@@ -130,8 +173,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                       ) ??
                                       false;
                               if (confirmDialogResponse) {
-                                context.pushNamed(
-                                    'OK_FN_Payry_19_formularioEmpresa');
+                                context.pushNamed('OK_FN_Payry_15_EditProfile');
 
                                 return;
                               } else {
@@ -145,7 +187,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                     return AlertDialog(
                                       title: Text('Acceso denegado'),
                                       content: Text(
-                                          'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
+                                          'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
                                       actions: [
                                         TextButton(
                                           onPressed: () => Navigator.pop(
@@ -155,7 +197,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                         TextButton(
                                           onPressed: () => Navigator.pop(
                                               alertDialogContext, true),
-                                          child: Text('Verificar número'),
+                                          child: Text('Reenviar'),
                                         ),
                                       ],
                                     );
@@ -163,57 +205,45 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                 ) ??
                                 false;
                             if (confirmDialogResponse) {
-                              context.pushNamed('OK_FN_Payry_15_EditProfile');
-
+                              await authManager.sendEmailVerification();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Se ha enviado la verificación a tu correo electrónico.',
+                                    style: TextStyle(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                    ),
+                                  ),
+                                  duration: Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).secondary,
+                                ),
+                              );
                               return;
                             } else {
                               return;
                             }
                           }
                         } else {
-                          var confirmDialogResponse = await showDialog<bool>(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: Text('Acceso denegado'),
-                                    content: Text(
-                                        'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () => Navigator.pop(
-                                            alertDialogContext, false),
-                                        child: Text('Cancel'),
-                                      ),
-                                      TextButton(
-                                        onPressed: () => Navigator.pop(
-                                            alertDialogContext, true),
-                                        child: Text('Reenviar'),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              ) ??
-                              false;
-                          if (confirmDialogResponse) {
-                            await authManager.sendEmailVerification();
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
+                          await showDialog(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                title: Text('Acceso Denegado'),
                                 content: Text(
-                                  'Se ha enviado la verificación a tu correo electrónico.',
-                                  style: TextStyle(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
+                                    'No cuentas con permisos suficientes.'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext),
+                                    child: Text('Ok'),
                                   ),
-                                ),
-                                duration: Duration(milliseconds: 4000),
-                                backgroundColor:
-                                    FlutterFlowTheme.of(context).secondary,
-                              ),
-                            );
-                            return;
-                          } else {
-                            return;
-                          }
+                                ],
+                              );
+                            },
+                          );
+                          return;
                         }
                       },
                     ),
@@ -228,20 +258,58 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                         size: 30.0,
                       ),
                       onPressed: () async {
-                        if (currentUserEmailVerified) {
-                          if (valueOrDefault<bool>(
-                                  currentUserDocument?.isValidPhoneNumber,
-                                  false) ==
-                              true) {
+                        if (valueOrDefault<bool>(
+                                currentUserDocument?.isAdmin, false) ||
+                            widget.userPermissions!.createQr ||
+                            widget.userPermissions!.readQr) {
+                          if (currentUserEmailVerified) {
                             if (valueOrDefault<bool>(
-                                    currentUserDocument?.isAdmin, false)
-                                ? valueOrDefault<bool>(
-                                    currentUserDocument?.isCompanyComplete,
-                                    false)
-                                : true) {
-                              context.pushNamed('OK_FN_Payry_29_opcionesQR');
+                                    currentUserDocument?.isValidPhoneNumber,
+                                    false) ==
+                                true) {
+                              if (valueOrDefault<bool>(
+                                      currentUserDocument?.isAdmin, false)
+                                  ? valueOrDefault<bool>(
+                                      currentUserDocument?.isCompanyComplete,
+                                      false)
+                                  : true) {
+                                context.pushNamed('OK_FN_Payry_29_opcionesQR');
 
-                              return;
+                                return;
+                              } else {
+                                var confirmDialogResponse = await showDialog<
+                                        bool>(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text('Acceso denegado'),
+                                          content: Text(
+                                              'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext, false),
+                                              child: Text('Cancel'),
+                                            ),
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext, true),
+                                              child: Text('Registrar empresa'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    ) ??
+                                    false;
+                                if (confirmDialogResponse) {
+                                  context.pushNamed(
+                                      'OK_FN_Payry_19_formularioEmpresa');
+
+                                  return;
+                                } else {
+                                  return;
+                                }
+                              }
                             } else {
                               var confirmDialogResponse =
                                   await showDialog<bool>(
@@ -250,7 +318,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                           return AlertDialog(
                                             title: Text('Acceso denegado'),
                                             content: Text(
-                                                'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                                'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
                                             actions: [
                                               TextButton(
                                                 onPressed: () => Navigator.pop(
@@ -260,8 +328,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                               TextButton(
                                                 onPressed: () => Navigator.pop(
                                                     alertDialogContext, true),
-                                                child:
-                                                    Text('Registrar empresa'),
+                                                child: Text('Verificar número'),
                                               ),
                                             ],
                                           );
@@ -269,8 +336,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                       ) ??
                                       false;
                               if (confirmDialogResponse) {
-                                context.pushNamed(
-                                    'OK_FN_Payry_19_formularioEmpresa');
+                                context.pushNamed('OK_FN_Payry_15_EditProfile');
 
                                 return;
                               } else {
@@ -284,7 +350,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                     return AlertDialog(
                                       title: Text('Acceso denegado'),
                                       content: Text(
-                                          'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
+                                          'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
                                       actions: [
                                         TextButton(
                                           onPressed: () => Navigator.pop(
@@ -294,7 +360,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                         TextButton(
                                           onPressed: () => Navigator.pop(
                                               alertDialogContext, true),
-                                          child: Text('Verificar número'),
+                                          child: Text('Reenviar'),
                                         ),
                                       ],
                                     );
@@ -302,57 +368,45 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                 ) ??
                                 false;
                             if (confirmDialogResponse) {
-                              context.pushNamed('OK_FN_Payry_15_EditProfile');
-
+                              await authManager.sendEmailVerification();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Se ha enviado la verificación a tu correo electrónico.',
+                                    style: TextStyle(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                    ),
+                                  ),
+                                  duration: Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).secondary,
+                                ),
+                              );
                               return;
                             } else {
                               return;
                             }
                           }
                         } else {
-                          var confirmDialogResponse = await showDialog<bool>(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: Text('Acceso denegado'),
-                                    content: Text(
-                                        'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () => Navigator.pop(
-                                            alertDialogContext, false),
-                                        child: Text('Cancel'),
-                                      ),
-                                      TextButton(
-                                        onPressed: () => Navigator.pop(
-                                            alertDialogContext, true),
-                                        child: Text('Reenviar'),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              ) ??
-                              false;
-                          if (confirmDialogResponse) {
-                            await authManager.sendEmailVerification();
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
+                          await showDialog(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                title: Text('Acceso Denegado'),
                                 content: Text(
-                                  'Se ha enviado la verificación a tu correo electrónico.',
-                                  style: TextStyle(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
+                                    'No cuentas con permisos suficientes.'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext),
+                                    child: Text('Ok'),
                                   ),
-                                ),
-                                duration: Duration(milliseconds: 4000),
-                                backgroundColor:
-                                    FlutterFlowTheme.of(context).secondary,
-                              ),
-                            );
-                            return;
-                          } else {
-                            return;
-                          }
+                                ],
+                              );
+                            },
+                          );
+                          return;
                         }
                       },
                     ),
@@ -367,20 +421,58 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                         size: 30.0,
                       ),
                       onPressed: () async {
-                        if (currentUserEmailVerified) {
-                          if (valueOrDefault<bool>(
-                                  currentUserDocument?.isValidPhoneNumber,
-                                  false) ==
-                              true) {
+                        if (valueOrDefault<bool>(
+                                currentUserDocument?.isAdmin, false) ||
+                            widget.userPermissions!.createSms ||
+                            widget.userPermissions!.readSms) {
+                          if (currentUserEmailVerified) {
                             if (valueOrDefault<bool>(
-                                    currentUserDocument?.isAdmin, false)
-                                ? valueOrDefault<bool>(
-                                    currentUserDocument?.isCompanyComplete,
-                                    false)
-                                : true) {
-                              context.pushNamed('OK_FN_Payry_34_opcionesSMS');
+                                    currentUserDocument?.isValidPhoneNumber,
+                                    false) ==
+                                true) {
+                              if (valueOrDefault<bool>(
+                                      currentUserDocument?.isAdmin, false)
+                                  ? valueOrDefault<bool>(
+                                      currentUserDocument?.isCompanyComplete,
+                                      false)
+                                  : true) {
+                                context.pushNamed('OK_FN_Payry_34_opcionesSMS');
 
-                              return;
+                                return;
+                              } else {
+                                var confirmDialogResponse = await showDialog<
+                                        bool>(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text('Acceso denegado'),
+                                          content: Text(
+                                              'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext, false),
+                                              child: Text('Cancel'),
+                                            ),
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext, true),
+                                              child: Text('Registrar empresa'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    ) ??
+                                    false;
+                                if (confirmDialogResponse) {
+                                  context.pushNamed(
+                                      'OK_FN_Payry_19_formularioEmpresa');
+
+                                  return;
+                                } else {
+                                  return;
+                                }
+                              }
                             } else {
                               var confirmDialogResponse =
                                   await showDialog<bool>(
@@ -389,7 +481,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                           return AlertDialog(
                                             title: Text('Acceso denegado'),
                                             content: Text(
-                                                'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                                'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
                                             actions: [
                                               TextButton(
                                                 onPressed: () => Navigator.pop(
@@ -399,8 +491,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                               TextButton(
                                                 onPressed: () => Navigator.pop(
                                                     alertDialogContext, true),
-                                                child:
-                                                    Text('Registrar empresa'),
+                                                child: Text('Verificar número'),
                                               ),
                                             ],
                                           );
@@ -408,8 +499,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                       ) ??
                                       false;
                               if (confirmDialogResponse) {
-                                context.pushNamed(
-                                    'OK_FN_Payry_19_formularioEmpresa');
+                                context.pushNamed('OK_FN_Payry_15_EditProfile');
 
                                 return;
                               } else {
@@ -423,7 +513,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                     return AlertDialog(
                                       title: Text('Acceso denegado'),
                                       content: Text(
-                                          'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
+                                          'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
                                       actions: [
                                         TextButton(
                                           onPressed: () => Navigator.pop(
@@ -433,7 +523,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                         TextButton(
                                           onPressed: () => Navigator.pop(
                                               alertDialogContext, true),
-                                          child: Text('Verificar número'),
+                                          child: Text('Reenviar'),
                                         ),
                                       ],
                                     );
@@ -441,57 +531,45 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                 ) ??
                                 false;
                             if (confirmDialogResponse) {
-                              context.pushNamed('OK_FN_Payry_15_EditProfile');
-
+                              await authManager.sendEmailVerification();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Se ha enviado la verificación a tu correo electrónico.',
+                                    style: TextStyle(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                    ),
+                                  ),
+                                  duration: Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).secondary,
+                                ),
+                              );
                               return;
                             } else {
                               return;
                             }
                           }
                         } else {
-                          var confirmDialogResponse = await showDialog<bool>(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: Text('Acceso denegado'),
-                                    content: Text(
-                                        'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () => Navigator.pop(
-                                            alertDialogContext, false),
-                                        child: Text('Cancel'),
-                                      ),
-                                      TextButton(
-                                        onPressed: () => Navigator.pop(
-                                            alertDialogContext, true),
-                                        child: Text('Reenviar'),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              ) ??
-                              false;
-                          if (confirmDialogResponse) {
-                            await authManager.sendEmailVerification();
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
+                          await showDialog(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                title: Text('Acceso Denegado'),
                                 content: Text(
-                                  'Se ha enviado la verificación a tu correo electrónico.',
-                                  style: TextStyle(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
+                                    'No cuentas con permisos suficientes.'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext),
+                                    child: Text('Ok'),
                                   ),
-                                ),
-                                duration: Duration(milliseconds: 4000),
-                                backgroundColor:
-                                    FlutterFlowTheme.of(context).secondary,
-                              ),
-                            );
-                            return;
-                          } else {
-                            return;
-                          }
+                                ],
+                              );
+                            },
+                          );
+                          return;
                         }
                       },
                     ),
