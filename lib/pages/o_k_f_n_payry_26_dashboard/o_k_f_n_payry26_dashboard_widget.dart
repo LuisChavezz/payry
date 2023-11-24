@@ -217,145 +217,120 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                 if (oKFNPayry26DashboardUserPermissionsRecord!
                                         .readQr ||
                                     oKFNPayry26DashboardUserPermissionsRecord!
-                                        .readSms)
+                                        .readSms ||
+                                    valueOrDefault<bool>(
+                                        currentUserDocument?.isAdmin, false))
                                   Expanded(
-                                    child: Column(
-                                      children: [
-                                        Align(
-                                          alignment: Alignment(0.0, 0),
-                                          child: TabBar(
-                                            labelColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryText,
-                                            unselectedLabelColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryText,
-                                            labelStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall,
-                                            unselectedLabelStyle: TextStyle(),
-                                            indicatorColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    4.0, 4.0, 4.0, 4.0),
-                                            tabs: [
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                4.0, 0.0),
-                                                    child: Icon(
-                                                      FFIcons.kqr,
-                                                      size: 16.0,
+                                    child: AuthUserStreamWidget(
+                                      builder: (context) => Column(
+                                        children: [
+                                          Align(
+                                            alignment: Alignment(0.0, 0),
+                                            child: TabBar(
+                                              labelColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              unselectedLabelColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              labelStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall,
+                                              unselectedLabelStyle: TextStyle(),
+                                              indicatorColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(4.0, 4.0, 4.0, 4.0),
+                                              tabs: [
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  4.0,
+                                                                  0.0),
+                                                      child: Icon(
+                                                        FFIcons.kqr,
+                                                        size: 16.0,
+                                                      ),
                                                     ),
-                                                  ),
-                                                  Tab(
-                                                    text: FFLocalizations.of(
-                                                            context)
-                                                        .getText(
-                                                      '3lc6ioqs' /*  QR's */,
+                                                    Tab(
+                                                      text: FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        '3lc6ioqs' /*  QR's */,
+                                                      ),
                                                     ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                4.0, 0.0),
-                                                    child: Icon(
-                                                      FFIcons.ksms,
-                                                      size: 16.0,
+                                                  ],
+                                                ),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  4.0,
+                                                                  0.0),
+                                                      child: Icon(
+                                                        FFIcons.ksms,
+                                                        size: 16.0,
+                                                      ),
                                                     ),
-                                                  ),
-                                                  Tab(
-                                                    text: FFLocalizations.of(
-                                                            context)
-                                                        .getText(
-                                                      '9242n7wx' /*  SMS's */,
+                                                    Tab(
+                                                      text: FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        '9242n7wx' /*  SMS's */,
+                                                      ),
                                                     ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                            controller: _model.tabBarController,
+                                                  ],
+                                                ),
+                                              ],
+                                              controller:
+                                                  _model.tabBarController,
+                                            ),
                                           ),
-                                        ),
-                                        Expanded(
-                                          child: TabBarView(
-                                            controller: _model.tabBarController,
-                                            children: [
-                                              Visibility(
-                                                visible:
-                                                    oKFNPayry26DashboardUserPermissionsRecord
-                                                            ?.readQr ??
-                                                        true,
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          8.0, 8.0, 8.0, 8.0),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        children: [
-                                                          Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'lil6mu5q' /* Últimas transacciones */,
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Lexend',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .accent3,
-                                                                  fontSize:
-                                                                      16.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                          ),
-                                                          InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            onTap: () async {
-                                                              context.pushNamed(
-                                                                  'OK_FN_Payry_30_historialQRs');
-                                                            },
-                                                            child: Text(
+                                          Expanded(
+                                            child: TabBarView(
+                                              controller:
+                                                  _model.tabBarController,
+                                              children: [
+                                                Visibility(
+                                                  visible:
+                                                      oKFNPayry26DashboardUserPermissionsRecord
+                                                              ?.readQr ??
+                                                          true,
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(8.0, 8.0,
+                                                                8.0, 8.0),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
+                                                          children: [
+                                                            Text(
                                                               FFLocalizations.of(
                                                                       context)
                                                                   .getText(
-                                                                'jheml2fs' /* Ver todas */,
+                                                                'lil6mu5q' /* Últimas transacciones */,
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
@@ -365,29 +340,61 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                         'Lexend',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .success,
+                                                                        .accent3,
+                                                                    fontSize:
+                                                                        16.0,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w600,
                                                                   ),
                                                             ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    24.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child:
-                                                            AuthUserStreamWidget(
-                                                          builder: (context) =>
-                                                              StreamBuilder<
-                                                                  List<
-                                                                      QrRecord>>(
+                                                            InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                context.pushNamed(
+                                                                    'OK_FN_Payry_30_historialQRs');
+                                                              },
+                                                              child: Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  'jheml2fs' /* Ver todas */,
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Lexend',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .success,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      24.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: StreamBuilder<
+                                                              List<QrRecord>>(
                                                             stream:
                                                                 queryQrRecord(
                                                               queryBuilder: (qrRecord) =>
@@ -559,72 +566,36 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                             },
                                                           ),
                                                         ),
-                                                      ),
-                                                    ],
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                              Visibility(
-                                                visible:
-                                                    oKFNPayry26DashboardUserPermissionsRecord
-                                                            ?.readSms ??
-                                                        true,
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          8.0, 8.0, 8.0, 8.0),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        children: [
-                                                          Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'ydu2jm73' /* Últimas transacciones */,
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Lexend',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                  fontSize:
-                                                                      16.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                          ),
-                                                          InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            onTap: () async {
-                                                              context.pushNamed(
-                                                                  'OK_FN_Payry_35_historialSMS');
-                                                            },
-                                                            child: Text(
+                                                Visibility(
+                                                  visible:
+                                                      oKFNPayry26DashboardUserPermissionsRecord
+                                                              ?.readSms ??
+                                                          true,
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(8.0, 8.0,
+                                                                8.0, 8.0),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
+                                                          children: [
+                                                            Text(
                                                               FFLocalizations.of(
                                                                       context)
                                                                   .getText(
-                                                                'ccvvq21t' /* Ver todas */,
+                                                                'ydu2jm73' /* Últimas transacciones */,
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
@@ -634,29 +605,61 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                         'Lexend',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .success,
+                                                                        .primary,
+                                                                    fontSize:
+                                                                        16.0,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w600,
                                                                   ),
                                                             ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    24.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child:
-                                                            AuthUserStreamWidget(
-                                                          builder: (context) =>
-                                                              StreamBuilder<
-                                                                  List<
-                                                                      SmsRecord>>(
+                                                            InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                context.pushNamed(
+                                                                    'OK_FN_Payry_35_historialSMS');
+                                                              },
+                                                              child: Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  'ccvvq21t' /* Ver todas */,
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Lexend',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .success,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      24.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: StreamBuilder<
+                                                              List<SmsRecord>>(
                                                             stream:
                                                                 querySmsRecord(
                                                               queryBuilder: (smsRecord) =>
@@ -828,15 +831,15 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                             },
                                                           ),
                                                         ),
-                                                      ),
-                                                    ],
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
                               ],
