@@ -352,6 +352,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 id: params.getParam('id', ParamType.DocumentReference, false,
                     ['user_invitations']),
               ),
+            ),
+            FFRoute(
+              name: 'OK_FN_Payry_44_historialTransactions',
+              path: 'oKFNPayry44HistorialTransactions',
+              builder: (context, params) =>
+                  OKFNPayry44HistorialTransactionsWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
