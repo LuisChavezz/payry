@@ -87,756 +87,154 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
             top: true,
             child: Stack(
               children: [
-                Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(18.0, 36.0, 18.0, 0.0),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          FFLocalizations.of(context).getText(
-                            'esga664l' /* Más opciones */,
+                Container(
+                  height: MediaQuery.sizeOf(context).height * 0.85,
+                  decoration: BoxDecoration(),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(18.0, 36.0, 18.0, 0.0),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            FFLocalizations.of(context).getText(
+                              'esga664l' /* Más opciones */,
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  color: FlutterFlowTheme.of(context).accent3,
+                                ),
                           ),
-                          style:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Poppins',
-                                    color: FlutterFlowTheme.of(context).accent3,
-                                  ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 24.0, 0.0, 0.0),
-                          child: Wrap(
-                            spacing: 10.0,
-                            runSpacing: 16.0,
-                            alignment: WrapAlignment.start,
-                            crossAxisAlignment: WrapCrossAlignment.start,
-                            direction: Axis.horizontal,
-                            runAlignment: WrapAlignment.start,
-                            verticalDirection: VerticalDirection.down,
-                            clipBehavior: Clip.none,
-                            children: [
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  if (valueOrDefault<bool>(
-                                          currentUserDocument?.isAdmin,
-                                          false) ||
-                                      oKFNPayry13MenumasUserPermissionsRecord!
-                                          .createQr) {
-                                    if (currentUserEmailVerified) {
-                                      if (valueOrDefault<bool>(
-                                              currentUserDocument
-                                                  ?.isValidPhoneNumber,
-                                              false) ==
-                                          true) {
-                                        if (valueOrDefault<bool>(
-                                                currentUserDocument?.isAdmin,
-                                                false)
-                                            ? valueOrDefault<bool>(
-                                                currentUserDocument
-                                                    ?.isCompanyComplete,
-                                                false)
-                                            : true) {
-                                          context.pushNamed(
-                                              'OK_FN_Payry_27_solicitarQR');
-
-                                          return;
-                                        } else {
-                                          var confirmDialogResponse =
-                                              await showDialog<bool>(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        title: Text(
-                                                            'Acceso denegado'),
-                                                        content: Text(
-                                                            'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    false),
-                                                            child:
-                                                                Text('Cancel'),
-                                                          ),
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    true),
-                                                            child: Text(
-                                                                'Registrar empresa'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  ) ??
-                                                  false;
-                                          if (confirmDialogResponse) {
-                                            context.pushNamed(
-                                                'OK_FN_Payry_19_formularioEmpresa');
-
-                                            return;
-                                          } else {
-                                            return;
-                                          }
-                                        }
-                                      } else {
-                                        var confirmDialogResponse =
-                                            await showDialog<bool>(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'Acceso denegado'),
-                                                      content: Text(
-                                                          'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  false),
-                                                          child: Text('Cancel'),
-                                                        ),
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  true),
-                                                          child: Text(
-                                                              'Verificar número'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                ) ??
-                                                false;
-                                        if (confirmDialogResponse) {
-                                          context.pushNamed(
-                                              'OK_FN_Payry_15_EditProfile');
-
-                                          return;
-                                        } else {
-                                          return;
-                                        }
-                                      }
-                                    } else {
-                                      var confirmDialogResponse =
-                                          await showDialog<bool>(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title:
-                                                        Text('Acceso denegado'),
-                                                    content: Text(
-                                                        'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                false),
-                                                        child: Text('Cancel'),
-                                                      ),
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                true),
-                                                        child: Text('Reenviar'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              ) ??
-                                              false;
-                                      if (confirmDialogResponse) {
-                                        await authManager
-                                            .sendEmailVerification();
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                              'Se ha enviado la verificación a tu correo electrónico.',
-                                              style: TextStyle(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                            ),
-                                            duration:
-                                                Duration(milliseconds: 4000),
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondary,
-                                          ),
-                                        );
-                                        return;
-                                      } else {
-                                        return;
-                                      }
-                                    }
-                                  } else {
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title: Text('Acceso Denegado'),
-                                          content: Text(
-                                              'No cuentas con permisos suficientes.'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: Text('Ok'),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                    return;
-                                  }
-                                },
-                                child: Container(
-                                  width:
-                                      MediaQuery.sizeOf(context).width * 0.44,
-                                  height: 75.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context).back1,
-                                    borderRadius: BorderRadius.circular(12.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 0.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  9.0, 0.0, 10.0, 0.0),
-                                          child: Icon(
-                                            FFIcons.kqr,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 20.0,
-                                          ),
-                                        ),
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            'ize30gio' /* Generar QR */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Lexend',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                        ),
-                                      ].divide(SizedBox(width: 5.0)),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  if (valueOrDefault<bool>(
-                                          currentUserDocument?.isAdmin,
-                                          false) ||
-                                      oKFNPayry13MenumasUserPermissionsRecord!
-                                          .createSms) {
-                                    if (currentUserEmailVerified) {
-                                      if (valueOrDefault<bool>(
-                                              currentUserDocument
-                                                  ?.isValidPhoneNumber,
-                                              false) ==
-                                          true) {
-                                        if (valueOrDefault<bool>(
-                                                currentUserDocument?.isAdmin,
-                                                false)
-                                            ? valueOrDefault<bool>(
-                                                currentUserDocument
-                                                    ?.isCompanyComplete,
-                                                false)
-                                            : true) {
-                                          context.pushNamed(
-                                              'OK_FN_Payry_32_solicitarSMS');
-
-                                          return;
-                                        } else {
-                                          var confirmDialogResponse =
-                                              await showDialog<bool>(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        title: Text(
-                                                            'Acceso denegado'),
-                                                        content: Text(
-                                                            'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    false),
-                                                            child:
-                                                                Text('Cancel'),
-                                                          ),
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    true),
-                                                            child: Text(
-                                                                'Registrar empresa'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  ) ??
-                                                  false;
-                                          if (confirmDialogResponse) {
-                                            context.pushNamed(
-                                                'OK_FN_Payry_19_formularioEmpresa');
-
-                                            return;
-                                          } else {
-                                            return;
-                                          }
-                                        }
-                                      } else {
-                                        var confirmDialogResponse =
-                                            await showDialog<bool>(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'Acceso denegado'),
-                                                      content: Text(
-                                                          'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  false),
-                                                          child: Text('Cancel'),
-                                                        ),
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  true),
-                                                          child: Text(
-                                                              'Verificar número'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                ) ??
-                                                false;
-                                        if (confirmDialogResponse) {
-                                          context.pushNamed(
-                                              'OK_FN_Payry_15_EditProfile');
-
-                                          return;
-                                        } else {
-                                          return;
-                                        }
-                                      }
-                                    } else {
-                                      var confirmDialogResponse =
-                                          await showDialog<bool>(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title:
-                                                        Text('Acceso denegado'),
-                                                    content: Text(
-                                                        'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                false),
-                                                        child: Text('Cancel'),
-                                                      ),
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                true),
-                                                        child: Text('Reenviar'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              ) ??
-                                              false;
-                                      if (confirmDialogResponse) {
-                                        await authManager
-                                            .sendEmailVerification();
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                              'Se ha enviado la verificación a tu correo electrónico.',
-                                              style: TextStyle(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                            ),
-                                            duration:
-                                                Duration(milliseconds: 4000),
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondary,
-                                          ),
-                                        );
-                                        return;
-                                      } else {
-                                        return;
-                                      }
-                                    }
-                                  } else {
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title: Text('Acceso Denegado'),
-                                          content: Text(
-                                              'No cuentas con permisos suficientes.'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: Text('Ok'),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                    return;
-                                  }
-                                },
-                                child: Container(
-                                  width:
-                                      MediaQuery.sizeOf(context).width * 0.44,
-                                  height: 75.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context).back2,
-                                    borderRadius: BorderRadius.circular(12.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 0.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  9.0, 0.0, 10.0, 0.0),
-                                          child: Icon(
-                                            FFIcons.ksms,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 20.0,
-                                          ),
-                                        ),
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            'ya8sqsw4' /* Generar SMS */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Lexend',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                        ),
-                                      ].divide(SizedBox(width: 5.0)),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed(
-                                      'OK_FN_Payry_14_Perfil_PENDSW');
-                                },
-                                child: Container(
-                                  width:
-                                      MediaQuery.sizeOf(context).width * 0.44,
-                                  height: 75.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context).back5,
-                                    borderRadius: BorderRadius.circular(12.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 0.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  9.0, 0.0, 10.0, 0.0),
-                                          child: Icon(
-                                            FFIcons.kusuario,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 20.0,
-                                          ),
-                                        ),
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            'hhjuqqar' /* Perfil */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Lexend',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                        ),
-                                      ].divide(SizedBox(width: 5.0)),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  if (valueOrDefault<bool>(
-                                      currentUserDocument?.isAdmin, false)) {
-                                    if (currentUserEmailVerified) {
-                                      if (valueOrDefault<bool>(
-                                              currentUserDocument
-                                                  ?.isValidPhoneNumber,
-                                              false) ==
-                                          true) {
-                                        context.pushNamed(
-                                            'OK_FN_Payry_19_formularioEmpresa');
-
-                                        return;
-                                      } else {
-                                        var confirmDialogResponse =
-                                            await showDialog<bool>(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'Acceso denegado'),
-                                                      content: Text(
-                                                          'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  false),
-                                                          child: Text('Cancel'),
-                                                        ),
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  true),
-                                                          child: Text(
-                                                              'Verificar número'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                ) ??
-                                                false;
-                                        if (confirmDialogResponse) {
-                                          context.pushNamed(
-                                              'OK_FN_Payry_15_EditProfile');
-
-                                          return;
-                                        } else {
-                                          return;
-                                        }
-                                      }
-                                    } else {
-                                      var confirmDialogResponse =
-                                          await showDialog<bool>(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title:
-                                                        Text('Acceso denegado'),
-                                                    content: Text(
-                                                        'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                false),
-                                                        child: Text('Cancel'),
-                                                      ),
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                true),
-                                                        child: Text('Reenviar'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              ) ??
-                                              false;
-                                      if (confirmDialogResponse) {
-                                        await authManager
-                                            .sendEmailVerification();
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                              'Se ha enviado la verificación a tu correo electrónico.',
-                                              style: TextStyle(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                            ),
-                                            duration:
-                                                Duration(milliseconds: 4000),
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondary,
-                                          ),
-                                        );
-                                        return;
-                                      } else {
-                                        return;
-                                      }
-                                    }
-                                  } else {
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title: Text('Acceso denegado'),
-                                          content: Text(
-                                              'No es posible acceder a esta sección. Solo para administradores.'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: Text('Ok'),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                    return;
-                                  }
-                                },
-                                child: Container(
-                                  width:
-                                      MediaQuery.sizeOf(context).width * 0.44,
-                                  height: 75.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context).back3,
-                                    borderRadius: BorderRadius.circular(12.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 0.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  9.0, 0.0, 10.0, 0.0),
-                                          child: Icon(
-                                            FFIcons.kempresa,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 20.0,
-                                          ),
-                                        ),
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            'huapyf1z' /* Empresas */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Lexend',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                        ),
-                                      ].divide(SizedBox(width: 5.0)),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  if (currentUserEmailVerified) {
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 24.0, 0.0, 0.0),
+                            child: Wrap(
+                              spacing: 10.0,
+                              runSpacing: 16.0,
+                              alignment: WrapAlignment.start,
+                              crossAxisAlignment: WrapCrossAlignment.start,
+                              direction: Axis.horizontal,
+                              runAlignment: WrapAlignment.start,
+                              verticalDirection: VerticalDirection.down,
+                              clipBehavior: Clip.none,
+                              children: [
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
                                     if (valueOrDefault<bool>(
-                                            currentUserDocument
-                                                ?.isValidPhoneNumber,
-                                            false) ==
-                                        true) {
-                                      if (valueOrDefault<bool>(
-                                              currentUserDocument?.isAdmin,
-                                              false)
-                                          ? valueOrDefault<bool>(
-                                              currentUserDocument
-                                                  ?.isCompanyComplete,
-                                              false)
-                                          : true) {
-                                        context.pushNamed(
-                                            'OK_FN_Payry_38_Estadisticas');
+                                            currentUserDocument?.isAdmin,
+                                            false) ||
+                                        oKFNPayry13MenumasUserPermissionsRecord!
+                                            .createQr) {
+                                      if (currentUserEmailVerified) {
+                                        if (valueOrDefault<bool>(
+                                                currentUserDocument
+                                                    ?.isValidPhoneNumber,
+                                                false) ==
+                                            true) {
+                                          if (valueOrDefault<bool>(
+                                                  currentUserDocument?.isAdmin,
+                                                  false)
+                                              ? valueOrDefault<bool>(
+                                                  currentUserDocument
+                                                      ?.isCompanyComplete,
+                                                  false)
+                                              : true) {
+                                            context.pushNamed(
+                                                'OK_FN_Payry_27_solicitarQR');
 
-                                        return;
+                                            return;
+                                          } else {
+                                            var confirmDialogResponse =
+                                                await showDialog<bool>(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return AlertDialog(
+                                                          title: Text(
+                                                              'Acceso denegado'),
+                                                          content: Text(
+                                                              'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext,
+                                                                      false),
+                                                              child: Text(
+                                                                  'Cancel'),
+                                                            ),
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext,
+                                                                      true),
+                                                              child: Text(
+                                                                  'Registrar empresa'),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    ) ??
+                                                    false;
+                                            if (confirmDialogResponse) {
+                                              context.pushNamed(
+                                                  'OK_FN_Payry_19_formularioEmpresa');
+
+                                              return;
+                                            } else {
+                                              return;
+                                            }
+                                          }
+                                        } else {
+                                          var confirmDialogResponse =
+                                              await showDialog<bool>(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            'Acceso denegado'),
+                                                        content: Text(
+                                                            'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    false),
+                                                            child:
+                                                                Text('Cancel'),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    true),
+                                                            child: Text(
+                                                                'Verificar número'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  ) ??
+                                                  false;
+                                          if (confirmDialogResponse) {
+                                            context.pushNamed(
+                                                'OK_FN_Payry_15_EditProfile');
+
+                                            return;
+                                          } else {
+                                            return;
+                                          }
+                                        }
                                       } else {
                                         var confirmDialogResponse =
                                             await showDialog<bool>(
@@ -847,7 +245,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                       title: Text(
                                                           'Acceso denegado'),
                                                       content: Text(
-                                                          'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                                          'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
                                                       actions: [
                                                         TextButton(
                                                           onPressed: () =>
@@ -861,8 +259,8 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                               Navigator.pop(
                                                                   alertDialogContext,
                                                                   true),
-                                                          child: Text(
-                                                              'Registrar empresa'),
+                                                          child:
+                                                              Text('Reenviar'),
                                                         ),
                                                       ],
                                                     );
@@ -870,161 +268,574 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                 ) ??
                                                 false;
                                         if (confirmDialogResponse) {
+                                          await authManager
+                                              .sendEmailVerification();
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Se ha enviado la verificación a tu correo electrónico.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                          return;
+                                        } else {
+                                          return;
+                                        }
+                                      }
+                                    } else {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Acceso Denegado'),
+                                            content: Text(
+                                                'No cuentas con permisos suficientes.'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                      return;
+                                    }
+                                  },
+                                  child: Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    height: 75.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context).back1,
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 0.0, 0.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    9.0, 0.0, 10.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.kqr,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            FFLocalizations.of(context).getText(
+                                              '8wl41f0r' /* Generar QR */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                          ),
+                                        ].divide(SizedBox(width: 5.0)),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    if (valueOrDefault<bool>(
+                                            currentUserDocument?.isAdmin,
+                                            false) ||
+                                        oKFNPayry13MenumasUserPermissionsRecord!
+                                            .createSms) {
+                                      if (currentUserEmailVerified) {
+                                        if (valueOrDefault<bool>(
+                                                currentUserDocument
+                                                    ?.isValidPhoneNumber,
+                                                false) ==
+                                            true) {
+                                          if (valueOrDefault<bool>(
+                                                  currentUserDocument?.isAdmin,
+                                                  false)
+                                              ? valueOrDefault<bool>(
+                                                  currentUserDocument
+                                                      ?.isCompanyComplete,
+                                                  false)
+                                              : true) {
+                                            context.pushNamed(
+                                                'OK_FN_Payry_32_solicitarSMS');
+
+                                            return;
+                                          } else {
+                                            var confirmDialogResponse =
+                                                await showDialog<bool>(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return AlertDialog(
+                                                          title: Text(
+                                                              'Acceso denegado'),
+                                                          content: Text(
+                                                              'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext,
+                                                                      false),
+                                                              child: Text(
+                                                                  'Cancel'),
+                                                            ),
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext,
+                                                                      true),
+                                                              child: Text(
+                                                                  'Registrar empresa'),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    ) ??
+                                                    false;
+                                            if (confirmDialogResponse) {
+                                              context.pushNamed(
+                                                  'OK_FN_Payry_19_formularioEmpresa');
+
+                                              return;
+                                            } else {
+                                              return;
+                                            }
+                                          }
+                                        } else {
+                                          var confirmDialogResponse =
+                                              await showDialog<bool>(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            'Acceso denegado'),
+                                                        content: Text(
+                                                            'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    false),
+                                                            child:
+                                                                Text('Cancel'),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    true),
+                                                            child: Text(
+                                                                'Verificar número'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  ) ??
+                                                  false;
+                                          if (confirmDialogResponse) {
+                                            context.pushNamed(
+                                                'OK_FN_Payry_15_EditProfile');
+
+                                            return;
+                                          } else {
+                                            return;
+                                          }
+                                        }
+                                      } else {
+                                        var confirmDialogResponse =
+                                            await showDialog<bool>(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      title: Text(
+                                                          'Acceso denegado'),
+                                                      content: Text(
+                                                          'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext,
+                                                                  false),
+                                                          child: Text('Cancel'),
+                                                        ),
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext,
+                                                                  true),
+                                                          child:
+                                                              Text('Reenviar'),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                ) ??
+                                                false;
+                                        if (confirmDialogResponse) {
+                                          await authManager
+                                              .sendEmailVerification();
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Se ha enviado la verificación a tu correo electrónico.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                          return;
+                                        } else {
+                                          return;
+                                        }
+                                      }
+                                    } else {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Acceso Denegado'),
+                                            content: Text(
+                                                'No cuentas con permisos suficientes.'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                      return;
+                                    }
+                                  },
+                                  child: Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    height: 75.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context).back2,
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 0.0, 0.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    9.0, 0.0, 10.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.ksms,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            FFLocalizations.of(context).getText(
+                                              '05gljg2p' /* Generar SMS */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                          ),
+                                        ].divide(SizedBox(width: 5.0)),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                        'OK_FN_Payry_14_Perfil_PENDSW');
+                                  },
+                                  child: Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    height: 75.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context).back5,
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 0.0, 0.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    9.0, 0.0, 10.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.kusuario,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            FFLocalizations.of(context).getText(
+                                              'aoaynhiq' /* Perfil */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                          ),
+                                        ].divide(SizedBox(width: 5.0)),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    if (valueOrDefault<bool>(
+                                        currentUserDocument?.isAdmin, false)) {
+                                      if (currentUserEmailVerified) {
+                                        if (valueOrDefault<bool>(
+                                                currentUserDocument
+                                                    ?.isValidPhoneNumber,
+                                                false) ==
+                                            true) {
                                           context.pushNamed(
                                               'OK_FN_Payry_19_formularioEmpresa');
 
                                           return;
                                         } else {
+                                          var confirmDialogResponse =
+                                              await showDialog<bool>(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            'Acceso denegado'),
+                                                        content: Text(
+                                                            'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    false),
+                                                            child:
+                                                                Text('Cancel'),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    true),
+                                                            child: Text(
+                                                                'Verificar número'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  ) ??
+                                                  false;
+                                          if (confirmDialogResponse) {
+                                            context.pushNamed(
+                                                'OK_FN_Payry_15_EditProfile');
+
+                                            return;
+                                          } else {
+                                            return;
+                                          }
+                                        }
+                                      } else {
+                                        var confirmDialogResponse =
+                                            await showDialog<bool>(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      title: Text(
+                                                          'Acceso denegado'),
+                                                      content: Text(
+                                                          'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext,
+                                                                  false),
+                                                          child: Text('Cancel'),
+                                                        ),
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext,
+                                                                  true),
+                                                          child:
+                                                              Text('Reenviar'),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                ) ??
+                                                false;
+                                        if (confirmDialogResponse) {
+                                          await authManager
+                                              .sendEmailVerification();
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Se ha enviado la verificación a tu correo electrónico.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                          return;
+                                        } else {
                                           return;
                                         }
                                       }
                                     } else {
-                                      var confirmDialogResponse =
-                                          await showDialog<bool>(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title:
-                                                        Text('Acceso denegado'),
-                                                    content: Text(
-                                                        'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                false),
-                                                        child: Text('Cancel'),
-                                                      ),
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                true),
-                                                        child: Text(
-                                                            'Verificar número'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              ) ??
-                                              false;
-                                      if (confirmDialogResponse) {
-                                        context.pushNamed(
-                                            'OK_FN_Payry_15_EditProfile');
-
-                                        return;
-                                      } else {
-                                        return;
-                                      }
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Acceso denegado'),
+                                            content: Text(
+                                                'No es posible acceder a esta sección. Solo para administradores.'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                      return;
                                     }
-                                  } else {
-                                    var confirmDialogResponse =
-                                        await showDialog<bool>(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title:
-                                                      Text('Acceso denegado'),
-                                                  content: Text(
-                                                      'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext,
-                                                              false),
-                                                      child: Text('Cancel'),
-                                                    ),
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext,
-                                                              true),
-                                                      child: Text('Reenviar'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            ) ??
-                                            false;
-                                    if (confirmDialogResponse) {
-                                      await authManager.sendEmailVerification();
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Se ha enviado la verificación a tu correo electrónico.',
-                                            style: TextStyle(
+                                  },
+                                  child: Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    height: 75.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context).back3,
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 0.0, 0.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    9.0, 0.0, 10.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.kempresa,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
+                                              size: 20.0,
                                             ),
                                           ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
-                                      );
-                                      return;
-                                    } else {
-                                      return;
-                                    }
-                                  }
-                                },
-                                child: Container(
-                                  width:
-                                      MediaQuery.sizeOf(context).width * 0.44,
-                                  height: 75.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context).back4,
-                                    borderRadius: BorderRadius.circular(12.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 0.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  9.0, 0.0, 10.0, 0.0),
-                                          child: Icon(
-                                            FFIcons.kestadisticas,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 20.0,
+                                          Text(
+                                            FFLocalizations.of(context).getText(
+                                              'r45jlznn' /* Empresas */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
                                           ),
-                                        ),
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            'hagptyos' /* Estadísticas */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Lexend',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                        ),
-                                      ].divide(SizedBox(width: 5.0)),
+                                        ].divide(SizedBox(width: 5.0)),
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  if (valueOrDefault<bool>(
-                                      currentUserDocument?.isAdmin, false)) {
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
                                     if (currentUserEmailVerified) {
                                       if (valueOrDefault<bool>(
                                               currentUserDocument
@@ -1040,7 +851,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                 false)
                                             : true) {
                                           context.pushNamed(
-                                              'OK_FN_Payry_24_listadoUsuarios');
+                                              'OK_FN_Payry_38_Estadisticas');
 
                                           return;
                                         } else {
@@ -1182,28 +993,285 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                         return;
                                       }
                                     }
-                                  } else {
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title: Text('Acceso denegado'),
-                                          content: Text(
-                                              'No es posible acceder a esta sección. Solo para administradores.'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: Text('Ok'),
+                                  },
+                                  child: Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    height: 75.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context).back4,
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 0.0, 0.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    9.0, 0.0, 10.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.kestadisticas,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
                                             ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                    return;
-                                  }
-                                },
-                                child: Container(
+                                          ),
+                                          Text(
+                                            FFLocalizations.of(context).getText(
+                                              'x1yfps4c' /* Estadísticas */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                          ),
+                                        ].divide(SizedBox(width: 5.0)),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    if (valueOrDefault<bool>(
+                                        currentUserDocument?.isAdmin, false)) {
+                                      if (currentUserEmailVerified) {
+                                        if (valueOrDefault<bool>(
+                                                currentUserDocument
+                                                    ?.isValidPhoneNumber,
+                                                false) ==
+                                            true) {
+                                          if (valueOrDefault<bool>(
+                                                  currentUserDocument?.isAdmin,
+                                                  false)
+                                              ? valueOrDefault<bool>(
+                                                  currentUserDocument
+                                                      ?.isCompanyComplete,
+                                                  false)
+                                              : true) {
+                                            context.pushNamed(
+                                                'OK_FN_Payry_24_listadoUsuarios');
+
+                                            return;
+                                          } else {
+                                            var confirmDialogResponse =
+                                                await showDialog<bool>(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return AlertDialog(
+                                                          title: Text(
+                                                              'Acceso denegado'),
+                                                          content: Text(
+                                                              'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext,
+                                                                      false),
+                                                              child: Text(
+                                                                  'Cancel'),
+                                                            ),
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext,
+                                                                      true),
+                                                              child: Text(
+                                                                  'Registrar empresa'),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    ) ??
+                                                    false;
+                                            if (confirmDialogResponse) {
+                                              context.pushNamed(
+                                                  'OK_FN_Payry_19_formularioEmpresa');
+
+                                              return;
+                                            } else {
+                                              return;
+                                            }
+                                          }
+                                        } else {
+                                          var confirmDialogResponse =
+                                              await showDialog<bool>(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            'Acceso denegado'),
+                                                        content: Text(
+                                                            'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    false),
+                                                            child:
+                                                                Text('Cancel'),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    true),
+                                                            child: Text(
+                                                                'Verificar número'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  ) ??
+                                                  false;
+                                          if (confirmDialogResponse) {
+                                            context.pushNamed(
+                                                'OK_FN_Payry_15_EditProfile');
+
+                                            return;
+                                          } else {
+                                            return;
+                                          }
+                                        }
+                                      } else {
+                                        var confirmDialogResponse =
+                                            await showDialog<bool>(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      title: Text(
+                                                          'Acceso denegado'),
+                                                      content: Text(
+                                                          'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext,
+                                                                  false),
+                                                          child: Text('Cancel'),
+                                                        ),
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext,
+                                                                  true),
+                                                          child:
+                                                              Text('Reenviar'),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                ) ??
+                                                false;
+                                        if (confirmDialogResponse) {
+                                          await authManager
+                                              .sendEmailVerification();
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Se ha enviado la verificación a tu correo electrónico.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                          return;
+                                        } else {
+                                          return;
+                                        }
+                                      }
+                                    } else {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Acceso denegado'),
+                                            content: Text(
+                                                'No es posible acceder a esta sección. Solo para administradores.'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                      return;
+                                    }
+                                  },
+                                  child: Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    height: 75.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context).back6,
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 0.0, 0.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    9.0, 0.0, 10.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.kvariosUsuarios,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            FFLocalizations.of(context).getText(
+                                              'b8n6f4bz' /* Usuarios */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                          ),
+                                        ].divide(SizedBox(width: 5.0)),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Container(
                                   width:
                                       MediaQuery.sizeOf(context).width * 0.44,
                                   height: 75.0,
@@ -1222,7 +1290,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   9.0, 0.0, 10.0, 0.0),
                                           child: Icon(
-                                            FFIcons.kvariosUsuarios,
+                                            FFIcons.kdocumentacion,
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
                                             size: 20.0,
@@ -1230,7 +1298,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                         ),
                                         Text(
                                           FFLocalizations.of(context).getText(
-                                            'cwbo3pws' /* Usuarios */,
+                                            '08zmrqfu' /* Documentación */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -1245,71 +1313,72 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     ),
                                   ),
                                 ),
-                              ),
-                              Container(
-                                width: MediaQuery.sizeOf(context).width * 0.44,
-                                height: 75.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).back6,
-                                  borderRadius: BorderRadius.circular(12.0),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 0.0, 0.0, 0.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            9.0, 0.0, 10.0, 0.0),
-                                        child: Icon(
-                                          FFIcons.kdocumentacion,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          size: 20.0,
-                                        ),
-                                      ),
-                                      Text(
-                                        FFLocalizations.of(context).getText(
-                                          'b2crnci9' /* Documentación */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                      ),
-                                    ].divide(SizedBox(width: 5.0)),
-                                  ),
-                                ),
-                              ),
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  if (currentUserEmailVerified) {
-                                    if (valueOrDefault<bool>(
-                                            currentUserDocument
-                                                ?.isValidPhoneNumber,
-                                            false) ==
-                                        true) {
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    if (currentUserEmailVerified) {
                                       if (valueOrDefault<bool>(
-                                              currentUserDocument?.isAdmin,
-                                              false)
-                                          ? valueOrDefault<bool>(
                                               currentUserDocument
-                                                  ?.isCompanyComplete,
-                                              false)
-                                          : true) {
-                                        context.pushNamed(
-                                            'OK_FN_Payry_37_facturas');
+                                                  ?.isValidPhoneNumber,
+                                              false) ==
+                                          true) {
+                                        if (valueOrDefault<bool>(
+                                                currentUserDocument?.isAdmin,
+                                                false)
+                                            ? valueOrDefault<bool>(
+                                                currentUserDocument
+                                                    ?.isCompanyComplete,
+                                                false)
+                                            : true) {
+                                          context.pushNamed(
+                                              'OK_FN_Payry_37_facturas');
 
-                                        return;
+                                          return;
+                                        } else {
+                                          var confirmDialogResponse =
+                                              await showDialog<bool>(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            'Acceso denegado'),
+                                                        content: Text(
+                                                            'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    false),
+                                                            child:
+                                                                Text('Cancel'),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    true),
+                                                            child: Text(
+                                                                'Registrar empresa'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  ) ??
+                                                  false;
+                                          if (confirmDialogResponse) {
+                                            context.pushNamed(
+                                                'OK_FN_Payry_19_formularioEmpresa');
+
+                                            return;
+                                          } else {
+                                            return;
+                                          }
+                                        }
                                       } else {
                                         var confirmDialogResponse =
                                             await showDialog<bool>(
@@ -1320,7 +1389,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                       title: Text(
                                                           'Acceso denegado'),
                                                       content: Text(
-                                                          'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                                          'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
                                                       actions: [
                                                         TextButton(
                                                           onPressed: () =>
@@ -1335,7 +1404,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                   alertDialogContext,
                                                                   true),
                                                           child: Text(
-                                                              'Registrar empresa'),
+                                                              'Verificar número'),
                                                         ),
                                                       ],
                                                     );
@@ -1344,7 +1413,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                 false;
                                         if (confirmDialogResponse) {
                                           context.pushNamed(
-                                              'OK_FN_Payry_19_formularioEmpresa');
+                                              'OK_FN_Payry_15_EditProfile');
 
                                           return;
                                         } else {
@@ -1360,7 +1429,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     title:
                                                         Text('Acceso denegado'),
                                                     content: Text(
-                                                        'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
+                                                        'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
                                                     actions: [
                                                       TextButton(
                                                         onPressed: () =>
@@ -1374,8 +1443,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                             Navigator.pop(
                                                                 alertDialogContext,
                                                                 true),
-                                                        child: Text(
-                                                            'Verificar número'),
+                                                        child: Text('Reenviar'),
                                                       ),
                                                     ],
                                                   );
@@ -1383,342 +1451,364 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                               ) ??
                                               false;
                                       if (confirmDialogResponse) {
-                                        context.pushNamed(
-                                            'OK_FN_Payry_15_EditProfile');
-
+                                        await authManager
+                                            .sendEmailVerification();
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'Se ha enviado la verificación a tu correo electrónico.',
+                                              style: TextStyle(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 4000),
+                                            backgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondary,
+                                          ),
+                                        );
                                         return;
                                       } else {
                                         return;
                                       }
                                     }
-                                  } else {
-                                    var confirmDialogResponse =
-                                        await showDialog<bool>(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title:
-                                                      Text('Acceso denegado'),
-                                                  content: Text(
-                                                      'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext,
-                                                              false),
-                                                      child: Text('Cancel'),
-                                                    ),
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext,
-                                                              true),
-                                                      child: Text('Reenviar'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            ) ??
-                                            false;
-                                    if (confirmDialogResponse) {
-                                      await authManager.sendEmailVerification();
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Se ha enviado la verificación a tu correo electrónico.',
-                                            style: TextStyle(
+                                  },
+                                  child: Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    height: 75.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context).back1,
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 0.0, 0.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    9.0, 0.0, 10.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.kfactura,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
+                                              size: 20.0,
                                             ),
                                           ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
-                                      );
+                                          Text(
+                                            FFLocalizations.of(context).getText(
+                                              'nhwknf2r' /* Facturas */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                          ),
+                                        ].divide(SizedBox(width: 5.0)),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed('OK_FN_Payry_41_FAQs');
+                                  },
+                                  child: Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    height: 75.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context).back2,
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 0.0, 0.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    9.0, 0.0, 10.0, 0.0),
+                                            child: Icon(
+                                              Icons.help_outline,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 24.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            FFLocalizations.of(context).getText(
+                                              'vsnno6u8' /* FAQ's */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                          ),
+                                        ].divide(SizedBox(width: 5.0)),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                        'OK_FN_Payry_42_Terminosycondiciones');
+                                  },
+                                  child: Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    height: 75.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context).back5,
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 0.0, 0.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    9.0, 0.0, 10.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.kporcentaje,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            FFLocalizations.of(context).getText(
+                                              'bhfa3xxa' /* Términos y
+condiciones */
+                                              ,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                          ),
+                                        ].divide(SizedBox(width: 5.0)),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                        'OK_FN_Payry_43_Politicadeprivacidad');
+                                  },
+                                  child: Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    height: 75.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context).back3,
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 0.0, 0.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    9.0, 0.0, 10.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.khoja,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            FFLocalizations.of(context).getText(
+                                              'gejcj62p' /* Política de
+privacidad */
+                                              ,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                          ),
+                                        ].divide(SizedBox(width: 5.0)),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    if (Theme.of(context).brightness ==
+                                        Brightness.light) {
+                                      setDarkModeSetting(
+                                          context, ThemeMode.dark);
                                       return;
                                     } else {
+                                      setDarkModeSetting(
+                                          context, ThemeMode.light);
                                       return;
                                     }
-                                  }
-                                },
-                                child: Container(
-                                  width:
-                                      MediaQuery.sizeOf(context).width * 0.44,
-                                  height: 75.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context).back1,
-                                    borderRadius: BorderRadius.circular(12.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 0.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  9.0, 0.0, 10.0, 0.0),
-                                          child: Icon(
-                                            FFIcons.kfactura,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 20.0,
-                                          ),
-                                        ),
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            '7ysprgqz' /* Facturas */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Lexend',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                        ),
-                                      ].divide(SizedBox(width: 5.0)),
+                                  },
+                                  child: Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    height: 75.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context).back4,
+                                      borderRadius: BorderRadius.circular(12.0),
                                     ),
-                                  ),
-                                ),
-                              ),
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed('OK_FN_Payry_41_FAQs');
-                                },
-                                child: Container(
-                                  width:
-                                      MediaQuery.sizeOf(context).width * 0.44,
-                                  height: 75.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context).back2,
-                                    borderRadius: BorderRadius.circular(12.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 0.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  9.0, 0.0, 10.0, 0.0),
-                                          child: Icon(
-                                            Icons.help_outline,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 24.0,
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 0.0, 0.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    9.0, 0.0, 10.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.ksol,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
                                           ),
-                                        ),
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            '9uzz39bf' /* FAQ's */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Lexend',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                        ),
-                                      ].divide(SizedBox(width: 5.0)),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed(
-                                      'OK_FN_Payry_42_Terminosycondiciones');
-                                },
-                                child: Container(
-                                  width:
-                                      MediaQuery.sizeOf(context).width * 0.44,
-                                  height: 75.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context).back5,
-                                    borderRadius: BorderRadius.circular(12.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 0.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  9.0, 0.0, 10.0, 0.0),
-                                          child: Icon(
-                                            FFIcons.kporcentaje,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 20.0,
-                                          ),
-                                        ),
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            'zf560r47' /* Términos y
-condiciones */
-                                            ,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Lexend',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                        ),
-                                      ].divide(SizedBox(width: 5.0)),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed(
-                                      'OK_FN_Payry_43_Politicadeprivacidad');
-                                },
-                                child: Container(
-                                  width:
-                                      MediaQuery.sizeOf(context).width * 0.44,
-                                  height: 75.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context).back3,
-                                    borderRadius: BorderRadius.circular(12.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 0.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  9.0, 0.0, 10.0, 0.0),
-                                          child: Icon(
-                                            FFIcons.khoja,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 20.0,
-                                          ),
-                                        ),
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            'y1atemni' /* Política de
-privacidad */
-                                            ,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Lexend',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                        ),
-                                      ].divide(SizedBox(width: 5.0)),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  if (Theme.of(context).brightness ==
-                                      Brightness.light) {
-                                    setDarkModeSetting(context, ThemeMode.dark);
-                                    return;
-                                  } else {
-                                    setDarkModeSetting(
-                                        context, ThemeMode.light);
-                                    return;
-                                  }
-                                },
-                                child: Container(
-                                  width:
-                                      MediaQuery.sizeOf(context).width * 0.44,
-                                  height: 75.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context).back4,
-                                    borderRadius: BorderRadius.circular(12.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 0.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  9.0, 0.0, 10.0, 0.0),
-                                          child: Icon(
-                                            FFIcons.ksol,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 20.0,
-                                          ),
-                                        ),
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            's2dlkx5c' /* Cambiar a
+                                          Text(
+                                            FFLocalizations.of(context).getText(
+                                              '2vgq2o5z' /* Cambiar a
 versión clara */
-                                            ,
+                                              ,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
                                           ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Lexend',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                        ),
-                                      ].divide(SizedBox(width: 5.0)),
+                                        ].divide(SizedBox(width: 5.0)),
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                        'OK_FN_Payry_44_historialTransactions');
+                                  },
+                                  child: Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    height: 75.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context).back1,
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 0.0, 0.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    9.0, 0.0, 10.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.kcompartir,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            FFLocalizations.of(context).getText(
+                                              'i85fiagd' /* Transacciones */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                          ),
+                                        ].divide(SizedBox(width: 5.0)),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.00, 1.05),
+                  alignment: AlignmentDirectional(0.00, 0.97),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 18.0),

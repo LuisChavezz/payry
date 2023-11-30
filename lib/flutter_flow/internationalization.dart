@@ -2768,74 +2768,80 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': 'Mehr Optionen',
       'en': 'More options',
     },
-    'ize30gio': {
+    '8wl41f0r': {
       'es': 'Generar QR',
       'ar': '',
       'de': '',
       'en': '',
     },
-    'ya8sqsw4': {
+    '05gljg2p': {
       'es': 'Generar SMS',
       'ar': '',
       'de': '',
       'en': '',
     },
-    'hhjuqqar': {
+    'aoaynhiq': {
       'es': 'Perfil',
       'ar': '',
       'de': '',
       'en': '',
     },
-    'huapyf1z': {
+    'r45jlznn': {
       'es': 'Empresas',
       'ar': '',
       'de': '',
       'en': '',
     },
-    'hagptyos': {
+    'x1yfps4c': {
       'es': 'Estadísticas',
       'ar': '',
       'de': '',
       'en': '',
     },
-    'cwbo3pws': {
+    'b8n6f4bz': {
       'es': 'Usuarios',
       'ar': '',
       'de': '',
       'en': '',
     },
-    'b2crnci9': {
+    '08zmrqfu': {
       'es': 'Documentación',
       'ar': '',
       'de': '',
       'en': '',
     },
-    '7ysprgqz': {
+    'nhwknf2r': {
       'es': 'Facturas',
       'ar': '',
       'de': '',
       'en': '',
     },
-    '9uzz39bf': {
+    'vsnno6u8': {
       'es': 'FAQ\'s',
       'ar': '',
       'de': '',
       'en': '',
     },
-    'zf560r47': {
+    'bhfa3xxa': {
       'es': 'Términos y\ncondiciones',
       'ar': '',
       'de': '',
       'en': '',
     },
-    'y1atemni': {
+    'gejcj62p': {
       'es': 'Política de\nprivacidad',
       'ar': '',
       'de': '',
       'en': '',
     },
-    's2dlkx5c': {
+    '2vgq2o5z': {
       'es': 'Cambiar a\nversión clara',
+      'ar': '',
+      'de': '',
+      'en': '',
+    },
+    'i85fiagd': {
+      'es': 'Transacciones',
       'ar': '',
       'de': '',
       'en': '',

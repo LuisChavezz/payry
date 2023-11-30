@@ -307,9 +307,12 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                               children: [
                                                 Visibility(
                                                   visible:
-                                                      oKFNPayry26DashboardUserPermissionsRecord
-                                                              ?.readQr ??
-                                                          true,
+                                                      oKFNPayry26DashboardUserPermissionsRecord!
+                                                              .readQr ||
+                                                          valueOrDefault<bool>(
+                                                              currentUserDocument
+                                                                  ?.isAdmin,
+                                                              false),
                                                   child: Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
@@ -572,9 +575,12 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                 ),
                                                 Visibility(
                                                   visible:
-                                                      oKFNPayry26DashboardUserPermissionsRecord
-                                                              ?.readSms ??
-                                                          true,
+                                                      oKFNPayry26DashboardUserPermissionsRecord!
+                                                              .readSms ||
+                                                          valueOrDefault<bool>(
+                                                              currentUserDocument
+                                                                  ?.isAdmin,
+                                                              false),
                                                   child: Padding(
                                                     padding:
                                                         EdgeInsetsDirectional

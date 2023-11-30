@@ -87,5 +87,5 @@ export '/pages/o_k_f_n_payry_26_dashboard/o_k_f_n_payry26_dashboard_widget.dart'
     show OKFNPayry26DashboardWidget;
 export '/pages/o_k_f_n_payry_05_register_inv/o_k_f_n_payry05_register_inv_widget.dart'
     show OKFNPayry05RegisterInvWidget;
-export '/o_k_f_n_payry_44_historial_transactions/o_k_f_n_payry44_historial_transactions_widget.dart'
+export '/pages/o_k_f_n_payry_44_historial_transactions/o_k_f_n_payry44_historial_transactions_widget.dart'
     show OKFNPayry44HistorialTransactionsWidget;
