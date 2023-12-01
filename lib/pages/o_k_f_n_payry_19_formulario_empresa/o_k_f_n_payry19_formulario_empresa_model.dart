@@ -168,21 +168,9 @@ class OKFNPayry19FormularioEmpresaModel
     return null;
   }
 
-  // State field(s) for TaxRegimeField widget.
-  FocusNode? taxRegimeFieldFocusNode;
-  TextEditingController? taxRegimeFieldController;
-  String? Function(BuildContext, String?)? taxRegimeFieldControllerValidator;
-  String? _taxRegimeFieldControllerValidator(
-      BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'n3ppdc0z' /* El régimen físcal es requerido */,
-      );
-    }
-
-    return null;
-  }
-
+  // State field(s) for TaxRegimeDropDown widget.
+  String? taxRegimeDropDownValue;
+  FormFieldController<String>? taxRegimeDropDownValueController;
   // State field(s) for CFDIDropDown widget.
   String? cFDIDropDownValue;
   FormFieldController<String>? cFDIDropDownValueController;
@@ -202,7 +190,6 @@ class OKFNPayry19FormularioEmpresaModel
     cityFieldControllerValidator = _cityFieldControllerValidator;
     zipCodeFieldControllerValidator = _zipCodeFieldControllerValidator;
     rFCFieldControllerValidator = _rFCFieldControllerValidator;
-    taxRegimeFieldControllerValidator = _taxRegimeFieldControllerValidator;
   }
 
   void dispose() {
@@ -233,9 +220,6 @@ class OKFNPayry19FormularioEmpresaModel
 
     rFCFieldFocusNode?.dispose();
     rFCFieldController?.dispose();
-
-    taxRegimeFieldFocusNode?.dispose();
-    taxRegimeFieldController?.dispose();
   }
 
   /// Action blocks are added here.

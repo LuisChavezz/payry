@@ -486,7 +486,7 @@ class _OKFNPayry30HistorialQRsWidgetState
                                                           qrItemItem.amount,
                                                           formatType:
                                                               FormatType.custom,
-                                                          currency: '',
+                                                          currency: '\$',
                                                           format: '#,###.00##',
                                                           locale: 'es_MX',
                                                         ),

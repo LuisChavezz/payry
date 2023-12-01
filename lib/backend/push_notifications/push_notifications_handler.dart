@@ -204,6 +204,7 @@ final parametersBuilderMap =
       allParams: allParams,
     );
   },
+  'OK_FN_Payry_44_historialTransactions': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

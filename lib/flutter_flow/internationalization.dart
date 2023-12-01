@@ -1222,17 +1222,35 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': 'Geben Sie den RFC wie in Ihrem CSF ein...',
       'en': 'Enter the RFC as in your CSF...',
     },
-    'cgs36prp': {
-      'es': 'Régimen Fiscal',
-      'ar': 'النظام الضريبي',
-      'de': 'Steuerregelung',
-      'en': 'Tax Regime',
+    '5y9oh7vq': {
+      'es': 'CFDI 1',
+      'ar': '',
+      'de': '',
+      'en': '',
     },
-    'rfj4s9lf': {
-      'es': 'Selecciona tu régimen fiscal...',
-      'ar': 'اختر نظامك الضريبي...',
-      'de': 'Wählen Sie Ihr Steuersystem...',
-      'en': 'Select your tax regime...',
+    'p57psx54': {
+      'es': 'CFDI 2',
+      'ar': '',
+      'de': '',
+      'en': '',
+    },
+    'k1708aa0': {
+      'es': 'CFDI 3',
+      'ar': '',
+      'de': '',
+      'en': '',
+    },
+    'wnlj5rzy': {
+      'es': 'Selecciona el régimen fiscal...',
+      'ar': '',
+      'de': '',
+      'en': '',
+    },
+    'igdj7lpd': {
+      'es': 'Search for an item...',
+      'ar': '',
+      'de': '',
+      'en': '',
     },
     '8ve08x9p': {
       'es': 'CFDI 1',
@@ -2750,77 +2768,83 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': 'Mehr Optionen',
       'en': 'More options',
     },
-    '53z7a0gu': {
+    '8wl41f0r': {
       'es': 'Generar QR',
-      'ar': 'توليد ريال قطري',
-      'de': 'QR generieren',
-      'en': 'Generate QR',
+      'ar': '',
+      'de': '',
+      'en': '',
     },
-    'zp1agpy7': {
+    '05gljg2p': {
       'es': 'Generar SMS',
-      'ar': 'توليد الرسائل القصيرة',
-      'de': 'SMS generieren',
-      'en': 'Generate SMS',
+      'ar': '',
+      'de': '',
+      'en': '',
     },
-    'b7egkfho': {
+    'aoaynhiq': {
       'es': 'Perfil',
-      'ar': 'حساب تعريفي',
-      'de': 'Profil',
-      'en': 'Profile',
+      'ar': '',
+      'de': '',
+      'en': '',
     },
-    'zuycolhf': {
+    'r45jlznn': {
       'es': 'Empresas',
-      'ar': 'شركات',
-      'de': 'Firmen',
-      'en': 'Companies',
+      'ar': '',
+      'de': '',
+      'en': '',
     },
-    'xp5wp64p': {
+    'x1yfps4c': {
       'es': 'Estadísticas',
-      'ar': 'إحصائيات',
-      'de': 'Statistiken',
-      'en': 'Statistics',
+      'ar': '',
+      'de': '',
+      'en': '',
     },
-    'a4nxegd0': {
+    'b8n6f4bz': {
       'es': 'Usuarios',
-      'ar': 'المستخدمين',
-      'de': 'Benutzer',
-      'en': 'Users',
+      'ar': '',
+      'de': '',
+      'en': '',
     },
-    '0thro8sa': {
+    '08zmrqfu': {
       'es': 'Documentación',
-      'ar': 'توثيق',
-      'de': 'Dokumentation',
-      'en': 'Documentation',
+      'ar': '',
+      'de': '',
+      'en': '',
     },
-    'pcq6t117': {
+    'nhwknf2r': {
       'es': 'Facturas',
-      'ar': 'فواتير',
-      'de': 'Rechnungen',
-      'en': 'Bills',
+      'ar': '',
+      'de': '',
+      'en': '',
     },
-    'newh7oq2': {
+    'vsnno6u8': {
       'es': 'FAQ\'s',
-      'ar': 'الأسئلة الشائعة',
-      'de': 'FAQs',
-      'en': 'FAQ\'s',
+      'ar': '',
+      'de': '',
+      'en': '',
     },
-    'i2gzudsk': {
+    'bhfa3xxa': {
       'es': 'Términos y\ncondiciones',
-      'ar': 'الشروط و\nشروط',
-      'de': 'Bedingungen und\nBedingungen',
-      'en': 'Terms and\nconditions',
+      'ar': '',
+      'de': '',
+      'en': '',
     },
-    'n5vt2ta4': {
+    'gejcj62p': {
       'es': 'Política de\nprivacidad',
-      'ar': 'سياسة\nخصوصية',
-      'de': 'Politik von\nPrivatsphäre',
-      'en': 'Politics of\nprivacy',
+      'ar': '',
+      'de': '',
+      'en': '',
     },
-    'd1tz84dp': {
+    '2vgq2o5z': {
       'es': 'Cambiar a\nversión clara',
-      'ar': 'التبديل إلى\nنسخة واضحة',
-      'de': 'Wechseln zu\nklare Version',
-      'en': 'Switch to\nclear version',
+      'ar': '',
+      'de': '',
+      'en': '',
+    },
+    'i85fiagd': {
+      'es': 'Transacciones',
+      'ar': '',
+      'de': '',
+      'en': '',
     },
     'g9m5ylqw': {
       'es': 'Home',
@@ -3106,6 +3130,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'l79zuk9t': {
+      'es': 'Home',
+      'ar': '',
+      'de': '',
+      'en': '',
+    },
+  },
+  // OK_FN_Payry_44_historialTransactions
+  {
+    'olwt8i64': {
+      'es': 'Historial de Transacciones',
+      'ar': '',
+      'de': '',
+      'en': '',
+    },
+    'r83tq64q': {
       'es': 'Home',
       'ar': '',
       'de': '',

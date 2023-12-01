@@ -14,6 +14,9 @@ import 'schema/qr_history_record.dart';
 import 'schema/sms_record.dart';
 import 'schema/sms_history_record.dart';
 import 'schema/user_invitations_record.dart';
+import 'schema/cfdi_record.dart';
+import 'schema/tax_regimes_record.dart';
+import 'schema/transactions_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -30,6 +33,9 @@ export 'schema/qr_history_record.dart';
 export 'schema/sms_record.dart';
 export 'schema/sms_history_record.dart';
 export 'schema/user_invitations_record.dart';
+export 'schema/cfdi_record.dart';
+export 'schema/tax_regimes_record.dart';
+export 'schema/transactions_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -359,6 +365,117 @@ Future<List<UserInvitationsRecord>> queryUserInvitationsRecordOnce({
     queryCollectionOnce(
       UserInvitationsRecord.collection,
       UserInvitationsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query CfdiRecords (as a Stream and as a Future).
+Future<int> queryCfdiRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      CfdiRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<CfdiRecord>> queryCfdiRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      CfdiRecord.collection,
+      CfdiRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<CfdiRecord>> queryCfdiRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      CfdiRecord.collection,
+      CfdiRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query TaxRegimesRecords (as a Stream and as a Future).
+Future<int> queryTaxRegimesRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      TaxRegimesRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<TaxRegimesRecord>> queryTaxRegimesRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      TaxRegimesRecord.collection,
+      TaxRegimesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<TaxRegimesRecord>> queryTaxRegimesRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      TaxRegimesRecord.collection,
+      TaxRegimesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query TransactionsRecords (as a Stream and as a Future).
+Future<int> queryTransactionsRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      TransactionsRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<TransactionsRecord>> queryTransactionsRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      TransactionsRecord.collection,
+      TransactionsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<TransactionsRecord>> queryTransactionsRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      TransactionsRecord.collection,
+      TransactionsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
