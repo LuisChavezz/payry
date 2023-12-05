@@ -128,6 +128,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    await authManager.refreshUser();
                                     if (valueOrDefault<bool>(
                                             currentUserDocument?.isAdmin,
                                             false) ||
@@ -342,7 +343,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           ),
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              '8wl41f0r' /* Generar QR */,
+                                              'p9ate2i2' /* Generar QR */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -364,6 +365,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    await authManager.refreshUser();
                                     if (valueOrDefault<bool>(
                                             currentUserDocument?.isAdmin,
                                             false) ||
@@ -578,7 +580,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           ),
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              '05gljg2p' /* Generar SMS */,
+                                              '29nnciuq' /* Generar SMS */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -631,7 +633,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           ),
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'aoaynhiq' /* Perfil */,
+                                              'koikslds' /* Perfil */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -653,6 +655,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    await authManager.refreshUser();
                                     if (valueOrDefault<bool>(
                                         currentUserDocument?.isAdmin, false)) {
                                       if (currentUserEmailVerified) {
@@ -814,7 +817,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           ),
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'r45jlznn' /* Empresas */,
+                                              '4p0c69un' /* Empresas */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -836,6 +839,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    await authManager.refreshUser();
                                     if (currentUserEmailVerified) {
                                       if (valueOrDefault<bool>(
                                               currentUserDocument
@@ -1022,7 +1026,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           ),
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'x1yfps4c' /* Estadísticas */,
+                                              'rhn9kile' /* Estadísticas */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1044,6 +1048,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    await authManager.refreshUser();
                                     if (valueOrDefault<bool>(
                                         currentUserDocument?.isAdmin, false)) {
                                       if (currentUserEmailVerified) {
@@ -1255,7 +1260,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           ),
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'b8n6f4bz' /* Usuarios */,
+                                              'mn3tvowu' /* Usuarios */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1298,7 +1303,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                         ),
                                         Text(
                                           FFLocalizations.of(context).getText(
-                                            '08zmrqfu' /* Documentación */,
+                                            'nu9pixgd' /* Documentación */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -1319,6 +1324,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    await authManager.refreshUser();
                                     if (currentUserEmailVerified) {
                                       if (valueOrDefault<bool>(
                                               currentUserDocument
@@ -1505,7 +1511,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           ),
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'nhwknf2r' /* Facturas */,
+                                              'tb7vkk44' /* Facturas */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1557,7 +1563,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           ),
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'vsnno6u8' /* FAQ's */,
+                                              'godnzxow' /* FAQ's */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1610,7 +1616,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           ),
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'bhfa3xxa' /* Términos y
+                                              'n526vfir' /* Términos y
 condiciones */
                                               ,
                                             ),
@@ -1665,7 +1671,7 @@ condiciones */
                                           ),
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'gejcj62p' /* Política de
+                                              '8kp21r03' /* Política de
 privacidad */
                                               ,
                                             ),
@@ -1728,7 +1734,7 @@ privacidad */
                                           ),
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              '2vgq2o5z' /* Cambiar a
+                                              'dgvmgchh' /* Cambiar a
 versión clara */
                                               ,
                                             ),
@@ -1783,7 +1789,7 @@ versión clara */
                                           ),
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'i85fiagd' /* Transacciones */,
+                                              'j9i35xfz' /* Transacciones */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium

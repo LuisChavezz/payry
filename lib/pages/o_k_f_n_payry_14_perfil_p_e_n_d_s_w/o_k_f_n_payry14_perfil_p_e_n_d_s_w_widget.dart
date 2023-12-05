@@ -293,6 +293,7 @@ class _OKFNPayry14PerfilPENDSWWidgetState
                                           hoverColor: Colors.transparent,
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
+                                            await authManager.refreshUser();
                                             if (currentUserEmailVerified) {
                                               if (valueOrDefault<bool>(
                                                       currentUserDocument

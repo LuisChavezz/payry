@@ -176,6 +176,8 @@ class OKFNPayry19FormularioEmpresaModel
   FormFieldController<String>? cFDIDropDownValueController;
   // Stores action output result for [Cloud Function - saveCompany] action in Button widget.
   SaveCompanyCloudFunctionCallResponse? cloudFunctionCompany;
+  // Stores action output result for [Cloud Function - generateToken] action in Button widget.
+  GenerateTokenCloudFunctionCallResponse? cloudFunctionGT;
 
   /// Initialization and disposal methods.
 

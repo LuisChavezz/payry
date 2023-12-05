@@ -95,6 +95,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                         size: 25.0,
                       ),
                       onPressed: () async {
+                        await authManager.refreshUser();
                         if (valueOrDefault<bool>(
                                 currentUserDocument?.isAdmin, false) ||
                             widget.userPermissions!.readQr ||
@@ -258,6 +259,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                         size: 30.0,
                       ),
                       onPressed: () async {
+                        await authManager.refreshUser();
                         if (valueOrDefault<bool>(
                                 currentUserDocument?.isAdmin, false) ||
                             widget.userPermissions!.createQr ||
@@ -421,6 +423,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                         size: 30.0,
                       ),
                       onPressed: () async {
+                        await authManager.refreshUser();
                         if (valueOrDefault<bool>(
                                 currentUserDocument?.isAdmin, false) ||
                             widget.userPermissions!.createSms ||
