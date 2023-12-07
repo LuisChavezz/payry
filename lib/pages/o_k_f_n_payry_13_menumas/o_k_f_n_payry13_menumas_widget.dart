@@ -88,6 +88,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
             child: Stack(
               children: [
                 Container(
+                  width: double.infinity,
                   height: MediaQuery.sizeOf(context).height * 0.85,
                   decoration: BoxDecoration(),
                   child: Padding(
@@ -96,7 +97,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Text(
                             FFLocalizations.of(context).getText(
@@ -111,11 +112,11 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 24.0, 0.0, 0.0),
+                                0.0, 24.0, 0.0, 12.0),
                             child: Wrap(
                               spacing: 10.0,
                               runSpacing: 16.0,
-                              alignment: WrapAlignment.start,
+                              alignment: WrapAlignment.spaceBetween,
                               crossAxisAlignment: WrapCrossAlignment.start,
                               direction: Axis.horizontal,
                               runAlignment: WrapAlignment.start,
@@ -316,8 +317,48 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     }
                                   },
                                   child: Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    width: () {
+                                      if (MediaQuery.sizeOf(context).width <
+                                          390.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.42);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          480.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.44);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          900.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.3);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1025.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.23);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1300.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.18);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1600.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.14);
+                                      } else {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.1);
+                                      }
+                                    }(),
                                     height: 75.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context).back1,
@@ -325,14 +366,14 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 0.0, 0.0, 0.0),
+                                          16.0, 0.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    9.0, 0.0, 10.0, 0.0),
+                                                    0.0, 0.0, 10.0, 0.0),
                                             child: Icon(
                                               FFIcons.kqr,
                                               color:
@@ -352,6 +393,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
+                                                  fontSize: 14.0,
                                                 ),
                                           ),
                                         ].divide(SizedBox(width: 5.0)),
@@ -553,8 +595,48 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     }
                                   },
                                   child: Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    width: () {
+                                      if (MediaQuery.sizeOf(context).width <
+                                          390.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.42);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          480.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.44);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          900.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.3);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1025.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.23);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1300.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.18);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1600.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.14);
+                                      } else {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.1);
+                                      }
+                                    }(),
                                     height: 75.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context).back2,
@@ -562,14 +644,14 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 0.0, 0.0, 0.0),
+                                          16.0, 0.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    9.0, 0.0, 10.0, 0.0),
+                                                    0.0, 0.0, 10.0, 0.0),
                                             child: Icon(
                                               FFIcons.ksms,
                                               color:
@@ -589,6 +671,12 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
+                                                  fontSize:
+                                                      MediaQuery.sizeOf(context)
+                                                                  .width <
+                                                              375.0
+                                                          ? 12.0
+                                                          : 14.0,
                                                 ),
                                           ),
                                         ].divide(SizedBox(width: 5.0)),
@@ -606,8 +694,48 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                         'OK_FN_Payry_14_Perfil_PENDSW');
                                   },
                                   child: Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    width: () {
+                                      if (MediaQuery.sizeOf(context).width <
+                                          390.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.42);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          480.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.44);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          900.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.3);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1025.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.23);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1300.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.18);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1600.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.14);
+                                      } else {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.1);
+                                      }
+                                    }(),
                                     height: 75.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context).back5,
@@ -615,14 +743,14 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 0.0, 0.0, 0.0),
+                                          16.0, 0.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    9.0, 0.0, 10.0, 0.0),
+                                                    0.0, 0.0, 10.0, 0.0),
                                             child: Icon(
                                               FFIcons.kusuario,
                                               color:
@@ -790,8 +918,48 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     }
                                   },
                                   child: Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    width: () {
+                                      if (MediaQuery.sizeOf(context).width <
+                                          390.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.42);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          480.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.44);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          900.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.3);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1025.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.23);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1300.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.18);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1600.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.14);
+                                      } else {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.1);
+                                      }
+                                    }(),
                                     height: 75.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context).back3,
@@ -799,14 +967,14 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 0.0, 0.0, 0.0),
+                                          16.0, 0.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    9.0, 0.0, 10.0, 0.0),
+                                                    0.0, 0.0, 10.0, 0.0),
                                             child: Icon(
                                               FFIcons.kempresa,
                                               color:
@@ -999,8 +1167,48 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     }
                                   },
                                   child: Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    width: () {
+                                      if (MediaQuery.sizeOf(context).width <
+                                          390.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.42);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          480.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.44);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          900.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.3);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1025.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.23);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1300.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.18);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1600.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.14);
+                                      } else {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.1);
+                                      }
+                                    }(),
                                     height: 75.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context).back4,
@@ -1008,14 +1216,14 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 0.0, 0.0, 0.0),
+                                          16.0, 0.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    9.0, 0.0, 10.0, 0.0),
+                                                    0.0, 0.0, 10.0, 0.0),
                                             child: Icon(
                                               FFIcons.kestadisticas,
                                               color:
@@ -1233,8 +1441,48 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     }
                                   },
                                   child: Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    width: () {
+                                      if (MediaQuery.sizeOf(context).width <
+                                          390.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.42);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          480.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.44);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          900.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.3);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1025.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.23);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1300.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.18);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1600.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.14);
+                                      } else {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.1);
+                                      }
+                                    }(),
                                     height: 75.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context).back6,
@@ -1242,14 +1490,14 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 0.0, 0.0, 0.0),
+                                          16.0, 0.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    9.0, 0.0, 10.0, 0.0),
+                                                    0.0, 0.0, 10.0, 0.0),
                                             child: Icon(
                                               FFIcons.kvariosUsuarios,
                                               color:
@@ -1277,8 +1525,41 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                   ),
                                 ),
                                 Container(
-                                  width:
-                                      MediaQuery.sizeOf(context).width * 0.44,
+                                  width: () {
+                                    if (MediaQuery.sizeOf(context).width <
+                                        390.0) {
+                                      return (MediaQuery.sizeOf(context).width *
+                                          0.42);
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        480.0) {
+                                      return (MediaQuery.sizeOf(context).width *
+                                          0.44);
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        900.0) {
+                                      return (MediaQuery.sizeOf(context).width *
+                                          0.3);
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        1025.0) {
+                                      return (MediaQuery.sizeOf(context).width *
+                                          0.23);
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        1300.0) {
+                                      return (MediaQuery.sizeOf(context).width *
+                                          0.18);
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        1600.0) {
+                                      return (MediaQuery.sizeOf(context).width *
+                                          0.14);
+                                    } else {
+                                      return (MediaQuery.sizeOf(context).width *
+                                          0.1);
+                                    }
+                                  }(),
                                   height: 75.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context).back6,
@@ -1286,14 +1567,14 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                   ),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 0.0, 0.0),
+                                        16.0, 0.0, 16.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  9.0, 0.0, 10.0, 0.0),
+                                                  0.0, 0.0, 10.0, 0.0),
                                           child: Icon(
                                             FFIcons.kdocumentacion,
                                             color: FlutterFlowTheme.of(context)
@@ -1312,6 +1593,20 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
+                                                fontSize: () {
+                                                  if (MediaQuery.sizeOf(context)
+                                                          .width <
+                                                      375.0) {
+                                                    return 10.0;
+                                                  } else if (MediaQuery.sizeOf(
+                                                              context)
+                                                          .width <
+                                                      410.0) {
+                                                    return 11.0;
+                                                  } else {
+                                                    return 14.0;
+                                                  }
+                                                }(),
                                               ),
                                         ),
                                       ].divide(SizedBox(width: 5.0)),
@@ -1484,8 +1779,48 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     }
                                   },
                                   child: Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    width: () {
+                                      if (MediaQuery.sizeOf(context).width <
+                                          390.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.42);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          480.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.44);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          900.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.3);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1025.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.23);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1300.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.18);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1600.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.14);
+                                      } else {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.1);
+                                      }
+                                    }(),
                                     height: 75.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context).back1,
@@ -1493,14 +1828,14 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 0.0, 0.0, 0.0),
+                                          16.0, 0.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    9.0, 0.0, 10.0, 0.0),
+                                                    0.0, 0.0, 10.0, 0.0),
                                             child: Icon(
                                               FFIcons.kfactura,
                                               color:
@@ -1536,8 +1871,48 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     context.pushNamed('OK_FN_Payry_41_FAQs');
                                   },
                                   child: Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    width: () {
+                                      if (MediaQuery.sizeOf(context).width <
+                                          390.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.42);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          480.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.44);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          900.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.3);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1025.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.23);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1300.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.18);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1600.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.14);
+                                      } else {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.1);
+                                      }
+                                    }(),
                                     height: 75.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context).back2,
@@ -1545,14 +1920,14 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 0.0, 0.0, 0.0),
+                                          16.0, 0.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    9.0, 0.0, 10.0, 0.0),
+                                                    0.0, 0.0, 10.0, 0.0),
                                             child: Icon(
                                               Icons.help_outline,
                                               color:
@@ -1589,8 +1964,48 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                         'OK_FN_Payry_42_Terminosycondiciones');
                                   },
                                   child: Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    width: () {
+                                      if (MediaQuery.sizeOf(context).width <
+                                          390.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.42);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          480.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.44);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          900.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.3);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1025.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.23);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1300.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.18);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1600.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.14);
+                                      } else {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.1);
+                                      }
+                                    }(),
                                     height: 75.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context).back5,
@@ -1598,14 +2013,14 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 0.0, 0.0, 0.0),
+                                          16.0, 0.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    9.0, 0.0, 10.0, 0.0),
+                                                    0.0, 0.0, 10.0, 0.0),
                                             child: Icon(
                                               FFIcons.kporcentaje,
                                               color:
@@ -1644,8 +2059,48 @@ condiciones */
                                         'OK_FN_Payry_43_Politicadeprivacidad');
                                   },
                                   child: Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    width: () {
+                                      if (MediaQuery.sizeOf(context).width <
+                                          390.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.42);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          480.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.44);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          900.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.3);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1025.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.23);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1300.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.18);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1600.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.14);
+                                      } else {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.1);
+                                      }
+                                    }(),
                                     height: 75.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context).back3,
@@ -1653,14 +2108,14 @@ condiciones */
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 0.0, 0.0, 0.0),
+                                          16.0, 0.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    9.0, 0.0, 10.0, 0.0),
+                                                    0.0, 0.0, 10.0, 0.0),
                                             child: Icon(
                                               FFIcons.khoja,
                                               color:
@@ -1707,8 +2162,48 @@ privacidad */
                                     }
                                   },
                                   child: Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    width: () {
+                                      if (MediaQuery.sizeOf(context).width <
+                                          390.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.42);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          480.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.44);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          900.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.3);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1025.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.23);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1300.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.18);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1600.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.14);
+                                      } else {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.1);
+                                      }
+                                    }(),
                                     height: 75.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context).back4,
@@ -1716,14 +2211,14 @@ privacidad */
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 0.0, 0.0, 0.0),
+                                          16.0, 0.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    9.0, 0.0, 10.0, 0.0),
+                                                    0.0, 0.0, 10.0, 0.0),
                                             child: Icon(
                                               FFIcons.ksol,
                                               color:
@@ -1745,6 +2240,12 @@ versión clara */
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
+                                                  fontSize:
+                                                      MediaQuery.sizeOf(context)
+                                                                  .width <
+                                                              375.0
+                                                          ? 12.0
+                                                          : 14.0,
                                                 ),
                                           ),
                                         ].divide(SizedBox(width: 5.0)),
@@ -1762,8 +2263,48 @@ versión clara */
                                         'OK_FN_Payry_44_historialTransactions');
                                   },
                                   child: Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.44,
+                                    width: () {
+                                      if (MediaQuery.sizeOf(context).width <
+                                          390.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.42);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          480.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.44);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          900.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.3);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1025.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.23);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1300.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.18);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1600.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.14);
+                                      } else {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.1);
+                                      }
+                                    }(),
                                     height: 75.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context).back1,
@@ -1771,14 +2312,14 @@ versión clara */
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 0.0, 0.0, 0.0),
+                                          16.0, 0.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    9.0, 0.0, 10.0, 0.0),
+                                                    0.0, 0.0, 10.0, 0.0),
                                             child: Icon(
                                               FFIcons.kcompartir,
                                               color:
@@ -1798,6 +2339,12 @@ versión clara */
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
+                                                  fontSize:
+                                                      MediaQuery.sizeOf(context)
+                                                                  .width <
+                                                              390.0
+                                                          ? 11.0
+                                                          : 14.0,
                                                 ),
                                           ),
                                         ].divide(SizedBox(width: 5.0)),
