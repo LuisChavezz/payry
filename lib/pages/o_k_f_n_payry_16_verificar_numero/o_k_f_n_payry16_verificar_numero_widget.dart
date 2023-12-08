@@ -134,252 +134,261 @@ class _OKFNPayry16VerificarNumeroWidgetState
               top: true,
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(18.0, 18.0, 18.0, 18.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            12.0, 12.0, 12.0, 12.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(-1.00, 0.00),
-                              child: Text(
-                                FFLocalizations.of(context).getText(
-                                  '1y3hwffm' /* Te enviaremos un SMS con un có... */,
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              12.0, 12.0, 12.0, 12.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Align(
+                                alignment: AlignmentDirectional(-1.00, 0.00),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    '1y3hwffm' /* Te enviaremos un SMS con un có... */,
+                                  ),
+                                  textAlign: TextAlign.start,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Lexend',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
                                 ),
-                                textAlign: TextAlign.start,
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Lexend',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                    ),
                               ),
-                            ),
-                            Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 12.0, 0.0, 12.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Opacity(
-                                      opacity: 0.8,
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 12.0, 0.0),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          child: Image.asset(
-                                            'assets/images/1f1f2-1f1fd.png',
-                                            width: 35.0,
-                                            height: 23.0,
-                                            fit: BoxFit.cover,
+                              Align(
+                                alignment: AlignmentDirectional(0.00, 0.00),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 12.0, 0.0, 12.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Opacity(
+                                        opacity: 0.8,
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 12.0, 0.0),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            child: Image.asset(
+                                              'assets/images/1f1f2-1f1fd.png',
+                                              width: 35.0,
+                                              height: 23.0,
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    Expanded(
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 12.0, 0.0, 12.0),
-                                        child: TextFormField(
-                                          controller:
-                                              _model.phoneFieldController,
-                                          focusNode: _model.phoneFieldFocusNode,
-                                          readOnly: true,
-                                          obscureText: false,
-                                          decoration: InputDecoration(
-                                            labelText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'sas1fi5m' /* Celular */,
-                                            ),
-                                            labelStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium,
-                                            hintText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              '7hmdi9ah' /* Ingresa los 10 digitos de tu c... */,
-                                            ),
-                                            hintStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodySmall
-                                                    .override(
-                                                      fontFamily: 'Lexend',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                    ),
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0xFF8788A5),
-                                                width: 1.0,
+                                      Expanded(
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 12.0, 0.0, 12.0),
+                                          child: TextFormField(
+                                            controller:
+                                                _model.phoneFieldController,
+                                            focusNode:
+                                                _model.phoneFieldFocusNode,
+                                            readOnly: true,
+                                            obscureText: false,
+                                            decoration: InputDecoration(
+                                              labelText:
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                'sas1fi5m' /* Celular */,
                                               ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Colors.white,
-                                                width: 1.0,
+                                              labelStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                              hintText:
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                '7hmdi9ah' /* Ingresa los 10 digitos de tu c... */,
                                               ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            errorBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 1.0,
+                                              hintStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                      ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: Color(0xFF8788A5),
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
                                               ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 1.0,
+                                              focusedBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: Colors.white,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
                                               ),
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
+                                              errorBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              focusedErrorBorder:
+                                                  OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              contentPadding:
+                                                  EdgeInsetsDirectional
+                                                      .fromSTEB(20.0, 24.0,
+                                                          20.0, 24.0),
                                             ),
-                                            contentPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 24.0, 20.0, 24.0),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                            keyboardType: TextInputType.number,
+                                            validator: _model
+                                                .phoneFieldControllerValidator
+                                                .asValidator(context),
                                           ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
-                                          keyboardType: TextInputType.number,
-                                          validator: _model
-                                              .phoneFieldControllerValidator
-                                              .asValidator(context),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                            Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 30.0, 0.0, 10.0),
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    if (!((oKFNPayry16VerificarNumeroUsersRecord !=
-                                            null) &&
-                                        (FFAppState().phoneNumber ==
-                                            oKFNPayry16VerificarNumeroUsersRecord
-                                                ?.phoneNumber))) {
-                                      final phoneNumberVal =
-                                          _model.phoneFieldController.text;
-                                      if (phoneNumberVal == null ||
-                                          phoneNumberVal.isEmpty ||
-                                          !phoneNumberVal.startsWith('+')) {
+                              Align(
+                                alignment: AlignmentDirectional(0.00, 0.00),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 30.0, 0.0, 10.0),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      if (!((oKFNPayry16VerificarNumeroUsersRecord !=
+                                              null) &&
+                                          (FFAppState().phoneNumber ==
+                                              oKFNPayry16VerificarNumeroUsersRecord
+                                                  ?.phoneNumber))) {
+                                        final phoneNumberVal =
+                                            _model.phoneFieldController.text;
+                                        if (phoneNumberVal == null ||
+                                            phoneNumberVal.isEmpty ||
+                                            !phoneNumberVal.startsWith('+')) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                  'Phone Number is required and has to start with +.'),
+                                            ),
+                                          );
+                                          return;
+                                        }
+                                        await authManager.beginPhoneAuth(
+                                          context: context,
+                                          phoneNumber: phoneNumberVal,
+                                          onCodeSent: (context) async {
+                                            context.goNamedAuth(
+                                              'OK_FN_Payry_17_verificarOTP',
+                                              context.mounted,
+                                              queryParameters: {
+                                                'otpCode': serializeParam(
+                                                  '',
+                                                  ParamType.String,
+                                                ),
+                                                'phoneNumber': serializeParam(
+                                                  _model.phoneFieldController
+                                                      .text,
+                                                  ParamType.String,
+                                                ),
+                                              }.withoutNulls,
+                                              ignoreRedirect: true,
+                                            );
+                                          },
+                                        );
+
+                                        return;
+                                      } else {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(
                                             content: Text(
-                                                'Phone Number is required and has to start with +.'),
+                                              'Este número de teléfono ya fue verificado por otro usuario',
+                                              style: TextStyle(
+                                                color: Color(0xFFFAF9FE),
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 4000),
+                                            backgroundColor: Color(0xFF25253F),
                                           ),
                                         );
                                         return;
                                       }
-                                      await authManager.beginPhoneAuth(
-                                        context: context,
-                                        phoneNumber: phoneNumberVal,
-                                        onCodeSent: (context) async {
-                                          context.goNamedAuth(
-                                            'OK_FN_Payry_17_verificarOTP',
-                                            context.mounted,
-                                            queryParameters: {
-                                              'otpCode': serializeParam(
-                                                '',
-                                                ParamType.String,
-                                              ),
-                                              'phoneNumber': serializeParam(
-                                                _model
-                                                    .phoneFieldController.text,
-                                                ParamType.String,
-                                              ),
-                                            }.withoutNulls,
-                                            ignoreRedirect: true,
-                                          );
-                                        },
-                                      );
-
-                                      return;
-                                    } else {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Este número de teléfono ya fue verificado por otro usuario',
-                                            style: TextStyle(
-                                              color: Color(0xFFFAF9FE),
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor: Color(0xFF25253F),
-                                        ),
-                                      );
-                                      return;
-                                    }
-                                  },
-                                  text: FFLocalizations.of(context).getText(
-                                    'gggqysoi' /* Enviar código de validación */,
-                                  ),
-                                  options: FFButtonOptions(
-                                    width: 300.0,
-                                    height: 50.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: Color(0xFF5E4A98),
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: Colors.white,
-                                        ),
-                                    elevation: 3.0,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
+                                    },
+                                    text: FFLocalizations.of(context).getText(
+                                      'gggqysoi' /* Enviar código de validación */,
                                     ),
-                                    borderRadius: BorderRadius.circular(10.0),
+                                    options: FFButtonOptions(
+                                      width: 300.0,
+                                      height: 50.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: Color(0xFF5E4A98),
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            color: Colors.white,
+                                          ),
+                                      elevation: 3.0,
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

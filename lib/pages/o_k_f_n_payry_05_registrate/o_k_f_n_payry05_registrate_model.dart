@@ -1,5 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -25,7 +23,7 @@ class OKFNPayry05RegistrateModel
   String? _nameFieldControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'yszj7mhz' /* El nombre es requerido */,
+        '28papsit' /* El nombre es requerido */,
       );
     }
 
@@ -39,13 +37,13 @@ class OKFNPayry05RegistrateModel
   String? _emailFieldControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'h495oirp' /* El correo electrónico es reque... */,
+        'd9g3kky1' /* El correo electrónico es reque... */,
       );
     }
 
     if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
       return FFLocalizations.of(context).getText(
-        'zm1uxn9n' /* El correo electrónico es invál... */,
+        'wvq5uvay' /* El correo electrónico es invál... */,
       );
     }
     return null;
@@ -60,13 +58,13 @@ class OKFNPayry05RegistrateModel
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        '6vf8psrm' /* La contraseña es requerida */,
+        'yd0c2etn' /* La contraseña es requerida */,
       );
     }
 
     if (val.length < 6) {
       return FFLocalizations.of(context).getText(
-        'xfn6hfg9' /* La contraseña debe ser de alme... */,
+        '9nowmu28' /* La contraseña debe ser de alme... */,
       );
     }
 
@@ -82,13 +80,13 @@ class OKFNPayry05RegistrateModel
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'motqavr4' /* La confirmación de contraseña ... */,
+        'zvhste4m' /* La confirmación de contraseña ... */,
       );
     }
 
     if (val.length < 6) {
       return FFLocalizations.of(context).getText(
-        'jljcw2pc' /* La confirmación de contraseña ... */,
+        'a0yysijc' /* La confirmación de contraseña ... */,
       );
     }
 

@@ -111,296 +111,299 @@ class _OKFNPayry17VerificarOTPWidgetState
           top: true,
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(18.0, 18.0, 18.0, 18.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              'hojxjzzq' /* Ingresa el código aquí */,
-                            ),
-                            textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Lexend',
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 12.0, 0.0, 0.0),
-                          child: PinCodeTextField(
-                            autoDisposeControllers: false,
-                            appContext: context,
-                            length: 6,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .bodyLarge
-                                .override(
-                                  fontFamily: 'Poppins',
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                ),
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            enableActiveFill: false,
-                            autoFocus: true,
-                            enablePinAutofill: false,
-                            errorTextSpace: 16.0,
-                            showCursor: true,
-                            cursorColor: Colors.white,
-                            obscureText: false,
-                            keyboardType: TextInputType.number,
-                            pinTheme: PinTheme(
-                              fieldHeight: 44.0,
-                              fieldWidth: 44.0,
-                              borderWidth: 1.0,
-                              borderRadius: BorderRadius.circular(12.0),
-                              shape: PinCodeFieldShape.box,
-                              activeColor:
-                                  FlutterFlowTheme.of(context).secondaryText,
-                              inactiveColor:
-                                  FlutterFlowTheme.of(context).secondaryText,
-                              selectedColor: Colors.white,
-                              activeFillColor:
-                                  FlutterFlowTheme.of(context).secondaryText,
-                              inactiveFillColor:
-                                  FlutterFlowTheme.of(context).secondaryText,
-                              selectedFillColor: Colors.white,
-                            ),
-                            controller: _model.pinCodeController,
-                            onChanged: (_) {},
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            validator: _model.pinCodeControllerValidator
-                                .asValidator(context),
-                          ),
-                        ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  4.0, 0.0, 4.0, 0.0),
-                              child: Text(
-                                FFLocalizations.of(context).getText(
-                                  '23rofti3' /* Tiempo restante para verificar... */,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Lexend',
-                                      fontSize: 10.0,
-                                    ),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          12.0, 12.0, 12.0, 12.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Align(
+                            alignment: AlignmentDirectional(0.00, 0.00),
+                            child: Text(
+                              FFLocalizations.of(context).getText(
+                                'hojxjzzq' /* Ingresa el código aquí */,
                               ),
-                            ),
-                            FlutterFlowTimer(
-                              initialTime: _model.timerMilliseconds,
-                              getDisplayTime: (value) =>
-                                  StopWatchTimer.getDisplayTime(
-                                value,
-                                hours: false,
-                                milliSecond: false,
-                              ),
-                              controller: _model.timerController,
-                              onChanged: (value, displayTime, shouldUpdate) {
-                                _model.timerMilliseconds = value;
-                                _model.timerValue = displayTime;
-                                if (shouldUpdate) setState(() {});
-                              },
-                              onEnded: () async {
-                                context.pop();
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('Tiempo expirado'),
-                                      content: Text(
-                                          'El tiempo para ingresar el código de verificación ha expirado. Vuelva a intenter enviado un nuevo código.'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Aceptar'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                              },
                               textAlign: TextAlign.start,
                               style: FlutterFlowTheme.of(context)
-                                  .headlineSmall
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'Lexend',
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.normal,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
                                   ),
                             ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  2.0, 0.0, 0.0, 0.0),
-                              child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'zn3cfybp' /* seg. */,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Lexend',
-                                      fontSize: 10.0,
-                                    ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(-1.00, 0.00),
-                          child: Padding(
+                          ),
+                          Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 10.0, 0.0, 10.0),
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                if (_model.timerMilliseconds <= 0) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'El tiempo ha expirado',
-                                        style: TextStyle(
-                                          color: Color(0xFFFAF9FE),
-                                        ),
-                                      ),
-                                      duration: Duration(milliseconds: 4000),
-                                      backgroundColor: Color(0xFF25253F),
-                                    ),
-                                  );
-                                  return;
-                                } else {
-                                  FFAppState().tempUserReference =
-                                      currentUserReference;
-                                  if (widget.otpCode != null &&
-                                      widget.otpCode != '') {
-                                    GoRouter.of(context).prepareAuthEvent();
-                                    final smsCodeVal = widget.otpCode;
-                                    if (smsCodeVal == null ||
-                                        smsCodeVal.isEmpty) {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                              'Enter SMS verification code.'),
-                                        ),
-                                      );
-                                      return;
-                                    }
-                                    final phoneVerifiedUser =
-                                        await authManager.verifySmsCode(
-                                      context: context,
-                                      smsCode: smsCodeVal,
-                                    );
-                                    if (phoneVerifiedUser == null) {
-                                      return;
-                                    }
-                                  } else {
-                                    GoRouter.of(context).prepareAuthEvent();
-                                    final smsCodeVal =
-                                        _model.pinCodeController!.text;
-                                    if (smsCodeVal == null ||
-                                        smsCodeVal.isEmpty) {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                              'Enter SMS verification code.'),
-                                        ),
-                                      );
-                                      return;
-                                    }
-                                    final phoneVerifiedUser =
-                                        await authManager.verifySmsCode(
-                                      context: context,
-                                      smsCode: smsCodeVal,
-                                    );
-                                    if (phoneVerifiedUser == null) {
-                                      return;
-                                    }
-                                  }
-
-                                  await FFAppState()
-                                      .tempUserReference!
-                                      .update(createUsersRecordData(
-                                        isValidPhoneNumber: true,
-                                        phoneNumber: widget.phoneNumber,
-                                      ));
-                                  await currentUserReference!.delete();
-                                  await authManager.deleteUser(context);
-
-                                  context.goNamedAuth(
-                                      'OK_FN_Payry_08_iniciasesion',
-                                      context.mounted);
-
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'Su número de teléfono ha sido verificado con éxito!',
-                                        style: TextStyle(
-                                          color: Color(0xFFFAF9FE),
-                                        ),
-                                      ),
-                                      duration: Duration(milliseconds: 4000),
-                                      backgroundColor: Color(0xFF25253F),
-                                    ),
-                                  );
-                                  return;
-                                }
-                              },
-                              text: FFLocalizations.of(context).getText(
-                                'q87dx548' /* Verificar */,
+                                0.0, 12.0, 0.0, 0.0),
+                            child: PinCodeTextField(
+                              autoDisposeControllers: false,
+                              appContext: context,
+                              length: 6,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              enableActiveFill: false,
+                              autoFocus: true,
+                              enablePinAutofill: false,
+                              errorTextSpace: 16.0,
+                              showCursor: true,
+                              cursorColor: Colors.white,
+                              obscureText: false,
+                              keyboardType: TextInputType.number,
+                              pinTheme: PinTheme(
+                                fieldHeight: 44.0,
+                                fieldWidth: 44.0,
+                                borderWidth: 1.0,
+                                borderRadius: BorderRadius.circular(12.0),
+                                shape: PinCodeFieldShape.box,
+                                activeColor:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                inactiveColor:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                selectedColor: Colors.white,
+                                activeFillColor:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                inactiveFillColor:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                selectedFillColor: Colors.white,
                               ),
-                              options: FFButtonOptions(
-                                width: MediaQuery.sizeOf(context).width * 1.0,
-                                height: 50.0,
+                              controller: _model.pinCodeController,
+                              onChanged: (_) {},
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
+                              validator: _model.pinCodeControllerValidator
+                                  .asValidator(context),
+                            ),
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: Color(0xFF5E4A98),
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
+                                    4.0, 0.0, 4.0, 0.0),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    '23rofti3' /* Tiempo restante para verificar... */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Lexend',
+                                        fontSize: 10.0,
+                                      ),
+                                ),
+                              ),
+                              FlutterFlowTimer(
+                                initialTime: _model.timerMilliseconds,
+                                getDisplayTime: (value) =>
+                                    StopWatchTimer.getDisplayTime(
+                                  value,
+                                  hours: false,
+                                  milliSecond: false,
+                                ),
+                                controller: _model.timerController,
+                                onChanged: (value, displayTime, shouldUpdate) {
+                                  _model.timerMilliseconds = value;
+                                  _model.timerValue = displayTime;
+                                  if (shouldUpdate) setState(() {});
+                                },
+                                onEnded: () async {
+                                  context.pop();
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        title: Text('Tiempo expirado'),
+                                        content: Text(
+                                            'El tiempo para ingresar el código de verificación ha expirado. Vuelva a intenter enviado un nuevo código.'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: Text('Aceptar'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                },
+                                textAlign: TextAlign.start,
+                                style: FlutterFlowTheme.of(context)
+                                    .headlineSmall
                                     .override(
                                       fontFamily: 'Lexend',
-                                      color: Color(0xFFFAF9FE),
+                                      fontSize: 15.0,
+                                      fontWeight: FontWeight.normal,
                                     ),
-                                elevation: 3.0,
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    2.0, 0.0, 0.0, 0.0),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'zn3cfybp' /* seg. */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Lexend',
+                                        fontSize: 10.0,
+                                      ),
                                 ),
-                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                            ],
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(0.00, 0.00),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 10.0, 0.0, 10.0),
+                              child: FFButtonWidget(
+                                onPressed: () async {
+                                  if (_model.timerMilliseconds <= 0) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'El tiempo ha expirado',
+                                          style: TextStyle(
+                                            color: Color(0xFFFAF9FE),
+                                          ),
+                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor: Color(0xFF25253F),
+                                      ),
+                                    );
+                                    return;
+                                  } else {
+                                    FFAppState().tempUserReference =
+                                        currentUserReference;
+                                    if (widget.otpCode != null &&
+                                        widget.otpCode != '') {
+                                      GoRouter.of(context).prepareAuthEvent();
+                                      final smsCodeVal = widget.otpCode;
+                                      if (smsCodeVal == null ||
+                                          smsCodeVal.isEmpty) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                                'Enter SMS verification code.'),
+                                          ),
+                                        );
+                                        return;
+                                      }
+                                      final phoneVerifiedUser =
+                                          await authManager.verifySmsCode(
+                                        context: context,
+                                        smsCode: smsCodeVal,
+                                      );
+                                      if (phoneVerifiedUser == null) {
+                                        return;
+                                      }
+                                    } else {
+                                      GoRouter.of(context).prepareAuthEvent();
+                                      final smsCodeVal =
+                                          _model.pinCodeController!.text;
+                                      if (smsCodeVal == null ||
+                                          smsCodeVal.isEmpty) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                                'Enter SMS verification code.'),
+                                          ),
+                                        );
+                                        return;
+                                      }
+                                      final phoneVerifiedUser =
+                                          await authManager.verifySmsCode(
+                                        context: context,
+                                        smsCode: smsCodeVal,
+                                      );
+                                      if (phoneVerifiedUser == null) {
+                                        return;
+                                      }
+                                    }
+
+                                    await FFAppState()
+                                        .tempUserReference!
+                                        .update(createUsersRecordData(
+                                          isValidPhoneNumber: true,
+                                          phoneNumber: widget.phoneNumber,
+                                        ));
+                                    await currentUserReference!.delete();
+                                    await authManager.deleteUser(context);
+
+                                    context.goNamedAuth(
+                                        'OK_FN_Payry_08_iniciasesion',
+                                        context.mounted);
+
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Su número de teléfono ha sido verificado con éxito!',
+                                          style: TextStyle(
+                                            color: Color(0xFFFAF9FE),
+                                          ),
+                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor: Color(0xFF25253F),
+                                      ),
+                                    );
+                                    return;
+                                  }
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  'q87dx548' /* Verificar */,
+                                ),
+                                options: FFButtonOptions(
+                                  width: MediaQuery.sizeOf(context).width * 1.0,
+                                  height: 50.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: Color(0xFF5E4A98),
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Lexend',
+                                        color: Color(0xFFFAF9FE),
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

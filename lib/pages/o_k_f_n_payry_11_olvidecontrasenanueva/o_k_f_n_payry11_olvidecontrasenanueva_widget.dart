@@ -108,8 +108,15 @@ class _OKFNPayry11OlvidecontrasenanuevaWidgetState
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 18.0, 0.0, 14.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
+                    child: Wrap(
+                      spacing: 0.0,
+                      runSpacing: 0.0,
+                      alignment: WrapAlignment.start,
+                      crossAxisAlignment: WrapCrossAlignment.start,
+                      direction: Axis.horizontal,
+                      runAlignment: WrapAlignment.start,
+                      verticalDirection: VerticalDirection.down,
+                      clipBehavior: Clip.none,
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(

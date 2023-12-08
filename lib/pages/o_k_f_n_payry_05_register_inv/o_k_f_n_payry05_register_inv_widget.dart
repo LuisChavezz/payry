@@ -1,11 +1,8 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -99,23 +96,24 @@ class _OKFNPayry05RegisterInvWidgetState
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             body: SafeArea(
               top: true,
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: MediaQuery.sizeOf(context).height * 1.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 40.0, 0.0, 0.0),
+              child: Align(
+                alignment: AlignmentDirectional(0.00, 0.00),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Container(
+                          width: MediaQuery.sizeOf(context).width * 1.0,
+                          decoration: BoxDecoration(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                          ),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
@@ -156,7 +154,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                       FFLocalizations.of(
                                                               context)
                                                           .getText(
-                                                        'tdr1ov5j' /* Crea una cuenta */,
+                                                        'ku9xunaq' /* Crea una cuenta */,
                                                       ),
                                                       style:
                                                           FlutterFlowTheme.of(
@@ -188,7 +186,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                      '1x8i4zjm' /* Nombre */,
+                                                      '1b0qy5kd' /* Nombre */,
                                                     ),
                                                     labelStyle:
                                                         FlutterFlowTheme.of(
@@ -198,7 +196,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                      'r0lmpls5' /* Ingresa el nombre... */,
+                                                      'qg5l1gt2' /* Ingresa el nombre... */,
                                                     ),
                                                     hintStyle: FlutterFlowTheme
                                                             .of(context)
@@ -298,7 +296,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                      'k8e0j4qp' /* Correo electrónico */,
+                                                      'vnnbnh24' /* Correo electrónico */,
                                                     ),
                                                     labelStyle:
                                                         FlutterFlowTheme.of(
@@ -308,7 +306,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                      'jsqdktrn' /* Ingresa tu email... */,
+                                                      '9a1dhus4' /* Ingresa tu email... */,
                                                     ),
                                                     hintStyle: FlutterFlowTheme
                                                             .of(context)
@@ -406,7 +404,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                      '10zz8so8' /* Contraseña */,
+                                                      'a9le7705' /* Contraseña */,
                                                     ),
                                                     labelStyle:
                                                         FlutterFlowTheme.of(
@@ -416,7 +414,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                      '8o3zjabn' /* Ingresa tu contraseña... */,
+                                                      'yr5v3hjj' /* Ingresa tu contraseña... */,
                                                     ),
                                                     hintStyle:
                                                         FlutterFlowTheme.of(
@@ -527,7 +525,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                      'gy2e6nur' /* Confirma Contraseña */,
+                                                      'c73xsit2' /* Confirma Contraseña */,
                                                     ),
                                                     labelStyle:
                                                         FlutterFlowTheme.of(
@@ -537,7 +535,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                      '7dkqvcqp' /* Confirma tu contraseña... */,
+                                                      '4vy5gxo0' /* Confirma tu contraseña... */,
                                                     ),
                                                     hintStyle: FlutterFlowTheme
                                                             .of(context)
@@ -639,235 +637,31 @@ class _OKFNPayry05RegisterInvWidgetState
                                               ),
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    -1.00, 0.00),
+                                                    0.00, 0.00),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          0.0, 10.0, 0.0, 10.0),
-                                                  child: FFButtonWidget(
-                                                    onPressed: () async {
-                                                      if (_model.formKey
-                                                                  .currentState ==
-                                                              null ||
-                                                          !_model.formKey
-                                                              .currentState!
-                                                              .validate()) {
-                                                        return;
-                                                      }
-                                                      FFAppState()
-                                                              .registerName =
-                                                          _model
-                                                              .nameFieldController
-                                                              .text;
-                                                      FFAppState()
-                                                              .registerEmail =
-                                                          _model
-                                                              .emailFieldController
-                                                              .text;
-                                                      GoRouter.of(context)
-                                                          .prepareAuthEvent();
-                                                      if (_model
-                                                              .passwordCreateController
-                                                              .text !=
-                                                          _model
-                                                              .passwordConfirmController
-                                                              .text) {
-                                                        ScaffoldMessenger.of(
-                                                                context)
-                                                            .showSnackBar(
-                                                          SnackBar(
-                                                            content: Text(
-                                                              'Passwords don\'t match!',
-                                                            ),
-                                                          ),
-                                                        );
-                                                        return;
-                                                      }
-
-                                                      final user = await authManager
-                                                          .createAccountWithEmail(
-                                                        context,
-                                                        _model
-                                                            .emailFieldController
-                                                            .text,
-                                                        _model
-                                                            .passwordCreateController
-                                                            .text,
-                                                      );
-                                                      if (user == null) {
-                                                        return;
-                                                      }
-
-                                                      await UsersRecord
-                                                          .collection
-                                                          .doc(user.uid)
-                                                          .update({
-                                                        ...createUsersRecordData(
-                                                          email: _model
-                                                              .emailFieldController
-                                                              .text,
-                                                          displayName: _model
-                                                              .nameFieldController
-                                                              .text,
-                                                          photoUrl: '',
-                                                          phoneNumber: '',
-                                                          status: true,
-                                                          isValidPhoneNumber:
-                                                              false,
-                                                          age: null,
-                                                          isAdmin:
-                                                              widget.id != null
-                                                                  ? false
-                                                                  : true,
-                                                          adminId: '',
-                                                        ),
-                                                        ...mapToFirestore(
-                                                          {
-                                                            'created_time':
-                                                                FieldValue
-                                                                    .serverTimestamp(),
-                                                          },
-                                                        ),
-                                                      });
-
-                                                      await currentUserReference!
-                                                          .update(
-                                                              createUsersRecordData(
-                                                        adminId: widget.id !=
-                                                                null
-                                                            ? oKFNPayry05RegisterInvUserInvitationsRecord
-                                                                .adminId
-                                                            : currentUserUid,
-                                                        isAdmin: false,
-                                                      ));
-
-                                                      await UserPermissionsRecord
-                                                          .collection
-                                                          .doc()
-                                                          .set(
-                                                              createUserPermissionsRecordData(
-                                                            uid: currentUserUid,
-                                                            adminId: valueOrDefault(
-                                                                currentUserDocument
-                                                                    ?.adminId,
-                                                                ''),
-                                                            createQr: false,
-                                                            readQr: false,
-                                                            createSms: false,
-                                                            readSms: false,
-                                                            readTransfers:
-                                                                false,
-                                                            createRefunds:
-                                                                false,
-                                                          ));
-                                                      await authManager
-                                                          .sendEmailVerification();
-                                                      try {
-                                                        final result =
-                                                            await FirebaseFunctions
-                                                                .instance
-                                                                .httpsCallable(
-                                                                    'generateToken')
-                                                                .call({
-                                                          "uid": currentUserUid,
-                                                        });
-                                                        _model.cloudFunctionGT =
-                                                            GenerateTokenCloudFunctionCallResponse(
-                                                          data: result.data,
-                                                          succeeded: true,
-                                                          resultAsString: result
-                                                              .data
-                                                              .toString(),
-                                                          jsonBody: result.data,
-                                                        );
-                                                      } on FirebaseFunctionsException catch (error) {
-                                                        _model.cloudFunctionGT =
-                                                            GenerateTokenCloudFunctionCallResponse(
-                                                          errorCode: error.code,
-                                                          succeeded: false,
-                                                        );
-                                                      }
-
-                                                      FFAppState().serverToken =
-                                                          _model
-                                                              .cloudFunctionGT!
-                                                              .jsonBody!
-                                                              .toString();
-
-                                                      context.goNamedAuth(
-                                                          'OK_FN_Payry_06_confirmacionRegistro',
-                                                          context.mounted);
-
-                                                      setState(() {});
-                                                    },
-                                                    text: FFLocalizations.of(
-                                                            context)
-                                                        .getText(
-                                                      'kj1wcrkp' /* Crea tu cuenta */,
-                                                    ),
-                                                    options: FFButtonOptions(
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width *
-                                                          3.95,
-                                                      height: 50.0,
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      iconPadding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      color: Color(0xFF5E4A98),
-                                                      textStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Lexend',
-                                                                color: Colors
-                                                                    .white,
-                                                              ),
-                                                      elevation: 3.0,
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            Colors.transparent,
-                                                        width: 1.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10.0),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    -1.00, 0.00),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(15.0, 15.0,
-                                                          15.0, 1.0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
+                                                          0.0, 15.0, 0.0, 0.0),
+                                                  child: Wrap(
+                                                    spacing: 4.0,
+                                                    runSpacing: 4.0,
+                                                    alignment:
+                                                        WrapAlignment.center,
+                                                    crossAxisAlignment:
+                                                        WrapCrossAlignment
+                                                            .start,
+                                                    direction: Axis.horizontal,
+                                                    runAlignment:
+                                                        WrapAlignment.start,
+                                                    verticalDirection:
+                                                        VerticalDirection.down,
+                                                    clipBehavior: Clip.none,
                                                     children: [
                                                       Text(
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                          'wj97hdfr' /* ¿Ya tienes una cuenta? */,
+                                                          'j2rtf1if' /* ¿Ya tienes una cuenta? */,
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -881,43 +675,34 @@ class _OKFNPayry05RegisterInvWidgetState
                                                                       .primaryText,
                                                                 ),
                                                       ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    4.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            context.pushNamed(
-                                                                'OK_FN_Payry_08_iniciasesion');
-                                                          },
-                                                          child: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'zo8szlbk' /* Inicia sesión */,
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Lexend',
-                                                                  color: Color(
-                                                                      0xFF0FB978),
-                                                                ),
+                                                      InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          context.pushNamed(
+                                                              'OK_FN_Payry_08_iniciasesion');
+                                                        },
+                                                        child: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            '46e7nbu9' /* Inicia sesión */,
                                                           ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Lexend',
+                                                                color: Color(
+                                                                    0xFF0FB978),
+                                                              ),
                                                         ),
                                                       ),
                                                     ],
@@ -935,10 +720,10 @@ class _OKFNPayry05RegisterInvWidgetState
                             ],
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ],
+                ),
               ),
             ),
           ),

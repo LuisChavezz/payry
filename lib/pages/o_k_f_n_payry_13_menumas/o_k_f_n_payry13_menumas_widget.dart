@@ -1574,7 +1574,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 10.0, 0.0),
+                                                  0.0, 0.0, 9.0, 0.0),
                                           child: Icon(
                                             FFIcons.kdocumentacion,
                                             color: FlutterFlowTheme.of(context)
@@ -2340,11 +2340,14 @@ versión clara */
                                                           context)
                                                       .primaryText,
                                                   fontSize:
-                                                      MediaQuery.sizeOf(context)
-                                                                  .width <
-                                                              390.0
-                                                          ? 11.0
-                                                          : 14.0,
+                                                      valueOrDefault<double>(
+                                                    MediaQuery.sizeOf(context)
+                                                                .width <
+                                                            390.0
+                                                        ? 11.0
+                                                        : 14.0,
+                                                    11.0,
+                                                  ),
                                                 ),
                                           ),
                                         ].divide(SizedBox(width: 5.0)),

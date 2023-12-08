@@ -25,13 +25,13 @@ class OKFNPayry08IniciasesionModel
   String? _emailFieldControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        '03sv3kno' /* El correo electrónico es reque... */,
+        '27axqe40' /* El correo electrónico es reque... */,
       );
     }
 
     if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
       return FFLocalizations.of(context).getText(
-        '9caxtr9n' /* El correo electrónico es invál... */,
+        'tyqk38p9' /* El correo electrónico es invál... */,
       );
     }
     return null;
@@ -45,13 +45,13 @@ class OKFNPayry08IniciasesionModel
   String? _passwordFieldControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'qcfvsnyn' /* La contraseña es requerida */,
+        '6h98y1lc' /* La contraseña es requerida */,
       );
     }
 
     if (val.length < 6) {
       return FFLocalizations.of(context).getText(
-        'vflagspg' /* La contraseña debe ser de al m... */,
+        'cgvk80vg' /* La contraseña debe ser de al m... */,
       );
     }
 
