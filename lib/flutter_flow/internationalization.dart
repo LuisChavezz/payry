@@ -262,6 +262,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': '',
       'en': '',
     },
+    'rze6a28l': {
+      'es': 'Crea tu cuenta',
+      'ar': '',
+      'de': '',
+      'en': '',
+    },
     'tyf3xf8g': {
       'es': '¿Ya tienes una cuenta?',
       'ar': '',
@@ -2978,6 +2984,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '4vy5gxo0': {
       'es': 'Confirma tu contraseña...',
+      'ar': '',
+      'de': '',
+      'en': '',
+    },
+    'fkgqxy52': {
+      'es': 'Crea tu cuenta',
       'ar': '',
       'de': '',
       'en': '',

@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -35,16 +36,16 @@ class _OKFNPayry05RegisterInvWidgetState
     super.initState();
     _model = createModel(context, () => OKFNPayry05RegisterInvModel());
 
-    _model.nameFieldController ??= TextEditingController();
-    _model.nameFieldFocusNode ??= FocusNode();
+    _model.invNameFieldController ??= TextEditingController();
+    _model.invNameFieldFocusNode ??= FocusNode();
 
-    _model.emailFieldFocusNode ??= FocusNode();
+    _model.invEmailFieldFocusNode ??= FocusNode();
 
-    _model.passwordCreateController ??= TextEditingController();
-    _model.passwordCreateFocusNode ??= FocusNode();
+    _model.invPasswordCreateController ??= TextEditingController();
+    _model.invPasswordCreateFocusNode ??= FocusNode();
 
-    _model.passwordConfirmController ??= TextEditingController();
-    _model.passwordConfirmFocusNode ??= FocusNode();
+    _model.invPasswordConfirmController ??= TextEditingController();
+    _model.invPasswordConfirmFocusNode ??= FocusNode();
   }
 
   @override
@@ -177,9 +178,9 @@ class _OKFNPayry05RegisterInvWidgetState
                                                         0.0, 12.0, 0.0, 12.0),
                                                 child: TextFormField(
                                                   controller: _model
-                                                      .nameFieldController,
-                                                  focusNode:
-                                                      _model.nameFieldFocusNode,
+                                                      .invNameFieldController,
+                                                  focusNode: _model
+                                                      .invNameFieldFocusNode,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
                                                     labelText:
@@ -265,7 +266,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                           context)
                                                       .bodyMedium,
                                                   validator: _model
-                                                      .nameFieldControllerValidator
+                                                      .invNameFieldControllerValidator
                                                       .asValidator(context),
                                                 ),
                                               ),
@@ -275,7 +276,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                         0.0, 12.0, 0.0, 12.0),
                                                 child: TextFormField(
                                                   controller: _model
-                                                          .emailFieldController ??=
+                                                          .invEmailFieldController ??=
                                                       TextEditingController(
                                                     text: oKFNPayry05RegisterInvUserInvitationsRecord
                                                                     .invitedUserEmail !=
@@ -288,7 +289,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                         : '',
                                                   ),
                                                   focusNode: _model
-                                                      .emailFieldFocusNode,
+                                                      .invEmailFieldFocusNode,
                                                   readOnly: widget.id != null,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
@@ -384,7 +385,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                             FontWeight.normal,
                                                       ),
                                                   validator: _model
-                                                      .emailFieldControllerValidator
+                                                      .invEmailFieldControllerValidator
                                                       .asValidator(context),
                                                 ),
                                               ),
@@ -394,11 +395,11 @@ class _OKFNPayry05RegisterInvWidgetState
                                                         0.0, 12.0, 0.0, 12.0),
                                                 child: TextFormField(
                                                   controller: _model
-                                                      .passwordCreateController,
+                                                      .invPasswordCreateController,
                                                   focusNode: _model
-                                                      .passwordCreateFocusNode,
+                                                      .invPasswordCreateFocusNode,
                                                   obscureText: !_model
-                                                      .passwordCreateVisibility,
+                                                      .invPasswordCreateVisibility,
                                                   decoration: InputDecoration(
                                                     labelText:
                                                         FFLocalizations.of(
@@ -476,14 +477,14 @@ class _OKFNPayry05RegisterInvWidgetState
                                                     suffixIcon: InkWell(
                                                       onTap: () => setState(
                                                         () => _model
-                                                                .passwordCreateVisibility =
+                                                                .invPasswordCreateVisibility =
                                                             !_model
-                                                                .passwordCreateVisibility,
+                                                                .invPasswordCreateVisibility,
                                                       ),
                                                       focusNode: FocusNode(
                                                           skipTraversal: true),
                                                       child: Icon(
-                                                        _model.passwordCreateVisibility
+                                                        _model.invPasswordCreateVisibility
                                                             ? Icons
                                                                 .visibility_outlined
                                                             : Icons
@@ -505,7 +506,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                                 .primaryText,
                                                       ),
                                                   validator: _model
-                                                      .passwordCreateControllerValidator
+                                                      .invPasswordCreateControllerValidator
                                                       .asValidator(context),
                                                 ),
                                               ),
@@ -515,11 +516,11 @@ class _OKFNPayry05RegisterInvWidgetState
                                                         0.0, 12.0, 0.0, 12.0),
                                                 child: TextFormField(
                                                   controller: _model
-                                                      .passwordConfirmController,
+                                                      .invPasswordConfirmController,
                                                   focusNode: _model
-                                                      .passwordConfirmFocusNode,
+                                                      .invPasswordConfirmFocusNode,
                                                   obscureText: !_model
-                                                      .passwordConfirmVisibility,
+                                                      .invPasswordConfirmVisibility,
                                                   decoration: InputDecoration(
                                                     labelText:
                                                         FFLocalizations.of(
@@ -602,14 +603,14 @@ class _OKFNPayry05RegisterInvWidgetState
                                                     suffixIcon: InkWell(
                                                       onTap: () => setState(
                                                         () => _model
-                                                                .passwordConfirmVisibility =
+                                                                .invPasswordConfirmVisibility =
                                                             !_model
-                                                                .passwordConfirmVisibility,
+                                                                .invPasswordConfirmVisibility,
                                                       ),
                                                       focusNode: FocusNode(
                                                           skipTraversal: true),
                                                       child: Icon(
-                                                        _model.passwordConfirmVisibility
+                                                        _model.invPasswordConfirmVisibility
                                                             ? Icons
                                                                 .visibility_outlined
                                                             : Icons
@@ -631,8 +632,121 @@ class _OKFNPayry05RegisterInvWidgetState
                                                                 .primaryText,
                                                       ),
                                                   validator: _model
-                                                      .passwordConfirmControllerValidator
+                                                      .invPasswordConfirmControllerValidator
                                                       .asValidator(context),
+                                                ),
+                                              ),
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    -1.00, 0.00),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 10.0, 0.0, 10.0),
+                                                  child: FFButtonWidget(
+                                                    onPressed: () async {
+                                                      if (_model.formKey
+                                                                  .currentState ==
+                                                              null ||
+                                                          !_model.formKey
+                                                              .currentState!
+                                                              .validate()) {
+                                                        return;
+                                                      }
+                                                      FFAppState()
+                                                              .registerName =
+                                                          _model
+                                                              .invNameFieldController
+                                                              .text;
+                                                      FFAppState()
+                                                              .registerEmail =
+                                                          _model
+                                                              .invEmailFieldController
+                                                              .text;
+
+                                                      await currentUserReference!
+                                                          .update(
+                                                              createUsersRecordData(
+                                                        adminId: widget.id !=
+                                                                null
+                                                            ? oKFNPayry05RegisterInvUserInvitationsRecord
+                                                                .adminId
+                                                            : currentUserUid,
+                                                        isAdmin: false,
+                                                      ));
+
+                                                      await UserPermissionsRecord
+                                                          .collection
+                                                          .doc()
+                                                          .set(
+                                                              createUserPermissionsRecordData(
+                                                            uid: currentUserUid,
+                                                            adminId: valueOrDefault(
+                                                                currentUserDocument
+                                                                    ?.adminId,
+                                                                ''),
+                                                            createQr: false,
+                                                            readQr: false,
+                                                            createSms: false,
+                                                            readSms: false,
+                                                            readTransfers:
+                                                                false,
+                                                            createRefunds:
+                                                                false,
+                                                          ));
+                                                      await authManager
+                                                          .sendEmailVerification();
+
+                                                      context.goNamed(
+                                                          'OK_FN_Payry_06_confirmacionRegistro');
+                                                    },
+                                                    text: FFLocalizations.of(
+                                                            context)
+                                                        .getText(
+                                                      'fkgqxy52' /* Crea tu cuenta */,
+                                                    ),
+                                                    options: FFButtonOptions(
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          3.95,
+                                                      height: 50.0,
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      iconPadding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      color: Color(0xFF5E4A98),
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Lexend',
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                      elevation: 3.0,
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            Colors.transparent,
+                                                        width: 1.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10.0),
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
                                               Align(

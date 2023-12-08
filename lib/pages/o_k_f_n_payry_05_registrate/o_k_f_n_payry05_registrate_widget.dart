@@ -1,3 +1,5 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -566,6 +568,100 @@ class _OKFNPayry05RegistrateWidgetState
                                                 validator: _model
                                                     .passwordConfirmControllerValidator
                                                     .asValidator(context),
+                                              ),
+                                            ),
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  -1.00, 0.00),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 10.0, 0.0, 10.0),
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    if (_model.formKey
+                                                                .currentState ==
+                                                            null ||
+                                                        !_model.formKey
+                                                            .currentState!
+                                                            .validate()) {
+                                                      return;
+                                                    }
+                                                    FFAppState().registerName =
+                                                        _model
+                                                            .nameFieldController
+                                                            .text;
+                                                    FFAppState().registerEmail =
+                                                        _model
+                                                            .emailFieldController
+                                                            .text;
+
+                                                    await currentUserReference!
+                                                        .update(
+                                                            createUsersRecordData(
+                                                      adminId: currentUserUid,
+                                                    ));
+
+                                                    await UserPermissionsRecord
+                                                        .collection
+                                                        .doc()
+                                                        .set(
+                                                            createUserPermissionsRecordData(
+                                                          uid: currentUserUid,
+                                                          adminId: valueOrDefault(
+                                                              currentUserDocument
+                                                                  ?.adminId,
+                                                              ''),
+                                                          createQr: false,
+                                                          readQr: false,
+                                                          createSms: false,
+                                                          readSms: false,
+                                                          readTransfers: false,
+                                                          createRefunds: false,
+                                                        ));
+                                                    await authManager
+                                                        .sendEmailVerification();
+
+                                                    context.goNamed(
+                                                        'OK_FN_Payry_06_confirmacionRegistro');
+                                                  },
+                                                  text: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'rze6a28l' /* Crea tu cuenta */,
+                                                  ),
+                                                  options: FFButtonOptions(
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        3.95,
+                                                    height: 50.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: Color(0xFF5E4A98),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: Colors.white,
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.0),
+                                                  ),
+                                                ),
                                               ),
                                             ),
                                             Align(
