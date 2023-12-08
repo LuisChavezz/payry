@@ -1,9 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -653,27 +655,71 @@ class _OKFNPayry05RegisterInvWidgetState
                                                               .validate()) {
                                                         return;
                                                       }
-                                                      FFAppState()
-                                                              .registerName =
+                                                      GoRouter.of(context)
+                                                          .prepareAuthEvent();
+                                                      if (_model
+                                                              .invPasswordCreateController
+                                                              .text !=
                                                           _model
-                                                              .invNameFieldController
-                                                              .text;
-                                                      FFAppState()
-                                                              .registerEmail =
-                                                          _model
-                                                              .invEmailFieldController
-                                                              .text;
+                                                              .invPasswordConfirmController
+                                                              .text) {
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              'Passwords don\'t match!',
+                                                            ),
+                                                          ),
+                                                        );
+                                                        return;
+                                                      }
+
+                                                      final user = await authManager
+                                                          .createAccountWithEmail(
+                                                        context,
+                                                        _model
+                                                            .invEmailFieldController
+                                                            .text,
+                                                        _model
+                                                            .invPasswordCreateController
+                                                            .text,
+                                                      );
+                                                      if (user == null) {
+                                                        return;
+                                                      }
 
                                                       await currentUserReference!
-                                                          .update(
-                                                              createUsersRecordData(
-                                                        adminId: widget.id !=
-                                                                null
-                                                            ? oKFNPayry05RegisterInvUserInvitationsRecord
-                                                                .adminId
-                                                            : currentUserUid,
-                                                        isAdmin: false,
-                                                      ));
+                                                          .update({
+                                                        ...createUsersRecordData(
+                                                          adminId: widget.id !=
+                                                                  null
+                                                              ? oKFNPayry05RegisterInvUserInvitationsRecord
+                                                                  .adminId
+                                                              : currentUserUid,
+                                                          isAdmin: false,
+                                                          email: _model
+                                                              .invEmailFieldController
+                                                              .text,
+                                                          displayName: _model
+                                                              .invNameFieldController
+                                                              .text,
+                                                          photoUrl: '',
+                                                          phoneNumber: '',
+                                                          status: true,
+                                                          isValidPhoneNumber:
+                                                              false,
+                                                          isCompanyComplete:
+                                                              false,
+                                                        ),
+                                                        ...mapToFirestore(
+                                                          {
+                                                            'created_time':
+                                                                FieldValue
+                                                                    .serverTimestamp(),
+                                                          },
+                                                        ),
+                                                      });
 
                                                       await UserPermissionsRecord
                                                           .collection
@@ -696,14 +742,48 @@ class _OKFNPayry05RegisterInvWidgetState
                                                           ));
                                                       await authManager
                                                           .sendEmailVerification();
+                                                      try {
+                                                        final result =
+                                                            await FirebaseFunctions
+                                                                .instance
+                                                                .httpsCallable(
+                                                                    'generateToken')
+                                                                .call({
+                                                          "uid": currentUserUid,
+                                                        });
+                                                        _model.cloudFunctionGT =
+                                                            GenerateTokenCloudFunctionCallResponse(
+                                                          data: result.data,
+                                                          succeeded: true,
+                                                          resultAsString: result
+                                                              .data
+                                                              .toString(),
+                                                          jsonBody: result.data,
+                                                        );
+                                                      } on FirebaseFunctionsException catch (error) {
+                                                        _model.cloudFunctionGT =
+                                                            GenerateTokenCloudFunctionCallResponse(
+                                                          errorCode: error.code,
+                                                          succeeded: false,
+                                                        );
+                                                      }
 
-                                                      context.goNamed(
-                                                          'OK_FN_Payry_06_confirmacionRegistro');
+                                                      FFAppState().serverToken =
+                                                          _model
+                                                              .cloudFunctionGT!
+                                                              .jsonBody!
+                                                              .toString();
+
+                                                      context.goNamedAuth(
+                                                          'OK_FN_Payry_06_confirmacionRegistro',
+                                                          context.mounted);
+
+                                                      setState(() {});
                                                     },
                                                     text: FFLocalizations.of(
                                                             context)
                                                         .getText(
-                                                      'fkgqxy52' /* Crea tu cuenta */,
+                                                      'bpwboi6x' /* Crea tu cuenta */,
                                                     ),
                                                     options: FFButtonOptions(
                                                       width: MediaQuery.sizeOf(

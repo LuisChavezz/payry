@@ -2988,7 +2988,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': '',
       'en': '',
     },
-    'fkgqxy52': {
+    'bpwboi6x': {
       'es': 'Crea tu cuenta',
       'ar': '',
       'de': '',

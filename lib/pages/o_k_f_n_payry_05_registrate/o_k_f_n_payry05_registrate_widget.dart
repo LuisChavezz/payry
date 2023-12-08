@@ -587,20 +587,66 @@ class _OKFNPayry05RegistrateWidgetState
                                                             .validate()) {
                                                       return;
                                                     }
-                                                    FFAppState().registerName =
+                                                    GoRouter.of(context)
+                                                        .prepareAuthEvent();
+                                                    if (_model
+                                                            .passwordCreateController
+                                                            .text !=
                                                         _model
-                                                            .nameFieldController
-                                                            .text;
-                                                    FFAppState().registerEmail =
-                                                        _model
-                                                            .emailFieldController
-                                                            .text;
+                                                            .passwordConfirmController
+                                                            .text) {
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(
+                                                        SnackBar(
+                                                          content: Text(
+                                                            'Passwords don\'t match!',
+                                                          ),
+                                                        ),
+                                                      );
+                                                      return;
+                                                    }
+
+                                                    final user = await authManager
+                                                        .createAccountWithEmail(
+                                                      context,
+                                                      _model
+                                                          .emailFieldController
+                                                          .text,
+                                                      _model
+                                                          .passwordCreateController
+                                                          .text,
+                                                    );
+                                                    if (user == null) {
+                                                      return;
+                                                    }
 
                                                     await currentUserReference!
-                                                        .update(
-                                                            createUsersRecordData(
-                                                      adminId: currentUserUid,
-                                                    ));
+                                                        .update({
+                                                      ...createUsersRecordData(
+                                                        adminId: currentUserUid,
+                                                        email: _model
+                                                            .emailFieldController
+                                                            .text,
+                                                        displayName: _model
+                                                            .nameFieldController
+                                                            .text,
+                                                        photoUrl: '',
+                                                        phoneNumber: '',
+                                                        status: true,
+                                                        isValidPhoneNumber:
+                                                            false,
+                                                        isAdmin: true,
+                                                        isCompanyComplete:
+                                                            false,
+                                                      ),
+                                                      ...mapToFirestore(
+                                                        {
+                                                          'created_time': FieldValue
+                                                              .serverTimestamp(),
+                                                        },
+                                                      ),
+                                                    });
 
                                                     await UserPermissionsRecord
                                                         .collection
@@ -622,8 +668,9 @@ class _OKFNPayry05RegistrateWidgetState
                                                     await authManager
                                                         .sendEmailVerification();
 
-                                                    context.goNamed(
-                                                        'OK_FN_Payry_06_confirmacionRegistro');
+                                                    context.goNamedAuth(
+                                                        'OK_FN_Payry_06_confirmacionRegistro',
+                                                        context.mounted);
                                                   },
                                                   text: FFLocalizations.of(
                                                           context)
