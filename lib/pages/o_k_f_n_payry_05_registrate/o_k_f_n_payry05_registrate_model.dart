@@ -1,13 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'o_k_f_n_payry05_registrate_widget.dart'
     show OKFNPayry05RegistrateWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -18,6 +16,7 @@ class OKFNPayry05RegistrateModel
     extends FlutterFlowModel<OKFNPayry05RegistrateWidget> {
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   // State field(s) for NameField widget.
   FocusNode? nameFieldFocusNode;
@@ -26,7 +25,7 @@ class OKFNPayry05RegistrateModel
   String? _nameFieldControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'yszj7mhz' /* El nombre es requerido */,
+        '28papsit' /* El nombre es requerido */,
       );
     }
 
@@ -40,13 +39,13 @@ class OKFNPayry05RegistrateModel
   String? _emailFieldControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'h495oirp' /* El correo electrónico es reque... */,
+        'd9g3kky1' /* El correo electrónico es reque... */,
       );
     }
 
     if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
       return FFLocalizations.of(context).getText(
-        'zm1uxn9n' /* El correo electrónico es invál... */,
+        'wvq5uvay' /* El correo electrónico es invál... */,
       );
     }
     return null;
@@ -61,13 +60,13 @@ class OKFNPayry05RegistrateModel
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        '6vf8psrm' /* La contraseña es requerida */,
+        'yd0c2etn' /* La contraseña es requerida */,
       );
     }
 
     if (val.length < 6) {
       return FFLocalizations.of(context).getText(
-        'xfn6hfg9' /* La contraseña debe ser de alme... */,
+        '9nowmu28' /* La contraseña debe ser de alme... */,
       );
     }
 
@@ -83,21 +82,18 @@ class OKFNPayry05RegistrateModel
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'motqavr4' /* La confirmación de contraseña ... */,
+        'zvhste4m' /* La confirmación de contraseña ... */,
       );
     }
 
     if (val.length < 6) {
       return FFLocalizations.of(context).getText(
-        'jljcw2pc' /* La confirmación de contraseña ... */,
+        'a0yysijc' /* La confirmación de contraseña ... */,
       );
     }
 
     return null;
   }
-
-  // Stores action output result for [Cloud Function - generateToken] action in Button widget.
-  GenerateTokenCloudFunctionCallResponse? cloudFunctionGT;
 
   /// Initialization and disposal methods.
 
@@ -111,6 +107,7 @@ class OKFNPayry05RegistrateModel
   }
 
   void dispose() {
+    unfocusNode.dispose();
     nameFieldFocusNode?.dispose();
     nameFieldController?.dispose();
 

@@ -1572,7 +1572,6 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           0.0, 10.0, 0.0, 10.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
-                                          var _shouldSetState = false;
                                           if (_model.formKey.currentState ==
                                                   null ||
                                               !_model.formKey.currentState!
@@ -1629,7 +1628,6 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                             );
                                           }
 
-                                          _shouldSetState = true;
                                           if (!(oKFNPayry19FormularioEmpresaCompaniesRecord !=
                                               null)) {
                                             await CompaniesRecord.collection
@@ -1715,9 +1713,6 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                     Color(0xFF25253F),
                                               ),
                                             );
-                                            if (_shouldSetState)
-                                              setState(() {});
-                                            return;
                                           } else {
                                             await oKFNPayry19FormularioEmpresaCompaniesRecord!
                                                 .reference
@@ -1796,12 +1791,37 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                     Color(0xFF25253F),
                                               ),
                                             );
-                                            if (_shouldSetState)
-                                              setState(() {});
-                                            return;
                                           }
 
-                                          if (_shouldSetState) setState(() {});
+                                          try {
+                                            final result =
+                                                await FirebaseFunctions.instance
+                                                    .httpsCallable(
+                                                        'generateToken')
+                                                    .call({
+                                              "uid": currentUserUid,
+                                            });
+                                            _model.cloudFunctionGT =
+                                                GenerateTokenCloudFunctionCallResponse(
+                                              data: result.data,
+                                              succeeded: true,
+                                              resultAsString:
+                                                  result.data.toString(),
+                                              jsonBody: result.data,
+                                            );
+                                          } on FirebaseFunctionsException catch (error) {
+                                            _model.cloudFunctionGT =
+                                                GenerateTokenCloudFunctionCallResponse(
+                                              errorCode: error.code,
+                                              succeeded: false,
+                                            );
+                                          }
+
+                                          FFAppState().serverToken = _model
+                                              .cloudFunctionGT!.jsonBody!
+                                              .toString();
+
+                                          setState(() {});
                                         },
                                         text:
                                             FFLocalizations.of(context).getText(

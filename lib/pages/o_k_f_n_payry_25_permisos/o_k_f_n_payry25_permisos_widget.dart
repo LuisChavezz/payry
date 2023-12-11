@@ -130,11 +130,9 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
             ),
             body: SafeArea(
               top: true,
-              child: Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
-                child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(18.0, 18.0, 18.0, 18.0),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(18.0, 18.0, 18.0, 18.0),
+                child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.stretch,

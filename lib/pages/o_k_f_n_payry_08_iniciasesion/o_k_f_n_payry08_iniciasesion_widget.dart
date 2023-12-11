@@ -67,24 +67,24 @@ class _OKFNPayry08IniciasesionWidgetState
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Container(
-                    width: MediaQuery.sizeOf(context).width * 1.0,
-                    height: MediaQuery.sizeOf(context).height * 1.0,
-                    decoration: BoxDecoration(),
-                    child: Form(
-                      key: _model.formKey,
-                      autovalidateMode: AutovalidateMode.disabled,
-                      child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+          child: Align(
+            alignment: AlignmentDirectional(0.00, 0.00),
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Container(
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      decoration: BoxDecoration(),
+                      child: Form(
+                        key: _model.formKey,
+                        autovalidateMode: AutovalidateMode.disabled,
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -140,7 +140,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                               labelText:
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                'uznk89q3' /* Correo electrónico */,
+                                                'jum3v5xb' /* Correo electrónico */,
                                               ),
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
@@ -148,7 +148,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                               hintText:
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                '1tpe0m3n' /* Ingresa tu email... */,
+                                                '86w70zpm' /* Ingresa tu email... */,
                                               ),
                                               hintStyle:
                                                   FlutterFlowTheme.of(context)
@@ -222,7 +222,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                               labelText:
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                'he9c7fyw' /* Contraseña */,
+                                                'jz9na8jl' /* Contraseña */,
                                               ),
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
@@ -230,7 +230,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                               hintText:
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                '7v8neg1r' /* Ingresa tu contraseña... */,
+                                                'deinoihd' /* Ingresa tu contraseña... */,
                                               ),
                                               hintStyle:
                                                   FlutterFlowTheme.of(context)
@@ -308,121 +308,111 @@ class _OKFNPayry08IniciasesionWidgetState
                                                 .asValidator(context),
                                           ),
                                         ),
-                                        Container(
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  1.0,
-                                          decoration: BoxDecoration(),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Theme(
-                                                    data: ThemeData(
-                                                      checkboxTheme:
-                                                          CheckboxThemeData(
-                                                        visualDensity:
-                                                            VisualDensity
-                                                                .compact,
-                                                        materialTapTargetSize:
-                                                            MaterialTapTargetSize
-                                                                .shrinkWrap,
-                                                        shape:
-                                                            RoundedRectangleBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      4.0),
-                                                        ),
+                                        Wrap(
+                                          spacing: 4.0,
+                                          runSpacing: 4.0,
+                                          alignment: WrapAlignment.center,
+                                          crossAxisAlignment:
+                                              WrapCrossAlignment.start,
+                                          direction: Axis.horizontal,
+                                          runAlignment: WrapAlignment.start,
+                                          verticalDirection:
+                                              VerticalDirection.down,
+                                          clipBehavior: Clip.none,
+                                          children: [
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Theme(
+                                                  data: ThemeData(
+                                                    checkboxTheme:
+                                                        CheckboxThemeData(
+                                                      visualDensity:
+                                                          VisualDensity.compact,
+                                                      materialTapTargetSize:
+                                                          MaterialTapTargetSize
+                                                              .shrinkWrap,
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(4.0),
                                                       ),
-                                                      unselectedWidgetColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
                                                     ),
-                                                    child: Checkbox(
-                                                      value: _model
-                                                              .checkboxValue ??=
-                                                          false,
-                                                      onChanged:
-                                                          (newValue) async {
-                                                        setState(() => _model
-                                                                .checkboxValue =
-                                                            newValue!);
-                                                      },
-                                                      activeColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      checkColor: Colors.white,
-                                                    ),
+                                                    unselectedWidgetColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondaryText,
                                                   ),
-                                                  Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'cmb82twz' /* Recordarme */,
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Lexend',
-                                                          color:
-                                                              Color(0xFF8788A5),
-                                                        ),
+                                                  child: Checkbox(
+                                                    value:
+                                                        _model.checkboxValue ??=
+                                                            false,
+                                                    onChanged:
+                                                        (newValue) async {
+                                                      setState(() =>
+                                                          _model.checkboxValue =
+                                                              newValue!);
+                                                    },
+                                                    activeColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primary,
+                                                    checkColor: Colors.white,
                                                   ),
-                                                ],
-                                              ),
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    1.00, 0.00),
-                                                child: FFButtonWidget(
-                                                  onPressed: () async {
-                                                    context.pushNamed(
-                                                        'OK_FN_Payry_09_olvidecontrasena');
-                                                  },
-                                                  text: FFLocalizations.of(
-                                                          context)
+                                                ),
+                                                Text(
+                                                  FFLocalizations.of(context)
                                                       .getText(
-                                                    'm2xyjvuf' /* ¿Olvidaste tu contraseña? */,
+                                                    '4ps3fpl7' /* Recordarme */,
                                                   ),
-                                                  options: FFButtonOptions(
-                                                    width: 202.0,
-                                                    height: 40.0,
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
-                                                    iconPadding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
-                                                    color: Color(0x001A1F24),
-                                                    textStyle: FlutterFlowTheme
-                                                            .of(context)
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color:
+                                                            Color(0xFF8788A5),
+                                                      ),
+                                                ),
+                                              ],
+                                            ),
+                                            FFButtonWidget(
+                                              onPressed: () async {
+                                                context.pushNamed(
+                                                    'OK_FN_Payry_09_olvidecontrasena');
+                                              },
+                                              text: FFLocalizations.of(context)
+                                                  .getText(
+                                                'iw6obytv' /* ¿Olvidaste tu contraseña? */,
+                                              ),
+                                              options: FFButtonOptions(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color: Color(0x001A1F24),
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
                                                         .bodySmall
                                                         .override(
                                                           fontFamily: 'Lexend',
                                                           color:
                                                               Color(0xFF0FB978),
                                                         ),
-                                                    elevation: 0.0,
-                                                    borderSide: BorderSide(
-                                                      color: Colors.transparent,
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
+                                                elevation: 0.0,
+                                                borderSide: BorderSide(
+                                                  color: Colors.transparent,
+                                                  width: 1.0,
                                                 ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
                                         Padding(
                                           padding:
@@ -508,7 +498,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                                   text: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    'pphkhqmv' /* Iniciar sesión */,
+                                                    's9pxafcc' /* Iniciar sesión */,
                                                   ),
                                                   options: FFButtonOptions(
                                                     width: MediaQuery.sizeOf(
@@ -546,104 +536,82 @@ class _OKFNPayry08IniciasesionWidgetState
                                             ),
                                           ),
                                         ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.8,
-                                              height: 44.0,
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              child: Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.00, 0.00),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        'cjqb8ial' /* ¿Aún no tienes cuenta? */,
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(0.00, 0.00),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 12.0, 0.0, 0.0),
+                                            child: Wrap(
+                                              spacing: 4.0,
+                                              runSpacing: 4.0,
+                                              alignment: WrapAlignment.center,
+                                              crossAxisAlignment:
+                                                  WrapCrossAlignment.start,
+                                              direction: Axis.horizontal,
+                                              runAlignment: WrapAlignment.start,
+                                              verticalDirection:
+                                                  VerticalDirection.down,
+                                              clipBehavior: Clip.none,
+                                              children: [
+                                                Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    '7ia6ktrl' /* ¿Aún no tienes cuenta? */,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color:
+                                                            Color(0xFF8788A5),
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Lexend',
-                                                                color: Color(
-                                                                    0xFF8788A5),
-                                                              ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  5.0,
-                                                                  0.0,
-                                                                  4.0,
-                                                                  0.0),
-                                                      child: InkWell(
-                                                        splashColor:
-                                                            Colors.transparent,
-                                                        focusColor:
-                                                            Colors.transparent,
-                                                        hoverColor:
-                                                            Colors.transparent,
-                                                        highlightColor:
-                                                            Colors.transparent,
-                                                        onTap: () async {
-                                                          if (Navigator.of(
-                                                                  context)
-                                                              .canPop()) {
-                                                            context.pop();
-                                                          }
-                                                          context.pushNamed(
-                                                            'OK_FN_Payry_05_Registrate',
-                                                            queryParameters: {
-                                                              'id':
-                                                                  serializeParam(
-                                                                null,
-                                                                ParamType
-                                                                    .DocumentReference,
-                                                              ),
-                                                            }.withoutNulls,
-                                                          );
-                                                        },
-                                                        child: Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            'a0iimirx' /* Regístrate ahora */,
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Lexend',
-                                                                color: Color(
-                                                                    0xFF0FB978),
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
                                                 ),
-                                              ),
+                                                InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    if (Navigator.of(context)
+                                                        .canPop()) {
+                                                      context.pop();
+                                                    }
+                                                    context.pushNamed(
+                                                      'OK_FN_Payry_05_Registrate',
+                                                      queryParameters: {
+                                                        'id': serializeParam(
+                                                          null,
+                                                          ParamType
+                                                              .DocumentReference,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+                                                  },
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'at591blu' /* Regístrate ahora */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color:
+                                                              Color(0xFF0FB978),
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                          ],
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -655,10 +623,10 @@ class _OKFNPayry08IniciasesionWidgetState
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ],
+            ),
           ),
         ),
       ),

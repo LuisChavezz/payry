@@ -103,12 +103,6 @@ class FFAppState extends ChangeNotifier {
     prefs.setString('ff_androidAPN', _value);
   }
 
-  String _registerName = '';
-  String get registerName => _registerName;
-  set registerName(String _value) {
-    _registerName = _value;
-  }
-
   String _appleID = '6471020825';
   String get appleID => _appleID;
   set appleID(String _value) {
@@ -121,12 +115,6 @@ class FFAppState extends ChangeNotifier {
   set packageName(String _value) {
     _packageName = _value;
     prefs.setString('ff_packageName', _value);
-  }
-
-  String _registerEmail = '';
-  String get registerEmail => _registerEmail;
-  set registerEmail(String _value) {
-    _registerEmail = _value;
   }
 }
 

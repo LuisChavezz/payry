@@ -89,42 +89,69 @@ class _Payry60NotifConfigWidgetState extends State<Payry60NotifConfigWidget> {
             ).image,
           ),
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Expanded(
-                    child: Text(
-                      FFLocalizations.of(context).getText(
-                        'r72zvrv5' /* Elige el tipo de notificacione... */,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          'r72zvrv5' /* Elige el tipo de notificacione... */,
+                        ),
+                        textAlign: TextAlign.center,
+                        style: FlutterFlowTheme.of(context).bodySmall,
                       ),
-                      textAlign: TextAlign.center,
-                      style: FlutterFlowTheme.of(context).bodySmall,
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-              child: SwitchListTile.adaptive(
-                value: _model.switchListTileValue1 ??= true,
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                child: SwitchListTile.adaptive(
+                  value: _model.switchListTileValue1 ??= true,
+                  onChanged: (newValue) async {
+                    setState(() => _model.switchListTileValue1 = newValue!);
+                  },
+                  title: Text(
+                    FFLocalizations.of(context).getText(
+                      'gjygkr0n' /* Notificaciones Push */,
+                    ),
+                    style: FlutterFlowTheme.of(context).headlineSmall,
+                  ),
+                  subtitle: Text(
+                    FFLocalizations.of(context).getText(
+                      '3y3yhxbk' /* Recibe notificaciones push de ... */,
+                    ),
+                    style: FlutterFlowTheme.of(context).bodySmall,
+                  ),
+                  tileColor: FlutterFlowTheme.of(context).secondaryBackground,
+                  activeColor: FlutterFlowTheme.of(context).tertiary,
+                  activeTrackColor: FlutterFlowTheme.of(context).primary,
+                  dense: false,
+                  controlAffinity: ListTileControlAffinity.trailing,
+                  contentPadding:
+                      EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
+                ),
+              ),
+              SwitchListTile.adaptive(
+                value: _model.switchListTileValue2 ??= true,
                 onChanged: (newValue) async {
-                  setState(() => _model.switchListTileValue1 = newValue!);
+                  setState(() => _model.switchListTileValue2 = newValue!);
                 },
                 title: Text(
                   FFLocalizations.of(context).getText(
-                    'gjygkr0n' /* Notificaciones Push */,
+                    '1ytebj35' /* Email Notifications */,
                   ),
                   style: FlutterFlowTheme.of(context).headlineSmall,
                 ),
                 subtitle: Text(
                   FFLocalizations.of(context).getText(
-                    '3y3yhxbk' /* Recibe notificaciones push de ... */,
+                    '9lvh5nst' /* Recine notificaciones por corr... */,
                   ),
                   style: FlutterFlowTheme.of(context).bodySmall,
                 ),
@@ -136,62 +163,37 @@ class _Payry60NotifConfigWidgetState extends State<Payry60NotifConfigWidget> {
                 contentPadding:
                     EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
               ),
-            ),
-            SwitchListTile.adaptive(
-              value: _model.switchListTileValue2 ??= true,
-              onChanged: (newValue) async {
-                setState(() => _model.switchListTileValue2 = newValue!);
-              },
-              title: Text(
-                FFLocalizations.of(context).getText(
-                  '1ytebj35' /* Email Notifications */,
-                ),
-                style: FlutterFlowTheme.of(context).headlineSmall,
-              ),
-              subtitle: Text(
-                FFLocalizations.of(context).getText(
-                  '9lvh5nst' /* Recine notificaciones por corr... */,
-                ),
-                style: FlutterFlowTheme.of(context).bodySmall,
-              ),
-              tileColor: FlutterFlowTheme.of(context).secondaryBackground,
-              activeColor: FlutterFlowTheme.of(context).tertiary,
-              activeTrackColor: FlutterFlowTheme.of(context).primary,
-              dense: false,
-              controlAffinity: ListTileControlAffinity.trailing,
-              contentPadding:
-                  EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
-              child: FFButtonWidget(
-                onPressed: () async {
-                  context.pop();
-                },
-                text: FFLocalizations.of(context).getText(
-                  'isgrgbfs' /* Guardar cambios */,
-                ),
-                options: FFButtonOptions(
-                  width: 190.0,
-                  height: 50.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  color: FlutterFlowTheme.of(context).primary,
-                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Lexend',
-                        color: FlutterFlowTheme.of(context).back3,
-                      ),
-                  elevation: 3.0,
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1.0,
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    context.pop();
+                  },
+                  text: FFLocalizations.of(context).getText(
+                    'isgrgbfs' /* Guardar cambios */,
                   ),
-                  borderRadius: BorderRadius.circular(30.0),
+                  options: FFButtonOptions(
+                    width: 190.0,
+                    height: 50.0,
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).primary,
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Lexend',
+                          color: FlutterFlowTheme.of(context).back3,
+                        ),
+                    elevation: 3.0,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
