@@ -1,3 +1,6 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/components/empty_list/empty_list_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -70,7 +73,7 @@ class _OKFNPayry37FacturasWidgetState extends State<OKFNPayry37FacturasWidget> {
         ),
         title: Text(
           FFLocalizations.of(context).getText(
-            '4bjqyvsl' /* Facturas y solicitudes */,
+            '4bjqyvsl' /* Facturación */,
           ),
           style: FlutterFlowTheme.of(context).titleSmall.override(
                 fontFamily: 'Lexend',
@@ -89,110 +92,237 @@ class _OKFNPayry37FacturasWidgetState extends State<OKFNPayry37FacturasWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
-                  child: ListView(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
+                SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
                     children: [
-                      Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 8.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                'lp64r26g' /* 2023 */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Lexend',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                  ),
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                        child: AuthUserStreamWidget(
+                          builder: (context) =>
+                              StreamBuilder<List<InvoicesRecord>>(
+                            stream: queryInvoicesRecord(
+                              queryBuilder: (invoicesRecord) => invoicesRecord
+                                  .where(
+                                    'admin_id',
+                                    isEqualTo: valueOrDefault(
+                                        currentUserDocument?.adminId, ''),
+                                  )
+                                  .orderBy('created_time', descending: true),
                             ),
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Container(
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
                                     width: 40.0,
                                     height: 40.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Icon(
-                                      FFIcons.kcompartir,
+                                    child: SpinKitPumpingHeart(
                                       color:
-                                          FlutterFlowTheme.of(context).accent3,
-                                      size: 20.0,
+                                          FlutterFlowTheme.of(context).primary,
+                                      size: 40.0,
                                     ),
                                   ),
-                                  Padding(
+                                );
+                              }
+                              List<InvoicesRecord> listViewInvoicesRecordList =
+                                  snapshot.data!;
+                              if (listViewInvoicesRecordList.isEmpty) {
+                                return EmptyListWidget(
+                                  title: 'Sin transacciones',
+                                  message:
+                                      'Aun no hay transacciones realizadas',
+                                );
+                              }
+                              return ListView.builder(
+                                padding: EdgeInsets.zero,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: listViewInvoicesRecordList.length,
+                                itemBuilder: (context, listViewIndex) {
+                                  final listViewInvoicesRecord =
+                                      listViewInvoicesRecordList[listViewIndex];
+                                  return Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        8.0, 0.0, 0.0, 0.0),
+                                        0.0, 0.0, 0.0, 18.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            'pq92bcmx' /* Agosto */,
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 8.0),
+                                          child: Text(
+                                            dateTimeFormat(
+                                              'd MMM, y',
+                                              listViewInvoicesRecord
+                                                  .createdTime!,
+                                              locale:
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
                                           ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Lexend',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
                                         ),
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            'nxgzminm' /* STATUS */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Lexend',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent3,
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            var confirmDialogResponse =
+                                                await showDialog<bool>(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return AlertDialog(
+                                                          title: Text(
+                                                              '¿Deseas visualizar la factura? '),
+                                                          content: Text(
+                                                              'Da click en \"Visualizar\" para ir al enlace del documento de la factura (PDF).'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext,
+                                                                      false),
+                                                              child: Text(
+                                                                  'Cancelar'),
+                                                            ),
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext,
+                                                                      true),
+                                                              child: Text(
+                                                                  'Visualizar'),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    ) ??
+                                                    false;
+                                            if (confirmDialogResponse) {
+                                              await launchURL(
+                                                  listViewInvoicesRecord
+                                                      .invoiceUrl);
+                                              return;
+                                            } else {
+                                              return;
+                                            }
+                                          },
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Container(
+                                                    width: 40.0,
+                                                    height: 40.0,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      shape: BoxShape.circle,
+                                                    ),
+                                                    child: Icon(
+                                                      FFIcons.kfactura,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .accent3,
+                                                      size: 20.0,
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(8.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Text(
+                                                          listViewInvoicesRecord
+                                                              .concept,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Lexend',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                              ),
+                                                        ),
+                                                        Text(
+                                                          listViewInvoicesRecord
+                                                              .status,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Lexend',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .accent3,
+                                                              ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
+                                              Text(
+                                                formatNumber(
+                                                  listViewInvoicesRecord.amount,
+                                                  formatType: FormatType.custom,
+                                                  currency: '\$',
+                                                  format: '#,###.00##',
+                                                  locale: 'es_MX',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .accent3,
+                                                          fontWeight:
+                                                              FontWeight.w200,
+                                                        ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  '05sty2wn' /* $3,169.14 */,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Lexend',
-                                      color:
-                                          FlutterFlowTheme.of(context).accent3,
-                                      fontWeight: FontWeight.w200,
-                                    ),
-                              ),
-                            ],
+                                  );
+                                },
+                              );
+                            },
                           ),
-                        ],
+                        ),
                       ),
                     ],
                   ),

@@ -1942,31 +1942,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // OK_FN_Payry_37_facturas
   {
     '4bjqyvsl': {
-      'es': 'Facturas y solicitudes',
-      'ar': '',
-      'de': '',
-      'en': '',
-    },
-    'lp64r26g': {
-      'es': '2023',
-      'ar': '',
-      'de': '',
-      'en': '',
-    },
-    'pq92bcmx': {
-      'es': 'Agosto',
-      'ar': '',
-      'de': '',
-      'en': '',
-    },
-    'nxgzminm': {
-      'es': 'STATUS',
-      'ar': '',
-      'de': '',
-      'en': '',
-    },
-    '05sty2wn': {
-      'es': '\$3,169.14',
+      'es': 'Facturación',
       'ar': '',
       'de': '',
       'en': '',

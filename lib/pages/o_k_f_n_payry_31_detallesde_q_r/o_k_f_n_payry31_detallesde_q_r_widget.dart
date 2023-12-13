@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -573,11 +572,10 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                   0.0, 10.0, 0.0, 10.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
-                                              await actions.downloadFileFromUrl(
-                                                functions.imagePathToString(
-                                                    oKFNPayry31DetallesdeQRQrRecord
-                                                        .qrUrl),
-                                              );
+                                              await launchURL(
+                                                  functions.imagePathToString(
+                                                      oKFNPayry31DetallesdeQRQrRecord
+                                                          .qrUrl)!);
                                             },
                                             text: FFLocalizations.of(context)
                                                 .getText(
