@@ -103,7 +103,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                         children: [
                           Text(
                             FFLocalizations.of(context).getText(
-                              'esga664l' /* Más opciones */,
+                              'esga664l' /* Más opcione */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .titleLarge

@@ -2851,7 +2851,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // OK_FN_Payry_13_Menumas
   {
     'esga664l': {
-      'es': 'Más opciones',
+      'es': 'Más opcione',
       'ar': 'المزيد من الخيارات',
       'de': 'Mehr Optionen',
       'en': 'More options',
