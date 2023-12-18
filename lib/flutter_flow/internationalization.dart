@@ -2887,13 +2887,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Statistics',
     },
     'mn3tvowu': {
-      'es': 'Usuarios ',
+      'es': 'Usuarios',
       'ar': '',
       'de': '',
       'en': '',
     },
     'nu9pixgd': {
-      'es': 'Documentación',
+      'es': 'Documentación ',
       'ar': '',
       'de': '',
       'en': '',

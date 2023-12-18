@@ -1510,7 +1510,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           ),
                                           Text(
                                             FFLocalizations.of(context).getText(
-                                              'mn3tvowu' /* Usuarios  */,
+                                              'mn3tvowu' /* Usuarios */,
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -1586,7 +1586,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                         ),
                                         Text(
                                           FFLocalizations.of(context).getText(
-                                            'nu9pixgd' /* Documentación */,
+                                            'nu9pixgd' /* Documentación  */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
