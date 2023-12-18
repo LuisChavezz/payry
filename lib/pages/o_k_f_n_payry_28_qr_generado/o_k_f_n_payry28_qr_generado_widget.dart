@@ -132,8 +132,7 @@ class _OKFNPayry28QrGeneradoWidgetState
                             borderRadius: BorderRadius.circular(15.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 24.0, 24.0, 24.0),
+                            padding: EdgeInsets.all(24.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -164,8 +163,7 @@ class _OKFNPayry28QrGeneradoWidgetState
                             borderRadius: BorderRadius.circular(15.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                18.0, 18.0, 18.0, 18.0),
+                            padding: EdgeInsets.all(18.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -282,7 +280,7 @@ class _OKFNPayry28QrGeneradoWidgetState
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(-1.00, 0.00),
+                        alignment: AlignmentDirectional(-1.0, 0.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               18.0, 0.0, 18.0, 18.0),

@@ -21,11 +21,6 @@ class InvoicesRecord extends FirestoreRecord {
   String get adminId => _adminId ?? '';
   bool hasAdminId() => _adminId != null;
 
-  // "invoice_url" field.
-  String? _invoiceUrl;
-  String get invoiceUrl => _invoiceUrl ?? '';
-  bool hasInvoiceUrl() => _invoiceUrl != null;
-
   // "amount" field.
   double? _amount;
   double get amount => _amount ?? 0.0;
@@ -46,13 +41,24 @@ class InvoicesRecord extends FirestoreRecord {
   DateTime? get createdTime => _createdTime;
   bool hasCreatedTime() => _createdTime != null;
 
+  // "invoice_pdf_url" field.
+  String? _invoicePdfUrl;
+  String get invoicePdfUrl => _invoicePdfUrl ?? '';
+  bool hasInvoicePdfUrl() => _invoicePdfUrl != null;
+
+  // "invoice_xml_url" field.
+  String? _invoiceXmlUrl;
+  String get invoiceXmlUrl => _invoiceXmlUrl ?? '';
+  bool hasInvoiceXmlUrl() => _invoiceXmlUrl != null;
+
   void _initializeFields() {
     _adminId = snapshotData['admin_id'] as String?;
-    _invoiceUrl = snapshotData['invoice_url'] as String?;
     _amount = castToType<double>(snapshotData['amount']);
     _concept = snapshotData['concept'] as String?;
     _status = snapshotData['status'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
+    _invoicePdfUrl = snapshotData['invoice_pdf_url'] as String?;
+    _invoiceXmlUrl = snapshotData['invoice_xml_url'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -91,20 +97,22 @@ class InvoicesRecord extends FirestoreRecord {
 
 Map<String, dynamic> createInvoicesRecordData({
   String? adminId,
-  String? invoiceUrl,
   double? amount,
   String? concept,
   String? status,
   DateTime? createdTime,
+  String? invoicePdfUrl,
+  String? invoiceXmlUrl,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'admin_id': adminId,
-      'invoice_url': invoiceUrl,
       'amount': amount,
       'concept': concept,
       'status': status,
       'created_time': createdTime,
+      'invoice_pdf_url': invoicePdfUrl,
+      'invoice_xml_url': invoiceXmlUrl,
     }.withoutNulls,
   );
 
@@ -117,21 +125,23 @@ class InvoicesRecordDocumentEquality implements Equality<InvoicesRecord> {
   @override
   bool equals(InvoicesRecord? e1, InvoicesRecord? e2) {
     return e1?.adminId == e2?.adminId &&
-        e1?.invoiceUrl == e2?.invoiceUrl &&
         e1?.amount == e2?.amount &&
         e1?.concept == e2?.concept &&
         e1?.status == e2?.status &&
-        e1?.createdTime == e2?.createdTime;
+        e1?.createdTime == e2?.createdTime &&
+        e1?.invoicePdfUrl == e2?.invoicePdfUrl &&
+        e1?.invoiceXmlUrl == e2?.invoiceXmlUrl;
   }
 
   @override
   int hash(InvoicesRecord? e) => const ListEquality().hash([
         e?.adminId,
-        e?.invoiceUrl,
         e?.amount,
         e?.concept,
         e?.status,
-        e?.createdTime
+        e?.createdTime,
+        e?.invoicePdfUrl,
+        e?.invoiceXmlUrl
       ]);
 
   @override

@@ -107,7 +107,7 @@ class _StatusDropdownWidgetState extends State<StatusDropdownWidget> {
       borderColor: Colors.transparent,
       borderWidth: 0.0,
       borderRadius: 8.0,
-      margin: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+      margin: EdgeInsets.all(0.0),
       hidesUnderline: true,
       isSearchable: false,
       isMultiSelect: false,

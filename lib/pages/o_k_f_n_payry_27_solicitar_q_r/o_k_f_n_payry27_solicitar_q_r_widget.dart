@@ -113,8 +113,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                     key: _model.formKey,
                     autovalidateMode: AutovalidateMode.disabled,
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          12.0, 12.0, 12.0, 12.0),
+                      padding: EdgeInsets.all(12.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -270,7 +269,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(-1.00, 0.00),
+                              alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 10.0, 0.0, 10.0),
@@ -322,8 +321,9 @@ class _OKFNPayry27SolicitarQRWidgetState
                                           concept: _model
                                               .conceptFieldController.text,
                                           status: 'PENDIENTE',
-                                          qrUrl:
-                                              _model.cloudFunctionik3?.jsonBody,
+                                          qrUrl: _model
+                                              .cloudFunctionik3?.jsonBody
+                                              ?.toString(),
                                           voucherUrl: '',
                                         ),
                                         ...mapToFirestore(
@@ -344,8 +344,9 @@ class _OKFNPayry27SolicitarQRWidgetState
                                           concept: _model
                                               .conceptFieldController.text,
                                           status: 'PENDIENTE',
-                                          qrUrl:
-                                              _model.cloudFunctionik3?.jsonBody,
+                                          qrUrl: _model
+                                              .cloudFunctionik3?.jsonBody
+                                              ?.toString(),
                                           voucherUrl: '',
                                         ),
                                         ...mapToFirestore(
@@ -448,7 +449,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: Padding(
                   padding:
                       EdgeInsetsDirectional.fromSTEB(40.0, 40.0, 40.0, 50.0),
@@ -462,8 +463,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                     options: FFButtonOptions(
                       width: MediaQuery.sizeOf(context).width * 10.0,
                       height: 50.0,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      padding: EdgeInsets.all(0.0),
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).accent4,

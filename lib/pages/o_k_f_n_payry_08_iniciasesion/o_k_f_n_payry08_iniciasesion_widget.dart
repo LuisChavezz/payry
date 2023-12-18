@@ -68,7 +68,7 @@ class _OKFNPayry08IniciasesionWidgetState
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.00, 0.00),
+            alignment: AlignmentDirectional(0.0, 0.0),
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
               child: SingleChildScrollView(
@@ -106,7 +106,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                       children: [
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.00, 0.00),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -202,6 +202,8 @@ class _OKFNPayry08IniciasesionWidgetState
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
+                                            keyboardType:
+                                                TextInputType.emailAddress,
                                             validator: _model
                                                 .emailFieldControllerValidator
                                                 .asValidator(context),
@@ -425,7 +427,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                             decoration: BoxDecoration(),
                                             child: Align(
                                               alignment: AlignmentDirectional(
-                                                  -1.00, 0.00),
+                                                  -1.0, 0.0),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -538,7 +540,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.00, 0.00),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(

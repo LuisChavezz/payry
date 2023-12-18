@@ -74,7 +74,7 @@ class _OKFNPayry09OlvidecontrasenaWidgetState
           ),
         ),
         title: Align(
-          alignment: AlignmentDirectional(0.00, 0.00),
+          alignment: AlignmentDirectional(0.0, 0.0),
           child: Text(
             FFLocalizations.of(context).getText(
               'g416xg9f' /* Recupera tu contraseña */,
@@ -92,7 +92,7 @@ class _OKFNPayry09OlvidecontrasenaWidgetState
       body: SafeArea(
         top: true,
         child: Align(
-          alignment: AlignmentDirectional(0.00, 0.00),
+          alignment: AlignmentDirectional(0.0, 0.0),
           child: Container(
             width: MediaQuery.sizeOf(context).width * 1.0,
             height: MediaQuery.sizeOf(context).height * 1.0,
@@ -203,7 +203,7 @@ class _OKFNPayry09OlvidecontrasenaWidgetState
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 20.0, 0.0, 10.0),

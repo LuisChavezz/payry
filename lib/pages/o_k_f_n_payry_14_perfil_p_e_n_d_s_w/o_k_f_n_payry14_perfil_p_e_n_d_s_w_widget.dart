@@ -76,7 +76,7 @@ class _OKFNPayry14PerfilPENDSWWidgetState
             },
           ),
           title: Align(
-            alignment: AlignmentDirectional(-1.00, 0.00),
+            alignment: AlignmentDirectional(-1.0, 0.0),
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(105.0, 0.0, 0.0, 0.0),
               child: Text(
@@ -132,7 +132,7 @@ class _OKFNPayry14PerfilPENDSWWidgetState
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: AuthUserStreamWidget(
                                 builder: (context) => Container(
                                   width: 100.0,
@@ -206,8 +206,7 @@ class _OKFNPayry14PerfilPENDSWWidgetState
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          16.0, 16.0, 16.0, 16.0),
+                      padding: EdgeInsets.all(16.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,

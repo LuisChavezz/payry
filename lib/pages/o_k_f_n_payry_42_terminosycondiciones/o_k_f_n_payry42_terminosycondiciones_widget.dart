@@ -104,7 +104,7 @@ class _OKFNPayry42TerminosycondicionesWidgetState
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(-1.00, 0.00),
+                    alignment: AlignmentDirectional(-1.0, 0.0),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(23.0, 0.0, 0.0, 0.0),
@@ -146,7 +146,7 @@ class _OKFNPayry42TerminosycondicionesWidgetState
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(-1.00, 0.00),
+                    alignment: AlignmentDirectional(-1.0, 0.0),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(23.0, 0.0, 0.0, 0.0),
@@ -165,7 +165,7 @@ class _OKFNPayry42TerminosycondicionesWidgetState
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(-1.00, 0.00),
+                    alignment: AlignmentDirectional(-1.0, 0.0),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(23.0, 20.0, 0.0, 0.0),
@@ -193,7 +193,7 @@ class _OKFNPayry42TerminosycondicionesWidgetState
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(-1.00, 0.00),
+                    alignment: AlignmentDirectional(-1.0, 0.0),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(23.0, 15.0, 0.0, 0.0),

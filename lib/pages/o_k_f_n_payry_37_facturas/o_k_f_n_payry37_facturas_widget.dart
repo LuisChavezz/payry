@@ -87,7 +87,7 @@ class _OKFNPayry37FacturasWidgetState extends State<OKFNPayry37FacturasWidget> {
       body: SafeArea(
         top: true,
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(18.0, 18.0, 18.0, 18.0),
+          padding: EdgeInsets.all(18.0),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -187,25 +187,25 @@ class _OKFNPayry37FacturasWidgetState extends State<OKFNPayry37FacturasWidget> {
                                                           (alertDialogContext) {
                                                         return AlertDialog(
                                                           title: Text(
-                                                              '¿Deseas visualizar la factura? '),
+                                                              'Abrir documento '),
                                                           content: Text(
-                                                              'Da click en \"Visualizar\" para ir al enlace del documento de la factura (PDF).'),
+                                                              'Elige en que documento deseas descargar la factura.'),
                                                           actions: [
                                                             TextButton(
                                                               onPressed: () =>
                                                                   Navigator.pop(
                                                                       alertDialogContext,
                                                                       false),
-                                                              child: Text(
-                                                                  'Cancelar'),
+                                                              child:
+                                                                  Text('XML'),
                                                             ),
                                                             TextButton(
                                                               onPressed: () =>
                                                                   Navigator.pop(
                                                                       alertDialogContext,
                                                                       true),
-                                                              child: Text(
-                                                                  'Visualizar'),
+                                                              child:
+                                                                  Text('PDF'),
                                                             ),
                                                           ],
                                                         );
@@ -215,9 +215,12 @@ class _OKFNPayry37FacturasWidgetState extends State<OKFNPayry37FacturasWidget> {
                                             if (confirmDialogResponse) {
                                               await launchURL(
                                                   listViewInvoicesRecord
-                                                      .invoiceUrl);
+                                                      .invoicePdfUrl);
                                               return;
                                             } else {
+                                              await launchURL(
+                                                  listViewInvoicesRecord
+                                                      .invoiceXmlUrl);
                                               return;
                                             }
                                           },

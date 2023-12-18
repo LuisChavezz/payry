@@ -132,7 +132,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                 ),
               ),
               title: Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 50.0, 0.0),
                   child: Text(
@@ -154,7 +154,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
             body: SafeArea(
               top: true,
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(18.0, 18.0, 18.0, 18.0),
+                padding: EdgeInsets.all(18.0),
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -162,15 +162,14 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                     borderRadius: BorderRadius.circular(15.0),
                   ),
                   child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(18.0, 18.0, 18.0, 18.0),
+                    padding: EdgeInsets.all(18.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(0.00, 0.00),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 16.0, 0.0, 16.0),
@@ -530,6 +529,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 .primaryText,
                                             fontWeight: FontWeight.normal,
                                           ),
+                                      keyboardType: TextInputType.emailAddress,
                                       validator: _model
                                           .emailFieldControllerValidator
                                           .asValidator(context),
@@ -1566,7 +1566,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                     ),
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(0.00, 0.00),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 10.0),
@@ -1859,8 +1859,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                   if (oKFNPayry19FormularioEmpresaCompaniesRecord !=
                                       null)
                                     Align(
-                                      alignment:
-                                          AlignmentDirectional(0.00, 0.00),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 10.0, 0.0, 10.0),
@@ -1926,8 +1925,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                   if (oKFNPayry19FormularioEmpresaCompaniesRecord !=
                                       null)
                                     Align(
-                                      alignment:
-                                          AlignmentDirectional(0.00, 0.00),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 10.0, 0.0, 10.0),

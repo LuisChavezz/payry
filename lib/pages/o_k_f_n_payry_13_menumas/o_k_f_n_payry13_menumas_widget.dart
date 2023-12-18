@@ -63,6 +63,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             body: Center(
               child: SizedBox(
                 width: 40.0,
@@ -83,6 +84,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                 : null;
         return Scaffold(
           key: scaffoldKey,
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           body: SafeArea(
             top: true,
             child: Stack(
@@ -1644,10 +1646,6 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                       List<CompaniesRecord>
                                           containerCompaniesRecordList =
                                           snapshot.data!;
-                                      // Return an empty Container when the item does not exist.
-                                      if (snapshot.data!.isEmpty) {
-                                        return Container();
-                                      }
                                       final containerCompaniesRecord =
                                           containerCompaniesRecordList
                                                   .isNotEmpty
@@ -2496,7 +2494,7 @@ versión clara */
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.00, 0.97),
+                  alignment: AlignmentDirectional(0.0, 0.97),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 18.0),
