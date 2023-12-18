@@ -294,7 +294,7 @@ class _OKFNPayry34OpcionesSMSWidgetState
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.00, 1.00),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 18.0),

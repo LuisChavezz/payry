@@ -82,7 +82,7 @@ class _OKFNPayry23InvitarUsuarioWidgetState
             ),
           ),
           title: Align(
-            alignment: AlignmentDirectional(-1.00, 0.00),
+            alignment: AlignmentDirectional(-1.0, 0.0),
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(70.0, 0.0, 0.0, 0.0),
               child: Text(
@@ -114,14 +114,13 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                 key: _model.formKey,
                 autovalidateMode: AutovalidateMode.disabled,
                 child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
+                  padding: EdgeInsets.all(12.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(-1.00, 0.00),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 12.0),
@@ -212,7 +211,7 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(-1.00, 0.00),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 10.0),

@@ -8,18 +8,13 @@ import '/backend/schema/util/schema_util.dart';
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class QrRecord extends FirestoreRecord {
-  QrRecord._(
+class InvoicesRecord extends FirestoreRecord {
+  InvoicesRecord._(
     DocumentReference reference,
     Map<String, dynamic> data,
   ) : super(reference, data) {
     _initializeFields();
   }
-
-  // "uid" field.
-  String? _uid;
-  String get uid => _uid ?? '';
-  bool hasUid() => _uid != null;
 
   // "admin_id" field.
   String? _adminId;
@@ -41,128 +36,114 @@ class QrRecord extends FirestoreRecord {
   String get status => _status ?? '';
   bool hasStatus() => _status != null;
 
-  // "voucher_url" field.
-  String? _voucherUrl;
-  String get voucherUrl => _voucherUrl ?? '';
-  bool hasVoucherUrl() => _voucherUrl != null;
-
   // "created_time" field.
   DateTime? _createdTime;
   DateTime? get createdTime => _createdTime;
   bool hasCreatedTime() => _createdTime != null;
 
-  // "qr_url" field.
-  String? _qrUrl;
-  String get qrUrl => _qrUrl ?? '';
-  bool hasQrUrl() => _qrUrl != null;
+  // "invoice_pdf_url" field.
+  String? _invoicePdfUrl;
+  String get invoicePdfUrl => _invoicePdfUrl ?? '';
+  bool hasInvoicePdfUrl() => _invoicePdfUrl != null;
 
-  // "qr_id" field.
-  String? _qrId;
-  String get qrId => _qrId ?? '';
-  bool hasQrId() => _qrId != null;
+  // "invoice_xml_url" field.
+  String? _invoiceXmlUrl;
+  String get invoiceXmlUrl => _invoiceXmlUrl ?? '';
+  bool hasInvoiceXmlUrl() => _invoiceXmlUrl != null;
 
   void _initializeFields() {
-    _uid = snapshotData['uid'] as String?;
     _adminId = snapshotData['admin_id'] as String?;
     _amount = castToType<double>(snapshotData['amount']);
     _concept = snapshotData['concept'] as String?;
     _status = snapshotData['status'] as String?;
-    _voucherUrl = snapshotData['voucher_url'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
-    _qrUrl = snapshotData['qr_url'] as String?;
-    _qrId = snapshotData['qr_id'] as String?;
+    _invoicePdfUrl = snapshotData['invoice_pdf_url'] as String?;
+    _invoiceXmlUrl = snapshotData['invoice_xml_url'] as String?;
   }
 
   static CollectionReference get collection =>
-      FirebaseFirestore.instance.collection('qr');
+      FirebaseFirestore.instance.collection('invoices');
 
-  static Stream<QrRecord> getDocument(DocumentReference ref) =>
-      ref.snapshots().map((s) => QrRecord.fromSnapshot(s));
+  static Stream<InvoicesRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => InvoicesRecord.fromSnapshot(s));
 
-  static Future<QrRecord> getDocumentOnce(DocumentReference ref) =>
-      ref.get().then((s) => QrRecord.fromSnapshot(s));
+  static Future<InvoicesRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => InvoicesRecord.fromSnapshot(s));
 
-  static QrRecord fromSnapshot(DocumentSnapshot snapshot) => QrRecord._(
+  static InvoicesRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      InvoicesRecord._(
         snapshot.reference,
         mapFromFirestore(snapshot.data() as Map<String, dynamic>),
       );
 
-  static QrRecord getDocumentFromData(
+  static InvoicesRecord getDocumentFromData(
     Map<String, dynamic> data,
     DocumentReference reference,
   ) =>
-      QrRecord._(reference, mapFromFirestore(data));
+      InvoicesRecord._(reference, mapFromFirestore(data));
 
   @override
   String toString() =>
-      'QrRecord(reference: ${reference.path}, data: $snapshotData)';
+      'InvoicesRecord(reference: ${reference.path}, data: $snapshotData)';
 
   @override
   int get hashCode => reference.path.hashCode;
 
   @override
   bool operator ==(other) =>
-      other is QrRecord &&
+      other is InvoicesRecord &&
       reference.path.hashCode == other.reference.path.hashCode;
 }
 
-Map<String, dynamic> createQrRecordData({
-  String? uid,
+Map<String, dynamic> createInvoicesRecordData({
   String? adminId,
   double? amount,
   String? concept,
   String? status,
-  String? voucherUrl,
   DateTime? createdTime,
-  String? qrUrl,
-  String? qrId,
+  String? invoicePdfUrl,
+  String? invoiceXmlUrl,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'uid': uid,
       'admin_id': adminId,
       'amount': amount,
       'concept': concept,
       'status': status,
-      'voucher_url': voucherUrl,
       'created_time': createdTime,
-      'qr_url': qrUrl,
-      'qr_id': qrId,
+      'invoice_pdf_url': invoicePdfUrl,
+      'invoice_xml_url': invoiceXmlUrl,
     }.withoutNulls,
   );
 
   return firestoreData;
 }
 
-class QrRecordDocumentEquality implements Equality<QrRecord> {
-  const QrRecordDocumentEquality();
+class InvoicesRecordDocumentEquality implements Equality<InvoicesRecord> {
+  const InvoicesRecordDocumentEquality();
 
   @override
-  bool equals(QrRecord? e1, QrRecord? e2) {
-    return e1?.uid == e2?.uid &&
-        e1?.adminId == e2?.adminId &&
+  bool equals(InvoicesRecord? e1, InvoicesRecord? e2) {
+    return e1?.adminId == e2?.adminId &&
         e1?.amount == e2?.amount &&
         e1?.concept == e2?.concept &&
         e1?.status == e2?.status &&
-        e1?.voucherUrl == e2?.voucherUrl &&
         e1?.createdTime == e2?.createdTime &&
-        e1?.qrUrl == e2?.qrUrl &&
-        e1?.qrId == e2?.qrId;
+        e1?.invoicePdfUrl == e2?.invoicePdfUrl &&
+        e1?.invoiceXmlUrl == e2?.invoiceXmlUrl;
   }
 
   @override
-  int hash(QrRecord? e) => const ListEquality().hash([
-        e?.uid,
+  int hash(InvoicesRecord? e) => const ListEquality().hash([
         e?.adminId,
         e?.amount,
         e?.concept,
         e?.status,
-        e?.voucherUrl,
         e?.createdTime,
-        e?.qrUrl,
-        e?.qrId
+        e?.invoicePdfUrl,
+        e?.invoiceXmlUrl
       ]);
 
   @override
-  bool isValidKey(Object? o) => o is QrRecord;
+  bool isValidKey(Object? o) => o is InvoicesRecord;
 }

@@ -100,7 +100,7 @@ class _OKFNPayry05RegisterInvWidgetState
             body: SafeArea(
               top: true,
               child: Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
                   child: SingleChildScrollView(
@@ -386,6 +386,8 @@ class _OKFNPayry05RegisterInvWidgetState
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
+                                                  keyboardType: TextInputType
+                                                      .emailAddress,
                                                   validator: _model
                                                       .invEmailFieldControllerValidator
                                                       .asValidator(context),
@@ -640,7 +642,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                               ),
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    -1.00, 0.00),
+                                                    -1.0, 0.0),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
@@ -831,7 +833,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                               ),
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    0.00, 0.00),
+                                                    0.0, 0.0),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(

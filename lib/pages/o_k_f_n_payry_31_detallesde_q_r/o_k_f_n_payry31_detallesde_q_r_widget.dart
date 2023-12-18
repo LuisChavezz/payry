@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -106,7 +105,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                 },
               ),
               title: Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
                     'uiwum3xo' /* Detalles de QR */,
@@ -390,8 +389,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                             if (oKFNPayry31DetallesdeQRQrRecord.status !=
                                 'CANCELADO')
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 16.0, 16.0, 16.0),
+                                padding: EdgeInsets.all(16.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
@@ -496,8 +494,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                       .width *
                                                   0.38,
                                               height: 50.0,
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              padding: EdgeInsets.all(0.0),
                                               iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color: Color(0xFFFF8A71),
@@ -535,8 +532,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                       .width *
                                                   0.38,
                                               height: 50.0,
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              padding: EdgeInsets.all(0.0),
                                               iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
@@ -573,11 +569,10 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                   0.0, 10.0, 0.0, 10.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
-                                              await actions.downloadFileFromUrl(
-                                                functions.imagePathToString(
-                                                    oKFNPayry31DetallesdeQRQrRecord
-                                                        .qrUrl),
-                                              );
+                                              await launchURL(
+                                                  functions.imagePathToString(
+                                                      oKFNPayry31DetallesdeQRQrRecord
+                                                          .qrUrl)!);
                                             },
                                             text: FFLocalizations.of(context)
                                                 .getText(
@@ -588,8 +583,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                       .width *
                                                   0.38,
                                               height: 50.0,
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              padding: EdgeInsets.all(0.0),
                                               iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
@@ -643,9 +637,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                             .width *
                                                         0.38,
                                                 height: 50.0,
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 0.0),
+                                                padding: EdgeInsets.all(0.0),
                                                 iconPadding:
                                                     EdgeInsetsDirectional
                                                         .fromSTEB(

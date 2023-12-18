@@ -15,7 +15,8 @@ class OKFNPayry38EstadisticasModel
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  DateTime? datePicked;
+  DateTime? datePicked1;
+  DateTime? datePicked2;
 
   /// Initialization and disposal methods.
 

@@ -102,7 +102,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                 },
               ),
               title: Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
                     '1qvcs3aw' /* Detalles de SMS */,
@@ -392,8 +392,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                               ],
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 20.0, 20.0, 20.0),
+                              padding: EdgeInsets.all(20.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -403,7 +402,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                     children: [
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(1.00, 0.00),
+                                            AlignmentDirectional(1.0, 0.0),
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
@@ -419,8 +418,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                             options: FFButtonOptions(
                                               width: 150.0,
                                               height: 50.0,
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              padding: EdgeInsets.all(0.0),
                                               iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:

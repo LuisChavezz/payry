@@ -133,7 +133,7 @@ class _OKFNPayry16VerificarNumeroWidgetState
             body: SafeArea(
               top: true,
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(18.0, 18.0, 18.0, 18.0),
+                padding: EdgeInsets.all(18.0),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -146,13 +146,12 @@ class _OKFNPayry16VerificarNumeroWidgetState
                           borderRadius: BorderRadius.circular(15.0),
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              12.0, 12.0, 12.0, 12.0),
+                          padding: EdgeInsets.all(12.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(-1.00, 0.00),
+                                alignment: AlignmentDirectional(-1.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
                                     '1y3hwffm' /* Te enviaremos un SMS con un có... */,
@@ -168,7 +167,7 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.00, 0.00),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 12.0),
@@ -288,7 +287,7 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.00, 0.00),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 30.0, 0.0, 10.0),

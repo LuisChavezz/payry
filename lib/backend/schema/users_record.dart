@@ -46,11 +46,6 @@ class UsersRecord extends FirestoreRecord {
   String get phoneNumber => _phoneNumber ?? '';
   bool hasPhoneNumber() => _phoneNumber != null;
 
-  // "age" field.
-  int? _age;
-  int get age => _age ?? 0;
-  bool hasAge() => _age != null;
-
   // "status" field.
   bool? _status;
   bool get status => _status ?? false;
@@ -83,7 +78,6 @@ class UsersRecord extends FirestoreRecord {
     _uid = snapshotData['uid'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
     _phoneNumber = snapshotData['phone_number'] as String?;
-    _age = castToType<int>(snapshotData['age']);
     _status = snapshotData['status'] as bool?;
     _isValidPhoneNumber = snapshotData['is_valid_phone_number'] as bool?;
     _isAdmin = snapshotData['isAdmin'] as bool?;
@@ -131,7 +125,6 @@ Map<String, dynamic> createUsersRecordData({
   String? uid,
   DateTime? createdTime,
   String? phoneNumber,
-  int? age,
   bool? status,
   bool? isValidPhoneNumber,
   bool? isAdmin,
@@ -146,7 +139,6 @@ Map<String, dynamic> createUsersRecordData({
       'uid': uid,
       'created_time': createdTime,
       'phone_number': phoneNumber,
-      'age': age,
       'status': status,
       'is_valid_phone_number': isValidPhoneNumber,
       'isAdmin': isAdmin,
@@ -169,7 +161,6 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.uid == e2?.uid &&
         e1?.createdTime == e2?.createdTime &&
         e1?.phoneNumber == e2?.phoneNumber &&
-        e1?.age == e2?.age &&
         e1?.status == e2?.status &&
         e1?.isValidPhoneNumber == e2?.isValidPhoneNumber &&
         e1?.isAdmin == e2?.isAdmin &&
@@ -185,7 +176,6 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.uid,
         e?.createdTime,
         e?.phoneNumber,
-        e?.age,
         e?.status,
         e?.isValidPhoneNumber,
         e?.isAdmin,

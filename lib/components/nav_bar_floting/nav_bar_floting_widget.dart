@@ -51,7 +51,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+      padding: EdgeInsets.all(10.0),
       child: Container(
         width: double.infinity,
         height: 70.0,
@@ -79,7 +79,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                 borderRadius: BorderRadius.circular(40.0),
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+                padding: EdgeInsets.all(10.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

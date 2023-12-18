@@ -116,14 +116,13 @@ class _OKFNPayry32SolicitarSMSWidgetState
                     key: _model.formKey,
                     autovalidateMode: AutovalidateMode.disabled,
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          12.0, 12.0, 12.0, 12.0),
+                      padding: EdgeInsets.all(12.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -373,7 +372,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(-1.00, 0.00),
+                              alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 10.0, 0.0, 10.0),
@@ -555,10 +554,9 @@ class _OKFNPayry32SolicitarSMSWidgetState
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(40.0, 40.0, 40.0, 40.0),
+                  padding: EdgeInsets.all(40.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       context.pushNamed('OK_FN_Payry_34_opcionesSMS');
@@ -569,8 +567,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                     options: FFButtonOptions(
                       width: MediaQuery.sizeOf(context).width * 10.0,
                       height: 50.0,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      padding: EdgeInsets.all(0.0),
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).accent4,

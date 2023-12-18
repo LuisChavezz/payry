@@ -110,7 +110,7 @@ class _OKFNPayry17VerificarOTPWidgetState
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(18.0, 18.0, 18.0, 18.0),
+            padding: EdgeInsets.all(18.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -122,13 +122,12 @@ class _OKFNPayry17VerificarOTPWidgetState
                       borderRadius: BorderRadius.circular(15.0),
                     ),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          12.0, 12.0, 12.0, 12.0),
+                      padding: EdgeInsets.all(12.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(0.00, 0.00),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
                                 'hojxjzzq' /* Ingresa el código aquí */,
@@ -170,7 +169,12 @@ class _OKFNPayry17VerificarOTPWidgetState
                                 fieldHeight: 44.0,
                                 fieldWidth: 44.0,
                                 borderWidth: 1.0,
-                                borderRadius: BorderRadius.circular(12.0),
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(12.0),
+                                  bottomRight: Radius.circular(12.0),
+                                  topLeft: Radius.circular(12.0),
+                                  topRight: Radius.circular(12.0),
+                                ),
                                 shape: PinCodeFieldShape.box,
                                 activeColor:
                                     FlutterFlowTheme.of(context).secondaryText,
@@ -272,7 +276,7 @@ class _OKFNPayry17VerificarOTPWidgetState
                             ],
                           ),
                           Align(
-                            alignment: AlignmentDirectional(0.00, 0.00),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 10.0),

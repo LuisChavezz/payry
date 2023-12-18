@@ -96,14 +96,13 @@ class _OKFNPayry24ListadoUsuariosWidgetState
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+                  padding: EdgeInsets.all(20.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
                             context.pushNamed('OK_FN_Payry_23_invitarUsuario');
@@ -172,8 +171,7 @@ class _OKFNPayry24ListadoUsuariosWidgetState
                         final listViewUsersRecord =
                             listViewUsersRecordList[listViewIndex];
                         return Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 16.0, 16.0, 16.0),
+                          padding: EdgeInsets.all(16.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
@@ -205,7 +203,7 @@ class _OKFNPayry24ListadoUsuariosWidgetState
                                       children: [
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.00, 0.00),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Container(
                                             width: 60.0,
                                             height: 60.0,

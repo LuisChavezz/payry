@@ -91,7 +91,7 @@ class _OKFNPayry11OlvidecontrasenanuevaWidgetState
         elevation: 1.0,
       ),
       body: Align(
-        alignment: AlignmentDirectional(0.00, -1.00),
+        alignment: AlignmentDirectional(0.0, -1.0),
         child: Container(
           width: 366.0,
           height: 330.0,
@@ -292,7 +292,7 @@ class _OKFNPayry11OlvidecontrasenanuevaWidgetState
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(-1.00, 0.00),
+                    alignment: AlignmentDirectional(-1.0, 0.0),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 20.0),

@@ -63,6 +63,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             body: Center(
               child: SizedBox(
                 width: 40.0,
@@ -83,6 +84,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                 : null;
         return Scaffold(
           key: scaffoldKey,
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           body: SafeArea(
             top: true,
             child: Stack(
@@ -1613,253 +1615,381 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     ),
                                   ),
                                 ),
-                                InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    await authManager.refreshUser();
-                                    if (currentUserEmailVerified) {
-                                      if (valueOrDefault<bool>(
-                                              currentUserDocument
-                                                  ?.isValidPhoneNumber,
-                                              false) ==
-                                          true) {
-                                        if (valueOrDefault<bool>(
-                                                currentUserDocument?.isAdmin,
-                                                false)
-                                            ? valueOrDefault<bool>(
-                                                currentUserDocument
-                                                    ?.isCompanyComplete,
-                                                false)
-                                            : true) {
-                                          context.pushNamed(
-                                              'OK_FN_Payry_37_facturas');
-
-                                          return;
-                                        } else {
-                                          var confirmDialogResponse =
-                                              await showDialog<bool>(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        title: Text(
-                                                            'Acceso denegado'),
-                                                        content: Text(
-                                                            'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    false),
-                                                            child:
-                                                                Text('Cancel'),
-                                                          ),
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    true),
-                                                            child: Text(
-                                                                'Registrar empresa'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  ) ??
-                                                  false;
-                                          if (confirmDialogResponse) {
-                                            context.pushNamed(
-                                                'OK_FN_Payry_19_formularioEmpresa');
-
-                                            return;
-                                          } else {
-                                            return;
-                                          }
-                                        }
-                                      } else {
-                                        var confirmDialogResponse =
-                                            await showDialog<bool>(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'Acceso denegado'),
-                                                      content: Text(
-                                                          'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  false),
-                                                          child: Text('Cancel'),
-                                                        ),
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  true),
-                                                          child: Text(
-                                                              'Verificar número'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                ) ??
-                                                false;
-                                        if (confirmDialogResponse) {
-                                          context.pushNamed(
-                                              'OK_FN_Payry_15_EditProfile');
-
-                                          return;
-                                        } else {
-                                          return;
-                                        }
-                                      }
-                                    } else {
-                                      var confirmDialogResponse =
-                                          await showDialog<bool>(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title:
-                                                        Text('Acceso denegado'),
-                                                    content: Text(
-                                                        'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                false),
-                                                        child: Text('Cancel'),
-                                                      ),
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                true),
-                                                        child: Text('Reenviar'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              ) ??
-                                              false;
-                                      if (confirmDialogResponse) {
-                                        await authManager
-                                            .sendEmailVerification();
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                              'Se ha enviado la verificación a tu correo electrónico.',
-                                              style: TextStyle(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                            ),
-                                            duration:
-                                                Duration(milliseconds: 4000),
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondary,
-                                          ),
-                                        );
-                                        return;
-                                      } else {
-                                        return;
-                                      }
-                                    }
-                                  },
-                                  child: Container(
-                                    width: () {
-                                      if (MediaQuery.sizeOf(context).width <
-                                          390.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.42);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          480.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.44);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          900.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.3);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1025.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.23);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1300.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.18);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1600.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.14);
-                                      } else {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.1);
-                                      }
-                                    }(),
-                                    height: 75.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context).back1,
-                                      borderRadius: BorderRadius.circular(12.0),
+                                AuthUserStreamWidget(
+                                  builder: (context) =>
+                                      StreamBuilder<List<CompaniesRecord>>(
+                                    stream: queryCompaniesRecord(
+                                      queryBuilder: (companiesRecord) =>
+                                          companiesRecord.where(
+                                        'created_by',
+                                        isEqualTo: valueOrDefault(
+                                            currentUserDocument?.adminId, ''),
+                                      ),
+                                      singleRecord: true,
                                     ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 10.0, 0.0),
-                                            child: Icon(
-                                              FFIcons.kfactura,
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 40.0,
+                                            height: 40.0,
+                                            child: SpinKitPumpingHeart(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 20.0,
+                                                      .primary,
+                                              size: 40.0,
                                             ),
                                           ),
-                                          Text(
-                                            FFLocalizations.of(context).getText(
-                                              'tb7vkk44' /* Facturas */,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
+                                        );
+                                      }
+                                      List<CompaniesRecord>
+                                          containerCompaniesRecordList =
+                                          snapshot.data!;
+                                      final containerCompaniesRecord =
+                                          containerCompaniesRecordList
+                                                  .isNotEmpty
+                                              ? containerCompaniesRecordList
+                                                  .first
+                                              : null;
+                                      return InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          await authManager.refreshUser();
+                                          if (currentUserEmailVerified) {
+                                            if (valueOrDefault<bool>(
+                                                    currentUserDocument
+                                                        ?.isValidPhoneNumber,
+                                                    false) ==
+                                                true) {
+                                              if (valueOrDefault<bool>(
+                                                      currentUserDocument
+                                                          ?.isAdmin,
+                                                      false)
+                                                  ? valueOrDefault<bool>(
+                                                      currentUserDocument
+                                                          ?.isCompanyComplete,
+                                                      false)
+                                                  : true) {
+                                                if (containerCompaniesRecord!
+                                                    .requireBill) {
+                                                  context.pushNamed(
+                                                      'OK_FN_Payry_37_facturas');
+
+                                                  return;
+                                                } else {
+                                                  if (valueOrDefault<bool>(
+                                                      currentUserDocument
+                                                          ?.isAdmin,
+                                                      false)) {
+                                                    var confirmDialogResponse =
+                                                        await showDialog<bool>(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return AlertDialog(
+                                                                  title: Text(
+                                                                      'Acceso denegado'),
+                                                                  content: Text(
+                                                                      'No es posible acceder a esta sección debido a la configuración de tu empresa. Ve a la configuración y activa la facturación.'),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed: () => Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          false),
+                                                                      child: Text(
+                                                                          'Cancelar'),
+                                                                    ),
+                                                                    TextButton(
+                                                                      onPressed: () => Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          true),
+                                                                      child: Text(
+                                                                          'Ir a empresa'),
+                                                                    ),
+                                                                  ],
+                                                                );
+                                                              },
+                                                            ) ??
+                                                            false;
+                                                    if (confirmDialogResponse) {
+                                                      context.pushNamed(
+                                                          'OK_FN_Payry_19_formularioEmpresa');
+
+                                                      return;
+                                                    } else {
+                                                      return;
+                                                    }
+                                                  } else {
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return AlertDialog(
+                                                          title: Text(
+                                                              'Acceso denegado'),
+                                                          content: Text(
+                                                              'No es posible acceder a esta sección, debido a que la configuración de la empresa a la que perteneces no requiere facturación.'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    );
+                                                    return;
+                                                  }
+                                                }
+                                              } else {
+                                                var confirmDialogResponse =
+                                                    await showDialog<bool>(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Acceso denegado'),
+                                                              content: Text(
+                                                                  'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          false),
+                                                                  child: Text(
+                                                                      'Cancel'),
+                                                                ),
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          true),
+                                                                  child: Text(
+                                                                      'Registrar empresa'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        ) ??
+                                                        false;
+                                                if (confirmDialogResponse) {
+                                                  context.pushNamed(
+                                                      'OK_FN_Payry_19_formularioEmpresa');
+
+                                                  return;
+                                                } else {
+                                                  return;
+                                                }
+                                              }
+                                            } else {
+                                              var confirmDialogResponse =
+                                                  await showDialog<bool>(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title: Text(
+                                                                'Acceso denegado'),
+                                                            content: Text(
+                                                                'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        false),
+                                                                child: Text(
+                                                                    'Cancel'),
+                                                              ),
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        true),
+                                                                child: Text(
+                                                                    'Verificar número'),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      ) ??
+                                                      false;
+                                              if (confirmDialogResponse) {
+                                                context.pushNamed(
+                                                    'OK_FN_Payry_15_EditProfile');
+
+                                                return;
+                                              } else {
+                                                return;
+                                              }
+                                            }
+                                          } else {
+                                            var confirmDialogResponse =
+                                                await showDialog<bool>(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return AlertDialog(
+                                                          title: Text(
+                                                              'Acceso denegado'),
+                                                          content: Text(
+                                                              'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext,
+                                                                      false),
+                                                              child: Text(
+                                                                  'Cancel'),
+                                                            ),
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext,
+                                                                      true),
+                                                              child: Text(
+                                                                  'Reenviar'),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    ) ??
+                                                    false;
+                                            if (confirmDialogResponse) {
+                                              await authManager
+                                                  .sendEmailVerification();
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'Se ha enviado la verificación a tu correo electrónico.',
+                                                    style: TextStyle(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                    ),
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 4000),
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondary,
                                                 ),
+                                              );
+                                              return;
+                                            } else {
+                                              return;
+                                            }
+                                          }
+                                        },
+                                        child: Container(
+                                          width: () {
+                                            if (MediaQuery.sizeOf(context)
+                                                    .width <
+                                                390.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.42);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                480.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.44);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                900.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.3);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1025.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.23);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1300.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.18);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1600.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.14);
+                                            } else {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.1);
+                                            }
+                                          }(),
+                                          height: 75.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .back1,
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
                                           ),
-                                        ].divide(SizedBox(width: 5.0)),
-                                      ),
-                                    ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 0.0, 16.0, 0.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 10.0, 0.0),
+                                                  child: Icon(
+                                                    FFIcons.kfactura,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    size: 20.0,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'tb7vkk44' /* Facturas */,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                      ),
+                                                ),
+                                              ].divide(SizedBox(width: 5.0)),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ),
                                 InkWell(
@@ -2364,7 +2494,7 @@ versión clara */
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.00, 0.97),
+                  alignment: AlignmentDirectional(0.0, 0.97),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 18.0),

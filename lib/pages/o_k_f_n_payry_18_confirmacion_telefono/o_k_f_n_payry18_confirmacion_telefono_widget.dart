@@ -61,7 +61,7 @@ class _OKFNPayry18ConfirmacionTelefonoWidgetState
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Container(
                   width: 335.0,
                   height: MediaQuery.sizeOf(context).height * 0.9,
@@ -77,7 +77,7 @@ class _OKFNPayry18ConfirmacionTelefonoWidgetState
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(0.00, 0.00),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -94,7 +94,7 @@ class _OKFNPayry18ConfirmacionTelefonoWidgetState
                                   ],
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.00, 0.00),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 16.0, 0.0, 0.0),
@@ -121,7 +121,7 @@ se ha co... */
                         ],
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
                             context.pushNamed('OK_FN_Payry_08_iniciasesion');
