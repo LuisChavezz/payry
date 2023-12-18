@@ -2864,9 +2864,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '29nnciuq': {
       'es': 'Generar SMS',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'توليد الرسائل القصيرة',
+      'de': 'SMS generieren',
+      'en': 'Generate SMS',
     },
     'koikslds': {
       'es': 'Perfil',
@@ -2876,15 +2876,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '4p0c69un': {
       'es': 'Empresas',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'شركات',
+      'de': 'Firmen',
+      'en': 'Companies',
     },
     'rhn9kile': {
       'es': 'Estadísticas',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'إحصائيات',
+      'de': 'Statistiken',
+      'en': 'Statistics',
     },
     'mn3tvowu': {
       'es': 'Usuarios',
