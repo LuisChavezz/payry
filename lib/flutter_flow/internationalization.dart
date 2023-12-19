@@ -2261,373 +2261,433 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'o9e7iujt': {
       'es': '¿Cómo genero un código QR para realizar un pago?',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'كيف أقوم بإنشاء رمز الاستجابة السريعة لإجراء الدفع؟',
+      'de': 'Wie erstelle ich einen QR-Code, um eine Zahlung durchzuführen?',
+      'en': 'How do I generate a QR code to make a payment?',
     },
     'xjrhgb5x': {
       'es':
           'En la sección de pagos de la app, elige la opción \"Generar QR\" e ingresa el monto. El código QR se creará automáticamente.',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar':
+          'في قسم المدفوعات في التطبيق، اختر خيار \"إنشاء QR\" وأدخل المبلغ. سيتم إنشاء رمز الاستجابة السريعة تلقائيًا.',
+      'de':
+          'Wählen Sie im Zahlungsbereich der App die Option „QR generieren“ und geben Sie den Betrag ein. Der QR-Code wird automatisch erstellt.',
+      'en':
+          'In the payments section of the app, choose the \"Generate QR\" option and enter the amount. The QR code will be created automatically.',
     },
     'bgvtu57d': {
       'es': '¿Qué información contiene el código QR de pago? ',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'ما هي المعلومات التي يحتوي عليها رمز الاستجابة السريعة للدفع؟',
+      'de': 'Welche Informationen enthält der Zahlungs-QR-Code?',
+      'en': 'What information does the payment QR code contain?',
     },
     'vdfzx8fe': {
       'es':
           'El código QR incluye detalles como el monto a pagar y el concepto.',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar':
+          'يتضمن رمز الاستجابة السريعة تفاصيل مثل المبلغ المطلوب دفعه والمفهوم.',
+      'de':
+          'Der QR-Code enthält Details wie den zu zahlenden Betrag und das Konzept.',
+      'en':
+          'The QR code includes details such as the amount to pay and the concept.',
     },
     'jq46oauo': {
       'es': '¿Cómo puedo verificar mis transacciones diarias? ',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'كيف يمكنني التحقق من معاملاتي اليومية؟',
+      'de': 'Wie kann ich meine täglichen Transaktionen überprüfen?',
+      'en': 'How can I check my daily transactions?',
     },
     'wyvfqz8l': {
       'es':
           'Accede a la sección de historial de transacciones en la app para revisar todas las operaciones realizadas durante el día.',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar':
+          'قم بالدخول إلى قسم سجل المعاملات في التطبيق لمراجعة جميع العمليات التي تم تنفيذها خلال اليوم.',
+      'de':
+          'Greifen Sie auf den Abschnitt „Transaktionsverlauf“ in der App zu, um alle im Laufe des Tages durchgeführten Vorgänge einzusehen.',
+      'en':
+          'Access the transaction history section in the app to review all the operations carried out during the day.',
     },
     '9advjk19': {
       'es': '¿Cuándo se envían las transacciones a mi banco?',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'متى يتم إرسال المعاملات إلى البنك الذي أتعامل معه؟',
+      'de': 'Wann werden Transaktionen an meine Bank gesendet?',
+      'en': 'When are transactions sent to my bank?',
     },
     '1shpmtdu': {
       'es':
           'Todas las transacciones se revisan al final del día y se envían al banco al siguiente día hábil para su procesamiento.',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar':
+          'تتم مراجعة جميع المعاملات في نهاية اليوم وإرسالها إلى البنك في يوم العمل التالي للمعالجة.',
+      'de':
+          'Alle Transaktionen werden am Ende des Tages überprüft und am nächsten Werktag zur Bearbeitung an die Bank gesendet.',
+      'en':
+          'All transactions are reviewed at the end of the day and sent to the bank the next business day for processing.',
     },
     'cfbc5lhp': {
       'es': '¿Puedo cancelar un pago realizado por error? ',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'هل يمكنني إلغاء عملية دفع تمت عن طريق الخطأ؟',
+      'de': 'Kann ich eine irrtümlich getätigte Zahlung stornieren?',
+      'en': 'Can I cancel a payment made in error?',
     },
     'nukg4wus': {
       'es':
           'Claro, sin embargo, para poder cancelarlo, es estrictamente necesario que la transacción aún no haya sido autorizada por el usuario final, de otro modo no será posible cancelar la solicitud. Te recomendamos verificar los detalles antes de confirmar la transacción.',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar':
+          'ومع ذلك، بالطبع، من أجل إلغائه، من الضروري للغاية ألا يتم ترخيص المعاملة بعد من قبل المستخدم النهائي، وإلا فلن يكون من الممكن إلغاء الطلب. ننصحك بالتحقق من التفاصيل قبل تأكيد المعاملة.',
+      'de':
+          'Um die Transaktion abzubrechen, ist es jedoch unbedingt erforderlich, dass die Transaktion noch nicht vom Endbenutzer autorisiert wurde, andernfalls ist es nicht möglich, die Anfrage abzubrechen. Wir empfehlen Ihnen, die Details zu überprüfen, bevor Sie die Transaktion bestätigen.',
+      'en':
+          'Of course, however, in order to cancel it, it is strictly necessary that the transaction has not yet been authorized by the end user, otherwise it will not be possible to cancel the request. We recommend that you verify the details before confirming the transaction.',
     },
     'pqtdppve': {
       'es': '¿Cómo sé si mi solicitud de pago fue exitosa?',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'كيف أعرف إذا كان طلب الدفع الخاص بي ناجحًا؟',
+      'de': 'Woher weiß ich, ob meine Zahlungsanfrage erfolgreich war?',
+      'en': 'How do I know if my payment request was successful?',
     },
     'z5hi6l5k': {
       'es':
           'Recibirás una notificación inmediata en la app confirmando que la transacción se completó con éxito.',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'ستتلقى إشعارًا فوريًا في التطبيق يؤكد إتمام المعاملة بنجاح.',
+      'de':
+          'Sie erhalten in der App umgehend eine Benachrichtigung, dass die Transaktion erfolgreich abgeschlossen wurde.',
+      'en':
+          'You will receive an immediate notification in the app confirming that the transaction was completed successfully.',
     },
     'rtqzzacn': {
       'es': '¿Es seguro realizar pagos con la app? ',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'هل من الآمن إجراء الدفعات باستخدام التطبيق؟',
+      'de': 'Ist es sicher, mit der App zu bezahlen?',
+      'en': 'Is it safe to make payments with the app?',
     },
     'udcwdhgl': {
       'es':
           'Sí, utilizamos medidas de seguridad avanzadas para proteger tus datos y garantizar transacciones seguras.',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar':
+          'نعم، نحن نستخدم إجراءات أمنية متقدمة لحماية بياناتك وضمان المعاملات الآمنة.',
+      'de':
+          'Ja, wir nutzen fortschrittliche Sicherheitsmaßnahmen, um Ihre Daten zu schützen und sichere Transaktionen zu gewährleisten.',
+      'en':
+          'Yes, we use advanced security measures to protect your data and ensure secure transactions.',
     },
     'n4dd4b9c': {
       'es': '¿Puedo revisar mis saldos y movimientos en tiempo real?',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'هل يمكنني مراجعة أرصدتي وحركاتي في الوقت الحقيقي؟',
+      'de':
+          'Kann ich mein Gleichgewicht und meine Bewegungen in Echtzeit überprüfen?',
+      'en': 'Can I review my balances and movements in real time?',
     },
     'uk6mnuya': {
       'es':
           'Sí, la app te permite consultar tus saldos y movimientos en tiempo real para mantener un control preciso de tus transacciones.',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar':
+          'نعم، يتيح لك التطبيق التحقق من أرصدتك وحركاتك في الوقت الفعلي للحفاظ على التحكم الدقيق في معاملاتك.',
+      'de':
+          'Ja, mit der App können Sie Ihre Salden und Bewegungen in Echtzeit überprüfen, um eine genaue Kontrolle über Ihre Transaktionen zu behalten.',
+      'en':
+          'Yes, the app allows you to check your balances and movements in real time to maintain precise control of your transactions.',
     },
     'wi407dvr': {
       'es': '¿Qué debo hacer si no recibo la confirmación de mi pago? ',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'ماذا يجب أن أفعل إذا لم أتلق تأكيدًا لدفعتي؟',
+      'de':
+          'Was soll ich tun, wenn ich keine Bestätigung meiner Zahlung erhalte?',
+      'en': 'What should I do if I do not receive confirmation of my payment?',
     },
     'wz5ctdph': {
       'es':
           'Verifica tu historial de transacciones y, si no encuentras la confirmación, ponte en contacto con nuestro servicio de atención al cliente para obtener asistencia.',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar':
+          'يرجى التحقق من سجل معاملاتك وإذا لم تتمكن من العثور على تأكيد، فيرجى الاتصال بخدمة العملاء لدينا للحصول على المساعدة.',
+      'de':
+          'Bitte überprüfen Sie Ihren Transaktionsverlauf. Wenn Sie keine Bestätigung finden, wenden Sie sich bitte an unseren Kundenservice.',
+      'en':
+          'Please check your transaction history and if you cannot find confirmation, please contact our customer service for assistance.',
     },
     'ydd7oj1o': {
       'es': '¿Hay alguna tarifa por el uso de la app? ',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'هل هناك رسوم لاستخدام التطبيق؟',
+      'de': 'Ist die Nutzung der App kostenpflichtig?',
+      'en': 'Is there a fee for using the app?',
     },
     'vbzofzac': {
       'es':
           'Las funciones dentro de la app son gratuitas, sin embargo, PAYRY cobra una pequeña comisión de \$5.00 por transacción.',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar':
+          'الميزات الموجودة داخل التطبيق مجانية، ومع ذلك، تفرض PAYRY رسومًا بسيطة قدرها 5.00 دولارات لكل معاملة.',
+      'de':
+          'Die Funktionen der App sind kostenlos, PAYRY erhebt jedoch eine geringe Gebühr von 5,00 \$ pro Transaktion.',
+      'en':
+          'The features within the app are free, however, PAYRY charges a small fee of \$5.00 per transaction.',
     },
     'xwmhvd2f': {
       'es': '¿Existe un límite para el monto de pago con la app? ',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'هل هناك حد لمبلغ الدفع مع التطبيق؟',
+      'de': 'Gibt es eine Begrenzung des Zahlungsbetrags mit der App?',
+      'en': 'Is there a limit to the payment amount with the app?',
     },
     '7m42ppp5': {
       'es': 'Sí, el límite es de \$8,000.00 por transacción.',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'نعم، الحد الأقصى هو 8,000.00 دولار لكل معاملة.',
+      'de': 'Ja, das Limit beträgt 8.000,00 \$ pro Transaktion.',
+      'en': 'Yes, the limit is \$8,000.00 per transaction.',
     },
     '0kdoyh66': {
       'es':
           '¿Cómo puedo actualizar la información de mi cuenta bancaria vinculada? ',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'كيف يمكنني تحديث معلومات حسابي البنكي المرتبط؟',
+      'de':
+          'Wie kann ich meine verknüpften Bankkontoinformationen aktualisieren?',
+      'en': 'How can I update my linked bank account information?',
     },
     'r3jwcj3m': {
       'es':
           'Desde su aplicación en el apartado de cuenta bancaria, podría editar la información y solicitar nuevamente la verificación. ',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar':
+          'من طلبك في قسم الحساب البنكي، يمكنك تعديل المعلومات وطلب التحقق مرة أخرى.',
+      'de':
+          'In Ihrem Antrag im Bereich „Bankkonto“ können Sie die Informationen bearbeiten und eine erneute Verifizierung anfordern.',
+      'en':
+          'From your application in the bank account section, you could edit the information and request verification again.',
     },
     '17y3nw41': {
       'es': '¿Qué debo hacer si pierdo mi teléfono? ',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'ماذا يجب أن أفعل إذا فقدت هاتفي؟',
+      'de': 'Was soll ich tun, wenn ich mein Telefon verliere?',
+      'en': 'What should I do if I lose my phone?',
     },
     'xams6ty1': {
       'es':
           'Debes informar de inmediato a nuestro servicio de atención al cliente para desactivar tu cuenta temporalmente y evitar transacciones no autorizadas.',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar':
+          'يجب عليك إبلاغ خدمة العملاء لدينا على الفور لإلغاء تنشيط حسابك مؤقتًا ومنع المعاملات غير المصرح بها.',
+      'de':
+          'Sie müssen unseren Kundenservice unverzüglich informieren, um Ihr Konto vorübergehend zu deaktivieren und unbefugte Transaktionen zu verhindern.',
+      'en':
+          'You must immediately inform our customer service to temporarily deactivate your account and prevent unauthorized transactions.',
     },
     'a89mqdx6': {
       'es': '¿Puedo recibir notificaciones por cada transacción realizada? ',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'هل يمكنني تلقي إشعارات لكل معاملة تتم؟',
+      'de':
+          'Kann ich Benachrichtigungen für jede getätigte Transaktion erhalten?',
+      'en': 'Can I receive notifications for each transaction made?',
     },
     'hcgowpnz': {
       'es':
           'Sí, actualmente recibirás notificaciones por cada transacción realizada.',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'نعم، ستتلقى حاليًا إشعارات لكل معاملة تتم.',
+      'de':
+          'Ja, derzeit erhalten Sie Benachrichtigungen für jede getätigte Transaktion.',
+      'en':
+          'Yes, currently you will receive notifications for each transaction made.',
     },
     '3wzc6llv': {
       'es':
           '¿Cómo puedo realizar devoluciones de productos pagados con la app?  ',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'كيف يمكنني إرجاع المنتجات المدفوعة عبر التطبيق؟',
+      'de': 'Wie kann ich mit der App bezahlte Produkte zurückgeben?',
+      'en': 'How can I return products paid for with the app?',
     },
     '1kn3mp3i': {
       'es':
           'Para devoluciones, sigue el procedimiento establecido por el comercio. En caso de problemas, comunícate con el servicio de atención al cliente.',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar':
+          'بالنسبة للمرتجعات، اتبع الإجراء الذي حددته الشركة. في حالة وجود مشاكل، يرجى الاتصال بخدمة العملاء.',
+      'de':
+          'Befolgen Sie für Rücksendungen das vom Unternehmen festgelegte Verfahren. Bei Problemen wenden Sie sich bitte an den Kundendienst.',
+      'en':
+          'For returns, follow the procedure established by the business. In case of problems, please contact customer service.',
     },
     'ftdwl4yd': {
       'es': '¿Cómo añado usuarios invitados para realizar cobros desde la app',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'كيف يمكنني إضافة مستخدمين ضيوف لإجراء الدفعات من التطبيق',
+      'de':
+          'Wie füge ich Gastbenutzer hinzu, um Zahlungen über die App zu tätigen?',
+      'en': 'How do I add guest users to make payments from the app',
     },
     'lo4a4493': {
       'es':
           'Dirígete a la sección de configuración de usuarios en la app y sigue las instrucciones para añadir empleados como usuarios invitados.',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar':
+          'انتقل إلى قسم إعدادات المستخدم في التطبيق واتبع التعليمات لإضافة الموظفين كمستخدمين ضيوف.',
+      'de':
+          'Gehen Sie in der App zum Abschnitt „Benutzereinstellungen“ und befolgen Sie die Anweisungen, um Mitarbeiter als Gastbenutzer hinzuzufügen.',
+      'en':
+          'Go to the user settings section in the app and follow the instructions to add employees as guest users.',
     },
     'zis0g4g2': {
       'es':
           '¿Puedo limitar las funciones que un usuario invitado puede realizar? ',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'هل يمكنني تحديد الوظائف التي يمكن للمستخدم الضيف القيام بها؟',
+      'de':
+          'Kann ich die Funktionen, die ein Gastbenutzer ausführen kann, einschränken?',
+      'en': 'Can I limit the functions that a guest user can perform?',
     },
     'zmpvb0zn': {
       'es':
           'Sí, puedes establecer permisos específicos para los empleados invitados.',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'نعم، يمكنك تعيين أذونات محددة للموظفين الضيوف.',
+      'de':
+          'Ja, Sie können spezifische Berechtigungen für Gastmitarbeiter festlegen.',
+      'en': 'Yes, you can set specific permissions for guest employees.',
     },
     '0edibzd3': {
       'es':
           '¿Puedo cambiar los permisos de un empleado invitado en cualquier momento? ',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'هل يمكنني تغيير أذونات الموظف الضيف في أي وقت؟',
+      'de':
+          'Kann ich die Berechtigungen eines Gastmitarbeiters jederzeit ändern?',
+      'en': 'Can I change a guest employee\'s permissions at any time?',
     },
     '3xgy3t47': {
       'es':
           'Sí, como propietario del comercio, puedes ajustar los permisos de los empleados invitados en cualquier momento desde la sección de configuración.',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar':
+          'نعم، باعتبارك مالك عمل، يمكنك تعديل أذونات الموظفين الضيوف في أي وقت من قسم الإعدادات.',
+      'de':
+          'Ja, als Geschäftsinhaber können Sie die Berechtigungen von Gastmitarbeitern jederzeit im Abschnitt „Einstellungen“ anpassen.',
+      'en':
+          'Yes, as a business owner, you can adjust guest employee permissions at any time from the settings section.',
     },
     'vn30860t': {
       'es':
           '¿Hay un límite en la cantidad de empleados invitados que puedo añadir?  ',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'هل هناك حد لعدد الموظفين الضيوف الذين يمكنني إضافتهم؟',
+      'de':
+          'Gibt es eine Begrenzung für die Anzahl der Gastmitarbeiter, die ich hinzufügen kann?',
+      'en': 'Is there a limit to the number of guest employees I can add?',
     },
     '84c8w126': {
       'es':
           'No, puedes dar de alta a todos los usuarios invitados que necesites',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'لا، يمكنك تسجيل جميع المستخدمين الضيوف الذين تحتاجهم',
+      'de': 'Nein, Sie können alle benötigten Gastbenutzer registrieren',
+      'en': 'No, you can register all the guest users you need',
     },
     '2xrmtzfg': {
       'es':
           '¿Cómo desactivo el acceso de un empleado invitado que ya no trabaja en el comercio',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'كيف أقوم بإلغاء تنشيط الوصول لموظف ضيف لم يعد يعمل في الشركة؟',
+      'de':
+          'Wie deaktiviere ich den Zugang für einen Gastmitarbeiter, der nicht mehr im Betrieb arbeitet?',
+      'en':
+          'How do I deactivate access for a guest employee who no longer works at the business?',
     },
     'lns5cjwa': {
       'es':
           'Ve a la sección de configuración de usuarios, selecciona al empleado y utiliza la opción para desactivar.',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar':
+          'انتقل إلى قسم إعدادات المستخدم، ثم حدد الموظف واستخدم خيار التعطيل.',
+      'de':
+          'Gehen Sie zum Abschnitt „Benutzereinstellungen“, wählen Sie den Mitarbeiter aus und verwenden Sie die Option „Deaktivieren“.',
+      'en':
+          'Go to the user settings section, select the employee and use the deactivate option.',
     },
     'oxavi1de': {
       'es': 'Home',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'بيت',
+      'de': 'heim',
+      'en': 'home',
     },
   },
   // OK_FN_Payry_38_Estadisticas
   {
     'pt7kb0ix': {
       'es': 'Estadísticas',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'إحصائيات',
+      'de': 'Statistiken',
+      'en': 'Statistics',
     },
     'ghhdyb74': {
       'es': 'Pagos con QR',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'المدفوعات مع QR',
+      'de': 'Zahlungen mit QR',
+      'en': 'Payments with QR',
     },
     'dc1j9r69': {
       'es': 'Pagos con SMS',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'المدفوعات عن طريق الرسائل القصيرة',
+      'de': 'Zahlungen per SMS',
+      'en': 'Payments with SMS',
     },
     '4lc74aso': {
       'es': 'Cobros realizados',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'المجموعات المصنوعة',
+      'de': 'Sammlungen gemacht',
+      'en': 'Collections made',
     },
     'ljaw7bau': {
       'es': '100',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': '100',
+      'de': '100',
+      'en': '100',
     },
     'wiotdgzr': {
       'es': 'Importe total de cobros',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'المبلغ الإجمالي للمجموعات',
+      'de': 'Gesamtzahl der Sammlungen',
+      'en': 'Total amount of collections',
     },
     '936byz2v': {
       'es': '\$73,215.67',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': '73,215.67 دولار',
+      'de': '73.215,67 \$',
+      'en': '\$73,215.67',
     },
     'znpugkpb': {
       'es': 'Transferencias Payry',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'تحويلات الرواتب',
+      'de': 'Payry-Überweisungen',
+      'en': 'Payry Transfers',
     },
     'nwle6ien': {
       'es': '\$70,937.07',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': '70,937.07 دولار',
+      'de': '70.937,07 \$',
+      'en': '\$70,937.07',
     },
     '4t9507td': {
       'es': 'Costo en comisiones',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'التكلفة في العمولات',
+      'de': 'Kosten in Provisionen',
+      'en': 'Cost in commissions',
     },
     'xxkclka3': {
       'es': '\$2,278.60',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': '2,278.60 دولار',
+      'de': '2.278,60 \$',
+      'en': '\$2,278.60',
     },
     'm3svvc6k': {
       'es': 'Pagos con QR\n63 transacciones',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'المدفوعات مع QR\n63 معاملة',
+      'de': 'Zahlungen mit QR\n63 Transaktionen',
+      'en': 'Payments with QR\n63 transactions',
     },
     '7l9f0acb': {
       'es': '\$48,272.30\n63.2%',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': '48,272.30 دولارًا\n63.2%',
+      'de': '48.272,30 \$\n63,2 %',
+      'en': '\$48,272.30\n63.2%',
     },
     'rb74ik6y': {
       'es': 'Pagos con SMS\n37 transacciones',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'المدفوعات عن طريق الرسائل القصيرة\n37 صفقة',
+      'de': 'Zahlungen per SMS\n37 Transaktionen',
+      'en': 'Payments with SMS\n37 transactions',
     },
     'y1ft1k17': {
       'es': '\$26,943.37\n36.8%',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': '26,943.37 دولار\n36.8%',
+      'de': '26.943,37 \$\n36,8 %',
+      'en': '\$26,943.37\n36.8%',
     },
     '451t3snv': {
       'es': 'Home',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'بيت',
+      'de': 'heim',
+      'en': 'home',
     },
   },
   // OK_FN_Payry_03_onboarding2
@@ -2646,34 +2706,37 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '5qamurs2': {
       'es': 'Keep Track of Spending',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'تتبع الإنفاق',
+      'de': 'Behalten Sie den Überblick über Ihre Ausgaben',
+      'en': 'Keep Track of Spending',
     },
     'zi52g9ub': {
       'es':
           'Easily add transactions and associate them with budgets that have been created.',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'يمكنك بسهولة إضافة المعاملات وربطها بالميزانيات التي تم إنشاؤها.',
+      'de':
+          'Fügen Sie ganz einfach Transaktionen hinzu und verknüpfen Sie sie mit erstellten Budgets.',
+      'en':
+          'Easily add transactions and associate them with budgets that have been created.',
     },
     'w3ywj458': {
       'es': 'Budget Analysis',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'تحليل الميزانية',
+      'de': 'Budgetanalyse',
+      'en': 'Budget Analysis',
     },
     'v2eh9rvn': {
       'es': 'Know where your budgets are and how they can be adjusted.',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'اعرف أين توجد ميزانياتك وكيف يمكن تعديلها.',
+      'de':
+          'Erfahren Sie, wo sich Ihre Budgets befinden und wie diese angepasst werden können.',
+      'en': 'Know where your budgets are and how they can be adjusted.',
     },
     '14iuataz': {
       'es': 'Home',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'بيت',
+      'de': 'heim',
+      'en': 'home',
     },
   },
   // OK_FN_Payry_04_onboarding3
@@ -2692,34 +2755,37 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'j50svm7p': {
       'es': 'Keep Track of Spending',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'تتبع الإنفاق',
+      'de': 'Behalten Sie den Überblick über Ihre Ausgaben',
+      'en': 'Keep Track of Spending',
     },
     'z0dk0tg3': {
       'es':
           'Easily add transactions and associate them with budgets that have been created.',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'يمكنك بسهولة إضافة المعاملات وربطها بالميزانيات التي تم إنشاؤها.',
+      'de':
+          'Fügen Sie ganz einfach Transaktionen hinzu und verknüpfen Sie sie mit erstellten Budgets.',
+      'en':
+          'Easily add transactions and associate them with budgets that have been created.',
     },
     'pe5tyzlj': {
       'es': 'Budget Analysis',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'تحليل الميزانية',
+      'de': 'Budgetanalyse',
+      'en': 'Budget Analysis',
     },
     '6qa5wuj8': {
       'es': 'Know where your budgets are and how they can be adjusted.',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'اعرف أين توجد ميزانياتك وكيف يمكن تعديلها.',
+      'de':
+          'Erfahren Sie, wo sich Ihre Budgets befinden und wie diese angepasst werden können.',
+      'en': 'Know where your budgets are and how they can be adjusted.',
     },
     '23qa8lww': {
       'es': 'Home',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'بيت',
+      'de': 'heim',
+      'en': 'home',
     },
   },
   // OK_FN_Payry_07_confirmacionCorreoEnviadoRegister
@@ -2732,15 +2798,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '6k5b4d50': {
       'es': 'Aceptar',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'يقبل',
+      'de': 'Akzeptieren',
+      'en': 'Accept',
     },
     'luqbeqpu': {
       'es': 'Home',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'بيت',
+      'de': 'heim',
+      'en': 'home',
     },
   },
   // OK_FN_Payry_10_confirmacionCorreoEnviadoContrasena
@@ -2759,9 +2825,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'taruew0o': {
       'es': 'Home',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'بيت',
+      'de': 'heim',
+      'en': 'home',
     },
   },
   // OK_FN_Payry_12_confirmacionContrasenaActualizada
@@ -2774,15 +2840,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'tdf98upf': {
       'es': 'Aceptar',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'يقبل',
+      'de': 'Akzeptieren',
+      'en': 'Accept',
     },
     'sxg3foim': {
       'es': 'Home',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'بيت',
+      'de': 'heim',
+      'en': 'home',
     },
   },
   // OK_FN_Payry_18_confirmacionTelefono
@@ -2795,15 +2861,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'osqjz8x9': {
       'es': 'Aceptar',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'يقبل',
+      'de': 'Akzeptieren',
+      'en': 'Accept',
     },
     'cboqjaaq': {
       'es': 'Home',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'بيت',
+      'de': 'heim',
+      'en': 'home',
     },
   },
   // OK_FN_Payry_21_confirmacionDatosBancarios
@@ -2811,20 +2877,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'xq7g2uwa': {
       'es': 'Datos bancarios\nvalidados correctamente',
       'ar': 'بيانات البنك\nالتحقق من صحتها بشكل صحيح',
-      'de': 'Bankdaten\nkorrekt validiert',
+      'de': 'Bankdaten\nrichtig validiert',
       'en': 'Bank data\ncorrectly validated',
     },
     'pvo8oijo': {
       'es': 'Aceptar',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'يقبل',
+      'de': 'Akzeptieren',
+      'en': 'Accept',
     },
     'b1xkg868': {
       'es': 'Home',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'بيت',
+      'de': 'heim',
+      'en': 'home',
     },
   },
   // OK_FN_Payry_33_SMSenviado
@@ -2837,15 +2903,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'wj2zg5qw': {
       'es': 'Aceptar',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'يقبل',
+      'de': 'Akzeptieren',
+      'en': 'Accept',
     },
     'jehuz6s3': {
       'es': 'Home',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'بيت',
+      'de': 'heim',
+      'en': 'home',
     },
   },
   // OK_FN_Payry_13_Menumas
@@ -2953,11 +3019,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es':
           'Aviso de Privacidad - Clientes\n\nEl objetivo de este documento es darte a conocer de la manera más fácil posible nuestro Aviso de Privacidad, en caso de que tengas cualquier duda, existen canales de comunicación que siempre están disponibles para ti.\n\nEn este Aviso de Privacidad (“ADP”) describimos la forma en que recabamos y tratamos tus datos personales a partir del momento en el que creas tu cuenta e ingresas los datos para el uso de los productos de Tecnologías de la información Kince S. de R.L. de C.V. (en adelante indistintamente “Payry” o el “Responsable”) y durante todo el tiempo que seas cliente de Payry.\n\nEn Payry estamos completamente comprometidos con la protección de tus datos personales y cumplimos con lo dispuesto en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (la “LFPD”) y el resto de regulación aplicable en materia de protección de datos. Por esto, te informamos que Payry, con domicilio para oír y recibir notificaciones en Avenida Américas 1545 Piso 5E, colonia Providencia, CP 44630, Guadalajara, Jalisco es el responsable de recabar y dar el tratamiento a todos tus datos personales.\n\nPara cumplir con las finalidades de tratamiento de tus datos personales, en Payry recabamos las siguientes categorías de tus datos personales:\nDatos de carácter identificativo y de contacto.\nDatos fiscales.\nDatos de transacción.\nDatos de ubicación geográfica.\nPara las finalidades descritas en el presente Aviso, Payry no recaba datos personales considerados como sensibles.\n\n\n\nEstas son las finalidades principales por las cuales recabamos tus datos personales:\nFacilitar la contratación de nuestros productos y/o servicios financieros a través de los medios tecnológicos disponibles. Analizar tu perfil para determinar el grado de riesgo para el otorgamiento de los productos financieros que ofrecemos o podamos llegar a ofrecer.\n\nRealizar la verificación de los datos contenidos en la Credencial para Votar y el biométrico facial a través del servicio de verificación del Instituto Nacional Electoral.\nGestionar, administrar y mantener actualizadas nuestras bases de datos de clientes.\nGestionar y comunicar estados de cuenta y cualquier otra información relacionada con los productos y/o servicios financieros adquiridos por nuestros clientes.\nGestionar, administrar y mantener actualizada la información relacionada con los cobros/pagos que realizas por los productos y/o servicios adquiridos.\nFacilitar atención de servicio al cliente.\nRegistrar las transacciones que se realizan con nuestros productos.\nRegistrar la ubicación al momento de realizar transacciones con nuestros productos.\nFacilitar nuestros productos y/o servicios utilizando los datos del dispositivo móvil.\nGestionar y administrar las comunicaciones con nuestros clientes. Estadística y registro histórico de nuestros clientes.\nSalvo que nos indiques lo contrario al darte de alta como prospecto, usaremos algunos datos para enviarte comunicaciones, por ejemplo, mediante SMS y/o correo electrónico, con novedades o información comercial sobre productos y servicios de Payry, así como campañas publicitarias y participación en dinámicas y programas que ofrece Payry; esta es una finalidad secundaria y puedes oponerte a ella, en cualquier momento.\nPayry podrá compartir tus datos dentro o fuera de México con (i) sus compañías controladoras, afiliadas, subsidiarias o cualquier sociedad del mismo grupo corporativo que operen bajo los mismos procesos y políticas internas, para finalidades de resguardo centralizado de la información, para documentar y formalizar operaciones de reestructuración operativa y/o corporativa, y para fines estadísticos y de registro histórico de clientes; (ii) sociedades de información crediticia, para solicitar información sobre tu historial crediticio e información de contacto; (iii) autoridades, organismos o entidades gubernamentales, para realizar verificaciones de información, para el cumplimiento de obligaciones previstas en la legislación aplicable y/o para cumplir con requerimientos efectuados por autoridades competentes en su caso; (iv) empresas de cobranza, para realizar cobros judiciales o extrajudiciales de créditos impagados, y (v) terceros no relacionados (prestadores de servicios), con la finalidad exclusiva de asistir a Payry en la prestación de sus servicios.\nTe comentamos que, conforme al artículo 37 de la LFPD, no requerimos de tu consentimiento para compartir tus datos en los términos establecidos en el párrafo anterior.\nPuedes ejercer en todo momento tus derechos de acceso, rectificación, cancelación y oposición (derechos ARCO), enviando una solicitud a\nnuestro Departamento de Datos Personales al correo electrónico: hola@payry.mx . El asunto de la solicitud debe ir señalada como “Derechos ARCO” o “Revocación del Consentimiento” y debe contener lo siguiente:\nTu nombre y domicilio o correo electrónico al que podremos comunicarte la respuesta a tu solicitud;\nLos documentos que acrediten tu identidad o, en su caso, la representación legal de aquella persona que ejerza el derecho en tu nombre;\nLa descripción clara y precisa de los datos personales respecto de los que se busca ejercer alguno de los derechos ARCO, y Cualquier otro elemento o documento que facilite la localización de tus datos personales.\nPayry te comunicará la determinación adoptada en un plazo máximo de veinte (20) días hábiles, contados a partir de la fecha en la que se reciba tu solicitud. Cuando tu solicitud proceda, se hará efectiva dentro de los quince (15) días hábiles siguientes a la fecha en que te comuniquemos la respuesta. En caso de que la información que proporciones sea incorrecta, insuficiente, o no cumplas con los requisitos antes mencionados, te comunicaremos dentro de los cinco (5) días hábiles siguientes a la recepción de tu solicitud para que realices los cambios pertinentes o cumplas con todos los requisitos. En este caso, tendrás diez (10) días hábiles para subsanar tu solicitud de lo contrario se tendrá por no presentada y será desechada.\nAl enviar tu solicitud a hola@payry.com , autorizas a Payry para dar respuesta por ese mismo medio, salvo que nos indiques otro medio de comunicación.\nComo cliente, puedes revocar tu consentimiento para el tratamiento, transferencia de tus datos personales o limitar el uso o divulgación de tus datos personales siguiendo este mismo procedimiento, siempre que no suponga la imposibilidad de cumplir con alguna obligación por parte de Payry.\nEs tu responsabilidad comunicar cualquier cambio en tus datos personales para que sea tomado en cuenta y mantener tus datos debidamente actualizados, con la finalidad de asegurar la calidad de los datos personales y garantizar que sean exactos.\nEn el sitio web www.payry.mx usamos cookies funcionales. Las cookies utilizadas por Payry nos permiten recopilar, analizar y conservar información electrónica relacionada con las visitas a nuestro sitio web. Las cookies que usamos permiten recabar esta información de forma automática en el momento mismo en que accedes a nuestro sitio web y a nuestros servicios electrónicos; sin embargo, éstas no permiten identificar individualmente a las personas que nos visitan. Si navegas en nuestra web y/o envías información a través de la misma, nos otorgas tu consentimiento expreso para la instalación de nuestras cookies. Para obtener información más detallada acerca de las cookies y la forma en que puedes deshabilitarlas en función de tu navegador y sistema operativo, te recomendamos que visites el sitio web allaboutcookies.org, en el que explican paso a paso cómo deshabilitarlas. Toma en cuenta que, si desactivas las cookies o impides su instalación, es posible que no puedas usar de manera completa algunas funciones de nuestra web.\nNos reservamos el derecho de modificar, actualizar, extender o de cualquier otra forma cambiar el contenido y alcance del presente Aviso de Privacidad, en cualquier momento y bajo nuestra completa discreción. En todo momento, podrás solicitar la última versión de este Aviso de Privacidad a nuestro Departamento de Datos Personales, a través de la dirección electrónica hola@payry.com.',
       'ar':
-          'إشعار الخصوصية - العملاء\n\nالهدف من هذه الوثيقة هو إعلامك بإشعار الخصوصية الخاص بنا بأسهل طريقة ممكنة، وفي حال كانت لديك أي أسئلة، فهناك قنوات اتصال متاحة لك دائمًا.\n\nفي إشعار الخصوصية هذا (\"ADP\") نوضح الطريقة التي نجمع بها بياناتك الشخصية ونعالجها منذ لحظة إنشاء حسابك وإدخال البيانات لاستخدام منتجات Kince S. de Information Technologies. من السيرة الذاتية (يشار إليها فيما بعد باسم \"Payry\" أو \"المسؤول\") وطالما أنك أحد عملاء Payry.\n\nفي Payry، نحن ملتزمون تمامًا بحماية بياناتك الشخصية ونلتزم بأحكام القانون الاتحادي بشأن حماية البيانات الشخصية التي تحتفظ بها الأطراف الخاصة (\"LFPD\") وبقية اللوائح المعمول بها بشأن حماية البيانات. لهذا السبب، نعلمك أن Payry، التي يقع عنوانها لسماع الإخطارات وتلقيها في Avenida Américas 1545 Piso 5E, Colonia Providencia, CP 44630, Guadalajara, Jalisco، مسؤولة عن جمع ومعالجة جميع بياناتك الشخصية.\n\nلتحقيق أغراض معالجة بياناتك الشخصية، نقوم في Payry بجمع الفئات التالية من بياناتك الشخصية:\nبيانات التعريف والاتصال.\nالبيانات الضريبية.\nبيانات المعاملات.\nبيانات الموقع الجغرافي.\nللأغراض الموضحة في هذا الإشعار، لا تقوم Payry بجمع البيانات الشخصية التي تعتبر حساسة.\n\n\n\nهذه هي الأغراض الرئيسية التي نجمع بياناتك الشخصية من أجلها:\nتسهيل التعاقد على منتجاتنا و/أو خدماتنا المالية من خلال الوسائل التكنولوجية المتاحة. قم بتحليل ملفك الشخصي لتحديد درجة المخاطرة المتعلقة بمنح المنتجات المالية التي نقدمها أو قد نقدمها.\n\nإجراء التحقق من البيانات الواردة في أوراق اعتماد التصويت والبيومترية للوجه من خلال خدمة التحقق من المعهد الانتخابي الوطني.\nإدارة وإدارة وتحديث قواعد بيانات العملاء لدينا.\nإدارة وتوصيل كشوفات الحساب وأي معلومات أخرى تتعلق بالمنتجات و/أو الخدمات المالية التي حصل عليها عملاؤنا.\nإدارة وإدارة وتحديث المعلومات المتعلقة بالتحصيلات/المدفوعات التي تقوم بها للمنتجات و/أو الخدمات المشتراة.\nتسهيل اهتمام خدمة العملاء.\nتسجيل المعاملات التي تتم مع منتجاتنا.\nسجل الموقع عند التعامل مع منتجاتنا.\nتسهيل منتجاتنا و/أو خدماتنا باستخدام بيانات الجهاز المحمول.\nإدارة وإدارة الاتصالات مع عملائنا. الإحصائيات والسجل التاريخي لعملائنا.\nما لم تخبرنا بخلاف ذلك عند التسجيل كعميل محتمل، سنستخدم بعض البيانات لإرسال اتصالات إليك، على سبيل المثال، عبر الرسائل القصيرة و/أو البريد الإلكتروني، تحتوي على أخبار أو معلومات تجارية حول منتجات وخدمات Payry، بالإضافة إلى الحملات الإعلانية والمشاركة. في الديناميكيات والبرامج التي تقدمها Payry؛ وهذا غرض ثانوي ويمكنك الاعتراض عليه في أي وقت.\nيجوز لشركة Payry مشاركة بياناتك داخل المكسيك أو خارجها مع (1) الشركات المسيطرة أو الشركات التابعة لها أو الشركات التابعة لها أو أي شركة من نفس مجموعة الشركات التي تعمل بموجب نفس العمليات والسياسات الداخلية، لأغراض الحماية المركزية للمعلومات، لتوثيق و إضفاء الطابع الرسمي على العمليات التشغيلية و/أو إعادة الهيكلة المؤسسية، ولأغراض تسجيل العملاء الإحصائية والتاريخية؛ (2) شركات المعلومات الائتمانية، لطلب معلومات حول تاريخك الائتماني ومعلومات الاتصال الخاصة بك؛ (3) السلطات أو المنظمات أو الهيئات الحكومية، لإجراء عمليات التحقق من المعلومات، والامتثال للالتزامات المنصوص عليها في التشريعات المعمول بها و/أو الامتثال للمتطلبات التي وضعتها السلطات المختصة حيثما ينطبق ذلك؛ (4) شركات التحصيل، لتنفيذ عمليات تحصيل قضائية أو غير قضائية للاعتمادات غير المدفوعة، و(5) أطراف ثالثة غير ذات صلة (مقدمي الخدمات)، لغرض حصري هو مساعدة Payry في تقديم خدماتها.\nنخبرك أنه وفقًا للمادة 37 من قانون LFPD، فإننا لا نطلب موافقتك على مشاركة بياناتك وفقًا للشروط المنصوص عليها في الفقرة السابقة.\nيمكنك ممارسة حقوقك في الوصول والتصحيح والإلغاء والمعارضة (حقوق ARCO) في أي وقت عن طريق إرسال طلب إلى\nقسم البيانات الشخصية لدينا على البريد الإلكتروني: hola@payry.mx. يجب الإشارة إلى موضوع الطلب باسم \"حقوق ARCO\" أو \"إلغاء الموافقة\" ويجب أن يحتوي على ما يلي:\nاسمك وعنوانك أو عنوان بريدك الإلكتروني الذي يمكننا إرسال الرد على طلبك إليه؛\nالمستندات التي تثبت هويتك أو، حيثما ينطبق ذلك، التمثيل القانوني للشخص الذي يمارس الحق نيابة عنك؛\nالوصف الواضح والدقيق للبيانات الشخصية التي تسعى بشأنها إلى ممارسة أي من حقوق ARCO، وأي عنصر أو مستند آخر يسهل تحديد موقع بياناتك الشخصية.\nستبلغك Payry بالقرار الذي تم اتخاذه خلال فترة أقصاها عشرين (20) يوم عمل، تحسب من تاريخ استلام طلبك. عندما يكون طلبك مناسبًا، سيكون ساريًا خلال خمسة عشر (15) يوم عمل بعد تاريخ إرسال الرد. في حالة أن المعلومات التي تقدمها غير صحيحة أو غير كافية أو لا تفي بالمتطلبات المذكورة أعلاه، فسنبلغك في غضون خمسة (5) أيام عمل بعد استلام طلبك حتى تتمكن من إجراء التغييرات ذات الصلة أو الامتثال لجميع متطلبات. في هذه الحالة، سيكون لديك عشرة (10) أيام عمل لتصحيح طلبك، وإلا فسيتم اعتباره غير مقدم وسيتم رفضه.\nمن خلال إرسال طلبك إلى hola@payry.com، فإنك تأذن لـ Payry بالرد بنفس الوسيلة، ما لم تشير إلى وسيلة اتصال أخرى.\nكعميل، يمكنك إلغاء موافقتك على معالجة بياناتك الشخصية أو نقلها أو تقييد استخدام بياناتك الشخصية أو الكشف عنها عن طريق اتباع هذا الإجراء نفسه، طالما أن ذلك لا يجعل من المستحيل على Payry الامتثال لأي التزام .\nوتقع على عاتقك مسؤولية إبلاغ أي تغييرات تطرأ على بياناتك الشخصية حتى يتم أخذها بعين الاعتبار والحفاظ على تحديث بياناتك حسب الأصول، وذلك لضمان جودة البيانات الشخصية وضمان دقتها.\nعلى الموقع الإلكتروني www.payry.mx نستخدم ملفات تعريف الارتباط الوظيفية. تسمح لنا ملفات تعريف الارتباط التي تستخدمها Payry بجمع وتحليل والاحتفاظ بالمعلومات الإلكترونية المتعلقة بزيارات موقعنا. تسمح لنا ملفات تعريف الارتباط التي نستخدمها بجمع هذه المعلومات تلقائيًا في لحظة وصولك إلى موقعنا الإلكتروني وخدماتنا الإلكترونية؛ ومع ذلك، فإن ذلك لا يسمح لنا بالتعرف بشكل فردي على الأشخاص الذين يزوروننا. إذا كنت تتصفح موقعنا الإلكتروني و/أو ترسل معلومات من خلاله، فإنك تمنحنا موافقتك الصريحة على تثبيت ملفات تعريف الارتباط الخاصة بنا. للحصول على معلومات أكثر تفصيلاً حول ملفات تعريف الارتباط وكيف يمكنك تعطيلها اعتمادًا على المتصفح ونظام التشغيل لديك، نوصي بزيارة موقع allaboutcookies.org الذي يشرح خطوة بخطوة كيفية تعطيلها. يرجى ملاحظة أنه إذا قمت بتعطيل ملفات تعريف الارتباط أو منعت تثبيتها، فقد لا تتمكن من استخدام بعض وظائف موقعنا بشكل كامل.\nنحن نحتفظ بالحق في تعديل أو تحديث أو تمديد أو تغيير محتوى ونطاق إشعار الخصوصية هذا، في أي وقت ووفقًا لتقديرنا الخاص. يمكنك، في أي وقت، طلب أحدث إصدار من إشعار الخصوصية هذا من قسم البيانات الشخصية لدينا، عبر عنوان البريد الإلكتروني hola@payry.com.',
+          'إشعار الخصوصية - العملاء\n\nالهدف من هذه الوثيقة هو إعلامك بإشعار الخصوصية الخاص بنا بأسهل طريقة ممكنة، وفي حال كانت لديك أي أسئلة، فهناك قنوات اتصال متاحة لك دائمًا.\n\nفي إشعار الخصوصية هذا (\"ADP\") نوضح الطريقة التي نجمع بها بياناتك الشخصية ونعالجها منذ لحظة إنشاء حسابك وإدخال البيانات لاستخدام منتجات Kince S. de Information Technologies. من السيرة الذاتية (يشار إليها فيما بعد باسم \"Payry\" أو \"المسؤول\") وطالما أنك أحد عملاء Payry.\n\nفي Payry، نحن ملتزمون تمامًا بحماية بياناتك الشخصية ونلتزم بأحكام القانون الاتحادي بشأن حماية البيانات الشخصية التي تحتفظ بها الأطراف الخاصة (\"LFPD\") وبقية اللوائح المعمول بها بشأن حماية البيانات. لهذا السبب، نعلمك أن Payry، التي يقع عنوانها لسماع الإخطارات وتلقيها في Avenida Américas 1545 Piso 5E, Colonia Providencia, CP 44630, Guadalajara, Jalisco، مسؤولة عن جمع ومعالجة جميع بياناتك الشخصية.\n\nلتحقيق أغراض معالجة بياناتك الشخصية، نقوم في Payry بجمع الفئات التالية من بياناتك الشخصية:\nبيانات التعريف والاتصال.\nالبيانات الضريبية.\nبيانات المعاملات.\nبيانات الموقع الجغرافي.\nللأغراض الموضحة في هذا الإشعار، لا تقوم Payry بجمع البيانات الشخصية التي تعتبر حساسة.\n\n\n\nهذه هي الأغراض الرئيسية التي نجمع بياناتك الشخصية من أجلها:\nتسهيل التعاقد على منتجاتنا و/أو خدماتنا المالية من خلال الوسائل التكنولوجية المتاحة. قم بتحليل ملفك الشخصي لتحديد درجة المخاطرة المتعلقة بمنح المنتجات المالية التي نقدمها أو قد نقدمها.\n\nإجراء التحقق من البيانات الواردة في أوراق اعتماد التصويت والبيومترية للوجه من خلال خدمة التحقق من المعهد الانتخابي الوطني.\nإدارة وإدارة وتحديث قواعد بيانات العملاء لدينا.\nإدارة وتوصيل كشوفات الحساب وأي معلومات أخرى تتعلق بالمنتجات و/أو الخدمات المالية التي حصل عليها عملاؤنا.\nإدارة وإدارة وتحديث المعلومات المتعلقة بالتحصيلات/المدفوعات التي تقوم بها للمنتجات و/أو الخدمات المشتراة.\nتسهيل اهتمام خدمة العملاء.\nتسجيل المعاملات التي تتم مع منتجاتنا.\nسجل الموقع عند التعامل مع منتجاتنا.\nتسهيل منتجاتنا و/أو خدماتنا باستخدام بيانات الجهاز المحمول.\nإدارة وإدارة الاتصالات مع عملائنا. الإحصائيات والسجل التاريخي لعملائنا.\nما لم تخبرنا بخلاف ذلك عند التسجيل كعميل محتمل، سنستخدم بعض البيانات لإرسال اتصالات إليك، على سبيل المثال، عبر الرسائل القصيرة و/أو البريد الإلكتروني، تحتوي على أخبار أو معلومات تجارية حول منتجات وخدمات Payry، بالإضافة إلى الحملات الإعلانية والمشاركة. في الديناميكيات والبرامج التي تقدمها Payry؛ وهذا غرض ثانوي ويمكنك الاعتراض عليه في أي وقت.\nيجوز لشركة Payry مشاركة بياناتك داخل المكسيك أو خارجها مع (1) الشركات المسيطرة أو الشركات التابعة لها أو الشركات التابعة لها أو أي شركة من نفس مجموعة الشركات التي تعمل بموجب نفس العمليات والسياسات الداخلية، لأغراض الحماية المركزية للمعلومات، لتوثيق و إضفاء الطابع الرسمي على العمليات التشغيلية و/أو إعادة الهيكلة المؤسسية، ولأغراض تسجيل العملاء الإحصائية والتاريخية؛ (2) شركات المعلومات الائتمانية، لطلب معلومات حول تاريخك الائتماني ومعلومات الاتصال الخاصة بك؛ (3) السلطات أو المنظمات أو الهيئات الحكومية، لإجراء عمليات التحقق من المعلومات، والامتثال للالتزامات المنصوص عليها في التشريعات المعمول بها و/أو الامتثال للمتطلبات التي وضعتها السلطات المختصة حيثما ينطبق ذلك؛ (4) شركات التحصيل، لتنفيذ عمليات تحصيل قضائية أو غير قضائية للاعتمادات غير المدفوعة، و(5) أطراف ثالثة غير ذات صلة (مقدمي الخدمات)، لغرض حصري هو مساعدة Payry في تقديم خدماتها.\nنخبرك أنه وفقًا للمادة 37 من قانون LFPD، فإننا لا نطلب موافقتك على مشاركة بياناتك وفقًا للشروط المنصوص عليها في الفقرة السابقة.\nيمكنك ممارسة حقوقك في الوصول والتصحيح والإلغاء والمعارضة (حقوق ARCO) في أي وقت عن طريق إرسال طلب إلى\nقسم البيانات الشخصية لدينا على البريد الإلكتروني: hola@payry.mx. يجب الإشارة إلى موضوع الطلب باسم \"حقوق ARCO\" أو \"إلغاء الموافقة\" ويجب أن يحتوي على ما يلي:\nاسمك وعنوانك أو عنوان بريدك الإلكتروني الذي يمكننا إرسال الرد على طلبك إليه؛\nالمستندات التي تثبت هويتك أو، حيثما ينطبق ذلك، التمثيل القانوني للشخص الذي يمارس الحق نيابة عنك؛\nالوصف الواضح والدقيق للبيانات الشخصية التي تسعى بشأنها إلى ممارسة أي من حقوق ARCO، وأي عنصر أو مستند آخر يسهل تحديد موقع بياناتك الشخصية.\nستبلغك Payry بالقرار الذي تم اتخاذه خلال فترة أقصاها عشرين (20) يوم عمل، تحسب من تاريخ استلام طلبك. عندما يكون طلبك مناسبًا، سيكون ساريًا خلال خمسة عشر (15) يوم عمل بعد تاريخ إرسال الرد. في حالة أن المعلومات التي تقدمها غير صحيحة أو غير كافية أو لا تفي بالمتطلبات المذكورة أعلاه، فسنبلغك في غضون خمسة (5) أيام عمل بعد استلام طلبك حتى تتمكن من إجراء التغييرات ذات الصلة أو الامتثال لجميع متطلبات. في هذه الحالة، سيكون لديك عشرة (10) أيام عمل لتصحيح طلبك، وإلا فسيتم اعتباره غير مقدم وسيتم رفضه.\nمن خلال إرسال طلبك إلى hola@payry.com، فإنك تأذن لـ Payry بالرد بنفس الوسيلة، ما لم تشير إلى وسيلة اتصال أخرى.\nكعميل، يمكنك إلغاء موافقتك على معالجة بياناتك الشخصية أو نقلها أو تقييد استخدام بياناتك الشخصية أو الكشف عنها عن طريق اتباع هذا الإجراء نفسه، طالما أن ذلك لا يجعل من المستحيل على Payry الامتثال لأي التزام .\nوتقع على عاتقك مسؤولية إبلاغ أي تغييرات تطرأ على بياناتك الشخصية حتى يتم أخذها بعين الاعتبار والحفاظ على تحديث بياناتك حسب الأصول، وذلك لضمان جودة البيانات الشخصية وضمان دقتها.\nعلى الموقع الإلكتروني www.payry.mx نستخدم ملفات تعريف الارتباط الوظيفية. تسمح لنا ملفات تعريف الارتباط التي تستخدمها Payry بجمع وتحليل والاحتفاظ بالمعلومات الإلكترونية المتعلقة بزيارات موقعنا. تسمح لنا ملفات تعريف الارتباط التي نستخدمها بجمع هذه المعلومات تلقائيًا في لحظة دخولك إلى موقعنا الإلكتروني وخدماتنا الإلكترونية؛ ومع ذلك، فإن ذلك لا يسمح لنا بالتعرف بشكل فردي على الأشخاص الذين يزوروننا. إذا كنت تتصفح موقعنا الإلكتروني و/أو ترسل معلومات من خلاله، فإنك تمنحنا موافقتك الصريحة على تثبيت ملفات تعريف الارتباط الخاصة بنا. للحصول على معلومات أكثر تفصيلاً حول ملفات تعريف الارتباط وكيف يمكنك تعطيلها اعتمادًا على المتصفح ونظام التشغيل لديك، نوصي بزيارة موقع allaboutcookies.org الذي يشرح خطوة بخطوة كيفية تعطيلها. يرجى ملاحظة أنه إذا قمت بتعطيل ملفات تعريف الارتباط أو منعت تثبيتها، فقد لا تتمكن من استخدام بعض وظائف موقعنا بشكل كامل.\nنحن نحتفظ بالحق في تعديل أو تحديث أو تمديد أو تغيير محتوى ونطاق إشعار الخصوصية هذا، في أي وقت ووفقًا لتقديرنا الخاص. يمكنك، في أي وقت، طلب أحدث إصدار من إشعار الخصوصية هذا من قسم البيانات الشخصية لدينا، عبر عنوان البريد الإلكتروني hola@payry.com.',
       'de':
           'Datenschutzhinweis – Kunden\n\nZiel dieses Dokuments ist es, Sie auf einfachste Weise auf unsere Datenschutzerklärung aufmerksam zu machen. Für den Fall, dass Sie Fragen haben, stehen Ihnen jederzeit Kommunikationskanäle zur Verfügung.\n\nIn dieser Datenschutzerklärung („ADP“) beschreiben wir die Art und Weise, wie wir Ihre personenbezogenen Daten ab dem Zeitpunkt der Erstellung Ihres Kontos und der Eingabe der Daten für die Nutzung der Produkte von Kince S. de Information Technologies erfassen und verarbeiten. R.L. des Lebenslaufs (im Folgenden austauschbar „Payry“ oder der „Verantwortliche“) und solange Sie Payry-Kunde sind.\n\nBei Payry sind wir dem Schutz Ihrer personenbezogenen Daten voll und ganz verpflichtet und halten uns an die Bestimmungen des Bundesgesetzes zum Schutz personenbezogener Daten im Besitz privater Parteien (das „LFPD“) sowie die übrigen geltenden Datenschutzbestimmungen. Aus diesem Grund informieren wir Sie darüber, dass Payry mit der Anschrift Avenida Américas 1545 Piso 5E, Colonia Providencia, CP 44630, Guadalajara, Jalisco zum Anhören und Empfangen von Benachrichtigungen für die Erhebung und Verarbeitung aller Ihrer personenbezogenen Daten verantwortlich ist.\n\nUm die Zwecke der Verarbeitung Ihrer personenbezogenen Daten zu erfüllen, erfassen wir bei Payry die folgenden Kategorien Ihrer personenbezogenen Daten:\nIdentifikations- und Kontaktdaten.\nSteuerdaten.\nTransaktionsdaten.\nGeografische Standortdaten.\nFür die in dieser Mitteilung beschriebenen Zwecke erhebt Payry keine personenbezogenen Daten, die als vertraulich gelten.\n\n\n\nDies sind die Hauptzwecke, für die wir Ihre personenbezogenen Daten erheben:\nErleichtern Sie den Abschluss unserer Finanzprodukte und/oder -dienstleistungen durch die verfügbaren technischen Mittel. Analysieren Sie Ihr Profil, um den Grad des Risikos für die Gewährung der Finanzprodukte zu ermitteln, die wir anbieten oder anbieten könnten.\n\nFühren Sie die Überprüfung der im Wahlausweis und der Gesichtsbiometrie enthaltenen Daten durch den Überprüfungsdienst des Nationalen Wahlinstituts durch.\nVerwalten, verwalten und aktualisieren Sie unsere Kundendatenbanken.\nVerwalten und kommunizieren Sie Kontoauszüge und alle anderen Informationen im Zusammenhang mit den von unseren Kunden erworbenen Finanzprodukten und/oder -dienstleistungen.\nVerwalten, verwalten und aktualisieren Sie die Informationen im Zusammenhang mit den Einzügen/Zahlungen, die Sie für die gekauften Produkte und/oder Dienstleistungen vornehmen.\nErleichtern Sie die Aufmerksamkeit des Kundendienstes.\nErfassen Sie die Transaktionen, die mit unseren Produkten getätigt werden.\nNotieren Sie den Standort, wenn Sie Transaktionen mit unseren Produkten tätigen.\nErmöglichen Sie unsere Produkte und/oder Dienstleistungen mithilfe mobiler Gerätedaten.\nVerwalten und verwalten Sie die Kommunikation mit unseren Kunden. Statistiken und historische Aufzeichnungen unserer Kunden.\nSofern Sie uns bei der Registrierung als Interessent nichts anderes mitteilen, verwenden wir einige Daten, um Ihnen Mitteilungen, beispielsweise per SMS und/oder E-Mail, mit Neuigkeiten oder kommerziellen Informationen über Produkte und Dienstleistungen von Payry sowie Werbekampagnen und Teilnahme zu senden in den von Payry angebotenen Dynamiken und Programmen; Hierbei handelt es sich um einen Nebenzweck, dem Sie jederzeit widersprechen können.\nPayry kann Ihre Daten innerhalb oder außerhalb Mexikos an (i) seine kontrollierenden Unternehmen, verbundenen Unternehmen, Tochtergesellschaften oder jedes Unternehmen derselben Unternehmensgruppe weitergeben, die nach denselben internen Prozessen und Richtlinien arbeiten, zum Zweck der zentralen Sicherung von Informationen, zur Dokumentation und Formalisierung betrieblicher und/oder unternehmensbezogener Umstrukturierungsmaßnahmen sowie für statistische und historische Kundenregistrierungszwecke; (ii) Kreditauskunfteien, um Informationen über Ihre Kredithistorie und Kontaktinformationen anzufordern; (iii) Behörden, Organisationen oder staatliche Stellen, um Informationsüberprüfungen durchzuführen, um den in der geltenden Gesetzgebung vorgesehenen Verpflichtungen nachzukommen und/oder um gegebenenfalls die Anforderungen der zuständigen Behörden zu erfüllen; (iv) Inkassounternehmen, um gerichtliche oder außergerichtliche Eintreibungen unbezahlter Kredite durchzuführen, und (v) unabhängige Dritte (Dienstleister), mit dem ausschließlichen Zweck, Payry bei der Erbringung seiner Dienstleistungen zu unterstützen.\nWir weisen Sie darauf hin, dass wir gemäß Artikel 37 des LFPD nicht Ihre Zustimmung zur Weitergabe Ihrer Daten gemäß den im vorherigen Absatz festgelegten Bedingungen benötigen.\nSie können Ihr Recht auf Zugang, Berichtigung, Löschung und Widerspruch (ARCO-Rechte) jederzeit ausüben, indem Sie eine Anfrage an senden\nunsere Abteilung für personenbezogene Daten unter der E-Mail-Adresse: hola@payry.mx. Der Betreff des Antrags muss als „ARCO-Rechte“ oder „Widerruf der Einwilligung“ angegeben werden und Folgendes enthalten:\nIhr Name und Ihre Adresse oder E-Mail-Adresse, an die wir die Antwort auf Ihre Anfrage übermitteln können;\nDie Dokumente, die Ihre Identität belegen, oder gegebenenfalls die gesetzliche Vertretung der Person, die das Recht in Ihrem Namen ausübt;\nDie klare und präzise Beschreibung der personenbezogenen Daten, in Bezug auf die Sie eines der ARCO-Rechte ausüben möchten, sowie jedes andere Element oder Dokument, das die Lokalisierung Ihrer personenbezogenen Daten erleichtert.\nPayry wird Sie innerhalb von maximal zwanzig (20) Werktagen, gerechnet ab dem Datum des Eingangs Ihrer Anfrage, über die getroffene Entscheidung informieren. Wenn Ihre Anfrage angemessen ist, wird sie innerhalb von fünfzehn (15) Werktagen nach dem Datum wirksam, an dem wir die Antwort mitteilen. Für den Fall, dass die von Ihnen bereitgestellten Informationen falsch oder unzureichend sind oder die oben genannten Anforderungen nicht erfüllen, werden wir Sie innerhalb von fünf (5) Werktagen nach Eingang Ihrer Anfrage informieren, damit Sie die entsprechenden Änderungen vornehmen oder allen Anforderungen nachkommen können Anforderungen. In diesem Fall haben Sie zehn (10) Werktage Zeit, um Ihre Anfrage zu korrigieren, andernfalls gilt sie als nicht eingereicht und wird abgelehnt.\nIndem Sie Ihre Anfrage an hola@payry.com senden, ermächtigen Sie Payry, auf demselben Weg zu antworten, es sei denn, Sie geben ein anderes Kommunikationsmittel an.\nAls Kunde können Sie Ihre Einwilligung zur Verarbeitung und Übermittlung Ihrer personenbezogenen Daten widerrufen oder die Nutzung oder Offenlegung Ihrer personenbezogenen Daten einschränken, indem Sie dasselbe Verfahren befolgen, sofern dadurch Payry nicht daran gehindert wird, einer Verpflichtung nachzukommen .\nEs liegt in Ihrer Verantwortung, etwaige Änderungen Ihrer personenbezogenen Daten mitzuteilen, damit diese berücksichtigt werden, und Ihre Daten ordnungsgemäß auf dem neuesten Stand zu halten, um die Qualität der personenbezogenen Daten sicherzustellen und deren Richtigkeit zu gewährleisten.\nAuf der Website www.payry.mx verwenden wir funktionale Cookies. Die von Payry verwendeten Cookies ermöglichen es uns, elektronische Informationen im Zusammenhang mit Besuchen auf unserer Website zu sammeln, zu analysieren und zu speichern. Die von uns verwendeten Cookies ermöglichen es uns, diese Informationen automatisch zu erfassen, sobald Sie auf unsere Website und unsere elektronischen Dienste zugreifen. Diese ermöglichen es uns jedoch nicht, die Personen, die uns besuchen, individuell zu identifizieren. Wenn Sie auf unserer Website surfen und/oder Informationen darüber senden, erteilen Sie uns Ihre ausdrückliche Zustimmung zur Installation unserer Cookies. Für detailliertere Informationen über Cookies und wie Sie diese je nach Browser und Betriebssystem deaktivieren können, empfehlen wir Ihnen den Besuch der Website allaboutcookies.org, auf der Schritt für Schritt erklärt wird, wie Sie sie deaktivieren können. Bitte beachten Sie, dass Sie einige Funktionen unserer Website möglicherweise nicht vollständig nutzen können, wenn Sie Cookies deaktivieren oder deren Installation verhindern.\nWir behalten uns das Recht vor, den Inhalt und Umfang dieser Datenschutzerklärung jederzeit und nach unserem alleinigen Ermessen zu ändern, zu aktualisieren, zu erweitern oder anderweitig zu ändern. Sie können jederzeit die neueste Version dieser Datenschutzerklärung von unserer Abteilung für personenbezogene Daten über die E-Mail-Adresse hola@payry.com anfordern.',
       'en':
-          'Privacy Notice - Clients\n\nThe objective of this document is to make you aware of our Privacy Notice in the easiest way possible. In case you have any questions, there are communication channels that are always available to you.\n\nIn this Privacy Notice (“ADP”) we describe the way in which we collect and process your personal data from the moment you create your account and enter the data for the use of Kince S. de Information Technologies products. R.L. of C.V. (hereinafter interchangeably “Payry” or the “Responsible”) and for as long as you are a Payry customer.\n\nAt Payry we are completely committed to the protection of your personal data and we comply with the provisions of the Federal Law on Protection of Personal Data Held by Private Parties (the “LFPD”) and the rest of the applicable regulations on data protection. For this reason, we inform you that Payry, with address to hear and receive notifications at Avenida Américas 1545 Piso 5E, Colonia Providencia, CP 44630, Guadalajara, Jalisco, is responsible for collecting and processing all your personal data.\n\nTo fulfill the purposes of processing your personal data, at Payry we collect the following categories of your personal data:\nIdentification and contact data.\nTax data.\nTransaction data.\nGeographic location data.\nFor the purposes described in this Notice, Payry does not collect personal data considered sensitive.\n\n\n\nThese are the main purposes for which we collect your personal data:\nFacilitate the contracting of our financial products and/or services through the technological means available. Analyze your profile to determine the degree of risk for the granting of the financial products that we offer or may offer.\n\nCarry out the verification of the data contained in the Voting Credential and the facial biometric through the verification service of the National Electoral Institute.\nManage, administer and keep our customer databases updated.\nManage and communicate account statements and any other information related to the financial products and/or services acquired by our clients.\nManage, administer and keep updated the information related to the collections/payments you make for the products and/or services purchased.\nFacilitate customer service attention.\nRecord the transactions that are made with our products.\nRecord the location when transacting with our products.\nFacilitate our products and/or services using mobile device data.\nManage and administer communications with our clients. Statistics and historical record of our clients.\nUnless you tell us otherwise when you register as a prospect, we will use some data to send you communications, for example, by SMS and/or email, with news or commercial information about Payry products and services, as well as advertising campaigns and participation in dynamics and programs offered by Payry; This is a secondary purpose and you can object to it at any time.\nPayry may share your data inside or outside of Mexico with (i) its controlling companies, affiliates, subsidiaries or any company of the same corporate group that operate under the same internal processes and policies, for purposes of centralized safeguarding of information, to document and formalize operational and/or corporate restructuring operations, and for statistical and historical customer registration purposes; (ii) credit information companies, to request information about your credit history and contact information; (iii) authorities, organizations or government entities, to carry out information verifications, to comply with obligations provided for in the applicable legislation and/or to comply with requirements made by competent authorities where applicable; (iv) collection companies, to carry out judicial or extrajudicial collections of unpaid credits, and (v) unrelated third parties (service providers), with the exclusive purpose of assisting Payry in the provision of its services.\nWe tell you that, in accordance with article 37 of the LFPD, we do not require your consent to share your data in the terms established in the previous paragraph.\nYou can exercise your rights of access, rectification, cancellation and opposition (ARCO rights) at any time by sending a request to\nour Personal Data Department at email: hola@payry.mx. The subject of the request must be indicated as “ARCO Rights” or “Revocation of Consent” and must contain the following:\nYour name and address or email address to which we can communicate the response to your request;\nThe documents that prove your identity or, where applicable, the legal representation of the person who exercises the right on your behalf;\nThe clear and precise description of the personal data with respect to which you seek to exercise any of the ARCO rights, and Any other element or document that facilitates the location of your personal data.\nPayry will inform you of the determination made within a maximum period of twenty (20) business days, counted from the date on which your request is received. When your request is appropriate, it will be effective within fifteen (15) business days following the date on which we communicate the response. In the event that the information you provide is incorrect, insufficient, or does not meet the aforementioned requirements, we will inform you within five (5) business days following receipt of your request so that you can make the pertinent changes or comply with all the requirements. In this case, you will have ten (10) business days to correct your request, otherwise it will be considered not submitted and will be rejected.\nBy sending your request to hola@payry.com, you authorize Payry to respond by that same means, unless you indicate another means of communication.\nAs a client, you can revoke your consent for the processing, transfer of your personal data or limit the use or disclosure of your personal data by following this same procedure, as long as it does not make it impossible for Payry to comply with any obligation.\nIt is your responsibility to communicate any changes to your personal data so that it is taken into account and to keep your data duly updated, in order to ensure the quality of the personal data and guarantee that it is accurate.\nOn the website www.payry.mx we use functional cookies. The cookies used by Payry allow us to collect, analyze and retain electronic information related to visits to our website. The cookies we use allow us to collect this information automatically at the moment you access our website and our electronic services; However, these do not allow us to individually identify the people who visit us. If you browse our website and/or send information through it, you give us your express consent to install our cookies. For more detailed information about cookies and how you can disable them depending on your browser and operating system, we recommend that you visit the allaboutcookies.org website, which explains step by step how to disable them. Please note that if you disable cookies or prevent their installation, you may not be able to fully use some functions of our website.\nWe reserve the right to modify, update, extend or otherwise change the content and scope of this Privacy Notice, at any time and under our sole discretion. At any time, you can request the latest version of this Privacy Notice from our Personal Data Department, through the email address hola@payry.com.',
+          'Privacy Notice - Clients\n\nThe objective of this document is to make you aware of our Privacy Notice in the easiest way possible. In case you have any questions, there are communication channels that are always available to you.\n\nIn this Privacy Notice (“ADP”) we describe the way in which we collect and process your personal data from the moment you create your account and enter the data for the use of Kince S. de Information Technologies products. R.L. of C.V. (hereinafter interchangeably “Payry” or the “Responsible”) and for as long as you are a Payry customer.\n\nAt Payry we are completely committed to the protection of your personal data and we comply with the provisions of the Federal Law on Protection of Personal Data Held by Private Parties (the “LFPD”) and the rest of the applicable regulations on data protection. For this reason, we inform you that Payry, with address to hear and receive notifications at Avenida Américas 1545 Piso 5E, Colonia Providencia, CP 44630, Guadalajara, Jalisco, is responsible for collecting and processing all your personal data.\n\nTo fulfill the purposes of processing your personal data, at Payry we collect the following categories of your personal data:\nIdentification and contact data.\nTax data.\nTransaction data.\nGeographic location data.\nFor the purposes described in this Notice, Payry does not collect personal data considered sensitive.\n\n\n\nThese are the main purposes for which we collect your personal data:\nFacilitate the contracting of our financial products and/or services through the technological means available. Analyze your profile to determine the degree of risk for the granting of the financial products that we offer or may offer.\n\nCarry out the verification of the data contained in the Voting Credential and the facial biometric through the verification service of the National Electoral Institute.\nManage, administer and keep our customer databases updated.\nManage and communicate account statements and any other information related to the financial products and/or services acquired by our clients.\nManage, administer and keep updated the information related to the collections/payments you make for the products and/or services purchased.\nFacilitate customer service attention.\nRecord the transactions that are made with our products.\nRecord the location when transacting with our products.\nFacilitate our products and/or services using mobile device data.\nManage and administer communications with our clients. Statistics and historical record of our clients.\nUnless you tell us otherwise when you register as a prospect, we will use some data to send you communications, for example, by SMS and/or email, with news or commercial information about Payry products and services, as well as advertising campaigns and participation in dynamics and programs offered by Payry; This is a secondary purpose and you can object to it at any time.\nPayry may share your data inside or outside of Mexico with (i) its controlling companies, affiliates, subsidiaries or any company of the same corporate group that operate under the same internal processes and policies, for purposes of centralized safeguarding of information, to document and formalize operational and/or corporate restructuring operations, and for statistical and historical customer registration purposes; (ii) credit information companies, to request information about your credit history and contact information; (iii) authorities, organizations or government entities, to carry out information verifications, to comply with obligations provided for in the applicable legislation and/or to comply with requirements made by competent authorities where applicable; (iv) collection companies, to carry out judicial or extrajudicial collections of unpaid credits, and (v) unrelated third parties (service providers), with the exclusive purpose of assisting Payry in the provision of its services.\nWe tell you that, in accordance with article 37 of the LFPD, we do not require your consent to share your data in the terms established in the previous paragraph.\nYou can exercise your rights of access, rectification, cancellation and opposition (ARCO rights) at any time by sending a request to\nour Personal Data Department at the email: hola@payry.mx. The subject of the request must be indicated as “ARCO Rights” or “Revocation of Consent” and must contain the following:\nYour name and address or email address to which we can communicate the response to your request;\nThe documents that prove your identity or, where applicable, the legal representation of the person who exercises the right on your behalf;\nThe clear and precise description of the personal data with respect to which you seek to exercise any of the ARCO rights, and Any other element or document that facilitates the location of your personal data.\nPayry will inform you of the determination made within a maximum period of twenty (20) business days, counted from the date on which your request is received. When your request is appropriate, it will be effective within fifteen (15) business days following the date on which we communicate the response. In the event that the information you provide is incorrect, insufficient, or does not meet the aforementioned requirements, we will inform you within five (5) business days following receipt of your request so that you can make the pertinent changes or comply with all the requirements. In this case, you will have ten (10) business days to correct your request, otherwise it will be considered not submitted and will be rejected.\nBy sending your request to hola@payry.com, you authorize Payry to respond by that same means, unless you indicate another means of communication.\nAs a client, you can revoke your consent for the processing, transfer of your personal data or limit the use or disclosure of your personal data by following this same procedure, as long as it does not make it impossible for Payry to comply with any obligation.\nIt is your responsibility to communicate any changes to your personal data so that it is taken into account and to keep your data duly updated, in order to ensure the quality of the personal data and guarantee that it is accurate.\nOn the website www.payry.mx we use functional cookies. The cookies used by Payry allow us to collect, analyze and retain electronic information related to visits to our website. The cookies we use allow us to collect this information automatically at the moment you access our website and our electronic services; However, these do not allow us to individually identify the people who visit us. If you browse our website and/or send information through it, you give us your express consent to install our cookies. For more detailed information about cookies and how you can disable them depending on your browser and operating system, we recommend that you visit the allaboutcookies.org website, which explains step by step how to disable them. Please note that if you disable cookies or prevent their installation, you may not be able to fully use some functions of our website.\nWe reserve the right to modify, update, extend or otherwise change the content and scope of this Privacy Notice, at any time and under our sole discretion. At any time, you can request the latest version of this Privacy Notice from our Personal Data Department, through the email address hola@payry.com.',
     },
     'esd1wi70': {
       'es': 'Home',
@@ -3042,9 +3108,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '297xzvua': {
       'es': 'Home',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'بيت',
+      'de': 'heim',
+      'en': 'home',
     },
   },
   // OK_FN_Payry_05_RegisterInv
@@ -3123,97 +3189,97 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '48vmj85m': {
       'es': 'El nombre es requerido',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'الاسم مطلوب',
+      'de': 'Der Name ist erforderlich',
+      'en': 'The name is required',
     },
     'j0iew1fr': {
       'es': 'El ',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'هو',
+      'de': 'Er',
+      'en': 'He',
     },
     'xm509d3e': {
       'es': 'Please choose an option from the dropdown',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
+      'de': 'Bitte wählen Sie eine Option aus der Dropdown-Liste aus',
+      'en': 'Please choose an option from the dropdown',
     },
     'chx264kf': {
       'es': 'El correo electrónico es requerido',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'البريد الالكتروني مطلوب',
+      'de': 'E-Mail ist erforderlich',
+      'en': 'Email is required',
     },
     'k0zqevz1': {
       'es': 'El correo electrónico es inválido',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'البريد الإلكتروني غير صالح',
+      'de': 'E-Mail ist ungültig',
+      'en': 'Email is invalid',
     },
     'bewlsian': {
       'es': 'Please choose an option from the dropdown',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
+      'de': 'Bitte wählen Sie eine Option aus der Dropdown-Liste aus',
+      'en': 'Please choose an option from the dropdown',
     },
     'z8ohjpoj': {
       'es': 'La contraseña es requerida',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'كلمة المرور مطلوبة',
+      'de': 'Passwort wird benötigt',
+      'en': 'Password is required',
     },
     'iqars6to': {
       'es': 'La contraseña debe ser de almenos 6 carácteres de longitud',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'الرقم السري يجب الا يقل عن 6 احرف على الاقل',
+      'de': 'Das Passwort muss mindestens 6 Zeichen lang sein',
+      'en': 'Password must be at least 6 characters long',
     },
     'ov823dj4': {
       'es': 'Please choose an option from the dropdown',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
+      'de': 'Bitte wählen Sie eine Option aus der Dropdown-Liste aus',
+      'en': 'Please choose an option from the dropdown',
     },
     'tqroezi2': {
       'es': 'La confirmación de contraseña es requerida',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'مطلوب تأكيد كلمة المرور',
+      'de': 'Eine Passwortbestätigung ist erforderlich',
+      'en': 'Password confirmation is required',
     },
     '25c2bcby': {
       'es':
           'La confirmación de contraseña debe ser de almenos 6 carácteres de longitud',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'يجب أن يتكون تأكيد كلمة المرور من 6 أحرف على الأقل',
+      'de': 'Die Passwortbestätigung muss mindestens 6 Zeichen lang sein',
+      'en': 'Password confirmation must be at least 6 characters long',
     },
     'lvllhto1': {
       'es': 'Please choose an option from the dropdown',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
+      'de': 'Bitte wählen Sie eine Option aus der Dropdown-Liste aus',
+      'en': 'Please choose an option from the dropdown',
     },
     'l79zuk9t': {
       'es': 'Home',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'بيت',
+      'de': 'heim',
+      'en': 'home',
     },
   },
   // OK_FN_Payry_44_historialTransactions
   {
     'olwt8i64': {
       'es': 'Historial de Transacciones',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'تاريخ المعاملات',
+      'de': 'Verlauf der Transaktionen',
+      'en': 'Transaction History',
     },
     'r83tq64q': {
       'es': 'Home',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'بيت',
+      'de': 'heim',
+      'en': 'home',
     },
   },
   // StatusDropdown
@@ -3232,15 +3298,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'gps9u0n0': {
       'es': 'Please select...',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'الرجاء التحديد...',
+      'de': 'Bitte auswählen...',
+      'en': 'Please select...',
     },
     'wm4szvpn': {
       'es': 'Search for an item...',
-      'ar': '',
-      'de': '',
-      'en': '',
+      'ar': 'البحث عن عنصر...',
+      'de': 'Nach einem Artikel suchen...',
+      'en': 'Search for an item...',
     },
   },
   // Miscellaneous
