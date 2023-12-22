@@ -90,3 +90,18 @@ class SaveBankCompanyCloudFunctionCallResponse {
   bool? succeeded;
   dynamic jsonBody;
 }
+
+class GetStatisticsCloudFunctionCallResponse {
+  GetStatisticsCloudFunctionCallResponse({
+    this.errorCode,
+    this.succeeded,
+    this.jsonBody,
+    this.resultAsString,
+    this.data,
+  });
+  String? errorCode;
+  bool? succeeded;
+  dynamic jsonBody;
+  String? resultAsString;
+  dynamic data;
+}
