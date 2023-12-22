@@ -58,14 +58,7 @@ class _StatusDropdownWidgetState extends State<StatusDropdownWidget> {
           FormFieldController<String>(
         _model.statusDropDownValue ??= widget.userStatus! ? 'Alta' : 'Baja',
       ),
-      options: [
-        FFLocalizations.of(context).getText(
-          '3m8txdau' /* Alta */,
-        ),
-        FFLocalizations.of(context).getText(
-          'v8rlzlwt' /* Baja */,
-        )
-      ],
+      options: ['Alta', 'Baja'],
       onChanged: (val) async {
         setState(() => _model.statusDropDownValue = val);
         await widget.userReference!.update(createUsersRecordData(
@@ -95,9 +88,7 @@ class _StatusDropdownWidgetState extends State<StatusDropdownWidget> {
               FlutterFlowTheme.of(context).alternate,
             ),
           ),
-      hintText: FFLocalizations.of(context).getText(
-        'gps9u0n0' /* Please select... */,
-      ),
+      hintText: 'Please select...',
       icon: Icon(
         Icons.keyboard_arrow_down_rounded,
         color: FlutterFlowTheme.of(context).secondaryText,
