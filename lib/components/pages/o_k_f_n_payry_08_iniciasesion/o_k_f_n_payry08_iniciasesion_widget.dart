@@ -283,7 +283,9 @@ class _OKFNPayry08IniciasesionWidgetState
                                                           .visibility_outlined
                                                       : Icons
                                                           .visibility_off_outlined,
-                                                  color: Color(0x98FFFFFF),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .accent3,
                                                   size: 20.0,
                                                 ),
                                               ),
