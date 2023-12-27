@@ -135,6 +135,8 @@ class _OKFNPayry08IniciasesionWidgetState
                                                 _model.emailFieldController,
                                             focusNode:
                                                 _model.emailFieldFocusNode,
+                                            textCapitalization:
+                                                TextCapitalization.none,
                                             obscureText: false,
                                             decoration: InputDecoration(
                                               labelText: 'Correo electrónico',
