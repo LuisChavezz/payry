@@ -141,10 +141,11 @@ class _OKFNPayry15EditProfileWidgetState
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
                                             final selectedMedia =
-                                                await selectMediaWithSourceBottomSheet(
-                                              context: context,
+                                                await selectMedia(
                                               imageQuality: 100,
-                                              allowPhoto: true,
+                                              mediaSource:
+                                                  MediaSource.photoGallery,
+                                              multiImage: false,
                                             );
                                             if (selectedMedia != null &&
                                                 selectedMedia.every((m) =>
@@ -244,6 +245,8 @@ class _OKFNPayry15EditProfileWidgetState
                                   builder: (context) => TextFormField(
                                     controller: _model.nameFieldController,
                                     focusNode: _model.nameFieldFocusNode,
+                                    textCapitalization:
+                                        TextCapitalization.words,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText: 'Nombre',
@@ -316,29 +319,41 @@ class _OKFNPayry15EditProfileWidgetState
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       children: [
-                                        Opacity(
-                                          opacity: 0.8,
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 12.0, 0.0),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: Image.asset(
-                                                'assets/images/1f1f2-1f1fd.png',
-                                                width: 35.0,
-                                                height: 23.0,
-                                                fit: BoxFit.cover,
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Opacity(
+                                              opacity: 0.8,
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                child: Image.asset(
+                                                  'assets/images/mx_flag.png',
+                                                  width: 35.0,
+                                                  height: 23.0,
+                                                  fit: BoxFit.cover,
+                                                ),
                                               ),
                                             ),
-                                          ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 6.0, 0.0, 0.0),
+                                              child: Text(
+                                                '+52',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                         Expanded(
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 12.0, 10.0, 12.0),
+                                                    0.0, 12.0, 0.0, 12.0),
                                             child: AuthUserStreamWidget(
                                               builder: (context) =>
                                                   TextFormField(
@@ -441,9 +456,7 @@ class _OKFNPayry15EditProfileWidgetState
                                                       setState(() {
                                                         FFAppState()
                                                                 .phoneNumber =
-                                                            _model
-                                                                .phoneFieldController
-                                                                .text;
+                                                            '+52${_model.phoneFieldController.text}';
                                                       });
                                                       if (_model.phoneFieldController
                                                                   .text !=
@@ -526,7 +539,7 @@ class _OKFNPayry15EditProfileWidgetState
                                             ),
                                           ),
                                         ),
-                                      ],
+                                      ].divide(SizedBox(width: 10.0)),
                                     ),
                                   ),
                                   Align(

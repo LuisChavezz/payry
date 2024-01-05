@@ -51,6 +51,16 @@ class InvoicesRecord extends FirestoreRecord {
   String get invoiceXmlUrl => _invoiceXmlUrl ?? '';
   bool hasInvoiceXmlUrl() => _invoiceXmlUrl != null;
 
+  // "folio" field.
+  String? _folio;
+  String get folio => _folio ?? '';
+  bool hasFolio() => _folio != null;
+
+  // "intelisisid" field.
+  int? _intelisisid;
+  int get intelisisid => _intelisisid ?? 0;
+  bool hasIntelisisid() => _intelisisid != null;
+
   void _initializeFields() {
     _adminId = snapshotData['admin_id'] as String?;
     _amount = castToType<double>(snapshotData['amount']);
@@ -59,6 +69,8 @@ class InvoicesRecord extends FirestoreRecord {
     _createdTime = snapshotData['created_time'] as DateTime?;
     _invoicePdfUrl = snapshotData['invoice_pdf_url'] as String?;
     _invoiceXmlUrl = snapshotData['invoice_xml_url'] as String?;
+    _folio = snapshotData['folio'] as String?;
+    _intelisisid = castToType<int>(snapshotData['intelisisid']);
   }
 
   static CollectionReference get collection =>
@@ -103,6 +115,8 @@ Map<String, dynamic> createInvoicesRecordData({
   DateTime? createdTime,
   String? invoicePdfUrl,
   String? invoiceXmlUrl,
+  String? folio,
+  int? intelisisid,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -113,6 +127,8 @@ Map<String, dynamic> createInvoicesRecordData({
       'created_time': createdTime,
       'invoice_pdf_url': invoicePdfUrl,
       'invoice_xml_url': invoiceXmlUrl,
+      'folio': folio,
+      'intelisisid': intelisisid,
     }.withoutNulls,
   );
 
@@ -130,7 +146,9 @@ class InvoicesRecordDocumentEquality implements Equality<InvoicesRecord> {
         e1?.status == e2?.status &&
         e1?.createdTime == e2?.createdTime &&
         e1?.invoicePdfUrl == e2?.invoicePdfUrl &&
-        e1?.invoiceXmlUrl == e2?.invoiceXmlUrl;
+        e1?.invoiceXmlUrl == e2?.invoiceXmlUrl &&
+        e1?.folio == e2?.folio &&
+        e1?.intelisisid == e2?.intelisisid;
   }
 
   @override
@@ -141,7 +159,9 @@ class InvoicesRecordDocumentEquality implements Equality<InvoicesRecord> {
         e?.status,
         e?.createdTime,
         e?.invoicePdfUrl,
-        e?.invoiceXmlUrl
+        e?.invoiceXmlUrl,
+        e?.folio,
+        e?.intelisisid
       ]);
 
   @override

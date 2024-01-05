@@ -5,8 +5,6 @@ export '/components/pages/o_k_f_n_payry_05_registrate/o_k_f_n_payry05_registrate
     show OKFNPayry05RegistrateWidget;
 export '/components/pages/o_k_f_n_payry_09_olvidecontrasena/o_k_f_n_payry09_olvidecontrasena_widget.dart'
     show OKFNPayry09OlvidecontrasenaWidget;
-export '/components/pages/payry_60_notif_config/payry60_notif_config_widget.dart'
-    show Payry60NotifConfigWidget;
 export '/components/pages/o_k_f_n_payry_01_splash/o_k_f_n_payry01_splash_widget.dart'
     show OKFNPayry01SplashWidget;
 export '/components/pages/o_k_f_n_payry_02_onboarding1/o_k_f_n_payry02_onboarding1_widget.dart'
@@ -15,7 +13,7 @@ export '/components/pages/o_k_f_n_payry_06_confirmacion_registro/o_k_f_n_payry06
     show OKFNPayry06ConfirmacionRegistroWidget;
 export '/components/pages/o_k_f_n_payry_11_olvidecontrasenanueva/o_k_f_n_payry11_olvidecontrasenanueva_widget.dart'
     show OKFNPayry11OlvidecontrasenanuevaWidget;
-export '/components/pages/o_k_f_n_payry_14_perfil_p_e_n_d_s_w/o_k_f_n_payry14_perfil_p_e_n_d_s_w_widget.dart'
+export '/components/o_k_f_n_payry_14_perfil_p_e_n_d_s_w/o_k_f_n_payry14_perfil_p_e_n_d_s_w_widget.dart'
     show OKFNPayry14PerfilPENDSWWidget;
 export '/components/pages/o_k_f_n_payry_15_edit_profile/o_k_f_n_payry15_edit_profile_widget.dart'
     show OKFNPayry15EditProfileWidget;

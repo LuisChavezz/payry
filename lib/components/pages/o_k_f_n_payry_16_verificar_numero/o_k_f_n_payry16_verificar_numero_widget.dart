@@ -183,7 +183,7 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
-                                              'assets/images/1f1f2-1f1fd.png',
+                                              'assets/images/mx_flag.png',
                                               width: 35.0,
                                               height: 23.0,
                                               fit: BoxFit.cover,
@@ -264,7 +264,7 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
-                                            keyboardType: TextInputType.number,
+                                            keyboardType: TextInputType.phone,
                                             validator: _model
                                                 .phoneFieldControllerValidator
                                                 .asValidator(context),

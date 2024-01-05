@@ -80,12 +80,9 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
   Widget build(BuildContext context) => _loading
       ? Container(
           color: Colors.transparent,
-          child: Center(
-            child: Image.asset(
-              'assets/images/Medical_ScheduleApp_0.0.png',
-              width: MediaQuery.sizeOf(context).width * 1.0,
-              fit: BoxFit.fitWidth,
-            ),
+          child: Image.asset(
+            'assets/images/splash-payry-gif.gif',
+            fit: BoxFit.cover,
           ),
         )
       : widget.child;
@@ -119,7 +116,6 @@ final parametersBuilderMap =
         },
       ),
   'OK_FN_Payry_09_olvidecontrasena': ParameterData.none(),
-  'Payry_60_NotifConfig': ParameterData.none(),
   'OK_FN_Payry_01_Splash': ParameterData.none(),
   'OK_FN_Payry_02_onboarding1': ParameterData.none(),
   'OK_FN_Payry_06_confirmacionRegistro': ParameterData.none(),

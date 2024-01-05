@@ -117,11 +117,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => OKFNPayry09OlvidecontrasenaWidget(),
             ),
             FFRoute(
-              name: 'Payry_60_NotifConfig',
-              path: 'payry60NotifConfig',
-              builder: (context, params) => Payry60NotifConfigWidget(),
-            ),
-            FFRoute(
               name: 'OK_FN_Payry_01_Splash',
               path: 'oKFNPayry01Splash',
               builder: (context, params) => OKFNPayry01SplashWidget(),
@@ -541,12 +536,9 @@ class FFRoute {
           final child = appStateNotifier.loading
               ? Container(
                   color: Colors.transparent,
-                  child: Center(
-                    child: Image.asset(
-                      'assets/images/Medical_ScheduleApp_0.0.png',
-                      width: MediaQuery.sizeOf(context).width * 1.0,
-                      fit: BoxFit.fitWidth,
-                    ),
+                  child: Image.asset(
+                    'assets/images/splash-payry-gif.gif',
+                    fit: BoxFit.cover,
                   ),
                 )
               : PushNotificationsHandler(child: page);

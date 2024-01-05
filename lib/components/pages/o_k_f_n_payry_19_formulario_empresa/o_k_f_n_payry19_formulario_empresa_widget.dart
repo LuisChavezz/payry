@@ -281,6 +281,8 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 ?.name,
                                       ),
                                       focusNode: _model.nameFieldFocusNode,
+                                      textCapitalization:
+                                          TextCapitalization.sentences,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Empresa',
@@ -363,6 +365,8 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 ?.alias,
                                       ),
                                       focusNode: _model.aliasFieldFocusNode,
+                                      textCapitalization:
+                                          TextCapitalization.sentences,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Alias',
@@ -538,6 +542,8 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                             ),
                                             focusNode:
                                                 _model.streetFieldFocusNode,
+                                            textCapitalization:
+                                                TextCapitalization.sentences,
                                             obscureText: false,
                                             decoration: InputDecoration(
                                               labelText: 'Calle',
@@ -613,7 +619,6 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                       .primaryText,
                                                   fontWeight: FontWeight.normal,
                                                 ),
-                                            keyboardType: TextInputType.number,
                                             validator: _model
                                                 .streetFieldControllerValidator
                                                 .asValidator(context),
@@ -732,6 +737,8 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                       ),
                                       focusNode:
                                           _model.neighborhoodFieldFocusNode,
+                                      textCapitalization:
+                                          TextCapitalization.sentences,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Colonia',
@@ -813,6 +820,8 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 ?.city,
                                       ),
                                       focusNode: _model.cityFieldFocusNode,
+                                      textCapitalization:
+                                          TextCapitalization.sentences,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Ciudad',
@@ -1274,7 +1283,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 .primaryText,
                                             fontWeight: FontWeight.normal,
                                           ),
-                                      keyboardType: TextInputType.number,
+                                      maxLength: 13,
                                       validator: _model
                                           .rFCFieldControllerValidator
                                           .asValidator(context),

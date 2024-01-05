@@ -145,6 +145,9 @@ class OKFNPayry19FormularioEmpresaModel
       return 'El RFC es requerido';
     }
 
+    if (!RegExp('^[a-zA-Z0-9]{12,13}\$').hasMatch(val)) {
+      return 'Debe ser entre 12 y 13 dígitos';
+    }
     return null;
   }
 

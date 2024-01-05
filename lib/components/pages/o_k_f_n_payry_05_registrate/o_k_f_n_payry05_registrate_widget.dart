@@ -156,6 +156,8 @@ class _OKFNPayry05RegistrateWidgetState
                                                     _model.nameFieldController,
                                                 focusNode:
                                                     _model.nameFieldFocusNode,
+                                                textCapitalization:
+                                                    TextCapitalization.words,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelText: 'Nombre',

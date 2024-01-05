@@ -81,21 +81,15 @@ class _OKFNPayry23InvitarUsuarioWidgetState
               size: 24.0,
             ),
           ),
-          title: Align(
-            alignment: AlignmentDirectional(-1.0, 0.0),
-            child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(70.0, 0.0, 0.0, 0.0),
-              child: Text(
-                'Invitar usuario',
-                style: FlutterFlowTheme.of(context).titleSmall.override(
-                      fontFamily: 'Lexend',
-                      color: FlutterFlowTheme.of(context).primaryText,
-                    ),
-              ),
-            ),
+          title: Text(
+            'Invitar usuario',
+            style: FlutterFlowTheme.of(context).titleSmall.override(
+                  fontFamily: 'Lexend',
+                  color: FlutterFlowTheme.of(context).primaryText,
+                ),
           ),
           actions: [],
-          centerTitle: false,
+          centerTitle: true,
           elevation: 0.0,
         ),
         body: SafeArea(

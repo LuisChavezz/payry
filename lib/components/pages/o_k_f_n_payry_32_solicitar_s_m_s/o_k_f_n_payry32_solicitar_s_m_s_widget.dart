@@ -126,22 +126,32 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Opacity(
-                                    opacity: 0.8,
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 12.0, 0.0),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        child: Image.asset(
-                                          'assets/images/1f1f2-1f1fd.png',
-                                          width: 35.0,
-                                          height: 23.0,
-                                          fit: BoxFit.cover,
+                                  Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Opacity(
+                                        opacity: 0.8,
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          child: Image.asset(
+                                            'assets/images/mx_flag.png',
+                                            width: 35.0,
+                                            height: 23.0,
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 6.0, 0.0, 0.0),
+                                        child: Text(
+                                          '+52',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                   Expanded(
                                     child: Padding(
@@ -210,7 +220,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                       ),
                                     ),
                                   ),
-                                ],
+                                ].divide(SizedBox(width: 10.0)),
                               ),
                             ),
                             Padding(
@@ -219,6 +229,8 @@ class _OKFNPayry32SolicitarSMSWidgetState
                               child: TextFormField(
                                 controller: _model.conceptFieldController,
                                 focusNode: _model.conceptFieldFocusNode,
+                                textCapitalization:
+                                    TextCapitalization.sentences,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelText: 'Concepto',
@@ -460,9 +472,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                           },
                                         ),
                                       });
-                                      if (Navigator.of(context).canPop()) {
-                                        context.pop();
-                                      }
+
                                       context.pushNamed(
                                         'OK_FN_Payry_36_detallesdeSMS',
                                         queryParameters: {

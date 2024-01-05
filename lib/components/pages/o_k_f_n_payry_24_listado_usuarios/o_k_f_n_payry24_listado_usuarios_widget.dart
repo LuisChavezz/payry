@@ -105,7 +105,7 @@ class _OKFNPayry24ListadoUsuariosWidgetState
                           onPressed: () async {
                             context.pushNamed('OK_FN_Payry_23_invitarUsuario');
                           },
-                          text: 'Invitar amigo',
+                          text: 'Invitar usuario',
                           options: FFButtonOptions(
                             width: 300.0,
                             height: 50.0,

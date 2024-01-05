@@ -122,6 +122,8 @@ class _OKFNPayry27SolicitarQRWidgetState
                               child: TextFormField(
                                 controller: _model.conceptFieldController,
                                 focusNode: _model.conceptFieldFocusNode,
+                                textCapitalization:
+                                    TextCapitalization.sentences,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelText: 'Concepto',
@@ -360,13 +362,11 @@ class _OKFNPayry27SolicitarQRWidgetState
                                           },
                                         ),
                                       });
-                                      if (Navigator.of(context).canPop()) {
-                                        context.pop();
-                                      }
+
                                       context.pushNamed(
-                                        'OK_FN_Payry_28_qrGenerado',
+                                        'OK_FN_Payry_31_detallesdeQR',
                                         queryParameters: {
-                                          'createdQrReference': serializeParam(
+                                          'qrDocReference': serializeParam(
                                             _model.createdQR?.reference,
                                             ParamType.DocumentReference,
                                           ),

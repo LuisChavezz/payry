@@ -281,6 +281,9 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                               ],
                                               controller:
                                                   _model.tabBarController,
+                                              onTap: (i) async {
+                                                [() async {}, () async {}][i]();
+                                              },
                                             ),
                                           ),
                                           Expanded(

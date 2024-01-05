@@ -2329,7 +2329,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                             ),
                                           ),
                                           Text(
-                                            'Cambiar a\nversión clara',
+                                            Theme.of(context).brightness ==
+                                                    Brightness.light
+                                                ? 'Modo oscuro'
+                                                : 'Modo claro',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
