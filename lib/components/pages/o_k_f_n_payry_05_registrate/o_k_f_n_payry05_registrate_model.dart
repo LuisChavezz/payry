@@ -83,6 +83,8 @@ class OKFNPayry05RegistrateModel
     return null;
   }
 
+  // Stores action output result for [Cloud Function - verifyEmail] action in Button widget.
+  VerifyEmailCloudFunctionCallResponse? cfve;
   // Stores action output result for [Cloud Function - generateToken] action in Button widget.
   GenerateTokenCloudFunctionCallResponse? cloudFunctionGT;
 
