@@ -13,7 +13,7 @@ export '/components/pages/o_k_f_n_payry_06_confirmacion_registro/o_k_f_n_payry06
     show OKFNPayry06ConfirmacionRegistroWidget;
 export '/components/pages/o_k_f_n_payry_11_olvidecontrasenanueva/o_k_f_n_payry11_olvidecontrasenanueva_widget.dart'
     show OKFNPayry11OlvidecontrasenanuevaWidget;
-export '/components/o_k_f_n_payry_14_perfil_p_e_n_d_s_w/o_k_f_n_payry14_perfil_p_e_n_d_s_w_widget.dart'
+export '/components/pages/o_k_f_n_payry_14_perfil_p_e_n_d_s_w/o_k_f_n_payry14_perfil_p_e_n_d_s_w_widget.dart'
     show OKFNPayry14PerfilPENDSWWidget;
 export '/components/pages/o_k_f_n_payry_15_edit_profile/o_k_f_n_payry15_edit_profile_widget.dart'
     show OKFNPayry15EditProfileWidget;

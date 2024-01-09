@@ -1,16 +1,17 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'o_k_f_n_payry23_invitar_usuario_model.dart';
 export 'o_k_f_n_payry23_invitar_usuario_model.dart';
 
@@ -217,8 +218,9 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                   singleRecord: true,
                                 ).then((s) => s.firstOrNull);
                                 _shouldSetState = true;
-                                if (_model.existEmail?.uid == null ||
-                                    _model.existEmail?.uid == '') {
+                                if ((_model.existEmail?.uid == null ||
+                                        _model.existEmail?.uid == '') ||
+                                    true) {
                                   _model.existUserInvitation =
                                       await queryUserInvitationsRecordOnce(
                                     queryBuilder: (userInvitationsRecord) =>
@@ -266,22 +268,7 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                               },
                                             ) ??
                                             false;
-                                    if (confirmDialogResponse) {
-                                      await launchUrl(Uri(
-                                          scheme: 'mailto',
-                                          path:
-                                              _model.emailFieldController.text,
-                                          query: {
-                                            'subject': 'Invitation email',
-                                            'body':
-                                                'Registrate como mi usuario afiliado siguiendo el siguiente enlace: ${FFAppState().dynamicLinkPrefix}${FFAppState().dynamicLinkBase}registerinv/${_model.existUserInvitation?.reference.id}&apn=${FFAppState().packageName}&isi=${FFAppState().appleID}&ibi=${FFAppState().packageName}',
-                                          }
-                                              .entries
-                                              .map((MapEntry<String, String>
-                                                      e) =>
-                                                  '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
-                                              .join('&')));
-                                    } else {
+                                    if (!confirmDialogResponse) {
                                       if (_shouldSetState) setState(() {});
                                       return;
                                     }
@@ -318,53 +305,91 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                       ),
                                     }, userInvitationsRecordReference);
                                     _shouldSetState = true;
-                                    await launchUrl(Uri(
-                                        scheme: 'mailto',
-                                        path: _model.emailFieldController.text,
-                                        query: {
-                                          'subject': 'Invitation email',
-                                          'body':
-                                              'Registrate como mi usuario afiliado siguiendo el siguiente enlace: ${FFAppState().dynamicLinkPrefix}${FFAppState().dynamicLinkBase}registerinv/${_model.existUserInvitation?.reference.id}&apn=${FFAppState().packageName}&isi=${FFAppState().appleID}&ibi=${FFAppState().packageName}',
-                                        }
-                                            .entries
-                                            .map((MapEntry<String, String> e) =>
-                                                '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
-                                            .join('&')));
+                                  }
+
+                                  try {
+                                    final result = await FirebaseFunctions
+                                        .instance
+                                        .httpsCallable('sendInvitation')
+                                        .call({
+                                      "token": FFAppState().serverToken,
+                                      "email": _model.emailFieldController.text,
+                                    });
+                                    _model.sendInvCF =
+                                        SendInvitationCloudFunctionCallResponse(
+                                      data: result.data,
+                                      succeeded: true,
+                                      resultAsString: result.data.toString(),
+                                      jsonBody: result.data,
+                                    );
+                                  } on FirebaseFunctionsException catch (error) {
+                                    _model.sendInvCF =
+                                        SendInvitationCloudFunctionCallResponse(
+                                      errorCode: error.code,
+                                      succeeded: false,
+                                    );
+                                  }
+
+                                  _shouldSetState = true;
+                                  if (_model.sendInvCF!.succeeded!) {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text('Invitación enviada'),
+                                          content: Text(
+                                              'Se ha enviado la invitación a: ${_model.emailFieldController.text} con éxito.'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text('Ok'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  } else {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text('Error'),
+                                          content: Text(
+                                              'Hubo un error al intentar enviar la invitación.'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text('Ok'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
                                   }
 
                                   context.safePop();
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'Se ha enviado la invitación a: ${_model.emailFieldController.text}',
-                                        style: TextStyle(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                        ),
-                                      ),
-                                      duration: Duration(milliseconds: 4000),
-                                      backgroundColor:
-                                          FlutterFlowTheme.of(context)
-                                              .secondary,
-                                    ),
-                                  );
+                                  context.safePop();
                                   if (_shouldSetState) setState(() {});
                                   return;
                                 } else {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'Este correo electrónico ya fue registrado.',
-                                        style: TextStyle(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                        ),
-                                      ),
-                                      duration: Duration(milliseconds: 4000),
-                                      backgroundColor:
-                                          FlutterFlowTheme.of(context)
-                                              .secondary,
-                                    ),
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        title: Text('Usuario ya  registrado'),
+                                        content: Text(
+                                            'Este correo electrónico ya fue registrado.'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: Text('Ok'),
+                                          ),
+                                        ],
+                                      );
+                                    },
                                   );
                                   if (_shouldSetState) setState(() {});
                                   return;

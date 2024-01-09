@@ -677,6 +677,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                               false,
                                                           isCompanyComplete:
                                                               false,
+                                                          isValidMail: false,
                                                         ),
                                                         ...mapToFirestore(
                                                           {
@@ -706,8 +707,33 @@ class _OKFNPayry05RegisterInvWidgetState
                                                             createRefunds:
                                                                 false,
                                                           ));
-                                                      await authManager
-                                                          .sendEmailVerification();
+                                                      try {
+                                                        final result =
+                                                            await FirebaseFunctions
+                                                                .instance
+                                                                .httpsCallable(
+                                                                    'verifyEmail')
+                                                                .call({
+                                                          "email":
+                                                              currentUserEmail,
+                                                        });
+                                                        _model.cfve =
+                                                            VerifyEmailCloudFunctionCallResponse(
+                                                          data: result.data,
+                                                          succeeded: true,
+                                                          resultAsString: result
+                                                              .data
+                                                              .toString(),
+                                                          jsonBody: result.data,
+                                                        );
+                                                      } on FirebaseFunctionsException catch (error) {
+                                                        _model.cfve =
+                                                            VerifyEmailCloudFunctionCallResponse(
+                                                          errorCode: error.code,
+                                                          succeeded: false,
+                                                        );
+                                                      }
+
                                                       try {
                                                         final result =
                                                             await FirebaseFunctions

@@ -64,7 +64,7 @@ class OKFNPayry32SolicitarSMSModel
   }
 
   // Stores action output result for [Cloud Function - crearMovimientoSMS] action in Button widget.
-  CrearMovimientoSMSCloudFunctionCallResponse? cloudFunctionik3;
+  CrearMovimientoSMSCloudFunctionCallResponse? smsCloudFunction;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   SmsRecord? createdSms;
 

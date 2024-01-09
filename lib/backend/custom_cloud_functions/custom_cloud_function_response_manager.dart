@@ -105,3 +105,33 @@ class GetStatisticsCloudFunctionCallResponse {
   String? resultAsString;
   dynamic data;
 }
+
+class SendInvitationCloudFunctionCallResponse {
+  SendInvitationCloudFunctionCallResponse({
+    this.errorCode,
+    this.succeeded,
+    this.jsonBody,
+    this.resultAsString,
+    this.data,
+  });
+  String? errorCode;
+  bool? succeeded;
+  dynamic jsonBody;
+  String? resultAsString;
+  dynamic data;
+}
+
+class VerifyEmailCloudFunctionCallResponse {
+  VerifyEmailCloudFunctionCallResponse({
+    this.errorCode,
+    this.succeeded,
+    this.jsonBody,
+    this.resultAsString,
+    this.data,
+  });
+  String? errorCode;
+  bool? succeeded;
+  dynamic jsonBody;
+  String? resultAsString;
+  dynamic data;
+}

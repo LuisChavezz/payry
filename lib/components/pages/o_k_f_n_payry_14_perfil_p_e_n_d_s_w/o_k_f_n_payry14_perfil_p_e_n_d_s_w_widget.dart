@@ -1,8 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -274,8 +276,10 @@ class _OKFNPayry14PerfilPENDSWWidgetState
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    await authManager.refreshUser();
-                                    if (currentUserEmailVerified) {
+                                    var _shouldSetState = false;
+                                    if (valueOrDefault<bool>(
+                                        currentUserDocument?.isValidMail,
+                                        false)) {
                                       if (valueOrDefault<bool>(
                                               currentUserDocument
                                                   ?.isValidPhoneNumber,
@@ -284,6 +288,7 @@ class _OKFNPayry14PerfilPENDSWWidgetState
                                         context.pushNamed(
                                             'OK_FN_Payry_19_formularioEmpresa');
 
+                                        if (_shouldSetState) setState(() {});
                                         return;
                                       } else {
                                         var confirmDialogResponse =
@@ -321,8 +326,10 @@ class _OKFNPayry14PerfilPENDSWWidgetState
                                           context.pushNamed(
                                               'OK_FN_Payry_15_EditProfile');
 
+                                          if (_shouldSetState) setState(() {});
                                           return;
                                         } else {
+                                          if (_shouldSetState) setState(() {});
                                           return;
                                         }
                                       }
@@ -357,31 +364,81 @@ class _OKFNPayry14PerfilPENDSWWidgetState
                                               ) ??
                                               false;
                                       if (confirmDialogResponse) {
-                                        await authManager
-                                            .sendEmailVerification();
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                              'Se ha enviado la verificación a tu correo electrónico.',
-                                              style: TextStyle(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                            ),
-                                            duration:
-                                                Duration(milliseconds: 4000),
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondary,
-                                          ),
-                                        );
+                                        try {
+                                          final result = await FirebaseFunctions
+                                              .instance
+                                              .httpsCallable('verifyEmail')
+                                              .call({
+                                            "email": currentUserEmail,
+                                          });
+                                          _model.verifyEmailResp =
+                                              VerifyEmailCloudFunctionCallResponse(
+                                            data: result.data,
+                                            succeeded: true,
+                                            resultAsString:
+                                                result.data.toString(),
+                                            jsonBody: result.data,
+                                          );
+                                        } on FirebaseFunctionsException catch (error) {
+                                          _model.verifyEmailResp =
+                                              VerifyEmailCloudFunctionCallResponse(
+                                            errorCode: error.code,
+                                            succeeded: false,
+                                          );
+                                        }
+
+                                        _shouldSetState = true;
+                                        if (_model
+                                            .verifyEmailResp!.succeeded!) {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text(
+                                                    'Verificación enviada'),
+                                                content: Text(
+                                                    'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        } else {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text('Error'),
+                                                content: Text(
+                                                    'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        }
+
+                                        if (_shouldSetState) setState(() {});
                                         return;
                                       } else {
+                                        if (_shouldSetState) setState(() {});
                                         return;
                                       }
                                     }
+
+                                    if (_shouldSetState) setState(() {});
                                   },
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,

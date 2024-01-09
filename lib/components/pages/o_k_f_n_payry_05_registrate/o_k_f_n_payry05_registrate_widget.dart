@@ -616,6 +616,7 @@ class _OKFNPayry05RegistrateWidgetState
                                                         isAdmin: true,
                                                         isCompanyComplete:
                                                             false,
+                                                        isValidMail: false,
                                                       ),
                                                       ...mapToFirestore(
                                                         {
@@ -642,8 +643,6 @@ class _OKFNPayry05RegistrateWidgetState
                                                           readTransfers: false,
                                                           createRefunds: false,
                                                         ));
-                                                    await authManager
-                                                        .sendEmailVerification();
                                                     try {
                                                       final result =
                                                           await FirebaseFunctions

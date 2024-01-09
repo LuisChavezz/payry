@@ -1,9 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -129,13 +131,15 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    await authManager.refreshUser();
+                                    var _shouldSetState = false;
                                     if (valueOrDefault<bool>(
                                             currentUserDocument?.isAdmin,
                                             false) ||
                                         oKFNPayry13MenumasUserPermissionsRecord!
                                             .createQr) {
-                                      if (currentUserEmailVerified) {
+                                      if (valueOrDefault<bool>(
+                                          currentUserDocument?.isValidMail,
+                                          false)) {
                                         if (valueOrDefault<bool>(
                                                 currentUserDocument
                                                     ?.isValidPhoneNumber,
@@ -152,6 +156,8 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                             context.pushNamed(
                                                 'OK_FN_Payry_27_solicitarQR');
 
+                                            if (_shouldSetState)
+                                              setState(() {});
                                             return;
                                           } else {
                                             var confirmDialogResponse =
@@ -190,8 +196,12 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                               context.pushNamed(
                                                   'OK_FN_Payry_19_formularioEmpresa');
 
+                                              if (_shouldSetState)
+                                                setState(() {});
                                               return;
                                             } else {
+                                              if (_shouldSetState)
+                                                setState(() {});
                                               return;
                                             }
                                           }
@@ -232,8 +242,12 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                             context.pushNamed(
                                                 'OK_FN_Payry_15_EditProfile');
 
+                                            if (_shouldSetState)
+                                              setState(() {});
                                             return;
                                           } else {
+                                            if (_shouldSetState)
+                                              setState(() {});
                                             return;
                                           }
                                         }
@@ -270,28 +284,77 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                 ) ??
                                                 false;
                                         if (confirmDialogResponse) {
-                                          await authManager
-                                              .sendEmailVerification();
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                'Se ha enviado la verificación a tu correo electrónico.',
-                                                style: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
-                                              ),
-                                              duration:
-                                                  Duration(milliseconds: 4000),
-                                              backgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
-                                            ),
-                                          );
+                                          try {
+                                            final result =
+                                                await FirebaseFunctions.instance
+                                                    .httpsCallable(
+                                                        'verifyEmail')
+                                                    .call({
+                                              "email": currentUserEmail,
+                                            });
+                                            _model.verifyEmailResp1 =
+                                                VerifyEmailCloudFunctionCallResponse(
+                                              data: result.data,
+                                              succeeded: true,
+                                              resultAsString:
+                                                  result.data.toString(),
+                                              jsonBody: result.data,
+                                            );
+                                          } on FirebaseFunctionsException catch (error) {
+                                            _model.verifyEmailResp1 =
+                                                VerifyEmailCloudFunctionCallResponse(
+                                              errorCode: error.code,
+                                              succeeded: false,
+                                            );
+                                          }
+
+                                          _shouldSetState = true;
+                                          if (_model
+                                              .verifyEmailResp1!.succeeded!) {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text(
+                                                      'Verificación enviada'),
+                                                  content: Text(
+                                                      'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          } else {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text('Error'),
+                                                  content: Text(
+                                                      'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
+
+                                          if (_shouldSetState) setState(() {});
                                           return;
                                         } else {
+                                          if (_shouldSetState) setState(() {});
                                           return;
                                         }
                                       }
@@ -313,8 +376,11 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           );
                                         },
                                       );
+                                      if (_shouldSetState) setState(() {});
                                       return;
                                     }
+
+                                    if (_shouldSetState) setState(() {});
                                   },
                                   child: Container(
                                     width: () {
@@ -405,13 +471,15 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    await authManager.refreshUser();
+                                    var _shouldSetState = false;
                                     if (valueOrDefault<bool>(
                                             currentUserDocument?.isAdmin,
                                             false) ||
                                         oKFNPayry13MenumasUserPermissionsRecord!
                                             .createSms) {
-                                      if (currentUserEmailVerified) {
+                                      if (valueOrDefault<bool>(
+                                          currentUserDocument?.isValidMail,
+                                          false)) {
                                         if (valueOrDefault<bool>(
                                                 currentUserDocument
                                                     ?.isValidPhoneNumber,
@@ -428,6 +496,8 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                             context.pushNamed(
                                                 'OK_FN_Payry_32_solicitarSMS');
 
+                                            if (_shouldSetState)
+                                              setState(() {});
                                             return;
                                           } else {
                                             var confirmDialogResponse =
@@ -466,8 +536,12 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                               context.pushNamed(
                                                   'OK_FN_Payry_19_formularioEmpresa');
 
+                                              if (_shouldSetState)
+                                                setState(() {});
                                               return;
                                             } else {
+                                              if (_shouldSetState)
+                                                setState(() {});
                                               return;
                                             }
                                           }
@@ -508,8 +582,12 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                             context.pushNamed(
                                                 'OK_FN_Payry_15_EditProfile');
 
+                                            if (_shouldSetState)
+                                              setState(() {});
                                             return;
                                           } else {
+                                            if (_shouldSetState)
+                                              setState(() {});
                                             return;
                                           }
                                         }
@@ -546,28 +624,77 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                 ) ??
                                                 false;
                                         if (confirmDialogResponse) {
-                                          await authManager
-                                              .sendEmailVerification();
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                'Se ha enviado la verificación a tu correo electrónico.',
-                                                style: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
-                                              ),
-                                              duration:
-                                                  Duration(milliseconds: 4000),
-                                              backgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
-                                            ),
-                                          );
+                                          try {
+                                            final result =
+                                                await FirebaseFunctions.instance
+                                                    .httpsCallable(
+                                                        'verifyEmail')
+                                                    .call({
+                                              "email": currentUserEmail,
+                                            });
+                                            _model.verifyEmailResp2 =
+                                                VerifyEmailCloudFunctionCallResponse(
+                                              data: result.data,
+                                              succeeded: true,
+                                              resultAsString:
+                                                  result.data.toString(),
+                                              jsonBody: result.data,
+                                            );
+                                          } on FirebaseFunctionsException catch (error) {
+                                            _model.verifyEmailResp2 =
+                                                VerifyEmailCloudFunctionCallResponse(
+                                              errorCode: error.code,
+                                              succeeded: false,
+                                            );
+                                          }
+
+                                          _shouldSetState = true;
+                                          if (_model
+                                              .verifyEmailResp2!.succeeded!) {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text(
+                                                      'Verificación enviada'),
+                                                  content: Text(
+                                                      'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          } else {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text('Error'),
+                                                  content: Text(
+                                                      'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
+
+                                          if (_shouldSetState) setState(() {});
                                           return;
                                         } else {
+                                          if (_shouldSetState) setState(() {});
                                           return;
                                         }
                                       }
@@ -589,8 +716,11 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           );
                                         },
                                       );
+                                      if (_shouldSetState) setState(() {});
                                       return;
                                     }
+
+                                    if (_shouldSetState) setState(() {});
                                   },
                                   child: Container(
                                     width: () {
@@ -777,10 +907,12 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    await authManager.refreshUser();
+                                    var _shouldSetState = false;
                                     if (valueOrDefault<bool>(
                                         currentUserDocument?.isAdmin, false)) {
-                                      if (currentUserEmailVerified) {
+                                      if (valueOrDefault<bool>(
+                                          currentUserDocument?.isValidMail,
+                                          false)) {
                                         if (valueOrDefault<bool>(
                                                 currentUserDocument
                                                     ?.isValidPhoneNumber,
@@ -789,6 +921,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           context.pushNamed(
                                               'OK_FN_Payry_19_formularioEmpresa');
 
+                                          if (_shouldSetState) setState(() {});
                                           return;
                                         } else {
                                           var confirmDialogResponse =
@@ -827,8 +960,12 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                             context.pushNamed(
                                                 'OK_FN_Payry_15_EditProfile');
 
+                                            if (_shouldSetState)
+                                              setState(() {});
                                             return;
                                           } else {
+                                            if (_shouldSetState)
+                                              setState(() {});
                                             return;
                                           }
                                         }
@@ -865,28 +1002,77 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                 ) ??
                                                 false;
                                         if (confirmDialogResponse) {
-                                          await authManager
-                                              .sendEmailVerification();
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                'Se ha enviado la verificación a tu correo electrónico.',
-                                                style: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
-                                              ),
-                                              duration:
-                                                  Duration(milliseconds: 4000),
-                                              backgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
-                                            ),
-                                          );
+                                          try {
+                                            final result =
+                                                await FirebaseFunctions.instance
+                                                    .httpsCallable(
+                                                        'verifyEmail')
+                                                    .call({
+                                              "email": currentUserEmail,
+                                            });
+                                            _model.verifyEmailResp3 =
+                                                VerifyEmailCloudFunctionCallResponse(
+                                              data: result.data,
+                                              succeeded: true,
+                                              resultAsString:
+                                                  result.data.toString(),
+                                              jsonBody: result.data,
+                                            );
+                                          } on FirebaseFunctionsException catch (error) {
+                                            _model.verifyEmailResp3 =
+                                                VerifyEmailCloudFunctionCallResponse(
+                                              errorCode: error.code,
+                                              succeeded: false,
+                                            );
+                                          }
+
+                                          _shouldSetState = true;
+                                          if (_model
+                                              .verifyEmailResp3!.succeeded!) {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text(
+                                                      'Verificación enviada'),
+                                                  content: Text(
+                                                      'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          } else {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text('Error'),
+                                                  content: Text(
+                                                      'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
+
+                                          if (_shouldSetState) setState(() {});
                                           return;
                                         } else {
+                                          if (_shouldSetState) setState(() {});
                                           return;
                                         }
                                       }
@@ -908,8 +1094,11 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           );
                                         },
                                       );
+                                      if (_shouldSetState) setState(() {});
                                       return;
                                     }
+
+                                    if (_shouldSetState) setState(() {});
                                   },
                                   child: Container(
                                     width: () {
@@ -999,8 +1188,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    await authManager.refreshUser();
-                                    if (currentUserEmailVerified) {
+                                    var _shouldSetState = false;
+                                    if (valueOrDefault<bool>(
+                                        currentUserDocument?.isValidMail,
+                                        false)) {
                                       if (valueOrDefault<bool>(
                                               currentUserDocument
                                                   ?.isValidPhoneNumber,
@@ -1017,6 +1208,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           context.pushNamed(
                                               'OK_FN_Payry_38_Estadisticas');
 
+                                          if (_shouldSetState) setState(() {});
                                           return;
                                         } else {
                                           var confirmDialogResponse =
@@ -1055,8 +1247,12 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                             context.pushNamed(
                                                 'OK_FN_Payry_19_formularioEmpresa');
 
+                                            if (_shouldSetState)
+                                              setState(() {});
                                             return;
                                           } else {
+                                            if (_shouldSetState)
+                                              setState(() {});
                                             return;
                                           }
                                         }
@@ -1096,8 +1292,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           context.pushNamed(
                                               'OK_FN_Payry_15_EditProfile');
 
+                                          if (_shouldSetState) setState(() {});
                                           return;
                                         } else {
+                                          if (_shouldSetState) setState(() {});
                                           return;
                                         }
                                       }
@@ -1132,31 +1330,81 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                               ) ??
                                               false;
                                       if (confirmDialogResponse) {
-                                        await authManager
-                                            .sendEmailVerification();
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                              'Se ha enviado la verificación a tu correo electrónico.',
-                                              style: TextStyle(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                            ),
-                                            duration:
-                                                Duration(milliseconds: 4000),
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondary,
-                                          ),
-                                        );
+                                        try {
+                                          final result = await FirebaseFunctions
+                                              .instance
+                                              .httpsCallable('verifyEmail')
+                                              .call({
+                                            "email": currentUserEmail,
+                                          });
+                                          _model.verifyEmailResp4 =
+                                              VerifyEmailCloudFunctionCallResponse(
+                                            data: result.data,
+                                            succeeded: true,
+                                            resultAsString:
+                                                result.data.toString(),
+                                            jsonBody: result.data,
+                                          );
+                                        } on FirebaseFunctionsException catch (error) {
+                                          _model.verifyEmailResp4 =
+                                              VerifyEmailCloudFunctionCallResponse(
+                                            errorCode: error.code,
+                                            succeeded: false,
+                                          );
+                                        }
+
+                                        _shouldSetState = true;
+                                        if (_model
+                                            .verifyEmailResp4!.succeeded!) {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text(
+                                                    'Verificación enviada'),
+                                                content: Text(
+                                                    'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        } else {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text('Error'),
+                                                content: Text(
+                                                    'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        }
+
+                                        if (_shouldSetState) setState(() {});
                                         return;
                                       } else {
+                                        if (_shouldSetState) setState(() {});
                                         return;
                                       }
                                     }
+
+                                    if (_shouldSetState) setState(() {});
                                   },
                                   child: Container(
                                     width: () {
@@ -1246,10 +1494,12 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    await authManager.refreshUser();
+                                    var _shouldSetState = false;
                                     if (valueOrDefault<bool>(
                                         currentUserDocument?.isAdmin, false)) {
-                                      if (currentUserEmailVerified) {
+                                      if (valueOrDefault<bool>(
+                                          currentUserDocument?.isValidMail,
+                                          false)) {
                                         if (valueOrDefault<bool>(
                                                 currentUserDocument
                                                     ?.isValidPhoneNumber,
@@ -1266,6 +1516,8 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                             context.pushNamed(
                                                 'OK_FN_Payry_24_listadoUsuarios');
 
+                                            if (_shouldSetState)
+                                              setState(() {});
                                             return;
                                           } else {
                                             var confirmDialogResponse =
@@ -1304,8 +1556,12 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                               context.pushNamed(
                                                   'OK_FN_Payry_19_formularioEmpresa');
 
+                                              if (_shouldSetState)
+                                                setState(() {});
                                               return;
                                             } else {
+                                              if (_shouldSetState)
+                                                setState(() {});
                                               return;
                                             }
                                           }
@@ -1346,8 +1602,12 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                             context.pushNamed(
                                                 'OK_FN_Payry_15_EditProfile');
 
+                                            if (_shouldSetState)
+                                              setState(() {});
                                             return;
                                           } else {
+                                            if (_shouldSetState)
+                                              setState(() {});
                                             return;
                                           }
                                         }
@@ -1384,28 +1644,77 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                 ) ??
                                                 false;
                                         if (confirmDialogResponse) {
-                                          await authManager
-                                              .sendEmailVerification();
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                'Se ha enviado la verificación a tu correo electrónico.',
-                                                style: TextStyle(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
-                                              ),
-                                              duration:
-                                                  Duration(milliseconds: 4000),
-                                              backgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
-                                            ),
-                                          );
+                                          try {
+                                            final result =
+                                                await FirebaseFunctions.instance
+                                                    .httpsCallable(
+                                                        'verifyEmail')
+                                                    .call({
+                                              "email": currentUserEmail,
+                                            });
+                                            _model.verifyEmailResp5 =
+                                                VerifyEmailCloudFunctionCallResponse(
+                                              data: result.data,
+                                              succeeded: true,
+                                              resultAsString:
+                                                  result.data.toString(),
+                                              jsonBody: result.data,
+                                            );
+                                          } on FirebaseFunctionsException catch (error) {
+                                            _model.verifyEmailResp5 =
+                                                VerifyEmailCloudFunctionCallResponse(
+                                              errorCode: error.code,
+                                              succeeded: false,
+                                            );
+                                          }
+
+                                          _shouldSetState = true;
+                                          if (_model
+                                              .verifyEmailResp5!.succeeded!) {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text(
+                                                      'Verificación enviada'),
+                                                  content: Text(
+                                                      'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          } else {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text('Error'),
+                                                  content: Text(
+                                                      'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
+
+                                          if (_shouldSetState) setState(() {});
                                           return;
                                         } else {
+                                          if (_shouldSetState) setState(() {});
                                           return;
                                         }
                                       }
@@ -1427,8 +1736,11 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           );
                                         },
                                       );
+                                      if (_shouldSetState) setState(() {});
                                       return;
                                     }
+
+                                    if (_shouldSetState) setState(() {});
                                   },
                                   child: Container(
                                     width: () {
@@ -1642,8 +1954,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          await authManager.refreshUser();
-                                          if (currentUserEmailVerified) {
+                                          var _shouldSetState = false;
+                                          if (valueOrDefault<bool>(
+                                              currentUserDocument?.isValidMail,
+                                              false)) {
                                             if (valueOrDefault<bool>(
                                                     currentUserDocument
                                                         ?.isValidPhoneNumber,
@@ -1663,6 +1977,8 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                   context.pushNamed(
                                                       'OK_FN_Payry_37_facturas');
 
+                                                  if (_shouldSetState)
+                                                    setState(() {});
                                                   return;
                                                 } else {
                                                   if (valueOrDefault<bool>(
@@ -1703,8 +2019,12 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                       context.pushNamed(
                                                           'OK_FN_Payry_19_formularioEmpresa');
 
+                                                      if (_shouldSetState)
+                                                        setState(() {});
                                                       return;
                                                     } else {
+                                                      if (_shouldSetState)
+                                                        setState(() {});
                                                       return;
                                                     }
                                                   } else {
@@ -1728,6 +2048,8 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                         );
                                                       },
                                                     );
+                                                    if (_shouldSetState)
+                                                      setState(() {});
                                                     return;
                                                   }
                                                 }
@@ -1768,8 +2090,12 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                   context.pushNamed(
                                                       'OK_FN_Payry_19_formularioEmpresa');
 
+                                                  if (_shouldSetState)
+                                                    setState(() {});
                                                   return;
                                                 } else {
+                                                  if (_shouldSetState)
+                                                    setState(() {});
                                                   return;
                                                 }
                                               }
@@ -1810,8 +2136,12 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                 context.pushNamed(
                                                     'OK_FN_Payry_15_EditProfile');
 
+                                                if (_shouldSetState)
+                                                  setState(() {});
                                                 return;
                                               } else {
+                                                if (_shouldSetState)
+                                                  setState(() {});
                                                 return;
                                               }
                                             }
@@ -1849,33 +2179,87 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     ) ??
                                                     false;
                                             if (confirmDialogResponse) {
-                                              await authManager
-                                                  .sendEmailVerification();
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(
-                                                SnackBar(
-                                                  content: Text(
-                                                    'Se ha enviado la verificación a tu correo electrónico.',
-                                                    style: TextStyle(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                    ),
-                                                  ),
-                                                  duration: Duration(
-                                                      milliseconds: 4000),
-                                                  backgroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondary,
-                                                ),
-                                              );
+                                              try {
+                                                final result =
+                                                    await FirebaseFunctions
+                                                        .instance
+                                                        .httpsCallable(
+                                                            'verifyEmail')
+                                                        .call({
+                                                  "email": currentUserEmail,
+                                                });
+                                                _model.verifyEmailResp6 =
+                                                    VerifyEmailCloudFunctionCallResponse(
+                                                  data: result.data,
+                                                  succeeded: true,
+                                                  resultAsString:
+                                                      result.data.toString(),
+                                                  jsonBody: result.data,
+                                                );
+                                              } on FirebaseFunctionsException catch (error) {
+                                                _model.verifyEmailResp6 =
+                                                    VerifyEmailCloudFunctionCallResponse(
+                                                  errorCode: error.code,
+                                                  succeeded: false,
+                                                );
+                                              }
+
+                                              _shouldSetState = true;
+                                              if (_model.verifyEmailResp6!
+                                                  .succeeded!) {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      title: Text(
+                                                          'Verificación enviada'),
+                                                      content: Text(
+                                                          'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext),
+                                                          child: Text('Ok'),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                );
+                                              } else {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      title: Text('Error'),
+                                                      content: Text(
+                                                          'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext),
+                                                          child: Text('Ok'),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                );
+                                              }
+
+                                              if (_shouldSetState)
+                                                setState(() {});
                                               return;
                                             } else {
+                                              if (_shouldSetState)
+                                                setState(() {});
                                               return;
                                             }
                                           }
+
+                                          if (_shouldSetState) setState(() {});
                                         },
                                         child: Container(
                                           width: () {
@@ -2359,8 +2743,256 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    context.pushNamed(
-                                        'OK_FN_Payry_44_historialTransactions');
+                                    var _shouldSetState = false;
+                                    if (valueOrDefault<bool>(
+                                            currentUserDocument?.isAdmin,
+                                            false) ||
+                                        oKFNPayry13MenumasUserPermissionsRecord!
+                                            .readTransfers) {
+                                      if (valueOrDefault<bool>(
+                                          currentUserDocument?.isValidMail,
+                                          false)) {
+                                        if (valueOrDefault<bool>(
+                                                currentUserDocument
+                                                    ?.isValidPhoneNumber,
+                                                false) ==
+                                            true) {
+                                          if (valueOrDefault<bool>(
+                                                  currentUserDocument?.isAdmin,
+                                                  false)
+                                              ? valueOrDefault<bool>(
+                                                  currentUserDocument
+                                                      ?.isCompanyComplete,
+                                                  false)
+                                              : true) {
+                                            context.pushNamed(
+                                                'OK_FN_Payry_44_historialTransactions');
+
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          } else {
+                                            var confirmDialogResponse =
+                                                await showDialog<bool>(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return AlertDialog(
+                                                          title: Text(
+                                                              'Acceso denegado'),
+                                                          content: Text(
+                                                              'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext,
+                                                                      false),
+                                                              child: Text(
+                                                                  'Cancel'),
+                                                            ),
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext,
+                                                                      true),
+                                                              child: Text(
+                                                                  'Registrar empresa'),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    ) ??
+                                                    false;
+                                            if (confirmDialogResponse) {
+                                              context.pushNamed(
+                                                  'OK_FN_Payry_19_formularioEmpresa');
+
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            } else {
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            }
+                                          }
+                                        } else {
+                                          var confirmDialogResponse =
+                                              await showDialog<bool>(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            'Acceso denegado'),
+                                                        content: Text(
+                                                            'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    false),
+                                                            child:
+                                                                Text('Cancel'),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    true),
+                                                            child: Text(
+                                                                'Verificar número'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  ) ??
+                                                  false;
+                                          if (confirmDialogResponse) {
+                                            context.pushNamed(
+                                                'OK_FN_Payry_15_EditProfile');
+
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          } else {
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          }
+                                        }
+                                      } else {
+                                        var confirmDialogResponse =
+                                            await showDialog<bool>(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      title: Text(
+                                                          'Acceso denegado'),
+                                                      content: Text(
+                                                          'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext,
+                                                                  false),
+                                                          child: Text('Cancel'),
+                                                        ),
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext,
+                                                                  true),
+                                                          child:
+                                                              Text('Reenviar'),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                ) ??
+                                                false;
+                                        if (confirmDialogResponse) {
+                                          try {
+                                            final result =
+                                                await FirebaseFunctions.instance
+                                                    .httpsCallable(
+                                                        'verifyEmail')
+                                                    .call({
+                                              "email": currentUserEmail,
+                                            });
+                                            _model.verifyEmailResp7 =
+                                                VerifyEmailCloudFunctionCallResponse(
+                                              data: result.data,
+                                              succeeded: true,
+                                              resultAsString:
+                                                  result.data.toString(),
+                                              jsonBody: result.data,
+                                            );
+                                          } on FirebaseFunctionsException catch (error) {
+                                            _model.verifyEmailResp7 =
+                                                VerifyEmailCloudFunctionCallResponse(
+                                              errorCode: error.code,
+                                              succeeded: false,
+                                            );
+                                          }
+
+                                          _shouldSetState = true;
+                                          if (_model
+                                              .verifyEmailResp7!.succeeded!) {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text(
+                                                      'Verificación enviada'),
+                                                  content: Text(
+                                                      'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          } else {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text('Error'),
+                                                  content: Text(
+                                                      'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
+
+                                          if (_shouldSetState) setState(() {});
+                                          return;
+                                        } else {
+                                          if (_shouldSetState) setState(() {});
+                                          return;
+                                        }
+                                      }
+                                    } else {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Acceso Denegado'),
+                                            content: Text(
+                                                'No cuentas con permisos suficientes.'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                      if (_shouldSetState) setState(() {});
+                                      return;
+                                    }
+
+                                    if (_shouldSetState) setState(() {});
                                   },
                                   child: Container(
                                     width: () {

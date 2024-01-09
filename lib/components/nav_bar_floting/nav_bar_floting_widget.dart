@@ -1,9 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -95,12 +97,13 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                         size: 25.0,
                       ),
                       onPressed: () async {
-                        await authManager.refreshUser();
+                        var _shouldSetState = false;
                         if (valueOrDefault<bool>(
                                 currentUserDocument?.isAdmin, false) ||
                             widget.userPermissions!.readQr ||
                             widget.userPermissions!.readSms) {
-                          if (currentUserEmailVerified) {
+                          if (valueOrDefault<bool>(
+                              currentUserDocument?.isValidMail, false)) {
                             if (valueOrDefault<bool>(
                                     currentUserDocument?.isValidPhoneNumber,
                                     false) ==
@@ -113,6 +116,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                   : true) {
                                 context.pushNamed('OK_FN_Payry_26_Dashboard');
 
+                                if (_shouldSetState) setState(() {});
                                 return;
                               } else {
                                 var confirmDialogResponse = await showDialog<
@@ -143,8 +147,10 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                   context.pushNamed(
                                       'OK_FN_Payry_19_formularioEmpresa');
 
+                                  if (_shouldSetState) setState(() {});
                                   return;
                                 } else {
+                                  if (_shouldSetState) setState(() {});
                                   return;
                                 }
                               }
@@ -176,8 +182,10 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                               if (confirmDialogResponse) {
                                 context.pushNamed('OK_FN_Payry_15_EditProfile');
 
+                                if (_shouldSetState) setState(() {});
                                 return;
                               } else {
+                                if (_shouldSetState) setState(() {});
                                 return;
                               }
                             }
@@ -206,23 +214,70 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                 ) ??
                                 false;
                             if (confirmDialogResponse) {
-                              await authManager.sendEmailVerification();
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Se ha enviado la verificación a tu correo electrónico.',
-                                    style: TextStyle(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                    ),
-                                  ),
-                                  duration: Duration(milliseconds: 4000),
-                                  backgroundColor:
-                                      FlutterFlowTheme.of(context).secondary,
-                                ),
-                              );
+                              try {
+                                final result = await FirebaseFunctions.instance
+                                    .httpsCallable('verifyEmail')
+                                    .call({
+                                  "email": currentUserEmail,
+                                });
+                                _model.verifyEmailRespN1 =
+                                    VerifyEmailCloudFunctionCallResponse(
+                                  data: result.data,
+                                  succeeded: true,
+                                  resultAsString: result.data.toString(),
+                                  jsonBody: result.data,
+                                );
+                              } on FirebaseFunctionsException catch (error) {
+                                _model.verifyEmailRespN1 =
+                                    VerifyEmailCloudFunctionCallResponse(
+                                  errorCode: error.code,
+                                  succeeded: false,
+                                );
+                              }
+
+                              _shouldSetState = true;
+                              if (_model.verifyEmailRespN1!.succeeded!) {
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('Verificación enviada'),
+                                      content: Text(
+                                          'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              } else {
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('Error'),
+                                      content: Text(
+                                          'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+
+                              if (_shouldSetState) setState(() {});
                               return;
                             } else {
+                              if (_shouldSetState) setState(() {});
                               return;
                             }
                           }
@@ -244,8 +299,11 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                               );
                             },
                           );
+                          if (_shouldSetState) setState(() {});
                           return;
                         }
+
+                        if (_shouldSetState) setState(() {});
                       },
                     ),
                     FlutterFlowIconButton(
@@ -259,12 +317,13 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                         size: 30.0,
                       ),
                       onPressed: () async {
-                        await authManager.refreshUser();
+                        var _shouldSetState = false;
                         if (valueOrDefault<bool>(
                                 currentUserDocument?.isAdmin, false) ||
                             widget.userPermissions!.createQr ||
                             widget.userPermissions!.readQr) {
-                          if (currentUserEmailVerified) {
+                          if (valueOrDefault<bool>(
+                              currentUserDocument?.isValidMail, false)) {
                             if (valueOrDefault<bool>(
                                     currentUserDocument?.isValidPhoneNumber,
                                     false) ==
@@ -277,6 +336,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                   : true) {
                                 context.pushNamed('OK_FN_Payry_29_opcionesQR');
 
+                                if (_shouldSetState) setState(() {});
                                 return;
                               } else {
                                 var confirmDialogResponse = await showDialog<
@@ -307,8 +367,10 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                   context.pushNamed(
                                       'OK_FN_Payry_19_formularioEmpresa');
 
+                                  if (_shouldSetState) setState(() {});
                                   return;
                                 } else {
+                                  if (_shouldSetState) setState(() {});
                                   return;
                                 }
                               }
@@ -340,8 +402,10 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                               if (confirmDialogResponse) {
                                 context.pushNamed('OK_FN_Payry_15_EditProfile');
 
+                                if (_shouldSetState) setState(() {});
                                 return;
                               } else {
+                                if (_shouldSetState) setState(() {});
                                 return;
                               }
                             }
@@ -370,23 +434,70 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                 ) ??
                                 false;
                             if (confirmDialogResponse) {
-                              await authManager.sendEmailVerification();
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Se ha enviado la verificación a tu correo electrónico.',
-                                    style: TextStyle(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                    ),
-                                  ),
-                                  duration: Duration(milliseconds: 4000),
-                                  backgroundColor:
-                                      FlutterFlowTheme.of(context).secondary,
-                                ),
-                              );
+                              try {
+                                final result = await FirebaseFunctions.instance
+                                    .httpsCallable('verifyEmail')
+                                    .call({
+                                  "email": currentUserEmail,
+                                });
+                                _model.verifyEmailRespN2 =
+                                    VerifyEmailCloudFunctionCallResponse(
+                                  data: result.data,
+                                  succeeded: true,
+                                  resultAsString: result.data.toString(),
+                                  jsonBody: result.data,
+                                );
+                              } on FirebaseFunctionsException catch (error) {
+                                _model.verifyEmailRespN2 =
+                                    VerifyEmailCloudFunctionCallResponse(
+                                  errorCode: error.code,
+                                  succeeded: false,
+                                );
+                              }
+
+                              _shouldSetState = true;
+                              if (_model.verifyEmailRespN2!.succeeded!) {
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('Verificación enviada'),
+                                      content: Text(
+                                          'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              } else {
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('Error'),
+                                      content: Text(
+                                          'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+
+                              if (_shouldSetState) setState(() {});
                               return;
                             } else {
+                              if (_shouldSetState) setState(() {});
                               return;
                             }
                           }
@@ -408,8 +519,11 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                               );
                             },
                           );
+                          if (_shouldSetState) setState(() {});
                           return;
                         }
+
+                        if (_shouldSetState) setState(() {});
                       },
                     ),
                     FlutterFlowIconButton(
@@ -423,12 +537,13 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                         size: 30.0,
                       ),
                       onPressed: () async {
-                        await authManager.refreshUser();
+                        var _shouldSetState = false;
                         if (valueOrDefault<bool>(
                                 currentUserDocument?.isAdmin, false) ||
                             widget.userPermissions!.createSms ||
                             widget.userPermissions!.readSms) {
-                          if (currentUserEmailVerified) {
+                          if (valueOrDefault<bool>(
+                              currentUserDocument?.isValidMail, false)) {
                             if (valueOrDefault<bool>(
                                     currentUserDocument?.isValidPhoneNumber,
                                     false) ==
@@ -441,6 +556,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                   : true) {
                                 context.pushNamed('OK_FN_Payry_34_opcionesSMS');
 
+                                if (_shouldSetState) setState(() {});
                                 return;
                               } else {
                                 var confirmDialogResponse = await showDialog<
@@ -471,8 +587,10 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                   context.pushNamed(
                                       'OK_FN_Payry_19_formularioEmpresa');
 
+                                  if (_shouldSetState) setState(() {});
                                   return;
                                 } else {
+                                  if (_shouldSetState) setState(() {});
                                   return;
                                 }
                               }
@@ -504,8 +622,10 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                               if (confirmDialogResponse) {
                                 context.pushNamed('OK_FN_Payry_15_EditProfile');
 
+                                if (_shouldSetState) setState(() {});
                                 return;
                               } else {
+                                if (_shouldSetState) setState(() {});
                                 return;
                               }
                             }
@@ -534,23 +654,70 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                 ) ??
                                 false;
                             if (confirmDialogResponse) {
-                              await authManager.sendEmailVerification();
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Se ha enviado la verificación a tu correo electrónico.',
-                                    style: TextStyle(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                    ),
-                                  ),
-                                  duration: Duration(milliseconds: 4000),
-                                  backgroundColor:
-                                      FlutterFlowTheme.of(context).secondary,
-                                ),
-                              );
+                              try {
+                                final result = await FirebaseFunctions.instance
+                                    .httpsCallable('verifyEmail')
+                                    .call({
+                                  "email": currentUserEmail,
+                                });
+                                _model.verifyEmailRespN3 =
+                                    VerifyEmailCloudFunctionCallResponse(
+                                  data: result.data,
+                                  succeeded: true,
+                                  resultAsString: result.data.toString(),
+                                  jsonBody: result.data,
+                                );
+                              } on FirebaseFunctionsException catch (error) {
+                                _model.verifyEmailRespN3 =
+                                    VerifyEmailCloudFunctionCallResponse(
+                                  errorCode: error.code,
+                                  succeeded: false,
+                                );
+                              }
+
+                              _shouldSetState = true;
+                              if (_model.verifyEmailRespN3!.succeeded!) {
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('Verificación enviada'),
+                                      content: Text(
+                                          'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              } else {
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('Error'),
+                                      content: Text(
+                                          'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+
+                              if (_shouldSetState) setState(() {});
                               return;
                             } else {
+                              if (_shouldSetState) setState(() {});
                               return;
                             }
                           }
@@ -572,8 +739,11 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                               );
                             },
                           );
+                          if (_shouldSetState) setState(() {});
                           return;
                         }
+
+                        if (_shouldSetState) setState(() {});
                       },
                     ),
                     FlutterFlowIconButton(

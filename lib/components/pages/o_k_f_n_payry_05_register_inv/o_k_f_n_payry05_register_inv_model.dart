@@ -39,6 +39,8 @@ class OKFNPayry05RegisterInvModel
   late bool invPasswordConfirmVisibility;
   String? Function(BuildContext, String?)?
       invPasswordConfirmControllerValidator;
+  // Stores action output result for [Cloud Function - verifyEmail] action in Button widget.
+  VerifyEmailCloudFunctionCallResponse? cfve;
   // Stores action output result for [Cloud Function - generateToken] action in Button widget.
   GenerateTokenCloudFunctionCallResponse? cloudFunctionGT;
 
