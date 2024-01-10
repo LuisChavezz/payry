@@ -1,0 +1,18 @@
+# Ignorar los archivos generados por Flutter
+.dart_tool/
+.packages
+.pubspec.lock
+
+# Ignorar la carpeta de dependencias
+.pub/
+
+# Ignorar los archivos generados por el IDE (ejemplo: Android Studio o VS Code)
+.idea/
+.vscode/
+
+# Ignorar los archivos de configuración local
+.flutter-plugins
+.metadata
+
+# Ignorar los archivos de construcción
+build/
