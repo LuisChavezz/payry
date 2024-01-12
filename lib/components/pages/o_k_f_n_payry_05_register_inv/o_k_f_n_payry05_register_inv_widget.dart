@@ -466,7 +466,9 @@ class _OKFNPayry05RegisterInvWidgetState
                                                             : Icons
                                                                 .visibility_off_outlined,
                                                         color:
-                                                            Color(0x98FFFFFF),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent3,
                                                         size: 20.0,
                                                       ),
                                                     ),
@@ -584,7 +586,9 @@ class _OKFNPayry05RegisterInvWidgetState
                                                             : Icons
                                                                 .visibility_off_outlined,
                                                         color:
-                                                            Color(0x98FFFFFF),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent3,
                                                         size: 20.0,
                                                       ),
                                                     ),

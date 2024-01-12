@@ -480,7 +480,9 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                           },
                                         ),
                                       });
-
+                                      if (Navigator.of(context).canPop()) {
+                                        context.pop();
+                                      }
                                       context.pushNamed(
                                         'OK_FN_Payry_36_detallesdeSMS',
                                         queryParameters: {

@@ -1493,72 +1493,76 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                               null)) {
                                             await CompaniesRecord.collection
                                                 .doc()
-                                                .set(createCompaniesRecordData(
-                                                  createdBy: currentUserUid,
-                                                  name: _model
-                                                      .nameFieldController.text,
-                                                  alias: _model
-                                                      .aliasFieldController
-                                                      .text,
-                                                  email: _model
-                                                      .emailFieldController
-                                                      .text,
-                                                  taxRegime: _model
-                                                      .taxRegimeDropDownValue,
-                                                  rfc: _model
-                                                      .rFCFieldController.text,
-                                                  street: _model
-                                                      .streetFieldController
-                                                      .text,
-                                                  streetNumber: _model
-                                                      .streetNumberFieldController
-                                                      .text,
-                                                  intStreetNumber: '',
-                                                  neighborhood: _model
-                                                      .neighborhoodFieldController
-                                                      .text,
-                                                  zipcode: _model
-                                                      .zipCodeFieldController
-                                                      .text,
-                                                  city: _model
-                                                      .cityFieldController.text,
-                                                  state:
-                                                      _model.stateDropDownValue,
-                                                  country: _model
-                                                      .countryDropDownValue,
-                                                  status: _model
-                                                          .statusDropDownValue ==
-                                                      'Activo',
-                                                  allowTip: false,
-                                                  requireBill: _model
-                                                      .requireBillSwitchValue,
-                                                  cfdi:
-                                                      _model.cFDIDropDownValue,
-                                                  bank: '',
-                                                  clabe: '',
-                                                  verifiedClabe: false,
-                                                  apiKey: '',
-                                                  apiSecret: '',
-                                                  imageUrl: () {
-                                                    if (_model.uploadedFileUrl !=
-                                                            null &&
-                                                        _model.uploadedFileUrl !=
-                                                            '') {
-                                                      return _model
-                                                          .uploadedFileUrl;
-                                                    } else if (oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                                ?.imageUrl !=
-                                                            null &&
-                                                        oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                                ?.imageUrl !=
-                                                            '') {
-                                                      return oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                          ?.imageUrl;
-                                                    } else {
-                                                      return null;
-                                                    }
-                                                  }(),
-                                                ));
+                                                .set({
+                                              ...createCompaniesRecordData(
+                                                createdBy: currentUserUid,
+                                                name: _model
+                                                    .nameFieldController.text,
+                                                alias: _model
+                                                    .aliasFieldController.text,
+                                                email: _model
+                                                    .emailFieldController.text,
+                                                taxRegime: _model
+                                                    .taxRegimeDropDownValue,
+                                                rfc: _model
+                                                    .rFCFieldController.text,
+                                                street: _model
+                                                    .streetFieldController.text,
+                                                streetNumber: _model
+                                                    .streetNumberFieldController
+                                                    .text,
+                                                intStreetNumber: '',
+                                                neighborhood: _model
+                                                    .neighborhoodFieldController
+                                                    .text,
+                                                zipcode: _model
+                                                    .zipCodeFieldController
+                                                    .text,
+                                                city: _model
+                                                    .cityFieldController.text,
+                                                state:
+                                                    _model.stateDropDownValue,
+                                                country:
+                                                    _model.countryDropDownValue,
+                                                status: _model
+                                                        .statusDropDownValue ==
+                                                    'Activo',
+                                                allowTip: false,
+                                                requireBill: _model
+                                                    .requireBillSwitchValue,
+                                                cfdi: _model.cFDIDropDownValue,
+                                                bank: '',
+                                                clabe: '',
+                                                verifiedClabe: false,
+                                                apiKey: '',
+                                                apiSecret: '',
+                                                imageUrl: () {
+                                                  if (_model.uploadedFileUrl !=
+                                                          null &&
+                                                      _model.uploadedFileUrl !=
+                                                          '') {
+                                                    return _model
+                                                        .uploadedFileUrl;
+                                                  } else if (oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                              ?.imageUrl !=
+                                                          null &&
+                                                      oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                              ?.imageUrl !=
+                                                          '') {
+                                                    return oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                        ?.imageUrl;
+                                                  } else {
+                                                    return null;
+                                                  }
+                                                }(),
+                                              ),
+                                              ...mapToFirestore(
+                                                {
+                                                  'created_time': FieldValue
+                                                      .serverTimestamp(),
+                                                },
+                                              ),
+                                            });
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(
                                               SnackBar(
@@ -1777,8 +1781,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                         ),
                                       ),
                                     ),
-                                  if (oKFNPayry19FormularioEmpresaCompaniesRecord !=
-                                      null)
+                                  if (false)
                                     Align(
                                       alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
