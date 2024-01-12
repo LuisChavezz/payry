@@ -10,7 +10,11 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';
 
-Future<String> readClipboard() async {
+Future<String> clabeClipboard(String clabe) async {
+  if (clabe.length < 18) {
+    return clabe;
+  }
+
   try {
     // Get clipboard data
     ClipboardData? data = await Clipboard.getData(Clipboard.kTextPlain);
@@ -27,13 +31,15 @@ Future<String> readClipboard() async {
       if (regex.hasMatch(clipboardText)) {
         return clipboardText;
       } else {
-        return 'INVALID FORMAT';
+        await Clipboard.setData(ClipboardData(text: '')); // Clean the clipboard
+        return clabe;
       }
     } else {
-      return 'FAILED';
+      // If clipboard is empty or null
+      return clabe;
     }
   } catch (e) {
-    return 'CATCH ERROR';
+    return clabe;
   }
 }
 

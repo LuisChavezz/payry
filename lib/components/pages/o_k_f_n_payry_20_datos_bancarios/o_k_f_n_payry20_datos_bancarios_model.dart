@@ -4,6 +4,7 @@ import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.d
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'o_k_f_n_payry20_datos_bancarios_widget.dart'
     show OKFNPayry20DatosBancariosWidget;
@@ -38,6 +39,8 @@ class OKFNPayry20DatosBancariosModel
     return null;
   }
 
+  // Stores action output result for [Custom Action - clabeClipboard] action in ClabeField widget.
+  String? clabeParsed;
   // Stores action output result for [Firestore Query - Query a collection] action in ClabeField widget.
   BankCatalogueRecord? bankCatalogueDocument;
   // State field(s) for BankField widget.

@@ -5,7 +5,6 @@ import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -1825,127 +1824,90 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     ),
                                   ),
                                 ),
-                                InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    _model.clipboardData =
-                                        await actions.readClipboard();
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title: Text('?'),
-                                          content: Text(_model.clipboardData!),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: Text('Ok'),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-
-                                    setState(() {});
-                                  },
-                                  child: Container(
-                                    width: () {
-                                      if (MediaQuery.sizeOf(context).width <
-                                          390.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.42);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          480.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.44);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          900.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.3);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1025.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.23);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1300.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.18);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1600.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.14);
-                                      } else {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.1);
-                                      }
-                                    }(),
-                                    height: 75.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context).back6,
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 9.0, 0.0),
-                                            child: Icon(
-                                              FFIcons.kdocumentacion,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 20.0,
-                                            ),
+                                Container(
+                                  width: () {
+                                    if (MediaQuery.sizeOf(context).width <
+                                        390.0) {
+                                      return (MediaQuery.sizeOf(context).width *
+                                          0.42);
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        480.0) {
+                                      return (MediaQuery.sizeOf(context).width *
+                                          0.44);
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        900.0) {
+                                      return (MediaQuery.sizeOf(context).width *
+                                          0.3);
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        1025.0) {
+                                      return (MediaQuery.sizeOf(context).width *
+                                          0.23);
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        1300.0) {
+                                      return (MediaQuery.sizeOf(context).width *
+                                          0.18);
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        1600.0) {
+                                      return (MediaQuery.sizeOf(context).width *
+                                          0.14);
+                                    } else {
+                                      return (MediaQuery.sizeOf(context).width *
+                                          0.1);
+                                    }
+                                  }(),
+                                  height: 75.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context).back6,
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 0.0, 16.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 9.0, 0.0),
+                                          child: Icon(
+                                            FFIcons.kdocumentacion,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 20.0,
                                           ),
-                                          Text(
-                                            'Documentación ',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                  fontSize: () {
-                                                    if (MediaQuery.sizeOf(
-                                                                context)
-                                                            .width <
-                                                        375.0) {
-                                                      return 10.0;
-                                                    } else if (MediaQuery
-                                                                .sizeOf(context)
-                                                            .width <
-                                                        410.0) {
-                                                      return 11.0;
-                                                    } else {
-                                                      return 14.0;
-                                                    }
-                                                  }(),
-                                                ),
-                                          ),
-                                        ].divide(SizedBox(width: 5.0)),
-                                      ),
+                                        ),
+                                        Text(
+                                          'Documentación ',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                fontSize: () {
+                                                  if (MediaQuery.sizeOf(context)
+                                                          .width <
+                                                      375.0) {
+                                                    return 10.0;
+                                                  } else if (MediaQuery.sizeOf(
+                                                              context)
+                                                          .width <
+                                                      410.0) {
+                                                    return 11.0;
+                                                  } else {
+                                                    return 14.0;
+                                                  }
+                                                }(),
+                                              ),
+                                        ),
+                                      ].divide(SizedBox(width: 5.0)),
                                     ),
                                   ),
                                 ),

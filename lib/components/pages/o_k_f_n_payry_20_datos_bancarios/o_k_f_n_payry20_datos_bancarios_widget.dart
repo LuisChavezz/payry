@@ -4,6 +4,7 @@ import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.d
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
@@ -137,6 +138,15 @@ class _OKFNPayry20DatosBancariosWidgetState
                               Duration(milliseconds: 2000),
                               () async {
                                 var _shouldSetState = false;
+                                _model.clabeParsed =
+                                    await actions.clabeClipboard(
+                                  _model.clabeFieldController.text,
+                                );
+                                _shouldSetState = true;
+                                setState(() {
+                                  _model.clabeFieldController?.text =
+                                      _model.clabeParsed!;
+                                });
                                 if (functions.validateMinimumLength(
                                     _model.clabeFieldController.text, 3)!) {
                                   _model.bankCatalogueDocument =
