@@ -47,6 +47,14 @@ class OKFNPayry20DatosBancariosModel
   FocusNode? bankFieldFocusNode;
   TextEditingController? bankFieldController;
   String? Function(BuildContext, String?)? bankFieldControllerValidator;
+  String? _bankFieldControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Debes agregar una CLABE válida para agregar el Banco automáticamente.';
+    }
+
+    return null;
+  }
+
   // Stores action output result for [Cloud Function - saveBankCompany] action in Button widget.
   SaveBankCompanyCloudFunctionCallResponse? cloudFunctionBankCompany;
 
@@ -54,6 +62,7 @@ class OKFNPayry20DatosBancariosModel
 
   void initState(BuildContext context) {
     clabeFieldControllerValidator = _clabeFieldControllerValidator;
+    bankFieldControllerValidator = _bankFieldControllerValidator;
   }
 
   void dispose() {

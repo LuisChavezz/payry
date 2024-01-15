@@ -296,6 +296,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                         color: Color(0xFF8788A5),
                                         fontWeight: FontWeight.normal,
                                       ),
+                                  maxLength: 40,
                                   validator: _model
                                       .conceptFieldControllerValidator
                                       .asValidator(context),

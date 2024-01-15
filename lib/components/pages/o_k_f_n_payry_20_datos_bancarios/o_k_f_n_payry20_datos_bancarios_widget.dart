@@ -175,6 +175,9 @@ class _OKFNPayry20DatosBancariosWidgetState
                                   if (_shouldSetState) setState(() {});
                                   return;
                                 } else {
+                                  setState(() {
+                                    _model.bankFieldController?.text = '';
+                                  });
                                   if (_shouldSetState) setState(() {});
                                   return;
                                 }
@@ -297,6 +300,8 @@ class _OKFNPayry20DatosBancariosWidgetState
                                 ),
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
+                              filled: true,
+                              fillColor: Color(0x83CCCCCC),
                               contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 24.0, 20.0, 24.0),
                             ),
@@ -318,45 +323,51 @@ class _OKFNPayry20DatosBancariosWidgetState
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 30.0, 0.0, 10.0),
                             child: FFButtonWidget(
-                              onPressed: () async {
-                                if (_model.formKey.currentState == null ||
-                                    !_model.formKey.currentState!.validate()) {
-                                  return;
-                                }
-                                try {
-                                  final result = await FirebaseFunctions
-                                      .instance
-                                      .httpsCallable('saveBankCompany')
-                                      .call({
-                                    "uid": FFAppState().serverToken,
-                                    "clabe": _model.clabeFieldController.text,
-                                  });
-                                  _model.cloudFunctionBankCompany =
-                                      SaveBankCompanyCloudFunctionCallResponse(
-                                    succeeded: true,
-                                  );
-                                } on FirebaseFunctionsException catch (error) {
-                                  _model.cloudFunctionBankCompany =
-                                      SaveBankCompanyCloudFunctionCallResponse(
-                                    errorCode: error.code,
-                                    succeeded: false,
-                                  );
-                                }
+                              onPressed: (_model
+                                          .bankCatalogueDocument?.reference !=
+                                      null)
+                                  ? null
+                                  : () async {
+                                      if (_model.formKey.currentState == null ||
+                                          !_model.formKey.currentState!
+                                              .validate()) {
+                                        return;
+                                      }
+                                      try {
+                                        final result = await FirebaseFunctions
+                                            .instance
+                                            .httpsCallable('saveBankCompany')
+                                            .call({
+                                          "uid": FFAppState().serverToken,
+                                          "clabe":
+                                              _model.clabeFieldController.text,
+                                        });
+                                        _model.cloudFunctionBankCompany =
+                                            SaveBankCompanyCloudFunctionCallResponse(
+                                          succeeded: true,
+                                        );
+                                      } on FirebaseFunctionsException catch (error) {
+                                        _model.cloudFunctionBankCompany =
+                                            SaveBankCompanyCloudFunctionCallResponse(
+                                          errorCode: error.code,
+                                          succeeded: false,
+                                        );
+                                      }
 
-                                await widget.companyDocRef!
-                                    .update(createCompaniesRecordData(
-                                  clabe: _model.clabeFieldController.text,
-                                  bank: _model.bankFieldController.text,
-                                ));
+                                      await widget.companyDocRef!
+                                          .update(createCompaniesRecordData(
+                                        clabe: _model.clabeFieldController.text,
+                                        bank: _model.bankFieldController.text,
+                                      ));
 
-                                await currentUserReference!
-                                    .update(createUsersRecordData(
-                                  isCompanyComplete: true,
-                                ));
-                                context.safePop();
+                                      await currentUserReference!
+                                          .update(createUsersRecordData(
+                                        isCompanyComplete: true,
+                                      ));
+                                      context.safePop();
 
-                                setState(() {});
-                              },
+                                      setState(() {});
+                                    },
                               text: 'Guardar',
                               options: FFButtonOptions(
                                 width: 300.0,
@@ -378,6 +389,7 @@ class _OKFNPayry20DatosBancariosWidgetState
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10.0),
+                                disabledColor: Color(0x83CCCCCC),
                               ),
                             ),
                           ),

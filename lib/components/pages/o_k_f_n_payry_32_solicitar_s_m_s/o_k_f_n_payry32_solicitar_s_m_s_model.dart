@@ -44,6 +44,9 @@ class OKFNPayry32SolicitarSMSModel
     if (val.length < 10) {
       return 'El concepto debe contener al menos 10 caracteres';
     }
+    if (val.length > 40) {
+      return 'El con';
+    }
 
     return null;
   }
