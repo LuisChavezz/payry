@@ -324,7 +324,7 @@ class _OKFNPayry20DatosBancariosWidgetState
                                 0.0, 30.0, 0.0, 10.0),
                             child: FFButtonWidget(
                               onPressed: (_model
-                                          .bankCatalogueDocument?.reference !=
+                                          .bankCatalogueDocument?.reference ==
                                       null)
                                   ? null
                                   : () async {
