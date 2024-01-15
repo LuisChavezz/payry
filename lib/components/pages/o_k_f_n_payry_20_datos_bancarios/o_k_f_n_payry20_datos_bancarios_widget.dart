@@ -161,10 +161,17 @@ class _OKFNPayry20DatosBancariosWidgetState
                                     singleRecord: true,
                                   ).then((s) => s.firstOrNull);
                                   _shouldSetState = true;
-                                  setState(() {
-                                    _model.bankFieldController?.text =
-                                        _model.bankCatalogueDocument!.name;
-                                  });
+                                  if (_model.bankCatalogueDocument != null) {
+                                    setState(() {
+                                      _model.bankFieldController?.text =
+                                          _model.bankCatalogueDocument!.name;
+                                    });
+                                  } else {
+                                    setState(() {
+                                      _model.bankFieldController?.text = '';
+                                    });
+                                  }
+
                                   if (_shouldSetState) setState(() {});
                                   return;
                                 } else {

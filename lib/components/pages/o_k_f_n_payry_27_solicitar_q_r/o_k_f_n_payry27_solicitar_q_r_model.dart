@@ -32,6 +32,9 @@ class OKFNPayry27SolicitarQRModel
     if (val.length < 10) {
       return 'El concepto debe contener al menos 10 caracteres';
     }
+    if (val.length > 40) {
+      return 'El concepto solo puede contener un máximo de 40 caracteres';
+    }
 
     return null;
   }

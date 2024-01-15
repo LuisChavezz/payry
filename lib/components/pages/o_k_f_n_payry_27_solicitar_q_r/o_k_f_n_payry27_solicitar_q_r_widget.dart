@@ -187,6 +187,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                                         color: Color(0xFF8788A5),
                                         fontWeight: FontWeight.normal,
                                       ),
+                                  maxLength: 40,
                                   validator: _model
                                       .conceptFieldControllerValidator
                                       .asValidator(context),
