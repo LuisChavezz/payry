@@ -11,6 +11,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -45,6 +46,11 @@ class _OKFNPayry20DatosBancariosWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => OKFNPayry20DatosBancariosModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await Clipboard.setData(ClipboardData(text: ''));
+    });
 
     _model.clabeFieldController ??= TextEditingController(text: widget.clabe);
     _model.clabeFieldFocusNode ??= FocusNode();
