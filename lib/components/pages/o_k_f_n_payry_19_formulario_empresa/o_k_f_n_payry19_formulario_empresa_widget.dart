@@ -1617,8 +1617,6 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                               requireBill:
                                                   _model.requireBillSwitchValue,
                                               cfdi: _model.cFDIDropDownValue,
-                                              bank: '',
-                                              clabe: '',
                                               verifiedClabe: false,
                                               apiKey: '',
                                               apiSecret: '',

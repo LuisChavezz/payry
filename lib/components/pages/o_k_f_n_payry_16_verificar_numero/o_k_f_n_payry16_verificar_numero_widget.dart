@@ -257,6 +257,8 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
                                               ),
+                                              filled: true,
+                                              fillColor: Color(0x83CCCCCC),
                                               contentPadding:
                                                   EdgeInsetsDirectional
                                                       .fromSTEB(20.0, 24.0,

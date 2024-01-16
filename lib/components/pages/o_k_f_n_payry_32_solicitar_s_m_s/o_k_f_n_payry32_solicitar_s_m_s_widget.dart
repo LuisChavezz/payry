@@ -416,7 +416,10 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                     }
 
                                     _shouldSetState = true;
-                                    if (_model.smsCloudFunction!.succeeded!) {
+                                    if (getJsonField(
+                                      _model.smsCloudFunction!.jsonBody,
+                                      r'''$.success''',
+                                    )) {
                                       var smsRecordReference =
                                           SmsRecord.collection.doc();
                                       await smsRecordReference.set({
@@ -481,6 +484,23 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                           },
                                         ),
                                       });
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Completado'),
+                                            content: Text(
+                                                'El SMS se ha generado con éxito.'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
                                       if (Navigator.of(context).canPop()) {
                                         context.pop();
                                       }
@@ -497,23 +517,24 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                       if (_shouldSetState) setState(() {});
                                       return;
                                     } else {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'FALSE',
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Error'),
+                                            content: Text(getJsonField(
+                                              _model.smsCloudFunction!.jsonBody,
+                                              r'''$.message''',
+                                            ).toString()),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
                                       );
                                       if (_shouldSetState) setState(() {});
                                       return;

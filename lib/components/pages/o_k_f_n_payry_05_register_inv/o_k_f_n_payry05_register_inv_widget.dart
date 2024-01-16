@@ -347,6 +347,9 @@ class _OKFNPayry05RegisterInvWidgetState
                                                           BorderRadius.circular(
                                                               8.0),
                                                     ),
+                                                    filled: true,
+                                                    fillColor:
+                                                        Color(0x83CCCCCC),
                                                     contentPadding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(

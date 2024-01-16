@@ -112,6 +112,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                   style: FlutterFlowTheme.of(context).headlineSmall.override(
                         fontFamily: 'Lexend',
                         color: FlutterFlowTheme.of(context).primaryText,
+                        fontSize: 18.0,
                       ),
                 ),
               ),
@@ -246,6 +247,8 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               'Concepto',
@@ -260,11 +263,17 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                                 .primaryText,
                                                       ),
                                             ),
-                                            Text(
-                                              oKFNPayry31DetallesdeQRQrRecord
-                                                  .concept,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
+                                            Expanded(
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        12.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  oKFNPayry31DetallesdeQRQrRecord
+                                                      .concept,
+                                                  textAlign: TextAlign.end,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'Lexend',
@@ -273,6 +282,8 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                                     context)
                                                                 .accent3,
                                                       ),
+                                                ),
+                                              ),
                                             ),
                                           ],
                                         ),

@@ -503,7 +503,10 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                               crossAxisAlignment: CrossAxisAlignment.start,
                                                                               children: [
                                                                                 Text(
-                                                                                  listViewQrRecord.concept,
+                                                                                  listViewQrRecord.concept.maybeHandleOverflow(
+                                                                                    maxChars: 25,
+                                                                                    replacement: '…',
+                                                                                  ),
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Lexend',
                                                                                         fontSize: 12.0,
@@ -759,7 +762,10 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                               crossAxisAlignment: CrossAxisAlignment.start,
                                                                               children: [
                                                                                 Text(
-                                                                                  listViewSmsRecord.concept,
+                                                                                  listViewSmsRecord.concept.maybeHandleOverflow(
+                                                                                    maxChars: 25,
+                                                                                    replacement: '…',
+                                                                                  ),
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Lexend',
                                                                                         fontSize: 12.0,

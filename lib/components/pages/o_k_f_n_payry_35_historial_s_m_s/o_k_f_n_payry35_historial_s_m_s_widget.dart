@@ -445,7 +445,13 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                               children: [
                                                                 Text(
                                                                   smsItemItem
-                                                                      .concept,
+                                                                      .concept
+                                                                      .maybeHandleOverflow(
+                                                                    maxChars:
+                                                                        25,
+                                                                    replacement:
+                                                                        '…',
+                                                                  ),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -629,7 +635,13 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                               children: [
                                                                 Text(
                                                                   smsItemItem
-                                                                      .concept,
+                                                                      .concept
+                                                                      .maybeHandleOverflow(
+                                                                    maxChars:
+                                                                        25,
+                                                                    replacement:
+                                                                        '…',
+                                                                  ),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium

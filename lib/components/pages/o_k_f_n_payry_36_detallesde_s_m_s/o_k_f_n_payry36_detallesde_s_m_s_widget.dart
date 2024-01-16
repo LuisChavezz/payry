@@ -260,17 +260,22 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                       .primaryText,
                                                 ),
                                           ),
-                                          Text(
-                                            oKFNPayry36DetallesdeSMSSmsRecord
-                                                .concept,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .accent3,
-                                                ),
+                                          Expanded(
+                                            child: Text(
+                                              oKFNPayry36DetallesdeSMSSmsRecord
+                                                  .concept,
+                                              textAlign: TextAlign.end,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent3,
+                                                      ),
+                                            ),
                                           ),
                                         ],
                                       ),
