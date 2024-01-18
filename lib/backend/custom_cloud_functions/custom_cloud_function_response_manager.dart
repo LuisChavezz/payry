@@ -25,7 +25,7 @@ class CrearMovimientoQRCloudFunctionCallResponse {
   bool? succeeded;
   dynamic jsonBody;
   String? resultAsString;
-  String? data;
+  dynamic data;
 }
 
 class CrearMovimientoSMSCloudFunctionCallResponse {

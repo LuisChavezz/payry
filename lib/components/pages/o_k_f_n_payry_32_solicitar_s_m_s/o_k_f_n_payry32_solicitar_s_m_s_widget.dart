@@ -8,8 +8,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import 'o_k_f_n_payry32_solicitar_s_m_s_model.dart';
 export 'o_k_f_n_payry32_solicitar_s_m_s_model.dart';
@@ -218,10 +218,14 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
+                                          maxLength: 10,
                                           keyboardType: TextInputType.phone,
                                           validator: _model
                                               .phoneFieldControllerValidator
                                               .asValidator(context),
+                                          inputFormatters: [
+                                            _model.phoneFieldMask
+                                          ],
                                         ),
                                       ),
                                     ),

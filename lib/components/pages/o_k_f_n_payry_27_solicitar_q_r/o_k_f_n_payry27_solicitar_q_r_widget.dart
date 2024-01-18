@@ -8,7 +8,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'o_k_f_n_payry27_solicitar_q_r_model.dart';
@@ -305,7 +304,10 @@ class _OKFNPayry27SolicitarQRWidgetState
                                     }
 
                                     _shouldSetState = true;
-                                    if (_model.cloudFunctionik3!.succeeded!) {
+                                    if (getJsonField(
+                                      _model.cloudFunctionik3!.jsonBody,
+                                      r'''$.success''',
+                                    )) {
                                       var qrRecordReference =
                                           QrRecord.collection.doc();
                                       await qrRecordReference.set({
@@ -318,9 +320,10 @@ class _OKFNPayry27SolicitarQRWidgetState
                                           concept: _model
                                               .conceptFieldController.text,
                                           status: 'PENDIENTE',
-                                          qrUrl: _model
-                                              .cloudFunctionik3?.jsonBody
-                                              ?.toString(),
+                                          qrUrl: getJsonField(
+                                            _model.cloudFunctionik3?.jsonBody,
+                                            r'''$.data''',
+                                          ).toString(),
                                           voucherUrl: '',
                                         ),
                                         ...mapToFirestore(
@@ -341,9 +344,10 @@ class _OKFNPayry27SolicitarQRWidgetState
                                           concept: _model
                                               .conceptFieldController.text,
                                           status: 'PENDIENTE',
-                                          qrUrl: _model
-                                              .cloudFunctionik3?.jsonBody
-                                              ?.toString(),
+                                          qrUrl: getJsonField(
+                                            _model.cloudFunctionik3?.jsonBody,
+                                            r'''$.data''',
+                                          ).toString(),
                                           voucherUrl: '',
                                         ),
                                         ...mapToFirestore(
@@ -385,24 +389,24 @@ class _OKFNPayry27SolicitarQRWidgetState
                                       if (_shouldSetState) setState(() {});
                                       return;
                                     } else {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            _model.cloudFunctionik3!.jsonBody!
-                                                .toString(),
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Error'),
+                                            content: Text(getJsonField(
+                                              _model.cloudFunctionik3!.jsonBody,
+                                              r'''$.message''',
+                                            ).toString()),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
                                       );
                                       if (_shouldSetState) setState(() {});
                                       return;

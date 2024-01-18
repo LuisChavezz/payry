@@ -10,8 +10,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 
 class OKFNPayry32SolicitarSMSModel
@@ -23,6 +23,7 @@ class OKFNPayry32SolicitarSMSModel
   // State field(s) for PhoneField widget.
   FocusNode? phoneFieldFocusNode;
   TextEditingController? phoneFieldController;
+  final phoneFieldMask = MaskTextInputFormatter(mask: '##########');
   String? Function(BuildContext, String?)? phoneFieldControllerValidator;
   String? _phoneFieldControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
@@ -60,8 +61,8 @@ class OKFNPayry32SolicitarSMSModel
       return 'El importe es requerido';
     }
 
-    if (!RegExp('^[1-9]\\d*(\\.\\d{1,2})?\$').hasMatch(val)) {
-      return 'El formato del importe es inválido';
+    if (!RegExp('^[0-9]{1,4}(?:\\.[0-9]{1,2})?\$').hasMatch(val)) {
+      return 'El formato del importe es inválido.';
     }
     return null;
   }

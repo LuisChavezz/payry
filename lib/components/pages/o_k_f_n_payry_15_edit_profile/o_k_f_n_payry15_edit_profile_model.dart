@@ -12,8 +12,8 @@ import 'o_k_f_n_payry15_edit_profile_widget.dart'
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 
 class OKFNPayry15EditProfileModel
@@ -42,6 +42,7 @@ class OKFNPayry15EditProfileModel
   // State field(s) for PhoneField widget.
   FocusNode? phoneFieldFocusNode;
   TextEditingController? phoneFieldController;
+  final phoneFieldMask = MaskTextInputFormatter(mask: '##########');
   String? Function(BuildContext, String?)? phoneFieldControllerValidator;
   // State field(s) for StatusDropDown widget.
   String? statusDropDownValue;
