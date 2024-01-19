@@ -1559,6 +1559,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                     return null;
                                                   }
                                                 }(),
+                                                bankid: '',
                                               ),
                                               ...mapToFirestore(
                                                 {

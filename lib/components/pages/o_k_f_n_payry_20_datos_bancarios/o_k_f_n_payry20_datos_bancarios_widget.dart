@@ -363,6 +363,15 @@ class _OKFNPayry20DatosBancariosWidgetState
                                           .update(createCompaniesRecordData(
                                         clabe: _model.clabeFieldController.text,
                                         bank: _model.bankFieldController.text,
+                                        bankid: _model.bankCatalogueDocument
+                                                        ?.bankid !=
+                                                    null &&
+                                                _model.bankCatalogueDocument
+                                                        ?.bankid !=
+                                                    ''
+                                            ? _model
+                                                .bankCatalogueDocument?.bankid
+                                            : '',
                                       ));
 
                                       await currentUserReference!
