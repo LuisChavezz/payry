@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'o_k_f_n_payry08_iniciasesion_model.dart';
@@ -302,58 +301,61 @@ class _OKFNPayry08IniciasesionWidgetState
                                             VerticalDirection.down,
                                         clipBehavior: Clip.none,
                                         children: [
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Theme(
-                                                data: ThemeData(
-                                                  checkboxTheme:
-                                                      CheckboxThemeData(
-                                                    visualDensity:
-                                                        VisualDensity.compact,
-                                                    materialTapTargetSize:
-                                                        MaterialTapTargetSize
-                                                            .shrinkWrap,
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              4.0),
+                                          if (false)
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Theme(
+                                                  data: ThemeData(
+                                                    checkboxTheme:
+                                                        CheckboxThemeData(
+                                                      visualDensity:
+                                                          VisualDensity.compact,
+                                                      materialTapTargetSize:
+                                                          MaterialTapTargetSize
+                                                              .shrinkWrap,
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(4.0),
+                                                      ),
                                                     ),
+                                                    unselectedWidgetColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondaryText,
                                                   ),
-                                                  unselectedWidgetColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryText,
+                                                  child: Checkbox(
+                                                    value:
+                                                        _model.checkboxValue ??=
+                                                            false,
+                                                    onChanged:
+                                                        (newValue) async {
+                                                      setState(() =>
+                                                          _model.checkboxValue =
+                                                              newValue!);
+                                                    },
+                                                    activeColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primary,
+                                                    checkColor: Colors.white,
+                                                  ),
                                                 ),
-                                                child: Checkbox(
-                                                  value: _model
-                                                      .checkboxValue ??= false,
-                                                  onChanged: (newValue) async {
-                                                    setState(() =>
-                                                        _model.checkboxValue =
-                                                            newValue!);
-                                                  },
-                                                  activeColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
-                                                  checkColor: Colors.white,
+                                                Text(
+                                                  'Recordarme',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color:
+                                                            Color(0xFF8788A5),
+                                                      ),
                                                 ),
-                                              ),
-                                              Text(
-                                                'Recordarme',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Lexend',
-                                                          color:
-                                                              Color(0xFF8788A5),
-                                                        ),
-                                              ),
-                                            ],
-                                          ),
+                                              ],
+                                            ),
                                           FFButtonWidget(
                                             onPressed: () async {
                                               context.pushNamed(

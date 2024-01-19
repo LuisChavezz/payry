@@ -10,7 +10,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'o_k_f_n_payry17_verificar_o_t_p_model.dart';
@@ -275,17 +274,22 @@ class _OKFNPayry17VerificarOTPWidgetState
                               child: FFButtonWidget(
                                 onPressed: () async {
                                   if (_model.timerMilliseconds <= 0) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          'El tiempo ha expirado',
-                                          style: TextStyle(
-                                            color: Color(0xFFFAF9FE),
-                                          ),
-                                        ),
-                                        duration: Duration(milliseconds: 4000),
-                                        backgroundColor: Color(0xFF25253F),
-                                      ),
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text('El tiempo ha expirado'),
+                                          content: Text(
+                                              'El tiempo ha expirado, favor de volver a intentarlo.'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text('Ok'),
+                                            ),
+                                          ],
+                                        );
+                                      },
                                     );
                                     return;
                                   } else {

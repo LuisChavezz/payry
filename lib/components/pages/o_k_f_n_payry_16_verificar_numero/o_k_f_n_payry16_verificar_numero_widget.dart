@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'o_k_f_n_payry16_verificar_numero_model.dart';
@@ -31,7 +30,7 @@ class _OKFNPayry16VerificarNumeroWidgetState
     _model = createModel(context, () => OKFNPayry16VerificarNumeroModel());
 
     _model.phoneFieldController ??=
-        TextEditingController(text: FFAppState().phoneNumber);
+        TextEditingController(text: '+52${FFAppState().phoneNumber}');
     _model.phoneFieldFocusNode ??= FocusNode();
 
     authManager.handlePhoneAuthStateChanges(context);
@@ -79,9 +78,10 @@ class _OKFNPayry16VerificarNumeroWidgetState
               child: SizedBox(
                 width: 40.0,
                 height: 40.0,
-                child: SpinKitPumpingHeart(
-                  color: FlutterFlowTheme.of(context).primary,
-                  size: 40.0,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    FlutterFlowTheme.of(context).accent3,
+                  ),
                 ),
               ),
             ),
@@ -257,6 +257,8 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
                                               ),
+                                              filled: true,
+                                              fillColor: Color(0x83CCCCCC),
                                               contentPadding:
                                                   EdgeInsetsDirectional
                                                       .fromSTEB(20.0, 24.0,
@@ -287,58 +289,98 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                           (FFAppState().phoneNumber ==
                                               oKFNPayry16VerificarNumeroUsersRecord
                                                   ?.phoneNumber))) {
-                                        final phoneNumberVal =
-                                            _model.phoneFieldController.text;
-                                        if (phoneNumberVal == null ||
-                                            phoneNumberVal.isEmpty ||
-                                            !phoneNumberVal.startsWith('+')) {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                  'Phone Number is required and has to start with +.'),
-                                            ),
+                                        var confirmDialogResponse =
+                                            await showDialog<bool>(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      title:
+                                                          Text('Advertencia'),
+                                                      content: Text(
+                                                          'Tras verificar número de teléfono se cerrará la sesión. ¿Deseas continuar?'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext,
+                                                                  false),
+                                                          child:
+                                                              Text('Regresar'),
+                                                        ),
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext,
+                                                                  true),
+                                                          child:
+                                                              Text('Continuar'),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                ) ??
+                                                false;
+                                        if (confirmDialogResponse) {
+                                          final phoneNumberVal =
+                                              _model.phoneFieldController.text;
+                                          if (phoneNumberVal == null ||
+                                              phoneNumberVal.isEmpty ||
+                                              !phoneNumberVal.startsWith('+')) {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                    'Phone Number is required and has to start with +.'),
+                                              ),
+                                            );
+                                            return;
+                                          }
+                                          await authManager.beginPhoneAuth(
+                                            context: context,
+                                            phoneNumber: phoneNumberVal,
+                                            onCodeSent: (context) async {
+                                              context.goNamedAuth(
+                                                'OK_FN_Payry_17_verificarOTP',
+                                                context.mounted,
+                                                queryParameters: {
+                                                  'otpCode': serializeParam(
+                                                    '',
+                                                    ParamType.String,
+                                                  ),
+                                                  'phoneNumber': serializeParam(
+                                                    FFAppState().phoneNumber,
+                                                    ParamType.String,
+                                                  ),
+                                                }.withoutNulls,
+                                                ignoreRedirect: true,
+                                              );
+                                            },
                                           );
+
+                                          return;
+                                        } else {
+                                          context.safePop();
                                           return;
                                         }
-                                        await authManager.beginPhoneAuth(
+                                      } else {
+                                        await showDialog(
                                           context: context,
-                                          phoneNumber: phoneNumberVal,
-                                          onCodeSent: (context) async {
-                                            context.goNamedAuth(
-                                              'OK_FN_Payry_17_verificarOTP',
-                                              context.mounted,
-                                              queryParameters: {
-                                                'otpCode': serializeParam(
-                                                  '',
-                                                  ParamType.String,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text('Error'),
+                                              content: Text(
+                                                  'Este número de teléfono ya fue verificado por otro usuario.'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
                                                 ),
-                                                'phoneNumber': serializeParam(
-                                                  _model.phoneFieldController
-                                                      .text,
-                                                  ParamType.String,
-                                                ),
-                                              }.withoutNulls,
-                                              ignoreRedirect: true,
+                                              ],
                                             );
                                           },
-                                        );
-
-                                        return;
-                                      } else {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                              'Este número de teléfono ya fue verificado por otro usuario',
-                                              style: TextStyle(
-                                                color: Color(0xFFFAF9FE),
-                                              ),
-                                            ),
-                                            duration:
-                                                Duration(milliseconds: 4000),
-                                            backgroundColor: Color(0xFF25253F),
-                                          ),
                                         );
                                         return;
                                       }

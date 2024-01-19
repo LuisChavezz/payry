@@ -10,7 +10,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -32,6 +31,9 @@ class OKFNPayry27SolicitarQRModel
     if (val.length < 10) {
       return 'El concepto debe contener al menos 10 caracteres';
     }
+    if (val.length > 40) {
+      return 'El concepto solo puede contener un máximo de 40 caracteres';
+    }
 
     return null;
   }
@@ -45,8 +47,8 @@ class OKFNPayry27SolicitarQRModel
       return 'El importe es requerido';
     }
 
-    if (!RegExp('^[1-9]\\d*(\\.\\d{1,2})?\$').hasMatch(val)) {
-      return 'El formato del importe es inválido';
+    if (!RegExp('^[0-9]{1,4}(?:\\.[0-9]{1,2})?\$').hasMatch(val)) {
+      return 'El formato del importe es inválido.';
     }
     return null;
   }

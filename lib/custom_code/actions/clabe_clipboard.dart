@@ -10,20 +10,36 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';
 
-Future<String> readClipboard() async {
+Future<String> clabeClipboard(String clabe) async {
+  if (clabe.length < 18) {
+    return clabe;
+  }
+
   try {
-    // Obtener datos del portapapeles
+    // Get clipboard data
     ClipboardData? data = await Clipboard.getData(Clipboard.kTextPlain);
 
-    // Verificar si hay datos de texto en el portapapeles
+    // Check if clipboard data is not null and has text
     if (data != null && data.text != null) {
-      String textoDelPortapapeles = data.text!;
-      return textoDelPortapapeles;
+      String clipboardText = data.text!;
+
+      // Remove all spaces
+      clipboardText = clipboardText.replaceAll(' ', '');
+
+      // Check if clipboard data have 18 digits (CPF)
+      RegExp regex = RegExp(r'^\d{18}$');
+      if (regex.hasMatch(clipboardText)) {
+        return clipboardText;
+      } else {
+        await Clipboard.setData(ClipboardData(text: '')); // Clean the clipboard
+        return clabe;
+      }
     } else {
-      return 'FAILED';
+      // If clipboard is empty or null
+      return clabe;
     }
   } catch (e) {
-    return 'CATCH ERROR';
+    return clabe;
   }
 }
 

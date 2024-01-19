@@ -8,8 +8,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import 'o_k_f_n_payry32_solicitar_s_m_s_model.dart';
 export 'o_k_f_n_payry32_solicitar_s_m_s_model.dart';
@@ -218,10 +218,14 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
+                                          maxLength: 10,
                                           keyboardType: TextInputType.phone,
                                           validator: _model
                                               .phoneFieldControllerValidator
                                               .asValidator(context),
+                                          inputFormatters: [
+                                            _model.phoneFieldMask
+                                          ],
                                         ),
                                       ),
                                     ),
@@ -296,6 +300,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                         color: Color(0xFF8788A5),
                                         fontWeight: FontWeight.normal,
                                       ),
+                                  maxLength: 40,
                                   validator: _model
                                       .conceptFieldControllerValidator
                                       .asValidator(context),
@@ -415,7 +420,10 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                     }
 
                                     _shouldSetState = true;
-                                    if (_model.smsCloudFunction!.succeeded!) {
+                                    if (getJsonField(
+                                      _model.smsCloudFunction!.jsonBody,
+                                      r'''$.success''',
+                                    )) {
                                       var smsRecordReference =
                                           SmsRecord.collection.doc();
                                       await smsRecordReference.set({
@@ -480,6 +488,23 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                           },
                                         ),
                                       });
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Completado'),
+                                            content: Text(
+                                                'El SMS se ha generado con éxito.'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
                                       if (Navigator.of(context).canPop()) {
                                         context.pop();
                                       }
@@ -496,23 +521,24 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                       if (_shouldSetState) setState(() {});
                                       return;
                                     } else {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'FALSE',
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Error'),
+                                            content: Text(getJsonField(
+                                              _model.smsCloudFunction!.jsonBody,
+                                              r'''$.message''',
+                                            ).toString()),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
                                       );
                                       if (_shouldSetState) setState(() {});
                                       return;

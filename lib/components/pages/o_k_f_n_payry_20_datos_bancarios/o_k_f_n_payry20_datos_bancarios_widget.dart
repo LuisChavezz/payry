@@ -4,14 +4,15 @@ import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.d
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'o_k_f_n_payry20_datos_bancarios_model.dart';
@@ -44,6 +45,11 @@ class _OKFNPayry20DatosBancariosWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => OKFNPayry20DatosBancariosModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await Clipboard.setData(ClipboardData(text: ''));
+    });
 
     _model.clabeFieldController ??= TextEditingController(text: widget.clabe);
     _model.clabeFieldFocusNode ??= FocusNode();
@@ -137,6 +143,15 @@ class _OKFNPayry20DatosBancariosWidgetState
                               Duration(milliseconds: 2000),
                               () async {
                                 var _shouldSetState = false;
+                                _model.clabeParsed =
+                                    await actions.clabeClipboard(
+                                  _model.clabeFieldController.text,
+                                );
+                                _shouldSetState = true;
+                                setState(() {
+                                  _model.clabeFieldController?.text =
+                                      _model.clabeParsed!;
+                                });
                                 if (functions.validateMinimumLength(
                                     _model.clabeFieldController.text, 3)!) {
                                   _model.bankCatalogueDocument =
@@ -151,13 +166,23 @@ class _OKFNPayry20DatosBancariosWidgetState
                                     singleRecord: true,
                                   ).then((s) => s.firstOrNull);
                                   _shouldSetState = true;
-                                  setState(() {
-                                    _model.bankFieldController?.text =
-                                        _model.bankCatalogueDocument!.name;
-                                  });
+                                  if (_model.bankCatalogueDocument != null) {
+                                    setState(() {
+                                      _model.bankFieldController?.text =
+                                          _model.bankCatalogueDocument!.name;
+                                    });
+                                  } else {
+                                    setState(() {
+                                      _model.bankFieldController?.text = '';
+                                    });
+                                  }
+
                                   if (_shouldSetState) setState(() {});
                                   return;
                                 } else {
+                                  setState(() {
+                                    _model.bankFieldController?.text = '';
+                                  });
                                   if (_shouldSetState) setState(() {});
                                   return;
                                 }
@@ -280,6 +305,8 @@ class _OKFNPayry20DatosBancariosWidgetState
                                 ),
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
+                              filled: true,
+                              fillColor: Color(0x83CCCCCC),
                               contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 24.0, 20.0, 24.0),
                             ),
@@ -301,45 +328,60 @@ class _OKFNPayry20DatosBancariosWidgetState
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 30.0, 0.0, 10.0),
                             child: FFButtonWidget(
-                              onPressed: () async {
-                                if (_model.formKey.currentState == null ||
-                                    !_model.formKey.currentState!.validate()) {
-                                  return;
-                                }
-                                try {
-                                  final result = await FirebaseFunctions
-                                      .instance
-                                      .httpsCallable('saveBankCompany')
-                                      .call({
-                                    "uid": FFAppState().serverToken,
-                                    "clabe": _model.clabeFieldController.text,
-                                  });
-                                  _model.cloudFunctionBankCompany =
-                                      SaveBankCompanyCloudFunctionCallResponse(
-                                    succeeded: true,
-                                  );
-                                } on FirebaseFunctionsException catch (error) {
-                                  _model.cloudFunctionBankCompany =
-                                      SaveBankCompanyCloudFunctionCallResponse(
-                                    errorCode: error.code,
-                                    succeeded: false,
-                                  );
-                                }
+                              onPressed: (_model
+                                          .bankCatalogueDocument?.reference ==
+                                      null)
+                                  ? null
+                                  : () async {
+                                      if (_model.formKey.currentState == null ||
+                                          !_model.formKey.currentState!
+                                              .validate()) {
+                                        return;
+                                      }
+                                      try {
+                                        final result = await FirebaseFunctions
+                                            .instance
+                                            .httpsCallable('saveBankCompany')
+                                            .call({
+                                          "uid": FFAppState().serverToken,
+                                          "clabe":
+                                              _model.clabeFieldController.text,
+                                        });
+                                        _model.cloudFunctionBankCompany =
+                                            SaveBankCompanyCloudFunctionCallResponse(
+                                          succeeded: true,
+                                        );
+                                      } on FirebaseFunctionsException catch (error) {
+                                        _model.cloudFunctionBankCompany =
+                                            SaveBankCompanyCloudFunctionCallResponse(
+                                          errorCode: error.code,
+                                          succeeded: false,
+                                        );
+                                      }
 
-                                await widget.companyDocRef!
-                                    .update(createCompaniesRecordData(
-                                  clabe: _model.clabeFieldController.text,
-                                  bank: _model.bankFieldController.text,
-                                ));
+                                      await widget.companyDocRef!
+                                          .update(createCompaniesRecordData(
+                                        clabe: _model.clabeFieldController.text,
+                                        bank: _model.bankFieldController.text,
+                                        bankid: _model.bankCatalogueDocument
+                                                        ?.bankid !=
+                                                    null &&
+                                                _model.bankCatalogueDocument
+                                                        ?.bankid !=
+                                                    ''
+                                            ? _model
+                                                .bankCatalogueDocument?.bankid
+                                            : '',
+                                      ));
 
-                                await currentUserReference!
-                                    .update(createUsersRecordData(
-                                  isCompanyComplete: true,
-                                ));
-                                context.safePop();
+                                      await currentUserReference!
+                                          .update(createUsersRecordData(
+                                        isCompanyComplete: true,
+                                      ));
+                                      context.safePop();
 
-                                setState(() {});
-                              },
+                                      setState(() {});
+                                    },
                               text: 'Guardar',
                               options: FFButtonOptions(
                                 width: 300.0,
@@ -361,6 +403,7 @@ class _OKFNPayry20DatosBancariosWidgetState
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10.0),
+                                disabledColor: Color(0x83CCCCCC),
                               ),
                             ),
                           ),

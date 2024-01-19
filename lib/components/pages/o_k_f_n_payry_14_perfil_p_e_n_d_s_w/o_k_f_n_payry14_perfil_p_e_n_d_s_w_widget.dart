@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'o_k_f_n_payry14_perfil_p_e_n_d_s_w_model.dart';
@@ -484,7 +483,8 @@ class _OKFNPayry14PerfilPENDSWWidgetState
                                 ),
                               ),
                             ),
-                          if (!currentUserEmailVerified)
+                          if (!valueOrDefault<bool>(
+                              currentUserDocument?.isValidMail, false))
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 8.0),

@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'o_k_f_n_payry40_notificaciones_model.dart';
@@ -69,9 +68,10 @@ class _OKFNPayry40NotificacionesWidgetState
               child: SizedBox(
                 width: 40.0,
                 height: 40.0,
-                child: SpinKitPumpingHeart(
-                  color: FlutterFlowTheme.of(context).primary,
-                  size: 40.0,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    FlutterFlowTheme.of(context).accent3,
+                  ),
                 ),
               ),
             ),

@@ -1,15 +1,17 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'o_k_f_n_payry31_detallesde_q_r_model.dart';
@@ -71,9 +73,10 @@ class _OKFNPayry31DetallesdeQRWidgetState
               child: SizedBox(
                 width: 40.0,
                 height: 40.0,
-                child: SpinKitPumpingHeart(
-                  color: FlutterFlowTheme.of(context).primary,
-                  size: 40.0,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    FlutterFlowTheme.of(context).accent3,
+                  ),
                 ),
               ),
             ),
@@ -112,6 +115,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                   style: FlutterFlowTheme.of(context).headlineSmall.override(
                         fontFamily: 'Lexend',
                         color: FlutterFlowTheme.of(context).primaryText,
+                        fontSize: 18.0,
                       ),
                 ),
               ),
@@ -246,6 +250,8 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               'Concepto',
@@ -260,11 +266,17 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                                 .primaryText,
                                                       ),
                                             ),
-                                            Text(
-                                              oKFNPayry31DetallesdeQRQrRecord
-                                                  .concept,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
+                                            Expanded(
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        12.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  oKFNPayry31DetallesdeQRQrRecord
+                                                      .concept,
+                                                  textAlign: TextAlign.end,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'Lexend',
@@ -273,6 +285,8 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                                     context)
                                                                 .accent3,
                                                       ),
+                                                ),
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -318,15 +332,27 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                     ],
                                   ),
                                 ),
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  child: Image.network(
-                                    oKFNPayry31DetallesdeQRQrRecord.qrUrl,
-                                    width: 300.0,
-                                    height: 300.0,
-                                    fit: BoxFit.cover,
+                                if (!_model.isUpdating)
+                                  Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      child: Image.network(
+                                        oKFNPayry31DetallesdeQRQrRecord.qrUrl,
+                                        width: 300.0,
+                                        height: 300.0,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
                                   ),
-                                ),
+                                if (_model.isUpdating)
+                                  Lottie.asset(
+                                    'assets/lottie_animations/Animation_-_1705530950682.json',
+                                    width: 301.0,
+                                    height: 194.0,
+                                    fit: BoxFit.cover,
+                                    animate: true,
+                                  ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       20.0, 16.0, 20.0, 0.0),
@@ -343,42 +369,120 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 16.0, 16.0, 0.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 8.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 8.0, 16.0, 8.0),
-                                              child: Icon(
-                                                FFIcons.khoja,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                size: 20.0,
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 12.0, 0.0),
-                                                child: Text(
-                                                  'Ver recibo',
-                                                  textAlign: TextAlign.start,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
+                                      20.0, 16.0, 20.0, 16.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      var _shouldSetState = false;
+                                      setState(() {
+                                        _model.isUpdating = !_model.isUpdating;
+                                      });
+                                      try {
+                                        final result = await FirebaseFunctions
+                                            .instance
+                                            .httpsCallable('crearMovimientoQR')
+                                            .call({
+                                          "monto":
+                                              oKFNPayry31DetallesdeQRQrRecord
+                                                  .amount
+                                                  .toString(),
+                                          "concepto":
+                                              oKFNPayry31DetallesdeQRQrRecord
+                                                  .concept,
+                                          "token": FFAppState().serverToken,
+                                        });
+                                        _model.generateQrResp =
+                                            CrearMovimientoQRCloudFunctionCallResponse(
+                                          data: result.data,
+                                          succeeded: true,
+                                          resultAsString:
+                                              result.data.toString(),
+                                          jsonBody: result.data,
+                                        );
+                                      } on FirebaseFunctionsException catch (error) {
+                                        _model.generateQrResp =
+                                            CrearMovimientoQRCloudFunctionCallResponse(
+                                          errorCode: error.code,
+                                          succeeded: false,
+                                        );
+                                      }
+
+                                      _shouldSetState = true;
+                                      if (getJsonField(
+                                        _model.generateQrResp!.jsonBody,
+                                        r'''$.success''',
+                                      )) {
+                                        await widget.qrDocReference!
+                                            .update(createQrRecordData(
+                                          qrUrl: getJsonField(
+                                            _model.generateQrResp?.jsonBody,
+                                            r'''$.data''',
+                                          ).toString(),
+                                        ));
+                                        setState(() {
+                                          _model.isUpdating =
+                                              !_model.isUpdating;
+                                        });
+                                        if (_shouldSetState) setState(() {});
+                                        return;
+                                      } else {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text('Error'),
+                                              content: Text(getJsonField(
+                                                _model.generateQrResp!.jsonBody,
+                                                r'''$.message''',
+                                              ).toString()),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                        if (_shouldSetState) setState(() {});
+                                        return;
+                                      }
+
+                                      if (_shouldSetState) setState(() {});
+                                    },
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 8.0, 16.0, 8.0),
+                                          child: Icon(
+                                            FFIcons.kqr,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 20.0,
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 12.0, 0.0),
+                                            child: Text(
+                                              'Regenerar QR',
+                                              textAlign: TextAlign.start,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'Lexend',
@@ -387,13 +491,11 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                                     context)
                                                                 .primaryText,
                                                       ),
-                                                ),
-                                              ),
                                             ),
-                                          ],
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],

@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'o_k_f_n_payry26_dashboard_model.dart';
@@ -76,9 +75,10 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
               child: SizedBox(
                 width: 40.0,
                 height: 40.0,
-                child: SpinKitPumpingHeart(
-                  color: FlutterFlowTheme.of(context).primary,
-                  size: 40.0,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    FlutterFlowTheme.of(context).accent3,
+                  ),
                 ),
               ),
             ),
@@ -402,12 +402,13 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                     height:
                                                                         40.0,
                                                                     child:
-                                                                        SpinKitPumpingHeart(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                      size:
-                                                                          40.0,
+                                                                        CircularProgressIndicator(
+                                                                      valueColor:
+                                                                          AlwaysStoppedAnimation<
+                                                                              Color>(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .accent3,
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                 );
@@ -503,7 +504,10 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                               crossAxisAlignment: CrossAxisAlignment.start,
                                                                               children: [
                                                                                 Text(
-                                                                                  listViewQrRecord.concept,
+                                                                                  listViewQrRecord.concept.maybeHandleOverflow(
+                                                                                    maxChars: 25,
+                                                                                    replacement: '…',
+                                                                                  ),
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Lexend',
                                                                                         fontSize: 12.0,
@@ -658,12 +662,13 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                     height:
                                                                         40.0,
                                                                     child:
-                                                                        SpinKitPumpingHeart(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                      size:
-                                                                          40.0,
+                                                                        CircularProgressIndicator(
+                                                                      valueColor:
+                                                                          AlwaysStoppedAnimation<
+                                                                              Color>(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .accent3,
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                 );
@@ -759,7 +764,10 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                               crossAxisAlignment: CrossAxisAlignment.start,
                                                                               children: [
                                                                                 Text(
-                                                                                  listViewSmsRecord.concept,
+                                                                                  listViewSmsRecord.concept.maybeHandleOverflow(
+                                                                                    maxChars: 25,
+                                                                                    replacement: '…',
+                                                                                  ),
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Lexend',
                                                                                         fontSize: 12.0,

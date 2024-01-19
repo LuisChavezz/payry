@@ -31,10 +31,16 @@ class BankCatalogueRecord extends FirestoreRecord {
   String get legalName => _legalName ?? '';
   bool hasLegalName() => _legalName != null;
 
+  // "bankid" field.
+  String? _bankid;
+  String get bankid => _bankid ?? '';
+  bool hasBankid() => _bankid != null;
+
   void _initializeFields() {
     _key = snapshotData['key'] as String?;
     _name = snapshotData['name'] as String?;
     _legalName = snapshotData['legal_name'] as String?;
+    _bankid = snapshotData['bankid'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -75,12 +81,14 @@ Map<String, dynamic> createBankCatalogueRecordData({
   String? key,
   String? name,
   String? legalName,
+  String? bankid,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'key': key,
       'name': name,
       'legal_name': legalName,
+      'bankid': bankid,
     }.withoutNulls,
   );
 
@@ -95,12 +103,13 @@ class BankCatalogueRecordDocumentEquality
   bool equals(BankCatalogueRecord? e1, BankCatalogueRecord? e2) {
     return e1?.key == e2?.key &&
         e1?.name == e2?.name &&
-        e1?.legalName == e2?.legalName;
+        e1?.legalName == e2?.legalName &&
+        e1?.bankid == e2?.bankid;
   }
 
   @override
   int hash(BankCatalogueRecord? e) =>
-      const ListEquality().hash([e?.key, e?.name, e?.legalName]);
+      const ListEquality().hash([e?.key, e?.name, e?.legalName, e?.bankid]);
 
   @override
   bool isValidKey(Object? o) => o is BankCatalogueRecord;

@@ -10,8 +10,8 @@ import '/flutter_flow/upload_data.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import 'o_k_f_n_payry15_edit_profile_model.dart';
 export 'o_k_f_n_payry15_edit_profile_model.dart';
@@ -319,35 +319,42 @@ class _OKFNPayry15EditProfileWidgetState
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       children: [
-                                        Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Opacity(
-                                              opacity: 0.8,
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: Image.asset(
-                                                  'assets/images/mx_flag.png',
-                                                  width: 35.0,
-                                                  height: 23.0,
-                                                  fit: BoxFit.cover,
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 8.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Opacity(
+                                                opacity: 0.8,
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  child: Image.asset(
+                                                    'assets/images/mx_flag.png',
+                                                    width: 35.0,
+                                                    height: 23.0,
+                                                    fit: BoxFit.cover,
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 6.0, 0.0, 0.0),
-                                              child: Text(
-                                                '+52',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 6.0, 0.0, 0.0),
+                                                child: Text(
+                                                  '+52',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                         Expanded(
                                           child: Padding(
@@ -424,6 +431,14 @@ class _OKFNPayry15EditProfileWidgetState
                                                         BorderRadius.circular(
                                                             8.0),
                                                   ),
+                                                  filled: true,
+                                                  fillColor: valueOrDefault<
+                                                              bool>(
+                                                          currentUserDocument
+                                                              ?.isValidPhoneNumber,
+                                                          false)
+                                                      ? Color(0x83CCCCCC)
+                                                      : Color(0x00000000),
                                                   contentPadding:
                                                       EdgeInsetsDirectional
                                                           .fromSTEB(20.0, 24.0,
@@ -432,90 +447,103 @@ class _OKFNPayry15EditProfileWidgetState
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium,
+                                                maxLength: 10,
                                                 keyboardType:
                                                     TextInputType.phone,
                                                 validator: _model
                                                     .phoneFieldControllerValidator
                                                     .asValidator(context),
+                                                inputFormatters: [
+                                                  _model.phoneFieldMask
+                                                ],
                                               ),
                                             ),
                                           ),
                                         ),
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, 0.0),
-                                          child: AuthUserStreamWidget(
-                                            builder: (context) =>
-                                                FFButtonWidget(
-                                              onPressed: valueOrDefault<bool>(
-                                                      currentUserDocument
-                                                          ?.isValidPhoneNumber,
-                                                      false)
-                                                  ? null
-                                                  : () async {
-                                                      setState(() {
-                                                        FFAppState()
-                                                                .phoneNumber =
-                                                            '+52${_model.phoneFieldController.text}';
-                                                      });
-                                                      if (_model.phoneFieldController
-                                                                  .text !=
-                                                              null &&
-                                                          _model.phoneFieldController
-                                                                  .text !=
-                                                              '') {
-                                                        context.pushNamed(
-                                                            'OK_FN_Payry_16_verificarNumero');
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 16.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              AuthUserStreamWidget(
+                                                builder: (context) =>
+                                                    FFButtonWidget(
+                                                  onPressed: valueOrDefault<
+                                                              bool>(
+                                                          currentUserDocument
+                                                              ?.isValidPhoneNumber,
+                                                          false)
+                                                      ? null
+                                                      : () async {
+                                                          setState(() {
+                                                            FFAppState()
+                                                                    .phoneNumber =
+                                                                _model
+                                                                    .phoneFieldController
+                                                                    .text;
+                                                          });
+                                                          if (_model.phoneFieldController
+                                                                      .text !=
+                                                                  null &&
+                                                              _model.phoneFieldController
+                                                                      .text !=
+                                                                  '') {
+                                                            context.pushNamed(
+                                                                'OK_FN_Payry_16_verificarNumero');
 
-                                                        return;
-                                                      } else {
-                                                        ScaffoldMessenger.of(
-                                                                context)
-                                                            .showSnackBar(
-                                                          SnackBar(
-                                                            content: Text(
-                                                              'Debe ingresar un número de teléfono válido',
-                                                              style: TextStyle(
-                                                                color: Color(
-                                                                    0xFFFAF9FE),
-                                                              ),
-                                                            ),
-                                                            duration: Duration(
-                                                                milliseconds:
-                                                                    4000),
-                                                            backgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryText,
-                                                          ),
-                                                        );
-                                                        return;
-                                                      }
-                                                    },
-                                              text: valueOrDefault<String>(
-                                                valueOrDefault<bool>(
-                                                        currentUserDocument
-                                                            ?.isValidPhoneNumber,
-                                                        false)
-                                                    ? 'Verificado'
-                                                    : 'Verificar',
-                                                'Verificar',
-                                              ),
-                                              options: FFButtonOptions(
-                                                width: 70.0,
-                                                height: 40.0,
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 0.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
-                                                color:
-                                                    FlutterFlowTheme.of(context)
+                                                            return;
+                                                          } else {
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return AlertDialog(
+                                                                  title: Text(
+                                                                      'Error'),
+                                                                  content: Text(
+                                                                      'Debe ingresar un número de teléfono válido'),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed:
+                                                                          () =>
+                                                                              Navigator.pop(alertDialogContext),
+                                                                      child: Text(
+                                                                          'Ok'),
+                                                                    ),
+                                                                  ],
+                                                                );
+                                                              },
+                                                            );
+                                                            return;
+                                                          }
+                                                        },
+                                                  text: valueOrDefault<String>(
+                                                    valueOrDefault<bool>(
+                                                            currentUserDocument
+                                                                ?.isValidPhoneNumber,
+                                                            false)
+                                                        ? 'Verificado'
+                                                        : 'Verificar',
+                                                    'Verificar',
+                                                  ),
+                                                  options: FFButtonOptions(
+                                                    width: 70.0,
+                                                    height: 40.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
                                                         .accent4,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
                                                         .titleSmall
                                                         .override(
                                                           fontFamily: 'Lexend',
@@ -524,19 +552,22 @@ class _OKFNPayry15EditProfileWidgetState
                                                               .primary,
                                                           fontSize: 14.0,
                                                         ),
-                                                elevation: 3.0,
-                                                borderSide: BorderSide(
-                                                  color: Colors.transparent,
-                                                  width: 1.0,
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.0),
+                                                    disabledColor:
+                                                        Color(0x83CCCCCC),
+                                                    disabledTextColor:
+                                                        Color(0x85584898),
+                                                  ),
                                                 ),
-                                                borderRadius:
-                                                    BorderRadius.circular(10.0),
-                                                disabledColor:
-                                                    Color(0x83CCCCCC),
-                                                disabledTextColor:
-                                                    Color(0x85584898),
                                               ),
-                                            ),
+                                            ],
                                           ),
                                         ),
                                       ].divide(SizedBox(width: 10.0)),
