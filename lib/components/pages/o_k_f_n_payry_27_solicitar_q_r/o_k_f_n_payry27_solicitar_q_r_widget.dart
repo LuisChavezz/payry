@@ -368,7 +368,9 @@ class _OKFNPayry27SolicitarQRWidgetState
                                           },
                                         ),
                                       });
-
+                                      if (Navigator.of(context).canPop()) {
+                                        context.pop();
+                                      }
                                       context.pushNamed(
                                         'OK_FN_Payry_31_detallesdeQR',
                                         queryParameters: {
