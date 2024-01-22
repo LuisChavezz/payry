@@ -647,6 +647,7 @@ class _OKFNPayry05RegistrateWidgetState
                                                           readSms: false,
                                                           readTransfers: false,
                                                           createRefunds: false,
+                                                          readStatistics: false,
                                                         ));
                                                     try {
                                                       final result =

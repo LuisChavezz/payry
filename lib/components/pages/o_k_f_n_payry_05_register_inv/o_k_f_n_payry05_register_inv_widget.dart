@@ -713,6 +713,8 @@ class _OKFNPayry05RegisterInvWidgetState
                                                                 false,
                                                             createRefunds:
                                                                 false,
+                                                            readStatistics:
+                                                                false,
                                                           ));
                                                       try {
                                                         final result =
