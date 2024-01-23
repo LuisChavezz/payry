@@ -80,12 +80,7 @@ class _StatusDropdownWidgetState extends State<StatusDropdownWidget> {
       height: 40.0,
       textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
             fontFamily: 'Lexend',
-            color: valueOrDefault<Color>(
-              widget.userStatus!
-                  ? Color(0xFF0FB978)
-                  : FlutterFlowTheme.of(context).error,
-              FlutterFlowTheme.of(context).alternate,
-            ),
+            color: FlutterFlowTheme.of(context).accent3,
           ),
       hintText: 'Please select...',
       icon: Icon(
