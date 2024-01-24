@@ -391,6 +391,54 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                             .validate()) {
                                       return;
                                     }
+
+                                    var smsRecordReference =
+                                        SmsRecord.collection.doc();
+                                    await smsRecordReference.set({
+                                      ...createSmsRecordData(
+                                        uid: currentUserUid,
+                                        adminId: valueOrDefault(
+                                            currentUserDocument?.adminId, ''),
+                                        smsId: '',
+                                        amount: double.tryParse(
+                                            _model.amountFieldController.text),
+                                        concept:
+                                            _model.conceptFieldController.text,
+                                        status: 'PENDIENTE',
+                                        voucherUrl: '',
+                                        phoneNumber:
+                                            _model.phoneFieldController.text,
+                                      ),
+                                      ...mapToFirestore(
+                                        {
+                                          'created_time':
+                                              FieldValue.serverTimestamp(),
+                                        },
+                                      ),
+                                    });
+                                    _model.createdSms =
+                                        SmsRecord.getDocumentFromData({
+                                      ...createSmsRecordData(
+                                        uid: currentUserUid,
+                                        adminId: valueOrDefault(
+                                            currentUserDocument?.adminId, ''),
+                                        smsId: '',
+                                        amount: double.tryParse(
+                                            _model.amountFieldController.text),
+                                        concept:
+                                            _model.conceptFieldController.text,
+                                        status: 'PENDIENTE',
+                                        voucherUrl: '',
+                                        phoneNumber:
+                                            _model.phoneFieldController.text,
+                                      ),
+                                      ...mapToFirestore(
+                                        {
+                                          'created_time': DateTime.now(),
+                                        },
+                                      ),
+                                    }, smsRecordReference);
+                                    _shouldSetState = true;
                                     try {
                                       final result = await FirebaseFunctions
                                           .instance
@@ -403,6 +451,8 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                         "token": FFAppState().serverToken,
                                         "celularcliente":
                                             _model.phoneFieldController.text,
+                                        "smsId":
+                                            _model.createdSms?.reference.id,
                                       });
                                       _model.smsCloudFunction =
                                           CrearMovimientoSMSCloudFunctionCallResponse(
@@ -424,54 +474,6 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                       _model.smsCloudFunction!.jsonBody,
                                       r'''$.success''',
                                     )) {
-                                      var smsRecordReference =
-                                          SmsRecord.collection.doc();
-                                      await smsRecordReference.set({
-                                        ...createSmsRecordData(
-                                          uid: currentUserUid,
-                                          adminId: valueOrDefault(
-                                              currentUserDocument?.adminId, ''),
-                                          smsId: '',
-                                          amount: double.tryParse(_model
-                                              .amountFieldController.text),
-                                          concept: _model
-                                              .conceptFieldController.text,
-                                          status: 'PENDIENTE',
-                                          voucherUrl: '',
-                                          phoneNumber:
-                                              _model.phoneFieldController.text,
-                                        ),
-                                        ...mapToFirestore(
-                                          {
-                                            'created_time':
-                                                FieldValue.serverTimestamp(),
-                                          },
-                                        ),
-                                      });
-                                      _model.createdSms =
-                                          SmsRecord.getDocumentFromData({
-                                        ...createSmsRecordData(
-                                          uid: currentUserUid,
-                                          adminId: valueOrDefault(
-                                              currentUserDocument?.adminId, ''),
-                                          smsId: '',
-                                          amount: double.tryParse(_model
-                                              .amountFieldController.text),
-                                          concept: _model
-                                              .conceptFieldController.text,
-                                          status: 'PENDIENTE',
-                                          voucherUrl: '',
-                                          phoneNumber:
-                                              _model.phoneFieldController.text,
-                                        ),
-                                        ...mapToFirestore(
-                                          {
-                                            'created_time': DateTime.now(),
-                                          },
-                                        ),
-                                      }, smsRecordReference);
-                                      _shouldSetState = true;
-
                                       await SmsHistoryRecord.collection
                                           .doc()
                                           .set({
@@ -521,6 +523,8 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                       if (_shouldSetState) setState(() {});
                                       return;
                                     } else {
+                                      await _model.createdSms!.reference
+                                          .delete();
                                       await showDialog(
                                         context: context,
                                         builder: (alertDialogContext) {

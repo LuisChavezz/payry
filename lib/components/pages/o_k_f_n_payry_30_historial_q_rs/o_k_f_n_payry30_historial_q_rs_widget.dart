@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/empty_list/empty_list_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -14,7 +15,12 @@ import 'o_k_f_n_payry30_historial_q_rs_model.dart';
 export 'o_k_f_n_payry30_historial_q_rs_model.dart';
 
 class OKFNPayry30HistorialQRsWidget extends StatefulWidget {
-  const OKFNPayry30HistorialQRsWidget({Key? key}) : super(key: key);
+  const OKFNPayry30HistorialQRsWidget({
+    Key? key,
+    required this.readAll,
+  }) : super(key: key);
+
+  final bool? readAll;
 
   @override
   _OKFNPayry30HistorialQRsWidgetState createState() =>
@@ -332,7 +338,25 @@ class _OKFNPayry30HistorialQRsWidgetState
                                     builder: (context) {
                                       final qrItem =
                                           oKFNPayry30HistorialQRsQrRecordList
+                                              .where((e) =>
+                                                  (!widget.readAll! &&
+                                                      (e.uid ==
+                                                          currentUserUid)) ||
+                                                  valueOrDefault<bool>(
+                                                      currentUserDocument
+                                                          ?.isAdmin,
+                                                      false))
                                               .toList();
+                                      if (qrItem.isEmpty) {
+                                        return Container(
+                                          height: 100.0,
+                                          child: EmptyListWidget(
+                                            title: 'No hay QR\'s',
+                                            message:
+                                                'Aun no hay transacciones por QR',
+                                          ),
+                                        );
+                                      }
                                       return ListView.builder(
                                         padding: EdgeInsets.zero,
                                         shrinkWrap: true,
@@ -520,8 +544,14 @@ class _OKFNPayry30HistorialQRsWidgetState
                                       0.0, 24.0, 0.0, 0.0),
                                   child: Builder(
                                     builder: (context) {
-                                      final qrItem =
-                                          _model.simpleSearchResults.toList();
+                                      final qrItem = _model.simpleSearchResults
+                                          .where((e) =>
+                                              (!widget.readAll! &&
+                                                  (e.uid == currentUserUid)) ||
+                                              valueOrDefault<bool>(
+                                                  currentUserDocument?.isAdmin,
+                                                  false))
+                                          .toList();
                                       return ListView.builder(
                                         padding: EdgeInsets.zero,
                                         shrinkWrap: true,

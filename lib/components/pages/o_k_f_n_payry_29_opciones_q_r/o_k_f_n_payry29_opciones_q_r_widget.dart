@@ -209,9 +209,19 @@ class _OKFNPayry29OpcionesQRWidgetState
                                             currentUserDocument?.isAdmin,
                                             false) ||
                                         oKFNPayry29OpcionesQRUserPermissionsRecord!
-                                            .readQr) {
+                                            .readQr ||
+                                        oKFNPayry29OpcionesQRUserPermissionsRecord!
+                                            .createQr) {
                                       context.pushNamed(
-                                          'OK_FN_Payry_30_historialQRs');
+                                        'OK_FN_Payry_30_historialQRs',
+                                        queryParameters: {
+                                          'readAll': serializeParam(
+                                            oKFNPayry29OpcionesQRUserPermissionsRecord
+                                                ?.readQr,
+                                            ParamType.bool,
+                                          ),
+                                        }.withoutNulls,
+                                      );
 
                                       return;
                                     } else {

@@ -219,12 +219,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'OK_FN_Payry_30_historialQRs',
               path: 'oKFNPayry30HistorialQRs',
-              builder: (context, params) => OKFNPayry30HistorialQRsWidget(),
+              builder: (context, params) => OKFNPayry30HistorialQRsWidget(
+                readAll: params.getParam('readAll', ParamType.bool),
+              ),
             ),
             FFRoute(
               name: 'OK_FN_Payry_35_historialSMS',
               path: 'oKFNPayry35HistorialSMS',
-              builder: (context, params) => OKFNPayry35HistorialSMSWidget(),
+              builder: (context, params) => OKFNPayry35HistorialSMSWidget(
+                readAll: params.getParam('readAll', ParamType.bool),
+              ),
             ),
             FFRoute(
               name: 'OK_FN_Payry_34_opcionesSMS',

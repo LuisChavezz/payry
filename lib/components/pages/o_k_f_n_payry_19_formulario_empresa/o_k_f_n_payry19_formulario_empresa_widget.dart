@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
@@ -1217,6 +1218,8 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 ?.rfc,
                                       ),
                                       focusNode: _model.rFCFieldFocusNode,
+                                      textCapitalization:
+                                          TextCapitalization.characters,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'RFC',
@@ -1508,8 +1511,9 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                     .emailFieldController.text,
                                                 taxRegime: _model
                                                     .taxRegimeDropDownValue,
-                                                rfc: _model
-                                                    .rFCFieldController.text,
+                                                rfc: functions.toUppercase(
+                                                    _model.rFCFieldController
+                                                        .text),
                                                 street: _model
                                                     .streetFieldController.text,
                                                 streetNumber: _model
@@ -1597,8 +1601,8 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                   .emailFieldController.text,
                                               taxRegime:
                                                   _model.taxRegimeDropDownValue,
-                                              rfc: _model
-                                                  .rFCFieldController.text,
+                                              rfc: functions.toUppercase(_model
+                                                  .rFCFieldController.text),
                                               street: _model
                                                   .streetFieldController.text,
                                               streetNumber: _model

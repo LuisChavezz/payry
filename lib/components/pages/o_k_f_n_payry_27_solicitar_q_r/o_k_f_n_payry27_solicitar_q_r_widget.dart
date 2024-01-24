@@ -277,6 +277,52 @@ class _OKFNPayry27SolicitarQRWidgetState
                                             .validate()) {
                                       return;
                                     }
+
+                                    var qrRecordReference =
+                                        QrRecord.collection.doc();
+                                    await qrRecordReference.set({
+                                      ...createQrRecordData(
+                                        uid: currentUserUid,
+                                        adminId: valueOrDefault(
+                                            currentUserDocument?.adminId, ''),
+                                        qrId: '',
+                                        amount: double.tryParse(
+                                            _model.amountFieldController.text),
+                                        concept:
+                                            _model.conceptFieldController.text,
+                                        status: 'PENDIENTE',
+                                        qrUrl: '',
+                                        voucherUrl: '',
+                                      ),
+                                      ...mapToFirestore(
+                                        {
+                                          'created_time':
+                                              FieldValue.serverTimestamp(),
+                                        },
+                                      ),
+                                    });
+                                    _model.createdQR =
+                                        QrRecord.getDocumentFromData({
+                                      ...createQrRecordData(
+                                        uid: currentUserUid,
+                                        adminId: valueOrDefault(
+                                            currentUserDocument?.adminId, ''),
+                                        qrId: '',
+                                        amount: double.tryParse(
+                                            _model.amountFieldController.text),
+                                        concept:
+                                            _model.conceptFieldController.text,
+                                        status: 'PENDIENTE',
+                                        qrUrl: '',
+                                        voucherUrl: '',
+                                      ),
+                                      ...mapToFirestore(
+                                        {
+                                          'created_time': DateTime.now(),
+                                        },
+                                      ),
+                                    }, qrRecordReference);
+                                    _shouldSetState = true;
                                     try {
                                       final result = await FirebaseFunctions
                                           .instance
@@ -287,6 +333,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                                         "concepto":
                                             _model.conceptFieldController.text,
                                         "token": FFAppState().serverToken,
+                                        "qrId": _model.createdQR?.reference.id,
                                       });
                                       _model.cloudFunctionik3 =
                                           CrearMovimientoQRCloudFunctionCallResponse(
@@ -308,55 +355,13 @@ class _OKFNPayry27SolicitarQRWidgetState
                                       _model.cloudFunctionik3!.jsonBody,
                                       r'''$.success''',
                                     )) {
-                                      var qrRecordReference =
-                                          QrRecord.collection.doc();
-                                      await qrRecordReference.set({
-                                        ...createQrRecordData(
-                                          uid: currentUserUid,
-                                          adminId: currentUserUid,
-                                          qrId: '',
-                                          amount: double.tryParse(_model
-                                              .amountFieldController.text),
-                                          concept: _model
-                                              .conceptFieldController.text,
-                                          status: 'PENDIENTE',
-                                          qrUrl: getJsonField(
-                                            _model.cloudFunctionik3?.jsonBody,
-                                            r'''$.data''',
-                                          ).toString(),
-                                          voucherUrl: '',
-                                        ),
-                                        ...mapToFirestore(
-                                          {
-                                            'created_time':
-                                                FieldValue.serverTimestamp(),
-                                          },
-                                        ),
-                                      });
-                                      _model.createdQR =
-                                          QrRecord.getDocumentFromData({
-                                        ...createQrRecordData(
-                                          uid: currentUserUid,
-                                          adminId: currentUserUid,
-                                          qrId: '',
-                                          amount: double.tryParse(_model
-                                              .amountFieldController.text),
-                                          concept: _model
-                                              .conceptFieldController.text,
-                                          status: 'PENDIENTE',
-                                          qrUrl: getJsonField(
-                                            _model.cloudFunctionik3?.jsonBody,
-                                            r'''$.data''',
-                                          ).toString(),
-                                          voucherUrl: '',
-                                        ),
-                                        ...mapToFirestore(
-                                          {
-                                            'created_time': DateTime.now(),
-                                          },
-                                        ),
-                                      }, qrRecordReference);
-                                      _shouldSetState = true;
+                                      await _model.createdQR!.reference
+                                          .update(createQrRecordData(
+                                        qrUrl: getJsonField(
+                                          _model.cloudFunctionik3?.jsonBody,
+                                          r'''$.data''',
+                                        ).toString(),
+                                      ));
 
                                       await QrHistoryRecord.collection
                                           .doc()
@@ -389,6 +394,8 @@ class _OKFNPayry27SolicitarQRWidgetState
                                       if (_shouldSetState) setState(() {});
                                       return;
                                     } else {
+                                      await _model.createdQR!.reference
+                                          .delete();
                                       await showDialog(
                                         context: context,
                                         builder: (alertDialogContext) {

@@ -393,6 +393,9 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                               oKFNPayry31DetallesdeQRQrRecord
                                                   .concept,
                                           "token": FFAppState().serverToken,
+                                          "qrId":
+                                              oKFNPayry31DetallesdeQRQrRecord
+                                                  .reference.id,
                                         });
                                         _model.generateQrResp =
                                             CrearMovimientoQRCloudFunctionCallResponse(

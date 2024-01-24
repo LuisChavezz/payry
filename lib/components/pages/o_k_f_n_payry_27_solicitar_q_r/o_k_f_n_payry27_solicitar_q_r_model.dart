@@ -53,10 +53,10 @@ class OKFNPayry27SolicitarQRModel
     return null;
   }
 
-  // Stores action output result for [Cloud Function - crearMovimientoQR] action in Button widget.
-  CrearMovimientoQRCloudFunctionCallResponse? cloudFunctionik3;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   QrRecord? createdQR;
+  // Stores action output result for [Cloud Function - crearMovimientoQR] action in Button widget.
+  CrearMovimientoQRCloudFunctionCallResponse? cloudFunctionik3;
 
   /// Initialization and disposal methods.
 

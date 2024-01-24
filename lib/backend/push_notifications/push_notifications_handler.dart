@@ -153,8 +153,16 @@ final parametersBuilderMap =
         },
       ),
   'OK_FN_Payry_29_opcionesQR': ParameterData.none(),
-  'OK_FN_Payry_30_historialQRs': ParameterData.none(),
-  'OK_FN_Payry_35_historialSMS': ParameterData.none(),
+  'OK_FN_Payry_30_historialQRs': (data) async => ParameterData(
+        allParams: {
+          'readAll': getParameter<bool>(data, 'readAll'),
+        },
+      ),
+  'OK_FN_Payry_35_historialSMS': (data) async => ParameterData(
+        allParams: {
+          'readAll': getParameter<bool>(data, 'readAll'),
+        },
+      ),
   'OK_FN_Payry_34_opcionesSMS': ParameterData.none(),
   'OK_FN_Payry_31_detallesdeQR': (data) async => ParameterData(
         allParams: {

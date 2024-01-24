@@ -100,7 +100,9 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                         if (valueOrDefault<bool>(
                                 currentUserDocument?.isAdmin, false) ||
                             widget.userPermissions!.readQr ||
-                            widget.userPermissions!.readSms) {
+                            widget.userPermissions!.readSms ||
+                            widget.userPermissions!.createQr ||
+                            widget.userPermissions!.createSms) {
                           if (valueOrDefault<bool>(
                               currentUserDocument?.isValidMail, false)) {
                             if (valueOrDefault<bool>(
