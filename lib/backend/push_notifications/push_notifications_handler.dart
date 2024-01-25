@@ -109,11 +109,7 @@ class ParameterData {
 final parametersBuilderMap =
     <String, Future<ParameterData> Function(Map<String, dynamic>)>{
   'OK_FN_Payry_08_iniciasesion': ParameterData.none(),
-  'OK_FN_Payry_05_Registrate': (data) async => ParameterData(
-        allParams: {
-          'id': getParameter<DocumentReference>(data, 'id'),
-        },
-      ),
+  'OK_FN_Payry_05_Registrate': ParameterData.none(),
   'OK_FN_Payry_09_olvidecontrasena': ParameterData.none(),
   'OK_FN_Payry_01_Splash': ParameterData.none(),
   'OK_FN_Payry_02_onboarding1': ParameterData.none(),
@@ -198,12 +194,7 @@ final parametersBuilderMap =
       'id': getParameter<DocumentReference>(data, 'id'),
     };
     return ParameterData(
-      requiredParams: {
-        'id': serializeParam(
-          allParams['id'],
-          ParamType.DocumentReference,
-        ),
-      },
+      requiredParams: {},
       allParams: allParams,
     );
   },

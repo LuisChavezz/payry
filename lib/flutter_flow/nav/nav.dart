@@ -105,10 +105,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'OK_FN_Payry_05_Registrate',
               path: 'register',
-              builder: (context, params) => OKFNPayry05RegistrateWidget(
-                id: params.getParam('id', ParamType.DocumentReference, false,
-                    ['user_invitations']),
-              ),
+              builder: (context, params) => OKFNPayry05RegistrateWidget(),
             ),
             FFRoute(
               name: 'OK_FN_Payry_09_olvidecontrasena',
@@ -345,7 +342,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             FFRoute(
               name: 'OK_FN_Payry_05_RegisterInv',
-              path: 'registerinv/:id',
+              path: 'registerinv/:ida',
               builder: (context, params) => OKFNPayry05RegisterInvWidget(
                 id: params.getParam('id', ParamType.DocumentReference, false,
                     ['user_invitations']),

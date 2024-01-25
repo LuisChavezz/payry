@@ -13,10 +13,10 @@ import 'o_k_f_n_payry38_estadisticas_model.dart';
 export 'o_k_f_n_payry38_estadisticas_model.dart';
 
 class OKFNPayry38EstadisticasWidget extends StatefulWidget {
-  const OKFNPayry38EstadisticasWidget({Key? key}) : super(key: key);
+  const OKFNPayry38EstadisticasWidget({super.key});
 
   @override
-  _OKFNPayry38EstadisticasWidgetState createState() =>
+  State<OKFNPayry38EstadisticasWidget> createState() =>
       _OKFNPayry38EstadisticasWidgetState();
 }
 

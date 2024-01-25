@@ -15,10 +15,10 @@ import 'o_k_f_n_payry32_solicitar_s_m_s_model.dart';
 export 'o_k_f_n_payry32_solicitar_s_m_s_model.dart';
 
 class OKFNPayry32SolicitarSMSWidget extends StatefulWidget {
-  const OKFNPayry32SolicitarSMSWidget({Key? key}) : super(key: key);
+  const OKFNPayry32SolicitarSMSWidget({super.key});
 
   @override
-  _OKFNPayry32SolicitarSMSWidgetState createState() =>
+  State<OKFNPayry32SolicitarSMSWidget> createState() =>
       _OKFNPayry32SolicitarSMSWidgetState();
 }
 

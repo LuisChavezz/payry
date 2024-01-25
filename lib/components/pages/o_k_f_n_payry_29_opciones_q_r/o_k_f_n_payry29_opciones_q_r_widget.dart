@@ -12,10 +12,10 @@ import 'o_k_f_n_payry29_opciones_q_r_model.dart';
 export 'o_k_f_n_payry29_opciones_q_r_model.dart';
 
 class OKFNPayry29OpcionesQRWidget extends StatefulWidget {
-  const OKFNPayry29OpcionesQRWidget({Key? key}) : super(key: key);
+  const OKFNPayry29OpcionesQRWidget({super.key});
 
   @override
-  _OKFNPayry29OpcionesQRWidgetState createState() =>
+  State<OKFNPayry29OpcionesQRWidget> createState() =>
       _OKFNPayry29OpcionesQRWidgetState();
 }
 

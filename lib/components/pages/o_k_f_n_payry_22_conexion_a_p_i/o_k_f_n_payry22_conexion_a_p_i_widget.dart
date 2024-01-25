@@ -9,10 +9,10 @@ import 'o_k_f_n_payry22_conexion_a_p_i_model.dart';
 export 'o_k_f_n_payry22_conexion_a_p_i_model.dart';
 
 class OKFNPayry22ConexionAPIWidget extends StatefulWidget {
-  const OKFNPayry22ConexionAPIWidget({Key? key}) : super(key: key);
+  const OKFNPayry22ConexionAPIWidget({super.key});
 
   @override
-  _OKFNPayry22ConexionAPIWidgetState createState() =>
+  State<OKFNPayry22ConexionAPIWidget> createState() =>
       _OKFNPayry22ConexionAPIWidgetState();
 }
 

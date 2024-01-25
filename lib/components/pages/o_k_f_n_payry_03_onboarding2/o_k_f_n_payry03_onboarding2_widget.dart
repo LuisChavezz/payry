@@ -12,10 +12,10 @@ import 'o_k_f_n_payry03_onboarding2_model.dart';
 export 'o_k_f_n_payry03_onboarding2_model.dart';
 
 class OKFNPayry03Onboarding2Widget extends StatefulWidget {
-  const OKFNPayry03Onboarding2Widget({Key? key}) : super(key: key);
+  const OKFNPayry03Onboarding2Widget({super.key});
 
   @override
-  _OKFNPayry03Onboarding2WidgetState createState() =>
+  State<OKFNPayry03Onboarding2Widget> createState() =>
       _OKFNPayry03Onboarding2WidgetState();
 }
 

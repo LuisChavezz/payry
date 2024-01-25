@@ -17,16 +17,16 @@ export 'o_k_f_n_payry17_verificar_o_t_p_model.dart';
 
 class OKFNPayry17VerificarOTPWidget extends StatefulWidget {
   const OKFNPayry17VerificarOTPWidget({
-    Key? key,
+    super.key,
     required this.otpCode,
     required this.phoneNumber,
-  }) : super(key: key);
+  });
 
   final String? otpCode;
   final String? phoneNumber;
 
   @override
-  _OKFNPayry17VerificarOTPWidgetState createState() =>
+  State<OKFNPayry17VerificarOTPWidget> createState() =>
       _OKFNPayry17VerificarOTPWidgetState();
 }
 

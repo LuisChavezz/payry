@@ -14,16 +14,16 @@ export 'status_dropdown_model.dart';
 
 class StatusDropdownWidget extends StatefulWidget {
   const StatusDropdownWidget({
-    Key? key,
+    super.key,
     required this.userStatus,
     required this.userReference,
-  }) : super(key: key);
+  });
 
   final bool? userStatus;
   final DocumentReference? userReference;
 
   @override
-  _StatusDropdownWidgetState createState() => _StatusDropdownWidgetState();
+  State<StatusDropdownWidget> createState() => _StatusDropdownWidgetState();
 }
 
 class _StatusDropdownWidgetState extends State<StatusDropdownWidget> {

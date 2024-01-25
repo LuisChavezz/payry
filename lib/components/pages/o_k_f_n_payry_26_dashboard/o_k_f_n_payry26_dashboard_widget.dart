@@ -13,10 +13,10 @@ import 'o_k_f_n_payry26_dashboard_model.dart';
 export 'o_k_f_n_payry26_dashboard_model.dart';
 
 class OKFNPayry26DashboardWidget extends StatefulWidget {
-  const OKFNPayry26DashboardWidget({Key? key}) : super(key: key);
+  const OKFNPayry26DashboardWidget({super.key});
 
   @override
-  _OKFNPayry26DashboardWidgetState createState() =>
+  State<OKFNPayry26DashboardWidget> createState() =>
       _OKFNPayry26DashboardWidgetState();
 }
 

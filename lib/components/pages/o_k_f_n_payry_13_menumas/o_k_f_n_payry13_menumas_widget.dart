@@ -14,10 +14,10 @@ import 'o_k_f_n_payry13_menumas_model.dart';
 export 'o_k_f_n_payry13_menumas_model.dart';
 
 class OKFNPayry13MenumasWidget extends StatefulWidget {
-  const OKFNPayry13MenumasWidget({Key? key}) : super(key: key);
+  const OKFNPayry13MenumasWidget({super.key});
 
   @override
-  _OKFNPayry13MenumasWidgetState createState() =>
+  State<OKFNPayry13MenumasWidget> createState() =>
       _OKFNPayry13MenumasWidgetState();
 }
 
@@ -1907,93 +1907,6 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           ].divide(SizedBox(width: 5.0)),
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  width: () {
-                                    if (MediaQuery.sizeOf(context).width <
-                                        390.0) {
-                                      return (MediaQuery.sizeOf(context).width *
-                                          0.42);
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        480.0) {
-                                      return (MediaQuery.sizeOf(context).width *
-                                          0.44);
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        900.0) {
-                                      return (MediaQuery.sizeOf(context).width *
-                                          0.3);
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        1025.0) {
-                                      return (MediaQuery.sizeOf(context).width *
-                                          0.23);
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        1300.0) {
-                                      return (MediaQuery.sizeOf(context).width *
-                                          0.18);
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        1600.0) {
-                                      return (MediaQuery.sizeOf(context).width *
-                                          0.14);
-                                    } else {
-                                      return (MediaQuery.sizeOf(context).width *
-                                          0.1);
-                                    }
-                                  }(),
-                                  height: 75.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context).back6,
-                                    borderRadius: BorderRadius.circular(12.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 9.0, 0.0),
-                                          child: Icon(
-                                            FFIcons.kdocumentacion,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 20.0,
-                                          ),
-                                        ),
-                                        Text(
-                                          'Documentación ',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Lexend',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                fontSize: () {
-                                                  if (MediaQuery.sizeOf(context)
-                                                          .width <
-                                                      375.0) {
-                                                    return 10.0;
-                                                  } else if (MediaQuery.sizeOf(
-                                                              context)
-                                                          .width <
-                                                      410.0) {
-                                                    return 11.0;
-                                                  } else {
-                                                    return 14.0;
-                                                  }
-                                                }(),
-                                              ),
-                                        ),
-                                      ].divide(SizedBox(width: 5.0)),
                                     ),
                                   ),
                                 ),

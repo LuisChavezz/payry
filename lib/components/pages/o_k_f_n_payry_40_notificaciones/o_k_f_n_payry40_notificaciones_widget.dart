@@ -15,10 +15,10 @@ import 'o_k_f_n_payry40_notificaciones_model.dart';
 export 'o_k_f_n_payry40_notificaciones_model.dart';
 
 class OKFNPayry40NotificacionesWidget extends StatefulWidget {
-  const OKFNPayry40NotificacionesWidget({Key? key}) : super(key: key);
+  const OKFNPayry40NotificacionesWidget({super.key});
 
   @override
-  _OKFNPayry40NotificacionesWidgetState createState() =>
+  State<OKFNPayry40NotificacionesWidget> createState() =>
       _OKFNPayry40NotificacionesWidgetState();
 }
 

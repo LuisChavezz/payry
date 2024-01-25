@@ -12,10 +12,10 @@ import 'o_k_f_n_payry34_opciones_s_m_s_model.dart';
 export 'o_k_f_n_payry34_opciones_s_m_s_model.dart';
 
 class OKFNPayry34OpcionesSMSWidget extends StatefulWidget {
-  const OKFNPayry34OpcionesSMSWidget({Key? key}) : super(key: key);
+  const OKFNPayry34OpcionesSMSWidget({super.key});
 
   @override
-  _OKFNPayry34OpcionesSMSWidgetState createState() =>
+  State<OKFNPayry34OpcionesSMSWidget> createState() =>
       _OKFNPayry34OpcionesSMSWidgetState();
 }
 

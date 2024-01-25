@@ -12,10 +12,10 @@ import 'o_k_f_n_payry01_splash_model.dart';
 export 'o_k_f_n_payry01_splash_model.dart';
 
 class OKFNPayry01SplashWidget extends StatefulWidget {
-  const OKFNPayry01SplashWidget({Key? key}) : super(key: key);
+  const OKFNPayry01SplashWidget({super.key});
 
   @override
-  _OKFNPayry01SplashWidgetState createState() =>
+  State<OKFNPayry01SplashWidget> createState() =>
       _OKFNPayry01SplashWidgetState();
 }
 

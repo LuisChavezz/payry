@@ -9,10 +9,10 @@ import 'o_k_f_n_payry42_terminosycondiciones_model.dart';
 export 'o_k_f_n_payry42_terminosycondiciones_model.dart';
 
 class OKFNPayry42TerminosycondicionesWidget extends StatefulWidget {
-  const OKFNPayry42TerminosycondicionesWidget({Key? key}) : super(key: key);
+  const OKFNPayry42TerminosycondicionesWidget({super.key});
 
   @override
-  _OKFNPayry42TerminosycondicionesWidgetState createState() =>
+  State<OKFNPayry42TerminosycondicionesWidget> createState() =>
       _OKFNPayry42TerminosycondicionesWidgetState();
 }
 

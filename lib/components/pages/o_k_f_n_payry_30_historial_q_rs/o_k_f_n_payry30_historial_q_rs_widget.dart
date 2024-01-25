@@ -16,14 +16,14 @@ export 'o_k_f_n_payry30_historial_q_rs_model.dart';
 
 class OKFNPayry30HistorialQRsWidget extends StatefulWidget {
   const OKFNPayry30HistorialQRsWidget({
-    Key? key,
+    super.key,
     required this.readAll,
-  }) : super(key: key);
+  });
 
   final bool? readAll;
 
   @override
-  _OKFNPayry30HistorialQRsWidgetState createState() =>
+  State<OKFNPayry30HistorialQRsWidget> createState() =>
       _OKFNPayry30HistorialQRsWidgetState();
 }
 

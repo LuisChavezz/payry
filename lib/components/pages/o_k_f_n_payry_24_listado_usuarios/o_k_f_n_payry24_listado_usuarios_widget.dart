@@ -12,10 +12,10 @@ import 'o_k_f_n_payry24_listado_usuarios_model.dart';
 export 'o_k_f_n_payry24_listado_usuarios_model.dart';
 
 class OKFNPayry24ListadoUsuariosWidget extends StatefulWidget {
-  const OKFNPayry24ListadoUsuariosWidget({Key? key}) : super(key: key);
+  const OKFNPayry24ListadoUsuariosWidget({super.key});
 
   @override
-  _OKFNPayry24ListadoUsuariosWidgetState createState() =>
+  State<OKFNPayry24ListadoUsuariosWidget> createState() =>
       _OKFNPayry24ListadoUsuariosWidgetState();
 }
 

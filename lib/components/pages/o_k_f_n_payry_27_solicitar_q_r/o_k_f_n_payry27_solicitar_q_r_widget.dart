@@ -14,10 +14,10 @@ import 'o_k_f_n_payry27_solicitar_q_r_model.dart';
 export 'o_k_f_n_payry27_solicitar_q_r_model.dart';
 
 class OKFNPayry27SolicitarQRWidget extends StatefulWidget {
-  const OKFNPayry27SolicitarQRWidget({Key? key}) : super(key: key);
+  const OKFNPayry27SolicitarQRWidget({super.key});
 
   @override
-  _OKFNPayry27SolicitarQRWidgetState createState() =>
+  State<OKFNPayry27SolicitarQRWidget> createState() =>
       _OKFNPayry27SolicitarQRWidgetState();
 }
 

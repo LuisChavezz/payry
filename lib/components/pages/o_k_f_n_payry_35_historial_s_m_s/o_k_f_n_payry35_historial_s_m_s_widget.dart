@@ -16,14 +16,14 @@ export 'o_k_f_n_payry35_historial_s_m_s_model.dart';
 
 class OKFNPayry35HistorialSMSWidget extends StatefulWidget {
   const OKFNPayry35HistorialSMSWidget({
-    Key? key,
+    super.key,
     required this.readAll,
-  }) : super(key: key);
+  });
 
   final bool? readAll;
 
   @override
-  _OKFNPayry35HistorialSMSWidgetState createState() =>
+  State<OKFNPayry35HistorialSMSWidget> createState() =>
       _OKFNPayry35HistorialSMSWidgetState();
 }
 

@@ -9,11 +9,10 @@ import 'o_k_f_n_payry21_confirmacion_datos_bancarios_model.dart';
 export 'o_k_f_n_payry21_confirmacion_datos_bancarios_model.dart';
 
 class OKFNPayry21ConfirmacionDatosBancariosWidget extends StatefulWidget {
-  const OKFNPayry21ConfirmacionDatosBancariosWidget({Key? key})
-      : super(key: key);
+  const OKFNPayry21ConfirmacionDatosBancariosWidget({super.key});
 
   @override
-  _OKFNPayry21ConfirmacionDatosBancariosWidgetState createState() =>
+  State<OKFNPayry21ConfirmacionDatosBancariosWidget> createState() =>
       _OKFNPayry21ConfirmacionDatosBancariosWidgetState();
 }
 

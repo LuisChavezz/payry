@@ -15,10 +15,10 @@ import 'o_k_f_n_payry23_invitar_usuario_model.dart';
 export 'o_k_f_n_payry23_invitar_usuario_model.dart';
 
 class OKFNPayry23InvitarUsuarioWidget extends StatefulWidget {
-  const OKFNPayry23InvitarUsuarioWidget({Key? key}) : super(key: key);
+  const OKFNPayry23InvitarUsuarioWidget({super.key});
 
   @override
-  _OKFNPayry23InvitarUsuarioWidgetState createState() =>
+  State<OKFNPayry23InvitarUsuarioWidget> createState() =>
       _OKFNPayry23InvitarUsuarioWidgetState();
 }
 

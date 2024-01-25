@@ -15,14 +15,14 @@ export 'nav_bar_floting_model.dart';
 
 class NavBarFlotingWidget extends StatefulWidget {
   const NavBarFlotingWidget({
-    Key? key,
+    super.key,
     required this.userPermissions,
-  }) : super(key: key);
+  });
 
   final UserPermissionsRecord? userPermissions;
 
   @override
-  _NavBarFlotingWidgetState createState() => _NavBarFlotingWidgetState();
+  State<NavBarFlotingWidget> createState() => _NavBarFlotingWidgetState();
 }
 
 class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {

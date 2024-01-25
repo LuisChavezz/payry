@@ -10,11 +10,10 @@ export 'o_k_f_n_payry12_confirmacion_contrasena_actualizada_model.dart';
 
 class OKFNPayry12ConfirmacionContrasenaActualizadaWidget
     extends StatefulWidget {
-  const OKFNPayry12ConfirmacionContrasenaActualizadaWidget({Key? key})
-      : super(key: key);
+  const OKFNPayry12ConfirmacionContrasenaActualizadaWidget({super.key});
 
   @override
-  _OKFNPayry12ConfirmacionContrasenaActualizadaWidgetState createState() =>
+  State<OKFNPayry12ConfirmacionContrasenaActualizadaWidget> createState() =>
       _OKFNPayry12ConfirmacionContrasenaActualizadaWidgetState();
 }
 

@@ -13,14 +13,14 @@ export 'o_k_f_n_payry25_permisos_model.dart';
 
 class OKFNPayry25PermisosWidget extends StatefulWidget {
   const OKFNPayry25PermisosWidget({
-    Key? key,
+    super.key,
     required this.uid,
-  }) : super(key: key);
+  });
 
   final String? uid;
 
   @override
-  _OKFNPayry25PermisosWidgetState createState() =>
+  State<OKFNPayry25PermisosWidget> createState() =>
       _OKFNPayry25PermisosWidgetState();
 }
 

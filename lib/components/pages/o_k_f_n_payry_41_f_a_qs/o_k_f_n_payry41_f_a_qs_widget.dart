@@ -10,10 +10,10 @@ import 'o_k_f_n_payry41_f_a_qs_model.dart';
 export 'o_k_f_n_payry41_f_a_qs_model.dart';
 
 class OKFNPayry41FAQsWidget extends StatefulWidget {
-  const OKFNPayry41FAQsWidget({Key? key}) : super(key: key);
+  const OKFNPayry41FAQsWidget({super.key});
 
   @override
-  _OKFNPayry41FAQsWidgetState createState() => _OKFNPayry41FAQsWidgetState();
+  State<OKFNPayry41FAQsWidget> createState() => _OKFNPayry41FAQsWidgetState();
 }
 
 class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
