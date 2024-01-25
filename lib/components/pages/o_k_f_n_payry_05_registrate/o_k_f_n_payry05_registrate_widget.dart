@@ -14,7 +14,12 @@ import 'o_k_f_n_payry05_registrate_model.dart';
 export 'o_k_f_n_payry05_registrate_model.dart';
 
 class OKFNPayry05RegistrateWidget extends StatefulWidget {
-  const OKFNPayry05RegistrateWidget({super.key});
+  const OKFNPayry05RegistrateWidget({
+    super.key,
+    this.id,
+  });
+
+  final DocumentReference? id;
 
   @override
   State<OKFNPayry05RegistrateWidget> createState() =>
