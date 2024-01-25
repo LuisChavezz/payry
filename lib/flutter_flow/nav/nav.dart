@@ -342,7 +342,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             FFRoute(
               name: 'OK_FN_Payry_05_RegisterInv',
-              path: 'registerinv/:ida',
+              path: 'registerinv/:id',
               builder: (context, params) => OKFNPayry05RegisterInvWidget(
                 id: params.getParam('id', ParamType.DocumentReference, false,
                     ['user_invitations']),

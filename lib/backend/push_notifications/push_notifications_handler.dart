@@ -194,7 +194,12 @@ final parametersBuilderMap =
       'id': getParameter<DocumentReference>(data, 'id'),
     };
     return ParameterData(
-      requiredParams: {},
+      requiredParams: {
+        'id': serializeParam(
+          allParams['id'],
+          ParamType.DocumentReference,
+        ),
+      },
       allParams: allParams,
     );
   },
