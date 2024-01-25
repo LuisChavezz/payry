@@ -383,7 +383,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                                       }
                                       context.pushNamed(
                                         'OK_FN_Payry_31_detallesdeQR',
-                                        queryParameters: {
+                                        pathParameters: {
                                           'qrDocReference': serializeParam(
                                             _model.createdQR?.reference,
                                             ParamType.DocumentReference,

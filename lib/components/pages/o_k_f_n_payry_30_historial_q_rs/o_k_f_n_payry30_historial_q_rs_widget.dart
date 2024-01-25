@@ -378,7 +378,7 @@ class _OKFNPayry30HistorialQRsWidgetState
                                               onTap: () async {
                                                 context.pushNamed(
                                                   'OK_FN_Payry_31_detallesdeQR',
-                                                  queryParameters: {
+                                                  pathParameters: {
                                                     'qrDocReference':
                                                         serializeParam(
                                                       qrItemItem.reference,
@@ -573,7 +573,7 @@ class _OKFNPayry30HistorialQRsWidgetState
                                               onTap: () async {
                                                 context.pushNamed(
                                                   'OK_FN_Payry_31_detallesdeQR',
-                                                  queryParameters: {
+                                                  pathParameters: {
                                                     'qrDocReference':
                                                         serializeParam(
                                                       qrItemItem.reference,

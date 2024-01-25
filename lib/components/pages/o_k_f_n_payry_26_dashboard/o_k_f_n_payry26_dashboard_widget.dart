@@ -495,7 +495,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                       context
                                                                           .pushNamed(
                                                                         'OK_FN_Payry_31_detallesdeQR',
-                                                                        queryParameters:
+                                                                        pathParameters:
                                                                             {
                                                                           'qrDocReference':
                                                                               serializeParam(
