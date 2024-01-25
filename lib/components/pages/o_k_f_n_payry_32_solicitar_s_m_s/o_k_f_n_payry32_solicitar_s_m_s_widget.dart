@@ -512,7 +512,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                       }
                                       context.pushNamed(
                                         'OK_FN_Payry_36_detallesdeSMS',
-                                        queryParameters: {
+                                        pathParameters: {
                                           'smsDocReference': serializeParam(
                                             _model.createdSms?.reference,
                                             ParamType.DocumentReference,

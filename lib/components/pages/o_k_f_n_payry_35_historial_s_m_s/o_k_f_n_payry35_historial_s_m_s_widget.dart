@@ -378,7 +378,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                               onTap: () async {
                                                 context.pushNamed(
                                                   'OK_FN_Payry_36_detallesdeSMS',
-                                                  queryParameters: {
+                                                  pathParameters: {
                                                     'smsDocReference':
                                                         serializeParam(
                                                       smsItemItem.reference,
@@ -584,7 +584,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                               onTap: () async {
                                                 context.pushNamed(
                                                   'OK_FN_Payry_36_detallesdeSMS',
-                                                  queryParameters: {
+                                                  pathParameters: {
                                                     'smsDocReference':
                                                         serializeParam(
                                                       smsItemItem.reference,

@@ -254,7 +254,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             FFRoute(
               name: 'OK_FN_Payry_36_detallesdeSMS',
-              path: 'oKFNPayry36DetallesdeSMS',
+              path: 'smsdetails/:smsDocReference',
+              requireAuth: true,
               builder: (context, params) => OKFNPayry36DetallesdeSMSWidget(
                 smsDocReference: params.getParam('smsDocReference',
                     ParamType.DocumentReference, false, ['sms']),

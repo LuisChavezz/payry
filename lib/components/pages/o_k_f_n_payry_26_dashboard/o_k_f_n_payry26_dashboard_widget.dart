@@ -775,7 +775,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                       context
                                                                           .pushNamed(
                                                                         'OK_FN_Payry_36_detallesdeSMS',
-                                                                        queryParameters:
+                                                                        pathParameters:
                                                                             {
                                                                           'smsDocReference':
                                                                               serializeParam(
