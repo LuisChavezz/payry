@@ -16,6 +16,10 @@ import 'package:provider/provider.dart';
 
 class OKFNPayry40NotificacionesModel
     extends FlutterFlowModel<OKFNPayry40NotificacionesWidget> {
+  ///  Local state fields for this page.
+
+  dynamic notificationRedirect;
+
   ///  State fields for stateful widgets in this page.
 
   Completer<List<NotificationRecord>>? firestoreRequestCompleter;

@@ -137,11 +137,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'OK_FN_Payry_14_Perfil_PENDSW',
               path: 'oKFNPayry14PerfilPENDSW',
+              requireAuth: true,
               builder: (context, params) => OKFNPayry14PerfilPENDSWWidget(),
             ),
             FFRoute(
               name: 'OK_FN_Payry_15_EditProfile',
               path: 'oKFNPayry15EditProfile',
+              requireAuth: true,
               builder: (context, params) => OKFNPayry15EditProfileWidget(),
             ),
             FFRoute(
@@ -160,6 +162,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'OK_FN_Payry_19_formularioEmpresa',
               path: 'oKFNPayry19FormularioEmpresa',
+              requireAuth: true,
               builder: (context, params) =>
                   OKFNPayry19FormularioEmpresaWidget(),
             ),
@@ -176,21 +179,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'OK_FN_Payry_22_conexionAPI',
               path: 'oKFNPayry22ConexionAPI',
+              requireAuth: true,
               builder: (context, params) => OKFNPayry22ConexionAPIWidget(),
             ),
             FFRoute(
               name: 'OK_FN_Payry_23_invitarUsuario',
               path: 'oKFNPayry23InvitarUsuario',
+              requireAuth: true,
               builder: (context, params) => OKFNPayry23InvitarUsuarioWidget(),
             ),
             FFRoute(
               name: 'OK_FN_Payry_24_listadoUsuarios',
               path: 'oKFNPayry24ListadoUsuarios',
+              requireAuth: true,
               builder: (context, params) => OKFNPayry24ListadoUsuariosWidget(),
             ),
             FFRoute(
               name: 'OK_FN_Payry_25_permisos',
               path: 'oKFNPayry25Permisos',
+              requireAuth: true,
               builder: (context, params) => OKFNPayry25PermisosWidget(
                 uid: params.getParam('uid', ParamType.String),
               ),
@@ -198,11 +205,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'OK_FN_Payry_27_solicitarQR',
               path: 'oKFNPayry27SolicitarQR',
+              requireAuth: true,
               builder: (context, params) => OKFNPayry27SolicitarQRWidget(),
             ),
             FFRoute(
               name: 'OK_FN_Payry_28_qrGenerado',
               path: 'oKFNPayry28QrGenerado',
+              requireAuth: true,
               builder: (context, params) => OKFNPayry28QrGeneradoWidget(
                 createdQrReference: params.getParam('createdQrReference',
                     ParamType.DocumentReference, false, ['qr']),
@@ -211,11 +220,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'OK_FN_Payry_29_opcionesQR',
               path: 'oKFNPayry29OpcionesQR',
+              requireAuth: true,
               builder: (context, params) => OKFNPayry29OpcionesQRWidget(),
             ),
             FFRoute(
               name: 'OK_FN_Payry_30_historialQRs',
               path: 'oKFNPayry30HistorialQRs',
+              requireAuth: true,
               builder: (context, params) => OKFNPayry30HistorialQRsWidget(
                 readAll: params.getParam('readAll', ParamType.bool),
               ),
@@ -223,6 +234,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'OK_FN_Payry_35_historialSMS',
               path: 'oKFNPayry35HistorialSMS',
+              requireAuth: true,
               builder: (context, params) => OKFNPayry35HistorialSMSWidget(
                 readAll: params.getParam('readAll', ParamType.bool),
               ),
@@ -230,6 +242,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'OK_FN_Payry_34_opcionesSMS',
               path: 'oKFNPayry34OpcionesSMS',
+              requireAuth: true,
               builder: (context, params) => OKFNPayry34OpcionesSMSWidget(),
             ),
             FFRoute(
@@ -244,6 +257,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'OK_FN_Payry_37_facturas',
               path: 'oKFNPayry37Facturas',
+              requireAuth: true,
               builder: (context, params) => OKFNPayry37FacturasWidget(),
             ),
             FFRoute(
@@ -264,11 +278,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'OK_FN_Payry_32_solicitarSMS',
               path: 'oKFNPayry32SolicitarSMS',
+              requireAuth: true,
               builder: (context, params) => OKFNPayry32SolicitarSMSWidget(),
             ),
             FFRoute(
               name: 'OK_FN_Payry_40_Notificaciones',
               path: 'oKFNPayry40Notificaciones',
+              requireAuth: true,
               builder: (context, params) => OKFNPayry40NotificacionesWidget(),
             ),
             FFRoute(
@@ -279,6 +295,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'OK_FN_Payry_38_Estadisticas',
               path: 'oKFNPayry38Estadisticas',
+              requireAuth: true,
               builder: (context, params) => OKFNPayry38EstadisticasWidget(),
             ),
             FFRoute(
@@ -312,23 +329,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'OK_FN_Payry_18_confirmacionTelefono',
               path: 'oKFNPayry18ConfirmacionTelefono',
+              requireAuth: true,
               builder: (context, params) =>
                   OKFNPayry18ConfirmacionTelefonoWidget(),
             ),
             FFRoute(
               name: 'OK_FN_Payry_21_confirmacionDatosBancarios',
               path: 'oKFNPayry21ConfirmacionDatosBancarios',
+              requireAuth: true,
               builder: (context, params) =>
                   OKFNPayry21ConfirmacionDatosBancariosWidget(),
             ),
             FFRoute(
               name: 'OK_FN_Payry_33_SMSenviado',
               path: 'oKFNPayry33SMSenviado',
+              requireAuth: true,
               builder: (context, params) => OKFNPayry33SMSenviadoWidget(),
             ),
             FFRoute(
               name: 'OK_FN_Payry_13_Menumas',
               path: 'oKFNPayry13Menumas',
+              requireAuth: true,
               builder: (context, params) => OKFNPayry13MenumasWidget(),
             ),
             FFRoute(
@@ -340,6 +361,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'OK_FN_Payry_26_Dashboard',
               path: 'dashboard',
+              requireAuth: true,
               builder: (context, params) => OKFNPayry26DashboardWidget(),
             ),
             FFRoute(
@@ -353,6 +375,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'OK_FN_Payry_44_historialTransactions',
               path: 'oKFNPayry44HistorialTransactions',
+              requireAuth: true,
               builder: (context, params) =>
                   OKFNPayry44HistorialTransactionsWidget(),
             )
