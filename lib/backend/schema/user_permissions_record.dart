@@ -56,6 +56,11 @@ class UserPermissionsRecord extends FirestoreRecord {
   bool get createRefunds => _createRefunds ?? false;
   bool hasCreateRefunds() => _createRefunds != null;
 
+  // "read_statistics" field.
+  bool? _readStatistics;
+  bool get readStatistics => _readStatistics ?? false;
+  bool hasReadStatistics() => _readStatistics != null;
+
   void _initializeFields() {
     _uid = snapshotData['uid'] as String?;
     _adminId = snapshotData['admin_id'] as String?;
@@ -65,6 +70,7 @@ class UserPermissionsRecord extends FirestoreRecord {
     _readSms = snapshotData['read_sms'] as bool?;
     _readTransfers = snapshotData['read_transfers'] as bool?;
     _createRefunds = snapshotData['create_refunds'] as bool?;
+    _readStatistics = snapshotData['read_statistics'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -110,6 +116,7 @@ Map<String, dynamic> createUserPermissionsRecordData({
   bool? readSms,
   bool? readTransfers,
   bool? createRefunds,
+  bool? readStatistics,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -121,6 +128,7 @@ Map<String, dynamic> createUserPermissionsRecordData({
       'read_sms': readSms,
       'read_transfers': readTransfers,
       'create_refunds': createRefunds,
+      'read_statistics': readStatistics,
     }.withoutNulls,
   );
 
@@ -140,7 +148,8 @@ class UserPermissionsRecordDocumentEquality
         e1?.createSms == e2?.createSms &&
         e1?.readSms == e2?.readSms &&
         e1?.readTransfers == e2?.readTransfers &&
-        e1?.createRefunds == e2?.createRefunds;
+        e1?.createRefunds == e2?.createRefunds &&
+        e1?.readStatistics == e2?.readStatistics;
   }
 
   @override
@@ -152,7 +161,8 @@ class UserPermissionsRecordDocumentEquality
         e?.createSms,
         e?.readSms,
         e?.readTransfers,
-        e?.createRefunds
+        e?.createRefunds,
+        e?.readStatistics
       ]);
 
   @override

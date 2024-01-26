@@ -14,10 +14,10 @@ import 'o_k_f_n_payry13_menumas_model.dart';
 export 'o_k_f_n_payry13_menumas_model.dart';
 
 class OKFNPayry13MenumasWidget extends StatefulWidget {
-  const OKFNPayry13MenumasWidget({Key? key}) : super(key: key);
+  const OKFNPayry13MenumasWidget({super.key});
 
   @override
-  _OKFNPayry13MenumasWidgetState createState() =>
+  State<OKFNPayry13MenumasWidget> createState() =>
       _OKFNPayry13MenumasWidgetState();
 }
 
@@ -125,40 +125,88 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                               verticalDirection: VerticalDirection.down,
                               clipBehavior: Clip.none,
                               children: [
-                                InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    var _shouldSetState = false;
-                                    if (valueOrDefault<bool>(
-                                            currentUserDocument?.isAdmin,
-                                            false) ||
-                                        oKFNPayry13MenumasUserPermissionsRecord!
-                                            .createQr) {
+                                AuthUserStreamWidget(
+                                  builder: (context) => InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      var _shouldSetState = false;
                                       if (valueOrDefault<bool>(
-                                          currentUserDocument?.isValidMail,
-                                          false)) {
+                                              currentUserDocument?.isAdmin,
+                                              false) ||
+                                          oKFNPayry13MenumasUserPermissionsRecord!
+                                              .createQr) {
                                         if (valueOrDefault<bool>(
-                                                currentUserDocument
-                                                    ?.isValidPhoneNumber,
-                                                false) ==
-                                            true) {
+                                            currentUserDocument?.isValidMail,
+                                            false)) {
                                           if (valueOrDefault<bool>(
-                                                  currentUserDocument?.isAdmin,
-                                                  false)
-                                              ? valueOrDefault<bool>(
                                                   currentUserDocument
-                                                      ?.isCompanyComplete,
-                                                  false)
-                                              : true) {
-                                            context.pushNamed(
-                                                'OK_FN_Payry_27_solicitarQR');
+                                                      ?.isValidPhoneNumber,
+                                                  false) ==
+                                              true) {
+                                            if (valueOrDefault<bool>(
+                                                    currentUserDocument
+                                                        ?.isAdmin,
+                                                    false)
+                                                ? valueOrDefault<bool>(
+                                                    currentUserDocument
+                                                        ?.isCompanyComplete,
+                                                    false)
+                                                : true) {
+                                              context.pushNamed(
+                                                  'OK_FN_Payry_27_solicitarQR');
 
-                                            if (_shouldSetState)
-                                              setState(() {});
-                                            return;
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            } else {
+                                              var confirmDialogResponse =
+                                                  await showDialog<bool>(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title: Text(
+                                                                'Acceso denegado'),
+                                                            content: Text(
+                                                                'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        false),
+                                                                child: Text(
+                                                                    'Cancel'),
+                                                              ),
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        true),
+                                                                child: Text(
+                                                                    'Registrar empresa'),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      ) ??
+                                                      false;
+                                              if (confirmDialogResponse) {
+                                                context.pushNamed(
+                                                    'OK_FN_Payry_19_formularioEmpresa');
+
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              } else {
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              }
+                                            }
                                           } else {
                                             var confirmDialogResponse =
                                                 await showDialog<bool>(
@@ -169,7 +217,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                           title: Text(
                                                               'Acceso denegado'),
                                                           content: Text(
-                                                              'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                                              'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
                                                           actions: [
                                                             TextButton(
                                                               onPressed: () =>
@@ -185,7 +233,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                       alertDialogContext,
                                                                       true),
                                                               child: Text(
-                                                                  'Registrar empresa'),
+                                                                  'Verificar número'),
                                                             ),
                                                           ],
                                                         );
@@ -194,7 +242,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     false;
                                             if (confirmDialogResponse) {
                                               context.pushNamed(
-                                                  'OK_FN_Payry_19_formularioEmpresa');
+                                                  'OK_FN_Payry_15_EditProfile');
 
                                               if (_shouldSetState)
                                                 setState(() {});
@@ -215,7 +263,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                         title: Text(
                                                             'Acceso denegado'),
                                                         content: Text(
-                                                            'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
+                                                            'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
@@ -231,7 +279,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                     alertDialogContext,
                                                                     true),
                                                             child: Text(
-                                                                'Verificar número'),
+                                                                'Reenviar'),
                                                           ),
                                                         ],
                                                       );
@@ -239,8 +287,73 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                   ) ??
                                                   false;
                                           if (confirmDialogResponse) {
-                                            context.pushNamed(
-                                                'OK_FN_Payry_15_EditProfile');
+                                            try {
+                                              final result =
+                                                  await FirebaseFunctions
+                                                      .instance
+                                                      .httpsCallable(
+                                                          'verifyEmail')
+                                                      .call({
+                                                "email": currentUserEmail,
+                                              });
+                                              _model.verifyEmailResp1 =
+                                                  VerifyEmailCloudFunctionCallResponse(
+                                                data: result.data,
+                                                succeeded: true,
+                                                resultAsString:
+                                                    result.data.toString(),
+                                                jsonBody: result.data,
+                                              );
+                                            } on FirebaseFunctionsException catch (error) {
+                                              _model.verifyEmailResp1 =
+                                                  VerifyEmailCloudFunctionCallResponse(
+                                                errorCode: error.code,
+                                                succeeded: false,
+                                              );
+                                            }
+
+                                            _shouldSetState = true;
+                                            if (_model
+                                                .verifyEmailResp1!.succeeded!) {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text(
+                                                        'Verificación enviada'),
+                                                    content: Text(
+                                                        'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            } else {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text('Error'),
+                                                    content: Text(
+                                                        'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            }
 
                                             if (_shouldSetState)
                                               setState(() {});
@@ -252,253 +365,201 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           }
                                         }
                                       } else {
-                                        var confirmDialogResponse =
-                                            await showDialog<bool>(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'Acceso denegado'),
-                                                      content: Text(
-                                                          'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  false),
-                                                          child: Text('Cancel'),
-                                                        ),
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  true),
-                                                          child:
-                                                              Text('Reenviar'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                ) ??
-                                                false;
-                                        if (confirmDialogResponse) {
-                                          try {
-                                            final result =
-                                                await FirebaseFunctions.instance
-                                                    .httpsCallable(
-                                                        'verifyEmail')
-                                                    .call({
-                                              "email": currentUserEmail,
-                                            });
-                                            _model.verifyEmailResp1 =
-                                                VerifyEmailCloudFunctionCallResponse(
-                                              data: result.data,
-                                              succeeded: true,
-                                              resultAsString:
-                                                  result.data.toString(),
-                                              jsonBody: result.data,
-                                            );
-                                          } on FirebaseFunctionsException catch (error) {
-                                            _model.verifyEmailResp1 =
-                                                VerifyEmailCloudFunctionCallResponse(
-                                              errorCode: error.code,
-                                              succeeded: false,
-                                            );
-                                          }
-
-                                          _shouldSetState = true;
-                                          if (_model
-                                              .verifyEmailResp1!.succeeded!) {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text(
-                                                      'Verificación enviada'),
-                                                  content: Text(
-                                                      'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                          } else {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text('Error'),
-                                                  content: Text(
-                                                      'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                          }
-
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        } else {
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        }
+                                        if (_shouldSetState) setState(() {});
+                                        return;
                                       }
-                                    } else {
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: Text('Acceso Denegado'),
-                                            content: Text(
-                                                'No cuentas con permisos suficientes.'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
+
                                       if (_shouldSetState) setState(() {});
-                                      return;
-                                    }
-
-                                    if (_shouldSetState) setState(() {});
-                                  },
-                                  child: Container(
-                                    width: () {
-                                      if (MediaQuery.sizeOf(context).width <
-                                          390.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.42);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          480.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.44);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          900.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.3);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1025.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.23);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1300.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.18);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1600.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.14);
-                                      } else {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.1);
-                                      }
-                                    }(),
-                                    height: 75.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context).back1,
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 10.0, 0.0),
-                                            child: Icon(
-                                              FFIcons.kqr,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 20.0,
+                                    },
+                                    child: Container(
+                                      width: () {
+                                        if (MediaQuery.sizeOf(context).width <
+                                            390.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.42);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            480.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.44);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            900.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.3);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1025.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.23);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1300.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.18);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1600.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.14);
+                                        } else {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.1);
+                                        }
+                                      }(),
+                                      height: 75.0,
+                                      decoration: BoxDecoration(
+                                        color: valueOrDefault<bool>(
+                                                    currentUserDocument
+                                                        ?.isAdmin,
+                                                    false) ||
+                                                oKFNPayry13MenumasUserPermissionsRecord!
+                                                    .createQr
+                                            ? FlutterFlowTheme.of(context).back1
+                                            : Color(0x83CCCCCC),
+                                        borderRadius:
+                                            BorderRadius.circular(12.0),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 0.0, 16.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 10.0, 0.0),
+                                              child: Icon(
+                                                FFIcons.kqr,
+                                                color: valueOrDefault<bool>(
+                                                            currentUserDocument
+                                                                ?.isAdmin,
+                                                            false) ||
+                                                        oKFNPayry13MenumasUserPermissionsRecord!
+                                                            .createQr
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText
+                                                    : Color(0x808F8F8F),
+                                                size: 20.0,
+                                              ),
                                             ),
-                                          ),
-                                          Text(
-                                            'Generar QR',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                  fontSize: 14.0,
-                                                ),
-                                          ),
-                                        ].divide(SizedBox(width: 5.0)),
+                                            Text(
+                                              'Generar QR',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Lexend',
+                                                    color: valueOrDefault<bool>(
+                                                                currentUserDocument
+                                                                    ?.isAdmin,
+                                                                false) ||
+                                                            oKFNPayry13MenumasUserPermissionsRecord!
+                                                                .createQr
+                                                        ? FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText
+                                                        : Color(0x808F8F8F),
+                                                    fontSize: 14.0,
+                                                  ),
+                                            ),
+                                          ].divide(SizedBox(width: 5.0)),
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                                InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    var _shouldSetState = false;
-                                    if (valueOrDefault<bool>(
-                                            currentUserDocument?.isAdmin,
-                                            false) ||
-                                        oKFNPayry13MenumasUserPermissionsRecord!
-                                            .createSms) {
+                                AuthUserStreamWidget(
+                                  builder: (context) => InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      var _shouldSetState = false;
                                       if (valueOrDefault<bool>(
-                                          currentUserDocument?.isValidMail,
-                                          false)) {
+                                              currentUserDocument?.isAdmin,
+                                              false) ||
+                                          oKFNPayry13MenumasUserPermissionsRecord!
+                                              .createSms) {
                                         if (valueOrDefault<bool>(
-                                                currentUserDocument
-                                                    ?.isValidPhoneNumber,
-                                                false) ==
-                                            true) {
+                                            currentUserDocument?.isValidMail,
+                                            false)) {
                                           if (valueOrDefault<bool>(
-                                                  currentUserDocument?.isAdmin,
-                                                  false)
-                                              ? valueOrDefault<bool>(
                                                   currentUserDocument
-                                                      ?.isCompanyComplete,
-                                                  false)
-                                              : true) {
-                                            context.pushNamed(
-                                                'OK_FN_Payry_32_solicitarSMS');
+                                                      ?.isValidPhoneNumber,
+                                                  false) ==
+                                              true) {
+                                            if (valueOrDefault<bool>(
+                                                    currentUserDocument
+                                                        ?.isAdmin,
+                                                    false)
+                                                ? valueOrDefault<bool>(
+                                                    currentUserDocument
+                                                        ?.isCompanyComplete,
+                                                    false)
+                                                : true) {
+                                              context.pushNamed(
+                                                  'OK_FN_Payry_32_solicitarSMS');
 
-                                            if (_shouldSetState)
-                                              setState(() {});
-                                            return;
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            } else {
+                                              var confirmDialogResponse =
+                                                  await showDialog<bool>(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title: Text(
+                                                                'Acceso denegado'),
+                                                            content: Text(
+                                                                'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        false),
+                                                                child: Text(
+                                                                    'Cancel'),
+                                                              ),
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        true),
+                                                                child: Text(
+                                                                    'Registrar empresa'),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      ) ??
+                                                      false;
+                                              if (confirmDialogResponse) {
+                                                context.pushNamed(
+                                                    'OK_FN_Payry_19_formularioEmpresa');
+
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              } else {
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              }
+                                            }
                                           } else {
                                             var confirmDialogResponse =
                                                 await showDialog<bool>(
@@ -509,7 +570,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                           title: Text(
                                                               'Acceso denegado'),
                                                           content: Text(
-                                                              'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                                              'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
                                                           actions: [
                                                             TextButton(
                                                               onPressed: () =>
@@ -525,7 +586,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                       alertDialogContext,
                                                                       true),
                                                               child: Text(
-                                                                  'Registrar empresa'),
+                                                                  'Verificar número'),
                                                             ),
                                                           ],
                                                         );
@@ -534,7 +595,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     false;
                                             if (confirmDialogResponse) {
                                               context.pushNamed(
-                                                  'OK_FN_Payry_19_formularioEmpresa');
+                                                  'OK_FN_Payry_15_EditProfile');
 
                                               if (_shouldSetState)
                                                 setState(() {});
@@ -555,7 +616,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                         title: Text(
                                                             'Acceso denegado'),
                                                         content: Text(
-                                                            'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
+                                                            'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
@@ -571,7 +632,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                     alertDialogContext,
                                                                     true),
                                                             child: Text(
-                                                                'Verificar número'),
+                                                                'Reenviar'),
                                                           ),
                                                         ],
                                                       );
@@ -579,8 +640,73 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                   ) ??
                                                   false;
                                           if (confirmDialogResponse) {
-                                            context.pushNamed(
-                                                'OK_FN_Payry_15_EditProfile');
+                                            try {
+                                              final result =
+                                                  await FirebaseFunctions
+                                                      .instance
+                                                      .httpsCallable(
+                                                          'verifyEmail')
+                                                      .call({
+                                                "email": currentUserEmail,
+                                              });
+                                              _model.verifyEmailResp2 =
+                                                  VerifyEmailCloudFunctionCallResponse(
+                                                data: result.data,
+                                                succeeded: true,
+                                                resultAsString:
+                                                    result.data.toString(),
+                                                jsonBody: result.data,
+                                              );
+                                            } on FirebaseFunctionsException catch (error) {
+                                              _model.verifyEmailResp2 =
+                                                  VerifyEmailCloudFunctionCallResponse(
+                                                errorCode: error.code,
+                                                succeeded: false,
+                                              );
+                                            }
+
+                                            _shouldSetState = true;
+                                            if (_model
+                                                .verifyEmailResp2!.succeeded!) {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text(
+                                                        'Verificación enviada'),
+                                                    content: Text(
+                                                        'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            } else {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text('Error'),
+                                                    content: Text(
+                                                        'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            }
 
                                             if (_shouldSetState)
                                               setState(() {});
@@ -592,220 +718,120 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           }
                                         }
                                       } else {
-                                        var confirmDialogResponse =
-                                            await showDialog<bool>(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'Acceso denegado'),
-                                                      content: Text(
-                                                          'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  false),
-                                                          child: Text('Cancel'),
-                                                        ),
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  true),
-                                                          child:
-                                                              Text('Reenviar'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                ) ??
-                                                false;
-                                        if (confirmDialogResponse) {
-                                          try {
-                                            final result =
-                                                await FirebaseFunctions.instance
-                                                    .httpsCallable(
-                                                        'verifyEmail')
-                                                    .call({
-                                              "email": currentUserEmail,
-                                            });
-                                            _model.verifyEmailResp2 =
-                                                VerifyEmailCloudFunctionCallResponse(
-                                              data: result.data,
-                                              succeeded: true,
-                                              resultAsString:
-                                                  result.data.toString(),
-                                              jsonBody: result.data,
-                                            );
-                                          } on FirebaseFunctionsException catch (error) {
-                                            _model.verifyEmailResp2 =
-                                                VerifyEmailCloudFunctionCallResponse(
-                                              errorCode: error.code,
-                                              succeeded: false,
-                                            );
-                                          }
-
-                                          _shouldSetState = true;
-                                          if (_model
-                                              .verifyEmailResp2!.succeeded!) {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text(
-                                                      'Verificación enviada'),
-                                                  content: Text(
-                                                      'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                          } else {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text('Error'),
-                                                  content: Text(
-                                                      'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                          }
-
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        } else {
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        }
+                                        if (_shouldSetState) setState(() {});
+                                        return;
                                       }
-                                    } else {
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: Text('Acceso Denegado'),
-                                            content: Text(
-                                                'No cuentas con permisos suficientes.'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
+
                                       if (_shouldSetState) setState(() {});
-                                      return;
-                                    }
-
-                                    if (_shouldSetState) setState(() {});
-                                  },
-                                  child: Container(
-                                    width: () {
-                                      if (MediaQuery.sizeOf(context).width <
-                                          390.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.42);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          480.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.44);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          900.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.3);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1025.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.23);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1300.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.18);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1600.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.14);
-                                      } else {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.1);
-                                      }
-                                    }(),
-                                    height: 75.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context).back2,
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 10.0, 0.0),
-                                            child: Icon(
-                                              FFIcons.ksms,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 20.0,
+                                    },
+                                    child: Container(
+                                      width: () {
+                                        if (MediaQuery.sizeOf(context).width <
+                                            390.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.42);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            480.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.44);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            900.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.3);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1025.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.23);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1300.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.18);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1600.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.14);
+                                        } else {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.1);
+                                        }
+                                      }(),
+                                      height: 75.0,
+                                      decoration: BoxDecoration(
+                                        color: valueOrDefault<bool>(
+                                                    currentUserDocument
+                                                        ?.isAdmin,
+                                                    false) ||
+                                                oKFNPayry13MenumasUserPermissionsRecord!
+                                                    .createSms
+                                            ? FlutterFlowTheme.of(context).back2
+                                            : Color(0x83CCCCCC),
+                                        borderRadius:
+                                            BorderRadius.circular(12.0),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 0.0, 16.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 10.0, 0.0),
+                                              child: Icon(
+                                                FFIcons.ksms,
+                                                color: valueOrDefault<bool>(
+                                                            currentUserDocument
+                                                                ?.isAdmin,
+                                                            false) ||
+                                                        oKFNPayry13MenumasUserPermissionsRecord!
+                                                            .createSms
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText
+                                                    : Color(0x808F8F8F),
+                                                size: 20.0,
+                                              ),
                                             ),
-                                          ),
-                                          Text(
-                                            'Generar SMS',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                  fontSize:
-                                                      MediaQuery.sizeOf(context)
-                                                                  .width <
-                                                              375.0
-                                                          ? 12.0
-                                                          : 14.0,
-                                                ),
-                                          ),
-                                        ].divide(SizedBox(width: 5.0)),
+                                            Text(
+                                              'Generar SMS',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Lexend',
+                                                    color: valueOrDefault<bool>(
+                                                                currentUserDocument
+                                                                    ?.isAdmin,
+                                                                false) ||
+                                                            oKFNPayry13MenumasUserPermissionsRecord!
+                                                                .createSms
+                                                        ? FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText
+                                                        : Color(0x808F8F8F),
+                                                    fontSize: MediaQuery.sizeOf(
+                                                                    context)
+                                                                .width <
+                                                            375.0
+                                                        ? 12.0
+                                                        : 14.0,
+                                                  ),
+                                            ),
+                                          ].divide(SizedBox(width: 5.0)),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -901,620 +927,27 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     ),
                                   ),
                                 ),
-                                InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    var _shouldSetState = false;
-                                    if (valueOrDefault<bool>(
-                                        currentUserDocument?.isAdmin, false)) {
+                                AuthUserStreamWidget(
+                                  builder: (context) => InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      var _shouldSetState = false;
                                       if (valueOrDefault<bool>(
-                                          currentUserDocument?.isValidMail,
+                                          currentUserDocument?.isAdmin,
                                           false)) {
                                         if (valueOrDefault<bool>(
-                                                currentUserDocument
-                                                    ?.isValidPhoneNumber,
-                                                false) ==
-                                            true) {
-                                          context.pushNamed(
-                                              'OK_FN_Payry_19_formularioEmpresa');
-
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        } else {
-                                          var confirmDialogResponse =
-                                              await showDialog<bool>(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        title: Text(
-                                                            'Acceso denegado'),
-                                                        content: Text(
-                                                            'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    false),
-                                                            child:
-                                                                Text('Cancel'),
-                                                          ),
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    true),
-                                                            child: Text(
-                                                                'Verificar número'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  ) ??
-                                                  false;
-                                          if (confirmDialogResponse) {
-                                            context.pushNamed(
-                                                'OK_FN_Payry_15_EditProfile');
-
-                                            if (_shouldSetState)
-                                              setState(() {});
-                                            return;
-                                          } else {
-                                            if (_shouldSetState)
-                                              setState(() {});
-                                            return;
-                                          }
-                                        }
-                                      } else {
-                                        var confirmDialogResponse =
-                                            await showDialog<bool>(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'Acceso denegado'),
-                                                      content: Text(
-                                                          'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  false),
-                                                          child: Text('Cancel'),
-                                                        ),
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  true),
-                                                          child:
-                                                              Text('Reenviar'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                ) ??
-                                                false;
-                                        if (confirmDialogResponse) {
-                                          try {
-                                            final result =
-                                                await FirebaseFunctions.instance
-                                                    .httpsCallable(
-                                                        'verifyEmail')
-                                                    .call({
-                                              "email": currentUserEmail,
-                                            });
-                                            _model.verifyEmailResp3 =
-                                                VerifyEmailCloudFunctionCallResponse(
-                                              data: result.data,
-                                              succeeded: true,
-                                              resultAsString:
-                                                  result.data.toString(),
-                                              jsonBody: result.data,
-                                            );
-                                          } on FirebaseFunctionsException catch (error) {
-                                            _model.verifyEmailResp3 =
-                                                VerifyEmailCloudFunctionCallResponse(
-                                              errorCode: error.code,
-                                              succeeded: false,
-                                            );
-                                          }
-
-                                          _shouldSetState = true;
-                                          if (_model
-                                              .verifyEmailResp3!.succeeded!) {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text(
-                                                      'Verificación enviada'),
-                                                  content: Text(
-                                                      'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                          } else {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text('Error'),
-                                                  content: Text(
-                                                      'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                          }
-
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        } else {
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        }
-                                      }
-                                    } else {
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: Text('Acceso denegado'),
-                                            content: Text(
-                                                'No es posible acceder a esta sección. Solo para administradores.'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                      if (_shouldSetState) setState(() {});
-                                      return;
-                                    }
-
-                                    if (_shouldSetState) setState(() {});
-                                  },
-                                  child: Container(
-                                    width: () {
-                                      if (MediaQuery.sizeOf(context).width <
-                                          390.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.42);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          480.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.44);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          900.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.3);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1025.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.23);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1300.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.18);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1600.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.14);
-                                      } else {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.1);
-                                      }
-                                    }(),
-                                    height: 75.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context).back3,
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 10.0, 0.0),
-                                            child: Icon(
-                                              FFIcons.kempresa,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 20.0,
-                                            ),
-                                          ),
-                                          Text(
-                                            'Empresas',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
-                                          ),
-                                        ].divide(SizedBox(width: 5.0)),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    var _shouldSetState = false;
-                                    if (valueOrDefault<bool>(
-                                        currentUserDocument?.isValidMail,
-                                        false)) {
-                                      if (valueOrDefault<bool>(
-                                              currentUserDocument
-                                                  ?.isValidPhoneNumber,
-                                              false) ==
-                                          true) {
-                                        if (valueOrDefault<bool>(
-                                                currentUserDocument?.isAdmin,
-                                                false)
-                                            ? valueOrDefault<bool>(
-                                                currentUserDocument
-                                                    ?.isCompanyComplete,
-                                                false)
-                                            : true) {
-                                          context.pushNamed(
-                                              'OK_FN_Payry_38_Estadisticas');
-
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        } else {
-                                          var confirmDialogResponse =
-                                              await showDialog<bool>(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        title: Text(
-                                                            'Acceso denegado'),
-                                                        content: Text(
-                                                            'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    false),
-                                                            child:
-                                                                Text('Cancel'),
-                                                          ),
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    true),
-                                                            child: Text(
-                                                                'Registrar empresa'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  ) ??
-                                                  false;
-                                          if (confirmDialogResponse) {
+                                            currentUserDocument?.isValidMail,
+                                            false)) {
+                                          if (valueOrDefault<bool>(
+                                                  currentUserDocument
+                                                      ?.isValidPhoneNumber,
+                                                  false) ==
+                                              true) {
                                             context.pushNamed(
                                                 'OK_FN_Payry_19_formularioEmpresa');
-
-                                            if (_shouldSetState)
-                                              setState(() {});
-                                            return;
-                                          } else {
-                                            if (_shouldSetState)
-                                              setState(() {});
-                                            return;
-                                          }
-                                        }
-                                      } else {
-                                        var confirmDialogResponse =
-                                            await showDialog<bool>(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'Acceso denegado'),
-                                                      content: Text(
-                                                          'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  false),
-                                                          child: Text('Cancel'),
-                                                        ),
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  true),
-                                                          child: Text(
-                                                              'Verificar número'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                ) ??
-                                                false;
-                                        if (confirmDialogResponse) {
-                                          context.pushNamed(
-                                              'OK_FN_Payry_15_EditProfile');
-
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        } else {
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        }
-                                      }
-                                    } else {
-                                      var confirmDialogResponse =
-                                          await showDialog<bool>(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title:
-                                                        Text('Acceso denegado'),
-                                                    content: Text(
-                                                        'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                false),
-                                                        child: Text('Cancel'),
-                                                      ),
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                true),
-                                                        child: Text('Reenviar'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              ) ??
-                                              false;
-                                      if (confirmDialogResponse) {
-                                        try {
-                                          final result = await FirebaseFunctions
-                                              .instance
-                                              .httpsCallable('verifyEmail')
-                                              .call({
-                                            "email": currentUserEmail,
-                                          });
-                                          _model.verifyEmailResp4 =
-                                              VerifyEmailCloudFunctionCallResponse(
-                                            data: result.data,
-                                            succeeded: true,
-                                            resultAsString:
-                                                result.data.toString(),
-                                            jsonBody: result.data,
-                                          );
-                                        } on FirebaseFunctionsException catch (error) {
-                                          _model.verifyEmailResp4 =
-                                              VerifyEmailCloudFunctionCallResponse(
-                                            errorCode: error.code,
-                                            succeeded: false,
-                                          );
-                                        }
-
-                                        _shouldSetState = true;
-                                        if (_model
-                                            .verifyEmailResp4!.succeeded!) {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: Text(
-                                                    'Verificación enviada'),
-                                                content: Text(
-                                                    'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
-                                        } else {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: Text('Error'),
-                                                content: Text(
-                                                    'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
-                                        }
-
-                                        if (_shouldSetState) setState(() {});
-                                        return;
-                                      } else {
-                                        if (_shouldSetState) setState(() {});
-                                        return;
-                                      }
-                                    }
-
-                                    if (_shouldSetState) setState(() {});
-                                  },
-                                  child: Container(
-                                    width: () {
-                                      if (MediaQuery.sizeOf(context).width <
-                                          390.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.42);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          480.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.44);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          900.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.3);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1025.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.23);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1300.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.18);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1600.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.14);
-                                      } else {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.1);
-                                      }
-                                    }(),
-                                    height: 75.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context).back4,
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 10.0, 0.0),
-                                            child: Icon(
-                                              FFIcons.kestadisticas,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 20.0,
-                                            ),
-                                          ),
-                                          Text(
-                                            'Estadísticas',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
-                                          ),
-                                        ].divide(SizedBox(width: 5.0)),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    var _shouldSetState = false;
-                                    if (valueOrDefault<bool>(
-                                        currentUserDocument?.isAdmin, false)) {
-                                      if (valueOrDefault<bool>(
-                                          currentUserDocument?.isValidMail,
-                                          false)) {
-                                        if (valueOrDefault<bool>(
-                                                currentUserDocument
-                                                    ?.isValidPhoneNumber,
-                                                false) ==
-                                            true) {
-                                          if (valueOrDefault<bool>(
-                                                  currentUserDocument?.isAdmin,
-                                                  false)
-                                              ? valueOrDefault<bool>(
-                                                  currentUserDocument
-                                                      ?.isCompanyComplete,
-                                                  false)
-                                              : true) {
-                                            context.pushNamed(
-                                                'OK_FN_Payry_24_listadoUsuarios');
 
                                             if (_shouldSetState)
                                               setState(() {});
@@ -1529,7 +962,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                           title: Text(
                                                               'Acceso denegado'),
                                                           content: Text(
-                                                              'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                                              'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
                                                           actions: [
                                                             TextButton(
                                                               onPressed: () =>
@@ -1545,7 +978,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                       alertDialogContext,
                                                                       true),
                                                               child: Text(
-                                                                  'Registrar empresa'),
+                                                                  'Verificar número'),
                                                             ),
                                                           ],
                                                         );
@@ -1554,7 +987,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     false;
                                             if (confirmDialogResponse) {
                                               context.pushNamed(
-                                                  'OK_FN_Payry_19_formularioEmpresa');
+                                                  'OK_FN_Payry_15_EditProfile');
 
                                               if (_shouldSetState)
                                                 setState(() {});
@@ -1575,7 +1008,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                         title: Text(
                                                             'Acceso denegado'),
                                                         content: Text(
-                                                            'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
+                                                            'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
@@ -1591,7 +1024,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                     alertDialogContext,
                                                                     true),
                                                             child: Text(
-                                                                'Verificar número'),
+                                                                'Reenviar'),
                                                           ),
                                                         ],
                                                       );
@@ -1599,8 +1032,73 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                   ) ??
                                                   false;
                                           if (confirmDialogResponse) {
-                                            context.pushNamed(
-                                                'OK_FN_Payry_15_EditProfile');
+                                            try {
+                                              final result =
+                                                  await FirebaseFunctions
+                                                      .instance
+                                                      .httpsCallable(
+                                                          'verifyEmail')
+                                                      .call({
+                                                "email": currentUserEmail,
+                                              });
+                                              _model.verifyEmailResp3 =
+                                                  VerifyEmailCloudFunctionCallResponse(
+                                                data: result.data,
+                                                succeeded: true,
+                                                resultAsString:
+                                                    result.data.toString(),
+                                                jsonBody: result.data,
+                                              );
+                                            } on FirebaseFunctionsException catch (error) {
+                                              _model.verifyEmailResp3 =
+                                                  VerifyEmailCloudFunctionCallResponse(
+                                                errorCode: error.code,
+                                                succeeded: false,
+                                              );
+                                            }
+
+                                            _shouldSetState = true;
+                                            if (_model
+                                                .verifyEmailResp3!.succeeded!) {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text(
+                                                        'Verificación enviada'),
+                                                    content: Text(
+                                                        'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            } else {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text('Error'),
+                                                    content: Text(
+                                                        'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            }
 
                                             if (_shouldSetState)
                                               setState(() {});
@@ -1612,494 +1110,147 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           }
                                         }
                                       } else {
-                                        var confirmDialogResponse =
-                                            await showDialog<bool>(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'Acceso denegado'),
-                                                      content: Text(
-                                                          'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  false),
-                                                          child: Text('Cancel'),
-                                                        ),
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  true),
-                                                          child:
-                                                              Text('Reenviar'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                ) ??
-                                                false;
-                                        if (confirmDialogResponse) {
-                                          try {
-                                            final result =
-                                                await FirebaseFunctions.instance
-                                                    .httpsCallable(
-                                                        'verifyEmail')
-                                                    .call({
-                                              "email": currentUserEmail,
-                                            });
-                                            _model.verifyEmailResp5 =
-                                                VerifyEmailCloudFunctionCallResponse(
-                                              data: result.data,
-                                              succeeded: true,
-                                              resultAsString:
-                                                  result.data.toString(),
-                                              jsonBody: result.data,
-                                            );
-                                          } on FirebaseFunctionsException catch (error) {
-                                            _model.verifyEmailResp5 =
-                                                VerifyEmailCloudFunctionCallResponse(
-                                              errorCode: error.code,
-                                              succeeded: false,
-                                            );
-                                          }
-
-                                          _shouldSetState = true;
-                                          if (_model
-                                              .verifyEmailResp5!.succeeded!) {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text(
-                                                      'Verificación enviada'),
-                                                  content: Text(
-                                                      'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                          } else {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text('Error'),
-                                                  content: Text(
-                                                      'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                          }
-
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        } else {
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        }
+                                        if (_shouldSetState) setState(() {});
+                                        return;
                                       }
-                                    } else {
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: Text('Acceso denegado'),
-                                            content: Text(
-                                                'No es posible acceder a esta sección. Solo para administradores.'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
+
                                       if (_shouldSetState) setState(() {});
-                                      return;
-                                    }
-
-                                    if (_shouldSetState) setState(() {});
-                                  },
-                                  child: Container(
-                                    width: () {
-                                      if (MediaQuery.sizeOf(context).width <
-                                          390.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.42);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          480.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.44);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          900.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.3);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1025.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.23);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1300.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.18);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1600.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.14);
-                                      } else {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.1);
-                                      }
-                                    }(),
-                                    height: 75.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context).back6,
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 10.0, 0.0),
-                                            child: Icon(
-                                              FFIcons.kvariosUsuarios,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 20.0,
-                                            ),
-                                          ),
-                                          Text(
-                                            'Usuarios',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
-                                          ),
-                                        ].divide(SizedBox(width: 5.0)),
+                                    },
+                                    child: Container(
+                                      width: () {
+                                        if (MediaQuery.sizeOf(context).width <
+                                            390.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.42);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            480.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.44);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            900.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.3);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1025.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.23);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1300.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.18);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1600.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.14);
+                                        } else {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.1);
+                                        }
+                                      }(),
+                                      height: 75.0,
+                                      decoration: BoxDecoration(
+                                        color: valueOrDefault<bool>(
+                                                currentUserDocument?.isAdmin,
+                                                false)
+                                            ? FlutterFlowTheme.of(context).back3
+                                            : Color(0x83CCCCCC),
+                                        borderRadius:
+                                            BorderRadius.circular(12.0),
                                       ),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  width: () {
-                                    if (MediaQuery.sizeOf(context).width <
-                                        390.0) {
-                                      return (MediaQuery.sizeOf(context).width *
-                                          0.42);
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        480.0) {
-                                      return (MediaQuery.sizeOf(context).width *
-                                          0.44);
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        900.0) {
-                                      return (MediaQuery.sizeOf(context).width *
-                                          0.3);
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        1025.0) {
-                                      return (MediaQuery.sizeOf(context).width *
-                                          0.23);
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        1300.0) {
-                                      return (MediaQuery.sizeOf(context).width *
-                                          0.18);
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        1600.0) {
-                                      return (MediaQuery.sizeOf(context).width *
-                                          0.14);
-                                    } else {
-                                      return (MediaQuery.sizeOf(context).width *
-                                          0.1);
-                                    }
-                                  }(),
-                                  height: 75.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context).back6,
-                                    borderRadius: BorderRadius.circular(12.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 9.0, 0.0),
-                                          child: Icon(
-                                            FFIcons.kdocumentacion,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 20.0,
-                                          ),
-                                        ),
-                                        Text(
-                                          'Documentación ',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Lexend',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                fontSize: () {
-                                                  if (MediaQuery.sizeOf(context)
-                                                          .width <
-                                                      375.0) {
-                                                    return 10.0;
-                                                  } else if (MediaQuery.sizeOf(
-                                                              context)
-                                                          .width <
-                                                      410.0) {
-                                                    return 11.0;
-                                                  } else {
-                                                    return 14.0;
-                                                  }
-                                                }(),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 0.0, 16.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 10.0, 0.0),
+                                              child: Icon(
+                                                FFIcons.kempresa,
+                                                color: valueOrDefault<bool>(
+                                                        currentUserDocument
+                                                            ?.isAdmin,
+                                                        false)
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText
+                                                    : Color(0x808F8F8F),
+                                                size: 20.0,
                                               ),
+                                            ),
+                                            Text(
+                                              'Empresas',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Lexend',
+                                                    color: valueOrDefault<bool>(
+                                                            currentUserDocument
+                                                                ?.isAdmin,
+                                                            false)
+                                                        ? FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText
+                                                        : Color(0x808F8F8F),
+                                                  ),
+                                            ),
+                                          ].divide(SizedBox(width: 5.0)),
                                         ),
-                                      ].divide(SizedBox(width: 5.0)),
+                                      ),
                                     ),
                                   ),
                                 ),
                                 AuthUserStreamWidget(
-                                  builder: (context) =>
-                                      StreamBuilder<List<CompaniesRecord>>(
-                                    stream: queryCompaniesRecord(
-                                      queryBuilder: (companiesRecord) =>
-                                          companiesRecord.where(
-                                        'created_by',
-                                        isEqualTo: valueOrDefault(
-                                            currentUserDocument?.adminId, ''),
-                                      ),
-                                      singleRecord: true,
-                                    ),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 40.0,
-                                            height: 40.0,
-                                            child: CircularProgressIndicator(
-                                              valueColor:
-                                                  AlwaysStoppedAnimation<Color>(
-                                                FlutterFlowTheme.of(context)
-                                                    .accent3,
-                                              ),
-                                            ),
-                                          ),
-                                        );
-                                      }
-                                      List<CompaniesRecord>
-                                          containerCompaniesRecordList =
-                                          snapshot.data!;
-                                      final containerCompaniesRecord =
-                                          containerCompaniesRecordList
-                                                  .isNotEmpty
-                                              ? containerCompaniesRecordList
-                                                  .first
-                                              : null;
-                                      return InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          var _shouldSetState = false;
+                                  builder: (context) => InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      var _shouldSetState = false;
+                                      if (valueOrDefault<bool>(
+                                              currentUserDocument?.isAdmin,
+                                              false) ||
+                                          oKFNPayry13MenumasUserPermissionsRecord!
+                                              .readStatistics) {
+                                        if (valueOrDefault<bool>(
+                                            currentUserDocument?.isValidMail,
+                                            false)) {
                                           if (valueOrDefault<bool>(
-                                              currentUserDocument?.isValidMail,
-                                              false)) {
+                                                  currentUserDocument
+                                                      ?.isValidPhoneNumber,
+                                                  false) ==
+                                              true) {
                                             if (valueOrDefault<bool>(
                                                     currentUserDocument
-                                                        ?.isValidPhoneNumber,
-                                                    false) ==
-                                                true) {
-                                              if (valueOrDefault<bool>(
-                                                      currentUserDocument
-                                                          ?.isAdmin,
-                                                      false)
-                                                  ? valueOrDefault<bool>(
-                                                      currentUserDocument
-                                                          ?.isCompanyComplete,
-                                                      false)
-                                                  : true) {
-                                                if (containerCompaniesRecord!
-                                                    .requireBill) {
-                                                  context.pushNamed(
-                                                      'OK_FN_Payry_37_facturas');
+                                                        ?.isAdmin,
+                                                    false)
+                                                ? valueOrDefault<bool>(
+                                                    currentUserDocument
+                                                        ?.isCompanyComplete,
+                                                    false)
+                                                : true) {
+                                              context.pushNamed(
+                                                  'OK_FN_Payry_38_Estadisticas');
 
-                                                  if (_shouldSetState)
-                                                    setState(() {});
-                                                  return;
-                                                } else {
-                                                  if (valueOrDefault<bool>(
-                                                      currentUserDocument
-                                                          ?.isAdmin,
-                                                      false)) {
-                                                    var confirmDialogResponse =
-                                                        await showDialog<bool>(
-                                                              context: context,
-                                                              builder:
-                                                                  (alertDialogContext) {
-                                                                return AlertDialog(
-                                                                  title: Text(
-                                                                      'Acceso denegado'),
-                                                                  content: Text(
-                                                                      'No es posible acceder a esta sección debido a la configuración de tu empresa. Ve a la configuración y activa la facturación.'),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed: () => Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          false),
-                                                                      child: Text(
-                                                                          'Cancelar'),
-                                                                    ),
-                                                                    TextButton(
-                                                                      onPressed: () => Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          true),
-                                                                      child: Text(
-                                                                          'Ir a empresa'),
-                                                                    ),
-                                                                  ],
-                                                                );
-                                                              },
-                                                            ) ??
-                                                            false;
-                                                    if (confirmDialogResponse) {
-                                                      context.pushNamed(
-                                                          'OK_FN_Payry_19_formularioEmpresa');
-
-                                                      if (_shouldSetState)
-                                                        setState(() {});
-                                                      return;
-                                                    } else {
-                                                      if (_shouldSetState)
-                                                        setState(() {});
-                                                      return;
-                                                    }
-                                                  } else {
-                                                    await showDialog(
-                                                      context: context,
-                                                      builder:
-                                                          (alertDialogContext) {
-                                                        return AlertDialog(
-                                                          title: Text(
-                                                              'Acceso denegado'),
-                                                          content: Text(
-                                                              'No es posible acceder a esta sección, debido a que la configuración de la empresa a la que perteneces no requiere facturación.'),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext),
-                                                              child: Text('Ok'),
-                                                            ),
-                                                          ],
-                                                        );
-                                                      },
-                                                    );
-                                                    if (_shouldSetState)
-                                                      setState(() {});
-                                                    return;
-                                                  }
-                                                }
-                                              } else {
-                                                var confirmDialogResponse =
-                                                    await showDialog<bool>(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Acceso denegado'),
-                                                              content: Text(
-                                                                  'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          false),
-                                                                  child: Text(
-                                                                      'Cancel'),
-                                                                ),
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          true),
-                                                                  child: Text(
-                                                                      'Registrar empresa'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        ) ??
-                                                        false;
-                                                if (confirmDialogResponse) {
-                                                  context.pushNamed(
-                                                      'OK_FN_Payry_19_formularioEmpresa');
-
-                                                  if (_shouldSetState)
-                                                    setState(() {});
-                                                  return;
-                                                } else {
-                                                  if (_shouldSetState)
-                                                    setState(() {});
-                                                  return;
-                                                }
-                                              }
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
                                             } else {
                                               var confirmDialogResponse =
                                                   await showDialog<bool>(
@@ -2110,7 +1261,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                             title: Text(
                                                                 'Acceso denegado'),
                                                             content: Text(
-                                                                'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
+                                                                'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
                                                             actions: [
                                                               TextButton(
                                                                 onPressed: () =>
@@ -2126,7 +1277,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                         alertDialogContext,
                                                                         true),
                                                                 child: Text(
-                                                                    'Verificar número'),
+                                                                    'Registrar empresa'),
                                                               ),
                                                             ],
                                                           );
@@ -2135,7 +1286,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                       false;
                                               if (confirmDialogResponse) {
                                                 context.pushNamed(
-                                                    'OK_FN_Payry_15_EditProfile');
+                                                    'OK_FN_Payry_19_formularioEmpresa');
 
                                                 if (_shouldSetState)
                                                   setState(() {});
@@ -2156,7 +1307,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                           title: Text(
                                                               'Acceso denegado'),
                                                           content: Text(
-                                                              'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
+                                                              'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
                                                           actions: [
                                                             TextButton(
                                                               onPressed: () =>
@@ -2172,7 +1323,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                       alertDialogContext,
                                                                       true),
                                                               child: Text(
-                                                                  'Reenviar'),
+                                                                  'Verificar número'),
                                                             ),
                                                           ],
                                                         );
@@ -2180,75 +1331,8 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     ) ??
                                                     false;
                                             if (confirmDialogResponse) {
-                                              try {
-                                                final result =
-                                                    await FirebaseFunctions
-                                                        .instance
-                                                        .httpsCallable(
-                                                            'verifyEmail')
-                                                        .call({
-                                                  "email": currentUserEmail,
-                                                });
-                                                _model.verifyEmailResp6 =
-                                                    VerifyEmailCloudFunctionCallResponse(
-                                                  data: result.data,
-                                                  succeeded: true,
-                                                  resultAsString:
-                                                      result.data.toString(),
-                                                  jsonBody: result.data,
-                                                );
-                                              } on FirebaseFunctionsException catch (error) {
-                                                _model.verifyEmailResp6 =
-                                                    VerifyEmailCloudFunctionCallResponse(
-                                                  errorCode: error.code,
-                                                  succeeded: false,
-                                                );
-                                              }
-
-                                              _shouldSetState = true;
-                                              if (_model.verifyEmailResp6!
-                                                  .succeeded!) {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'Verificación enviada'),
-                                                      content: Text(
-                                                          'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Ok'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
-                                              } else {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text('Error'),
-                                                      content: Text(
-                                                          'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Ok'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
-                                              }
+                                              context.pushNamed(
+                                                  'OK_FN_Payry_15_EditProfile');
 
                                               if (_shouldSetState)
                                                 setState(() {});
@@ -2259,103 +1343,919 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                               return;
                                             }
                                           }
-
-                                          if (_shouldSetState) setState(() {});
-                                        },
-                                        child: Container(
-                                          width: () {
-                                            if (MediaQuery.sizeOf(context)
-                                                    .width <
-                                                390.0) {
-                                              return (MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.42);
-                                            } else if (MediaQuery.sizeOf(
-                                                        context)
-                                                    .width <
-                                                480.0) {
-                                              return (MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.44);
-                                            } else if (MediaQuery.sizeOf(
-                                                        context)
-                                                    .width <
-                                                900.0) {
-                                              return (MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.3);
-                                            } else if (MediaQuery.sizeOf(
-                                                        context)
-                                                    .width <
-                                                1025.0) {
-                                              return (MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.23);
-                                            } else if (MediaQuery.sizeOf(
-                                                        context)
-                                                    .width <
-                                                1300.0) {
-                                              return (MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.18);
-                                            } else if (MediaQuery.sizeOf(
-                                                        context)
-                                                    .width <
-                                                1600.0) {
-                                              return (MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.14);
-                                            } else {
-                                              return (MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.1);
+                                        } else {
+                                          var confirmDialogResponse =
+                                              await showDialog<bool>(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            'Acceso denegado'),
+                                                        content: Text(
+                                                            'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    false),
+                                                            child:
+                                                                Text('Cancel'),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    true),
+                                                            child: Text(
+                                                                'Reenviar'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  ) ??
+                                                  false;
+                                          if (confirmDialogResponse) {
+                                            try {
+                                              final result =
+                                                  await FirebaseFunctions
+                                                      .instance
+                                                      .httpsCallable(
+                                                          'verifyEmail')
+                                                      .call({
+                                                "email": currentUserEmail,
+                                              });
+                                              _model.verifyEmailResp4 =
+                                                  VerifyEmailCloudFunctionCallResponse(
+                                                data: result.data,
+                                                succeeded: true,
+                                                resultAsString:
+                                                    result.data.toString(),
+                                                jsonBody: result.data,
+                                              );
+                                            } on FirebaseFunctionsException catch (error) {
+                                              _model.verifyEmailResp4 =
+                                                  VerifyEmailCloudFunctionCallResponse(
+                                                errorCode: error.code,
+                                                succeeded: false,
+                                              );
                                             }
-                                          }(),
-                                          height: 75.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .back1,
-                                            borderRadius:
-                                                BorderRadius.circular(12.0),
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 0.0, 16.0, 0.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 10.0, 0.0),
-                                                  child: Icon(
-                                                    FFIcons.kfactura,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                    size: 20.0,
-                                                  ),
-                                                ),
-                                                Text(
-                                                  'Facturas',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
+
+                                            _shouldSetState = true;
+                                            if (_model
+                                                .verifyEmailResp4!.succeeded!) {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text(
+                                                        'Verificación enviada'),
+                                                    content: Text(
+                                                        'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
                                                       ),
-                                                ),
-                                              ].divide(SizedBox(width: 5.0)),
-                                            ),
-                                          ),
-                                        ),
-                                      );
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            } else {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text('Error'),
+                                                    content: Text(
+                                                        'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            }
+
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          } else {
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          }
+                                        }
+                                      } else {
+                                        if (_shouldSetState) setState(() {});
+                                        return;
+                                      }
+
+                                      if (_shouldSetState) setState(() {});
                                     },
+                                    child: Container(
+                                      width: () {
+                                        if (MediaQuery.sizeOf(context).width <
+                                            390.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.42);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            480.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.44);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            900.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.3);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1025.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.23);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1300.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.18);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1600.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.14);
+                                        } else {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.1);
+                                        }
+                                      }(),
+                                      height: 75.0,
+                                      decoration: BoxDecoration(
+                                        color: valueOrDefault<bool>(
+                                                    currentUserDocument
+                                                        ?.isAdmin,
+                                                    false) ||
+                                                oKFNPayry13MenumasUserPermissionsRecord!
+                                                    .readStatistics
+                                            ? FlutterFlowTheme.of(context).back4
+                                            : Color(0x83CCCCCC),
+                                        borderRadius:
+                                            BorderRadius.circular(12.0),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 0.0, 16.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 10.0, 0.0),
+                                              child: Icon(
+                                                FFIcons.kestadisticas,
+                                                color: valueOrDefault<bool>(
+                                                            currentUserDocument
+                                                                ?.isAdmin,
+                                                            false) ||
+                                                        oKFNPayry13MenumasUserPermissionsRecord!
+                                                            .readStatistics
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText
+                                                    : Color(0x808F8F8F),
+                                                size: 20.0,
+                                              ),
+                                            ),
+                                            Text(
+                                              'Estadísticas',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Lexend',
+                                                    color: valueOrDefault<bool>(
+                                                                currentUserDocument
+                                                                    ?.isAdmin,
+                                                                false) ||
+                                                            oKFNPayry13MenumasUserPermissionsRecord!
+                                                                .readStatistics
+                                                        ? FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText
+                                                        : Color(0x808F8F8F),
+                                                  ),
+                                            ),
+                                          ].divide(SizedBox(width: 5.0)),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                AuthUserStreamWidget(
+                                  builder: (context) => InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      var _shouldSetState = false;
+                                      if (valueOrDefault<bool>(
+                                          currentUserDocument?.isAdmin,
+                                          false)) {
+                                        if (valueOrDefault<bool>(
+                                            currentUserDocument?.isValidMail,
+                                            false)) {
+                                          if (valueOrDefault<bool>(
+                                                  currentUserDocument
+                                                      ?.isValidPhoneNumber,
+                                                  false) ==
+                                              true) {
+                                            if (valueOrDefault<bool>(
+                                                    currentUserDocument
+                                                        ?.isAdmin,
+                                                    false)
+                                                ? valueOrDefault<bool>(
+                                                    currentUserDocument
+                                                        ?.isCompanyComplete,
+                                                    false)
+                                                : true) {
+                                              context.pushNamed(
+                                                  'OK_FN_Payry_24_listadoUsuarios');
+
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            } else {
+                                              var confirmDialogResponse =
+                                                  await showDialog<bool>(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title: Text(
+                                                                'Acceso denegado'),
+                                                            content: Text(
+                                                                'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        false),
+                                                                child: Text(
+                                                                    'Cancel'),
+                                                              ),
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        true),
+                                                                child: Text(
+                                                                    'Registrar empresa'),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      ) ??
+                                                      false;
+                                              if (confirmDialogResponse) {
+                                                context.pushNamed(
+                                                    'OK_FN_Payry_19_formularioEmpresa');
+
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              } else {
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              }
+                                            }
+                                          } else {
+                                            var confirmDialogResponse =
+                                                await showDialog<bool>(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return AlertDialog(
+                                                          title: Text(
+                                                              'Acceso denegado'),
+                                                          content: Text(
+                                                              'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext,
+                                                                      false),
+                                                              child: Text(
+                                                                  'Cancel'),
+                                                            ),
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext,
+                                                                      true),
+                                                              child: Text(
+                                                                  'Verificar número'),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    ) ??
+                                                    false;
+                                            if (confirmDialogResponse) {
+                                              context.pushNamed(
+                                                  'OK_FN_Payry_15_EditProfile');
+
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            } else {
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            }
+                                          }
+                                        } else {
+                                          var confirmDialogResponse =
+                                              await showDialog<bool>(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            'Acceso denegado'),
+                                                        content: Text(
+                                                            'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    false),
+                                                            child:
+                                                                Text('Cancel'),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    true),
+                                                            child: Text(
+                                                                'Reenviar'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  ) ??
+                                                  false;
+                                          if (confirmDialogResponse) {
+                                            try {
+                                              final result =
+                                                  await FirebaseFunctions
+                                                      .instance
+                                                      .httpsCallable(
+                                                          'verifyEmail')
+                                                      .call({
+                                                "email": currentUserEmail,
+                                              });
+                                              _model.verifyEmailResp5 =
+                                                  VerifyEmailCloudFunctionCallResponse(
+                                                data: result.data,
+                                                succeeded: true,
+                                                resultAsString:
+                                                    result.data.toString(),
+                                                jsonBody: result.data,
+                                              );
+                                            } on FirebaseFunctionsException catch (error) {
+                                              _model.verifyEmailResp5 =
+                                                  VerifyEmailCloudFunctionCallResponse(
+                                                errorCode: error.code,
+                                                succeeded: false,
+                                              );
+                                            }
+
+                                            _shouldSetState = true;
+                                            if (_model
+                                                .verifyEmailResp5!.succeeded!) {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text(
+                                                        'Verificación enviada'),
+                                                    content: Text(
+                                                        'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            } else {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text('Error'),
+                                                    content: Text(
+                                                        'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            }
+
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          } else {
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          }
+                                        }
+                                      } else {
+                                        if (_shouldSetState) setState(() {});
+                                        return;
+                                      }
+
+                                      if (_shouldSetState) setState(() {});
+                                    },
+                                    child: Container(
+                                      width: () {
+                                        if (MediaQuery.sizeOf(context).width <
+                                            390.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.42);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            480.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.44);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            900.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.3);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1025.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.23);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1300.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.18);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1600.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.14);
+                                        } else {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.1);
+                                        }
+                                      }(),
+                                      height: 75.0,
+                                      decoration: BoxDecoration(
+                                        color: valueOrDefault<bool>(
+                                                currentUserDocument?.isAdmin,
+                                                false)
+                                            ? FlutterFlowTheme.of(context).back6
+                                            : Color(0x83CCCCCC),
+                                        borderRadius:
+                                            BorderRadius.circular(12.0),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 0.0, 16.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 10.0, 0.0),
+                                              child: Icon(
+                                                FFIcons.kvariosUsuarios,
+                                                color: valueOrDefault<bool>(
+                                                        currentUserDocument
+                                                            ?.isAdmin,
+                                                        false)
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText
+                                                    : Color(0x808F8F8F),
+                                                size: 20.0,
+                                              ),
+                                            ),
+                                            Text(
+                                              'Usuarios',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Lexend',
+                                                    color: valueOrDefault<bool>(
+                                                            currentUserDocument
+                                                                ?.isAdmin,
+                                                            false)
+                                                        ? FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText
+                                                        : Color(0x808F8F8F),
+                                                  ),
+                                            ),
+                                          ].divide(SizedBox(width: 5.0)),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                AuthUserStreamWidget(
+                                  builder: (context) => InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      var _shouldSetState = false;
+                                      if (valueOrDefault<bool>(
+                                              currentUserDocument?.isAdmin,
+                                              false) ||
+                                          true) {
+                                        if (valueOrDefault<bool>(
+                                            currentUserDocument?.isValidMail,
+                                            false)) {
+                                          if (valueOrDefault<bool>(
+                                                  currentUserDocument
+                                                      ?.isValidPhoneNumber,
+                                                  false) ==
+                                              true) {
+                                            if (valueOrDefault<bool>(
+                                                    currentUserDocument
+                                                        ?.isAdmin,
+                                                    false)
+                                                ? valueOrDefault<bool>(
+                                                    currentUserDocument
+                                                        ?.isCompanyComplete,
+                                                    false)
+                                                : true) {
+                                              context.pushNamed(
+                                                  'OK_FN_Payry_37_facturas');
+
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            } else {
+                                              var confirmDialogResponse =
+                                                  await showDialog<bool>(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title: Text(
+                                                                'Acceso denegado'),
+                                                            content: Text(
+                                                                'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        false),
+                                                                child: Text(
+                                                                    'Cancel'),
+                                                              ),
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        true),
+                                                                child: Text(
+                                                                    'Registrar empresa'),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      ) ??
+                                                      false;
+                                              if (confirmDialogResponse) {
+                                                context.pushNamed(
+                                                    'OK_FN_Payry_19_formularioEmpresa');
+
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              } else {
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              }
+                                            }
+                                          } else {
+                                            var confirmDialogResponse =
+                                                await showDialog<bool>(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return AlertDialog(
+                                                          title: Text(
+                                                              'Acceso denegado'),
+                                                          content: Text(
+                                                              'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext,
+                                                                      false),
+                                                              child: Text(
+                                                                  'Cancel'),
+                                                            ),
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext,
+                                                                      true),
+                                                              child: Text(
+                                                                  'Verificar número'),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    ) ??
+                                                    false;
+                                            if (confirmDialogResponse) {
+                                              context.pushNamed(
+                                                  'OK_FN_Payry_15_EditProfile');
+
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            } else {
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            }
+                                          }
+                                        } else {
+                                          var confirmDialogResponse =
+                                              await showDialog<bool>(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            'Acceso denegado'),
+                                                        content: Text(
+                                                            'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    false),
+                                                            child:
+                                                                Text('Cancel'),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    true),
+                                                            child: Text(
+                                                                'Reenviar'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  ) ??
+                                                  false;
+                                          if (confirmDialogResponse) {
+                                            try {
+                                              final result =
+                                                  await FirebaseFunctions
+                                                      .instance
+                                                      .httpsCallable(
+                                                          'verifyEmail')
+                                                      .call({
+                                                "email": currentUserEmail,
+                                              });
+                                              _model.verifyEmailResp6 =
+                                                  VerifyEmailCloudFunctionCallResponse(
+                                                data: result.data,
+                                                succeeded: true,
+                                                resultAsString:
+                                                    result.data.toString(),
+                                                jsonBody: result.data,
+                                              );
+                                            } on FirebaseFunctionsException catch (error) {
+                                              _model.verifyEmailResp6 =
+                                                  VerifyEmailCloudFunctionCallResponse(
+                                                errorCode: error.code,
+                                                succeeded: false,
+                                              );
+                                            }
+
+                                            _shouldSetState = true;
+                                            if (_model
+                                                .verifyEmailResp6!.succeeded!) {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text(
+                                                        'Verificación enviada'),
+                                                    content: Text(
+                                                        'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            } else {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text('Error'),
+                                                    content: Text(
+                                                        'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            }
+
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          } else {
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          }
+                                        }
+                                      } else {
+                                        if (_shouldSetState) setState(() {});
+                                        return;
+                                      }
+
+                                      if (_shouldSetState) setState(() {});
+                                    },
+                                    child: Container(
+                                      width: () {
+                                        if (MediaQuery.sizeOf(context).width <
+                                            390.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.42);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            480.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.44);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            900.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.3);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1025.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.23);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1300.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.18);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1600.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.14);
+                                        } else {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.1);
+                                        }
+                                      }(),
+                                      height: 75.0,
+                                      decoration: BoxDecoration(
+                                        color: valueOrDefault<bool>(
+                                                    currentUserDocument
+                                                        ?.isAdmin,
+                                                    false) ||
+                                                true
+                                            ? FlutterFlowTheme.of(context).back1
+                                            : Color(0x83CCCCCC),
+                                        borderRadius:
+                                            BorderRadius.circular(12.0),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 0.0, 16.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 10.0, 0.0),
+                                              child: Icon(
+                                                FFIcons.kfactura,
+                                                color: valueOrDefault<bool>(
+                                                            currentUserDocument
+                                                                ?.isAdmin,
+                                                            false) ||
+                                                        true
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText
+                                                    : Color(0x808F8F8F),
+                                                size: 20.0,
+                                              ),
+                                            ),
+                                            Text(
+                                              'Facturas',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Lexend',
+                                                    color: valueOrDefault<bool>(
+                                                                currentUserDocument
+                                                                    ?.isAdmin,
+                                                                false) ||
+                                                            true
+                                                        ? FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText
+                                                        : Color(0x808F8F8F),
+                                                  ),
+                                            ),
+                                          ].divide(SizedBox(width: 5.0)),
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
                                 InkWell(
@@ -2738,40 +2638,88 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     ),
                                   ),
                                 ),
-                                InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    var _shouldSetState = false;
-                                    if (valueOrDefault<bool>(
-                                            currentUserDocument?.isAdmin,
-                                            false) ||
-                                        oKFNPayry13MenumasUserPermissionsRecord!
-                                            .readTransfers) {
+                                AuthUserStreamWidget(
+                                  builder: (context) => InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      var _shouldSetState = false;
                                       if (valueOrDefault<bool>(
-                                          currentUserDocument?.isValidMail,
-                                          false)) {
+                                              currentUserDocument?.isAdmin,
+                                              false) ||
+                                          oKFNPayry13MenumasUserPermissionsRecord!
+                                              .readTransfers) {
                                         if (valueOrDefault<bool>(
-                                                currentUserDocument
-                                                    ?.isValidPhoneNumber,
-                                                false) ==
-                                            true) {
+                                            currentUserDocument?.isValidMail,
+                                            false)) {
                                           if (valueOrDefault<bool>(
-                                                  currentUserDocument?.isAdmin,
-                                                  false)
-                                              ? valueOrDefault<bool>(
                                                   currentUserDocument
-                                                      ?.isCompanyComplete,
-                                                  false)
-                                              : true) {
-                                            context.pushNamed(
-                                                'OK_FN_Payry_44_historialTransactions');
+                                                      ?.isValidPhoneNumber,
+                                                  false) ==
+                                              true) {
+                                            if (valueOrDefault<bool>(
+                                                    currentUserDocument
+                                                        ?.isAdmin,
+                                                    false)
+                                                ? valueOrDefault<bool>(
+                                                    currentUserDocument
+                                                        ?.isCompanyComplete,
+                                                    false)
+                                                : true) {
+                                              context.pushNamed(
+                                                  'OK_FN_Payry_44_historialTransactions');
 
-                                            if (_shouldSetState)
-                                              setState(() {});
-                                            return;
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            } else {
+                                              var confirmDialogResponse =
+                                                  await showDialog<bool>(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title: Text(
+                                                                'Acceso denegado'),
+                                                            content: Text(
+                                                                'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        false),
+                                                                child: Text(
+                                                                    'Cancel'),
+                                                              ),
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        true),
+                                                                child: Text(
+                                                                    'Registrar empresa'),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      ) ??
+                                                      false;
+                                              if (confirmDialogResponse) {
+                                                context.pushNamed(
+                                                    'OK_FN_Payry_19_formularioEmpresa');
+
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              } else {
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              }
+                                            }
                                           } else {
                                             var confirmDialogResponse =
                                                 await showDialog<bool>(
@@ -2782,7 +2730,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                           title: Text(
                                                               'Acceso denegado'),
                                                           content: Text(
-                                                              'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                                              'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
                                                           actions: [
                                                             TextButton(
                                                               onPressed: () =>
@@ -2798,7 +2746,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                       alertDialogContext,
                                                                       true),
                                                               child: Text(
-                                                                  'Registrar empresa'),
+                                                                  'Verificar número'),
                                                             ),
                                                           ],
                                                         );
@@ -2807,7 +2755,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     false;
                                             if (confirmDialogResponse) {
                                               context.pushNamed(
-                                                  'OK_FN_Payry_19_formularioEmpresa');
+                                                  'OK_FN_Payry_15_EditProfile');
 
                                               if (_shouldSetState)
                                                 setState(() {});
@@ -2828,7 +2776,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                         title: Text(
                                                             'Acceso denegado'),
                                                         content: Text(
-                                                            'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
+                                                            'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
@@ -2844,7 +2792,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                     alertDialogContext,
                                                                     true),
                                                             child: Text(
-                                                                'Verificar número'),
+                                                                'Reenviar'),
                                                           ),
                                                         ],
                                                       );
@@ -2852,8 +2800,73 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                   ) ??
                                                   false;
                                           if (confirmDialogResponse) {
-                                            context.pushNamed(
-                                                'OK_FN_Payry_15_EditProfile');
+                                            try {
+                                              final result =
+                                                  await FirebaseFunctions
+                                                      .instance
+                                                      .httpsCallable(
+                                                          'verifyEmail')
+                                                      .call({
+                                                "email": currentUserEmail,
+                                              });
+                                              _model.verifyEmailResp7 =
+                                                  VerifyEmailCloudFunctionCallResponse(
+                                                data: result.data,
+                                                succeeded: true,
+                                                resultAsString:
+                                                    result.data.toString(),
+                                                jsonBody: result.data,
+                                              );
+                                            } on FirebaseFunctionsException catch (error) {
+                                              _model.verifyEmailResp7 =
+                                                  VerifyEmailCloudFunctionCallResponse(
+                                                errorCode: error.code,
+                                                succeeded: false,
+                                              );
+                                            }
+
+                                            _shouldSetState = true;
+                                            if (_model
+                                                .verifyEmailResp7!.succeeded!) {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text(
+                                                        'Verificación enviada'),
+                                                    content: Text(
+                                                        'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            } else {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text('Error'),
+                                                    content: Text(
+                                                        'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            }
 
                                             if (_shouldSetState)
                                               setState(() {});
@@ -2865,223 +2878,130 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           }
                                         }
                                       } else {
-                                        var confirmDialogResponse =
-                                            await showDialog<bool>(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'Acceso denegado'),
-                                                      content: Text(
-                                                          'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  false),
-                                                          child: Text('Cancel'),
-                                                        ),
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  true),
-                                                          child:
-                                                              Text('Reenviar'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                ) ??
-                                                false;
-                                        if (confirmDialogResponse) {
-                                          try {
-                                            final result =
-                                                await FirebaseFunctions.instance
-                                                    .httpsCallable(
-                                                        'verifyEmail')
-                                                    .call({
-                                              "email": currentUserEmail,
-                                            });
-                                            _model.verifyEmailResp7 =
-                                                VerifyEmailCloudFunctionCallResponse(
-                                              data: result.data,
-                                              succeeded: true,
-                                              resultAsString:
-                                                  result.data.toString(),
-                                              jsonBody: result.data,
-                                            );
-                                          } on FirebaseFunctionsException catch (error) {
-                                            _model.verifyEmailResp7 =
-                                                VerifyEmailCloudFunctionCallResponse(
-                                              errorCode: error.code,
-                                              succeeded: false,
-                                            );
-                                          }
-
-                                          _shouldSetState = true;
-                                          if (_model
-                                              .verifyEmailResp7!.succeeded!) {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text(
-                                                      'Verificación enviada'),
-                                                  content: Text(
-                                                      'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                          } else {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text('Error'),
-                                                  content: Text(
-                                                      'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                          }
-
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        } else {
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        }
+                                        if (_shouldSetState) setState(() {});
+                                        return;
                                       }
-                                    } else {
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: Text('Acceso Denegado'),
-                                            content: Text(
-                                                'No cuentas con permisos suficientes.'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
+
                                       if (_shouldSetState) setState(() {});
-                                      return;
-                                    }
-
-                                    if (_shouldSetState) setState(() {});
-                                  },
-                                  child: Container(
-                                    width: () {
-                                      if (MediaQuery.sizeOf(context).width <
-                                          390.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.42);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          480.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.44);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          900.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.3);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1025.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.23);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1300.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.18);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1600.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.14);
-                                      } else {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.1);
-                                      }
-                                    }(),
-                                    height: 75.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context).back1,
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 10.0, 0.0),
-                                            child: Icon(
-                                              FFIcons.kcompartir,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 20.0,
+                                    },
+                                    child: Container(
+                                      width: () {
+                                        if (MediaQuery.sizeOf(context).width <
+                                            390.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.42);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            480.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.44);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            900.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.3);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1025.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.23);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1300.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.18);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1600.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.14);
+                                        } else {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.1);
+                                        }
+                                      }(),
+                                      height: 75.0,
+                                      decoration: BoxDecoration(
+                                        color: valueOrDefault<bool>(
+                                                    currentUserDocument
+                                                        ?.isAdmin,
+                                                    false) ||
+                                                oKFNPayry13MenumasUserPermissionsRecord!
+                                                    .readTransfers
+                                            ? FlutterFlowTheme.of(context).back1
+                                            : Color(0x83CCCCCC),
+                                        borderRadius:
+                                            BorderRadius.circular(12.0),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 0.0, 16.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 10.0, 0.0),
+                                              child: Icon(
+                                                FFIcons.kcompartir,
+                                                color: valueOrDefault<bool>(
+                                                            currentUserDocument
+                                                                ?.isAdmin,
+                                                            false) ||
+                                                        oKFNPayry13MenumasUserPermissionsRecord!
+                                                            .readTransfers
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText
+                                                    : Color(0x808F8F8F),
+                                                size: 20.0,
+                                              ),
                                             ),
-                                          ),
-                                          Text(
-                                            'Transacciones',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                  fontSize:
-                                                      valueOrDefault<double>(
-                                                    MediaQuery.sizeOf(context)
-                                                                .width <
-                                                            390.0
-                                                        ? 11.0
-                                                        : 14.0,
-                                                    11.0,
+                                            Text(
+                                              'Transacciones',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Lexend',
+                                                    color: valueOrDefault<bool>(
+                                                                currentUserDocument
+                                                                    ?.isAdmin,
+                                                                false) ||
+                                                            oKFNPayry13MenumasUserPermissionsRecord!
+                                                                .readTransfers
+                                                        ? (valueOrDefault<bool>(
+                                                                    currentUserDocument
+                                                                        ?.isAdmin,
+                                                                    false) ||
+                                                                oKFNPayry13MenumasUserPermissionsRecord!
+                                                                    .readTransfers
+                                                            ? FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText
+                                                            : Color(0x808F8F8F))
+                                                        : Color(0x808F8F8F),
+                                                    fontSize:
+                                                        valueOrDefault<double>(
+                                                      MediaQuery.sizeOf(context)
+                                                                  .width <
+                                                              390.0
+                                                          ? 11.0
+                                                          : 14.0,
+                                                      11.0,
+                                                    ),
                                                   ),
-                                                ),
-                                          ),
-                                        ].divide(SizedBox(width: 5.0)),
+                                            ),
+                                          ].divide(SizedBox(width: 5.0)),
+                                        ),
                                       ),
                                     ),
                                   ),

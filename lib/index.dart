@@ -23,7 +23,7 @@ export '/components/pages/o_k_f_n_payry_17_verificar_o_t_p/o_k_f_n_payry17_verif
     show OKFNPayry17VerificarOTPWidget;
 export '/components/pages/o_k_f_n_payry_19_formulario_empresa/o_k_f_n_payry19_formulario_empresa_widget.dart'
     show OKFNPayry19FormularioEmpresaWidget;
-export '/components/pages/o_k_f_n_payry_20_datos_bancarios/o_k_f_n_payry20_datos_bancarios_widget.dart'
+export '/components/o_k_f_n_payry_20_datos_bancarios/o_k_f_n_payry20_datos_bancarios_widget.dart'
     show OKFNPayry20DatosBancariosWidget;
 export '/components/pages/o_k_f_n_payry_22_conexion_a_p_i/o_k_f_n_payry22_conexion_a_p_i_widget.dart'
     show OKFNPayry22ConexionAPIWidget;

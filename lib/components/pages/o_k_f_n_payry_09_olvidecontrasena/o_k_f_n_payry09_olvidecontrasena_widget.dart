@@ -10,10 +10,10 @@ import 'o_k_f_n_payry09_olvidecontrasena_model.dart';
 export 'o_k_f_n_payry09_olvidecontrasena_model.dart';
 
 class OKFNPayry09OlvidecontrasenaWidget extends StatefulWidget {
-  const OKFNPayry09OlvidecontrasenaWidget({Key? key}) : super(key: key);
+  const OKFNPayry09OlvidecontrasenaWidget({super.key});
 
   @override
-  _OKFNPayry09OlvidecontrasenaWidgetState createState() =>
+  State<OKFNPayry09OlvidecontrasenaWidget> createState() =>
       _OKFNPayry09OlvidecontrasenaWidgetState();
 }
 

@@ -13,14 +13,14 @@ export 'o_k_f_n_payry36_detallesde_s_m_s_model.dart';
 
 class OKFNPayry36DetallesdeSMSWidget extends StatefulWidget {
   const OKFNPayry36DetallesdeSMSWidget({
-    Key? key,
+    super.key,
     required this.smsDocReference,
-  }) : super(key: key);
+  });
 
   final DocumentReference? smsDocReference;
 
   @override
-  _OKFNPayry36DetallesdeSMSWidgetState createState() =>
+  State<OKFNPayry36DetallesdeSMSWidget> createState() =>
       _OKFNPayry36DetallesdeSMSWidgetState();
 }
 
@@ -326,61 +326,6 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                         thickness: 1.0,
                                         color: FlutterFlowTheme.of(context)
                                             .accent4,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 16.0, 16.0, 0.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 8.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 8.0, 16.0, 8.0),
-                                              child: Icon(
-                                                FFIcons.khoja,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                size: 20.0,
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 12.0, 0.0),
-                                                child: Text(
-                                                  'Ver recibo',
-                                                  textAlign: TextAlign.start,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
                                       ),
                                     ],
                                   ),

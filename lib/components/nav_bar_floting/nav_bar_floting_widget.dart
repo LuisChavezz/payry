@@ -15,14 +15,14 @@ export 'nav_bar_floting_model.dart';
 
 class NavBarFlotingWidget extends StatefulWidget {
   const NavBarFlotingWidget({
-    Key? key,
+    super.key,
     required this.userPermissions,
-  }) : super(key: key);
+  });
 
   final UserPermissionsRecord? userPermissions;
 
   @override
-  _NavBarFlotingWidgetState createState() => _NavBarFlotingWidgetState();
+  State<NavBarFlotingWidget> createState() => _NavBarFlotingWidgetState();
 }
 
 class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
@@ -100,7 +100,9 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                         if (valueOrDefault<bool>(
                                 currentUserDocument?.isAdmin, false) ||
                             widget.userPermissions!.readQr ||
-                            widget.userPermissions!.readSms) {
+                            widget.userPermissions!.readSms ||
+                            widget.userPermissions!.createQr ||
+                            widget.userPermissions!.createSms) {
                           if (valueOrDefault<bool>(
                               currentUserDocument?.isValidMail, false)) {
                             if (valueOrDefault<bool>(

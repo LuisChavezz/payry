@@ -13,10 +13,10 @@ import 'o_k_f_n_payry26_dashboard_model.dart';
 export 'o_k_f_n_payry26_dashboard_model.dart';
 
 class OKFNPayry26DashboardWidget extends StatefulWidget {
-  const OKFNPayry26DashboardWidget({Key? key}) : super(key: key);
+  const OKFNPayry26DashboardWidget({super.key});
 
   @override
-  _OKFNPayry26DashboardWidgetState createState() =>
+  State<OKFNPayry26DashboardWidget> createState() =>
       _OKFNPayry26DashboardWidgetState();
 }
 
@@ -211,7 +211,11 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                     oKFNPayry26DashboardUserPermissionsRecord!
                                         .readSms ||
                                     valueOrDefault<bool>(
-                                        currentUserDocument?.isAdmin, false))
+                                        currentUserDocument?.isAdmin, false) ||
+                                    oKFNPayry26DashboardUserPermissionsRecord!
+                                        .createQr ||
+                                    oKFNPayry26DashboardUserPermissionsRecord!
+                                        .createSms)
                                   Expanded(
                                     child: AuthUserStreamWidget(
                                       builder: (context) => Column(
@@ -292,13 +296,14 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                   _model.tabBarController,
                                               children: [
                                                 Visibility(
-                                                  visible:
+                                                  visible: oKFNPayry26DashboardUserPermissionsRecord!
+                                                          .readQr ||
+                                                      valueOrDefault<bool>(
+                                                          currentUserDocument
+                                                              ?.isAdmin,
+                                                          false) ||
                                                       oKFNPayry26DashboardUserPermissionsRecord!
-                                                              .readQr ||
-                                                          valueOrDefault<bool>(
-                                                              currentUserDocument
-                                                                  ?.isAdmin,
-                                                              false),
+                                                          .createQr,
                                                   child: Padding(
                                                     padding:
                                                         EdgeInsets.all(8.0),
@@ -342,8 +347,20 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                   Colors
                                                                       .transparent,
                                                               onTap: () async {
-                                                                context.pushNamed(
-                                                                    'OK_FN_Payry_30_historialQRs');
+                                                                context
+                                                                    .pushNamed(
+                                                                  'OK_FN_Payry_30_historialQRs',
+                                                                  queryParameters:
+                                                                      {
+                                                                    'readAll':
+                                                                        serializeParam(
+                                                                      oKFNPayry26DashboardUserPermissionsRecord
+                                                                          ?.readQr,
+                                                                      ParamType
+                                                                          .bool,
+                                                                    ),
+                                                                  }.withoutNulls,
+                                                                );
                                                               },
                                                               child: Text(
                                                                 'Ver todas',
@@ -383,6 +400,13 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                         isEqualTo: valueOrDefault(
                                                                             currentUserDocument?.adminId,
                                                                             ''),
+                                                                      )
+                                                                      .where(
+                                                                        'uid',
+                                                                        isEqualTo: oKFNPayry26DashboardUserPermissionsRecord!.readQr ||
+                                                                                valueOrDefault<bool>(currentUserDocument?.isAdmin, false)
+                                                                            ? null
+                                                                            : currentUserUid,
                                                                       )
                                                                       .orderBy(
                                                                           'created_time',
@@ -471,7 +495,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                       context
                                                                           .pushNamed(
                                                                         'OK_FN_Payry_31_detallesdeQR',
-                                                                        queryParameters:
+                                                                        pathParameters:
                                                                             {
                                                                           'qrDocReference':
                                                                               serializeParam(
@@ -552,13 +576,14 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                   ),
                                                 ),
                                                 Visibility(
-                                                  visible:
+                                                  visible: oKFNPayry26DashboardUserPermissionsRecord!
+                                                          .readSms ||
+                                                      valueOrDefault<bool>(
+                                                          currentUserDocument
+                                                              ?.isAdmin,
+                                                          false) ||
                                                       oKFNPayry26DashboardUserPermissionsRecord!
-                                                              .readSms ||
-                                                          valueOrDefault<bool>(
-                                                              currentUserDocument
-                                                                  ?.isAdmin,
-                                                              false),
+                                                          .createSms,
                                                   child: Padding(
                                                     padding:
                                                         EdgeInsets.all(8.0),
@@ -583,7 +608,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                         'Lexend',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .primary,
+                                                                        .accent3,
                                                                     fontSize:
                                                                         16.0,
                                                                     fontWeight:
@@ -602,8 +627,20 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                   Colors
                                                                       .transparent,
                                                               onTap: () async {
-                                                                context.pushNamed(
-                                                                    'OK_FN_Payry_35_historialSMS');
+                                                                context
+                                                                    .pushNamed(
+                                                                  'OK_FN_Payry_35_historialSMS',
+                                                                  queryParameters:
+                                                                      {
+                                                                    'readAll':
+                                                                        serializeParam(
+                                                                      oKFNPayry26DashboardUserPermissionsRecord
+                                                                          ?.readSms,
+                                                                      ParamType
+                                                                          .bool,
+                                                                    ),
+                                                                  }.withoutNulls,
+                                                                );
                                                               },
                                                               child: Text(
                                                                 'Ver todas',
@@ -643,6 +680,13 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                         isEqualTo: valueOrDefault(
                                                                             currentUserDocument?.adminId,
                                                                             ''),
+                                                                      )
+                                                                      .where(
+                                                                        'uid',
+                                                                        isEqualTo: oKFNPayry26DashboardUserPermissionsRecord!.readSms ||
+                                                                                valueOrDefault<bool>(currentUserDocument?.isAdmin, false)
+                                                                            ? null
+                                                                            : currentUserUid,
                                                                       )
                                                                       .orderBy(
                                                                           'created_time',
@@ -731,7 +775,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                       context
                                                                           .pushNamed(
                                                                         'OK_FN_Payry_36_detallesdeSMS',
-                                                                        queryParameters:
+                                                                        pathParameters:
                                                                             {
                                                                           'smsDocReference':
                                                                               serializeParam(

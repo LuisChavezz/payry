@@ -12,10 +12,10 @@ import 'o_k_f_n_payry08_iniciasesion_model.dart';
 export 'o_k_f_n_payry08_iniciasesion_model.dart';
 
 class OKFNPayry08IniciasesionWidget extends StatefulWidget {
-  const OKFNPayry08IniciasesionWidget({Key? key}) : super(key: key);
+  const OKFNPayry08IniciasesionWidget({super.key});
 
   @override
-  _OKFNPayry08IniciasesionWidgetState createState() =>
+  State<OKFNPayry08IniciasesionWidget> createState() =>
       _OKFNPayry08IniciasesionWidgetState();
 }
 
@@ -543,15 +543,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                                     context.pop();
                                                   }
                                                   context.pushNamed(
-                                                    'OK_FN_Payry_05_Registrate',
-                                                    queryParameters: {
-                                                      'id': serializeParam(
-                                                        null,
-                                                        ParamType
-                                                            .DocumentReference,
-                                                      ),
-                                                    }.withoutNulls,
-                                                  );
+                                                      'OK_FN_Payry_05_Registrate');
                                                 },
                                                 child: Text(
                                                   'Regístrate ahora',

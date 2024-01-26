@@ -13,10 +13,10 @@ import 'o_k_f_n_payry14_perfil_p_e_n_d_s_w_model.dart';
 export 'o_k_f_n_payry14_perfil_p_e_n_d_s_w_model.dart';
 
 class OKFNPayry14PerfilPENDSWWidget extends StatefulWidget {
-  const OKFNPayry14PerfilPENDSWWidget({Key? key}) : super(key: key);
+  const OKFNPayry14PerfilPENDSWWidget({super.key});
 
   @override
-  _OKFNPayry14PerfilPENDSWWidgetState createState() =>
+  State<OKFNPayry14PerfilPENDSWWidget> createState() =>
       _OKFNPayry14PerfilPENDSWWidgetState();
 }
 

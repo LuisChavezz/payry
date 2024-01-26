@@ -12,10 +12,10 @@ import 'o_k_f_n_payry29_opciones_q_r_model.dart';
 export 'o_k_f_n_payry29_opciones_q_r_model.dart';
 
 class OKFNPayry29OpcionesQRWidget extends StatefulWidget {
-  const OKFNPayry29OpcionesQRWidget({Key? key}) : super(key: key);
+  const OKFNPayry29OpcionesQRWidget({super.key});
 
   @override
-  _OKFNPayry29OpcionesQRWidgetState createState() =>
+  State<OKFNPayry29OpcionesQRWidget> createState() =>
       _OKFNPayry29OpcionesQRWidgetState();
 }
 
@@ -209,9 +209,19 @@ class _OKFNPayry29OpcionesQRWidgetState
                                             currentUserDocument?.isAdmin,
                                             false) ||
                                         oKFNPayry29OpcionesQRUserPermissionsRecord!
-                                            .readQr) {
+                                            .readQr ||
+                                        oKFNPayry29OpcionesQRUserPermissionsRecord!
+                                            .createQr) {
                                       context.pushNamed(
-                                          'OK_FN_Payry_30_historialQRs');
+                                        'OK_FN_Payry_30_historialQRs',
+                                        queryParameters: {
+                                          'readAll': serializeParam(
+                                            oKFNPayry29OpcionesQRUserPermissionsRecord
+                                                ?.readQr,
+                                            ParamType.bool,
+                                          ),
+                                        }.withoutNulls,
+                                      );
 
                                       return;
                                     } else {

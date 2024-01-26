@@ -13,14 +13,14 @@ export 'o_k_f_n_payry25_permisos_model.dart';
 
 class OKFNPayry25PermisosWidget extends StatefulWidget {
   const OKFNPayry25PermisosWidget({
-    Key? key,
+    super.key,
     required this.uid,
-  }) : super(key: key);
+  });
 
   final String? uid;
 
   @override
-  _OKFNPayry25PermisosWidgetState createState() =>
+  State<OKFNPayry25PermisosWidget> createState() =>
       _OKFNPayry25PermisosWidgetState();
 }
 
@@ -628,6 +628,110 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                               createUserPermissionsRecordData(
                                         readTransfers:
                                             _model.readTransfersSwitchValue,
+                                      ));
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Permiso actualizado.',
+                                            style: TextStyle(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondary,
+                                        ),
+                                      );
+                                    }
+                                  },
+                                  activeColor:
+                                      FlutterFlowTheme.of(context).success,
+                                  activeTrackColor:
+                                      FlutterFlowTheme.of(context).accent1,
+                                  inactiveTrackColor:
+                                      FlutterFlowTheme.of(context).accent4,
+                                  inactiveThumbColor:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Flexible(
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 16.0, 0.0),
+                                        child: Icon(
+                                          FFIcons.kestadisticas,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          size: 20.0,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Ver estadísticas',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Lexend',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Switch.adaptive(
+                                  value: _model.readStatisticsSwitchValue ??=
+                                      oKFNPayry25PermisosUserPermissionsRecord!
+                                          .readTransfers,
+                                  onChanged: (newValue) async {
+                                    setState(() => _model
+                                        .readStatisticsSwitchValue = newValue!);
+                                    if (newValue!) {
+                                      await oKFNPayry25PermisosUserPermissionsRecord!
+                                          .reference
+                                          .update(
+                                              createUserPermissionsRecordData(
+                                        readStatistics:
+                                            _model.readStatisticsSwitchValue,
+                                      ));
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Permiso actualizado.',
+                                            style: TextStyle(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondary,
+                                        ),
+                                      );
+                                    } else {
+                                      await oKFNPayry25PermisosUserPermissionsRecord!
+                                          .reference
+                                          .update(
+                                              createUserPermissionsRecordData(
+                                        readStatistics:
+                                            _model.readStatisticsSwitchValue,
                                       ));
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(

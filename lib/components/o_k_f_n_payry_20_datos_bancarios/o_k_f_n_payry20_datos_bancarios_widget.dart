@@ -20,18 +20,18 @@ export 'o_k_f_n_payry20_datos_bancarios_model.dart';
 
 class OKFNPayry20DatosBancariosWidget extends StatefulWidget {
   const OKFNPayry20DatosBancariosWidget({
-    Key? key,
+    super.key,
     required this.companyDocRef,
     required this.clabe,
     required this.bank,
-  }) : super(key: key);
+  });
 
   final DocumentReference? companyDocRef;
   final String? clabe;
   final String? bank;
 
   @override
-  _OKFNPayry20DatosBancariosWidgetState createState() =>
+  State<OKFNPayry20DatosBancariosWidget> createState() =>
       _OKFNPayry20DatosBancariosWidgetState();
 }
 

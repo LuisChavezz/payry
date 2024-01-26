@@ -109,11 +109,7 @@ class ParameterData {
 final parametersBuilderMap =
     <String, Future<ParameterData> Function(Map<String, dynamic>)>{
   'OK_FN_Payry_08_iniciasesion': ParameterData.none(),
-  'OK_FN_Payry_05_Registrate': (data) async => ParameterData(
-        allParams: {
-          'id': getParameter<DocumentReference>(data, 'id'),
-        },
-      ),
+  'OK_FN_Payry_05_Registrate': ParameterData.none(),
   'OK_FN_Payry_09_olvidecontrasena': ParameterData.none(),
   'OK_FN_Payry_01_Splash': ParameterData.none(),
   'OK_FN_Payry_02_onboarding1': ParameterData.none(),
@@ -153,23 +149,48 @@ final parametersBuilderMap =
         },
       ),
   'OK_FN_Payry_29_opcionesQR': ParameterData.none(),
-  'OK_FN_Payry_30_historialQRs': ParameterData.none(),
-  'OK_FN_Payry_35_historialSMS': ParameterData.none(),
-  'OK_FN_Payry_34_opcionesSMS': ParameterData.none(),
-  'OK_FN_Payry_31_detallesdeQR': (data) async => ParameterData(
+  'OK_FN_Payry_30_historialQRs': (data) async => ParameterData(
         allParams: {
-          'qrDocReference':
-              getParameter<DocumentReference>(data, 'qrDocReference'),
+          'readAll': getParameter<bool>(data, 'readAll'),
         },
       ),
+  'OK_FN_Payry_35_historialSMS': (data) async => ParameterData(
+        allParams: {
+          'readAll': getParameter<bool>(data, 'readAll'),
+        },
+      ),
+  'OK_FN_Payry_34_opcionesSMS': ParameterData.none(),
+  'OK_FN_Payry_31_detallesdeQR': (data) async {
+    final allParams = {
+      'qrDocReference': getParameter<DocumentReference>(data, 'qrDocReference'),
+    };
+    return ParameterData(
+      requiredParams: {
+        'qrDocReference': serializeParam(
+          allParams['qrDocReference'],
+          ParamType.DocumentReference,
+        ),
+      },
+      allParams: allParams,
+    );
+  },
   'OK_FN_Payry_37_facturas': ParameterData.none(),
   'OK_FN_Payry_42_Terminosycondiciones': ParameterData.none(),
-  'OK_FN_Payry_36_detallesdeSMS': (data) async => ParameterData(
-        allParams: {
-          'smsDocReference':
-              getParameter<DocumentReference>(data, 'smsDocReference'),
-        },
-      ),
+  'OK_FN_Payry_36_detallesdeSMS': (data) async {
+    final allParams = {
+      'smsDocReference':
+          getParameter<DocumentReference>(data, 'smsDocReference'),
+    };
+    return ParameterData(
+      requiredParams: {
+        'smsDocReference': serializeParam(
+          allParams['smsDocReference'],
+          ParamType.DocumentReference,
+        ),
+      },
+      allParams: allParams,
+    );
+  },
   'OK_FN_Payry_32_solicitarSMS': ParameterData.none(),
   'OK_FN_Payry_40_Notificaciones': ParameterData.none(),
   'OK_FN_Payry_41_FAQs': ParameterData.none(),

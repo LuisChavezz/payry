@@ -12,14 +12,14 @@ export 'o_k_f_n_payry28_qr_generado_model.dart';
 
 class OKFNPayry28QrGeneradoWidget extends StatefulWidget {
   const OKFNPayry28QrGeneradoWidget({
-    Key? key,
+    super.key,
     required this.createdQrReference,
-  }) : super(key: key);
+  });
 
   final DocumentReference? createdQrReference;
 
   @override
-  _OKFNPayry28QrGeneradoWidgetState createState() =>
+  State<OKFNPayry28QrGeneradoWidget> createState() =>
       _OKFNPayry28QrGeneradoWidgetState();
 }
 

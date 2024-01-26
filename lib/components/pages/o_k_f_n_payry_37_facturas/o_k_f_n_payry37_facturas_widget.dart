@@ -14,10 +14,10 @@ import 'o_k_f_n_payry37_facturas_model.dart';
 export 'o_k_f_n_payry37_facturas_model.dart';
 
 class OKFNPayry37FacturasWidget extends StatefulWidget {
-  const OKFNPayry37FacturasWidget({Key? key}) : super(key: key);
+  const OKFNPayry37FacturasWidget({super.key});
 
   @override
-  _OKFNPayry37FacturasWidgetState createState() =>
+  State<OKFNPayry37FacturasWidget> createState() =>
       _OKFNPayry37FacturasWidgetState();
 }
 
@@ -164,6 +164,7 @@ class _OKFNPayry37FacturasWidgetState extends State<OKFNPayry37FacturasWidget> {
                                         width: double.infinity,
                                         color: Color(0x00000000),
                                         child: ExpandableNotifier(
+                                          initialExpanded: false,
                                           child: ExpandablePanel(
                                             header: Row(
                                               mainAxisSize: MainAxisSize.max,

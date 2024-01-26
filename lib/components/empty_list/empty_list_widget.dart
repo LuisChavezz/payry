@@ -9,18 +9,17 @@ export 'empty_list_model.dart';
 
 class EmptyListWidget extends StatefulWidget {
   const EmptyListWidget({
-    Key? key,
+    super.key,
     String? title,
     String? message,
   })  : this.title = title ?? 'Lista  vacía',
-        this.message = message ?? 'La lista se encuentra vacía.',
-        super(key: key);
+        this.message = message ?? 'La lista se encuentra vacía.';
 
   final String title;
   final String message;
 
   @override
-  _EmptyListWidgetState createState() => _EmptyListWidgetState();
+  State<EmptyListWidget> createState() => _EmptyListWidgetState();
 }
 
 class _EmptyListWidgetState extends State<EmptyListWidget> {

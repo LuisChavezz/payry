@@ -17,10 +17,10 @@ import 'o_k_f_n_payry15_edit_profile_model.dart';
 export 'o_k_f_n_payry15_edit_profile_model.dart';
 
 class OKFNPayry15EditProfileWidget extends StatefulWidget {
-  const OKFNPayry15EditProfileWidget({Key? key}) : super(key: key);
+  const OKFNPayry15EditProfileWidget({super.key});
 
   @override
-  _OKFNPayry15EditProfileWidgetState createState() =>
+  State<OKFNPayry15EditProfileWidget> createState() =>
       _OKFNPayry15EditProfileWidgetState();
 }
 

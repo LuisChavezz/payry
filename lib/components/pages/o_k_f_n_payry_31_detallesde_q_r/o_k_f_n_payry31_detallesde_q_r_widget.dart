@@ -19,14 +19,14 @@ export 'o_k_f_n_payry31_detallesde_q_r_model.dart';
 
 class OKFNPayry31DetallesdeQRWidget extends StatefulWidget {
   const OKFNPayry31DetallesdeQRWidget({
-    Key? key,
+    super.key,
     required this.qrDocReference,
-  }) : super(key: key);
+  });
 
   final DocumentReference? qrDocReference;
 
   @override
-  _OKFNPayry31DetallesdeQRWidgetState createState() =>
+  State<OKFNPayry31DetallesdeQRWidget> createState() =>
       _OKFNPayry31DetallesdeQRWidgetState();
 }
 
@@ -393,6 +393,9 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                               oKFNPayry31DetallesdeQRQrRecord
                                                   .concept,
                                           "token": FFAppState().serverToken,
+                                          "qrId":
+                                              oKFNPayry31DetallesdeQRQrRecord
+                                                  .reference.id,
                                         });
                                         _model.generateQrResp =
                                             CrearMovimientoQRCloudFunctionCallResponse(

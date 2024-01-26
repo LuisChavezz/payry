@@ -10,10 +10,10 @@ import 'o_k_f_n_payry11_olvidecontrasenanueva_model.dart';
 export 'o_k_f_n_payry11_olvidecontrasenanueva_model.dart';
 
 class OKFNPayry11OlvidecontrasenanuevaWidget extends StatefulWidget {
-  const OKFNPayry11OlvidecontrasenanuevaWidget({Key? key}) : super(key: key);
+  const OKFNPayry11OlvidecontrasenanuevaWidget({super.key});
 
   @override
-  _OKFNPayry11OlvidecontrasenanuevaWidgetState createState() =>
+  State<OKFNPayry11OlvidecontrasenanuevaWidget> createState() =>
       _OKFNPayry11OlvidecontrasenanuevaWidgetState();
 }
 

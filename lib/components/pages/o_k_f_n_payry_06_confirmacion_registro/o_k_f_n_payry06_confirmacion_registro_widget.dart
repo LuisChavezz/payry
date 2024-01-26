@@ -9,10 +9,10 @@ import 'o_k_f_n_payry06_confirmacion_registro_model.dart';
 export 'o_k_f_n_payry06_confirmacion_registro_model.dart';
 
 class OKFNPayry06ConfirmacionRegistroWidget extends StatefulWidget {
-  const OKFNPayry06ConfirmacionRegistroWidget({Key? key}) : super(key: key);
+  const OKFNPayry06ConfirmacionRegistroWidget({super.key});
 
   @override
-  _OKFNPayry06ConfirmacionRegistroWidgetState createState() =>
+  State<OKFNPayry06ConfirmacionRegistroWidget> createState() =>
       _OKFNPayry06ConfirmacionRegistroWidgetState();
 }
 

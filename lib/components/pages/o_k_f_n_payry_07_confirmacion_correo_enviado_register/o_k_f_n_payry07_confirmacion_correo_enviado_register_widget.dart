@@ -10,11 +10,10 @@ export 'o_k_f_n_payry07_confirmacion_correo_enviado_register_model.dart';
 
 class OKFNPayry07ConfirmacionCorreoEnviadoRegisterWidget
     extends StatefulWidget {
-  const OKFNPayry07ConfirmacionCorreoEnviadoRegisterWidget({Key? key})
-      : super(key: key);
+  const OKFNPayry07ConfirmacionCorreoEnviadoRegisterWidget({super.key});
 
   @override
-  _OKFNPayry07ConfirmacionCorreoEnviadoRegisterWidgetState createState() =>
+  State<OKFNPayry07ConfirmacionCorreoEnviadoRegisterWidget> createState() =>
       _OKFNPayry07ConfirmacionCorreoEnviadoRegisterWidgetState();
 }
 

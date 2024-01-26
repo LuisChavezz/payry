@@ -9,10 +9,10 @@ import 'o_k_f_n_payry18_confirmacion_telefono_model.dart';
 export 'o_k_f_n_payry18_confirmacion_telefono_model.dart';
 
 class OKFNPayry18ConfirmacionTelefonoWidget extends StatefulWidget {
-  const OKFNPayry18ConfirmacionTelefonoWidget({Key? key}) : super(key: key);
+  const OKFNPayry18ConfirmacionTelefonoWidget({super.key});
 
   @override
-  _OKFNPayry18ConfirmacionTelefonoWidgetState createState() =>
+  State<OKFNPayry18ConfirmacionTelefonoWidget> createState() =>
       _OKFNPayry18ConfirmacionTelefonoWidgetState();
 }
 

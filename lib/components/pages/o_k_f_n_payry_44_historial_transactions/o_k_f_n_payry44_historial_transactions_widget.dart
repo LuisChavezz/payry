@@ -12,10 +12,10 @@ import 'o_k_f_n_payry44_historial_transactions_model.dart';
 export 'o_k_f_n_payry44_historial_transactions_model.dart';
 
 class OKFNPayry44HistorialTransactionsWidget extends StatefulWidget {
-  const OKFNPayry44HistorialTransactionsWidget({Key? key}) : super(key: key);
+  const OKFNPayry44HistorialTransactionsWidget({super.key});
 
   @override
-  _OKFNPayry44HistorialTransactionsWidgetState createState() =>
+  State<OKFNPayry44HistorialTransactionsWidget> createState() =>
       _OKFNPayry44HistorialTransactionsWidgetState();
 }
 

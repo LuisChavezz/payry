@@ -56,3 +56,47 @@ String? imagePathToString(String? imagePath) {
   }
   return null;
 }
+
+String? toUppercase(String? text) {
+  if (text == null) {
+    return null;
+  }
+  return text.toUpperCase();
+}
+
+dynamic notificationRedirect(
+  String? url,
+  String? subject,
+) {
+  try {
+    if (url == null || subject == null) {
+      return {'redirect': false, 'type': '', 'id': ''};
+    }
+
+    Uri uri = Uri.parse(url);
+    String path = uri.queryParameters['link'] ?? '';
+    String id = path.substring(path.lastIndexOf('/') + 1);
+
+    bool redirect = subject.toLowerCase().contains('qr') ||
+        subject.toLowerCase().contains('sms');
+    String type =
+        redirect ? (subject.toLowerCase().contains('qr') ? 'qr' : 'sms') : '';
+
+    // Return the result as a JSON map
+    return {'redirect': redirect, 'type': type, 'id': id};
+  } catch (e) {
+    return {'redirect': false, 'type': '', 'id': ''};
+  }
+}
+
+DocumentReference? jsonPathToDocRef(String? id) {
+  try {
+    return FirebaseFirestore.instance.collection('qr').doc(id);
+  } catch (e) {
+    throw e;
+  }
+}
+
+String? jsonPathToString(String? jsonPath) {
+  return jsonPath;
+}

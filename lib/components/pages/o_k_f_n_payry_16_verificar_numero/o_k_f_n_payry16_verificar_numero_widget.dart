@@ -11,10 +11,10 @@ import 'o_k_f_n_payry16_verificar_numero_model.dart';
 export 'o_k_f_n_payry16_verificar_numero_model.dart';
 
 class OKFNPayry16VerificarNumeroWidget extends StatefulWidget {
-  const OKFNPayry16VerificarNumeroWidget({Key? key}) : super(key: key);
+  const OKFNPayry16VerificarNumeroWidget({super.key});
 
   @override
-  _OKFNPayry16VerificarNumeroWidgetState createState() =>
+  State<OKFNPayry16VerificarNumeroWidget> createState() =>
       _OKFNPayry16VerificarNumeroWidgetState();
 }
 

@@ -9,10 +9,10 @@ import 'o_k_f_n_payry33_s_m_senviado_model.dart';
 export 'o_k_f_n_payry33_s_m_senviado_model.dart';
 
 class OKFNPayry33SMSenviadoWidget extends StatefulWidget {
-  const OKFNPayry33SMSenviadoWidget({Key? key}) : super(key: key);
+  const OKFNPayry33SMSenviadoWidget({super.key});
 
   @override
-  _OKFNPayry33SMSenviadoWidgetState createState() =>
+  State<OKFNPayry33SMSenviadoWidget> createState() =>
       _OKFNPayry33SMSenviadoWidgetState();
 }
 

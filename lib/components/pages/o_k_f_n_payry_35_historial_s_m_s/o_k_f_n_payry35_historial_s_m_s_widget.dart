@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/empty_list/empty_list_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -14,10 +15,15 @@ import 'o_k_f_n_payry35_historial_s_m_s_model.dart';
 export 'o_k_f_n_payry35_historial_s_m_s_model.dart';
 
 class OKFNPayry35HistorialSMSWidget extends StatefulWidget {
-  const OKFNPayry35HistorialSMSWidget({Key? key}) : super(key: key);
+  const OKFNPayry35HistorialSMSWidget({
+    super.key,
+    required this.readAll,
+  });
+
+  final bool? readAll;
 
   @override
-  _OKFNPayry35HistorialSMSWidgetState createState() =>
+  State<OKFNPayry35HistorialSMSWidget> createState() =>
       _OKFNPayry35HistorialSMSWidgetState();
 }
 
@@ -332,7 +338,25 @@ class _OKFNPayry35HistorialSMSWidgetState
                                     builder: (context) {
                                       final smsItem =
                                           oKFNPayry35HistorialSMSSmsRecordList
+                                              .where((e) =>
+                                                  (!widget.readAll! &&
+                                                      (e.uid ==
+                                                          currentUserUid)) ||
+                                                  valueOrDefault<bool>(
+                                                      currentUserDocument
+                                                          ?.isAdmin,
+                                                      false))
                                               .toList();
+                                      if (smsItem.isEmpty) {
+                                        return Container(
+                                          height: 100.0,
+                                          child: EmptyListWidget(
+                                            title: 'No hay SMS\'s',
+                                            message:
+                                                'Aun no hay transacciones por SMS',
+                                          ),
+                                        );
+                                      }
                                       return ListView.builder(
                                         padding: EdgeInsets.zero,
                                         shrinkWrap: true,
@@ -354,7 +378,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                               onTap: () async {
                                                 context.pushNamed(
                                                   'OK_FN_Payry_36_detallesdeSMS',
-                                                  queryParameters: {
+                                                  pathParameters: {
                                                     'smsDocReference':
                                                         serializeParam(
                                                       smsItemItem.reference,
@@ -521,8 +545,24 @@ class _OKFNPayry35HistorialSMSWidgetState
                                       0.0, 24.0, 0.0, 0.0),
                                   child: Builder(
                                     builder: (context) {
-                                      final smsItem =
-                                          _model.simpleSearchResults.toList();
+                                      final smsItem = _model.simpleSearchResults
+                                          .where((e) =>
+                                              (!widget.readAll! &&
+                                                  (e.uid == currentUserUid)) ||
+                                              valueOrDefault<bool>(
+                                                  currentUserDocument?.isAdmin,
+                                                  false))
+                                          .toList();
+                                      if (smsItem.isEmpty) {
+                                        return Container(
+                                          height: 100.0,
+                                          child: EmptyListWidget(
+                                            title: 'No hay SMS\'s',
+                                            message:
+                                                'No hubo resultados de tu búsqueda',
+                                          ),
+                                        );
+                                      }
                                       return ListView.builder(
                                         padding: EdgeInsets.zero,
                                         shrinkWrap: true,
@@ -544,7 +584,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                               onTap: () async {
                                                 context.pushNamed(
                                                   'OK_FN_Payry_36_detallesdeSMS',
-                                                  queryParameters: {
+                                                  pathParameters: {
                                                     'smsDocReference':
                                                         serializeParam(
                                                       smsItemItem.reference,

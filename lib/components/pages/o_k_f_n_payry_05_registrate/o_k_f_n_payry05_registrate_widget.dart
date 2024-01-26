@@ -14,15 +14,10 @@ import 'o_k_f_n_payry05_registrate_model.dart';
 export 'o_k_f_n_payry05_registrate_model.dart';
 
 class OKFNPayry05RegistrateWidget extends StatefulWidget {
-  const OKFNPayry05RegistrateWidget({
-    Key? key,
-    this.id,
-  }) : super(key: key);
-
-  final DocumentReference? id;
+  const OKFNPayry05RegistrateWidget({super.key});
 
   @override
-  _OKFNPayry05RegistrateWidgetState createState() =>
+  State<OKFNPayry05RegistrateWidget> createState() =>
       _OKFNPayry05RegistrateWidgetState();
 }
 
@@ -242,7 +237,6 @@ class _OKFNPayry05RegistrateWidgetState
                                                     _model.emailFieldController,
                                                 focusNode:
                                                     _model.emailFieldFocusNode,
-                                                readOnly: widget.id != null,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelText:
@@ -647,6 +641,7 @@ class _OKFNPayry05RegistrateWidgetState
                                                           readSms: false,
                                                           readTransfers: false,
                                                           createRefunds: false,
+                                                          readStatistics: false,
                                                         ));
                                                     try {
                                                       final result =

@@ -9,10 +9,10 @@ import 'o_k_f_n_payry43_politicadeprivacidad_model.dart';
 export 'o_k_f_n_payry43_politicadeprivacidad_model.dart';
 
 class OKFNPayry43PoliticadeprivacidadWidget extends StatefulWidget {
-  const OKFNPayry43PoliticadeprivacidadWidget({Key? key}) : super(key: key);
+  const OKFNPayry43PoliticadeprivacidadWidget({super.key});
 
   @override
-  _OKFNPayry43PoliticadeprivacidadWidgetState createState() =>
+  State<OKFNPayry43PoliticadeprivacidadWidget> createState() =>
       _OKFNPayry43PoliticadeprivacidadWidgetState();
 }
 

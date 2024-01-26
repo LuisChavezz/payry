@@ -25,6 +25,8 @@ class OKFNPayry25PermisosModel
   bool? readSmsSwitchValue;
   // State field(s) for ReadTransfersSwitch widget.
   bool? readTransfersSwitchValue;
+  // State field(s) for ReadStatisticsSwitch widget.
+  bool? readStatisticsSwitchValue;
   // State field(s) for CreateRefundSwitch widget.
   bool? createRefundSwitchValue;
 

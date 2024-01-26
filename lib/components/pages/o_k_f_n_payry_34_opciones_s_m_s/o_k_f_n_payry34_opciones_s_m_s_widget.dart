@@ -12,10 +12,10 @@ import 'o_k_f_n_payry34_opciones_s_m_s_model.dart';
 export 'o_k_f_n_payry34_opciones_s_m_s_model.dart';
 
 class OKFNPayry34OpcionesSMSWidget extends StatefulWidget {
-  const OKFNPayry34OpcionesSMSWidget({Key? key}) : super(key: key);
+  const OKFNPayry34OpcionesSMSWidget({super.key});
 
   @override
-  _OKFNPayry34OpcionesSMSWidgetState createState() =>
+  State<OKFNPayry34OpcionesSMSWidget> createState() =>
       _OKFNPayry34OpcionesSMSWidgetState();
 }
 
@@ -211,9 +211,19 @@ class _OKFNPayry34OpcionesSMSWidgetState
                                             currentUserDocument?.isAdmin,
                                             false) ||
                                         oKFNPayry34OpcionesSMSUserPermissionsRecord!
-                                            .readSms) {
+                                            .readSms ||
+                                        oKFNPayry34OpcionesSMSUserPermissionsRecord!
+                                            .createQr) {
                                       context.pushNamed(
-                                          'OK_FN_Payry_35_historialSMS');
+                                        'OK_FN_Payry_35_historialSMS',
+                                        queryParameters: {
+                                          'readAll': serializeParam(
+                                            oKFNPayry34OpcionesSMSUserPermissionsRecord
+                                                ?.readSms,
+                                            ParamType.bool,
+                                          ),
+                                        }.withoutNulls,
+                                      );
 
                                       return;
                                     } else {

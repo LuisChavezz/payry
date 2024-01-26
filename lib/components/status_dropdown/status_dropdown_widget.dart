@@ -14,16 +14,16 @@ export 'status_dropdown_model.dart';
 
 class StatusDropdownWidget extends StatefulWidget {
   const StatusDropdownWidget({
-    Key? key,
+    super.key,
     required this.userStatus,
     required this.userReference,
-  }) : super(key: key);
+  });
 
   final bool? userStatus;
   final DocumentReference? userReference;
 
   @override
-  _StatusDropdownWidgetState createState() => _StatusDropdownWidgetState();
+  State<StatusDropdownWidget> createState() => _StatusDropdownWidgetState();
 }
 
 class _StatusDropdownWidgetState extends State<StatusDropdownWidget> {
@@ -80,12 +80,7 @@ class _StatusDropdownWidgetState extends State<StatusDropdownWidget> {
       height: 40.0,
       textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
             fontFamily: 'Lexend',
-            color: valueOrDefault<Color>(
-              widget.userStatus!
-                  ? Color(0xFF0FB978)
-                  : FlutterFlowTheme.of(context).error,
-              FlutterFlowTheme.of(context).alternate,
-            ),
+            color: FlutterFlowTheme.of(context).accent3,
           ),
       hintText: 'Please select...',
       icon: Icon(

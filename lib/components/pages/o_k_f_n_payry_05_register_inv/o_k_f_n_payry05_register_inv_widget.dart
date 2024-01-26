@@ -15,14 +15,14 @@ export 'o_k_f_n_payry05_register_inv_model.dart';
 
 class OKFNPayry05RegisterInvWidget extends StatefulWidget {
   const OKFNPayry05RegisterInvWidget({
-    Key? key,
+    super.key,
     this.id,
-  }) : super(key: key);
+  });
 
   final DocumentReference? id;
 
   @override
-  _OKFNPayry05RegisterInvWidgetState createState() =>
+  State<OKFNPayry05RegisterInvWidget> createState() =>
       _OKFNPayry05RegisterInvWidgetState();
 }
 
@@ -712,6 +712,8 @@ class _OKFNPayry05RegisterInvWidgetState
                                                             readTransfers:
                                                                 false,
                                                             createRefunds:
+                                                                false,
+                                                            readStatistics:
                                                                 false,
                                                           ));
                                                       try {
