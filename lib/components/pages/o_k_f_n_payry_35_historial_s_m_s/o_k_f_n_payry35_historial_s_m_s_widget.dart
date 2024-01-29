@@ -183,7 +183,6 @@ class _OKFNPayry35HistorialSMSWidgetState
                                           }
                                         },
                                       ),
-                                      autofocus: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Buscar...',

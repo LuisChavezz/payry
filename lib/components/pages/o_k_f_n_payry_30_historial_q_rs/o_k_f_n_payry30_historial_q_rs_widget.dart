@@ -183,7 +183,6 @@ class _OKFNPayry30HistorialQRsWidgetState
                                           }
                                         },
                                       ),
-                                      autofocus: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Buscar...',
