@@ -378,6 +378,23 @@ class _OKFNPayry27SolicitarQRWidgetState
                                           },
                                         ),
                                       });
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Completado'),
+                                            content: Text(
+                                                'El QR se ha generado con éxito.'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
                                       if (Navigator.of(context).canPop()) {
                                         context.pop();
                                       }

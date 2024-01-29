@@ -24,23 +24,6 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _serverToken = prefs.getString('ff_serverToken') ?? _serverToken;
     });
-    _safeInit(() {
-      _dynamicLinkPrefix =
-          prefs.getString('ff_dynamicLinkPrefix') ?? _dynamicLinkPrefix;
-    });
-    _safeInit(() {
-      _dynamicLinkBase =
-          prefs.getString('ff_dynamicLinkBase') ?? _dynamicLinkBase;
-    });
-    _safeInit(() {
-      _androidAPN = prefs.getString('ff_androidAPN') ?? _androidAPN;
-    });
-    _safeInit(() {
-      _appleID = prefs.getString('ff_appleID') ?? _appleID;
-    });
-    _safeInit(() {
-      _packageName = prefs.getString('ff_packageName') ?? _packageName;
-    });
   }
 
   void update(VoidCallback callback) {
@@ -80,41 +63,6 @@ class FFAppState extends ChangeNotifier {
   set serverToken(String _value) {
     _serverToken = _value;
     prefs.setString('ff_serverToken', _value);
-  }
-
-  String _dynamicLinkPrefix = 'https://payryy.page.link/?link=';
-  String get dynamicLinkPrefix => _dynamicLinkPrefix;
-  set dynamicLinkPrefix(String _value) {
-    _dynamicLinkPrefix = _value;
-    prefs.setString('ff_dynamicLinkPrefix', _value);
-  }
-
-  String _dynamicLinkBase = 'https://payryy.page.link/';
-  String get dynamicLinkBase => _dynamicLinkBase;
-  set dynamicLinkBase(String _value) {
-    _dynamicLinkBase = _value;
-    prefs.setString('ff_dynamicLinkBase', _value);
-  }
-
-  String _androidAPN = 'com.flutterflow.payry';
-  String get androidAPN => _androidAPN;
-  set androidAPN(String _value) {
-    _androidAPN = _value;
-    prefs.setString('ff_androidAPN', _value);
-  }
-
-  String _appleID = '6471020825';
-  String get appleID => _appleID;
-  set appleID(String _value) {
-    _appleID = _value;
-    prefs.setString('ff_appleID', _value);
-  }
-
-  String _packageName = 'com.flutterflow.payry';
-  String get packageName => _packageName;
-  set packageName(String _value) {
-    _packageName = _value;
-    prefs.setString('ff_packageName', _value);
   }
 }
 

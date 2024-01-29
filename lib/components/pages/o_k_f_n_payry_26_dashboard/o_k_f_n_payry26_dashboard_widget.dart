@@ -107,7 +107,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                       children: [
                         Container(
                           width: double.infinity,
-                          height: MediaQuery.sizeOf(context).height * 0.45,
+                          height: MediaQuery.sizeOf(context).height * 0.4,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0xFF7F3BB7), Color(0xFF491EA6)],
@@ -122,7 +122,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                             children: [
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 20.0, 0.0, 20.0),
+                                    0.0, 20.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
