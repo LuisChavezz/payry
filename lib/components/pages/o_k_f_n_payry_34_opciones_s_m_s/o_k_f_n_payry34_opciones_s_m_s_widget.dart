@@ -213,7 +213,7 @@ class _OKFNPayry34OpcionesSMSWidgetState
                                         oKFNPayry34OpcionesSMSUserPermissionsRecord!
                                             .readSms ||
                                         oKFNPayry34OpcionesSMSUserPermissionsRecord!
-                                            .createQr) {
+                                            .createSms) {
                                       context.pushNamed(
                                         'OK_FN_Payry_35_historialSMS',
                                         queryParameters: {

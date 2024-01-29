@@ -13,12 +13,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '/auth/firebase_auth/auth_util.dart';
 
 String? getFirstThreeCharacters(String? inputString) {
-  /// Verifica si la longitud de la cadena es mayor o igual a 3
   if (inputString != null && inputString.length >= 3) {
-    /// Devuelve los primeros 3 caracteres
     return inputString.substring(0, 3);
   } else {
-    /// Si la cadena es más corta que 3 caracteres, devuelve la cadena completa
     return inputString;
   }
 }
@@ -89,9 +86,9 @@ dynamic notificationRedirect(
   }
 }
 
-DocumentReference? jsonPathToDocRef(String? id) {
+DocumentReference? jsonPathToSmsDocRef(String? id) {
   try {
-    return FirebaseFirestore.instance.collection('qr').doc(id);
+    return FirebaseFirestore.instance.collection('sms').doc(id);
   } catch (e) {
     throw e;
   }
@@ -99,4 +96,12 @@ DocumentReference? jsonPathToDocRef(String? id) {
 
 String? jsonPathToString(String? jsonPath) {
   return jsonPath;
+}
+
+DocumentReference? jsonPathToQrDocRef(String? id) {
+  try {
+    return FirebaseFirestore.instance.collection('qr').doc(id);
+  } catch (e) {
+    throw e;
+  }
 }
