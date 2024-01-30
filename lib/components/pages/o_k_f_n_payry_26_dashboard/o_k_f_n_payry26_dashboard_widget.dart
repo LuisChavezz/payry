@@ -459,6 +459,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                 padding:
                                                                     EdgeInsets
                                                                         .zero,
+                                                                primary: false,
                                                                 shrinkWrap:
                                                                     true,
                                                                 scrollDirection:
@@ -739,6 +740,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                 padding:
                                                                     EdgeInsets
                                                                         .zero,
+                                                                primary: false,
                                                                 shrinkWrap:
                                                                     true,
                                                                 scrollDirection:

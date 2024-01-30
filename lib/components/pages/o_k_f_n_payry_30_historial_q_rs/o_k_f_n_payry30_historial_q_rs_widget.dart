@@ -325,86 +325,377 @@ class _OKFNPayry30HistorialQRsWidgetState
                             ),
                           ],
                         ),
-                        SingleChildScrollView(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              if (!FFAppState().isSearch)
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 24.0, 0.0, 0.0),
-                                  child: Builder(
-                                    builder: (context) {
-                                      final qrItem =
-                                          oKFNPayry30HistorialQRsQrRecordList
-                                              .where((e) =>
-                                                  (!widget.readAll! &&
-                                                      (e.uid ==
-                                                          currentUserUid)) ||
-                                                  valueOrDefault<bool>(
-                                                      currentUserDocument
-                                                          ?.isAdmin,
-                                                      false))
-                                              .toList();
-                                      if (qrItem.isEmpty) {
-                                        return Container(
-                                          height: 100.0,
-                                          child: EmptyListWidget(
-                                            title: 'No hay QR\'s',
-                                            message:
-                                                'Aun no hay transacciones por QR',
+                        Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            if (!FFAppState().isSearch)
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 24.0, 0.0, 0.0),
+                                child: Builder(
+                                  builder: (context) {
+                                    final qrItem =
+                                        oKFNPayry30HistorialQRsQrRecordList
+                                            .where((e) =>
+                                                (!widget.readAll! &&
+                                                    (e.uid ==
+                                                        currentUserUid)) ||
+                                                valueOrDefault<bool>(
+                                                    currentUserDocument
+                                                        ?.isAdmin,
+                                                    false))
+                                            .toList();
+                                    if (qrItem.isEmpty) {
+                                      return Container(
+                                        height: 100.0,
+                                        child: EmptyListWidget(
+                                          title: 'No hay QR\'s',
+                                          message:
+                                              'Aun no hay transacciones por QR',
+                                        ),
+                                      );
+                                    }
+                                    return ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      primary: false,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: qrItem.length,
+                                      itemBuilder: (context, qrItemIndex) {
+                                        final qrItemItem = qrItem[qrItemIndex];
+                                        return Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 18.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              context.pushNamed(
+                                                'OK_FN_Payry_31_detallesdeQR',
+                                                pathParameters: {
+                                                  'qrDocReference':
+                                                      serializeParam(
+                                                    qrItemItem.reference,
+                                                    ParamType.DocumentReference,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
+                                            },
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 8.0),
+                                                  child: Text(
+                                                    dateTimeFormat(
+                                                      'd MMM, y',
+                                                      qrItemItem.createdTime!,
+                                                      locale:
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .languageCode,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Container(
+                                                          width: 40.0,
+                                                          height: 40.0,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                            shape:
+                                                                BoxShape.circle,
+                                                          ),
+                                                          child: Icon(
+                                                            FFIcons.kqr,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .accent3,
+                                                            size: 20.0,
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      8.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                qrItemItem
+                                                                    .concept
+                                                                    .maybeHandleOverflow(
+                                                                  maxChars: 25,
+                                                                  replacement:
+                                                                      '…',
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Lexend',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                    ),
+                                                              ),
+                                                              Text(
+                                                                qrItemItem
+                                                                    .status,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Lexend',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .accent3,
+                                                                    ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Text(
+                                                      formatNumber(
+                                                        qrItemItem.amount,
+                                                        formatType:
+                                                            FormatType.custom,
+                                                        currency: '\$',
+                                                        format: '#,###.00##',
+                                                        locale: 'es_MX',
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Lexend',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .accent3,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w200,
+                                                              ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         );
-                                      }
-                                      return ListView.builder(
-                                        padding: EdgeInsets.zero,
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.vertical,
-                                        itemCount: qrItem.length,
-                                        itemBuilder: (context, qrItemIndex) {
-                                          final qrItemItem =
-                                              qrItem[qrItemIndex];
-                                          return Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 18.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                context.pushNamed(
-                                                  'OK_FN_Payry_31_detallesdeQR',
-                                                  pathParameters: {
-                                                    'qrDocReference':
-                                                        serializeParam(
-                                                      qrItemItem.reference,
-                                                      ParamType
-                                                          .DocumentReference,
+                                      },
+                                    );
+                                  },
+                                ),
+                              ),
+                            if (FFAppState().isSearch)
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 24.0, 0.0, 0.0),
+                                child: Builder(
+                                  builder: (context) {
+                                    final qrItem = _model.simpleSearchResults
+                                        .where((e) =>
+                                            (!widget.readAll! &&
+                                                (e.uid == currentUserUid)) ||
+                                            valueOrDefault<bool>(
+                                                currentUserDocument?.isAdmin,
+                                                false))
+                                        .toList();
+                                    return ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      primary: false,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: qrItem.length,
+                                      itemBuilder: (context, qrItemIndex) {
+                                        final qrItemItem = qrItem[qrItemIndex];
+                                        return Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 18.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              context.pushNamed(
+                                                'OK_FN_Payry_31_detallesdeQR',
+                                                pathParameters: {
+                                                  'qrDocReference':
+                                                      serializeParam(
+                                                    qrItemItem.reference,
+                                                    ParamType.DocumentReference,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
+                                            },
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 8.0),
+                                                  child: Text(
+                                                    dateTimeFormat(
+                                                      'd MMM, y',
+                                                      qrItemItem.createdTime!,
+                                                      locale:
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .languageCode,
                                                     ),
-                                                  }.withoutNulls,
-                                                );
-                                              },
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 8.0),
-                                                    child: Text(
-                                                      dateTimeFormat(
-                                                        'd MMM, y',
-                                                        qrItemItem.createdTime!,
-                                                        locale:
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .languageCode,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Container(
+                                                          width: 40.0,
+                                                          height: 40.0,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                            shape:
+                                                                BoxShape.circle,
+                                                          ),
+                                                          child: Icon(
+                                                            FFIcons.kqr,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .accent3,
+                                                            size: 20.0,
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      8.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                qrItemItem
+                                                                    .concept
+                                                                    .maybeHandleOverflow(
+                                                                  maxChars: 25,
+                                                                  replacement:
+                                                                      '…',
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Lexend',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                    ),
+                                                              ),
+                                                              Text(
+                                                                qrItemItem
+                                                                    .status,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Lexend',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .accent3,
+                                                                    ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Text(
+                                                      formatNumber(
+                                                        qrItemItem.amount,
+                                                        formatType:
+                                                            FormatType.custom,
+                                                        currency: '',
+                                                        format: '#,###.00##',
+                                                        locale: 'es_MX',
                                                       ),
                                                       style:
                                                           FlutterFlowTheme.of(
@@ -415,325 +706,24 @@ class _OKFNPayry30HistorialQRsWidgetState
                                                                     'Lexend',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primaryText,
+                                                                    .accent3,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w200,
                                                               ),
                                                     ),
-                                                  ),
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: [
-                                                      Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Container(
-                                                            width: 40.0,
-                                                            height: 40.0,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
-                                                              shape: BoxShape
-                                                                  .circle,
-                                                            ),
-                                                            child: Icon(
-                                                              FFIcons.kqr,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .accent3,
-                                                              size: 20.0,
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        8.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                Text(
-                                                                  qrItemItem
-                                                                      .concept
-                                                                      .maybeHandleOverflow(
-                                                                    maxChars:
-                                                                        25,
-                                                                    replacement:
-                                                                        '…',
-                                                                  ),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Lexend',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primaryText,
-                                                                      ),
-                                                                ),
-                                                                Text(
-                                                                  qrItemItem
-                                                                      .status,
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Lexend',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .accent3,
-                                                                      ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Text(
-                                                        formatNumber(
-                                                          qrItemItem.amount,
-                                                          formatType:
-                                                              FormatType.custom,
-                                                          currency: '\$',
-                                                          format: '#,###.00##',
-                                                          locale: 'es_MX',
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Lexend',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .accent3,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w200,
-                                                                ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
+                                                  ],
+                                                ),
+                                              ],
                                             ),
-                                          );
-                                        },
-                                      );
-                                    },
-                                  ),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
                                 ),
-                              if (FFAppState().isSearch)
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 24.0, 0.0, 0.0),
-                                  child: Builder(
-                                    builder: (context) {
-                                      final qrItem = _model.simpleSearchResults
-                                          .where((e) =>
-                                              (!widget.readAll! &&
-                                                  (e.uid == currentUserUid)) ||
-                                              valueOrDefault<bool>(
-                                                  currentUserDocument?.isAdmin,
-                                                  false))
-                                          .toList();
-                                      return ListView.builder(
-                                        padding: EdgeInsets.zero,
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.vertical,
-                                        itemCount: qrItem.length,
-                                        itemBuilder: (context, qrItemIndex) {
-                                          final qrItemItem =
-                                              qrItem[qrItemIndex];
-                                          return Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 18.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                context.pushNamed(
-                                                  'OK_FN_Payry_31_detallesdeQR',
-                                                  pathParameters: {
-                                                    'qrDocReference':
-                                                        serializeParam(
-                                                      qrItemItem.reference,
-                                                      ParamType
-                                                          .DocumentReference,
-                                                    ),
-                                                  }.withoutNulls,
-                                                );
-                                              },
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 8.0),
-                                                    child: Text(
-                                                      dateTimeFormat(
-                                                        'd MMM, y',
-                                                        qrItemItem.createdTime!,
-                                                        locale:
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .languageCode,
-                                                      ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Lexend',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                              ),
-                                                    ),
-                                                  ),
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: [
-                                                      Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Container(
-                                                            width: 40.0,
-                                                            height: 40.0,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
-                                                              shape: BoxShape
-                                                                  .circle,
-                                                            ),
-                                                            child: Icon(
-                                                              FFIcons.kqr,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .accent3,
-                                                              size: 20.0,
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        8.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                Text(
-                                                                  qrItemItem
-                                                                      .concept
-                                                                      .maybeHandleOverflow(
-                                                                    maxChars:
-                                                                        25,
-                                                                    replacement:
-                                                                        '…',
-                                                                  ),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Lexend',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primaryText,
-                                                                      ),
-                                                                ),
-                                                                Text(
-                                                                  qrItemItem
-                                                                      .status,
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Lexend',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .accent3,
-                                                                      ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Text(
-                                                        formatNumber(
-                                                          qrItemItem.amount,
-                                                          formatType:
-                                                              FormatType.custom,
-                                                          currency: '',
-                                                          format: '#,###.00##',
-                                                          locale: 'es_MX',
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Lexend',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .accent3,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w200,
-                                                                ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                      );
-                                    },
-                                  ),
-                                ),
-                            ],
-                          ),
+                              ),
+                          ],
                         ),
                       ],
                     ),

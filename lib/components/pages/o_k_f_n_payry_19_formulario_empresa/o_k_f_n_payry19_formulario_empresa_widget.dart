@@ -266,1331 +266,1210 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                           Form(
                             key: _model.formKey,
                             autovalidateMode: AutovalidateMode.disabled,
-                            child: SingleChildScrollView(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 12.0, 0.0, 12.0),
-                                    child: TextFormField(
-                                      controller: _model.nameFieldController ??=
-                                          TextEditingController(
-                                        text:
-                                            oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                ?.name,
-                                      ),
-                                      focusNode: _model.nameFieldFocusNode,
-                                      textCapitalization:
-                                          TextCapitalization.sentences,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        labelText: 'Empresa',
-                                        labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                            ),
-                                        hintText:
-                                            'Ingresa el nombre de tu empresa...',
-                                        hintStyle: FlutterFlowTheme.of(context)
-                                            .bodySmall
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color: Color(0xFF8788A5),
-                                            ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color(0xFF8788A5),
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Colors.white,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        contentPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                20.0, 24.0, 20.0, 24.0),
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Lexend',
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                      validator: _model
-                                          .nameFieldControllerValidator
-                                          .asValidator(context),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 12.0, 0.0, 12.0),
-                                    child: TextFormField(
-                                      controller:
-                                          _model.aliasFieldController ??=
-                                              TextEditingController(
-                                        text:
-                                            oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                ?.alias,
-                                      ),
-                                      focusNode: _model.aliasFieldFocusNode,
-                                      textCapitalization:
-                                          TextCapitalization.sentences,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        labelText: 'Alias',
-                                        labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              fontWeight: FontWeight.normal,
-                                            ),
-                                        hintText:
-                                            'Un nombre corto que te identifique...',
-                                        hintStyle: FlutterFlowTheme.of(context)
-                                            .bodySmall
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color: Color(0xFF8788A5),
-                                            ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color(0xFF8788A5),
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Colors.white,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        contentPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                20.0, 24.0, 20.0, 24.0),
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Lexend',
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                      validator: _model
-                                          .aliasFieldControllerValidator
-                                          .asValidator(context),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 12.0, 0.0, 12.0),
-                                    child: TextFormField(
-                                      controller:
-                                          _model.emailFieldController ??=
-                                              TextEditingController(
-                                        text:
-                                            oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                ?.email,
-                                      ),
-                                      focusNode: _model.emailFieldFocusNode,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        labelText: 'Correo electrónico',
-                                        labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              fontWeight: FontWeight.normal,
-                                            ),
-                                        hintText:
-                                            'Ingresa el correo electrónico...',
-                                        hintStyle: FlutterFlowTheme.of(context)
-                                            .bodySmall
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color: Color(0xFF8788A5),
-                                            ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color(0xFF8788A5),
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Colors.white,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        contentPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                20.0, 24.0, 20.0, 24.0),
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Lexend',
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                      keyboardType: TextInputType.emailAddress,
-                                      validator: _model
-                                          .emailFieldControllerValidator
-                                          .asValidator(context),
-                                    ),
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Expanded(
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  6.0, 12.0, 0.0, 12.0),
-                                          child: TextFormField(
-                                            controller:
-                                                _model.streetFieldController ??=
-                                                    TextEditingController(
-                                              text:
-                                                  oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                      ?.street,
-                                            ),
-                                            focusNode:
-                                                _model.streetFieldFocusNode,
-                                            textCapitalization:
-                                                TextCapitalization.sentences,
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              labelText: 'Calle',
-                                              labelStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                              hintText: 'Ingresa la calle...',
-                                              hintStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmall
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color:
-                                                            Color(0xFF8788A5),
-                                                      ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0xFF8788A5),
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Colors.white,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              focusedErrorBorder:
-                                                  OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              contentPadding:
-                                                  EdgeInsetsDirectional
-                                                      .fromSTEB(20.0, 24.0,
-                                                          20.0, 24.0),
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                            validator: _model
-                                                .streetFieldControllerValidator
-                                                .asValidator(context),
-                                          ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  6.0, 12.0, 0.0, 12.0),
-                                          child: TextFormField(
-                                            controller: _model
-                                                    .streetNumberFieldController ??=
-                                                TextEditingController(
-                                              text:
-                                                  oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                      ?.streetNumber,
-                                            ),
-                                            focusNode: _model
-                                                .streetNumberFieldFocusNode,
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              labelText: 'Número',
-                                              labelStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                              hintText: 'Ingresa el número...',
-                                              hintStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmall
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color:
-                                                            Color(0xFF8788A5),
-                                                      ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0xFF8788A5),
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Colors.white,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              focusedErrorBorder:
-                                                  OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              contentPadding:
-                                                  EdgeInsetsDirectional
-                                                      .fromSTEB(20.0, 24.0,
-                                                          20.0, 24.0),
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                            validator: _model
-                                                .streetNumberFieldControllerValidator
-                                                .asValidator(context),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 12.0, 0.0, 12.0),
-                                    child: TextFormField(
-                                      controller:
-                                          _model.neighborhoodFieldController ??=
-                                              TextEditingController(
-                                        text:
-                                            oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                ?.neighborhood,
-                                      ),
-                                      focusNode:
-                                          _model.neighborhoodFieldFocusNode,
-                                      textCapitalization:
-                                          TextCapitalization.sentences,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        labelText: 'Colonia',
-                                        labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              fontWeight: FontWeight.normal,
-                                            ),
-                                        hintText: 'Ingresa la colonia...',
-                                        hintStyle: FlutterFlowTheme.of(context)
-                                            .bodySmall
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color: Color(0xFF8788A5),
-                                            ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color(0xFF8788A5),
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Colors.white,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        contentPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                20.0, 24.0, 20.0, 24.0),
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Lexend',
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                      validator: _model
-                                          .neighborhoodFieldControllerValidator
-                                          .asValidator(context),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 12.0, 0.0, 12.0),
-                                    child: TextFormField(
-                                      controller: _model.cityFieldController ??=
-                                          TextEditingController(
-                                        text:
-                                            oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                ?.city,
-                                      ),
-                                      focusNode: _model.cityFieldFocusNode,
-                                      textCapitalization:
-                                          TextCapitalization.sentences,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        labelText: 'Ciudad',
-                                        labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              fontWeight: FontWeight.normal,
-                                            ),
-                                        hintText: 'Ingresa la ciudad...',
-                                        hintStyle: FlutterFlowTheme.of(context)
-                                            .bodySmall
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color: Color(0xFF8788A5),
-                                            ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color(0xFF8788A5),
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Colors.white,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        contentPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                20.0, 24.0, 20.0, 24.0),
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Lexend',
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                      validator: _model
-                                          .cityFieldControllerValidator
-                                          .asValidator(context),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 12.0, 0.0, 12.0),
-                                    child: FlutterFlowDropDown<String>(
-                                      controller: _model
-                                              .stateDropDownValueController ??=
-                                          FormFieldController<String>(
-                                        _model.stateDropDownValue ??=
-                                            valueOrDefault<String>(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 12.0, 0.0, 12.0),
+                                  child: TextFormField(
+                                    controller: _model.nameFieldController ??=
+                                        TextEditingController(
+                                      text:
                                           oKFNPayry19FormularioEmpresaCompaniesRecord
-                                              ?.state,
-                                          'Jalisco',
+                                              ?.name,
+                                    ),
+                                    focusNode: _model.nameFieldFocusNode,
+                                    textCapitalization:
+                                        TextCapitalization.sentences,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'Empresa',
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                          ),
+                                      hintText:
+                                          'Ingresa el nombre de tu empresa...',
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .bodySmall
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            color: Color(0xFF8788A5),
+                                          ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0xFF8788A5),
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      contentPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              20.0, 24.0, 20.0, 24.0),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Lexend',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                    validator: _model
+                                        .nameFieldControllerValidator
+                                        .asValidator(context),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 12.0, 0.0, 12.0),
+                                  child: TextFormField(
+                                    controller: _model.aliasFieldController ??=
+                                        TextEditingController(
+                                      text:
+                                          oKFNPayry19FormularioEmpresaCompaniesRecord
+                                              ?.alias,
+                                    ),
+                                    focusNode: _model.aliasFieldFocusNode,
+                                    textCapitalization:
+                                        TextCapitalization.sentences,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'Alias',
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                      hintText:
+                                          'Un nombre corto que te identifique...',
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .bodySmall
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            color: Color(0xFF8788A5),
+                                          ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0xFF8788A5),
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      contentPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              20.0, 24.0, 20.0, 24.0),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Lexend',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                    validator: _model
+                                        .aliasFieldControllerValidator
+                                        .asValidator(context),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 12.0, 0.0, 12.0),
+                                  child: TextFormField(
+                                    controller: _model.emailFieldController ??=
+                                        TextEditingController(
+                                      text:
+                                          oKFNPayry19FormularioEmpresaCompaniesRecord
+                                              ?.email,
+                                    ),
+                                    focusNode: _model.emailFieldFocusNode,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'Correo electrónico',
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                      hintText:
+                                          'Ingresa el correo electrónico...',
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .bodySmall
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            color: Color(0xFF8788A5),
+                                          ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0xFF8788A5),
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      contentPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              20.0, 24.0, 20.0, 24.0),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Lexend',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                    keyboardType: TextInputType.emailAddress,
+                                    validator: _model
+                                        .emailFieldControllerValidator
+                                        .asValidator(context),
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            6.0, 12.0, 0.0, 12.0),
+                                        child: TextFormField(
+                                          controller:
+                                              _model.streetFieldController ??=
+                                                  TextEditingController(
+                                            text:
+                                                oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                    ?.street,
+                                          ),
+                                          focusNode:
+                                              _model.streetFieldFocusNode,
+                                          textCapitalization:
+                                              TextCapitalization.sentences,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelText: 'Calle',
+                                            labelStyle: FlutterFlowTheme.of(
+                                                    context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  fontWeight: FontWeight.normal,
+                                                ),
+                                            hintText: 'Ingresa la calle...',
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodySmall
+                                                    .override(
+                                                      fontFamily: 'Lexend',
+                                                      color: Color(0xFF8788A5),
+                                                    ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0xFF8788A5),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Colors.white,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            contentPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20.0, 24.0, 20.0, 24.0),
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                          validator: _model
+                                              .streetFieldControllerValidator
+                                              .asValidator(context),
                                         ),
                                       ),
-                                      options: [
-                                        'Aguascalientes',
-                                        'Baja California',
-                                        'Baja California Sur',
-                                        'Campeche',
-                                        'Chiapas',
-                                        'Chihuahua',
-                                        'Coahuila de Zaragoza',
-                                        'Colima',
-                                        'Ciudad de México',
-                                        'Durango',
-                                        'Guanajuato',
-                                        'Guerrero',
-                                        'Hidalgo',
+                                    ),
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            6.0, 12.0, 0.0, 12.0),
+                                        child: TextFormField(
+                                          controller: _model
+                                                  .streetNumberFieldController ??=
+                                              TextEditingController(
+                                            text:
+                                                oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                    ?.streetNumber,
+                                          ),
+                                          focusNode:
+                                              _model.streetNumberFieldFocusNode,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelText: 'Número',
+                                            labelStyle: FlutterFlowTheme.of(
+                                                    context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  fontWeight: FontWeight.normal,
+                                                ),
+                                            hintText: 'Ingresa el número...',
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodySmall
+                                                    .override(
+                                                      fontFamily: 'Lexend',
+                                                      color: Color(0xFF8788A5),
+                                                    ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0xFF8788A5),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Colors.white,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            contentPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20.0, 24.0, 20.0, 24.0),
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                          validator: _model
+                                              .streetNumberFieldControllerValidator
+                                              .asValidator(context),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 12.0, 0.0, 12.0),
+                                  child: TextFormField(
+                                    controller:
+                                        _model.neighborhoodFieldController ??=
+                                            TextEditingController(
+                                      text:
+                                          oKFNPayry19FormularioEmpresaCompaniesRecord
+                                              ?.neighborhood,
+                                    ),
+                                    focusNode:
+                                        _model.neighborhoodFieldFocusNode,
+                                    textCapitalization:
+                                        TextCapitalization.sentences,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'Colonia',
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                      hintText: 'Ingresa la colonia...',
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .bodySmall
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            color: Color(0xFF8788A5),
+                                          ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0xFF8788A5),
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      contentPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              20.0, 24.0, 20.0, 24.0),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Lexend',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                    validator: _model
+                                        .neighborhoodFieldControllerValidator
+                                        .asValidator(context),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 12.0, 0.0, 12.0),
+                                  child: TextFormField(
+                                    controller: _model.cityFieldController ??=
+                                        TextEditingController(
+                                      text:
+                                          oKFNPayry19FormularioEmpresaCompaniesRecord
+                                              ?.city,
+                                    ),
+                                    focusNode: _model.cityFieldFocusNode,
+                                    textCapitalization:
+                                        TextCapitalization.sentences,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'Ciudad',
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                      hintText: 'Ingresa la ciudad...',
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .bodySmall
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            color: Color(0xFF8788A5),
+                                          ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0xFF8788A5),
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      contentPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              20.0, 24.0, 20.0, 24.0),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Lexend',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                    validator: _model
+                                        .cityFieldControllerValidator
+                                        .asValidator(context),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 12.0, 0.0, 12.0),
+                                  child: FlutterFlowDropDown<String>(
+                                    controller:
+                                        _model.stateDropDownValueController ??=
+                                            FormFieldController<String>(
+                                      _model.stateDropDownValue ??=
+                                          valueOrDefault<String>(
+                                        oKFNPayry19FormularioEmpresaCompaniesRecord
+                                            ?.state,
                                         'Jalisco',
-                                        'México',
-                                        'Michoacán',
-                                        'Morelos',
-                                        'Nayarit',
-                                        'Nuevo León',
-                                        'Oaxaca',
-                                        'Puebla',
-                                        'Querétaro',
-                                        'Quintana Roo',
-                                        'San Luis Potosí',
-                                        'Sinaloa',
-                                        'Sonora',
-                                        'Tabasco',
-                                        'Tamaulipas',
-                                        'Tlaxcala',
-                                        'Veracruz',
-                                        'Yucatán',
-                                        'Zacatecas'
-                                      ],
-                                      onChanged: (val) => setState(() =>
-                                          _model.stateDropDownValue = val),
-                                      width: double.infinity,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Lexend',
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                          ),
-                                      hintText: 'Selecciona el estado...',
-                                      icon: Icon(
-                                        Icons.keyboard_arrow_down_rounded,
-                                        color: Color(0xFF8788A5),
-                                        size: 24.0,
                                       ),
-                                      elevation: 1.0,
-                                      borderColor: Color(0xFF8788A5),
-                                      borderWidth: 1.0,
-                                      borderRadius: 8.0,
-                                      margin: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 4.0, 16.0, 4.0),
-                                      hidesUnderline: true,
-                                      isSearchable: false,
-                                      isMultiSelect: false,
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 12.0, 0.0, 12.0),
-                                    child: FlutterFlowDropDown<String>(
-                                      controller: _model
-                                              .countryDropDownValueController ??=
-                                          FormFieldController<String>(
-                                        _model.countryDropDownValue ??=
-                                            valueOrDefault<String>(
-                                          oKFNPayry19FormularioEmpresaCompaniesRecord
-                                              ?.country,
-                                          'México',
+                                    options: [
+                                      'Aguascalientes',
+                                      'Baja California',
+                                      'Baja California Sur',
+                                      'Campeche',
+                                      'Chiapas',
+                                      'Chihuahua',
+                                      'Coahuila de Zaragoza',
+                                      'Colima',
+                                      'Ciudad de México',
+                                      'Durango',
+                                      'Guanajuato',
+                                      'Guerrero',
+                                      'Hidalgo',
+                                      'Jalisco',
+                                      'México',
+                                      'Michoacán',
+                                      'Morelos',
+                                      'Nayarit',
+                                      'Nuevo León',
+                                      'Oaxaca',
+                                      'Puebla',
+                                      'Querétaro',
+                                      'Quintana Roo',
+                                      'San Luis Potosí',
+                                      'Sinaloa',
+                                      'Sonora',
+                                      'Tabasco',
+                                      'Tamaulipas',
+                                      'Tlaxcala',
+                                      'Veracruz',
+                                      'Yucatán',
+                                      'Zacatecas'
+                                    ],
+                                    onChanged: (val) => setState(
+                                        () => _model.stateDropDownValue = val),
+                                    width: double.infinity,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Lexend',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
                                         ),
+                                    hintText: 'Selecciona el estado...',
+                                    icon: Icon(
+                                      Icons.keyboard_arrow_down_rounded,
+                                      color: Color(0xFF8788A5),
+                                      size: 24.0,
+                                    ),
+                                    elevation: 1.0,
+                                    borderColor: Color(0xFF8788A5),
+                                    borderWidth: 1.0,
+                                    borderRadius: 8.0,
+                                    margin: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 4.0, 16.0, 4.0),
+                                    hidesUnderline: true,
+                                    isSearchable: false,
+                                    isMultiSelect: false,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 12.0, 0.0, 12.0),
+                                  child: FlutterFlowDropDown<String>(
+                                    controller: _model
+                                            .countryDropDownValueController ??=
+                                        FormFieldController<String>(
+                                      _model.countryDropDownValue ??=
+                                          valueOrDefault<String>(
+                                        oKFNPayry19FormularioEmpresaCompaniesRecord
+                                            ?.country,
+                                        'México',
                                       ),
-                                      options: ['México'],
-                                      onChanged: (val) => setState(() =>
-                                          _model.countryDropDownValue = val),
-                                      width: double.infinity,
-                                      textStyle: FlutterFlowTheme.of(context)
+                                    ),
+                                    options: ['México'],
+                                    onChanged: (val) => setState(() =>
+                                        _model.countryDropDownValue = val),
+                                    width: double.infinity,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Lexend',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                        ),
+                                    hintText: 'Selecciona el país...',
+                                    icon: Icon(
+                                      Icons.keyboard_arrow_down_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 24.0,
+                                    ),
+                                    elevation: 1.0,
+                                    borderColor: Color(0xFF8788A5),
+                                    borderWidth: 1.0,
+                                    borderRadius: 8.0,
+                                    margin: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 4.0, 16.0, 4.0),
+                                    hidesUnderline: true,
+                                    isSearchable: false,
+                                    isMultiSelect: false,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 12.0, 0.0, 12.0),
+                                  child: TextFormField(
+                                    controller:
+                                        _model.zipCodeFieldController ??=
+                                            TextEditingController(
+                                      text:
+                                          oKFNPayry19FormularioEmpresaCompaniesRecord
+                                              ?.zipcode,
+                                    ),
+                                    focusNode: _model.zipCodeFieldFocusNode,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'Código postal',
+                                      labelStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Lexend',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
+                                            fontWeight: FontWeight.normal,
                                           ),
-                                      hintText: 'Selecciona el país...',
-                                      icon: Icon(
-                                        Icons.keyboard_arrow_down_rounded,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        size: 24.0,
-                                      ),
-                                      elevation: 1.0,
-                                      borderColor: Color(0xFF8788A5),
-                                      borderWidth: 1.0,
-                                      borderRadius: 8.0,
-                                      margin: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 4.0, 16.0, 4.0),
-                                      hidesUnderline: true,
-                                      isSearchable: false,
-                                      isMultiSelect: false,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 12.0, 0.0, 12.0),
-                                    child: TextFormField(
-                                      controller:
-                                          _model.zipCodeFieldController ??=
-                                              TextEditingController(
-                                        text:
-                                            oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                ?.zipcode,
-                                      ),
-                                      focusNode: _model.zipCodeFieldFocusNode,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        labelText: 'Código postal',
-                                        labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              fontWeight: FontWeight.normal,
-                                            ),
-                                        hintText: 'Ingresa el código postal...',
-                                        hintStyle: FlutterFlowTheme.of(context)
-                                            .bodySmall
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color: Color(0xFF8788A5),
-                                            ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                      hintText: 'Ingresa el código postal...',
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .bodySmall
+                                          .override(
+                                            fontFamily: 'Lexend',
                                             color: Color(0xFF8788A5),
-                                            width: 1.0,
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0xFF8788A5),
+                                          width: 1.0,
                                         ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Colors.white,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        contentPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                20.0, 24.0, 20.0, 24.0),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
                                       ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      contentPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              20.0, 24.0, 20.0, 24.0),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Lexend',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                    keyboardType: TextInputType.number,
+                                    validator: _model
+                                        .zipCodeFieldControllerValidator
+                                        .asValidator(context),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 12.0, 0.0, 12.0),
+                                  child: FlutterFlowDropDown<String>(
+                                    controller:
+                                        _model.statusDropDownValueController ??=
+                                            FormFieldController<String>(
+                                      _model.statusDropDownValue ??=
+                                          valueOrDefault<String>(
+                                        oKFNPayry19FormularioEmpresaCompaniesRecord !=
+                                                null
+                                            ? valueOrDefault<String>(
+                                                oKFNPayry19FormularioEmpresaCompaniesRecord!
+                                                        .status
+                                                    ? 'Activo'
+                                                    : 'Inactivo',
+                                                'Activo',
+                                              )
+                                            : 'Activo',
+                                        'Activo',
+                                      ),
+                                    ),
+                                    options: ['Activo', 'Inactivo'],
+                                    onChanged: (val) => setState(
+                                        () => _model.statusDropDownValue = val),
+                                    width: double.infinity,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Lexend',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                        ),
+                                    hintText: 'Selecciona el estatus...',
+                                    icon: Icon(
+                                      Icons.keyboard_arrow_down_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 24.0,
+                                    ),
+                                    elevation: 1.0,
+                                    borderColor: Color(0xFF8788A5),
+                                    borderWidth: 1.0,
+                                    borderRadius: 8.0,
+                                    margin: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 4.0, 16.0, 4.0),
+                                    hidesUnderline: true,
+                                    isSearchable: false,
+                                    isMultiSelect: false,
+                                  ),
+                                ),
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      '¿Necesitas factura?',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Lexend',
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
-                                            fontWeight: FontWeight.normal,
                                           ),
-                                      keyboardType: TextInputType.number,
-                                      validator: _model
-                                          .zipCodeFieldControllerValidator
-                                          .asValidator(context),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 12.0, 0.0, 12.0),
-                                    child: FlutterFlowDropDown<String>(
-                                      controller: _model
-                                              .statusDropDownValueController ??=
-                                          FormFieldController<String>(
-                                        _model.statusDropDownValue ??=
-                                            valueOrDefault<String>(
-                                          oKFNPayry19FormularioEmpresaCompaniesRecord !=
-                                                  null
-                                              ? valueOrDefault<String>(
-                                                  oKFNPayry19FormularioEmpresaCompaniesRecord!
-                                                          .status
-                                                      ? 'Activo'
-                                                      : 'Inactivo',
-                                                  'Activo',
-                                                )
-                                              : 'Activo',
-                                          'Activo',
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Si/No',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                              ),
                                         ),
-                                      ),
-                                      options: ['Activo', 'Inactivo'],
-                                      onChanged: (val) => setState(() =>
-                                          _model.statusDropDownValue = val),
-                                      width: double.infinity,
-                                      textStyle: FlutterFlowTheme.of(context)
+                                        Switch.adaptive(
+                                          value: _model
+                                                  .requireBillSwitchValue ??=
+                                              oKFNPayry19FormularioEmpresaCompaniesRecord !=
+                                                      null
+                                                  ? oKFNPayry19FormularioEmpresaCompaniesRecord!
+                                                      .requireBill
+                                                  : false,
+                                          onChanged: (newValue) async {
+                                            setState(() =>
+                                                _model.requireBillSwitchValue =
+                                                    newValue!);
+                                          },
+                                          activeColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .success,
+                                          activeTrackColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .accent1,
+                                          inactiveTrackColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .accent4,
+                                          inactiveThumbColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 12.0, 0.0, 12.0),
+                                  child: TextFormField(
+                                    controller: _model.rFCFieldController ??=
+                                        TextEditingController(
+                                      text:
+                                          oKFNPayry19FormularioEmpresaCompaniesRecord
+                                              ?.rfc,
+                                    ),
+                                    focusNode: _model.rFCFieldFocusNode,
+                                    textCapitalization:
+                                        TextCapitalization.characters,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'RFC',
+                                      labelStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Lexend',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
+                                            fontWeight: FontWeight.normal,
                                           ),
-                                      hintText: 'Selecciona el estatus...',
-                                      icon: Icon(
-                                        Icons.keyboard_arrow_down_rounded,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        size: 24.0,
+                                      hintText:
+                                          'Ingresa el RFC como en tu CSF...',
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .bodySmall
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            color: Color(0xFF8788A5),
+                                          ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0xFF8788A5),
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
                                       ),
-                                      elevation: 1.0,
-                                      borderColor: Color(0xFF8788A5),
-                                      borderWidth: 1.0,
-                                      borderRadius: 8.0,
-                                      margin: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 4.0, 16.0, 4.0),
-                                      hidesUnderline: true,
-                                      isSearchable: false,
-                                      isMultiSelect: false,
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      contentPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              20.0, 24.0, 20.0, 24.0),
                                     ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Lexend',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                    maxLength: 13,
+                                    validator: _model
+                                        .rFCFieldControllerValidator
+                                        .asValidator(context),
                                   ),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        '¿Necesitas factura?',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 12.0, 0.0, 12.0),
+                                  child: StreamBuilder<List<TaxRegimesRecord>>(
+                                    stream: queryTaxRegimesRecord(),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 40.0,
+                                            height: 40.0,
+                                            child: CircularProgressIndicator(
+                                              valueColor:
+                                                  AlwaysStoppedAnimation<Color>(
+                                                FlutterFlowTheme.of(context)
+                                                    .accent3,
+                                              ),
                                             ),
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Si/No',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
                                           ),
-                                          Switch.adaptive(
-                                            value: _model
-                                                    .requireBillSwitchValue ??=
-                                                oKFNPayry19FormularioEmpresaCompaniesRecord !=
-                                                        null
-                                                    ? oKFNPayry19FormularioEmpresaCompaniesRecord!
-                                                        .requireBill
-                                                    : false,
-                                            onChanged: (newValue) async {
-                                              setState(() => _model
-                                                      .requireBillSwitchValue =
-                                                  newValue!);
-                                            },
-                                            activeColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .success,
-                                            activeTrackColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .accent1,
-                                            inactiveTrackColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .accent4,
-                                            inactiveThumbColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryText,
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 12.0, 0.0, 12.0),
-                                    child: TextFormField(
-                                      controller: _model.rFCFieldController ??=
-                                          TextEditingController(
-                                        text:
-                                            oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                ?.rfc,
-                                      ),
-                                      focusNode: _model.rFCFieldFocusNode,
-                                      textCapitalization:
-                                          TextCapitalization.characters,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        labelText: 'RFC',
-                                        labelStyle: FlutterFlowTheme.of(context)
+                                        );
+                                      }
+                                      List<TaxRegimesRecord>
+                                          taxRegimeDropDownTaxRegimesRecordList =
+                                          snapshot.data!;
+                                      return FlutterFlowDropDown<String>(
+                                        controller: _model
+                                                .taxRegimeDropDownValueController ??=
+                                            FormFieldController<String>(
+                                          _model.taxRegimeDropDownValue ??=
+                                              oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                  ?.taxRegime,
+                                        ),
+                                        options:
+                                            taxRegimeDropDownTaxRegimesRecordList
+                                                .map((e) => e.description)
+                                                .toList(),
+                                        onChanged: (val) => setState(() =>
+                                            _model.taxRegimeDropDownValue =
+                                                val),
+                                        width: double.infinity,
+                                        textStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Lexend',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              fontWeight: FontWeight.normal,
+                                              color: Color(0xFF8788A5),
                                             ),
                                         hintText:
-                                            'Ingresa el RFC como en tu CSF...',
-                                        hintStyle: FlutterFlowTheme.of(context)
-                                            .bodySmall
+                                            'Selecciona el régimen fiscal...',
+                                        icon: Icon(
+                                          Icons.keyboard_arrow_down_rounded,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          size: 24.0,
+                                        ),
+                                        elevation: 1.0,
+                                        borderColor: Color(0xFF8788A5),
+                                        borderWidth: 1.0,
+                                        borderRadius: 8.0,
+                                        margin: EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 4.0, 16.0, 4.0),
+                                        hidesUnderline: true,
+                                        isSearchable: false,
+                                        isMultiSelect: false,
+                                      );
+                                    },
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 12.0, 0.0, 12.0),
+                                  child: StreamBuilder<List<CfdiRecord>>(
+                                    stream: queryCfdiRecord(),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 40.0,
+                                            height: 40.0,
+                                            child: CircularProgressIndicator(
+                                              valueColor:
+                                                  AlwaysStoppedAnimation<Color>(
+                                                FlutterFlowTheme.of(context)
+                                                    .accent3,
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      List<CfdiRecord>
+                                          cFDIDropDownCfdiRecordList =
+                                          snapshot.data!;
+                                      return FlutterFlowDropDown<String>(
+                                        controller: _model
+                                                .cFDIDropDownValueController ??=
+                                            FormFieldController<String>(
+                                          _model.cFDIDropDownValue ??=
+                                              oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                  ?.cfdi,
+                                        ),
+                                        options: cFDIDropDownCfdiRecordList
+                                            .map((e) => e.description)
+                                            .toList(),
+                                        onChanged: (val) => setState(() =>
+                                            _model.cFDIDropDownValue = val),
+                                        width: double.infinity,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
                                             .override(
                                               fontFamily: 'Lexend',
                                               color: Color(0xFF8788A5),
                                             ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color(0xFF8788A5),
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
+                                        hintText:
+                                            'Selecciona el uso del CFDI...',
+                                        icon: Icon(
+                                          Icons.keyboard_arrow_down_rounded,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          size: 24.0,
                                         ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Colors.white,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        contentPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                20.0, 24.0, 20.0, 24.0),
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Lexend',
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                      maxLength: 13,
-                                      validator: _model
-                                          .rFCFieldControllerValidator
-                                          .asValidator(context),
-                                    ),
+                                        elevation: 1.0,
+                                        borderColor: Color(0xFF8788A5),
+                                        borderWidth: 1.0,
+                                        borderRadius: 8.0,
+                                        margin: EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 4.0, 16.0, 4.0),
+                                        hidesUnderline: true,
+                                        isSearchable: false,
+                                        isMultiSelect: false,
+                                      );
+                                    },
                                   ),
-                                  Padding(
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 12.0, 0.0, 12.0),
-                                    child:
-                                        StreamBuilder<List<TaxRegimesRecord>>(
-                                      stream: queryTaxRegimesRecord(),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 40.0,
-                                              height: 40.0,
-                                              child: CircularProgressIndicator(
-                                                valueColor:
-                                                    AlwaysStoppedAnimation<
-                                                        Color>(
-                                                  FlutterFlowTheme.of(context)
-                                                      .accent3,
-                                                ),
-                                              ),
-                                            ),
+                                        0.0, 10.0, 0.0, 10.0),
+                                    child: FFButtonWidget(
+                                      onPressed: () async {
+                                        if (_model.formKey.currentState ==
+                                                null ||
+                                            !_model.formKey.currentState!
+                                                .validate()) {
+                                          return;
+                                        }
+                                        try {
+                                          final result = await FirebaseFunctions
+                                              .instance
+                                              .httpsCallable('saveCompany')
+                                              .call({
+                                            "name":
+                                                _model.nameFieldController.text,
+                                            "alias": _model
+                                                .aliasFieldController.text,
+                                            "email": _model
+                                                .emailFieldController.text,
+                                            "street": _model
+                                                .streetFieldController.text,
+                                            "intnumber": _model
+                                                .streetNumberFieldController
+                                                .text,
+                                            "colony": _model
+                                                .neighborhoodFieldController
+                                                .text,
+                                            "population":
+                                                _model.cityFieldController.text,
+                                            "state": _model.stateDropDownValue!,
+                                            "country":
+                                                _model.countryDropDownValue!,
+                                            "zipcode": _model
+                                                .zipCodeFieldController.text,
+                                            "status": 'true',
+                                            "invoicerequired": _model
+                                                .requireBillSwitchValue!
+                                                .toString(),
+                                            "rfc":
+                                                _model.rFCFieldController.text,
+                                            "taxregimesid": 24,
+                                            "usecfdiid": 6,
+                                            "uid": FFAppState().serverToken,
+                                          });
+                                          _model.cloudFunctionCompany =
+                                              SaveCompanyCloudFunctionCallResponse(
+                                            succeeded: true,
+                                          );
+                                        } on FirebaseFunctionsException catch (error) {
+                                          _model.cloudFunctionCompany =
+                                              SaveCompanyCloudFunctionCallResponse(
+                                            errorCode: error.code,
+                                            succeeded: false,
                                           );
                                         }
-                                        List<TaxRegimesRecord>
-                                            taxRegimeDropDownTaxRegimesRecordList =
-                                            snapshot.data!;
-                                        return FlutterFlowDropDown<String>(
-                                          controller: _model
-                                                  .taxRegimeDropDownValueController ??=
-                                              FormFieldController<String>(
-                                            _model.taxRegimeDropDownValue ??=
-                                                oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                    ?.taxRegime,
-                                          ),
-                                          options:
-                                              taxRegimeDropDownTaxRegimesRecordList
-                                                  .map((e) => e.description)
-                                                  .toList(),
-                                          onChanged: (val) => setState(() =>
-                                              _model.taxRegimeDropDownValue =
-                                                  val),
-                                          width: double.infinity,
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Lexend',
-                                                    color: Color(0xFF8788A5),
-                                                  ),
-                                          hintText:
-                                              'Selecciona el régimen fiscal...',
-                                          icon: Icon(
-                                            Icons.keyboard_arrow_down_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 24.0,
-                                          ),
-                                          elevation: 1.0,
-                                          borderColor: Color(0xFF8788A5),
-                                          borderWidth: 1.0,
-                                          borderRadius: 8.0,
-                                          margin:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 4.0, 16.0, 4.0),
-                                          hidesUnderline: true,
-                                          isSearchable: false,
-                                          isMultiSelect: false,
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 12.0, 0.0, 12.0),
-                                    child: StreamBuilder<List<CfdiRecord>>(
-                                      stream: queryCfdiRecord(),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 40.0,
-                                              height: 40.0,
-                                              child: CircularProgressIndicator(
-                                                valueColor:
-                                                    AlwaysStoppedAnimation<
-                                                        Color>(
-                                                  FlutterFlowTheme.of(context)
-                                                      .accent3,
-                                                ),
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<CfdiRecord>
-                                            cFDIDropDownCfdiRecordList =
-                                            snapshot.data!;
-                                        return FlutterFlowDropDown<String>(
-                                          controller: _model
-                                                  .cFDIDropDownValueController ??=
-                                              FormFieldController<String>(
-                                            _model.cFDIDropDownValue ??=
-                                                oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                    ?.cfdi,
-                                          ),
-                                          options: cFDIDropDownCfdiRecordList
-                                              .map((e) => e.description)
-                                              .toList(),
-                                          onChanged: (val) => setState(() =>
-                                              _model.cFDIDropDownValue = val),
-                                          width: double.infinity,
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Lexend',
-                                                    color: Color(0xFF8788A5),
-                                                  ),
-                                          hintText:
-                                              'Selecciona el uso del CFDI...',
-                                          icon: Icon(
-                                            Icons.keyboard_arrow_down_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 24.0,
-                                          ),
-                                          elevation: 1.0,
-                                          borderColor: Color(0xFF8788A5),
-                                          borderWidth: 1.0,
-                                          borderRadius: 8.0,
-                                          margin:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 4.0, 16.0, 4.0),
-                                          hidesUnderline: true,
-                                          isSearchable: false,
-                                          isMultiSelect: false,
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 10.0, 0.0, 10.0),
-                                      child: FFButtonWidget(
-                                        onPressed: () async {
-                                          if (_model.formKey.currentState ==
-                                                  null ||
-                                              !_model.formKey.currentState!
-                                                  .validate()) {
-                                            return;
-                                          }
-                                          try {
-                                            final result =
-                                                await FirebaseFunctions.instance
-                                                    .httpsCallable(
-                                                        'saveCompany')
-                                                    .call({
-                                              "name": _model
-                                                  .nameFieldController.text,
-                                              "alias": _model
-                                                  .aliasFieldController.text,
-                                              "email": _model
-                                                  .emailFieldController.text,
-                                              "street": _model
-                                                  .streetFieldController.text,
-                                              "intnumber": _model
-                                                  .streetNumberFieldController
-                                                  .text,
-                                              "colony": _model
-                                                  .neighborhoodFieldController
-                                                  .text,
-                                              "population": _model
-                                                  .cityFieldController.text,
-                                              "state":
-                                                  _model.stateDropDownValue!,
-                                              "country":
-                                                  _model.countryDropDownValue!,
-                                              "zipcode": _model
-                                                  .zipCodeFieldController.text,
-                                              "status": 'true',
-                                              "invoicerequired": _model
-                                                  .requireBillSwitchValue!
-                                                  .toString(),
-                                              "rfc": _model
-                                                  .rFCFieldController.text,
-                                              "taxregimesid": 24,
-                                              "usecfdiid": 6,
-                                              "uid": FFAppState().serverToken,
-                                            });
-                                            _model.cloudFunctionCompany =
-                                                SaveCompanyCloudFunctionCallResponse(
-                                              succeeded: true,
-                                            );
-                                          } on FirebaseFunctionsException catch (error) {
-                                            _model.cloudFunctionCompany =
-                                                SaveCompanyCloudFunctionCallResponse(
-                                              errorCode: error.code,
-                                              succeeded: false,
-                                            );
-                                          }
 
-                                          if (!(oKFNPayry19FormularioEmpresaCompaniesRecord !=
-                                              null)) {
-                                            await CompaniesRecord.collection
-                                                .doc()
-                                                .set({
-                                              ...createCompaniesRecordData(
-                                                createdBy: currentUserUid,
-                                                name: _model
-                                                    .nameFieldController.text,
-                                                alias: _model
-                                                    .aliasFieldController.text,
-                                                email: _model
-                                                    .emailFieldController.text,
-                                                taxRegime: _model
-                                                    .taxRegimeDropDownValue,
-                                                rfc: functions.toUppercase(
-                                                    _model.rFCFieldController
-                                                        .text),
-                                                street: _model
-                                                    .streetFieldController.text,
-                                                streetNumber: _model
-                                                    .streetNumberFieldController
-                                                    .text,
-                                                intStreetNumber: '',
-                                                neighborhood: _model
-                                                    .neighborhoodFieldController
-                                                    .text,
-                                                zipcode: _model
-                                                    .zipCodeFieldController
-                                                    .text,
-                                                city: _model
-                                                    .cityFieldController.text,
-                                                state:
-                                                    _model.stateDropDownValue,
-                                                country:
-                                                    _model.countryDropDownValue,
-                                                status: _model
-                                                        .statusDropDownValue ==
-                                                    'Activo',
-                                                allowTip: false,
-                                                requireBill: _model
-                                                    .requireBillSwitchValue,
-                                                cfdi: _model.cFDIDropDownValue,
-                                                bank: '',
-                                                clabe: '',
-                                                verifiedClabe: false,
-                                                apiKey: '',
-                                                apiSecret: '',
-                                                imageUrl: () {
-                                                  if (_model.uploadedFileUrl !=
-                                                          null &&
-                                                      _model.uploadedFileUrl !=
-                                                          '') {
-                                                    return _model
-                                                        .uploadedFileUrl;
-                                                  } else if (oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                              ?.imageUrl !=
-                                                          null &&
-                                                      oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                              ?.imageUrl !=
-                                                          '') {
-                                                    return oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                        ?.imageUrl;
-                                                  } else {
-                                                    return null;
-                                                  }
-                                                }(),
-                                                bankid: '',
-                                              ),
-                                              ...mapToFirestore(
-                                                {
-                                                  'created_time': FieldValue
-                                                      .serverTimestamp(),
-                                                },
-                                              ),
-                                            });
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'La empresa ha sido registrada con éxito',
-                                                  style: TextStyle(
-                                                    color: Color(0xFFFAF9FE),
-                                                  ),
-                                                ),
-                                                duration: Duration(
-                                                    milliseconds: 4000),
-                                                backgroundColor:
-                                                    Color(0xFF25253F),
-                                              ),
-                                            );
-                                          } else {
-                                            await oKFNPayry19FormularioEmpresaCompaniesRecord!
-                                                .reference
-                                                .update(
-                                                    createCompaniesRecordData(
+                                        if (!(oKFNPayry19FormularioEmpresaCompaniesRecord !=
+                                            null)) {
+                                          await CompaniesRecord.collection
+                                              .doc()
+                                              .set({
+                                            ...createCompaniesRecordData(
                                               createdBy: currentUserUid,
                                               name: _model
                                                   .nameFieldController.text,
@@ -1625,6 +1504,8 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                               requireBill:
                                                   _model.requireBillSwitchValue,
                                               cfdi: _model.cFDIDropDownValue,
+                                              bank: '',
+                                              clabe: '',
                                               verifiedClabe: false,
                                               apiKey: '',
                                               apiSecret: '',
@@ -1646,55 +1527,195 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                   return null;
                                                 }
                                               }(),
-                                            ));
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'La empresa ha sido actualizada con éxito',
-                                                  style: TextStyle(
-                                                    color: Color(0xFFFAF9FE),
-                                                  ),
+                                              bankid: '',
+                                            ),
+                                            ...mapToFirestore(
+                                              {
+                                                'created_time': FieldValue
+                                                    .serverTimestamp(),
+                                              },
+                                            ),
+                                          });
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'La empresa ha sido registrada con éxito',
+                                                style: TextStyle(
+                                                  color: Color(0xFFFAF9FE),
                                                 ),
-                                                duration: Duration(
-                                                    milliseconds: 4000),
-                                                backgroundColor:
-                                                    Color(0xFF25253F),
                                               ),
-                                            );
-                                          }
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  Color(0xFF25253F),
+                                            ),
+                                          );
+                                        } else {
+                                          await oKFNPayry19FormularioEmpresaCompaniesRecord!
+                                              .reference
+                                              .update(createCompaniesRecordData(
+                                            createdBy: currentUserUid,
+                                            name:
+                                                _model.nameFieldController.text,
+                                            alias: _model
+                                                .aliasFieldController.text,
+                                            email: _model
+                                                .emailFieldController.text,
+                                            taxRegime:
+                                                _model.taxRegimeDropDownValue,
+                                            rfc: functions.toUppercase(
+                                                _model.rFCFieldController.text),
+                                            street: _model
+                                                .streetFieldController.text,
+                                            streetNumber: _model
+                                                .streetNumberFieldController
+                                                .text,
+                                            intStreetNumber: '',
+                                            neighborhood: _model
+                                                .neighborhoodFieldController
+                                                .text,
+                                            zipcode: _model
+                                                .zipCodeFieldController.text,
+                                            city:
+                                                _model.cityFieldController.text,
+                                            state: _model.stateDropDownValue,
+                                            country:
+                                                _model.countryDropDownValue,
+                                            status:
+                                                _model.statusDropDownValue ==
+                                                    'Activo',
+                                            allowTip: false,
+                                            requireBill:
+                                                _model.requireBillSwitchValue,
+                                            cfdi: _model.cFDIDropDownValue,
+                                            verifiedClabe: false,
+                                            apiKey: '',
+                                            apiSecret: '',
+                                            imageUrl: () {
+                                              if (_model.uploadedFileUrl !=
+                                                      null &&
+                                                  _model.uploadedFileUrl !=
+                                                      '') {
+                                                return _model.uploadedFileUrl;
+                                              } else if (oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                          ?.imageUrl !=
+                                                      null &&
+                                                  oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                          ?.imageUrl !=
+                                                      '') {
+                                                return oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                    ?.imageUrl;
+                                              } else {
+                                                return null;
+                                              }
+                                            }(),
+                                          ));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'La empresa ha sido actualizada con éxito',
+                                                style: TextStyle(
+                                                  color: Color(0xFFFAF9FE),
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  Color(0xFF25253F),
+                                            ),
+                                          );
+                                        }
 
-                                          try {
-                                            final result =
-                                                await FirebaseFunctions.instance
-                                                    .httpsCallable(
-                                                        'generateToken')
-                                                    .call({
-                                              "uid": currentUserUid,
-                                            });
-                                            _model.cloudFunctionGT =
-                                                GenerateTokenCloudFunctionCallResponse(
-                                              data: result.data,
-                                              succeeded: true,
-                                              resultAsString:
-                                                  result.data.toString(),
-                                              jsonBody: result.data,
-                                            );
-                                          } on FirebaseFunctionsException catch (error) {
-                                            _model.cloudFunctionGT =
-                                                GenerateTokenCloudFunctionCallResponse(
-                                              errorCode: error.code,
-                                              succeeded: false,
-                                            );
-                                          }
+                                        try {
+                                          final result = await FirebaseFunctions
+                                              .instance
+                                              .httpsCallable('generateToken')
+                                              .call({
+                                            "uid": currentUserUid,
+                                          });
+                                          _model.cloudFunctionGT =
+                                              GenerateTokenCloudFunctionCallResponse(
+                                            data: result.data,
+                                            succeeded: true,
+                                            resultAsString:
+                                                result.data.toString(),
+                                            jsonBody: result.data,
+                                          );
+                                        } on FirebaseFunctionsException catch (error) {
+                                          _model.cloudFunctionGT =
+                                              GenerateTokenCloudFunctionCallResponse(
+                                            errorCode: error.code,
+                                            succeeded: false,
+                                          );
+                                        }
 
-                                          FFAppState().serverToken = _model
-                                              .cloudFunctionGT!.jsonBody!
-                                              .toString();
+                                        FFAppState().serverToken = _model
+                                            .cloudFunctionGT!.jsonBody!
+                                            .toString();
 
-                                          setState(() {});
+                                        setState(() {});
+                                      },
+                                      text: 'Guardar',
+                                      options: FFButtonOptions(
+                                        width: 300.0,
+                                        height: 50.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Lexend',
+                                              color: Colors.white,
+                                            ),
+                                        elevation: 3.0,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                if (oKFNPayry19FormularioEmpresaCompaniesRecord !=
+                                    null)
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 10.0, 0.0, 10.0),
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          context.pushNamed(
+                                            'OK_FN_Payry_20_datosBancarios',
+                                            queryParameters: {
+                                              'companyDocRef': serializeParam(
+                                                oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                    ?.reference,
+                                                ParamType.DocumentReference,
+                                              ),
+                                              'clabe': serializeParam(
+                                                oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                    ?.clabe,
+                                                ParamType.String,
+                                              ),
+                                              'bank': serializeParam(
+                                                oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                    ?.bank,
+                                                ParamType.String,
+                                              ),
+                                            }.withoutNulls,
+                                          );
                                         },
-                                        text: 'Guardar',
+                                        text: 'Datos bancarios',
                                         options: FFButtonOptions(
                                           width: 300.0,
                                           height: 50.0,
@@ -1705,14 +1726,16 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .override(
-                                                    fontFamily: 'Lexend',
-                                                    color: Colors.white,
-                                                  ),
+                                              .accent4,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .titleSmall
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                              ),
                                           elevation: 3.0,
                                           borderSide: BorderSide(
                                             color: Colors.transparent,
@@ -1724,115 +1747,50 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                       ),
                                     ),
                                   ),
-                                  if (oKFNPayry19FormularioEmpresaCompaniesRecord !=
-                                      null)
-                                    Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 10.0),
-                                        child: FFButtonWidget(
-                                          onPressed: () async {
-                                            context.pushNamed(
-                                              'OK_FN_Payry_20_datosBancarios',
-                                              queryParameters: {
-                                                'companyDocRef': serializeParam(
-                                                  oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                      ?.reference,
-                                                  ParamType.DocumentReference,
-                                                ),
-                                                'clabe': serializeParam(
-                                                  oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                      ?.clabe,
-                                                  ParamType.String,
-                                                ),
-                                                'bank': serializeParam(
-                                                  oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                      ?.bank,
-                                                  ParamType.String,
-                                                ),
-                                              }.withoutNulls,
-                                            );
-                                          },
-                                          text: 'Datos bancarios',
-                                          options: FFButtonOptions(
-                                            width: 300.0,
-                                            height: 50.0,
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
-                                                .accent4,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily: 'Lexend',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                    ),
-                                            elevation: 3.0,
-                                            borderSide: BorderSide(
-                                              color: Colors.transparent,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(10.0),
+                                if (false)
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 10.0, 0.0, 10.0),
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          context.pushNamed(
+                                              'OK_FN_Payry_22_conexionAPI');
+                                        },
+                                        text: 'API',
+                                        options: FFButtonOptions(
+                                          width: 300.0,
+                                          height: 50.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .accent4,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .titleSmall
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                              ),
+                                          elevation: 3.0,
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1.0,
                                           ),
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
                                         ),
                                       ),
                                     ),
-                                  if (false)
-                                    Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 10.0),
-                                        child: FFButtonWidget(
-                                          onPressed: () async {
-                                            context.pushNamed(
-                                                'OK_FN_Payry_22_conexionAPI');
-                                          },
-                                          text: 'API',
-                                          options: FFButtonOptions(
-                                            width: 300.0,
-                                            height: 50.0,
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
-                                                .accent4,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily: 'Lexend',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                    ),
-                                            elevation: 3.0,
-                                            borderSide: BorderSide(
-                                              color: Colors.transparent,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(10.0),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                ],
-                              ),
+                                  ),
+                              ],
                             ),
                           ),
                         ],

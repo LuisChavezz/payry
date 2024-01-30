@@ -142,6 +142,7 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                               }
                               return ListView.builder(
                                 padding: EdgeInsets.zero,
+                                primary: false,
                                 shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
                                 itemCount:
