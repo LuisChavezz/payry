@@ -160,6 +160,7 @@ class _OKFNPayry24ListadoUsuariosWidgetState
                         .toList();
                     return ListView.builder(
                       padding: EdgeInsets.zero,
+                      primary: false,
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       itemCount: listViewUsersRecordList.length,
@@ -184,56 +185,52 @@ class _OKFNPayry24ListadoUsuariosWidgetState
                                 }.withoutNulls,
                               );
                             },
-                            child: SingleChildScrollView(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        2.0, 0.0, 0.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, 0.0),
-                                          child: Container(
-                                            width: 60.0,
-                                            height: 60.0,
-                                            decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                fit: BoxFit.cover,
-                                                image: Image.network(
-                                                  valueOrDefault<String>(
-                                                    listViewUsersRecord
-                                                        .photoUrl,
-                                                    'https://res.cloudinary.com/dshn8thfr/image/upload/v1694029660/blank-profile-picture-973460_1920_lc1bnn.png',
-                                                  ),
-                                                ).image,
-                                              ),
-                                              shape: BoxShape.circle,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      2.0, 0.0, 0.0, 0.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: Container(
+                                          width: 60.0,
+                                          height: 60.0,
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image: Image.network(
+                                                valueOrDefault<String>(
+                                                  listViewUsersRecord.photoUrl,
+                                                  'https://res.cloudinary.com/dshn8thfr/image/upload/v1694029660/blank-profile-picture-973460_1920_lc1bnn.png',
+                                                ),
+                                              ).image,
                                             ),
+                                            shape: BoxShape.circle,
                                           ),
                                         ),
-                                        Expanded(
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 0.0, 0.0, 0.0),
-                                            child: SingleChildScrollView(
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    listViewUsersRecord
-                                                        .displayName,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 0.0, 0.0, 0.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                listViewUsersRecord.displayName,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Lexend',
@@ -241,38 +238,36 @@ class _OKFNPayry24ListadoUsuariosWidgetState
                                                                   .of(context)
                                                               .primaryText,
                                                         ),
-                                                  ),
-                                                  wrapWithModel(
-                                                    model: _model
-                                                        .statusDropdownModels
-                                                        .getModel(
-                                                      listViewUsersRecord.uid,
-                                                      listViewIndex,
-                                                    ),
-                                                    updateCallback: () =>
-                                                        setState(() {}),
-                                                    child: StatusDropdownWidget(
-                                                      key: Key(
-                                                        'Keyi48_${listViewUsersRecord.uid}',
-                                                      ),
-                                                      userStatus:
-                                                          listViewUsersRecord
-                                                              .status,
-                                                      userReference:
-                                                          listViewUsersRecord
-                                                              .reference,
-                                                    ),
-                                                  ),
-                                                ],
                                               ),
-                                            ),
+                                              wrapWithModel(
+                                                model: _model
+                                                    .statusDropdownModels
+                                                    .getModel(
+                                                  listViewUsersRecord.uid,
+                                                  listViewIndex,
+                                                ),
+                                                updateCallback: () =>
+                                                    setState(() {}),
+                                                child: StatusDropdownWidget(
+                                                  key: Key(
+                                                    'Keyi48_${listViewUsersRecord.uid}',
+                                                  ),
+                                                  userStatus:
+                                                      listViewUsersRecord
+                                                          .status,
+                                                  userReference:
+                                                      listViewUsersRecord
+                                                          .reference,
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         );
