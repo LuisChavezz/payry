@@ -191,7 +191,7 @@ class _OKFNPayry28QrGeneradoWidgetState
                                           oKFNPayry28QrGeneradoQrRecord.amount,
                                           formatType: FormatType.custom,
                                           currency: '',
-                                          format: '#,###.00##',
+                                          format: '#,##0.00##',
                                           locale: 'es_MX',
                                         ),
                                         style: FlutterFlowTheme.of(context)

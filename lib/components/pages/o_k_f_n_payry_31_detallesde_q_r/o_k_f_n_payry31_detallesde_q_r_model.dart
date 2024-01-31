@@ -28,6 +28,8 @@ class OKFNPayry31DetallesdeQRModel
   final unfocusNode = FocusNode();
   // Stores action output result for [Cloud Function - crearMovimientoQR] action in Row widget.
   CrearMovimientoQRCloudFunctionCallResponse? generateQrResp;
+  // Stores action output result for [Cloud Function - refund] action in Button widget.
+  RefundCloudFunctionCallResponse? refundCF;
 
   /// Initialization and disposal methods.
 

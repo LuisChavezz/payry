@@ -177,7 +177,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                               .amount,
                                           formatType: FormatType.custom,
                                           currency: '\$',
-                                          format: '#,###.00##',
+                                          format: '#,##0.00##',
                                           locale: 'es_MX',
                                         )} MXN',
                                         textAlign: TextAlign.center,
@@ -586,16 +586,13 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                               padding: EdgeInsets.all(0.0),
                                               iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .accent4,
+                                              color: Color(0xFF5E4A98),
                                               textStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .titleSmall
                                                       .override(
                                                         fontFamily: 'Lexend',
-                                                        color:
-                                                            Color(0xFF5E4A98),
+                                                        color: Colors.white,
                                                       ),
                                               elevation: 3.0,
                                               borderSide: BorderSide(
@@ -619,88 +616,100 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 10.0, 0.0, 10.0),
                                           child: FFButtonWidget(
-                                            onPressed: () async {
-                                              var confirmDialogResponse =
-                                                  await showDialog<bool>(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title: Text(
-                                                                'Cancelar QR'),
-                                                            content: Text(
-                                                                '¿Estás seguro de querer cancelar este QR?'),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        false),
-                                                                child:
-                                                                    Text('No'),
-                                                              ),
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        true),
-                                                                child:
-                                                                    Text('Si'),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      ) ??
-                                                      false;
-                                              if (confirmDialogResponse) {
-                                                await oKFNPayry31DetallesdeQRQrRecord
-                                                    .reference
-                                                    .update(createQrRecordData(
-                                                  status: 'CANCELADO',
-                                                ));
+                                            onPressed:
+                                                (oKFNPayry31DetallesdeQRQrRecord
+                                                            .status !=
+                                                        'PENDIENTE')
+                                                    ? null
+                                                    : () async {
+                                                        var confirmDialogResponse =
+                                                            await showDialog<
+                                                                    bool>(
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (alertDialogContext) {
+                                                                    return AlertDialog(
+                                                                      title: Text(
+                                                                          'Cancelar QR'),
+                                                                      content: Text(
+                                                                          '¿Estás seguro de querer cancelar este QR?'),
+                                                                      actions: [
+                                                                        TextButton(
+                                                                          onPressed: () => Navigator.pop(
+                                                                              alertDialogContext,
+                                                                              false),
+                                                                          child:
+                                                                              Text('No'),
+                                                                        ),
+                                                                        TextButton(
+                                                                          onPressed: () => Navigator.pop(
+                                                                              alertDialogContext,
+                                                                              true),
+                                                                          child:
+                                                                              Text('Si'),
+                                                                        ),
+                                                                      ],
+                                                                    );
+                                                                  },
+                                                                ) ??
+                                                                false;
+                                                        if (confirmDialogResponse) {
+                                                          await oKFNPayry31DetallesdeQRQrRecord
+                                                              .reference
+                                                              .update(
+                                                                  createQrRecordData(
+                                                            status: 'CANCELADO',
+                                                          ));
 
-                                                await QrHistoryRecord.collection
-                                                    .doc()
-                                                    .set({
-                                                  ...createQrHistoryRecordData(
-                                                    qrId:
-                                                        oKFNPayry31DetallesdeQRQrRecord
-                                                            .reference.id,
-                                                    status: 'CANCELADO',
-                                                    modifiedBy: currentUserUid,
-                                                  ),
-                                                  ...mapToFirestore(
-                                                    {
-                                                      'created_time': FieldValue
-                                                          .serverTimestamp(),
-                                                    },
-                                                  ),
-                                                });
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(
-                                                  SnackBar(
-                                                    content: Text(
-                                                      'El QR ha sido cancelado',
-                                                      style: TextStyle(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                      ),
-                                                    ),
-                                                    duration: Duration(
-                                                        milliseconds: 4000),
-                                                    backgroundColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .secondary,
-                                                  ),
-                                                );
-                                                return;
-                                              } else {
-                                                return;
-                                              }
-                                            },
+                                                          await QrHistoryRecord
+                                                              .collection
+                                                              .doc()
+                                                              .set({
+                                                            ...createQrHistoryRecordData(
+                                                              qrId:
+                                                                  oKFNPayry31DetallesdeQRQrRecord
+                                                                      .reference
+                                                                      .id,
+                                                              status:
+                                                                  'CANCELADO',
+                                                              modifiedBy:
+                                                                  currentUserUid,
+                                                            ),
+                                                            ...mapToFirestore(
+                                                              {
+                                                                'created_time':
+                                                                    FieldValue
+                                                                        .serverTimestamp(),
+                                                              },
+                                                            ),
+                                                          });
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'QR cancelado'),
+                                                                content: Text(
+                                                                    'El QR ha sido cancelado con éxito.'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
+                                                          return;
+                                                        } else {
+                                                          return;
+                                                        }
+                                                      },
                                             text: 'Cancelar QR',
                                             options: FFButtonOptions(
                                               width: MediaQuery.sizeOf(context)
@@ -725,6 +734,9 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                               ),
                                               borderRadius:
                                                   BorderRadius.circular(10.0),
+                                              disabledColor: Color(0x83CCCCCC),
+                                              disabledTextColor:
+                                                  Color(0xFFA1A1A1),
                                             ),
                                           ),
                                         ),
@@ -733,9 +745,167 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 10.0, 0.0, 10.0),
                                           child: FFButtonWidget(
-                                            onPressed: () {
-                                              print('Button pressed ...');
-                                            },
+                                            onPressed:
+                                                (oKFNPayry31DetallesdeQRQrRecord
+                                                            .status !=
+                                                        'PAGADO')
+                                                    ? null
+                                                    : () async {
+                                                        var _shouldSetState =
+                                                            false;
+                                                        var confirmDialogResponse =
+                                                            await showDialog<
+                                                                    bool>(
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (alertDialogContext) {
+                                                                    return AlertDialog(
+                                                                      title: Text(
+                                                                          'Devolver QR'),
+                                                                      content: Text(
+                                                                          '¿Estás seguro de querer devolver el monto de este QR?'),
+                                                                      actions: [
+                                                                        TextButton(
+                                                                          onPressed: () => Navigator.pop(
+                                                                              alertDialogContext,
+                                                                              false),
+                                                                          child:
+                                                                              Text('No'),
+                                                                        ),
+                                                                        TextButton(
+                                                                          onPressed: () => Navigator.pop(
+                                                                              alertDialogContext,
+                                                                              true),
+                                                                          child:
+                                                                              Text('Si'),
+                                                                        ),
+                                                                      ],
+                                                                    );
+                                                                  },
+                                                                ) ??
+                                                                false;
+                                                        if (confirmDialogResponse) {
+                                                          try {
+                                                            final result =
+                                                                await FirebaseFunctions
+                                                                    .instance
+                                                                    .httpsCallable(
+                                                                        'refund')
+                                                                    .call({
+                                                              "token": FFAppState()
+                                                                  .serverToken,
+                                                              "id":
+                                                                  oKFNPayry31DetallesdeQRQrRecord
+                                                                      .reference
+                                                                      .id,
+                                                            });
+                                                            _model.refundCF =
+                                                                RefundCloudFunctionCallResponse(
+                                                              data: result.data,
+                                                              succeeded: true,
+                                                              resultAsString:
+                                                                  result.data
+                                                                      .toString(),
+                                                              jsonBody:
+                                                                  result.data,
+                                                            );
+                                                          } on FirebaseFunctionsException catch (error) {
+                                                            _model.refundCF =
+                                                                RefundCloudFunctionCallResponse(
+                                                              errorCode:
+                                                                  error.code,
+                                                              succeeded: false,
+                                                            );
+                                                          }
+
+                                                          _shouldSetState =
+                                                              true;
+                                                          if (getJsonField(
+                                                            _model.refundCF!
+                                                                .jsonBody,
+                                                            r'''$.success''',
+                                                          )) {
+                                                            await QrHistoryRecord
+                                                                .collection
+                                                                .doc()
+                                                                .set({
+                                                              ...createQrHistoryRecordData(
+                                                                qrId: oKFNPayry31DetallesdeQRQrRecord
+                                                                    .reference
+                                                                    .id,
+                                                                status:
+                                                                    'DEVUELTO',
+                                                                modifiedBy:
+                                                                    currentUserUid,
+                                                              ),
+                                                              ...mapToFirestore(
+                                                                {
+                                                                  'created_time':
+                                                                      FieldValue
+                                                                          .serverTimestamp(),
+                                                                },
+                                                              ),
+                                                            });
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return AlertDialog(
+                                                                  title: Text(
+                                                                      'QR Devulto'),
+                                                                  content: Text(
+                                                                      'La devolución del QR se ha efectuado con éxito.'),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed:
+                                                                          () =>
+                                                                              Navigator.pop(alertDialogContext),
+                                                                      child: Text(
+                                                                          'Ok'),
+                                                                    ),
+                                                                  ],
+                                                                );
+                                                              },
+                                                            );
+                                                            if (_shouldSetState)
+                                                              setState(() {});
+                                                            return;
+                                                          } else {
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return AlertDialog(
+                                                                  title: Text(
+                                                                      'Error'),
+                                                                  content: Text(
+                                                                      'Ha ocurrido un error en ejecución de su solicitud.'),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed:
+                                                                          () =>
+                                                                              Navigator.pop(alertDialogContext),
+                                                                      child: Text(
+                                                                          'Ok'),
+                                                                    ),
+                                                                  ],
+                                                                );
+                                                              },
+                                                            );
+                                                            if (_shouldSetState)
+                                                              setState(() {});
+                                                            return;
+                                                          }
+                                                        } else {
+                                                          if (_shouldSetState)
+                                                            setState(() {});
+                                                          return;
+                                                        }
+
+                                                        if (_shouldSetState)
+                                                          setState(() {});
+                                                      },
                                             text: 'Devolver',
                                             options: FFButtonOptions(
                                               width: MediaQuery.sizeOf(context)
@@ -745,16 +915,13 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                               padding: EdgeInsets.all(0.0),
                                               iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .accent4,
+                                              color: Color(0xFFFF8A71),
                                               textStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .titleSmall
                                                       .override(
                                                         fontFamily: 'Lexend',
-                                                        color:
-                                                            Color(0xFF5E4A98),
+                                                        color: Colors.white,
                                                       ),
                                               elevation: 3.0,
                                               borderSide: BorderSide(
@@ -763,6 +930,9 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                               ),
                                               borderRadius:
                                                   BorderRadius.circular(10.0),
+                                              disabledColor: Color(0x83CCCCCC),
+                                              disabledTextColor:
+                                                  Color(0xFFA1A1A1),
                                             ),
                                           ),
                                         ),

@@ -87,3 +87,5 @@ export '/components/pages/o_k_f_n_payry_05_register_inv/o_k_f_n_payry05_register
     show OKFNPayry05RegisterInvWidget;
 export '/components/pages/o_k_f_n_payry_44_historial_transactions/o_k_f_n_payry44_historial_transactions_widget.dart'
     show OKFNPayry44HistorialTransactionsWidget;
+export '/test_share_image/test_share_image_widget.dart'
+    show TestShareImageWidget;

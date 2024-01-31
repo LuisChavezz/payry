@@ -335,7 +335,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                       currentUserDocument?.isCompanyComplete,
                                       false)
                                   : true) {
-                                context.pushNamed('OK_FN_Payry_29_opcionesQR');
+                                context.pushNamed('OK_FN_Payry_27_solicitarQR');
 
                                 if (_shouldSetState) setState(() {});
                                 return;
@@ -555,7 +555,8 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                       currentUserDocument?.isCompanyComplete,
                                       false)
                                   : true) {
-                                context.pushNamed('OK_FN_Payry_34_opcionesSMS');
+                                context
+                                    .pushNamed('OK_FN_Payry_32_solicitarSMS');
 
                                 if (_shouldSetState) setState(() {});
                                 return;
