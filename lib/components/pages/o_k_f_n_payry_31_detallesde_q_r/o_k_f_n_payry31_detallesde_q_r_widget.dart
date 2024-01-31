@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
@@ -13,7 +14,6 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'package:share_plus/share_plus.dart';
 import 'o_k_f_n_payry31_detallesde_q_r_model.dart';
 export 'o_k_f_n_payry31_detallesde_q_r_model.dart';
 
@@ -515,54 +515,42 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Builder(
-                                          builder: (context) => Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 10.0, 0.0, 10.0),
-                                            child: FFButtonWidget(
-                                              onPressed: () async {
-                                                await Share.share(
-                                                  functions.formatSharedQRText(
-                                                      oKFNPayry31DetallesdeQRQrRecord
-                                                          .qrUrl,
-                                                      oKFNPayry31DetallesdeQRQrRecord
-                                                          .amount,
-                                                      oKFNPayry31DetallesdeQRQrRecord
-                                                          .concept)!,
-                                                  sharePositionOrigin:
-                                                      getWidgetBoundingBox(
-                                                          context),
-                                                );
-                                              },
-                                              text: 'Compartir',
-                                              options: FFButtonOptions(
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        0.38,
-                                                height: 50.0,
-                                                padding: EdgeInsets.all(0.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
-                                                color: Color(0xFF5E4A98),
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily: 'Lexend',
-                                                          color: Colors.white,
-                                                        ),
-                                                elevation: 3.0,
-                                                borderSide: BorderSide(
-                                                  color: Colors.transparent,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(10.0),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 10.0, 0.0, 10.0),
+                                          child: FFButtonWidget(
+                                            onPressed: () async {
+                                              await actions.shareImage(
+                                                functions.imagePathToString(
+                                                    oKFNPayry31DetallesdeQRQrRecord
+                                                        .qrUrl)!,
+                                              );
+                                            },
+                                            text: 'Compartir',
+                                            options: FFButtonOptions(
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.38,
+                                              height: 50.0,
+                                              padding: EdgeInsets.all(0.0),
+                                              iconPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color: Color(0xFF5E4A98),
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color: Colors.white,
+                                                      ),
+                                              elevation: 3.0,
+                                              borderSide: BorderSide(
+                                                color: Colors.transparent,
+                                                width: 1.0,
                                               ),
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
                                             ),
                                           ),
                                         ),
