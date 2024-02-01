@@ -504,7 +504,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                         formatType:
                                                             FormatType.custom,
                                                         currency: '',
-                                                        format: '#,###.00##',
+                                                        format: '#,##0.00##',
                                                         locale: 'es_MX',
                                                       ),
                                                       style:
@@ -706,7 +706,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                         formatType:
                                                             FormatType.custom,
                                                         currency: '',
-                                                        format: '#,###.00##',
+                                                        format: '#,##0.00##',
                                                         locale: 'es_MX',
                                                       ),
                                                       style:

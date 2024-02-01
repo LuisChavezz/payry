@@ -378,6 +378,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               requireAuth: true,
               builder: (context, params) =>
                   OKFNPayry44HistorialTransactionsWidget(),
+            ),
+            FFRoute(
+              name: 'testShareImage',
+              path: 'testShareImage',
+              builder: (context, params) => TestShareImageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

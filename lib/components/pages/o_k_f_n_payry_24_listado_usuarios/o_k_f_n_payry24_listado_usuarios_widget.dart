@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/empty_list/empty_list_widget.dart';
 import '/components/status_dropdown/status_dropdown_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -158,6 +159,15 @@ class _OKFNPayry24ListadoUsuariosWidgetState
                     List<UsersRecord> listViewUsersRecordList = snapshot.data!
                         .where((u) => u.uid != currentUserUid)
                         .toList();
+                    if (listViewUsersRecordList.isEmpty) {
+                      return Container(
+                        height: 300.0,
+                        child: EmptyListWidget(
+                          title: 'Sin usuarios',
+                          message: 'Aún no has agregado usuarios a tu empresa.',
+                        ),
+                      );
+                    }
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       primary: false,

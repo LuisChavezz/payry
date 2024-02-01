@@ -557,7 +557,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                             currency:
                                                                                 '\$',
                                                                             format:
-                                                                                '#,###.00##',
+                                                                                '#,##0.00##',
                                                                             locale:
                                                                                 'es_MX',
                                                                           ),
@@ -838,7 +838,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                             currency:
                                                                                 '\$',
                                                                             format:
-                                                                                '#,###.00##',
+                                                                                '#,##0.00##',
                                                                             locale:
                                                                                 'es_MX',
                                                                           ),

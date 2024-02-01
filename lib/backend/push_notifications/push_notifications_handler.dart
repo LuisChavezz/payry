@@ -221,6 +221,7 @@ final parametersBuilderMap =
     );
   },
   'OK_FN_Payry_44_historialTransactions': ParameterData.none(),
+  'testShareImage': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {
