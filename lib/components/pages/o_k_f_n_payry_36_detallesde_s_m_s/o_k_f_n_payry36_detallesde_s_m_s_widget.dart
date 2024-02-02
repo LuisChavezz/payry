@@ -369,6 +369,49 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                 ),
                               ],
                             ),
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 20.0, 0.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    FlutterFlowIconButton(
+                                      borderColor:
+                                          FlutterFlowTheme.of(context).errorRed,
+                                      borderRadius: 100.0,
+                                      borderWidth: 1.0,
+                                      buttonSize: 60.0,
+                                      fillColor:
+                                          FlutterFlowTheme.of(context).errorRed,
+                                      icon: Icon(
+                                        FFIcons.kqrUsuario,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondary,
+                                        size: 25.0,
+                                      ),
+                                      onPressed: () {
+                                        print('IconButton pressed ...');
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 30.0),
+                                child: Text(
+                                  'Devolver SMS',
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
+                              ),
+                            ),
                             Padding(
                               padding: EdgeInsets.all(20.0),
                               child: Column(

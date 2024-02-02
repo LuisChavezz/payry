@@ -367,141 +367,363 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                     ],
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      20.0, 16.0, 20.0, 16.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      var _shouldSetState = false;
-                                      setState(() {
-                                        _model.isUpdating = !_model.isUpdating;
-                                      });
-                                      try {
-                                        final result = await FirebaseFunctions
-                                            .instance
-                                            .httpsCallable('crearMovimientoQR')
-                                            .call({
-                                          "monto":
-                                              oKFNPayry31DetallesdeQRQrRecord
-                                                  .amount
-                                                  .toString(),
-                                          "concepto":
-                                              oKFNPayry31DetallesdeQRQrRecord
-                                                  .concept,
-                                          "token": FFAppState().serverToken,
-                                          "qrId":
-                                              oKFNPayry31DetallesdeQRQrRecord
-                                                  .reference.id,
-                                        });
-                                        _model.generateQrResp =
-                                            CrearMovimientoQRCloudFunctionCallResponse(
-                                          data: result.data,
-                                          succeeded: true,
-                                          resultAsString:
-                                              result.data.toString(),
-                                          jsonBody: result.data,
-                                        );
-                                      } on FirebaseFunctionsException catch (error) {
-                                        _model.generateQrResp =
-                                            CrearMovimientoQRCloudFunctionCallResponse(
-                                          errorCode: error.code,
-                                          succeeded: false,
-                                        );
-                                      }
-
-                                      _shouldSetState = true;
-                                      if (getJsonField(
-                                        _model.generateQrResp!.jsonBody,
-                                        r'''$.success''',
-                                      )) {
-                                        await widget.qrDocReference!
-                                            .update(createQrRecordData(
-                                          qrUrl: getJsonField(
-                                            _model.generateQrResp?.jsonBody,
-                                            r'''$.data''',
-                                          ).toString(),
-                                        ));
+                                if (false)
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        20.0, 16.0, 20.0, 16.0),
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        var _shouldSetState = false;
                                         setState(() {
                                           _model.isUpdating =
                                               !_model.isUpdating;
                                         });
-                                        if (_shouldSetState) setState(() {});
-                                        return;
-                                      } else {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text('Error'),
-                                              content: Text(getJsonField(
-                                                _model.generateQrResp!.jsonBody,
-                                                r'''$.message''',
-                                              ).toString()),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
-                                        if (_shouldSetState) setState(() {});
-                                        return;
-                                      }
+                                        try {
+                                          final result = await FirebaseFunctions
+                                              .instance
+                                              .httpsCallable(
+                                                  'crearMovimientoQR')
+                                              .call({
+                                            "monto":
+                                                oKFNPayry31DetallesdeQRQrRecord
+                                                    .amount
+                                                    .toString(),
+                                            "concepto":
+                                                oKFNPayry31DetallesdeQRQrRecord
+                                                    .concept,
+                                            "token": FFAppState().serverToken,
+                                            "qrId":
+                                                oKFNPayry31DetallesdeQRQrRecord
+                                                    .reference.id,
+                                          });
+                                          _model.generateQrResp =
+                                              CrearMovimientoQRCloudFunctionCallResponse(
+                                            data: result.data,
+                                            succeeded: true,
+                                            resultAsString:
+                                                result.data.toString(),
+                                            jsonBody: result.data,
+                                          );
+                                        } on FirebaseFunctionsException catch (error) {
+                                          _model.generateQrResp =
+                                              CrearMovimientoQRCloudFunctionCallResponse(
+                                            errorCode: error.code,
+                                            succeeded: false,
+                                          );
+                                        }
 
-                                      if (_shouldSetState) setState(() {});
-                                    },
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 8.0, 16.0, 8.0),
-                                          child: Icon(
-                                            FFIcons.kqr,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 20.0,
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Padding(
+                                        _shouldSetState = true;
+                                        if (getJsonField(
+                                          _model.generateQrResp!.jsonBody,
+                                          r'''$.success''',
+                                        )) {
+                                          await widget.qrDocReference!
+                                              .update(createQrRecordData(
+                                            qrUrl: getJsonField(
+                                              _model.generateQrResp?.jsonBody,
+                                              r'''$.data''',
+                                            ).toString(),
+                                          ));
+                                          setState(() {
+                                            _model.isUpdating =
+                                                !_model.isUpdating;
+                                          });
+                                          if (_shouldSetState) setState(() {});
+                                          return;
+                                        } else {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text('Error'),
+                                                content: Text(getJsonField(
+                                                  _model
+                                                      .generateQrResp!.jsonBody,
+                                                  r'''$.message''',
+                                                ).toString()),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                          if (_shouldSetState) setState(() {});
+                                          return;
+                                        }
+
+                                        if (_shouldSetState) setState(() {});
+                                      },
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 12.0, 0.0),
-                                            child: Text(
-                                              'Regenerar QR',
-                                              textAlign: TextAlign.start,
-                                              style:
+                                                    0.0, 8.0, 16.0, 8.0),
+                                            child: Icon(
+                                              FFIcons.kqr,
+                                              color:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                      ),
+                                                      .primaryText,
+                                              size: 20.0,
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                          Expanded(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 12.0, 0.0),
+                                              child: Text(
+                                                'Regenerar QR',
+                                                textAlign: TextAlign.start,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                ),
                               ],
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 30.0, 20.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5.0, 0.0, 0.0, 0.0),
+                                    child: FlutterFlowIconButton(
+                                      borderColor:
+                                          FlutterFlowTheme.of(context).primary,
+                                      borderRadius: 100.0,
+                                      borderWidth: 1.0,
+                                      buttonSize: 60.0,
+                                      fillColor:
+                                          FlutterFlowTheme.of(context).primary,
+                                      icon: Icon(
+                                        FFIcons.kcompartir,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondary,
+                                        size: 24.0,
+                                      ),
+                                      onPressed: () {
+                                        print('IconButton pressed ...');
+                                      },
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: FlutterFlowIconButton(
+                                      borderColor:
+                                          FlutterFlowTheme.of(context).primary,
+                                      borderRadius: 100.0,
+                                      borderWidth: 1.0,
+                                      buttonSize: 60.0,
+                                      fillColor:
+                                          FlutterFlowTheme.of(context).primary,
+                                      icon: Icon(
+                                        Icons.file_download_outlined,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondary,
+                                        size: 35.0,
+                                      ),
+                                      onPressed: () {
+                                        print('IconButton pressed ...');
+                                      },
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 12.0, 0.0),
+                                      child: FlutterFlowIconButton(
+                                        borderColor:
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                        borderRadius: 100.0,
+                                        borderWidth: 1.0,
+                                        buttonSize: 60.0,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        icon: Icon(
+                                          Icons.cancel_outlined,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondary,
+                                          size: 30.0,
+                                        ),
+                                        onPressed: () {
+                                          print('IconButton pressed ...');
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 0.0, 20.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Text(
+                                      'Compartir',
+                                      textAlign: TextAlign.center,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          50.0, 0.0, 0.0, 0.0),
+                                      child: Text(
+                                        'Descargar',
+                                        textAlign: TextAlign.center,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          40.0, 0.0, 0.0, 0.0),
+                                      child: Text(
+                                        'Cancelar QR',
+                                        textAlign: TextAlign.center,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 20.0, 20.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        55.0, 0.0, 0.0, 0.0),
+                                    child: FlutterFlowIconButton(
+                                      borderColor:
+                                          FlutterFlowTheme.of(context).errorRed,
+                                      borderRadius: 100.0,
+                                      borderWidth: 1.0,
+                                      buttonSize: 60.0,
+                                      fillColor:
+                                          FlutterFlowTheme.of(context).errorRed,
+                                      icon: Icon(
+                                        FFIcons.kqrUsuario,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondary,
+                                        size: 25.0,
+                                      ),
+                                      onPressed: () {
+                                        print('IconButton pressed ...');
+                                      },
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 55.0, 0.0),
+                                      child: FlutterFlowIconButton(
+                                        borderColor:
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                        borderRadius: 100.0,
+                                        borderWidth: 1.0,
+                                        buttonSize: 60.0,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        icon: Icon(
+                                          FFIcons.kqr,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondary,
+                                          size: 25.0,
+                                        ),
+                                        onPressed: () {
+                                          print('IconButton pressed ...');
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 0.0, 20.0, 30.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          40.0, 0.0, 0.0, 0.0),
+                                      child: Text(
+                                        'Devolver QR',
+                                        textAlign: TextAlign.center,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          60.0, 0.0, 0.0, 0.0),
+                                      child: Text(
+                                        'Regenerar QR',
+                                        textAlign: TextAlign.center,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                             if (oKFNPayry31DetallesdeQRQrRecord.status !=
                                 'CANCELADO')

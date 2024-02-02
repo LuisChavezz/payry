@@ -147,7 +147,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'COBROS DE HOY',
+                                      'COBRADO HOY',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(

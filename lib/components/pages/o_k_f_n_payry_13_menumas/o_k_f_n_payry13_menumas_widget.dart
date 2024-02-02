@@ -424,10 +424,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                   oKFNPayry13MenumasUserPermissionsRecord!
                                                       .createQr
                                               ? FlutterFlowTheme.of(context)
-                                                  .primaryBackground
+                                                  .secondaryBackground
                                               : Color(0x83CCCCCC),
                                           FlutterFlowTheme.of(context)
-                                              .primaryBackground,
+                                              .secondaryBackground,
                                         ),
                                         boxShadow: [
                                           BoxShadow(
@@ -789,10 +789,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                   oKFNPayry13MenumasUserPermissionsRecord!
                                                       .createSms
                                               ? FlutterFlowTheme.of(context)
-                                                  .primaryBackground
+                                                  .secondaryBackground
                                               : Color(0x83CCCCCC),
                                           FlutterFlowTheme.of(context)
-                                              .primaryBackground,
+                                              .secondaryBackground,
                                         ),
                                         boxShadow: [
                                           BoxShadow(
@@ -915,7 +915,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     height: 75.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
+                                          .secondaryBackground,
                                       boxShadow: [
                                         BoxShadow(
                                           blurRadius: 4.0,
@@ -1198,10 +1198,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                   currentUserDocument?.isAdmin,
                                                   false)
                                               ? FlutterFlowTheme.of(context)
-                                                  .primaryBackground
+                                                  .secondaryBackground
                                               : Color(0x83CCCCCC),
                                           FlutterFlowTheme.of(context)
-                                              .primaryBackground,
+                                              .secondaryBackground,
                                         ),
                                         boxShadow: [
                                           BoxShadow(
@@ -1237,7 +1237,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                               ),
                                             ),
                                             Text(
-                                              'Empresas',
+                                              'Empresa',
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .bodyMedium
@@ -1558,10 +1558,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                   oKFNPayry13MenumasUserPermissionsRecord!
                                                       .readStatistics
                                               ? FlutterFlowTheme.of(context)
-                                                  .primaryBackground
+                                                  .secondaryBackground
                                               : Color(0x83CCCCCC),
                                           FlutterFlowTheme.of(context)
-                                              .primaryBackground,
+                                              .secondaryBackground,
                                         ),
                                         boxShadow: [
                                           BoxShadow(
@@ -1917,10 +1917,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                   currentUserDocument?.isAdmin,
                                                   false)
                                               ? FlutterFlowTheme.of(context)
-                                                  .primaryBackground
+                                                  .secondaryBackground
                                               : Color(0x83CCCCCC),
                                           FlutterFlowTheme.of(context)
-                                              .primaryBackground,
+                                              .secondaryBackground,
                                         ),
                                         boxShadow: [
                                           BoxShadow(
@@ -2275,10 +2275,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                       false) ||
                                                   true
                                               ? FlutterFlowTheme.of(context)
-                                                  .primaryBackground
+                                                  .secondaryBackground
                                               : Color(0x83CCCCCC),
                                           FlutterFlowTheme.of(context)
-                                              .primaryBackground,
+                                              .secondaryBackground,
                                         ),
                                         boxShadow: [
                                           BoxShadow(
@@ -2392,7 +2392,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     height: 75.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
+                                          .secondaryBackground,
                                       boxShadow: [
                                         BoxShadow(
                                           blurRadius: 4.0,
@@ -2491,7 +2491,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     height: 75.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
+                                          .secondaryBackground,
                                       boxShadow: [
                                         BoxShadow(
                                           blurRadius: 4.0,
@@ -2590,7 +2590,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     height: 75.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
+                                          .secondaryBackground,
                                       boxShadow: [
                                         BoxShadow(
                                           blurRadius: 4.0,
@@ -2697,7 +2697,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     height: 75.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
+                                          .secondaryBackground,
                                       boxShadow: [
                                         BoxShadow(
                                           blurRadius: 4.0,
@@ -3049,10 +3049,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                   oKFNPayry13MenumasUserPermissionsRecord!
                                                       .readTransfers
                                               ? FlutterFlowTheme.of(context)
-                                                  .primaryBackground
+                                                  .secondaryBackground
                                               : Color(0x83CCCCCC),
                                           FlutterFlowTheme.of(context)
-                                              .primaryBackground,
+                                              .secondaryBackground,
                                         ),
                                         boxShadow: [
                                           BoxShadow(
@@ -3201,10 +3201,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     oKFNPayry13MenumasUserPermissionsRecord!
                                                         .readTransfers
                                                 ? FlutterFlowTheme.of(context)
-                                                    .primaryBackground
+                                                    .secondaryBackground
                                                 : Color(0x83CCCCCC),
                                             FlutterFlowTheme.of(context)
-                                                .primaryBackground,
+                                                .secondaryBackground,
                                           ),
                                           boxShadow: [
                                             BoxShadow(

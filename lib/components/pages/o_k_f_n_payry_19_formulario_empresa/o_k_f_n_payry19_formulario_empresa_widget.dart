@@ -1144,17 +1144,6 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(
-                                          'Si/No',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Lexend',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                        ),
                                         Switch.adaptive(
                                           value: _model
                                                   .requireBillSwitchValue ??=

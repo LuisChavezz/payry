@@ -471,7 +471,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                       onPressed: () async {
                         context.pushNamed('OK_FN_Payry_29_opcionesQR');
                       },
-                      text: 'Más opciones de QR',
+                      text: 'Consultar QR',
                       options: FFButtonOptions(
                         width: double.infinity,
                         height: 50.0,

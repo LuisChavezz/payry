@@ -561,7 +561,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
 
                                   if (_shouldSetState) setState(() {});
                                 },
-                                text: 'Solicitar Pago con SMS',
+                                text: 'Generar SMS',
                                 options: FFButtonOptions(
                                   width: double.infinity,
                                   height: 50.0,
@@ -597,7 +597,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                     onPressed: () async {
                       context.pushNamed('OK_FN_Payry_34_opcionesSMS');
                     },
-                    text: 'Más opciones de SMS',
+                    text: 'Consultar SMS',
                     options: FFButtonOptions(
                       width: MediaQuery.sizeOf(context).width * 10.0,
                       height: 50.0,
