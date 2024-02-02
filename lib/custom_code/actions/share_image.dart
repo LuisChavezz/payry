@@ -28,7 +28,7 @@ Future<void> shareImage(String imageUrl) async {
       await File(imagePath).writeAsBytes(bytes);
 
       // Compartir la imagen utilizando la librería share_plus
-      await Share.shareFiles([imagePath], text: 'Image Shared');
+      await Share.shareFiles([imagePath]);
     } catch (e) {}
   } else {}
 }

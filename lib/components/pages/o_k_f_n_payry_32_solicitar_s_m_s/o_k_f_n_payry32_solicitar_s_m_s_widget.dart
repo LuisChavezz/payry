@@ -4,6 +4,7 @@ import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.d
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
@@ -168,7 +169,8 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
                                                   .bodyMedium,
-                                          hintText: 'Ingresa tu celular...',
+                                          hintText:
+                                              'Ingresa el número celular...',
                                           hintStyle:
                                               FlutterFlowTheme.of(context)
                                                   .bodySmall,
@@ -500,8 +502,9 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                     if (Navigator.of(context).canPop()) {
                                       context.pop();
                                     }
-                                    context.pushNamed(
+                                    context.pushNamedAuth(
                                       'OK_FN_Payry_36_detallesdeSMS',
+                                      context.mounted,
                                       pathParameters: {
                                         'smsDocReference': serializeParam(
                                           _model.createdSms?.reference,
@@ -533,6 +536,25 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                         );
                                       },
                                     );
+                                    if (!functions.includeTheString(
+                                        getJsonField(
+                                          _model.smsCloudFunction!.jsonBody,
+                                          r'''$.message''',
+                                        ).toString(),
+                                        'expirada')!) {
+                                      if (_shouldSetState) setState(() {});
+                                      return;
+                                    }
+
+                                    GoRouter.of(context).prepareAuthEvent();
+                                    await authManager.signOut();
+                                    GoRouter.of(context)
+                                        .clearRedirectLocation();
+
+                                    context.goNamedAuth(
+                                        'OK_FN_Payry_08_iniciasesion',
+                                        context.mounted);
+
                                     if (_shouldSetState) setState(() {});
                                     return;
                                   }
@@ -570,7 +592,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(40.0),
+                  padding: EdgeInsets.all(36.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       context.pushNamed('OK_FN_Payry_34_opcionesSMS');

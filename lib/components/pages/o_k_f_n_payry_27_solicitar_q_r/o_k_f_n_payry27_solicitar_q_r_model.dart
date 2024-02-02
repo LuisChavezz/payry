@@ -4,6 +4,7 @@ import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.d
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'o_k_f_n_payry27_solicitar_q_r_widget.dart'
     show OKFNPayry27SolicitarQRWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -57,7 +58,7 @@ class OKFNPayry27SolicitarQRModel
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   QrRecord? createdQR;
   // Stores action output result for [Cloud Function - crearMovimientoQR] action in Button widget.
-  CrearMovimientoQRCloudFunctionCallResponse? cloudFunctionik3;
+  CrearMovimientoQRCloudFunctionCallResponse? qrCloundFunction;
 
   /// Initialization and disposal methods.
 
