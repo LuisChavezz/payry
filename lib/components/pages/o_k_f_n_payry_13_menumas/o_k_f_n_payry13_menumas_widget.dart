@@ -2706,9 +2706,9 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                       MediaQuery.sizeOf(context)
                                                                   .width <
                                                               390.0
-                                                          ? 14.0
+                                                          ? 11.0
                                                           : 14.0,
-                                                      14.0,
+                                                      11.0,
                                                     ),
                                                   ),
                                             ),

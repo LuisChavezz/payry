@@ -29,7 +29,7 @@ Future<void> shareImage(String imageUrl) async {
 
       // Compartir la imagen utilizando la librería share_plus
       // await Share.shareFiles([imagePath]);
-      await Share.shareXFiles([XFile(imagePath)], text: 'Great picture');
+      await Share.shareXFiles([XFile(imagePath)]);
     } catch (e) {}
   } else {}
 }
