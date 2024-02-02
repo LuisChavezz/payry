@@ -105,3 +105,13 @@ DocumentReference? jsonPathToQrDocRef(String? id) {
     throw e;
   }
 }
+
+bool? includeTheString(
+  String message,
+  String text,
+) {
+  String lowerCaseMessage = message.toLowerCase();
+  String lowerCaseText = text.toLowerCase();
+
+  return lowerCaseMessage.contains(lowerCaseText);
+}

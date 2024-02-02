@@ -695,10 +695,10 @@ class _OKFNPayry38EstadisticasWidgetState
                                                       MainAxisSize.max,
                                                   children: [
                                                     Text(
-                                                      getJsonField(
+                                                      '\$${getJsonField(
                                                         _model.statisticsCFResp,
                                                         r'''$.transferenciasPayry''',
-                                                      ).toString(),
+                                                      ).toString()}',
                                                       textAlign: TextAlign.end,
                                                       style:
                                                           FlutterFlowTheme.of(

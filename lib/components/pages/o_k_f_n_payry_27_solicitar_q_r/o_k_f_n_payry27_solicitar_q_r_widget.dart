@@ -4,6 +4,7 @@ import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.d
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
@@ -329,7 +330,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                                       "token": FFAppState().serverToken,
                                       "qrId": _model.createdQR?.reference.id,
                                     });
-                                    _model.cloudFunctionik3 =
+                                    _model.qrCloundFunction =
                                         CrearMovimientoQRCloudFunctionCallResponse(
                                       data: result.data,
                                       succeeded: true,
@@ -337,7 +338,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                                       jsonBody: result.data,
                                     );
                                   } on FirebaseFunctionsException catch (error) {
-                                    _model.cloudFunctionik3 =
+                                    _model.qrCloundFunction =
                                         CrearMovimientoQRCloudFunctionCallResponse(
                                       errorCode: error.code,
                                       succeeded: false,
@@ -346,13 +347,13 @@ class _OKFNPayry27SolicitarQRWidgetState
 
                                   _shouldSetState = true;
                                   if (getJsonField(
-                                    _model.cloudFunctionik3!.jsonBody,
+                                    _model.qrCloundFunction!.jsonBody,
                                     r'''$.success''',
                                   )) {
                                     await _model.createdQR!.reference
                                         .update(createQrRecordData(
                                       qrUrl: getJsonField(
-                                        _model.cloudFunctionik3?.jsonBody,
+                                        _model.qrCloundFunction?.jsonBody,
                                         r'''$.data''',
                                       ).toString(),
                                     ));
@@ -373,8 +374,9 @@ class _OKFNPayry27SolicitarQRWidgetState
                                     if (Navigator.of(context).canPop()) {
                                       context.pop();
                                     }
-                                    context.pushNamed(
+                                    context.pushNamedAuth(
                                       'OK_FN_Payry_31_detallesdeQR',
+                                      context.mounted,
                                       pathParameters: {
                                         'qrDocReference': serializeParam(
                                           _model.createdQR?.reference,
@@ -393,7 +395,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                                         return AlertDialog(
                                           title: Text('Error'),
                                           content: Text(getJsonField(
-                                            _model.cloudFunctionik3!.jsonBody,
+                                            _model.qrCloundFunction!.jsonBody,
                                             r'''$.message''',
                                           ).toString()),
                                           actions: [
@@ -406,6 +408,25 @@ class _OKFNPayry27SolicitarQRWidgetState
                                         );
                                       },
                                     );
+                                    if (!functions.includeTheString(
+                                        getJsonField(
+                                          _model.qrCloundFunction!.jsonBody,
+                                          r'''$.message''',
+                                        ).toString(),
+                                        'expirada')!) {
+                                      if (_shouldSetState) setState(() {});
+                                      return;
+                                    }
+
+                                    GoRouter.of(context).prepareAuthEvent();
+                                    await authManager.signOut();
+                                    GoRouter.of(context)
+                                        .clearRedirectLocation();
+
+                                    context.goNamedAuth(
+                                        'OK_FN_Payry_08_iniciasesion',
+                                        context.mounted);
+
                                     if (_shouldSetState) setState(() {});
                                     return;
                                   }
@@ -445,7 +466,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                 Align(
                   alignment: AlignmentDirectional(0.0, 1.0),
                   child: Padding(
-                    padding: EdgeInsets.all(40.0),
+                    padding: EdgeInsets.all(36.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         context.pushNamed('OK_FN_Payry_29_opcionesQR');
