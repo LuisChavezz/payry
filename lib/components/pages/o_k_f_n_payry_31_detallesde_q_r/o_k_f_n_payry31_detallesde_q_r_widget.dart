@@ -367,140 +367,6 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                     ],
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      20.0, 16.0, 20.0, 16.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      var _shouldSetState = false;
-                                      setState(() {
-                                        _model.isUpdating = !_model.isUpdating;
-                                      });
-                                      try {
-                                        final result = await FirebaseFunctions
-                                            .instance
-                                            .httpsCallable('crearMovimientoQR')
-                                            .call({
-                                          "monto":
-                                              oKFNPayry31DetallesdeQRQrRecord
-                                                  .amount
-                                                  .toString(),
-                                          "concepto":
-                                              oKFNPayry31DetallesdeQRQrRecord
-                                                  .concept,
-                                          "token": FFAppState().serverToken,
-                                          "qrId":
-                                              oKFNPayry31DetallesdeQRQrRecord
-                                                  .reference.id,
-                                        });
-                                        _model.generateQrResp =
-                                            CrearMovimientoQRCloudFunctionCallResponse(
-                                          data: result.data,
-                                          succeeded: true,
-                                          resultAsString:
-                                              result.data.toString(),
-                                          jsonBody: result.data,
-                                        );
-                                      } on FirebaseFunctionsException catch (error) {
-                                        _model.generateQrResp =
-                                            CrearMovimientoQRCloudFunctionCallResponse(
-                                          errorCode: error.code,
-                                          succeeded: false,
-                                        );
-                                      }
-
-                                      _shouldSetState = true;
-                                      if (getJsonField(
-                                        _model.generateQrResp!.jsonBody,
-                                        r'''$.success''',
-                                      )) {
-                                        await widget.qrDocReference!
-                                            .update(createQrRecordData(
-                                          qrUrl: getJsonField(
-                                            _model.generateQrResp?.jsonBody,
-                                            r'''$.data''',
-                                          ).toString(),
-                                        ));
-                                        setState(() {
-                                          _model.isUpdating =
-                                              !_model.isUpdating;
-                                        });
-                                        if (_shouldSetState) setState(() {});
-                                        return;
-                                      } else {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text('Error'),
-                                              content: Text(getJsonField(
-                                                _model.generateQrResp!.jsonBody,
-                                                r'''$.message''',
-                                              ).toString()),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
-                                        if (_shouldSetState) setState(() {});
-                                        return;
-                                      }
-
-                                      if (_shouldSetState) setState(() {});
-                                    },
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 8.0, 16.0, 8.0),
-                                          child: Icon(
-                                            FFIcons.kqr,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 20.0,
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 12.0, 0.0),
-                                            child: Text(
-                                              'Regenerar QR',
-                                              textAlign: TextAlign.start,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                      ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
                               ],
                             ),
                             Align(
@@ -527,7 +393,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                           buttonSize: 50.0,
                                           fillColor:
                                               FlutterFlowTheme.of(context)
-                                                  .primary,
+                                                  .accent3,
                                           icon: Icon(
                                             FFIcons.kcompartir,
                                             color: FlutterFlowTheme.of(context)
@@ -563,7 +429,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                           buttonSize: 50.0,
                                           fillColor:
                                               FlutterFlowTheme.of(context)
-                                                  .primary,
+                                                  .accent3,
                                           icon: Icon(
                                             Icons.file_download_outlined,
                                             color: FlutterFlowTheme.of(context)
@@ -598,7 +464,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                           buttonSize: 50.0,
                                           fillColor:
                                               FlutterFlowTheme.of(context)
-                                                  .primary,
+                                                  .accent3,
                                           disabledColor: Color(0x83CCCCCC),
                                           disabledIconColor: Color(0xFFA1A1A1),
                                           icon: Icon(
@@ -727,8 +593,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                           disabledIconColor: Color(0xFFA1A1A1),
                                           icon: Icon(
                                             FFIcons.kqrUsuario,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondary,
+                                            color: Colors.white,
                                             size: 24.0,
                                           ),
                                           showLoadingIndicator: true,
@@ -787,7 +652,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                                     .reference
                                                                     .id,
                                                           });
-                                                          _model.refundCFCopy =
+                                                          _model.refundCF =
                                                               RefundCloudFunctionCallResponse(
                                                             data: result.data,
                                                             succeeded: true,
@@ -798,7 +663,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                                 result.data,
                                                           );
                                                         } on FirebaseFunctionsException catch (error) {
-                                                          _model.refundCFCopy =
+                                                          _model.refundCF =
                                                               RefundCloudFunctionCallResponse(
                                                             errorCode:
                                                                 error.code,
@@ -914,7 +779,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                           buttonSize: 50.0,
                                           fillColor:
                                               FlutterFlowTheme.of(context)
-                                                  .primary,
+                                                  .accent3,
                                           disabledColor: Color(0x83CCCCCC),
                                           disabledIconColor: Color(0xFFA1A1A1),
                                           icon: Icon(
@@ -934,7 +799,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                           false;
                                                       setState(() {
                                                         _model.isUpdating =
-                                                            !_model.isUpdating;
+                                                            true;
                                                       });
                                                       try {
                                                         final result =
@@ -956,7 +821,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                               oKFNPayry31DetallesdeQRQrRecord
                                                                   .reference.id,
                                                         });
-                                                        _model.generateQrRespCopy =
+                                                        _model.generateQrResp =
                                                             CrearMovimientoQRCloudFunctionCallResponse(
                                                           data: result.data,
                                                           succeeded: true,
@@ -966,7 +831,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                           jsonBody: result.data,
                                                         );
                                                       } on FirebaseFunctionsException catch (error) {
-                                                        _model.generateQrRespCopy =
+                                                        _model.generateQrResp =
                                                             CrearMovimientoQRCloudFunctionCallResponse(
                                                           errorCode: error.code,
                                                           succeeded: false,
@@ -992,8 +857,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                         ));
                                                         setState(() {
                                                           _model.isUpdating =
-                                                              !_model
-                                                                  .isUpdating;
+                                                              false;
                                                         });
                                                         if (_shouldSetState)
                                                           setState(() {});
@@ -1025,6 +889,10 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                             );
                                                           },
                                                         );
+                                                        setState(() {
+                                                          _model.isUpdating =
+                                                              false;
+                                                        });
                                                         if (_shouldSetState)
                                                           setState(() {});
                                                         return;
@@ -1049,432 +917,6 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                 ),
                               ),
                             ),
-                            if (oKFNPayry31DetallesdeQRQrRecord.status !=
-                                'CANCELADO')
-                              Padding(
-                                padding: EdgeInsets.all(16.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 10.0, 0.0, 10.0),
-                                          child: FFButtonWidget(
-                                            onPressed: () async {
-                                              await actions.shareImage(
-                                                functions.imagePathToString(
-                                                    oKFNPayry31DetallesdeQRQrRecord
-                                                        .qrUrl)!,
-                                              );
-                                            },
-                                            text: 'Compartir',
-                                            options: FFButtonOptions(
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.38,
-                                              height: 50.0,
-                                              padding: EdgeInsets.all(0.0),
-                                              iconPadding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: Color(0xFF5E4A98),
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color: Colors.white,
-                                                      ),
-                                              elevation: 3.0,
-                                              borderSide: BorderSide(
-                                                color: Colors.transparent,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 10.0, 0.0, 10.0),
-                                          child: FFButtonWidget(
-                                            onPressed: () async {
-                                              await launchURL(
-                                                  functions.imagePathToString(
-                                                      oKFNPayry31DetallesdeQRQrRecord
-                                                          .qrUrl)!);
-                                            },
-                                            text: 'Descargar',
-                                            options: FFButtonOptions(
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.38,
-                                              height: 50.0,
-                                              padding: EdgeInsets.all(0.0),
-                                              iconPadding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: Color(0xFF5E4A98),
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color: Colors.white,
-                                                      ),
-                                              elevation: 3.0,
-                                              borderSide: BorderSide(
-                                                color: Colors.transparent,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 10.0, 0.0, 10.0),
-                                          child: FFButtonWidget(
-                                            onPressed:
-                                                (oKFNPayry31DetallesdeQRQrRecord
-                                                            .status !=
-                                                        'PENDIENTE')
-                                                    ? null
-                                                    : () async {
-                                                        var confirmDialogResponse =
-                                                            await showDialog<
-                                                                    bool>(
-                                                                  context:
-                                                                      context,
-                                                                  builder:
-                                                                      (alertDialogContext) {
-                                                                    return AlertDialog(
-                                                                      title: Text(
-                                                                          'Cancelar QR'),
-                                                                      content: Text(
-                                                                          '¿Estás seguro de querer cancelar este QR?'),
-                                                                      actions: [
-                                                                        TextButton(
-                                                                          onPressed: () => Navigator.pop(
-                                                                              alertDialogContext,
-                                                                              false),
-                                                                          child:
-                                                                              Text('No'),
-                                                                        ),
-                                                                        TextButton(
-                                                                          onPressed: () => Navigator.pop(
-                                                                              alertDialogContext,
-                                                                              true),
-                                                                          child:
-                                                                              Text('Si'),
-                                                                        ),
-                                                                      ],
-                                                                    );
-                                                                  },
-                                                                ) ??
-                                                                false;
-                                                        if (confirmDialogResponse) {
-                                                          await oKFNPayry31DetallesdeQRQrRecord
-                                                              .reference
-                                                              .update(
-                                                                  createQrRecordData(
-                                                            status: 'CANCELADO',
-                                                          ));
-
-                                                          await QrHistoryRecord
-                                                              .collection
-                                                              .doc()
-                                                              .set({
-                                                            ...createQrHistoryRecordData(
-                                                              qrId:
-                                                                  oKFNPayry31DetallesdeQRQrRecord
-                                                                      .reference
-                                                                      .id,
-                                                              status:
-                                                                  'CANCELADO',
-                                                              modifiedBy:
-                                                                  currentUserUid,
-                                                            ),
-                                                            ...mapToFirestore(
-                                                              {
-                                                                'created_time':
-                                                                    FieldValue
-                                                                        .serverTimestamp(),
-                                                              },
-                                                            ),
-                                                          });
-                                                          await showDialog(
-                                                            context: context,
-                                                            builder:
-                                                                (alertDialogContext) {
-                                                              return AlertDialog(
-                                                                title: Text(
-                                                                    'QR cancelado'),
-                                                                content: Text(
-                                                                    'El QR ha sido cancelado con éxito.'),
-                                                                actions: [
-                                                                  TextButton(
-                                                                    onPressed: () =>
-                                                                        Navigator.pop(
-                                                                            alertDialogContext),
-                                                                    child: Text(
-                                                                        'Ok'),
-                                                                  ),
-                                                                ],
-                                                              );
-                                                            },
-                                                          );
-                                                          return;
-                                                        } else {
-                                                          return;
-                                                        }
-                                                      },
-                                            text: 'Cancelar QR',
-                                            options: FFButtonOptions(
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.38,
-                                              height: 50.0,
-                                              padding: EdgeInsets.all(0.0),
-                                              iconPadding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: Color(0xFFFF8A71),
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color: Colors.white,
-                                                      ),
-                                              elevation: 3.0,
-                                              borderSide: BorderSide(
-                                                color: Colors.transparent,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
-                                              disabledColor: Color(0x83CCCCCC),
-                                              disabledTextColor:
-                                                  Color(0xFFA1A1A1),
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 10.0, 0.0, 10.0),
-                                          child: FFButtonWidget(
-                                            onPressed:
-                                                (oKFNPayry31DetallesdeQRQrRecord
-                                                            .status !=
-                                                        'PAGADO')
-                                                    ? null
-                                                    : () async {
-                                                        var _shouldSetState =
-                                                            false;
-                                                        var confirmDialogResponse =
-                                                            await showDialog<
-                                                                    bool>(
-                                                                  context:
-                                                                      context,
-                                                                  builder:
-                                                                      (alertDialogContext) {
-                                                                    return AlertDialog(
-                                                                      title: Text(
-                                                                          'Devolver QR'),
-                                                                      content: Text(
-                                                                          '¿Estás seguro de querer devolver el monto de este QR?'),
-                                                                      actions: [
-                                                                        TextButton(
-                                                                          onPressed: () => Navigator.pop(
-                                                                              alertDialogContext,
-                                                                              false),
-                                                                          child:
-                                                                              Text('No'),
-                                                                        ),
-                                                                        TextButton(
-                                                                          onPressed: () => Navigator.pop(
-                                                                              alertDialogContext,
-                                                                              true),
-                                                                          child:
-                                                                              Text('Si'),
-                                                                        ),
-                                                                      ],
-                                                                    );
-                                                                  },
-                                                                ) ??
-                                                                false;
-                                                        if (confirmDialogResponse) {
-                                                          try {
-                                                            final result =
-                                                                await FirebaseFunctions
-                                                                    .instance
-                                                                    .httpsCallable(
-                                                                        'refund')
-                                                                    .call({
-                                                              "token": FFAppState()
-                                                                  .serverToken,
-                                                              "id":
-                                                                  oKFNPayry31DetallesdeQRQrRecord
-                                                                      .reference
-                                                                      .id,
-                                                            });
-                                                            _model.refundCF =
-                                                                RefundCloudFunctionCallResponse(
-                                                              data: result.data,
-                                                              succeeded: true,
-                                                              resultAsString:
-                                                                  result.data
-                                                                      .toString(),
-                                                              jsonBody:
-                                                                  result.data,
-                                                            );
-                                                          } on FirebaseFunctionsException catch (error) {
-                                                            _model.refundCF =
-                                                                RefundCloudFunctionCallResponse(
-                                                              errorCode:
-                                                                  error.code,
-                                                              succeeded: false,
-                                                            );
-                                                          }
-
-                                                          _shouldSetState =
-                                                              true;
-                                                          if (getJsonField(
-                                                            _model.refundCF!
-                                                                .jsonBody,
-                                                            r'''$.success''',
-                                                          )) {
-                                                            await QrHistoryRecord
-                                                                .collection
-                                                                .doc()
-                                                                .set({
-                                                              ...createQrHistoryRecordData(
-                                                                qrId: oKFNPayry31DetallesdeQRQrRecord
-                                                                    .reference
-                                                                    .id,
-                                                                status:
-                                                                    'DEVUELTO',
-                                                                modifiedBy:
-                                                                    currentUserUid,
-                                                              ),
-                                                              ...mapToFirestore(
-                                                                {
-                                                                  'created_time':
-                                                                      FieldValue
-                                                                          .serverTimestamp(),
-                                                                },
-                                                              ),
-                                                            });
-                                                            await showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (alertDialogContext) {
-                                                                return AlertDialog(
-                                                                  title: Text(
-                                                                      'QR Devulto'),
-                                                                  content: Text(
-                                                                      'La devolución del QR se ha efectuado con éxito.'),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed:
-                                                                          () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                      child: Text(
-                                                                          'Ok'),
-                                                                    ),
-                                                                  ],
-                                                                );
-                                                              },
-                                                            );
-                                                            if (_shouldSetState)
-                                                              setState(() {});
-                                                            return;
-                                                          } else {
-                                                            await showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (alertDialogContext) {
-                                                                return AlertDialog(
-                                                                  title: Text(
-                                                                      'Error'),
-                                                                  content: Text(
-                                                                      'Ha ocurrido un error en ejecución de su solicitud.'),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed:
-                                                                          () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                      child: Text(
-                                                                          'Ok'),
-                                                                    ),
-                                                                  ],
-                                                                );
-                                                              },
-                                                            );
-                                                            if (_shouldSetState)
-                                                              setState(() {});
-                                                            return;
-                                                          }
-                                                        } else {
-                                                          if (_shouldSetState)
-                                                            setState(() {});
-                                                          return;
-                                                        }
-
-                                                        if (_shouldSetState)
-                                                          setState(() {});
-                                                      },
-                                            text: 'Devolver',
-                                            options: FFButtonOptions(
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.38,
-                                              height: 50.0,
-                                              padding: EdgeInsets.all(0.0),
-                                              iconPadding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: Color(0xFFFF8A71),
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color: Colors.white,
-                                                      ),
-                                              elevation: 3.0,
-                                              borderSide: BorderSide(
-                                                color: Colors.transparent,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
-                                              disabledColor: Color(0x83CCCCCC),
-                                              disabledTextColor:
-                                                  Color(0xFFA1A1A1),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
                           ],
                         ),
                       ),
