@@ -30,10 +30,22 @@ class _OKFNPayry08IniciasesionWidgetState
     super.initState();
     _model = createModel(context, () => OKFNPayry08IniciasesionModel());
 
-    _model.emailFieldController ??= TextEditingController();
+    _model.emailFieldController ??= TextEditingController(
+        text: FFAppState().userCredentials != null
+            ? getJsonField(
+                FFAppState().userCredentials,
+                r'''$.email''',
+              ).toString().toString()
+            : '');
     _model.emailFieldFocusNode ??= FocusNode();
 
-    _model.passwordFieldController ??= TextEditingController();
+    _model.passwordFieldController ??= TextEditingController(
+        text: FFAppState().userCredentials != null
+            ? getJsonField(
+                FFAppState().userCredentials,
+                r'''$.password''',
+              ).toString().toString()
+            : '');
     _model.passwordFieldFocusNode ??= FocusNode();
   }
 
@@ -301,61 +313,74 @@ class _OKFNPayry08IniciasesionWidgetState
                                             VerticalDirection.down,
                                         clipBehavior: Clip.none,
                                         children: [
-                                          if (false)
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Theme(
-                                                  data: ThemeData(
-                                                    checkboxTheme:
-                                                        CheckboxThemeData(
-                                                      visualDensity:
-                                                          VisualDensity.compact,
-                                                      materialTapTargetSize:
-                                                          MaterialTapTargetSize
-                                                              .shrinkWrap,
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(4.0),
-                                                      ),
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Theme(
+                                                data: ThemeData(
+                                                  checkboxTheme:
+                                                      CheckboxThemeData(
+                                                    visualDensity:
+                                                        VisualDensity.compact,
+                                                    materialTapTargetSize:
+                                                        MaterialTapTargetSize
+                                                            .shrinkWrap,
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              4.0),
                                                     ),
-                                                    unselectedWidgetColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .secondaryText,
                                                   ),
-                                                  child: Checkbox(
-                                                    value:
-                                                        _model.checkboxValue ??=
-                                                            false,
-                                                    onChanged:
-                                                        (newValue) async {
-                                                      setState(() =>
-                                                          _model.checkboxValue =
-                                                              newValue!);
-                                                    },
-                                                    activeColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primary,
-                                                    checkColor: Colors.white,
-                                                  ),
+                                                  unselectedWidgetColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryText,
                                                 ),
-                                                Text(
-                                                  'Recordarme',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color:
-                                                            Color(0xFF8788A5),
-                                                      ),
+                                                child: Checkbox(
+                                                  value: _model
+                                                          .rememberMeCheckValue ??=
+                                                      FFAppState().rememberMe,
+                                                  onChanged: (newValue) async {
+                                                    setState(() => _model
+                                                            .rememberMeCheckValue =
+                                                        newValue!);
+                                                    if (newValue!) {
+                                                      setState(() {
+                                                        FFAppState()
+                                                                .rememberMe =
+                                                            !FFAppState()
+                                                                .rememberMe;
+                                                      });
+                                                    } else {
+                                                      setState(() {
+                                                        FFAppState()
+                                                                .rememberMe =
+                                                            !FFAppState()
+                                                                .rememberMe;
+                                                      });
+                                                    }
+                                                  },
+                                                  activeColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                  checkColor: Colors.white,
                                                 ),
-                                              ],
-                                            ),
+                                              ),
+                                              Text(
+                                                'Recordarme',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color:
+                                                              Color(0xFF8788A5),
+                                                        ),
+                                              ),
+                                            ],
+                                          ),
                                           FFButtonWidget(
                                             onPressed: () async {
                                               context.pushNamed(
@@ -458,6 +483,29 @@ class _OKFNPayry08IniciasesionWidgetState
                                                       _model.cloudFunctionGT!
                                                           .jsonBody!
                                                           .toString();
+                                                  if (_model
+                                                      .rememberMeCheckValue!) {
+                                                    setState(() {
+                                                      FFAppState()
+                                                              .userCredentials =
+                                                          <String, String>{
+                                                        'email': _model
+                                                            .emailFieldController
+                                                            .text,
+                                                        'password': _model
+                                                            .passwordFieldController
+                                                            .text,
+                                                      };
+                                                    });
+                                                  } else {
+                                                    setState(() {
+                                                      FFAppState()
+                                                          .deleteUserCredentials();
+                                                      FFAppState()
+                                                              .userCredentials =
+                                                          null;
+                                                    });
+                                                  }
 
                                                   context.pushNamedAuth(
                                                       'OK_FN_Payry_13_Menumas',

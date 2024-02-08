@@ -369,260 +369,163 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                 ),
                               ],
                             ),
-                            Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 20.0, 0.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    FlutterFlowIconButton(
-                                      borderColor:
-                                          FlutterFlowTheme.of(context).errorRed,
-                                      borderRadius: 100.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 60.0,
-                                      fillColor:
-                                          FlutterFlowTheme.of(context).errorRed,
-                                      icon: Icon(
-                                        FFIcons.kqrUsuario,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondary,
-                                        size: 25.0,
-                                      ),
-                                      onPressed: () {
-                                        print('IconButton pressed ...');
-                                      },
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 30.0),
-                                child: Text(
-                                  'Devolver SMS',
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                ),
-                              ),
-                            ),
                             Padding(
-                              padding: EdgeInsets.all(20.0),
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 16.0, 20.0, 32.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(1.0, 0.0),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 10.0, 0.0, 10.0),
-                                          child: FFButtonWidget(
-                                            onPressed:
-                                                (oKFNPayry36DetallesdeSMSSmsRecord
-                                                            .status !=
-                                                        'PAGADO')
-                                                    ? null
-                                                    : () async {
-                                                        var _shouldSetState =
-                                                            false;
-                                                        var confirmDialogResponse =
-                                                            await showDialog<
-                                                                    bool>(
-                                                                  context:
-                                                                      context,
-                                                                  builder:
-                                                                      (alertDialogContext) {
-                                                                    return AlertDialog(
-                                                                      title: Text(
-                                                                          'Devolver SMS'),
-                                                                      content: Text(
-                                                                          '¿Estás seguro de querer devolver el monto de este SMS?'),
-                                                                      actions: [
-                                                                        TextButton(
-                                                                          onPressed: () => Navigator.pop(
-                                                                              alertDialogContext,
-                                                                              false),
-                                                                          child:
-                                                                              Text('No'),
-                                                                        ),
-                                                                        TextButton(
-                                                                          onPressed: () => Navigator.pop(
-                                                                              alertDialogContext,
-                                                                              true),
-                                                                          child:
-                                                                              Text('Si'),
-                                                                        ),
-                                                                      ],
-                                                                    );
-                                                                  },
-                                                                ) ??
-                                                                false;
-                                                        if (confirmDialogResponse) {
-                                                          try {
-                                                            final result =
-                                                                await FirebaseFunctions
-                                                                    .instance
-                                                                    .httpsCallable(
-                                                                        'refund')
-                                                                    .call({
-                                                              "token": FFAppState()
-                                                                  .serverToken,
-                                                              "id":
-                                                                  oKFNPayry36DetallesdeSMSSmsRecord
-                                                                      .reference
-                                                                      .id,
-                                                            });
-                                                            _model.refundCF =
-                                                                RefundCloudFunctionCallResponse(
-                                                              data: result.data,
-                                                              succeeded: true,
-                                                              resultAsString:
-                                                                  result.data
-                                                                      .toString(),
-                                                              jsonBody:
-                                                                  result.data,
-                                                            );
-                                                          } on FirebaseFunctionsException catch (error) {
-                                                            _model.refundCF =
-                                                                RefundCloudFunctionCallResponse(
-                                                              errorCode:
-                                                                  error.code,
-                                                              succeeded: false,
-                                                            );
-                                                          }
-
-                                                          _shouldSetState =
-                                                              true;
-                                                          if (getJsonField(
-                                                            _model.refundCF!
-                                                                .jsonBody,
-                                                            r'''$.success''',
-                                                          )) {
-                                                            await SmsHistoryRecord
-                                                                .collection
-                                                                .doc()
-                                                                .set({
-                                                              ...createSmsHistoryRecordData(
-                                                                smsId:
-                                                                    oKFNPayry36DetallesdeSMSSmsRecord
-                                                                        .reference
-                                                                        .id,
-                                                                status:
-                                                                    'DEVUELTO',
-                                                                modifiedBy:
-                                                                    currentUserUid,
-                                                              ),
-                                                              ...mapToFirestore(
-                                                                {
-                                                                  'created_time':
-                                                                      FieldValue
-                                                                          .serverTimestamp(),
-                                                                },
-                                                              ),
-                                                            });
-                                                            await showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (alertDialogContext) {
-                                                                return AlertDialog(
-                                                                  title: Text(
-                                                                      'QR Devulto'),
-                                                                  content: Text(
-                                                                      'La devolución del QR se ha efectuado con éxito.'),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed:
-                                                                          () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                      child: Text(
-                                                                          'Ok'),
-                                                                    ),
-                                                                  ],
-                                                                );
-                                                              },
-                                                            );
-                                                            if (_shouldSetState)
-                                                              setState(() {});
-                                                            return;
-                                                          } else {
-                                                            await showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (alertDialogContext) {
-                                                                return AlertDialog(
-                                                                  title: Text(
-                                                                      'Error'),
-                                                                  content: Text(
-                                                                      'Ha ocurrido un error en ejecución de su solicitud.'),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed:
-                                                                          () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                      child: Text(
-                                                                          'Ok'),
-                                                                    ),
-                                                                  ],
-                                                                );
-                                                              },
-                                                            );
-                                                            if (_shouldSetState)
-                                                              setState(() {});
-                                                            return;
-                                                          }
-                                                        } else {
-                                                          if (_shouldSetState)
-                                                            setState(() {});
-                                                          return;
-                                                        }
-
-                                                        if (_shouldSetState)
-                                                          setState(() {});
-                                                      },
-                                            text: 'Devolver',
-                                            options: FFButtonOptions(
-                                              width: 150.0,
-                                              height: 50.0,
-                                              padding: EdgeInsets.all(0.0),
-                                              iconPadding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: Color(0xFFFF8A71),
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color: Colors.white,
+                                  FlutterFlowIconButton(
+                                    borderColor:
+                                        FlutterFlowTheme.of(context).errorRed,
+                                    borderRadius: 100.0,
+                                    borderWidth: 1.0,
+                                    buttonSize: 60.0,
+                                    fillColor:
+                                        FlutterFlowTheme.of(context).errorRed,
+                                    icon: Icon(
+                                      FFIcons.kqrUsuario,
+                                      color: Colors.white,
+                                      size: 25.0,
+                                    ),
+                                    onPressed: () async {
+                                      var _shouldSetState = false;
+                                      var confirmDialogResponse =
+                                          await showDialog<bool>(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text('Devolver SMS'),
+                                                    content: Text(
+                                                        '¿Estás seguro de querer devolver el monto de este SMS?'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext,
+                                                                false),
+                                                        child: Text('No'),
                                                       ),
-                                              elevation: 3.0,
-                                              borderSide: BorderSide(
-                                                color: Colors.transparent,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
-                                              disabledColor: Color(0x83CCCCCC),
-                                              disabledTextColor:
-                                                  Color(0xFFA1A1A1),
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext,
+                                                                true),
+                                                        child: Text('Si'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              ) ??
+                                              false;
+                                      if (confirmDialogResponse) {
+                                        try {
+                                          final result = await FirebaseFunctions
+                                              .instance
+                                              .httpsCallable('refund')
+                                              .call({
+                                            "token": FFAppState().serverToken,
+                                            "id":
+                                                oKFNPayry36DetallesdeSMSSmsRecord
+                                                    .reference.id,
+                                          });
+                                          _model.refundCF =
+                                              RefundCloudFunctionCallResponse(
+                                            data: result.data,
+                                            succeeded: true,
+                                            resultAsString:
+                                                result.data.toString(),
+                                            jsonBody: result.data,
+                                          );
+                                        } on FirebaseFunctionsException catch (error) {
+                                          _model.refundCF =
+                                              RefundCloudFunctionCallResponse(
+                                            errorCode: error.code,
+                                            succeeded: false,
+                                          );
+                                        }
+
+                                        _shouldSetState = true;
+                                        if (getJsonField(
+                                          _model.refundCF!.jsonBody,
+                                          r'''$.success''',
+                                        )) {
+                                          await SmsHistoryRecord.collection
+                                              .doc()
+                                              .set({
+                                            ...createSmsHistoryRecordData(
+                                              smsId:
+                                                  oKFNPayry36DetallesdeSMSSmsRecord
+                                                      .reference.id,
+                                              status: 'DEVUELTO',
+                                              modifiedBy: currentUserUid,
                                             ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                                            ...mapToFirestore(
+                                              {
+                                                'created_time': FieldValue
+                                                    .serverTimestamp(),
+                                              },
+                                            ),
+                                          });
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text('QR Devulto'),
+                                                content: Text(
+                                                    'La devolución del QR se ha efectuado con éxito.'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                          if (_shouldSetState) setState(() {});
+                                          return;
+                                        } else {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text('Error'),
+                                                content: Text(
+                                                    'Ha ocurrido un error en ejecución de su solicitud.'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                          if (_shouldSetState) setState(() {});
+                                          return;
+                                        }
+                                      } else {
+                                        if (_shouldSetState) setState(() {});
+                                        return;
+                                      }
+
+                                      if (_shouldSetState) setState(() {});
+                                    },
                                   ),
-                                ],
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Text(
+                                      'Devolver SMS',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
+                                  ),
+                                ].divide(SizedBox(height: 5.0)),
                               ),
                             ),
                           ],

@@ -1,11 +1,9 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
-import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'o_k_f_n_payry15_edit_profile_widget.dart'
     show OKFNPayry15EditProfileWidget;
@@ -44,9 +42,8 @@ class OKFNPayry15EditProfileModel
   TextEditingController? phoneFieldController;
   final phoneFieldMask = MaskTextInputFormatter(mask: '##########');
   String? Function(BuildContext, String?)? phoneFieldControllerValidator;
-  // State field(s) for StatusDropDown widget.
-  String? statusDropDownValue;
-  FormFieldController<String>? statusDropDownValueController;
+  // State field(s) for StatusSwitch widget.
+  bool? statusSwitchValue;
 
   /// Initialization and disposal methods.
 

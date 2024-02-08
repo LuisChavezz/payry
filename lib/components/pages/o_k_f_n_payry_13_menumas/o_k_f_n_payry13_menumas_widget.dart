@@ -460,7 +460,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     ? FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText
-                                                    : Color(0x808F8F8F),
+                                                    : Color(0xFFA1A1A1),
                                                 size: 20.0,
                                               ),
                                             ),
@@ -480,7 +480,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                         ? FlutterFlowTheme.of(
                                                                 context)
                                                             .primaryText
-                                                        : Color(0x808F8F8F),
+                                                        : Color(0xFFA1A1A1),
                                                     fontSize: 14.0,
                                                   ),
                                             ),
@@ -825,7 +825,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     ? FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText
-                                                    : Color(0x808F8F8F),
+                                                    : Color(0xFFA1A1A1),
                                                 size: 20.0,
                                               ),
                                             ),
@@ -845,7 +845,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                         ? FlutterFlowTheme.of(
                                                                 context)
                                                             .primaryText
-                                                        : Color(0x808F8F8F),
+                                                        : Color(0xFFA1A1A1),
                                                     fontSize: MediaQuery.sizeOf(
                                                                     context)
                                                                 .width <
@@ -1232,7 +1232,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     ? FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText
-                                                    : Color(0x808F8F8F),
+                                                    : Color(0xFFA1A1A1),
                                                 size: 20.0,
                                               ),
                                             ),
@@ -1250,7 +1250,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                         ? FlutterFlowTheme.of(
                                                                 context)
                                                             .primaryText
-                                                        : Color(0x808F8F8F),
+                                                        : Color(0xFFA1A1A1),
                                                   ),
                                             ),
                                           ].divide(SizedBox(width: 5.0)),
@@ -1594,7 +1594,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     ? FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText
-                                                    : Color(0x808F8F8F),
+                                                    : Color(0xFFA1A1A1),
                                                 size: 20.0,
                                               ),
                                             ),
@@ -1614,7 +1614,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                         ? FlutterFlowTheme.of(
                                                                 context)
                                                             .primaryText
-                                                        : Color(0x808F8F8F),
+                                                        : Color(0xFFA1A1A1),
                                                   ),
                                             ),
                                           ].divide(SizedBox(width: 5.0)),
@@ -1951,7 +1951,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     ? FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText
-                                                    : Color(0x808F8F8F),
+                                                    : Color(0xFFA1A1A1),
                                                 size: 20.0,
                                               ),
                                             ),
@@ -1969,7 +1969,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                         ? FlutterFlowTheme.of(
                                                                 context)
                                                             .primaryText
-                                                        : Color(0x808F8F8F),
+                                                        : Color(0xFFA1A1A1),
                                                   ),
                                             ),
                                           ].divide(SizedBox(width: 5.0)),
@@ -2310,7 +2310,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     ? FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText
-                                                    : Color(0x808F8F8F),
+                                                    : Color(0xFFA1A1A1),
                                                 size: 20.0,
                                               ),
                                             ),
@@ -2329,7 +2329,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                         ? FlutterFlowTheme.of(
                                                                 context)
                                                             .primaryText
-                                                        : Color(0x808F8F8F),
+                                                        : Color(0xFFA1A1A1),
                                                   ),
                                             ),
                                           ].divide(SizedBox(width: 5.0)),
@@ -2673,7 +2673,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     ? FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText
-                                                    : Color(0x808F8F8F),
+                                                    : Color(0xFFA1A1A1),
                                                 size: 20.0,
                                               ),
                                             ),
@@ -2700,7 +2700,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                     .of(context)
                                                                 .primaryText
                                                             : Color(0x808F8F8F))
-                                                        : Color(0x808F8F8F),
+                                                        : Color(0xFFA1A1A1),
                                                     fontSize:
                                                         valueOrDefault<double>(
                                                       MediaQuery.sizeOf(context)

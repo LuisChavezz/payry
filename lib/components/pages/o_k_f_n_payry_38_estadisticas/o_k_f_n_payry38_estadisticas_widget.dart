@@ -163,6 +163,9 @@ class _OKFNPayry38EstadisticasWidgetState
                         initialDate: _model.statisticsStartDate,
                         rowHeight: 42.0,
                         onChange: (DateTimeRange? newSelectedDate) async {
+                          if (_model.calendarSelectedDay1 == newSelectedDate) {
+                            return;
+                          }
                           _model.calendarSelectedDay1 = newSelectedDate;
                           setState(() {
                             _model.statisticsStartDate =
@@ -266,6 +269,9 @@ class _OKFNPayry38EstadisticasWidgetState
                         initialDate: _model.statisticsEndDate,
                         rowHeight: 42.0,
                         onChange: (DateTimeRange? newSelectedDate) async {
+                          if (_model.calendarSelectedDay2 == newSelectedDate) {
+                            return;
+                          }
                           _model.calendarSelectedDay2 = newSelectedDate;
                           setState(() {
                             _model.statisticsEndDate =

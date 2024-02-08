@@ -150,3 +150,29 @@ class RefundCloudFunctionCallResponse {
   String? resultAsString;
   dynamic data;
 }
+
+class SendWelcomeEmailCloudFunctionCallResponse {
+  SendWelcomeEmailCloudFunctionCallResponse({
+    this.errorCode,
+    this.succeeded,
+    this.jsonBody,
+  });
+  String? errorCode;
+  bool? succeeded;
+  dynamic jsonBody;
+}
+
+class GetBalanceCloudFunctionCallResponse {
+  GetBalanceCloudFunctionCallResponse({
+    this.errorCode,
+    this.succeeded,
+    this.jsonBody,
+    this.resultAsString,
+    this.data,
+  });
+  String? errorCode;
+  bool? succeeded;
+  dynamic jsonBody;
+  String? resultAsString;
+  dynamic data;
+}

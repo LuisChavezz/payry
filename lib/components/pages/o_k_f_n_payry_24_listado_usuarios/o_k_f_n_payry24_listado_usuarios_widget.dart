@@ -1,7 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/dynamic_switch_widget.dart';
 import '/components/empty_list/empty_list_widget.dart';
-import '/components/status_dropdown/status_dropdown_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -249,26 +249,13 @@ class _OKFNPayry24ListadoUsuariosWidgetState
                                                               .primaryText,
                                                         ),
                                               ),
-                                              wrapWithModel(
-                                                model: _model
-                                                    .statusDropdownModels
-                                                    .getModel(
-                                                  listViewUsersRecord.uid,
-                                                  listViewIndex,
-                                                ),
-                                                updateCallback: () =>
-                                                    setState(() {}),
-                                                child: StatusDropdownWidget(
-                                                  key: Key(
-                                                    'Keyi48_${listViewUsersRecord.uid}',
-                                                  ),
-                                                  userStatus:
-                                                      listViewUsersRecord
-                                                          .status,
-                                                  userReference:
-                                                      listViewUsersRecord
-                                                          .reference,
-                                                ),
+                                              DynamicSwitchWidget(
+                                                key: Key(
+                                                    'Keysgn_${listViewIndex}_of_${listViewUsersRecordList.length}'),
+                                                initialValue:
+                                                    listViewUsersRecord.status,
+                                                userDocRef: listViewUsersRecord
+                                                    .reference,
                                               ),
                                             ],
                                           ),

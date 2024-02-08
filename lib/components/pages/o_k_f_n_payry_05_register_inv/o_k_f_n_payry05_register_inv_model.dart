@@ -42,6 +42,8 @@ class OKFNPayry05RegisterInvModel
   VerifyEmailCloudFunctionCallResponse? cfve;
   // Stores action output result for [Cloud Function - generateToken] action in Button widget.
   GenerateTokenCloudFunctionCallResponse? cloudFunctionGT;
+  // Stores action output result for [Cloud Function - sendWelcomeEmail] action in Button widget.
+  SendWelcomeEmailCloudFunctionCallResponse? cloudFunctionxin;
 
   /// Initialization and disposal methods.
 

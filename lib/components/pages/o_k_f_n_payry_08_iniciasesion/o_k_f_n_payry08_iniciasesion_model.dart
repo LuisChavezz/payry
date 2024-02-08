@@ -49,8 +49,8 @@ class OKFNPayry08IniciasesionModel
     return null;
   }
 
-  // State field(s) for Checkbox widget.
-  bool? checkboxValue;
+  // State field(s) for RememberMeCheck widget.
+  bool? rememberMeCheckValue;
   // Stores action output result for [Cloud Function - generateToken] action in Button-Login widget.
   GenerateTokenCloudFunctionCallResponse? cloudFunctionGT;
 
