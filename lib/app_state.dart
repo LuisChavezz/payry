@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import '/backend/backend.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:csv/csv.dart';
-import 'package:synchronized/synchronized.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'dart:convert';
 
@@ -20,22 +18,21 @@ class FFAppState extends ChangeNotifier {
   }
 
   Future initializePersistedState() async {
-    secureStorage = FlutterSecureStorage();
-    await _safeInitAsync(() async {
-      _notify = await secureStorage.getBool('ff_notify') ?? _notify;
+    prefs = await SharedPreferences.getInstance();
+    _safeInit(() {
+      _notify = prefs.getBool('ff_notify') ?? _notify;
     });
-    await _safeInitAsync(() async {
-      _serverToken =
-          await secureStorage.getString('ff_serverToken') ?? _serverToken;
+    _safeInit(() {
+      _serverToken = prefs.getString('ff_serverToken') ?? _serverToken;
     });
-    await _safeInitAsync(() async {
-      _rememberMe = await secureStorage.getBool('ff_rememberMe') ?? _rememberMe;
+    _safeInit(() {
+      _rememberMe = prefs.getBool('ff_rememberMe') ?? _rememberMe;
     });
-    await _safeInitAsync(() async {
-      if (await secureStorage.read(key: 'ff_userCredentials') != null) {
+    _safeInit(() {
+      if (prefs.containsKey('ff_userCredentials')) {
         try {
-          _userCredentials = jsonDecode(
-              await secureStorage.getString('ff_userCredentials') ?? '');
+          _userCredentials =
+              jsonDecode(prefs.getString('ff_userCredentials') ?? '');
         } catch (e) {
           print("Can't decode persisted json. Error: $e.");
         }
@@ -48,7 +45,7 @@ class FFAppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  late FlutterSecureStorage secureStorage;
+  late SharedPreferences prefs;
 
   bool _isSearch = false;
   bool get isSearch => _isSearch;
@@ -60,11 +57,7 @@ class FFAppState extends ChangeNotifier {
   bool get notify => _notify;
   set notify(bool _value) {
     _notify = _value;
-    secureStorage.setBool('ff_notify', _value);
-  }
-
-  void deleteNotify() {
-    secureStorage.delete(key: 'ff_notify');
+    prefs.setBool('ff_notify', _value);
   }
 
   String _phoneNumber = '';
@@ -83,33 +76,21 @@ class FFAppState extends ChangeNotifier {
   String get serverToken => _serverToken;
   set serverToken(String _value) {
     _serverToken = _value;
-    secureStorage.setString('ff_serverToken', _value);
-  }
-
-  void deleteServerToken() {
-    secureStorage.delete(key: 'ff_serverToken');
+    prefs.setString('ff_serverToken', _value);
   }
 
   bool _rememberMe = true;
   bool get rememberMe => _rememberMe;
   set rememberMe(bool _value) {
     _rememberMe = _value;
-    secureStorage.setBool('ff_rememberMe', _value);
-  }
-
-  void deleteRememberMe() {
-    secureStorage.delete(key: 'ff_rememberMe');
+    prefs.setBool('ff_rememberMe', _value);
   }
 
   dynamic _userCredentials;
   dynamic get userCredentials => _userCredentials;
   set userCredentials(dynamic _value) {
     _userCredentials = _value;
-    secureStorage.setString('ff_userCredentials', jsonEncode(_value));
-  }
-
-  void deleteUserCredentials() {
-    secureStorage.delete(key: 'ff_userCredentials');
+    prefs.setString('ff_userCredentials', jsonEncode(_value));
   }
 }
 
@@ -123,47 +104,4 @@ Future _safeInitAsync(Function() initializeField) async {
   try {
     await initializeField();
   } catch (_) {}
-}
-
-extension FlutterSecureStorageExtensions on FlutterSecureStorage {
-  static final _lock = Lock();
-
-  Future<void> writeSync({required String key, String? value}) async =>
-      await _lock.synchronized(() async {
-        await write(key: key, value: value);
-      });
-
-  void remove(String key) => delete(key: key);
-
-  Future<String?> getString(String key) async => await read(key: key);
-  Future<void> setString(String key, String value) async =>
-      await writeSync(key: key, value: value);
-
-  Future<bool?> getBool(String key) async => (await read(key: key)) == 'true';
-  Future<void> setBool(String key, bool value) async =>
-      await writeSync(key: key, value: value.toString());
-
-  Future<int?> getInt(String key) async =>
-      int.tryParse(await read(key: key) ?? '');
-  Future<void> setInt(String key, int value) async =>
-      await writeSync(key: key, value: value.toString());
-
-  Future<double?> getDouble(String key) async =>
-      double.tryParse(await read(key: key) ?? '');
-  Future<void> setDouble(String key, double value) async =>
-      await writeSync(key: key, value: value.toString());
-
-  Future<List<String>?> getStringList(String key) async =>
-      await read(key: key).then((result) {
-        if (result == null || result.isEmpty) {
-          return null;
-        }
-        return CsvToListConverter()
-            .convert(result)
-            .first
-            .map((e) => e.toString())
-            .toList();
-      });
-  Future<void> setStringList(String key, List<String> value) async =>
-      await writeSync(key: key, value: ListToCsvConverter().convert([value]));
 }

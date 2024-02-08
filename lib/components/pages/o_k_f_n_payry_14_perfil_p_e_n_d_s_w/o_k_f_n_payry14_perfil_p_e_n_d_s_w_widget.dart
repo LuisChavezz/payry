@@ -648,9 +648,7 @@ class _OKFNPayry14PerfilPENDSWWidgetState
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                FFAppState().deleteServerToken();
                                 FFAppState().serverToken = '';
-
                                 GoRouter.of(context).prepareAuthEvent();
                                 await authManager.signOut();
                                 GoRouter.of(context).clearRedirectLocation();

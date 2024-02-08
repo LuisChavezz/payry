@@ -500,8 +500,6 @@ class _OKFNPayry08IniciasesionWidgetState
                                                   } else {
                                                     setState(() {
                                                       FFAppState()
-                                                          .deleteUserCredentials();
-                                                      FFAppState()
                                                               .userCredentials =
                                                           null;
                                                     });
