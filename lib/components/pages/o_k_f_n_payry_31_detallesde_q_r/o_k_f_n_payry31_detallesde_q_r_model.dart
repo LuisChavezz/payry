@@ -26,10 +26,10 @@ class OKFNPayry31DetallesdeQRModel
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Cloud Function - crearMovimientoQR] action in Row widget.
-  CrearMovimientoQRCloudFunctionCallResponse? generateQrResp;
-  // Stores action output result for [Cloud Function - refund] action in Button widget.
+  // Stores action output result for [Cloud Function - refund] action in IconButton widget.
   RefundCloudFunctionCallResponse? refundCF;
+  // Stores action output result for [Cloud Function - crearMovimientoQR] action in IconButton widget.
+  CrearMovimientoQRCloudFunctionCallResponse? generateQrResp;
 
   /// Initialization and disposal methods.
 

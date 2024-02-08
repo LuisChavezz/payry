@@ -19,7 +19,7 @@ class OKFNPayry36DetallesdeSMSModel
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Cloud Function - refund] action in Button widget.
+  // Stores action output result for [Cloud Function - refund] action in IconButton widget.
   RefundCloudFunctionCallResponse? refundCF;
 
   /// Initialization and disposal methods.

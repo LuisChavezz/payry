@@ -1,11 +1,14 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/components/empty_list/empty_list_widget.dart';
 import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -30,6 +33,45 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => OKFNPayry26DashboardModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      try {
+        final result =
+            await FirebaseFunctions.instance.httpsCallable('getBalance').call({
+          "token": FFAppState().serverToken,
+        });
+        _model.getBalanceCF = GetBalanceCloudFunctionCallResponse(
+          data: result.data,
+          succeeded: true,
+          resultAsString: result.data.toString(),
+          jsonBody: result.data,
+        );
+      } on FirebaseFunctionsException catch (error) {
+        _model.getBalanceCF = GetBalanceCloudFunctionCallResponse(
+          errorCode: error.code,
+          succeeded: false,
+        );
+      }
+
+      if (getJsonField(
+        _model.getBalanceCF!.jsonBody,
+        r'''$.success''',
+      )) {
+        setState(() {
+          _model.balance = getJsonField(
+            _model.getBalanceCF!.jsonBody,
+            r'''$.balance''',
+          ).toString().toString();
+        });
+        return;
+      } else {
+        setState(() {
+          _model.balance = '0.00';
+        });
+        return;
+      }
+    });
 
     _model.tabBarController = TabController(
       vsync: this,
@@ -147,7 +189,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'COBROS DE HOY',
+                                      'COBRADO HOY',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -168,7 +210,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                             CrossAxisAlignment.end,
                                         children: [
                                           Text(
-                                            '3,941.48',
+                                            '\$${_model.balance}',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -176,15 +218,6 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                   color: Colors.white,
                                                   fontSize: 28.0,
                                                   fontWeight: FontWeight.w600,
-                                                ),
-                                          ),
-                                          Text(
-                                            'MXN',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: Colors.white,
                                                 ),
                                           ),
                                         ],

@@ -571,6 +571,27 @@ class _OKFNPayry05RegistrateWidgetState
                                               'OK_FN_Payry_06_confirmacionRegistro',
                                               context.mounted);
 
+                                          try {
+                                            final result =
+                                                await FirebaseFunctions.instance
+                                                    .httpsCallable(
+                                                        'sendWelcomeEmail')
+                                                    .call({
+                                              "email": _model
+                                                  .emailFieldController.text,
+                                            });
+                                            _model.cloudFunctiona55 =
+                                                SendWelcomeEmailCloudFunctionCallResponse(
+                                              succeeded: true,
+                                            );
+                                          } on FirebaseFunctionsException catch (error) {
+                                            _model.cloudFunctiona55 =
+                                                SendWelcomeEmailCloudFunctionCallResponse(
+                                              errorCode: error.code,
+                                              succeeded: false,
+                                            );
+                                          }
+
                                           setState(() {});
                                         },
                                         text: 'Crea tu cuenta',

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '/backend/backend.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
+import 'dart:convert';
 
 class FFAppState extends ChangeNotifier {
   static FFAppState _instance = FFAppState._internal();
@@ -23,6 +24,19 @@ class FFAppState extends ChangeNotifier {
     });
     _safeInit(() {
       _serverToken = prefs.getString('ff_serverToken') ?? _serverToken;
+    });
+    _safeInit(() {
+      _rememberMe = prefs.getBool('ff_rememberMe') ?? _rememberMe;
+    });
+    _safeInit(() {
+      if (prefs.containsKey('ff_userCredentials')) {
+        try {
+          _userCredentials =
+              jsonDecode(prefs.getString('ff_userCredentials') ?? '');
+        } catch (e) {
+          print("Can't decode persisted json. Error: $e.");
+        }
+      }
     });
   }
 
@@ -64,16 +78,20 @@ class FFAppState extends ChangeNotifier {
     _serverToken = _value;
     prefs.setString('ff_serverToken', _value);
   }
-}
 
-LatLng? _latLngFromString(String? val) {
-  if (val == null) {
-    return null;
+  bool _rememberMe = true;
+  bool get rememberMe => _rememberMe;
+  set rememberMe(bool _value) {
+    _rememberMe = _value;
+    prefs.setBool('ff_rememberMe', _value);
   }
-  final split = val.split(',');
-  final lat = double.parse(split.first);
-  final lng = double.parse(split.last);
-  return LatLng(lat, lng);
+
+  dynamic _userCredentials;
+  dynamic get userCredentials => _userCredentials;
+  set userCredentials(dynamic _value) {
+    _userCredentials = _value;
+    prefs.setString('ff_userCredentials', jsonEncode(_value));
+  }
 }
 
 void _safeInit(Function() initializeField) {

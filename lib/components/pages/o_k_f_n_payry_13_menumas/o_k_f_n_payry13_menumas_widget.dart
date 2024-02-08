@@ -424,10 +424,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                   oKFNPayry13MenumasUserPermissionsRecord!
                                                       .createQr
                                               ? FlutterFlowTheme.of(context)
-                                                  .primaryBackground
+                                                  .secondaryBackground
                                               : Color(0x83CCCCCC),
                                           FlutterFlowTheme.of(context)
-                                              .primaryBackground,
+                                              .secondaryBackground,
                                         ),
                                         boxShadow: [
                                           BoxShadow(
@@ -460,7 +460,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     ? FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText
-                                                    : Color(0x808F8F8F),
+                                                    : Color(0xFFA1A1A1),
                                                 size: 20.0,
                                               ),
                                             ),
@@ -480,7 +480,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                         ? FlutterFlowTheme.of(
                                                                 context)
                                                             .primaryText
-                                                        : Color(0x808F8F8F),
+                                                        : Color(0xFFA1A1A1),
                                                     fontSize: 14.0,
                                                   ),
                                             ),
@@ -789,10 +789,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                   oKFNPayry13MenumasUserPermissionsRecord!
                                                       .createSms
                                               ? FlutterFlowTheme.of(context)
-                                                  .primaryBackground
+                                                  .secondaryBackground
                                               : Color(0x83CCCCCC),
                                           FlutterFlowTheme.of(context)
-                                              .primaryBackground,
+                                              .secondaryBackground,
                                         ),
                                         boxShadow: [
                                           BoxShadow(
@@ -825,7 +825,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     ? FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText
-                                                    : Color(0x808F8F8F),
+                                                    : Color(0xFFA1A1A1),
                                                 size: 20.0,
                                               ),
                                             ),
@@ -845,7 +845,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                         ? FlutterFlowTheme.of(
                                                                 context)
                                                             .primaryText
-                                                        : Color(0x808F8F8F),
+                                                        : Color(0xFFA1A1A1),
                                                     fontSize: MediaQuery.sizeOf(
                                                                     context)
                                                                 .width <
@@ -915,7 +915,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     height: 75.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
+                                          .secondaryBackground,
                                       boxShadow: [
                                         BoxShadow(
                                           blurRadius: 4.0,
@@ -1198,10 +1198,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                   currentUserDocument?.isAdmin,
                                                   false)
                                               ? FlutterFlowTheme.of(context)
-                                                  .primaryBackground
+                                                  .secondaryBackground
                                               : Color(0x83CCCCCC),
                                           FlutterFlowTheme.of(context)
-                                              .primaryBackground,
+                                              .secondaryBackground,
                                         ),
                                         boxShadow: [
                                           BoxShadow(
@@ -1232,12 +1232,12 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     ? FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText
-                                                    : Color(0x808F8F8F),
+                                                    : Color(0xFFA1A1A1),
                                                 size: 20.0,
                                               ),
                                             ),
                                             Text(
-                                              'Empresas',
+                                              'Empresa',
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .bodyMedium
@@ -1250,7 +1250,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                         ? FlutterFlowTheme.of(
                                                                 context)
                                                             .primaryText
-                                                        : Color(0x808F8F8F),
+                                                        : Color(0xFFA1A1A1),
                                                   ),
                                             ),
                                           ].divide(SizedBox(width: 5.0)),
@@ -1558,10 +1558,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                   oKFNPayry13MenumasUserPermissionsRecord!
                                                       .readStatistics
                                               ? FlutterFlowTheme.of(context)
-                                                  .primaryBackground
+                                                  .secondaryBackground
                                               : Color(0x83CCCCCC),
                                           FlutterFlowTheme.of(context)
-                                              .primaryBackground,
+                                              .secondaryBackground,
                                         ),
                                         boxShadow: [
                                           BoxShadow(
@@ -1594,7 +1594,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     ? FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText
-                                                    : Color(0x808F8F8F),
+                                                    : Color(0xFFA1A1A1),
                                                 size: 20.0,
                                               ),
                                             ),
@@ -1614,7 +1614,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                         ? FlutterFlowTheme.of(
                                                                 context)
                                                             .primaryText
-                                                        : Color(0x808F8F8F),
+                                                        : Color(0xFFA1A1A1),
                                                   ),
                                             ),
                                           ].divide(SizedBox(width: 5.0)),
@@ -1917,10 +1917,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                   currentUserDocument?.isAdmin,
                                                   false)
                                               ? FlutterFlowTheme.of(context)
-                                                  .primaryBackground
+                                                  .secondaryBackground
                                               : Color(0x83CCCCCC),
                                           FlutterFlowTheme.of(context)
-                                              .primaryBackground,
+                                              .secondaryBackground,
                                         ),
                                         boxShadow: [
                                           BoxShadow(
@@ -1951,7 +1951,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     ? FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText
-                                                    : Color(0x808F8F8F),
+                                                    : Color(0xFFA1A1A1),
                                                 size: 20.0,
                                               ),
                                             ),
@@ -1969,7 +1969,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                         ? FlutterFlowTheme.of(
                                                                 context)
                                                             .primaryText
-                                                        : Color(0x808F8F8F),
+                                                        : Color(0xFFA1A1A1),
                                                   ),
                                             ),
                                           ].divide(SizedBox(width: 5.0)),
@@ -2275,10 +2275,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                       false) ||
                                                   true
                                               ? FlutterFlowTheme.of(context)
-                                                  .primaryBackground
+                                                  .secondaryBackground
                                               : Color(0x83CCCCCC),
                                           FlutterFlowTheme.of(context)
-                                              .primaryBackground,
+                                              .secondaryBackground,
                                         ),
                                         boxShadow: [
                                           BoxShadow(
@@ -2310,7 +2310,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     ? FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText
-                                                    : Color(0x808F8F8F),
+                                                    : Color(0xFFA1A1A1),
                                                 size: 20.0,
                                               ),
                                             ),
@@ -2329,423 +2329,11 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                         ? FlutterFlowTheme.of(
                                                                 context)
                                                             .primaryText
-                                                        : Color(0x808F8F8F),
+                                                        : Color(0xFFA1A1A1),
                                                   ),
                                             ),
                                           ].divide(SizedBox(width: 5.0)),
                                         ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    context.pushNamed('OK_FN_Payry_41_FAQs');
-                                  },
-                                  child: Container(
-                                    width: () {
-                                      if (MediaQuery.sizeOf(context).width <
-                                          390.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.42);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          480.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.44);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          900.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.3);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1025.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.23);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1300.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.18);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1600.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.14);
-                                      } else {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.1);
-                                      }
-                                    }(),
-                                    height: 75.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 4.0,
-                                          color: Color(0x33000000),
-                                          offset: Offset(0.0, 2.0),
-                                        )
-                                      ],
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 10.0, 0.0),
-                                            child: Icon(
-                                              Icons.help_outline,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 24.0,
-                                            ),
-                                          ),
-                                          Text(
-                                            'FAQ\'s',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
-                                          ),
-                                        ].divide(SizedBox(width: 5.0)),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    context.pushNamed(
-                                        'OK_FN_Payry_42_Terminosycondiciones');
-                                  },
-                                  child: Container(
-                                    width: () {
-                                      if (MediaQuery.sizeOf(context).width <
-                                          390.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.42);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          480.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.44);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          900.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.3);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1025.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.23);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1300.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.18);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1600.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.14);
-                                      } else {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.1);
-                                      }
-                                    }(),
-                                    height: 75.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 4.0,
-                                          color: Color(0x33000000),
-                                          offset: Offset(0.0, 2.0),
-                                        )
-                                      ],
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 10.0, 0.0),
-                                            child: Icon(
-                                              FFIcons.kporcentaje,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 20.0,
-                                            ),
-                                          ),
-                                          Text(
-                                            'Términos y\ncondiciones',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
-                                          ),
-                                        ].divide(SizedBox(width: 5.0)),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    context.pushNamed(
-                                        'OK_FN_Payry_43_Politicadeprivacidad');
-                                  },
-                                  child: Container(
-                                    width: () {
-                                      if (MediaQuery.sizeOf(context).width <
-                                          390.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.42);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          480.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.44);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          900.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.3);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1025.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.23);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1300.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.18);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1600.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.14);
-                                      } else {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.1);
-                                      }
-                                    }(),
-                                    height: 75.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 4.0,
-                                          color: Color(0x33000000),
-                                          offset: Offset(0.0, 2.0),
-                                        )
-                                      ],
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 10.0, 0.0),
-                                            child: Icon(
-                                              FFIcons.khoja,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 20.0,
-                                            ),
-                                          ),
-                                          Text(
-                                            'Política de\nprivacidad',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
-                                          ),
-                                        ].divide(SizedBox(width: 5.0)),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    if (Theme.of(context).brightness ==
-                                        Brightness.light) {
-                                      setDarkModeSetting(
-                                          context, ThemeMode.dark);
-                                      return;
-                                    } else {
-                                      setDarkModeSetting(
-                                          context, ThemeMode.light);
-                                      return;
-                                    }
-                                  },
-                                  child: Container(
-                                    width: () {
-                                      if (MediaQuery.sizeOf(context).width <
-                                          390.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.42);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          480.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.44);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          900.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.3);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1025.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.23);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1300.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.18);
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1600.0) {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.14);
-                                      } else {
-                                        return (MediaQuery.sizeOf(context)
-                                                .width *
-                                            0.1);
-                                      }
-                                    }(),
-                                    height: 75.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 4.0,
-                                          color: Color(0x33000000),
-                                          offset: Offset(0.0, 2.0),
-                                        )
-                                      ],
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 10.0, 0.0),
-                                            child: Icon(
-                                              FFIcons.ksol,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 20.0,
-                                            ),
-                                          ),
-                                          Text(
-                                            Theme.of(context).brightness ==
-                                                    Brightness.light
-                                                ? 'Modo oscuro'
-                                                : 'Modo claro',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                  fontSize:
-                                                      MediaQuery.sizeOf(context)
-                                                                  .width <
-                                                              375.0
-                                                          ? 12.0
-                                                          : 14.0,
-                                                ),
-                                          ),
-                                        ].divide(SizedBox(width: 5.0)),
                                       ),
                                     ),
                                   ),
@@ -3049,10 +2637,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                   oKFNPayry13MenumasUserPermissionsRecord!
                                                       .readTransfers
                                               ? FlutterFlowTheme.of(context)
-                                                  .primaryBackground
+                                                  .secondaryBackground
                                               : Color(0x83CCCCCC),
                                           FlutterFlowTheme.of(context)
-                                              .primaryBackground,
+                                              .secondaryBackground,
                                         ),
                                         boxShadow: [
                                           BoxShadow(
@@ -3085,7 +2673,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     ? FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText
-                                                    : Color(0x808F8F8F),
+                                                    : Color(0xFFA1A1A1),
                                                 size: 20.0,
                                               ),
                                             ),
@@ -3112,7 +2700,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                     .of(context)
                                                                 .primaryText
                                                             : Color(0x808F8F8F))
-                                                        : Color(0x808F8F8F),
+                                                        : Color(0xFFA1A1A1),
                                                     fontSize:
                                                         valueOrDefault<double>(
                                                       MediaQuery.sizeOf(context)
@@ -3130,150 +2718,541 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     ),
                                   ),
                                 ),
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                        'OK_FN_Payry_42_Terminosycondiciones');
+                                  },
+                                  child: Container(
+                                    width: () {
+                                      if (MediaQuery.sizeOf(context).width <
+                                          390.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.42);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          480.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.44);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          900.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.3);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1025.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.23);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1300.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.18);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1600.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.14);
+                                      } else {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.1);
+                                      }
+                                    }(),
+                                    height: 75.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 4.0,
+                                          color: Color(0x33000000),
+                                          offset: Offset(0.0, 2.0),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 0.0, 16.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 10.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.kporcentaje,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Términos y\ncondiciones',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                          ),
+                                        ].divide(SizedBox(width: 5.0)),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                        'OK_FN_Payry_43_Politicadeprivacidad');
+                                  },
+                                  child: Container(
+                                    width: () {
+                                      if (MediaQuery.sizeOf(context).width <
+                                          390.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.42);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          480.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.44);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          900.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.3);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1025.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.23);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1300.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.18);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1600.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.14);
+                                      } else {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.1);
+                                      }
+                                    }(),
+                                    height: 75.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 4.0,
+                                          color: Color(0x33000000),
+                                          offset: Offset(0.0, 2.0),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 0.0, 16.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 10.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.khoja,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Política de\nprivacidad',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                          ),
+                                        ].divide(SizedBox(width: 5.0)),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed('OK_FN_Payry_41_FAQs');
+                                  },
+                                  child: Container(
+                                    width: () {
+                                      if (MediaQuery.sizeOf(context).width <
+                                          390.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.42);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          480.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.44);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          900.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.3);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1025.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.23);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1300.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.18);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1600.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.14);
+                                      } else {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.1);
+                                      }
+                                    }(),
+                                    height: 75.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 4.0,
+                                          color: Color(0x33000000),
+                                          offset: Offset(0.0, 2.0),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 0.0, 16.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 10.0, 0.0),
+                                            child: Icon(
+                                              Icons.help_outline,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 24.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            'FAQ\'s',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                          ),
+                                        ].divide(SizedBox(width: 5.0)),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    if (Theme.of(context).brightness ==
+                                        Brightness.light) {
+                                      setDarkModeSetting(
+                                          context, ThemeMode.dark);
+                                      return;
+                                    } else {
+                                      setDarkModeSetting(
+                                          context, ThemeMode.light);
+                                      return;
+                                    }
+                                  },
+                                  child: Container(
+                                    width: () {
+                                      if (MediaQuery.sizeOf(context).width <
+                                          390.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.42);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          480.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.44);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          900.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.3);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1025.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.23);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1300.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.18);
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1600.0) {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.14);
+                                      } else {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.1);
+                                      }
+                                    }(),
+                                    height: 75.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 4.0,
+                                          color: Color(0x33000000),
+                                          offset: Offset(0.0, 2.0),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 0.0, 16.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 10.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.ksol,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            Theme.of(context).brightness ==
+                                                    Brightness.light
+                                                ? 'Modo oscuro'
+                                                : 'Modo claro',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  fontSize:
+                                                      MediaQuery.sizeOf(context)
+                                                                  .width <
+                                                              375.0
+                                                          ? 12.0
+                                                          : 14.0,
+                                                ),
+                                          ),
+                                        ].divide(SizedBox(width: 5.0)),
+                                      ),
+                                    ),
+                                  ),
+                                ),
                                 if (currentUserUid ==
                                     'eC3f6n6aq1e1Ow99VQ1I41eXPox1')
                                   AuthUserStreamWidget(
-                                    builder: (context) => InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        GoRouter.of(context).prepareAuthEvent();
-                                        await authManager.signOut();
-                                        GoRouter.of(context)
-                                            .clearRedirectLocation();
-
-                                        context.goNamedAuth(
-                                            'OK_FN_Payry_08_iniciasesion',
-                                            context.mounted);
-                                      },
-                                      child: Container(
-                                        width: () {
-                                          if (MediaQuery.sizeOf(context).width <
-                                              390.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.42);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              480.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.44);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              900.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.3);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1025.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.23);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1300.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.18);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1600.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.14);
-                                          } else {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.1);
-                                          }
-                                        }(),
-                                        height: 75.0,
-                                        decoration: BoxDecoration(
-                                          color: valueOrDefault<Color>(
-                                            valueOrDefault<bool>(
-                                                        currentUserDocument
-                                                            ?.isAdmin,
-                                                        false) ||
-                                                    oKFNPayry13MenumasUserPermissionsRecord!
-                                                        .readTransfers
-                                                ? FlutterFlowTheme.of(context)
-                                                    .primaryBackground
-                                                : Color(0x83CCCCCC),
-                                            FlutterFlowTheme.of(context)
-                                                .primaryBackground,
-                                          ),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              blurRadius: 4.0,
-                                              color: Color(0x33000000),
-                                              offset: Offset(0.0, 2.0),
-                                            )
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
+                                    builder: (context) => Container(
+                                      width: () {
+                                        if (MediaQuery.sizeOf(context).width <
+                                            390.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.42);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            480.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.44);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            900.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.3);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1025.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.23);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1300.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.18);
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            1600.0) {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.14);
+                                        } else {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.1);
+                                        }
+                                      }(),
+                                      height: 75.0,
+                                      decoration: BoxDecoration(
+                                        color: valueOrDefault<Color>(
+                                          valueOrDefault<bool>(
+                                                      currentUserDocument
+                                                          ?.isAdmin,
+                                                      false) ||
+                                                  oKFNPayry13MenumasUserPermissionsRecord!
+                                                      .readTransfers
+                                              ? FlutterFlowTheme.of(context)
+                                                  .secondaryBackground
+                                              : Color(0x83CCCCCC),
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
                                         ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 16.0, 0.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 10.0, 0.0),
-                                                child: Icon(
-                                                  Icons.engineering_outlined,
-                                                  color: valueOrDefault<bool>(
-                                                              currentUserDocument
-                                                                  ?.isAdmin,
-                                                              false) ||
-                                                          oKFNPayry13MenumasUserPermissionsRecord!
-                                                              .readTransfers
-                                                      ? FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryText
-                                                      : Color(0x808F8F8F),
-                                                  size: 20.0,
-                                                ),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 4.0,
+                                            color: Color(0x33000000),
+                                            offset: Offset(0.0, 2.0),
+                                          )
+                                        ],
+                                        borderRadius:
+                                            BorderRadius.circular(12.0),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 0.0, 16.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 10.0, 0.0),
+                                              child: Icon(
+                                                Icons.engineering_outlined,
+                                                color: valueOrDefault<bool>(
+                                                            currentUserDocument
+                                                                ?.isAdmin,
+                                                            false) ||
+                                                        oKFNPayry13MenumasUserPermissionsRecord!
+                                                            .readTransfers
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText
+                                                    : Color(0x808F8F8F),
+                                                size: 20.0,
                                               ),
-                                              Text(
-                                                'Test',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Lexend',
-                                                          color: valueOrDefault<
-                                                                          bool>(
-                                                                      currentUserDocument
-                                                                          ?.isAdmin,
-                                                                      false) ||
-                                                                  oKFNPayry13MenumasUserPermissionsRecord!
-                                                                      .readTransfers
-                                                              ? (valueOrDefault<
-                                                                              bool>(
-                                                                          currentUserDocument
-                                                                              ?.isAdmin,
-                                                                          false) ||
-                                                                      oKFNPayry13MenumasUserPermissionsRecord!
-                                                                          .readTransfers
-                                                                  ? FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText
-                                                                  : Color(
-                                                                      0x808F8F8F))
-                                                              : Color(
-                                                                  0x808F8F8F),
-                                                        ),
-                                              ),
-                                            ].divide(SizedBox(width: 5.0)),
-                                          ),
+                                            ),
+                                            Text(
+                                              'Test',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Lexend',
+                                                    color: valueOrDefault<bool>(
+                                                                currentUserDocument
+                                                                    ?.isAdmin,
+                                                                false) ||
+                                                            oKFNPayry13MenumasUserPermissionsRecord!
+                                                                .readTransfers
+                                                        ? (valueOrDefault<bool>(
+                                                                    currentUserDocument
+                                                                        ?.isAdmin,
+                                                                    false) ||
+                                                                oKFNPayry13MenumasUserPermissionsRecord!
+                                                                    .readTransfers
+                                                            ? FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText
+                                                            : Color(0x808F8F8F))
+                                                        : Color(0x808F8F8F),
+                                                  ),
+                                            ),
+                                          ].divide(SizedBox(width: 5.0)),
                                         ),
                                       ),
                                     ),
