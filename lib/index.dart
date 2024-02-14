@@ -89,3 +89,5 @@ export '/components/pages/o_k_f_n_payry_44_historial_transactions/o_k_f_n_payry4
     show OKFNPayry44HistorialTransactionsWidget;
 export '/test_share_image/test_share_image_widget.dart'
     show TestShareImageWidget;
+export '/components/pages/o_k_f_n_payry_20_datos_bancarios_v_i_e_w/o_k_f_n_payry20_datos_bancarios_v_i_e_w_widget.dart'
+    show OKFNPayry20DatosBancariosVIEWWidget;

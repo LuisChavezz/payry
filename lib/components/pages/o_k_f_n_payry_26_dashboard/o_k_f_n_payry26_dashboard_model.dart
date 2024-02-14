@@ -6,19 +6,21 @@ import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'o_k_f_n_payry26_dashboard_widget.dart' show OKFNPayry26DashboardWidget;
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 class OKFNPayry26DashboardModel
     extends FlutterFlowModel<OKFNPayry26DashboardWidget> {
   ///  Local state fields for this page.
 
-  String balance = '0.00';
+  String balance = '';
 
   ///  State fields for stateful widgets in this page.
 

@@ -566,6 +566,7 @@ class _OKFNPayry05RegistrateWidgetState
                                           FFAppState().serverToken = _model
                                               .cloudFunctionGT!.jsonBody!
                                               .toString();
+                                          FFAppState().tutorialDialogs = true;
 
                                           context.goNamedAuth(
                                               'OK_FN_Payry_06_confirmacionRegistro',

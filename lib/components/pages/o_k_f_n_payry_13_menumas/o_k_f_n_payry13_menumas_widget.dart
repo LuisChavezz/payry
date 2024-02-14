@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -30,6 +31,17 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => OKFNPayry13MenumasModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (FFAppState().tutorialDialogs) {
+        context.goNamed('OK_FN_Payry_15_EditProfile');
+
+        return;
+      } else {
+        return;
+      }
+    });
   }
 
   @override
@@ -156,7 +168,21 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     false)
                                                 : true) {
                                               context.pushNamed(
-                                                  'OK_FN_Payry_27_solicitarQR');
+                                                'OK_FN_Payry_27_solicitarQR',
+                                                queryParameters: {
+                                                  'readQr': serializeParam(
+                                                    oKFNPayry13MenumasUserPermissionsRecord
+                                                        ?.readQr,
+                                                    ParamType.bool,
+                                                  ),
+                                                  'createRefund':
+                                                      serializeParam(
+                                                    oKFNPayry13MenumasUserPermissionsRecord
+                                                        ?.createRefunds,
+                                                    ParamType.bool,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
 
                                               if (_shouldSetState)
                                                 setState(() {});
@@ -521,7 +547,21 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     false)
                                                 : true) {
                                               context.pushNamed(
-                                                  'OK_FN_Payry_32_solicitarSMS');
+                                                'OK_FN_Payry_32_solicitarSMS',
+                                                queryParameters: {
+                                                  'readSms': serializeParam(
+                                                    oKFNPayry13MenumasUserPermissionsRecord
+                                                        ?.readSms,
+                                                    ParamType.bool,
+                                                  ),
+                                                  'createRefund':
+                                                      serializeParam(
+                                                    oKFNPayry13MenumasUserPermissionsRecord
+                                                        ?.createRefunds,
+                                                    ParamType.bool,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
 
                                               if (_shouldSetState)
                                                 setState(() {});
@@ -3133,126 +3173,142 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                 if (currentUserUid ==
                                     'eC3f6n6aq1e1Ow99VQ1I41eXPox1')
                                   AuthUserStreamWidget(
-                                    builder: (context) => Container(
-                                      width: () {
-                                        if (MediaQuery.sizeOf(context).width <
-                                            390.0) {
-                                          return (MediaQuery.sizeOf(context)
-                                                  .width *
-                                              0.42);
-                                        } else if (MediaQuery.sizeOf(context)
-                                                .width <
-                                            480.0) {
-                                          return (MediaQuery.sizeOf(context)
-                                                  .width *
-                                              0.44);
-                                        } else if (MediaQuery.sizeOf(context)
-                                                .width <
-                                            900.0) {
-                                          return (MediaQuery.sizeOf(context)
-                                                  .width *
-                                              0.3);
-                                        } else if (MediaQuery.sizeOf(context)
-                                                .width <
-                                            1025.0) {
-                                          return (MediaQuery.sizeOf(context)
-                                                  .width *
-                                              0.23);
-                                        } else if (MediaQuery.sizeOf(context)
-                                                .width <
-                                            1300.0) {
-                                          return (MediaQuery.sizeOf(context)
-                                                  .width *
-                                              0.18);
-                                        } else if (MediaQuery.sizeOf(context)
-                                                .width <
-                                            1600.0) {
-                                          return (MediaQuery.sizeOf(context)
-                                                  .width *
-                                              0.14);
-                                        } else {
-                                          return (MediaQuery.sizeOf(context)
-                                                  .width *
-                                              0.1);
-                                        }
-                                      }(),
-                                      height: 75.0,
-                                      decoration: BoxDecoration(
-                                        color: valueOrDefault<Color>(
-                                          valueOrDefault<bool>(
-                                                      currentUserDocument
-                                                          ?.isAdmin,
-                                                      false) ||
-                                                  oKFNPayry13MenumasUserPermissionsRecord!
-                                                      .readTransfers
-                                              ? FlutterFlowTheme.of(context)
-                                                  .secondaryBackground
-                                              : Color(0x83CCCCCC),
-                                          FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
+                                    builder: (context) => InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        setState(() {
+                                          FFAppState().tutorialDialogs = true;
+                                        });
+                                      },
+                                      child: Container(
+                                        width: () {
+                                          if (MediaQuery.sizeOf(context).width <
+                                              390.0) {
+                                            return (MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.42);
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              480.0) {
+                                            return (MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.44);
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              900.0) {
+                                            return (MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.3);
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              1025.0) {
+                                            return (MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.23);
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              1300.0) {
+                                            return (MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.18);
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              1600.0) {
+                                            return (MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.14);
+                                          } else {
+                                            return (MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.1);
+                                          }
+                                        }(),
+                                        height: 75.0,
+                                        decoration: BoxDecoration(
+                                          color: valueOrDefault<Color>(
+                                            valueOrDefault<bool>(
+                                                        currentUserDocument
+                                                            ?.isAdmin,
+                                                        false) ||
+                                                    oKFNPayry13MenumasUserPermissionsRecord!
+                                                        .readTransfers
+                                                ? FlutterFlowTheme.of(context)
+                                                    .secondaryBackground
+                                                : Color(0x83CCCCCC),
+                                            FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              blurRadius: 4.0,
+                                              color: Color(0x33000000),
+                                              offset: Offset(0.0, 2.0),
+                                            )
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
                                         ),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            blurRadius: 4.0,
-                                            color: Color(0x33000000),
-                                            offset: Offset(0.0, 2.0),
-                                          )
-                                        ],
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 0.0, 16.0, 0.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 10.0, 0.0),
-                                              child: Icon(
-                                                Icons.engineering_outlined,
-                                                color: valueOrDefault<bool>(
-                                                            currentUserDocument
-                                                                ?.isAdmin,
-                                                            false) ||
-                                                        oKFNPayry13MenumasUserPermissionsRecord!
-                                                            .readTransfers
-                                                    ? FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText
-                                                    : Color(0x808F8F8F),
-                                                size: 20.0,
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 0.0, 16.0, 0.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 10.0, 0.0),
+                                                child: Icon(
+                                                  Icons.engineering_outlined,
+                                                  color: valueOrDefault<bool>(
+                                                              currentUserDocument
+                                                                  ?.isAdmin,
+                                                              false) ||
+                                                          oKFNPayry13MenumasUserPermissionsRecord!
+                                                              .readTransfers
+                                                      ? FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryText
+                                                      : Color(0x808F8F8F),
+                                                  size: 20.0,
+                                                ),
                                               ),
-                                            ),
-                                            Text(
-                                              'Test',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Lexend',
-                                                    color: valueOrDefault<bool>(
-                                                                currentUserDocument
-                                                                    ?.isAdmin,
-                                                                false) ||
-                                                            oKFNPayry13MenumasUserPermissionsRecord!
-                                                                .readTransfers
-                                                        ? (valueOrDefault<bool>(
-                                                                    currentUserDocument
-                                                                        ?.isAdmin,
-                                                                    false) ||
-                                                                oKFNPayry13MenumasUserPermissionsRecord!
-                                                                    .readTransfers
-                                                            ? FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primaryText
-                                                            : Color(0x808F8F8F))
-                                                        : Color(0x808F8F8F),
-                                                  ),
-                                            ),
-                                          ].divide(SizedBox(width: 5.0)),
+                                              Text(
+                                                'Test',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: valueOrDefault<
+                                                                          bool>(
+                                                                      currentUserDocument
+                                                                          ?.isAdmin,
+                                                                      false) ||
+                                                                  oKFNPayry13MenumasUserPermissionsRecord!
+                                                                      .readTransfers
+                                                              ? (valueOrDefault<
+                                                                              bool>(
+                                                                          currentUserDocument
+                                                                              ?.isAdmin,
+                                                                          false) ||
+                                                                      oKFNPayry13MenumasUserPermissionsRecord!
+                                                                          .readTransfers
+                                                                  ? FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText
+                                                                  : Color(
+                                                                      0x808F8F8F))
+                                                              : Color(
+                                                                  0x808F8F8F),
+                                                        ),
+                                              ),
+                                            ].divide(SizedBox(width: 5.0)),
+                                          ),
                                         ),
                                       ),
                                     ),

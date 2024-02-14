@@ -229,6 +229,14 @@ class _OKFNPayry40NotificacionesWidgetState
                                                             .DocumentReference,
                                                       ),
                                                     }.withoutNulls,
+                                                    queryParameters: {
+                                                      'createRefund':
+                                                          serializeParam(
+                                                        stackUserPermissionsRecord
+                                                            ?.createRefunds,
+                                                        ParamType.bool,
+                                                      ),
+                                                    }.withoutNulls,
                                                   );
 
                                                   return;
@@ -255,6 +263,14 @@ class _OKFNPayry40NotificacionesWidgetState
                                                           ).toString()),
                                                           ParamType
                                                               .DocumentReference,
+                                                        ),
+                                                      }.withoutNulls,
+                                                      queryParameters: {
+                                                        'createRefund':
+                                                            serializeParam(
+                                                          stackUserPermissionsRecord
+                                                              ?.createRefunds,
+                                                          ParamType.bool,
                                                         ),
                                                       }.withoutNulls,
                                                     );

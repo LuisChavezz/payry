@@ -18,9 +18,11 @@ class OKFNPayry35HistorialSMSWidget extends StatefulWidget {
   const OKFNPayry35HistorialSMSWidget({
     super.key,
     required this.readAll,
+    required this.createRefund,
   });
 
   final bool? readAll;
+  final bool? createRefund;
 
   @override
   State<OKFNPayry35HistorialSMSWidget> createState() =>
@@ -74,6 +76,14 @@ class _OKFNPayry35HistorialSMSWidgetState
               .where(
                 'admin_id',
                 isEqualTo: valueOrDefault(currentUserDocument?.adminId, ''),
+              )
+              .where(
+                'uid',
+                isEqualTo: widget.readAll! ||
+                        valueOrDefault<bool>(
+                            currentUserDocument?.isAdmin, false)
+                    ? null
+                    : currentUserUid,
               )
               .orderBy('created_time', descending: true),
         ),
@@ -334,18 +344,10 @@ class _OKFNPayry35HistorialSMSWidgetState
                                     0.0, 24.0, 0.0, 0.0),
                                 child: Builder(
                                   builder: (context) {
-                                    final smsItem =
+                                    final smsItem1 =
                                         oKFNPayry35HistorialSMSSmsRecordList
-                                            .where((e) =>
-                                                (!widget.readAll! &&
-                                                    (e.uid ==
-                                                        currentUserUid)) ||
-                                                valueOrDefault<bool>(
-                                                    currentUserDocument
-                                                        ?.isAdmin,
-                                                    false))
                                             .toList();
-                                    if (smsItem.isEmpty) {
+                                    if (smsItem1.isEmpty) {
                                       return Container(
                                         height: 100.0,
                                         child: EmptyListWidget(
@@ -360,10 +362,10 @@ class _OKFNPayry35HistorialSMSWidgetState
                                       primary: false,
                                       shrinkWrap: true,
                                       scrollDirection: Axis.vertical,
-                                      itemCount: smsItem.length,
-                                      itemBuilder: (context, smsItemIndex) {
-                                        final smsItemItem =
-                                            smsItem[smsItemIndex];
+                                      itemCount: smsItem1.length,
+                                      itemBuilder: (context, smsItem1Index) {
+                                        final smsItem1Item =
+                                            smsItem1[smsItem1Index];
                                         return Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
@@ -379,8 +381,15 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                 pathParameters: {
                                                   'smsDocReference':
                                                       serializeParam(
-                                                    smsItemItem.reference,
+                                                    smsItem1Item.reference,
                                                     ParamType.DocumentReference,
+                                                  ),
+                                                }.withoutNulls,
+                                                queryParameters: {
+                                                  'createRefund':
+                                                      serializeParam(
+                                                    widget.createRefund,
+                                                    ParamType.bool,
                                                   ),
                                                 }.withoutNulls,
                                               );
@@ -397,7 +406,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                   child: Text(
                                                     dateTimeFormat(
                                                       'd MMM, y',
-                                                      smsItemItem.createdTime!,
+                                                      smsItem1Item.createdTime!,
                                                       locale:
                                                           FFLocalizations.of(
                                                                   context)
@@ -461,7 +470,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                     .start,
                                                             children: [
                                                               Text(
-                                                                smsItemItem
+                                                                smsItem1Item
                                                                     .concept
                                                                     .maybeHandleOverflow(
                                                                   maxChars: 25,
@@ -480,7 +489,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                     ),
                                                               ),
                                                               Text(
-                                                                smsItemItem
+                                                                smsItem1Item
                                                                     .status,
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -500,7 +509,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                     ),
                                                     Text(
                                                       formatNumber(
-                                                        smsItemItem.amount,
+                                                        smsItem1Item.amount,
                                                         formatType:
                                                             FormatType.custom,
                                                         currency: '',
@@ -539,15 +548,9 @@ class _OKFNPayry35HistorialSMSWidgetState
                                     0.0, 24.0, 0.0, 0.0),
                                 child: Builder(
                                   builder: (context) {
-                                    final smsItem = _model.simpleSearchResults
-                                        .where((e) =>
-                                            (!widget.readAll! &&
-                                                (e.uid == currentUserUid)) ||
-                                            valueOrDefault<bool>(
-                                                currentUserDocument?.isAdmin,
-                                                false))
-                                        .toList();
-                                    if (smsItem.isEmpty) {
+                                    final smsItem2 =
+                                        _model.simpleSearchResults.toList();
+                                    if (smsItem2.isEmpty) {
                                       return Container(
                                         height: 100.0,
                                         child: EmptyListWidget(
@@ -562,10 +565,10 @@ class _OKFNPayry35HistorialSMSWidgetState
                                       primary: false,
                                       shrinkWrap: true,
                                       scrollDirection: Axis.vertical,
-                                      itemCount: smsItem.length,
-                                      itemBuilder: (context, smsItemIndex) {
-                                        final smsItemItem =
-                                            smsItem[smsItemIndex];
+                                      itemCount: smsItem2.length,
+                                      itemBuilder: (context, smsItem2Index) {
+                                        final smsItem2Item =
+                                            smsItem2[smsItem2Index];
                                         return Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
@@ -581,8 +584,15 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                 pathParameters: {
                                                   'smsDocReference':
                                                       serializeParam(
-                                                    smsItemItem.reference,
+                                                    smsItem2Item.reference,
                                                     ParamType.DocumentReference,
+                                                  ),
+                                                }.withoutNulls,
+                                                queryParameters: {
+                                                  'createRefund':
+                                                      serializeParam(
+                                                    widget.createRefund,
+                                                    ParamType.bool,
                                                   ),
                                                 }.withoutNulls,
                                               );
@@ -599,7 +609,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                   child: Text(
                                                     dateTimeFormat(
                                                       'd MMM, y',
-                                                      smsItemItem.createdTime!,
+                                                      smsItem2Item.createdTime!,
                                                       locale:
                                                           FFLocalizations.of(
                                                                   context)
@@ -663,7 +673,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                     .start,
                                                             children: [
                                                               Text(
-                                                                smsItemItem
+                                                                smsItem2Item
                                                                     .concept
                                                                     .maybeHandleOverflow(
                                                                   maxChars: 25,
@@ -682,7 +692,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                     ),
                                                               ),
                                                               Text(
-                                                                smsItemItem
+                                                                smsItem2Item
                                                                     .status,
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -702,7 +712,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                     ),
                                                     Text(
                                                       formatNumber(
-                                                        smsItemItem.amount,
+                                                        smsItem2Item.amount,
                                                         formatType:
                                                             FormatType.custom,
                                                         currency: '',

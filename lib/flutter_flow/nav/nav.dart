@@ -206,7 +206,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'OK_FN_Payry_27_solicitarQR',
               path: 'oKFNPayry27SolicitarQR',
               requireAuth: true,
-              builder: (context, params) => OKFNPayry27SolicitarQRWidget(),
+              builder: (context, params) => OKFNPayry27SolicitarQRWidget(
+                readQr: params.getParam('readQr', ParamType.bool),
+                createRefund: params.getParam('createRefund', ParamType.bool),
+              ),
             ),
             FFRoute(
               name: 'OK_FN_Payry_28_qrGenerado',
@@ -229,6 +232,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               requireAuth: true,
               builder: (context, params) => OKFNPayry30HistorialQRsWidget(
                 readAll: params.getParam('readAll', ParamType.bool),
+                createRefund: params.getParam('createRefund', ParamType.bool),
               ),
             ),
             FFRoute(
@@ -237,6 +241,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               requireAuth: true,
               builder: (context, params) => OKFNPayry35HistorialSMSWidget(
                 readAll: params.getParam('readAll', ParamType.bool),
+                createRefund: params.getParam('createRefund', ParamType.bool),
               ),
             ),
             FFRoute(
@@ -252,6 +257,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => OKFNPayry31DetallesdeQRWidget(
                 qrDocReference: params.getParam('qrDocReference',
                     ParamType.DocumentReference, false, ['qr']),
+                createRefund: params.getParam('createRefund', ParamType.bool),
               ),
             ),
             FFRoute(
@@ -273,13 +279,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => OKFNPayry36DetallesdeSMSWidget(
                 smsDocReference: params.getParam('smsDocReference',
                     ParamType.DocumentReference, false, ['sms']),
+                createRefund: params.getParam('createRefund', ParamType.bool),
               ),
             ),
             FFRoute(
               name: 'OK_FN_Payry_32_solicitarSMS',
               path: 'oKFNPayry32SolicitarSMS',
               requireAuth: true,
-              builder: (context, params) => OKFNPayry32SolicitarSMSWidget(),
+              builder: (context, params) => OKFNPayry32SolicitarSMSWidget(
+                readSms: params.getParam('readSms', ParamType.bool),
+                createRefund: params.getParam('createRefund', ParamType.bool),
+              ),
             ),
             FFRoute(
               name: 'OK_FN_Payry_40_Notificaciones',
@@ -383,6 +393,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'testShareImage',
               path: 'testShareImage',
               builder: (context, params) => TestShareImageWidget(),
+            ),
+            FFRoute(
+              name: 'OK_FN_Payry_20_datosBancariosVIEW',
+              path: 'oKFNPayry20DatosBancariosVIEW',
+              builder: (context, params) =>
+                  OKFNPayry20DatosBancariosVIEWWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

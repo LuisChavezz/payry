@@ -88,9 +88,9 @@ class _OKFNPayry12ConfirmacionContrasenaActualizadaWidgetState
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Image.asset(
-                                      'assets/images/vector_image.png',
+                                      'assets/images/smartphone-3d-proteccion-contrasena-codigo-bloqueo-marca-correcta-render-3d-trazado-recorte.png',
                                       width: 305.0,
-                                      height: 135.0,
+                                      height: 291.0,
                                       fit: BoxFit.fitHeight,
                                     ),
                                   ],

@@ -123,169 +123,83 @@ class _OKFNPayry34OpcionesSMSWidgetState
                               verticalDirection: VerticalDirection.down,
                               clipBehavior: Clip.none,
                               children: [
-                                InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    if (valueOrDefault<bool>(
-                                            currentUserDocument?.isAdmin,
-                                            false) ||
-                                        oKFNPayry34OpcionesSMSUserPermissionsRecord!
-                                            .createSms) {
-                                      context.pushNamed(
-                                          'OK_FN_Payry_32_solicitarSMS');
-
-                                      return;
-                                    } else {
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: Text('Acceso Denegado'),
-                                            content: Text(
-                                                'No cuentas con permisos suficientes.'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: Text('Ok'),
+                                Container(
+                                  width:
+                                      MediaQuery.sizeOf(context).width * 0.44,
+                                  height: 75.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context).back1,
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        4.0, 0.0, 4.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  9.0, 0.0, 10.0, 0.0),
+                                          child: Icon(
+                                            FFIcons.ksms,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 20.0,
+                                          ),
+                                        ),
+                                        Text(
+                                          'Generar SMS',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
                                               ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                      return;
-                                    }
-                                  },
-                                  child: Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.44,
-                                    height: 75.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context).back1,
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          4.0, 0.0, 4.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    9.0, 0.0, 10.0, 0.0),
-                                            child: Icon(
-                                              FFIcons.ksms,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 20.0,
-                                            ),
-                                          ),
-                                          Text(
-                                            'Generar SMS',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
-                                          ),
-                                        ].divide(SizedBox(width: 5.0)),
-                                      ),
+                                        ),
+                                      ].divide(SizedBox(width: 5.0)),
                                     ),
                                   ),
                                 ),
-                                InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    if (valueOrDefault<bool>(
-                                            currentUserDocument?.isAdmin,
-                                            false) ||
-                                        oKFNPayry34OpcionesSMSUserPermissionsRecord!
-                                            .readSms ||
-                                        oKFNPayry34OpcionesSMSUserPermissionsRecord!
-                                            .createSms) {
-                                      context.pushNamed(
-                                        'OK_FN_Payry_35_historialSMS',
-                                        queryParameters: {
-                                          'readAll': serializeParam(
-                                            oKFNPayry34OpcionesSMSUserPermissionsRecord
-                                                ?.readSms,
-                                            ParamType.bool,
+                                Container(
+                                  width:
+                                      MediaQuery.sizeOf(context).width * 0.44,
+                                  height: 75.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context).back4,
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        4.0, 0.0, 4.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  9.0, 0.0, 10.0, 0.0),
+                                          child: Icon(
+                                            Icons.search_outlined,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 20.0,
                                           ),
-                                        }.withoutNulls,
-                                      );
-
-                                      return;
-                                    } else {
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: Text('Acceso Denegado'),
-                                            content: Text(
-                                                'No cuentas con permisos suficientes.'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: Text('Ok'),
+                                        ),
+                                        Text(
+                                          'Consultar SMS',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
                                               ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                      return;
-                                    }
-                                  },
-                                  child: Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.44,
-                                    height: 75.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context).back4,
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          4.0, 0.0, 4.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    9.0, 0.0, 10.0, 0.0),
-                                            child: Icon(
-                                              Icons.search_outlined,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 20.0,
-                                            ),
-                                          ),
-                                          Text(
-                                            'Consultar SMS',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
-                                          ),
-                                        ].divide(SizedBox(width: 5.0)),
-                                      ),
+                                        ),
+                                      ].divide(SizedBox(width: 5.0)),
                                     ),
                                   ),
                                 ),

@@ -6,11 +6,13 @@ import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'o_k_f_n_payry26_dashboard_model.dart';
 export 'o_k_f_n_payry26_dashboard_model.dart';
@@ -66,10 +68,25 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
         });
         return;
       } else {
-        setState(() {
-          _model.balance = '0.00';
-        });
-        return;
+        if (!functions.includeTheString(
+            getJsonField(
+              _model.getBalanceCF!.jsonBody,
+              r'''$.message''',
+            ).toString().toString(),
+            'expirada')!) {
+          setState(() {
+            _model.balance = '0.00';
+          });
+          return;
+        } else {
+          GoRouter.of(context).prepareAuthEvent();
+          await authManager.signOut();
+          GoRouter.of(context).clearRedirectLocation();
+
+          context.pushNamedAuth('OK_FN_Payry_08_iniciasesion', context.mounted);
+
+          return;
+        }
       }
     });
 
@@ -207,19 +224,32 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.end,
+                                            CrossAxisAlignment.center,
                                         children: [
-                                          Text(
-                                            '\$${_model.balance}',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: Colors.white,
-                                                  fontSize: 28.0,
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                          ),
+                                          if (_model.balance != null &&
+                                              _model.balance != '')
+                                            Text(
+                                              '\$${_model.balance}',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color: Colors.white,
+                                                        fontSize: 28.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                            ),
+                                          if (_model.balance == null ||
+                                              _model.balance == '')
+                                            Lottie.asset(
+                                              'assets/lottie_animations/Animation_-_1707507579278.json',
+                                              width: 60.0,
+                                              height: 60.0,
+                                              fit: BoxFit.cover,
+                                              animate: true,
+                                            ),
                                         ],
                                       ),
                                     ),
@@ -392,6 +422,13 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                       ParamType
                                                                           .bool,
                                                                     ),
+                                                                    'createRefund':
+                                                                        serializeParam(
+                                                                      oKFNPayry26DashboardUserPermissionsRecord
+                                                                          ?.createRefunds,
+                                                                      ParamType
+                                                                          .bool,
+                                                                    ),
                                                                   }.withoutNulls,
                                                                 );
                                                               },
@@ -537,6 +574,14 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                             ParamType.DocumentReference,
                                                                           ),
                                                                         }.withoutNulls,
+                                                                        queryParameters:
+                                                                            {
+                                                                          'createRefund':
+                                                                              serializeParam(
+                                                                            oKFNPayry26DashboardUserPermissionsRecord?.createRefunds,
+                                                                            ParamType.bool,
+                                                                          ),
+                                                                        }.withoutNulls,
                                                                       );
                                                                     },
                                                                     child: Row(
@@ -670,6 +715,13 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                         serializeParam(
                                                                       oKFNPayry26DashboardUserPermissionsRecord
                                                                           ?.readSms,
+                                                                      ParamType
+                                                                          .bool,
+                                                                    ),
+                                                                    'createRefund':
+                                                                        serializeParam(
+                                                                      oKFNPayry26DashboardUserPermissionsRecord
+                                                                          ?.createRefunds,
                                                                       ParamType
                                                                           .bool,
                                                                     ),
@@ -816,6 +868,14 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                               serializeParam(
                                                                             listViewSmsRecord.reference,
                                                                             ParamType.DocumentReference,
+                                                                          ),
+                                                                        }.withoutNulls,
+                                                                        queryParameters:
+                                                                            {
+                                                                          'createRefund':
+                                                                              serializeParam(
+                                                                            oKFNPayry26DashboardUserPermissionsRecord?.createRefunds,
+                                                                            ParamType.bool,
                                                                           ),
                                                                         }.withoutNulls,
                                                                       );

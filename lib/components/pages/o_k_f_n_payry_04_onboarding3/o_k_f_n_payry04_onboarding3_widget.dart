@@ -105,12 +105,12 @@ class _OKFNPayry04Onboarding3WidgetState
                                                   .fromSTEB(
                                                       0.0, 0.0, 0.0, 20.0),
                                               child: Image.asset(
-                                                'assets/images/vector_image-2.png',
+                                                'assets/images/Grupo_1189.png',
                                                 width:
                                                     MediaQuery.sizeOf(context)
                                                             .width *
                                                         0.7,
-                                                height: 300.0,
+                                                height: 281.0,
                                                 fit: BoxFit.fitWidth,
                                               ),
                                             ),

@@ -18,9 +18,11 @@ class OKFNPayry30HistorialQRsWidget extends StatefulWidget {
   const OKFNPayry30HistorialQRsWidget({
     super.key,
     required this.readAll,
+    required this.createRefund,
   });
 
   final bool? readAll;
+  final bool? createRefund;
 
   @override
   State<OKFNPayry30HistorialQRsWidget> createState() =>
@@ -74,6 +76,14 @@ class _OKFNPayry30HistorialQRsWidgetState
               .where(
                 'admin_id',
                 isEqualTo: valueOrDefault(currentUserDocument?.adminId, ''),
+              )
+              .where(
+                'uid',
+                isEqualTo: widget.readAll! ||
+                        valueOrDefault<bool>(
+                            currentUserDocument?.isAdmin, false)
+                    ? null
+                    : currentUserUid,
               )
               .orderBy('created_time', descending: true),
         ),
@@ -336,14 +346,6 @@ class _OKFNPayry30HistorialQRsWidgetState
                                   builder: (context) {
                                     final qrItem =
                                         oKFNPayry30HistorialQRsQrRecordList
-                                            .where((e) =>
-                                                (!widget.readAll! &&
-                                                    (e.uid ==
-                                                        currentUserUid)) ||
-                                                valueOrDefault<bool>(
-                                                    currentUserDocument
-                                                        ?.isAdmin,
-                                                    false))
                                             .toList();
                                     if (qrItem.isEmpty) {
                                       return Container(
@@ -380,6 +382,13 @@ class _OKFNPayry30HistorialQRsWidgetState
                                                       serializeParam(
                                                     qrItemItem.reference,
                                                     ParamType.DocumentReference,
+                                                  ),
+                                                }.withoutNulls,
+                                                queryParameters: {
+                                                  'createRefund':
+                                                      serializeParam(
+                                                    widget.createRefund,
+                                                    ParamType.bool,
                                                   ),
                                                 }.withoutNulls,
                                               );
@@ -538,14 +547,8 @@ class _OKFNPayry30HistorialQRsWidgetState
                                     0.0, 24.0, 0.0, 0.0),
                                 child: Builder(
                                   builder: (context) {
-                                    final qrItem = _model.simpleSearchResults
-                                        .where((e) =>
-                                            (!widget.readAll! &&
-                                                (e.uid == currentUserUid)) ||
-                                            valueOrDefault<bool>(
-                                                currentUserDocument?.isAdmin,
-                                                false))
-                                        .toList();
+                                    final qrItem =
+                                        _model.simpleSearchResults.toList();
                                     return ListView.builder(
                                       padding: EdgeInsets.zero,
                                       primary: false,
@@ -571,6 +574,13 @@ class _OKFNPayry30HistorialQRsWidgetState
                                                       serializeParam(
                                                     qrItemItem.reference,
                                                     ParamType.DocumentReference,
+                                                  ),
+                                                }.withoutNulls,
+                                                queryParameters: {
+                                                  'createRefund':
+                                                      serializeParam(
+                                                    widget.createRefund,
+                                                    ParamType.bool,
                                                   ),
                                                 }.withoutNulls,
                                               );

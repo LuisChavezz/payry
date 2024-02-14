@@ -38,6 +38,10 @@ class FFAppState extends ChangeNotifier {
         }
       }
     });
+    _safeInit(() {
+      _tutorialDialogs =
+          prefs.getBool('ff_tutorialDialogs') ?? _tutorialDialogs;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -91,6 +95,13 @@ class FFAppState extends ChangeNotifier {
   set userCredentials(dynamic _value) {
     _userCredentials = _value;
     prefs.setString('ff_userCredentials', jsonEncode(_value));
+  }
+
+  bool _tutorialDialogs = false;
+  bool get tutorialDialogs => _tutorialDialogs;
+  set tutorialDialogs(bool _value) {
+    _tutorialDialogs = _value;
+    prefs.setBool('ff_tutorialDialogs', _value);
   }
 }
 
