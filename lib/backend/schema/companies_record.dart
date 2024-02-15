@@ -146,6 +146,11 @@ class CompaniesRecord extends FirestoreRecord {
   String get bankid => _bankid ?? '';
   bool hasBankid() => _bankid != null;
 
+  // "coupon" field.
+  String? _coupon;
+  String get coupon => _coupon ?? '';
+  bool hasCoupon() => _coupon != null;
+
   void _initializeFields() {
     _createdBy = snapshotData['created_by'] as String?;
     _name = snapshotData['name'] as String?;
@@ -173,6 +178,7 @@ class CompaniesRecord extends FirestoreRecord {
     _street = snapshotData['street'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
     _bankid = snapshotData['bankid'] as String?;
+    _coupon = snapshotData['coupon'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -236,6 +242,7 @@ Map<String, dynamic> createCompaniesRecordData({
   String? street,
   DateTime? createdTime,
   String? bankid,
+  String? coupon,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -265,6 +272,7 @@ Map<String, dynamic> createCompaniesRecordData({
       'street': street,
       'created_time': createdTime,
       'bankid': bankid,
+      'coupon': coupon,
     }.withoutNulls,
   );
 
@@ -301,7 +309,8 @@ class CompaniesRecordDocumentEquality implements Equality<CompaniesRecord> {
         e1?.imageUrl == e2?.imageUrl &&
         e1?.street == e2?.street &&
         e1?.createdTime == e2?.createdTime &&
-        e1?.bankid == e2?.bankid;
+        e1?.bankid == e2?.bankid &&
+        e1?.coupon == e2?.coupon;
   }
 
   @override
@@ -331,7 +340,8 @@ class CompaniesRecordDocumentEquality implements Equality<CompaniesRecord> {
         e?.imageUrl,
         e?.street,
         e?.createdTime,
-        e?.bankid
+        e?.bankid,
+        e?.coupon
       ]);
 
   @override

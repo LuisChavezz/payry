@@ -85,9 +85,9 @@ class _OKFNPayry21ConfirmacionDatosBancariosWidgetState
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Image.asset(
-                                    'assets/images/Grupo_879.png',
+                                    'assets/images/Grupo_1184.png',
                                     width: 250.0,
-                                    height: 180.0,
+                                    height: 268.0,
                                     fit: BoxFit.fitHeight,
                                   ),
                                 ],

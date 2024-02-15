@@ -87,9 +87,9 @@ class _OKFNPayry33SMSenviadoWidgetState
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Image.asset(
-                                        'assets/images/Grupo_877.png',
+                                        'assets/images/Grupo_1185.png',
                                         width: 250.0,
-                                        height: 220.0,
+                                        height: 302.0,
                                         fit: BoxFit.fitHeight,
                                       ),
                                     ],

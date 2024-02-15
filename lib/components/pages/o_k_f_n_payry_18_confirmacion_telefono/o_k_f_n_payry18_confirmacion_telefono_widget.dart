@@ -85,9 +85,9 @@ class _OKFNPayry18ConfirmacionTelefonoWidgetState
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Image.asset(
-                                      'assets/images/Grupo_878.png',
+                                      'assets/images/Grupo_1188.png',
                                       width: 250.0,
-                                      height: 180.0,
+                                      height: 273.0,
                                       fit: BoxFit.fitHeight,
                                     ),
                                   ],

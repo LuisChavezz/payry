@@ -101,11 +101,11 @@ class _OKFNPayry02Onboarding1WidgetState
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 20.0),
                                             child: Image.asset(
-                                              'assets/images/vector_image-4.png',
+                                              'assets/images/Grupo_1191.png',
                                               width: MediaQuery.sizeOf(context)
                                                       .width *
                                                   0.7,
-                                              height: 300.0,
+                                              height: 383.0,
                                               fit: BoxFit.fitWidth,
                                             ),
                                           ),

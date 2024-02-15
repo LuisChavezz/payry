@@ -115,7 +115,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                       currentUserDocument?.isCompanyComplete,
                                       false)
                                   : true) {
-                                context.pushNamed('OK_FN_Payry_26_Dashboard');
+                                context.goNamed('OK_FN_Payry_26_Dashboard');
 
                                 if (_shouldSetState) setState(() {});
                                 return;
@@ -321,8 +321,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                         var _shouldSetState = false;
                         if (valueOrDefault<bool>(
                                 currentUserDocument?.isAdmin, false) ||
-                            widget.userPermissions!.createQr ||
-                            widget.userPermissions!.readQr) {
+                            widget.userPermissions!.createQr) {
                           if (valueOrDefault<bool>(
                               currentUserDocument?.isValidMail, false)) {
                             if (valueOrDefault<bool>(
@@ -335,7 +334,19 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                       currentUserDocument?.isCompanyComplete,
                                       false)
                                   : true) {
-                                context.pushNamed('OK_FN_Payry_27_solicitarQR');
+                                context.goNamed(
+                                  'OK_FN_Payry_27_solicitarQR',
+                                  queryParameters: {
+                                    'readQr': serializeParam(
+                                      widget.userPermissions?.readQr,
+                                      ParamType.bool,
+                                    ),
+                                    'createRefund': serializeParam(
+                                      widget.userPermissions?.createRefunds,
+                                      ParamType.bool,
+                                    ),
+                                  }.withoutNulls,
+                                );
 
                                 if (_shouldSetState) setState(() {});
                                 return;
@@ -541,8 +552,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                         var _shouldSetState = false;
                         if (valueOrDefault<bool>(
                                 currentUserDocument?.isAdmin, false) ||
-                            widget.userPermissions!.createSms ||
-                            widget.userPermissions!.readSms) {
+                            widget.userPermissions!.createSms) {
                           if (valueOrDefault<bool>(
                               currentUserDocument?.isValidMail, false)) {
                             if (valueOrDefault<bool>(
@@ -555,8 +565,19 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                       currentUserDocument?.isCompanyComplete,
                                       false)
                                   : true) {
-                                context
-                                    .pushNamed('OK_FN_Payry_32_solicitarSMS');
+                                context.goNamed(
+                                  'OK_FN_Payry_32_solicitarSMS',
+                                  queryParameters: {
+                                    'readSms': serializeParam(
+                                      widget.userPermissions?.readSms,
+                                      ParamType.bool,
+                                    ),
+                                    'createRefund': serializeParam(
+                                      widget.userPermissions?.createRefunds,
+                                      ParamType.bool,
+                                    ),
+                                  }.withoutNulls,
+                                );
 
                                 if (_shouldSetState) setState(() {});
                                 return;
@@ -759,7 +780,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                         size: 30.0,
                       ),
                       onPressed: () async {
-                        context.pushNamed('OK_FN_Payry_40_Notificaciones');
+                        context.goNamed('OK_FN_Payry_40_Notificaciones');
                       },
                     ),
                     FlutterFlowIconButton(
@@ -773,7 +794,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                         size: 30.0,
                       ),
                       onPressed: () async {
-                        context.pushNamed('OK_FN_Payry_13_Menumas');
+                        context.goNamed('OK_FN_Payry_13_Menumas');
                       },
                     ),
                   ],

@@ -88,8 +88,8 @@ class _OKFNPayry06ConfirmacionRegistroWidgetState
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Image.asset(
-                                      'assets/images/Grupo_880.png',
-                                      width: 250.0,
+                                      'assets/images/Grupo_1187.png',
+                                      width: 299.0,
                                       height: 250.0,
                                       fit: BoxFit.fitHeight,
                                     ),

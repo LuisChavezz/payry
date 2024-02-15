@@ -88,6 +88,8 @@ class OKFNPayry05RegistrateModel
   GenerateTokenCloudFunctionCallResponse? cloudFunctionGT;
   // Stores action output result for [Cloud Function - sendWelcomeEmail] action in Button widget.
   SendWelcomeEmailCloudFunctionCallResponse? cloudFunctiona55;
+  // State field(s) for acceptCheck widget.
+  bool? acceptCheckValue;
 
   /// Initialization and disposal methods.
 

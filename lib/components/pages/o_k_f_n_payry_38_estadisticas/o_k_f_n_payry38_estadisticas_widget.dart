@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -316,7 +317,6 @@ class _OKFNPayry38EstadisticasWidgetState
                       child: FFButtonWidget(
                         onPressed: () async {
                           var _shouldSetState = false;
-                          Function() _navigate = () {};
                           setState(() {
                             _model.isOpenCalendar1 = false;
                             _model.isOpenCalendar2 = false;
@@ -355,27 +355,31 @@ class _OKFNPayry38EstadisticasWidgetState
                           }
 
                           _shouldSetState = true;
-                          if (_model.statisticsResponse!.succeeded!) {
+                          if (getJsonField(
+                            _model.statisticsResponse!.jsonBody,
+                            r'''$.success''',
+                          )) {
                             setState(() {
-                              _model.statisticsCFResp =
-                                  _model.statisticsResponse?.jsonBody;
+                              _model.statisticsCFResp = getJsonField(
+                                _model.statisticsResponse?.jsonBody,
+                                r'''$.data''',
+                              );
                             });
                             if (_shouldSetState) setState(() {});
                             return;
                           } else {
-                            GoRouter.of(context).prepareAuthEvent();
-                            await authManager.signOut();
-                            GoRouter.of(context).clearRedirectLocation();
-
-                            _navigate = () => context.goNamedAuth(
-                                'OK_FN_Payry_08_iniciasesion', context.mounted);
                             await showDialog(
                               context: context,
                               builder: (alertDialogContext) {
                                 return AlertDialog(
-                                  title: Text('Error de autenticación'),
-                                  content: Text(
-                                      'Hubo un error de autenticación. Favor de volver a iniciar sesión.'),
+                                  title: Text('Error'),
+                                  content: Text(valueOrDefault<String>(
+                                    getJsonField(
+                                      _model.statisticsResponse?.jsonBody,
+                                      r'''$.message''',
+                                    )?.toString(),
+                                    'Error en el servidor',
+                                  )),
                                   actions: [
                                     TextButton(
                                       onPressed: () =>
@@ -386,11 +390,27 @@ class _OKFNPayry38EstadisticasWidgetState
                                 );
                               },
                             );
+                            if (!functions.includeTheString(
+                                getJsonField(
+                                  _model.statisticsResponse!.jsonBody,
+                                  r'''$.message''',
+                                ).toString(),
+                                'expirada')!) {
+                              if (_shouldSetState) setState(() {});
+                              return;
+                            }
+
+                            GoRouter.of(context).prepareAuthEvent();
+                            await authManager.signOut();
+                            GoRouter.of(context).clearRedirectLocation();
+
+                            context.goNamedAuth(
+                                'OK_FN_Payry_08_iniciasesion', context.mounted);
+
                             if (_shouldSetState) setState(() {});
                             return;
                           }
 
-                          _navigate();
                           if (_shouldSetState) setState(() {});
                         },
                         text: 'Filtrar',

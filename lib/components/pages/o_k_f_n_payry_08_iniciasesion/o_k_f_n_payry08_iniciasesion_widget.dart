@@ -553,7 +553,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 12.0, 0.0, 0.0),
+                                                  0.0, 10.0, 0.0, 0.0),
                                           child: Wrap(
                                             spacing: 4.0,
                                             runSpacing: 4.0,

@@ -21,9 +21,11 @@ class OKFNPayry31DetallesdeQRWidget extends StatefulWidget {
   const OKFNPayry31DetallesdeQRWidget({
     super.key,
     required this.qrDocReference,
+    required this.createRefund,
   });
 
   final DocumentReference? qrDocReference;
+  final bool? createRefund;
 
   @override
   State<OKFNPayry31DetallesdeQRWidget> createState() =>
@@ -582,182 +584,192 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                     Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        FlutterFlowIconButton(
-                                          borderRadius: 100.0,
-                                          borderWidth: 0.0,
-                                          buttonSize: 50.0,
-                                          fillColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .errorRed,
-                                          disabledColor: Color(0x83CCCCCC),
-                                          disabledIconColor: Color(0xFFA1A1A1),
-                                          icon: Icon(
-                                            FFIcons.kqrUsuario,
-                                            color: Colors.white,
-                                            size: 24.0,
-                                          ),
-                                          showLoadingIndicator: true,
-                                          onPressed:
-                                              (oKFNPayry31DetallesdeQRQrRecord
-                                                          .status !=
-                                                      'PAGADO')
-                                                  ? null
-                                                  : () async {
-                                                      var _shouldSetState =
-                                                          false;
-                                                      var confirmDialogResponse =
-                                                          await showDialog<
-                                                                  bool>(
-                                                                context:
-                                                                    context,
-                                                                builder:
-                                                                    (alertDialogContext) {
-                                                                  return AlertDialog(
-                                                                    title: Text(
-                                                                        'Devolver QR'),
-                                                                    content: Text(
-                                                                        '¿Estás seguro de querer devolver el monto de este QR?'),
-                                                                    actions: [
-                                                                      TextButton(
-                                                                        onPressed: () => Navigator.pop(
-                                                                            alertDialogContext,
-                                                                            false),
-                                                                        child: Text(
-                                                                            'No'),
-                                                                      ),
-                                                                      TextButton(
-                                                                        onPressed: () => Navigator.pop(
-                                                                            alertDialogContext,
-                                                                            true),
-                                                                        child: Text(
-                                                                            'Si'),
-                                                                      ),
-                                                                    ],
-                                                                  );
-                                                                },
-                                                              ) ??
-                                                              false;
-                                                      if (confirmDialogResponse) {
-                                                        try {
-                                                          final result =
-                                                              await FirebaseFunctions
-                                                                  .instance
-                                                                  .httpsCallable(
-                                                                      'refund')
-                                                                  .call({
-                                                            "token": FFAppState()
-                                                                .serverToken,
-                                                            "id":
-                                                                oKFNPayry31DetallesdeQRQrRecord
-                                                                    .reference
-                                                                    .id,
-                                                          });
-                                                          _model.refundCF =
-                                                              RefundCloudFunctionCallResponse(
-                                                            data: result.data,
-                                                            succeeded: true,
-                                                            resultAsString:
-                                                                result.data
-                                                                    .toString(),
-                                                            jsonBody:
-                                                                result.data,
-                                                          );
-                                                        } on FirebaseFunctionsException catch (error) {
-                                                          _model.refundCF =
-                                                              RefundCloudFunctionCallResponse(
-                                                            errorCode:
-                                                                error.code,
-                                                            succeeded: false,
-                                                          );
-                                                        }
-
-                                                        _shouldSetState = true;
-                                                        if (getJsonField(
-                                                          _model.refundCF!
-                                                              .jsonBody,
-                                                          r'''$.success''',
-                                                        )) {
-                                                          await QrHistoryRecord
-                                                              .collection
-                                                              .doc()
-                                                              .set({
-                                                            ...createQrHistoryRecordData(
-                                                              qrId:
+                                        AuthUserStreamWidget(
+                                          builder: (context) =>
+                                              FlutterFlowIconButton(
+                                            borderRadius: 100.0,
+                                            borderWidth: 0.0,
+                                            buttonSize: 50.0,
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .errorRed,
+                                            disabledColor: Color(0x83CCCCCC),
+                                            disabledIconColor:
+                                                Color(0xFFA1A1A1),
+                                            icon: Icon(
+                                              FFIcons.kqrUsuario,
+                                              color: Colors.white,
+                                              size: 24.0,
+                                            ),
+                                            showLoadingIndicator: true,
+                                            onPressed:
+                                                ((oKFNPayry31DetallesdeQRQrRecord
+                                                                .status !=
+                                                            'PAGADO') ||
+                                                        (!widget.createRefund! &&
+                                                            !valueOrDefault<
+                                                                    bool>(
+                                                                currentUserDocument
+                                                                    ?.isAdmin,
+                                                                false)))
+                                                    ? null
+                                                    : () async {
+                                                        var _shouldSetState =
+                                                            false;
+                                                        var confirmDialogResponse =
+                                                            await showDialog<
+                                                                    bool>(
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (alertDialogContext) {
+                                                                    return AlertDialog(
+                                                                      title: Text(
+                                                                          'Devolver QR'),
+                                                                      content: Text(
+                                                                          '¿Estás seguro de querer devolver el monto de este QR?'),
+                                                                      actions: [
+                                                                        TextButton(
+                                                                          onPressed: () => Navigator.pop(
+                                                                              alertDialogContext,
+                                                                              false),
+                                                                          child:
+                                                                              Text('No'),
+                                                                        ),
+                                                                        TextButton(
+                                                                          onPressed: () => Navigator.pop(
+                                                                              alertDialogContext,
+                                                                              true),
+                                                                          child:
+                                                                              Text('Si'),
+                                                                        ),
+                                                                      ],
+                                                                    );
+                                                                  },
+                                                                ) ??
+                                                                false;
+                                                        if (confirmDialogResponse) {
+                                                          try {
+                                                            final result =
+                                                                await FirebaseFunctions
+                                                                    .instance
+                                                                    .httpsCallable(
+                                                                        'refund')
+                                                                    .call({
+                                                              "token": FFAppState()
+                                                                  .serverToken,
+                                                              "id":
                                                                   oKFNPayry31DetallesdeQRQrRecord
                                                                       .reference
                                                                       .id,
-                                                              status:
-                                                                  'DEVUELTO',
-                                                              modifiedBy:
-                                                                  currentUserUid,
-                                                            ),
-                                                            ...mapToFirestore(
-                                                              {
-                                                                'created_time':
-                                                                    FieldValue
-                                                                        .serverTimestamp(),
+                                                            });
+                                                            _model.refundCF =
+                                                                RefundCloudFunctionCallResponse(
+                                                              data: result.data,
+                                                              succeeded: true,
+                                                              resultAsString:
+                                                                  result.data
+                                                                      .toString(),
+                                                              jsonBody:
+                                                                  result.data,
+                                                            );
+                                                          } on FirebaseFunctionsException catch (error) {
+                                                            _model.refundCF =
+                                                                RefundCloudFunctionCallResponse(
+                                                              errorCode:
+                                                                  error.code,
+                                                              succeeded: false,
+                                                            );
+                                                          }
+
+                                                          _shouldSetState =
+                                                              true;
+                                                          if (getJsonField(
+                                                            _model.refundCF!
+                                                                .jsonBody,
+                                                            r'''$.success''',
+                                                          )) {
+                                                            await QrHistoryRecord
+                                                                .collection
+                                                                .doc()
+                                                                .set({
+                                                              ...createQrHistoryRecordData(
+                                                                qrId: oKFNPayry31DetallesdeQRQrRecord
+                                                                    .reference
+                                                                    .id,
+                                                                status:
+                                                                    'DEVUELTO',
+                                                                modifiedBy:
+                                                                    currentUserUid,
+                                                              ),
+                                                              ...mapToFirestore(
+                                                                {
+                                                                  'created_time':
+                                                                      FieldValue
+                                                                          .serverTimestamp(),
+                                                                },
+                                                              ),
+                                                            });
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return AlertDialog(
+                                                                  title: Text(
+                                                                      'QR Devulto'),
+                                                                  content: Text(
+                                                                      'La devolución del QR se ha efectuado con éxito.'),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed:
+                                                                          () =>
+                                                                              Navigator.pop(alertDialogContext),
+                                                                      child: Text(
+                                                                          'Ok'),
+                                                                    ),
+                                                                  ],
+                                                                );
                                                               },
-                                                            ),
-                                                          });
-                                                          await showDialog(
-                                                            context: context,
-                                                            builder:
-                                                                (alertDialogContext) {
-                                                              return AlertDialog(
-                                                                title: Text(
-                                                                    'QR Devulto'),
-                                                                content: Text(
-                                                                    'La devolución del QR se ha efectuado con éxito.'),
-                                                                actions: [
-                                                                  TextButton(
-                                                                    onPressed: () =>
-                                                                        Navigator.pop(
-                                                                            alertDialogContext),
-                                                                    child: Text(
-                                                                        'Ok'),
-                                                                  ),
-                                                                ],
-                                                              );
-                                                            },
-                                                          );
-                                                          if (_shouldSetState)
-                                                            setState(() {});
-                                                          return;
+                                                            );
+                                                            if (_shouldSetState)
+                                                              setState(() {});
+                                                            return;
+                                                          } else {
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return AlertDialog(
+                                                                  title: Text(
+                                                                      'Error'),
+                                                                  content: Text(
+                                                                      'Ha ocurrido un error en ejecución de su solicitud.'),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed:
+                                                                          () =>
+                                                                              Navigator.pop(alertDialogContext),
+                                                                      child: Text(
+                                                                          'Ok'),
+                                                                    ),
+                                                                  ],
+                                                                );
+                                                              },
+                                                            );
+                                                            if (_shouldSetState)
+                                                              setState(() {});
+                                                            return;
+                                                          }
                                                         } else {
-                                                          await showDialog(
-                                                            context: context,
-                                                            builder:
-                                                                (alertDialogContext) {
-                                                              return AlertDialog(
-                                                                title: Text(
-                                                                    'Error'),
-                                                                content: Text(
-                                                                    'Ha ocurrido un error en ejecución de su solicitud.'),
-                                                                actions: [
-                                                                  TextButton(
-                                                                    onPressed: () =>
-                                                                        Navigator.pop(
-                                                                            alertDialogContext),
-                                                                    child: Text(
-                                                                        'Ok'),
-                                                                  ),
-                                                                ],
-                                                              );
-                                                            },
-                                                          );
                                                           if (_shouldSetState)
                                                             setState(() {});
                                                           return;
                                                         }
-                                                      } else {
+
                                                         if (_shouldSetState)
                                                           setState(() {});
-                                                        return;
-                                                      }
-
-                                                      if (_shouldSetState)
-                                                        setState(() {});
-                                                    },
+                                                      },
+                                          ),
                                         ),
                                         Text(
                                           'Devolver QR',

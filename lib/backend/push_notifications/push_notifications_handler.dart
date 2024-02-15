@@ -141,7 +141,12 @@ final parametersBuilderMap =
           'uid': getParameter<String>(data, 'uid'),
         },
       ),
-  'OK_FN_Payry_27_solicitarQR': ParameterData.none(),
+  'OK_FN_Payry_27_solicitarQR': (data) async => ParameterData(
+        allParams: {
+          'readQr': getParameter<bool>(data, 'readQr'),
+          'createRefund': getParameter<bool>(data, 'createRefund'),
+        },
+      ),
   'OK_FN_Payry_28_qrGenerado': (data) async => ParameterData(
         allParams: {
           'createdQrReference':
@@ -152,17 +157,20 @@ final parametersBuilderMap =
   'OK_FN_Payry_30_historialQRs': (data) async => ParameterData(
         allParams: {
           'readAll': getParameter<bool>(data, 'readAll'),
+          'createRefund': getParameter<bool>(data, 'createRefund'),
         },
       ),
   'OK_FN_Payry_35_historialSMS': (data) async => ParameterData(
         allParams: {
           'readAll': getParameter<bool>(data, 'readAll'),
+          'createRefund': getParameter<bool>(data, 'createRefund'),
         },
       ),
   'OK_FN_Payry_34_opcionesSMS': ParameterData.none(),
   'OK_FN_Payry_31_detallesdeQR': (data) async {
     final allParams = {
       'qrDocReference': getParameter<DocumentReference>(data, 'qrDocReference'),
+      'createRefund': getParameter<bool>(data, 'createRefund'),
     };
     return ParameterData(
       requiredParams: {
@@ -180,6 +188,7 @@ final parametersBuilderMap =
     final allParams = {
       'smsDocReference':
           getParameter<DocumentReference>(data, 'smsDocReference'),
+      'createRefund': getParameter<bool>(data, 'createRefund'),
     };
     return ParameterData(
       requiredParams: {
@@ -191,7 +200,12 @@ final parametersBuilderMap =
       allParams: allParams,
     );
   },
-  'OK_FN_Payry_32_solicitarSMS': ParameterData.none(),
+  'OK_FN_Payry_32_solicitarSMS': (data) async => ParameterData(
+        allParams: {
+          'readSms': getParameter<bool>(data, 'readSms'),
+          'createRefund': getParameter<bool>(data, 'createRefund'),
+        },
+      ),
   'OK_FN_Payry_40_Notificaciones': ParameterData.none(),
   'OK_FN_Payry_41_FAQs': ParameterData.none(),
   'OK_FN_Payry_38_Estadisticas': ParameterData.none(),
@@ -222,6 +236,7 @@ final parametersBuilderMap =
   },
   'OK_FN_Payry_44_historialTransactions': ParameterData.none(),
   'testShareImage': ParameterData.none(),
+  'OK_FN_Payry_20_datosBancariosVIEW': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

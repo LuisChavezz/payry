@@ -95,9 +95,9 @@ class _OKFNPayry10ConfirmacionCorreoEnviadoContrasenaWidgetState
                                             MainAxisAlignment.center,
                                         children: [
                                           Image.asset(
-                                            'assets/images/vector_image-1.png',
+                                            'assets/images/Grupo_1187.png',
                                             width: 305.0,
-                                            height: 100.0,
+                                            height: 231.0,
                                             fit: BoxFit.fitHeight,
                                           ),
                                         ],

@@ -100,10 +100,10 @@ class _OKFNPayry05RegistrateWidgetState
                             autovalidateMode: AutovalidateMode.disabled,
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 48.0, 24.0, 48.0),
+                                  24.0, 40.0, 24.0, 40.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
@@ -441,158 +441,196 @@ class _OKFNPayry05RegistrateWidgetState
                                           0.0, 10.0, 0.0, 10.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
+                                          var _shouldSetState = false;
                                           if (_model.formKey.currentState ==
                                                   null ||
                                               !_model.formKey.currentState!
                                                   .validate()) {
                                             return;
                                           }
-                                          GoRouter.of(context)
-                                              .prepareAuthEvent();
-                                          if (_model.passwordCreateController
-                                                  .text !=
-                                              _model.passwordConfirmController
-                                                  .text) {
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'Passwords don\'t match!',
+                                          if (_model.acceptCheckValue!) {
+                                            GoRouter.of(context)
+                                                .prepareAuthEvent();
+                                            if (_model.passwordCreateController
+                                                    .text !=
+                                                _model.passwordConfirmController
+                                                    .text) {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'Passwords don\'t match!',
+                                                  ),
                                                 ),
+                                              );
+                                              return;
+                                            }
+
+                                            final user = await authManager
+                                                .createAccountWithEmail(
+                                              context,
+                                              _model.emailFieldController.text,
+                                              _model.passwordCreateController
+                                                  .text,
+                                            );
+                                            if (user == null) {
+                                              return;
+                                            }
+
+                                            await currentUserReference!.update({
+                                              ...createUsersRecordData(
+                                                adminId: currentUserUid,
+                                                email: _model
+                                                    .emailFieldController.text,
+                                                displayName: _model
+                                                    .nameFieldController.text,
+                                                photoUrl: '',
+                                                phoneNumber: '',
+                                                status: true,
+                                                isValidPhoneNumber: false,
+                                                isAdmin: true,
+                                                isCompanyComplete: false,
+                                                isValidMail: false,
                                               ),
-                                            );
-                                            return;
-                                          }
+                                              ...mapToFirestore(
+                                                {
+                                                  'created_time': FieldValue
+                                                      .serverTimestamp(),
+                                                },
+                                              ),
+                                            });
 
-                                          final user = await authManager
-                                              .createAccountWithEmail(
-                                            context,
-                                            _model.emailFieldController.text,
-                                            _model
-                                                .passwordCreateController.text,
-                                          );
-                                          if (user == null) {
-                                            return;
-                                          }
+                                            await UserPermissionsRecord
+                                                .collection
+                                                .doc()
+                                                .set(
+                                                    createUserPermissionsRecordData(
+                                                  uid: currentUserUid,
+                                                  adminId: valueOrDefault(
+                                                      currentUserDocument
+                                                          ?.adminId,
+                                                      ''),
+                                                  createQr: false,
+                                                  readQr: false,
+                                                  createSms: false,
+                                                  readSms: false,
+                                                  readTransfers: false,
+                                                  createRefunds: false,
+                                                  readStatistics: false,
+                                                ));
+                                            try {
+                                              final result =
+                                                  await FirebaseFunctions
+                                                      .instance
+                                                      .httpsCallable(
+                                                          'verifyEmail')
+                                                      .call({
+                                                "email": currentUserEmail,
+                                              });
+                                              _model.cfve =
+                                                  VerifyEmailCloudFunctionCallResponse(
+                                                data: result.data,
+                                                succeeded: true,
+                                                resultAsString:
+                                                    result.data.toString(),
+                                                jsonBody: result.data,
+                                              );
+                                            } on FirebaseFunctionsException catch (error) {
+                                              _model.cfve =
+                                                  VerifyEmailCloudFunctionCallResponse(
+                                                errorCode: error.code,
+                                                succeeded: false,
+                                              );
+                                            }
 
-                                          await currentUserReference!.update({
-                                            ...createUsersRecordData(
-                                              adminId: currentUserUid,
-                                              email: _model
-                                                  .emailFieldController.text,
-                                              displayName: _model
-                                                  .nameFieldController.text,
-                                              photoUrl: '',
-                                              phoneNumber: '',
-                                              status: true,
-                                              isValidPhoneNumber: false,
-                                              isAdmin: true,
-                                              isCompanyComplete: false,
-                                              isValidMail: false,
-                                            ),
-                                            ...mapToFirestore(
-                                              {
-                                                'created_time': FieldValue
-                                                    .serverTimestamp(),
+                                            _shouldSetState = true;
+                                            try {
+                                              final result =
+                                                  await FirebaseFunctions
+                                                      .instance
+                                                      .httpsCallable(
+                                                          'generateToken')
+                                                      .call({
+                                                "uid": currentUserUid,
+                                              });
+                                              _model.cloudFunctionGT =
+                                                  GenerateTokenCloudFunctionCallResponse(
+                                                data: result.data,
+                                                succeeded: true,
+                                                resultAsString:
+                                                    result.data.toString(),
+                                                jsonBody: result.data,
+                                              );
+                                            } on FirebaseFunctionsException catch (error) {
+                                              _model.cloudFunctionGT =
+                                                  GenerateTokenCloudFunctionCallResponse(
+                                                errorCode: error.code,
+                                                succeeded: false,
+                                              );
+                                            }
+
+                                            _shouldSetState = true;
+                                            FFAppState().serverToken = _model
+                                                .cloudFunctionGT!.jsonBody!
+                                                .toString();
+                                            FFAppState().tutorialDialogs = true;
+
+                                            context.goNamedAuth(
+                                                'OK_FN_Payry_06_confirmacionRegistro',
+                                                context.mounted);
+
+                                            try {
+                                              final result =
+                                                  await FirebaseFunctions
+                                                      .instance
+                                                      .httpsCallable(
+                                                          'sendWelcomeEmail')
+                                                      .call({
+                                                "email": _model
+                                                    .emailFieldController.text,
+                                              });
+                                              _model.cloudFunctiona55 =
+                                                  SendWelcomeEmailCloudFunctionCallResponse(
+                                                succeeded: true,
+                                              );
+                                            } on FirebaseFunctionsException catch (error) {
+                                              _model.cloudFunctiona55 =
+                                                  SendWelcomeEmailCloudFunctionCallResponse(
+                                                errorCode: error.code,
+                                                succeeded: false,
+                                              );
+                                            }
+
+                                            _shouldSetState = true;
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          } else {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text(
+                                                      'Terminos y condiciones'),
+                                                  content: Text(
+                                                      'Debes aceptar terminos y condiciones para poder realizar el registro.'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
                                               },
-                                            ),
-                                          });
-
-                                          await UserPermissionsRecord.collection
-                                              .doc()
-                                              .set(
-                                                  createUserPermissionsRecordData(
-                                                uid: currentUserUid,
-                                                adminId: valueOrDefault(
-                                                    currentUserDocument
-                                                        ?.adminId,
-                                                    ''),
-                                                createQr: false,
-                                                readQr: false,
-                                                createSms: false,
-                                                readSms: false,
-                                                readTransfers: false,
-                                                createRefunds: false,
-                                                readStatistics: false,
-                                              ));
-                                          try {
-                                            final result =
-                                                await FirebaseFunctions.instance
-                                                    .httpsCallable(
-                                                        'verifyEmail')
-                                                    .call({
-                                              "email": currentUserEmail,
-                                            });
-                                            _model.cfve =
-                                                VerifyEmailCloudFunctionCallResponse(
-                                              data: result.data,
-                                              succeeded: true,
-                                              resultAsString:
-                                                  result.data.toString(),
-                                              jsonBody: result.data,
                                             );
-                                          } on FirebaseFunctionsException catch (error) {
-                                            _model.cfve =
-                                                VerifyEmailCloudFunctionCallResponse(
-                                              errorCode: error.code,
-                                              succeeded: false,
-                                            );
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
                                           }
 
-                                          try {
-                                            final result =
-                                                await FirebaseFunctions.instance
-                                                    .httpsCallable(
-                                                        'generateToken')
-                                                    .call({
-                                              "uid": currentUserUid,
-                                            });
-                                            _model.cloudFunctionGT =
-                                                GenerateTokenCloudFunctionCallResponse(
-                                              data: result.data,
-                                              succeeded: true,
-                                              resultAsString:
-                                                  result.data.toString(),
-                                              jsonBody: result.data,
-                                            );
-                                          } on FirebaseFunctionsException catch (error) {
-                                            _model.cloudFunctionGT =
-                                                GenerateTokenCloudFunctionCallResponse(
-                                              errorCode: error.code,
-                                              succeeded: false,
-                                            );
-                                          }
-
-                                          FFAppState().serverToken = _model
-                                              .cloudFunctionGT!.jsonBody!
-                                              .toString();
-
-                                          context.goNamedAuth(
-                                              'OK_FN_Payry_06_confirmacionRegistro',
-                                              context.mounted);
-
-                                          try {
-                                            final result =
-                                                await FirebaseFunctions.instance
-                                                    .httpsCallable(
-                                                        'sendWelcomeEmail')
-                                                    .call({
-                                              "email": _model
-                                                  .emailFieldController.text,
-                                            });
-                                            _model.cloudFunctiona55 =
-                                                SendWelcomeEmailCloudFunctionCallResponse(
-                                              succeeded: true,
-                                            );
-                                          } on FirebaseFunctionsException catch (error) {
-                                            _model.cloudFunctiona55 =
-                                                SendWelcomeEmailCloudFunctionCallResponse(
-                                              errorCode: error.code,
-                                              succeeded: false,
-                                            );
-                                          }
-
-                                          setState(() {});
+                                          if (_shouldSetState) setState(() {});
                                         },
                                         text: 'Crea tu cuenta',
                                         options: FFButtonOptions(
@@ -629,7 +667,7 @@ class _OKFNPayry05RegistrateWidgetState
                                     alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 15.0, 0.0, 0.0),
+                                          0.0, 12.0, 0.0, 0.0),
                                       child: Wrap(
                                         spacing: 4.0,
                                         runSpacing: 4.0,
@@ -676,6 +714,92 @@ class _OKFNPayry05RegistrateWidgetState
                                           ),
                                         ],
                                       ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 12.0, 0.0, 0.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Theme(
+                                              data: ThemeData(
+                                                checkboxTheme:
+                                                    CheckboxThemeData(
+                                                  visualDensity:
+                                                      VisualDensity.compact,
+                                                  materialTapTargetSize:
+                                                      MaterialTapTargetSize
+                                                          .shrinkWrap,
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            4.0),
+                                                  ),
+                                                ),
+                                                unselectedWidgetColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                              ),
+                                              child: Checkbox(
+                                                value: _model
+                                                    .acceptCheckValue ??= false,
+                                                onChanged: (newValue) async {
+                                                  setState(() =>
+                                                      _model.acceptCheckValue =
+                                                          newValue!);
+                                                },
+                                                activeColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                checkColor: Colors.white,
+                                              ),
+                                            ),
+                                            Text(
+                                              'He leído y acepto: ',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        fontSize: 12.0,
+                                                      ),
+                                            ),
+                                            InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                context.pushNamed(
+                                                    'OK_FN_Payry_42_Terminosycondiciones');
+                                              },
+                                              child: Text(
+                                                'Terminos y condicones',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .accent3,
+                                                          fontSize: 12.0,
+                                                          decoration:
+                                                              TextDecoration
+                                                                  .underline,
+                                                        ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ],
