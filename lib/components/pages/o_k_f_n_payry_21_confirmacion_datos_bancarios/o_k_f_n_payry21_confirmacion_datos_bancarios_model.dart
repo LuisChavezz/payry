@@ -12,8 +12,10 @@ class OKFNPayry21ConfirmacionDatosBancariosModel
     extends FlutterFlowModel<OKFNPayry21ConfirmacionDatosBancariosWidget> {
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {}
 
   /// Action blocks are added here.

@@ -36,10 +36,12 @@ class OKFNPayry13MenumasModel
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     navBarFlotingModel = createModel(context, () => NavBarFlotingModel());
   }
 
+  @override
   void dispose() {
     navBarFlotingModel.dispose();
   }

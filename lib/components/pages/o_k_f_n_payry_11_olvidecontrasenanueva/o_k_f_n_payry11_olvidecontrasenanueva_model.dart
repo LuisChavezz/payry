@@ -26,11 +26,13 @@ class OKFNPayry11OlvidecontrasenanuevaModel
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     newPasswordVisibility1 = false;
     newPasswordVisibility2 = false;
   }
 
+  @override
   void dispose() {
     newPasswordFocusNode1?.dispose();
     newPasswordController1?.dispose();

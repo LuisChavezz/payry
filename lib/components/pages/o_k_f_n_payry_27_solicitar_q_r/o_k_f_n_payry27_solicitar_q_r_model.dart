@@ -62,11 +62,13 @@ class OKFNPayry27SolicitarQRModel
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     conceptFieldControllerValidator = _conceptFieldControllerValidator;
     amountFieldControllerValidator = _amountFieldControllerValidator;
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     conceptFieldFocusNode?.dispose();

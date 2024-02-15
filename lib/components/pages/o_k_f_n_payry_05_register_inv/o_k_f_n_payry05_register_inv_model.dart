@@ -49,11 +49,13 @@ class OKFNPayry05RegisterInvModel
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     invPasswordCreateVisibility = false;
     invPasswordConfirmVisibility = false;
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     invNameFieldFocusNode?.dispose();

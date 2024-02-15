@@ -93,6 +93,7 @@ class OKFNPayry05RegistrateModel
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     nameFieldControllerValidator = _nameFieldControllerValidator;
     emailFieldControllerValidator = _emailFieldControllerValidator;
@@ -102,6 +103,7 @@ class OKFNPayry05RegistrateModel
     passwordConfirmControllerValidator = _passwordConfirmControllerValidator;
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     nameFieldFocusNode?.dispose();

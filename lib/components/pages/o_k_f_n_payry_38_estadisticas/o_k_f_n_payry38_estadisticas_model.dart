@@ -39,6 +39,7 @@ class OKFNPayry38EstadisticasModel
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     calendarSelectedDay1 = DateTimeRange(
       start: DateTime.now().startOfDay,
@@ -50,6 +51,7 @@ class OKFNPayry38EstadisticasModel
     );
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
   }

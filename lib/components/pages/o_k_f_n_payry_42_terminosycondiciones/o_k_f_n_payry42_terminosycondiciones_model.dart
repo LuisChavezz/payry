@@ -12,8 +12,10 @@ class OKFNPayry42TerminosycondicionesModel
     extends FlutterFlowModel<OKFNPayry42TerminosycondicionesWidget> {
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {}
 
   /// Action blocks are added here.
