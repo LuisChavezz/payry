@@ -1651,6 +1651,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                   }
                                                 }(),
                                                 bankid: '',
+                                                coupon: '',
                                               ),
                                               ...mapToFirestore(
                                                 {
