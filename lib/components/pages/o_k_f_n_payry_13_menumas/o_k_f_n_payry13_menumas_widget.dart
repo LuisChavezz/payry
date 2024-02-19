@@ -5,6 +5,7 @@ import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -491,7 +492,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                               ),
                                             ),
                                             Text(
-                                              'Generar QR',
+                                              'CoDi®',
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .bodyMedium
@@ -870,7 +871,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                               ),
                                             ),
                                             Text(
-                                              'Generar SMS',
+                                              'DiMo®',
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .bodyMedium
@@ -906,8 +907,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    context.pushNamed(
-                                        'OK_FN_Payry_14_Perfil_PENDSW');
+                                    context.pushNamed('OK_FN_Payry_14_Perfil');
                                   },
                                   child: Container(
                                     width: () {
@@ -984,7 +984,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                             ),
                                           ),
                                           Text(
-                                            'Perfil',
+                                            'Mi perfil',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -1008,8 +1008,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     onTap: () async {
                                       var _shouldSetState = false;
                                       if (valueOrDefault<bool>(
-                                          currentUserDocument?.isAdmin,
-                                          false)) {
+                                              currentUserDocument?.isAdmin,
+                                              false) ||
+                                          oKFNPayry13MenumasUserPermissionsRecord!
+                                              .readCompanies) {
                                         if (valueOrDefault<bool>(
                                             currentUserDocument?.isValidMail,
                                             false)) {
@@ -1235,8 +1237,11 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                       decoration: BoxDecoration(
                                         color: valueOrDefault<Color>(
                                           valueOrDefault<bool>(
-                                                  currentUserDocument?.isAdmin,
-                                                  false)
+                                                      currentUserDocument
+                                                          ?.isAdmin,
+                                                      false) ||
+                                                  oKFNPayry13MenumasUserPermissionsRecord!
+                                                      .readCompanies
                                               ? FlutterFlowTheme.of(context)
                                                   .secondaryBackground
                                               : Color(0x83CCCCCC),
@@ -1672,8 +1677,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     onTap: () async {
                                       var _shouldSetState = false;
                                       if (valueOrDefault<bool>(
-                                          currentUserDocument?.isAdmin,
-                                          false)) {
+                                              currentUserDocument?.isAdmin,
+                                              false) ||
+                                          oKFNPayry13MenumasUserPermissionsRecord!
+                                              .readUsers) {
                                         if (valueOrDefault<bool>(
                                             currentUserDocument?.isValidMail,
                                             false)) {
@@ -1954,8 +1961,11 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                       decoration: BoxDecoration(
                                         color: valueOrDefault<Color>(
                                           valueOrDefault<bool>(
-                                                  currentUserDocument?.isAdmin,
-                                                  false)
+                                                      currentUserDocument
+                                                          ?.isAdmin,
+                                                      false) ||
+                                                  oKFNPayry13MenumasUserPermissionsRecord!
+                                                      .readUsers
                                               ? FlutterFlowTheme.of(context)
                                                   .secondaryBackground
                                               : Color(0x83CCCCCC),
@@ -2029,7 +2039,9 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                       if (valueOrDefault<bool>(
                                               currentUserDocument?.isAdmin,
                                               false) ||
-                                          true) {
+                                          true ||
+                                          oKFNPayry13MenumasUserPermissionsRecord!
+                                              .readInvoices) {
                                         if (valueOrDefault<bool>(
                                             currentUserDocument?.isValidMail,
                                             false)) {
@@ -2313,7 +2325,9 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                       currentUserDocument
                                                           ?.isAdmin,
                                                       false) ||
-                                                  true
+                                                  true ||
+                                                  oKFNPayry13MenumasUserPermissionsRecord!
+                                                      .readInvoices
                                               ? FlutterFlowTheme.of(context)
                                                   .secondaryBackground
                                               : Color(0x83CCCCCC),
@@ -2718,7 +2732,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                               ),
                                             ),
                                             Text(
-                                              'Transacciones',
+                                              'Transferencias',
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .bodyMedium
@@ -3179,9 +3193,24 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        setState(() {
-                                          FFAppState().tutorialDialogs = true;
-                                        });
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text(functions
+                                                  .amountLimit('8000.00')!
+                                                  .toString()),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
                                       },
                                       child: Container(
                                         width: () {

@@ -61,6 +61,16 @@ class QrRecord extends FirestoreRecord {
   String get qrId => _qrId ?? '';
   bool hasQrId() => _qrId != null;
 
+  // "claveRastreo" field.
+  String? _claveRastreo;
+  String get claveRastreo => _claveRastreo ?? '';
+  bool hasClaveRastreo() => _claveRastreo != null;
+
+  // "idRastreo" field.
+  double? _idRastreo;
+  double get idRastreo => _idRastreo ?? 0.0;
+  bool hasIdRastreo() => _idRastreo != null;
+
   void _initializeFields() {
     _uid = snapshotData['uid'] as String?;
     _adminId = snapshotData['admin_id'] as String?;
@@ -71,6 +81,8 @@ class QrRecord extends FirestoreRecord {
     _createdTime = snapshotData['created_time'] as DateTime?;
     _qrUrl = snapshotData['qr_url'] as String?;
     _qrId = snapshotData['qr_id'] as String?;
+    _claveRastreo = snapshotData['claveRastreo'] as String?;
+    _idRastreo = castToType<double>(snapshotData['idRastreo']);
   }
 
   static CollectionReference get collection =>
@@ -116,6 +128,8 @@ Map<String, dynamic> createQrRecordData({
   DateTime? createdTime,
   String? qrUrl,
   String? qrId,
+  String? claveRastreo,
+  double? idRastreo,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -128,6 +142,8 @@ Map<String, dynamic> createQrRecordData({
       'created_time': createdTime,
       'qr_url': qrUrl,
       'qr_id': qrId,
+      'claveRastreo': claveRastreo,
+      'idRastreo': idRastreo,
     }.withoutNulls,
   );
 
@@ -147,7 +163,9 @@ class QrRecordDocumentEquality implements Equality<QrRecord> {
         e1?.voucherUrl == e2?.voucherUrl &&
         e1?.createdTime == e2?.createdTime &&
         e1?.qrUrl == e2?.qrUrl &&
-        e1?.qrId == e2?.qrId;
+        e1?.qrId == e2?.qrId &&
+        e1?.claveRastreo == e2?.claveRastreo &&
+        e1?.idRastreo == e2?.idRastreo;
   }
 
   @override
@@ -160,7 +178,9 @@ class QrRecordDocumentEquality implements Equality<QrRecord> {
         e?.voucherUrl,
         e?.createdTime,
         e?.qrUrl,
-        e?.qrId
+        e?.qrId,
+        e?.claveRastreo,
+        e?.idRastreo
       ]);
 
   @override

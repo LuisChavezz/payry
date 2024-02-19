@@ -43,8 +43,8 @@ class OKFNPayry32SolicitarSMSModel
       return 'El concepto es requerido';
     }
 
-    if (val.length < 10) {
-      return 'El concepto debe contener al menos 10 caracteres';
+    if (val.length < 1) {
+      return 'El concepto debe contener al menos 1 caracteres';
     }
     if (val.length > 20) {
       return 'El concepto solo puede contener un máximo de 20 caracteres';

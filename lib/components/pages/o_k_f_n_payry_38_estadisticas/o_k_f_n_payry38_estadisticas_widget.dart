@@ -907,7 +907,7 @@ class _OKFNPayry38EstadisticasWidgetState
                                                             .fromSTEB(0.0, 0.0,
                                                                 12.0, 0.0),
                                                     child: Text(
-                                                      'Pagos con QR',
+                                                      'Pagos con CoDi®',
                                                       textAlign:
                                                           TextAlign.start,
                                                       style:
@@ -1017,7 +1017,7 @@ class _OKFNPayry38EstadisticasWidgetState
                                                       .fromSTEB(
                                                           0.0, 8.0, 16.0, 8.0),
                                                   child: Icon(
-                                                    FFIcons.kqr,
+                                                    FFIcons.ksms,
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText,
@@ -1031,7 +1031,7 @@ class _OKFNPayry38EstadisticasWidgetState
                                                             .fromSTEB(0.0, 0.0,
                                                                 12.0, 0.0),
                                                     child: Text(
-                                                      'Pagos con SMS',
+                                                      'Pagos con DiMo®',
                                                       textAlign:
                                                           TextAlign.start,
                                                       style:

@@ -138,7 +138,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                           controller: _model.expandableController1,
                           child: ExpandablePanel(
                             header: Text(
-                              '¿Cómo genero un código QR para realizar un pago?',
+                              '¿Cómo genero un CoDi® para cobro?',
                               style: FlutterFlowTheme.of(context)
                                   .displaySmall
                                   .override(
@@ -203,7 +203,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                           controller: _model.expandableController2,
                           child: ExpandablePanel(
                             header: Text(
-                              '¿Qué información contiene el código QR de pago? ',
+                              '¿Qué información contiene el CoDi®? ',
                               style: FlutterFlowTheme.of(context)
                                   .displaySmall
                                   .override(
@@ -398,7 +398,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                           controller: _model.expandableController5,
                           child: ExpandablePanel(
                             header: Text(
-                              '¿Puedo cancelar un pago realizado por error? ',
+                              '¿Puedo cancelar un cobro realizado por error? ',
                               style: FlutterFlowTheme.of(context)
                                   .displaySmall
                                   .override(
@@ -463,7 +463,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                           controller: _model.expandableController6,
                           child: ExpandablePanel(
                             header: Text(
-                              '¿Cómo sé si mi solicitud de pago fue exitosa?',
+                              '¿Cómo sé si mi solicitud de cobro fue exitosa?',
                               style: FlutterFlowTheme.of(context)
                                   .displaySmall
                                   .override(
@@ -528,7 +528,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                           controller: _model.expandableController7,
                           child: ExpandablePanel(
                             header: Text(
-                              '¿Es seguro realizar pagos con la app? ',
+                              '¿Es seguro realizar pagos con Payry? ',
                               style: FlutterFlowTheme.of(context)
                                   .displaySmall
                                   .override(

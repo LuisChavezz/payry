@@ -23,12 +23,18 @@ class OKFNPayry25PermisosModel
   bool? createSmsSwitchValue;
   // State field(s) for ReadSmsSwitch widget.
   bool? readSmsSwitchValue;
-  // State field(s) for ReadTransfersSwitch widget.
-  bool? readTransfersSwitchValue;
-  // State field(s) for ReadStatisticsSwitch widget.
-  bool? readStatisticsSwitchValue;
   // State field(s) for CreateRefundSwitch widget.
   bool? createRefundSwitchValue;
+  // State field(s) for ReadCompaniesSwitch widget.
+  bool? readCompaniesSwitchValue;
+  // State field(s) for ReadInvoicesSwitch widget.
+  bool? readInvoicesSwitchValue;
+  // State field(s) for ReadUsersSwitch widget.
+  bool? readUsersSwitchValue;
+  // State field(s) for ReadStatisticsSwitch widget.
+  bool? readStatisticsSwitchValue;
+  // State field(s) for ReadTransfersSwitch widget.
+  bool? readTransfersSwitchValue;
 
   /// Initialization and disposal methods.
 

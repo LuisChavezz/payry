@@ -92,7 +92,7 @@ class _OKFNPayry27SolicitarQRWidgetState
             ),
           ),
           title: Text(
-            'Solicitar pago con QR',
+            'Cobrar con CoDi®',
             style: FlutterFlowTheme.of(context).titleSmall.override(
                   fontFamily: 'Lexend',
                   color: FlutterFlowTheme.of(context).primaryText,
@@ -144,7 +144,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                                             .primaryText,
                                         fontWeight: FontWeight.normal,
                                       ),
-                                  hintText: 'Ingresa el concepto de pago...',
+                                  hintText: 'Ingresa el concepto de cobro...',
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
@@ -192,6 +192,8 @@ class _OKFNPayry27SolicitarQRWidgetState
                                       fontWeight: FontWeight.normal,
                                     ),
                                 maxLength: 20,
+                                maxLengthEnforcement:
+                                    MaxLengthEnforcement.enforced,
                                 validator: _model
                                     .conceptFieldControllerValidator
                                     .asValidator(context),
@@ -214,7 +216,8 @@ class _OKFNPayry27SolicitarQRWidgetState
                                             .primaryText,
                                         fontWeight: FontWeight.normal,
                                       ),
-                                  hintText: 'Ingresa el importe...',
+                                  hintText:
+                                      'Ingresa el importe (Max \$8,000)...',
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
@@ -279,97 +282,23 @@ class _OKFNPayry27SolicitarQRWidgetState
                                           .validate()) {
                                     return;
                                   }
-
-                                  var qrRecordReference =
-                                      QrRecord.collection.doc();
-                                  await qrRecordReference.set({
-                                    ...createQrRecordData(
-                                      uid: currentUserUid,
-                                      adminId: valueOrDefault(
-                                          currentUserDocument?.adminId, ''),
-                                      qrId: '',
-                                      amount: double.tryParse(
-                                          _model.amountFieldController.text),
-                                      concept:
-                                          _model.conceptFieldController.text,
-                                      status: 'PENDIENTE',
-                                      qrUrl: '',
-                                      voucherUrl: '',
-                                    ),
-                                    ...mapToFirestore(
-                                      {
-                                        'created_time':
-                                            FieldValue.serverTimestamp(),
-                                      },
-                                    ),
-                                  });
-                                  _model.createdQR =
-                                      QrRecord.getDocumentFromData({
-                                    ...createQrRecordData(
-                                      uid: currentUserUid,
-                                      adminId: valueOrDefault(
-                                          currentUserDocument?.adminId, ''),
-                                      qrId: '',
-                                      amount: double.tryParse(
-                                          _model.amountFieldController.text),
-                                      concept:
-                                          _model.conceptFieldController.text,
-                                      status: 'PENDIENTE',
-                                      qrUrl: '',
-                                      voucherUrl: '',
-                                    ),
-                                    ...mapToFirestore(
-                                      {
-                                        'created_time': DateTime.now(),
-                                      },
-                                    ),
-                                  }, qrRecordReference);
-                                  _shouldSetState = true;
-                                  try {
-                                    final result = await FirebaseFunctions
-                                        .instance
-                                        .httpsCallable('crearMovimientoQR')
-                                        .call({
-                                      "monto":
-                                          _model.amountFieldController.text,
-                                      "concepto":
-                                          _model.conceptFieldController.text,
-                                      "token": FFAppState().serverToken,
-                                      "qrId": _model.createdQR?.reference.id,
-                                    });
-                                    _model.qrCloundFunction =
-                                        CrearMovimientoQRCloudFunctionCallResponse(
-                                      data: result.data,
-                                      succeeded: true,
-                                      resultAsString: result.data.toString(),
-                                      jsonBody: result.data,
-                                    );
-                                  } on FirebaseFunctionsException catch (error) {
-                                    _model.qrCloundFunction =
-                                        CrearMovimientoQRCloudFunctionCallResponse(
-                                      errorCode: error.code,
-                                      succeeded: false,
-                                    );
-                                  }
-
-                                  _shouldSetState = true;
-                                  if (getJsonField(
-                                    _model.qrCloundFunction!.jsonBody,
-                                    r'''$.success''',
-                                  )) {
-                                    await _model.createdQR!.reference
-                                        .update(createQrRecordData(
-                                      qrUrl: getJsonField(
-                                        _model.qrCloundFunction?.jsonBody,
-                                        r'''$.data''',
-                                      ).toString(),
-                                    ));
-
-                                    await QrHistoryRecord.collection.doc().set({
-                                      ...createQrHistoryRecordData(
-                                        qrId: _model.createdQR?.reference.id,
-                                        status: _model.createdQR?.status,
-                                        modifiedBy: currentUserUid,
+                                  if (functions.amountLimit(
+                                      _model.amountFieldController.text)!) {
+                                    var qrRecordReference =
+                                        QrRecord.collection.doc();
+                                    await qrRecordReference.set({
+                                      ...createQrRecordData(
+                                        uid: currentUserUid,
+                                        adminId: valueOrDefault(
+                                            currentUserDocument?.adminId, ''),
+                                        qrId: '',
+                                        amount: double.tryParse(
+                                            _model.amountFieldController.text),
+                                        concept:
+                                            _model.conceptFieldController.text,
+                                        status: 'PENDIENTE',
+                                        qrUrl: '',
+                                        voucherUrl: '',
                                       ),
                                       ...mapToFirestore(
                                         {
@@ -378,39 +307,157 @@ class _OKFNPayry27SolicitarQRWidgetState
                                         },
                                       ),
                                     });
-                                    if (Navigator.of(context).canPop()) {
-                                      context.pop();
+                                    _model.createdQR =
+                                        QrRecord.getDocumentFromData({
+                                      ...createQrRecordData(
+                                        uid: currentUserUid,
+                                        adminId: valueOrDefault(
+                                            currentUserDocument?.adminId, ''),
+                                        qrId: '',
+                                        amount: double.tryParse(
+                                            _model.amountFieldController.text),
+                                        concept:
+                                            _model.conceptFieldController.text,
+                                        status: 'PENDIENTE',
+                                        qrUrl: '',
+                                        voucherUrl: '',
+                                      ),
+                                      ...mapToFirestore(
+                                        {
+                                          'created_time': DateTime.now(),
+                                        },
+                                      ),
+                                    }, qrRecordReference);
+                                    _shouldSetState = true;
+                                    try {
+                                      final result = await FirebaseFunctions
+                                          .instance
+                                          .httpsCallable('crearMovimientoQR')
+                                          .call({
+                                        "monto":
+                                            _model.amountFieldController.text,
+                                        "concepto":
+                                            _model.conceptFieldController.text,
+                                        "token": FFAppState().serverToken,
+                                        "qrId": _model.createdQR?.reference.id,
+                                      });
+                                      _model.qrCloundFunction =
+                                          CrearMovimientoQRCloudFunctionCallResponse(
+                                        data: result.data,
+                                        succeeded: true,
+                                        resultAsString: result.data.toString(),
+                                        jsonBody: result.data,
+                                      );
+                                    } on FirebaseFunctionsException catch (error) {
+                                      _model.qrCloundFunction =
+                                          CrearMovimientoQRCloudFunctionCallResponse(
+                                        errorCode: error.code,
+                                        succeeded: false,
+                                      );
                                     }
-                                    context.pushNamedAuth(
-                                      'OK_FN_Payry_31_detallesdeQR',
-                                      context.mounted,
-                                      pathParameters: {
-                                        'qrDocReference': serializeParam(
-                                          _model.createdQR?.reference,
-                                          ParamType.DocumentReference,
-                                        ),
-                                      }.withoutNulls,
-                                      queryParameters: {
-                                        'createRefund': serializeParam(
-                                          widget.createRefund,
-                                          ParamType.bool,
-                                        ),
-                                      }.withoutNulls,
-                                    );
 
-                                    if (_shouldSetState) setState(() {});
-                                    return;
+                                    _shouldSetState = true;
+                                    if (getJsonField(
+                                      _model.qrCloundFunction!.jsonBody,
+                                      r'''$.success''',
+                                    )) {
+                                      await _model.createdQR!.reference
+                                          .update(createQrRecordData(
+                                        qrUrl: getJsonField(
+                                          _model.qrCloundFunction?.jsonBody,
+                                          r'''$.data''',
+                                        ).toString(),
+                                      ));
+
+                                      await QrHistoryRecord.collection
+                                          .doc()
+                                          .set({
+                                        ...createQrHistoryRecordData(
+                                          qrId: _model.createdQR?.reference.id,
+                                          status: _model.createdQR?.status,
+                                          modifiedBy: currentUserUid,
+                                        ),
+                                        ...mapToFirestore(
+                                          {
+                                            'created_time':
+                                                FieldValue.serverTimestamp(),
+                                          },
+                                        ),
+                                      });
+                                      if (Navigator.of(context).canPop()) {
+                                        context.pop();
+                                      }
+                                      context.pushNamedAuth(
+                                        'OK_FN_Payry_31_detallesdeQR',
+                                        context.mounted,
+                                        pathParameters: {
+                                          'qrDocReference': serializeParam(
+                                            _model.createdQR?.reference,
+                                            ParamType.DocumentReference,
+                                          ),
+                                        }.withoutNulls,
+                                        queryParameters: {
+                                          'createRefund': serializeParam(
+                                            widget.createRefund,
+                                            ParamType.bool,
+                                          ),
+                                        }.withoutNulls,
+                                      );
+
+                                      if (_shouldSetState) setState(() {});
+                                      return;
+                                    } else {
+                                      await _model.createdQR!.reference
+                                          .delete();
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Error'),
+                                            content: Text(getJsonField(
+                                              _model.qrCloundFunction!.jsonBody,
+                                              r'''$.message''',
+                                            ).toString()),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                      if (!functions.includeTheString(
+                                          getJsonField(
+                                            _model.qrCloundFunction!.jsonBody,
+                                            r'''$.message''',
+                                          ).toString(),
+                                          'expirada')!) {
+                                        if (_shouldSetState) setState(() {});
+                                        return;
+                                      }
+
+                                      GoRouter.of(context).prepareAuthEvent();
+                                      await authManager.signOut();
+                                      GoRouter.of(context)
+                                          .clearRedirectLocation();
+
+                                      context.goNamedAuth(
+                                          'OK_FN_Payry_08_iniciasesion',
+                                          context.mounted);
+
+                                      if (_shouldSetState) setState(() {});
+                                      return;
+                                    }
                                   } else {
-                                    await _model.createdQR!.reference.delete();
                                     await showDialog(
                                       context: context,
                                       builder: (alertDialogContext) {
                                         return AlertDialog(
                                           title: Text('Error'),
-                                          content: Text(getJsonField(
-                                            _model.qrCloundFunction!.jsonBody,
-                                            r'''$.message''',
-                                          ).toString()),
+                                          content: Text(
+                                              'El límite del monto es de \$8,000. Por favor ingresa una cantidad menor a esta.'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
@@ -421,32 +468,13 @@ class _OKFNPayry27SolicitarQRWidgetState
                                         );
                                       },
                                     );
-                                    if (!functions.includeTheString(
-                                        getJsonField(
-                                          _model.qrCloundFunction!.jsonBody,
-                                          r'''$.message''',
-                                        ).toString(),
-                                        'expirada')!) {
-                                      if (_shouldSetState) setState(() {});
-                                      return;
-                                    }
-
-                                    GoRouter.of(context).prepareAuthEvent();
-                                    await authManager.signOut();
-                                    GoRouter.of(context)
-                                        .clearRedirectLocation();
-
-                                    context.goNamedAuth(
-                                        'OK_FN_Payry_08_iniciasesion',
-                                        context.mounted);
-
                                     if (_shouldSetState) setState(() {});
                                     return;
                                   }
 
                                   if (_shouldSetState) setState(() {});
                                 },
-                                text: 'Generar QR',
+                                text: 'Generar CoDi®',
                                 options: FFButtonOptions(
                                   width: double.infinity,
                                   height: 50.0,
@@ -496,7 +524,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                           }.withoutNulls,
                         );
                       },
-                      text: 'Consultar QR',
+                      text: 'Consultar CoDi®',
                       options: FFButtonOptions(
                         width: double.infinity,
                         height: 50.0,

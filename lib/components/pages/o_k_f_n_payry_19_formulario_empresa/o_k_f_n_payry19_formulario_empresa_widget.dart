@@ -190,7 +190,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 50.0, 0.0),
                     child: Text(
-                      'Empresas',
+                      'Datos de Empresa',
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).titleSmall.override(
                             fontFamily: 'Lexend',
@@ -1261,7 +1261,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                             },
                                             activeColor:
                                                 FlutterFlowTheme.of(context)
-                                                    .success,
+                                                    .secondaryText,
                                             activeTrackColor:
                                                 FlutterFlowTheme.of(context)
                                                     .accent1,
@@ -1446,7 +1446,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 4.0, 0.0, 0.0),
                                     child: Text(
-                                      'CFDI',
+                                      'Uso de CFDI',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),

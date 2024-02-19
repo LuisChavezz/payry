@@ -12,8 +12,8 @@ import '/backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '/auth/firebase_auth/auth_util.dart';
 
-String? getFirstThreeCharacters(String? inputString) {
-  if (inputString != null && inputString.length >= 3) {
+String? getFirstThreeCharacters(String inputString) {
+  if (inputString.length >= 3) {
     return inputString.substring(0, 3);
   } else {
     return inputString;
@@ -114,4 +114,20 @@ bool? includeTheString(
   String lowerCaseText = text.toLowerCase();
 
   return lowerCaseMessage.contains(lowerCaseText);
+}
+
+bool? amountLimit(String amountString) {
+  try {
+    double amount = double.parse(amountString);
+
+    if (amount <= 8000.00) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (e) {
+    // Capturar cualquier error de conversión
+    print('Error: $e');
+    return null;
+  }
 }

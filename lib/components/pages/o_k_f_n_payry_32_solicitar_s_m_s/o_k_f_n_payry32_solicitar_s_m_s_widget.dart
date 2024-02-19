@@ -96,7 +96,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
             ),
           ),
           title: Text(
-            'Solicitar pago con SMS',
+            'Cobrar con DiMo®',
             style: FlutterFlowTheme.of(context).titleSmall.override(
                   fontFamily: 'Lexend',
                   color: FlutterFlowTheme.of(context).primaryText,
@@ -257,7 +257,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                             .primaryText,
                                         fontWeight: FontWeight.normal,
                                       ),
-                                  hintText: 'Ingresa el concepto de pago...',
+                                  hintText: 'Ingresa el concepto de cobro...',
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
@@ -327,7 +327,8 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                             .primaryText,
                                         fontWeight: FontWeight.normal,
                                       ),
-                                  hintText: 'Ingresa el importe...',
+                                  hintText:
+                                      'Ingresa el importe (Max \$8,000)...',
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
@@ -392,95 +393,24 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                           .validate()) {
                                     return;
                                   }
-
-                                  var smsRecordReference =
-                                      SmsRecord.collection.doc();
-                                  await smsRecordReference.set({
-                                    ...createSmsRecordData(
-                                      uid: currentUserUid,
-                                      adminId: valueOrDefault(
-                                          currentUserDocument?.adminId, ''),
-                                      smsId: '',
-                                      amount: double.tryParse(
-                                          _model.amountFieldController.text),
-                                      concept:
-                                          _model.conceptFieldController.text,
-                                      status: 'PENDIENTE',
-                                      voucherUrl: '',
-                                      phoneNumber:
-                                          _model.phoneFieldController.text,
-                                    ),
-                                    ...mapToFirestore(
-                                      {
-                                        'created_time':
-                                            FieldValue.serverTimestamp(),
-                                      },
-                                    ),
-                                  });
-                                  _model.createdSms =
-                                      SmsRecord.getDocumentFromData({
-                                    ...createSmsRecordData(
-                                      uid: currentUserUid,
-                                      adminId: valueOrDefault(
-                                          currentUserDocument?.adminId, ''),
-                                      smsId: '',
-                                      amount: double.tryParse(
-                                          _model.amountFieldController.text),
-                                      concept:
-                                          _model.conceptFieldController.text,
-                                      status: 'PENDIENTE',
-                                      voucherUrl: '',
-                                      phoneNumber:
-                                          _model.phoneFieldController.text,
-                                    ),
-                                    ...mapToFirestore(
-                                      {
-                                        'created_time': DateTime.now(),
-                                      },
-                                    ),
-                                  }, smsRecordReference);
-                                  _shouldSetState = true;
-                                  try {
-                                    final result = await FirebaseFunctions
-                                        .instance
-                                        .httpsCallable('crearMovimientoSMS')
-                                        .call({
-                                      "monto":
-                                          _model.amountFieldController.text,
-                                      "concepto":
-                                          _model.conceptFieldController.text,
-                                      "token": FFAppState().serverToken,
-                                      "celularcliente":
-                                          _model.phoneFieldController.text,
-                                      "smsId": _model.createdSms?.reference.id,
-                                    });
-                                    _model.smsCloudFunction =
-                                        CrearMovimientoSMSCloudFunctionCallResponse(
-                                      data: result.data,
-                                      succeeded: true,
-                                      resultAsString: result.data.toString(),
-                                      jsonBody: result.data,
-                                    );
-                                  } on FirebaseFunctionsException catch (error) {
-                                    _model.smsCloudFunction =
-                                        CrearMovimientoSMSCloudFunctionCallResponse(
-                                      errorCode: error.code,
-                                      succeeded: false,
-                                    );
-                                  }
-
-                                  _shouldSetState = true;
-                                  if (getJsonField(
-                                    _model.smsCloudFunction!.jsonBody,
-                                    r'''$.success''',
-                                  )) {
-                                    await SmsHistoryRecord.collection
-                                        .doc()
-                                        .set({
-                                      ...createSmsHistoryRecordData(
-                                        smsId: _model.createdSms?.reference.id,
-                                        status: _model.createdSms?.status,
-                                        modifiedBy: currentUserUid,
+                                  if (functions.amountLimit(
+                                      _model.amountFieldController.text)!) {
+                                    var smsRecordReference =
+                                        SmsRecord.collection.doc();
+                                    await smsRecordReference.set({
+                                      ...createSmsRecordData(
+                                        uid: currentUserUid,
+                                        adminId: valueOrDefault(
+                                            currentUserDocument?.adminId, ''),
+                                        smsId: '',
+                                        amount: double.tryParse(
+                                            _model.amountFieldController.text),
+                                        concept:
+                                            _model.conceptFieldController.text,
+                                        status: 'PENDIENTE',
+                                        voucherUrl: '',
+                                        phoneNumber:
+                                            _model.phoneFieldController.text,
                                       ),
                                       ...mapToFirestore(
                                         {
@@ -489,56 +419,171 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                         },
                                       ),
                                     });
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title: Text('Completado'),
-                                          content: Text(
-                                              'El SMS se ha generado con éxito.'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: Text('Ok'),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                    if (Navigator.of(context).canPop()) {
-                                      context.pop();
+                                    _model.createdSms =
+                                        SmsRecord.getDocumentFromData({
+                                      ...createSmsRecordData(
+                                        uid: currentUserUid,
+                                        adminId: valueOrDefault(
+                                            currentUserDocument?.adminId, ''),
+                                        smsId: '',
+                                        amount: double.tryParse(
+                                            _model.amountFieldController.text),
+                                        concept:
+                                            _model.conceptFieldController.text,
+                                        status: 'PENDIENTE',
+                                        voucherUrl: '',
+                                        phoneNumber:
+                                            _model.phoneFieldController.text,
+                                      ),
+                                      ...mapToFirestore(
+                                        {
+                                          'created_time': DateTime.now(),
+                                        },
+                                      ),
+                                    }, smsRecordReference);
+                                    _shouldSetState = true;
+                                    try {
+                                      final result = await FirebaseFunctions
+                                          .instance
+                                          .httpsCallable('crearMovimientoSMS')
+                                          .call({
+                                        "monto":
+                                            _model.amountFieldController.text,
+                                        "concepto":
+                                            _model.conceptFieldController.text,
+                                        "token": FFAppState().serverToken,
+                                        "celularcliente":
+                                            _model.phoneFieldController.text,
+                                        "smsId":
+                                            _model.createdSms?.reference.id,
+                                      });
+                                      _model.smsCloudFunction =
+                                          CrearMovimientoSMSCloudFunctionCallResponse(
+                                        data: result.data,
+                                        succeeded: true,
+                                        resultAsString: result.data.toString(),
+                                        jsonBody: result.data,
+                                      );
+                                    } on FirebaseFunctionsException catch (error) {
+                                      _model.smsCloudFunction =
+                                          CrearMovimientoSMSCloudFunctionCallResponse(
+                                        errorCode: error.code,
+                                        succeeded: false,
+                                      );
                                     }
-                                    context.pushNamedAuth(
-                                      'OK_FN_Payry_36_detallesdeSMS',
-                                      context.mounted,
-                                      pathParameters: {
-                                        'smsDocReference': serializeParam(
-                                          _model.createdSms?.reference,
-                                          ParamType.DocumentReference,
-                                        ),
-                                      }.withoutNulls,
-                                      queryParameters: {
-                                        'createRefund': serializeParam(
-                                          false,
-                                          ParamType.bool,
-                                        ),
-                                      }.withoutNulls,
-                                    );
 
-                                    if (_shouldSetState) setState(() {});
-                                    return;
+                                    _shouldSetState = true;
+                                    if (getJsonField(
+                                      _model.smsCloudFunction!.jsonBody,
+                                      r'''$.success''',
+                                    )) {
+                                      await SmsHistoryRecord.collection
+                                          .doc()
+                                          .set({
+                                        ...createSmsHistoryRecordData(
+                                          smsId:
+                                              _model.createdSms?.reference.id,
+                                          status: _model.createdSms?.status,
+                                          modifiedBy: currentUserUid,
+                                        ),
+                                        ...mapToFirestore(
+                                          {
+                                            'created_time':
+                                                FieldValue.serverTimestamp(),
+                                          },
+                                        ),
+                                      });
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Completado'),
+                                            content: Text(
+                                                'El SMS se ha generado con éxito.'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                      if (Navigator.of(context).canPop()) {
+                                        context.pop();
+                                      }
+                                      context.pushNamedAuth(
+                                        'OK_FN_Payry_36_detallesdeSMS',
+                                        context.mounted,
+                                        pathParameters: {
+                                          'smsDocReference': serializeParam(
+                                            _model.createdSms?.reference,
+                                            ParamType.DocumentReference,
+                                          ),
+                                        }.withoutNulls,
+                                        queryParameters: {
+                                          'createRefund': serializeParam(
+                                            false,
+                                            ParamType.bool,
+                                          ),
+                                        }.withoutNulls,
+                                      );
+
+                                      if (_shouldSetState) setState(() {});
+                                      return;
+                                    } else {
+                                      await _model.createdSms!.reference
+                                          .delete();
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Error'),
+                                            content: Text(getJsonField(
+                                              _model.smsCloudFunction!.jsonBody,
+                                              r'''$.message''',
+                                            ).toString()),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                      if (!functions.includeTheString(
+                                          getJsonField(
+                                            _model.smsCloudFunction!.jsonBody,
+                                            r'''$.message''',
+                                          ).toString(),
+                                          'expirada')!) {
+                                        if (_shouldSetState) setState(() {});
+                                        return;
+                                      }
+
+                                      GoRouter.of(context).prepareAuthEvent();
+                                      await authManager.signOut();
+                                      GoRouter.of(context)
+                                          .clearRedirectLocation();
+
+                                      context.goNamedAuth(
+                                          'OK_FN_Payry_08_iniciasesion',
+                                          context.mounted);
+
+                                      if (_shouldSetState) setState(() {});
+                                      return;
+                                    }
                                   } else {
-                                    await _model.createdSms!.reference.delete();
                                     await showDialog(
                                       context: context,
                                       builder: (alertDialogContext) {
                                         return AlertDialog(
                                           title: Text('Error'),
-                                          content: Text(getJsonField(
-                                            _model.smsCloudFunction!.jsonBody,
-                                            r'''$.message''',
-                                          ).toString()),
+                                          content: Text(
+                                              'El límite del monto es de \$8,000. Por favor ingrese una cantidad menor a esta.'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
@@ -549,32 +594,13 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                         );
                                       },
                                     );
-                                    if (!functions.includeTheString(
-                                        getJsonField(
-                                          _model.smsCloudFunction!.jsonBody,
-                                          r'''$.message''',
-                                        ).toString(),
-                                        'expirada')!) {
-                                      if (_shouldSetState) setState(() {});
-                                      return;
-                                    }
-
-                                    GoRouter.of(context).prepareAuthEvent();
-                                    await authManager.signOut();
-                                    GoRouter.of(context)
-                                        .clearRedirectLocation();
-
-                                    context.goNamedAuth(
-                                        'OK_FN_Payry_08_iniciasesion',
-                                        context.mounted);
-
                                     if (_shouldSetState) setState(() {});
                                     return;
                                   }
 
                                   if (_shouldSetState) setState(() {});
                                 },
-                                text: 'Generar SMS',
+                                text: 'Generar DiMo®',
                                 options: FFButtonOptions(
                                   width: double.infinity,
                                   height: 50.0,
@@ -622,7 +648,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                         }.withoutNulls,
                       );
                     },
-                    text: 'Consultar SMS',
+                    text: 'Consultar DiMo®',
                     options: FFButtonOptions(
                       width: MediaQuery.sizeOf(context).width * 10.0,
                       height: 50.0,

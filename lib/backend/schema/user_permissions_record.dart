@@ -61,6 +61,21 @@ class UserPermissionsRecord extends FirestoreRecord {
   bool get readStatistics => _readStatistics ?? false;
   bool hasReadStatistics() => _readStatistics != null;
 
+  // "read_companies" field.
+  bool? _readCompanies;
+  bool get readCompanies => _readCompanies ?? false;
+  bool hasReadCompanies() => _readCompanies != null;
+
+  // "read_users" field.
+  bool? _readUsers;
+  bool get readUsers => _readUsers ?? false;
+  bool hasReadUsers() => _readUsers != null;
+
+  // "read_invoices" field.
+  bool? _readInvoices;
+  bool get readInvoices => _readInvoices ?? false;
+  bool hasReadInvoices() => _readInvoices != null;
+
   void _initializeFields() {
     _uid = snapshotData['uid'] as String?;
     _adminId = snapshotData['admin_id'] as String?;
@@ -71,6 +86,9 @@ class UserPermissionsRecord extends FirestoreRecord {
     _readTransfers = snapshotData['read_transfers'] as bool?;
     _createRefunds = snapshotData['create_refunds'] as bool?;
     _readStatistics = snapshotData['read_statistics'] as bool?;
+    _readCompanies = snapshotData['read_companies'] as bool?;
+    _readUsers = snapshotData['read_users'] as bool?;
+    _readInvoices = snapshotData['read_invoices'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -117,6 +135,9 @@ Map<String, dynamic> createUserPermissionsRecordData({
   bool? readTransfers,
   bool? createRefunds,
   bool? readStatistics,
+  bool? readCompanies,
+  bool? readUsers,
+  bool? readInvoices,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -129,6 +150,9 @@ Map<String, dynamic> createUserPermissionsRecordData({
       'read_transfers': readTransfers,
       'create_refunds': createRefunds,
       'read_statistics': readStatistics,
+      'read_companies': readCompanies,
+      'read_users': readUsers,
+      'read_invoices': readInvoices,
     }.withoutNulls,
   );
 
@@ -149,7 +173,10 @@ class UserPermissionsRecordDocumentEquality
         e1?.readSms == e2?.readSms &&
         e1?.readTransfers == e2?.readTransfers &&
         e1?.createRefunds == e2?.createRefunds &&
-        e1?.readStatistics == e2?.readStatistics;
+        e1?.readStatistics == e2?.readStatistics &&
+        e1?.readCompanies == e2?.readCompanies &&
+        e1?.readUsers == e2?.readUsers &&
+        e1?.readInvoices == e2?.readInvoices;
   }
 
   @override
@@ -162,7 +189,10 @@ class UserPermissionsRecordDocumentEquality
         e?.readSms,
         e?.readTransfers,
         e?.createRefunds,
-        e?.readStatistics
+        e?.readStatistics,
+        e?.readCompanies,
+        e?.readUsers,
+        e?.readInvoices
       ]);
 
   @override

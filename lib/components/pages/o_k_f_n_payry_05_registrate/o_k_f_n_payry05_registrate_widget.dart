@@ -140,7 +140,7 @@ class _OKFNPayry05RegistrateWidgetState
                                         labelText: 'Nombre',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium,
-                                        hintText: 'Ingresa el nombre...',
+                                        hintText: 'Ingresa tu nombre...',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodySmall
                                             .override(
@@ -517,6 +517,9 @@ class _OKFNPayry05RegistrateWidgetState
                                                   readTransfers: false,
                                                   createRefunds: false,
                                                   readStatistics: false,
+                                                  readCompanies: false,
+                                                  readUsers: false,
+                                                  readInvoices: false,
                                                 ));
                                             try {
                                               final result =
@@ -761,7 +764,7 @@ class _OKFNPayry05RegistrateWidgetState
                                               ),
                                             ),
                                             Text(
-                                              'He leído y acepto: ',
+                                              'Al usar Payry aceptas ',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -777,11 +780,11 @@ class _OKFNPayry05RegistrateWidgetState
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
-                                                context.pushNamed(
-                                                    'OK_FN_Payry_42_Terminosycondiciones');
+                                                await launchURL(
+                                                    'https://www.payry.mx/terminos-y-condiciones/');
                                               },
                                               child: Text(
-                                                'Terminos y condicones',
+                                                'Terminos y condiciones',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium

@@ -134,7 +134,7 @@ class _OKFNPayry02Onboarding1WidgetState
                                                       AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Text(
-                                                    'Te damos la bienvenida a Payry, tu app de pagos',
+                                                    'Bienvenid@ a Payry \nTu app de cobros',
                                                     textAlign: TextAlign.center,
                                                     style: FlutterFlowTheme.of(
                                                             context)

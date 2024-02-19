@@ -112,7 +112,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
               title: Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Text(
-                  'Detalles de QR',
+                  'Detalles de CoDi®',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).headlineSmall.override(
                         fontFamily: 'Lexend',
@@ -314,11 +314,56 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                                 .primaryText,
                                                       ),
                                             ),
-                                            Text(
-                                              oKFNPayry31DetallesdeQRQrRecord
-                                                  .status,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
+                                            Expanded(
+                                              child: Text(
+                                                oKFNPayry31DetallesdeQRQrRecord
+                                                    .status,
+                                                textAlign: TextAlign.end,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .accent3,
+                                                        ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      if (oKFNPayry31DetallesdeQRQrRecord
+                                          .hasIdRastreo())
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  20.0, 20.0, 20.0, 0.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                'ID de rastreo',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                              ),
+                                              Expanded(
+                                                child: Text(
+                                                  oKFNPayry31DetallesdeQRQrRecord
+                                                      .idRastreo
+                                                      .toString(),
+                                                  textAlign: TextAlign.end,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'Lexend',
@@ -327,10 +372,60 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                                     context)
                                                                 .accent3,
                                                       ),
-                                            ),
-                                          ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                      ),
+                                      if (oKFNPayry31DetallesdeQRQrRecord
+                                          .hasClaveRastreo())
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  20.0, 20.0, 20.0, 0.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Calve de rastreo',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                              ),
+                                              Expanded(
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          12.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    oKFNPayry31DetallesdeQRQrRecord
+                                                        .claveRastreo,
+                                                    textAlign: TextAlign.end,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .accent3,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
                                     ],
                                   ),
                                 ),
@@ -772,7 +867,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                           ),
                                         ),
                                         Text(
-                                          'Devolver QR',
+                                          'Devolver CoDi®',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -915,7 +1010,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                     },
                                         ),
                                         Text(
-                                          'Regenerar QR',
+                                          'Regenerar CoDi®',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
