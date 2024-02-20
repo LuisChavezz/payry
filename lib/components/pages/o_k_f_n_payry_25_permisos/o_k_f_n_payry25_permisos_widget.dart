@@ -144,7 +144,7 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Text(
-                                'Permisos ',
+                                'Permisos de ',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -154,7 +154,7 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                     ),
                               ),
                               Text(
-                                'Hello World',
+                                widget.userName!,
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                             ].divide(SizedBox(width: 4.0)),
