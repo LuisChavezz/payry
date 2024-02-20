@@ -101,7 +101,7 @@ class _OKFNPayry28QrGeneradoWidgetState
                 ),
               ),
               title: Text(
-                'Código QR generado',
+                'CoDi® generado',
                 style: FlutterFlowTheme.of(context).titleSmall.override(
                       fontFamily: 'Lexend',
                       color: FlutterFlowTheme.of(context).primaryText,
@@ -284,7 +284,7 @@ class _OKFNPayry28QrGeneradoWidgetState
                             onPressed: () {
                               print('Button pressed ...');
                             },
-                            text: 'Compartir QR',
+                            text: 'Compartir CoDi®',
                             options: FFButtonOptions(
                               width: MediaQuery.sizeOf(context).width * 1.0,
                               height: 50.0,

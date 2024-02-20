@@ -128,752 +128,1122 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
             ),
             body: SafeArea(
               top: true,
-              child: Padding(
-                padding: EdgeInsets.all(18.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(
-                        'Acciones',
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Lexend',
-                              color: FlutterFlowTheme.of(context).primaryText,
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(18.0),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Text(
+                            'Permisos ',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Lexend',
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 12.0, 0.0, 0.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Flexible(
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 16.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.kqr,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Generar CoDi®',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Switch.adaptive(
+                                      value: _model.createQrSwitchValue ??=
+                                          oKFNPayry25PermisosUserPermissionsRecord!
+                                              .createQr,
+                                      onChanged: (newValue) async {
+                                        setState(() => _model
+                                            .createQrSwitchValue = newValue!);
+                                        if (newValue!) {
+                                          await oKFNPayry25PermisosUserPermissionsRecord!
+                                              .reference
+                                              .update(
+                                                  createUserPermissionsRecordData(
+                                            createQr:
+                                                _model.createQrSwitchValue,
+                                          ));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Permiso actualizado.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        } else {
+                                          await oKFNPayry25PermisosUserPermissionsRecord!
+                                              .reference
+                                              .update(
+                                                  createUserPermissionsRecordData(
+                                            createQr:
+                                                _model.createQrSwitchValue,
+                                          ));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Permiso actualizado.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        }
+                                      },
+                                      activeColor: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      activeTrackColor:
+                                          FlutterFlowTheme.of(context).accent1,
+                                      inactiveTrackColor:
+                                          FlutterFlowTheme.of(context).accent4,
+                                      inactiveThumbColor:
+                                          FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Flexible(
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 16.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.kqrUsuario,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Consultar CoDi® de todos \nlos usuarios',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Switch.adaptive(
+                                      value: _model.readQrSwitchValue ??=
+                                          oKFNPayry25PermisosUserPermissionsRecord!
+                                              .readQr,
+                                      onChanged: (newValue) async {
+                                        setState(() => _model
+                                            .readQrSwitchValue = newValue!);
+                                        if (newValue!) {
+                                          await oKFNPayry25PermisosUserPermissionsRecord!
+                                              .reference
+                                              .update(
+                                                  createUserPermissionsRecordData(
+                                            readQr: _model.readQrSwitchValue,
+                                          ));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Permiso actualizado.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        } else {
+                                          await oKFNPayry25PermisosUserPermissionsRecord!
+                                              .reference
+                                              .update(
+                                                  createUserPermissionsRecordData(
+                                            readQr: _model.readQrSwitchValue,
+                                          ));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Permiso actualizado.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        }
+                                      },
+                                      activeColor: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      activeTrackColor:
+                                          FlutterFlowTheme.of(context).accent1,
+                                      inactiveTrackColor:
+                                          FlutterFlowTheme.of(context).accent4,
+                                      inactiveThumbColor:
+                                          FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Flexible(
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 16.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.ksms,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Generar DiMo®',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Switch.adaptive(
+                                      value: _model.createSmsSwitchValue ??=
+                                          oKFNPayry25PermisosUserPermissionsRecord!
+                                              .createSms,
+                                      onChanged: (newValue) async {
+                                        setState(() => _model
+                                            .createSmsSwitchValue = newValue!);
+                                        if (newValue!) {
+                                          await oKFNPayry25PermisosUserPermissionsRecord!
+                                              .reference
+                                              .update(
+                                                  createUserPermissionsRecordData(
+                                            createSms:
+                                                _model.createSmsSwitchValue,
+                                          ));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Permiso actualizado.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        } else {
+                                          await oKFNPayry25PermisosUserPermissionsRecord!
+                                              .reference
+                                              .update(
+                                                  createUserPermissionsRecordData(
+                                            createSms:
+                                                _model.createSmsSwitchValue,
+                                          ));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Permiso actualizado.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        }
+                                      },
+                                      activeColor: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      activeTrackColor:
+                                          FlutterFlowTheme.of(context).accent1,
+                                      inactiveTrackColor:
+                                          FlutterFlowTheme.of(context).accent4,
+                                      inactiveThumbColor:
+                                          FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Flexible(
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 16.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.ksmsUsuario,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Consultar DiMo® de todos\nlos usuarios',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Switch.adaptive(
+                                      value: _model.readSmsSwitchValue ??=
+                                          oKFNPayry25PermisosUserPermissionsRecord!
+                                              .readSms,
+                                      onChanged: (newValue) async {
+                                        setState(() => _model
+                                            .readSmsSwitchValue = newValue!);
+                                        if (newValue!) {
+                                          await oKFNPayry25PermisosUserPermissionsRecord!
+                                              .reference
+                                              .update(
+                                                  createUserPermissionsRecordData(
+                                            readSms: _model.readSmsSwitchValue,
+                                          ));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Permiso actualizado.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        } else {
+                                          await oKFNPayry25PermisosUserPermissionsRecord!
+                                              .reference
+                                              .update(
+                                                  createUserPermissionsRecordData(
+                                            readSms: _model.readSmsSwitchValue,
+                                          ));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Permiso actualizado.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        }
+                                      },
+                                      activeColor: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      activeTrackColor:
+                                          FlutterFlowTheme.of(context).accent1,
+                                      inactiveTrackColor:
+                                          FlutterFlowTheme.of(context).accent4,
+                                      inactiveThumbColor:
+                                          FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Flexible(
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 16.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.kmoneda,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Generar devoluciones',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Switch.adaptive(
+                                      value: _model.createRefundSwitchValue ??=
+                                          oKFNPayry25PermisosUserPermissionsRecord!
+                                              .createRefunds,
+                                      onChanged: (newValue) async {
+                                        setState(() =>
+                                            _model.createRefundSwitchValue =
+                                                newValue!);
+                                        if (newValue!) {
+                                          await oKFNPayry25PermisosUserPermissionsRecord!
+                                              .reference
+                                              .update(
+                                                  createUserPermissionsRecordData(
+                                            createRefunds:
+                                                _model.createRefundSwitchValue,
+                                          ));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Permiso actualizado.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        } else {
+                                          await oKFNPayry25PermisosUserPermissionsRecord!
+                                              .reference
+                                              .update(
+                                                  createUserPermissionsRecordData(
+                                            createRefunds:
+                                                _model.createRefundSwitchValue,
+                                          ));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Permiso actualizado.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        }
+                                      },
+                                      activeColor: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      activeTrackColor:
+                                          FlutterFlowTheme.of(context).accent1,
+                                      inactiveTrackColor:
+                                          FlutterFlowTheme.of(context).accent4,
+                                      inactiveThumbColor:
+                                          FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Flexible(
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 16.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.kempresa,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Ver Datos de Empresa',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Switch.adaptive(
+                                      value: _model.readCompaniesSwitchValue ??=
+                                          oKFNPayry25PermisosUserPermissionsRecord!
+                                              .readCompanies,
+                                      onChanged: (newValue) async {
+                                        setState(() =>
+                                            _model.readCompaniesSwitchValue =
+                                                newValue!);
+                                        if (newValue!) {
+                                          await oKFNPayry25PermisosUserPermissionsRecord!
+                                              .reference
+                                              .update(
+                                                  createUserPermissionsRecordData(
+                                            readCompanies:
+                                                _model.readCompaniesSwitchValue,
+                                          ));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Permiso actualizado.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        } else {
+                                          await oKFNPayry25PermisosUserPermissionsRecord!
+                                              .reference
+                                              .update(
+                                                  createUserPermissionsRecordData(
+                                            readCompanies:
+                                                _model.readCompaniesSwitchValue,
+                                          ));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Permiso actualizado.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        }
+                                      },
+                                      activeColor: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      activeTrackColor:
+                                          FlutterFlowTheme.of(context).accent1,
+                                      inactiveTrackColor:
+                                          FlutterFlowTheme.of(context).accent4,
+                                      inactiveThumbColor:
+                                          FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Flexible(
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 16.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.kfactura,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Ver Facturas',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Switch.adaptive(
+                                      value: _model.readInvoicesSwitchValue ??=
+                                          oKFNPayry25PermisosUserPermissionsRecord!
+                                              .readInvoices,
+                                      onChanged: (newValue) async {
+                                        setState(() =>
+                                            _model.readInvoicesSwitchValue =
+                                                newValue!);
+                                        if (newValue!) {
+                                          await oKFNPayry25PermisosUserPermissionsRecord!
+                                              .reference
+                                              .update(
+                                                  createUserPermissionsRecordData(
+                                            readInvoices:
+                                                _model.readInvoicesSwitchValue,
+                                          ));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Permiso actualizado.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        } else {
+                                          await oKFNPayry25PermisosUserPermissionsRecord!
+                                              .reference
+                                              .update(
+                                                  createUserPermissionsRecordData(
+                                            readInvoices:
+                                                _model.readInvoicesSwitchValue,
+                                          ));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Permiso actualizado.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        }
+                                      },
+                                      activeColor: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      activeTrackColor:
+                                          FlutterFlowTheme.of(context).accent1,
+                                      inactiveTrackColor:
+                                          FlutterFlowTheme.of(context).accent4,
+                                      inactiveThumbColor:
+                                          FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Flexible(
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 16.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.kvariosUsuarios,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Ver Datos de usuarios',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Switch.adaptive(
+                                      value: _model.readUsersSwitchValue ??=
+                                          oKFNPayry25PermisosUserPermissionsRecord!
+                                              .readUsers,
+                                      onChanged: (newValue) async {
+                                        setState(() => _model
+                                            .readUsersSwitchValue = newValue!);
+                                        if (newValue!) {
+                                          await oKFNPayry25PermisosUserPermissionsRecord!
+                                              .reference
+                                              .update(
+                                                  createUserPermissionsRecordData(
+                                            readUsers:
+                                                _model.readUsersSwitchValue,
+                                          ));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Permiso actualizado.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        } else {
+                                          await oKFNPayry25PermisosUserPermissionsRecord!
+                                              .reference
+                                              .update(
+                                                  createUserPermissionsRecordData(
+                                            readUsers:
+                                                _model.readInvoicesSwitchValue,
+                                          ));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Permiso actualizado.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        }
+                                      },
+                                      activeColor: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      activeTrackColor:
+                                          FlutterFlowTheme.of(context).accent1,
+                                      inactiveTrackColor:
+                                          FlutterFlowTheme.of(context).accent4,
+                                      inactiveThumbColor:
+                                          FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Flexible(
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 16.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.kestadisticas,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Ver estadísticas',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Switch.adaptive(
+                                      value: _model
+                                              .readStatisticsSwitchValue ??=
+                                          oKFNPayry25PermisosUserPermissionsRecord!
+                                              .readTransfers,
+                                      onChanged: (newValue) async {
+                                        setState(() =>
+                                            _model.readStatisticsSwitchValue =
+                                                newValue!);
+                                        if (newValue!) {
+                                          await oKFNPayry25PermisosUserPermissionsRecord!
+                                              .reference
+                                              .update(
+                                                  createUserPermissionsRecordData(
+                                            readStatistics: _model
+                                                .readStatisticsSwitchValue,
+                                          ));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Permiso actualizado.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        } else {
+                                          await oKFNPayry25PermisosUserPermissionsRecord!
+                                              .reference
+                                              .update(
+                                                  createUserPermissionsRecordData(
+                                            readStatistics: _model
+                                                .readStatisticsSwitchValue,
+                                          ));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Permiso actualizado.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        }
+                                      },
+                                      activeColor: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      activeTrackColor:
+                                          FlutterFlowTheme.of(context).accent1,
+                                      inactiveTrackColor:
+                                          FlutterFlowTheme.of(context).accent4,
+                                      inactiveThumbColor:
+                                          FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Flexible(
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 16.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.kcargarDeNuevo,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Ver transferencias',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Switch.adaptive(
+                                      value: _model.readTransfersSwitchValue ??=
+                                          oKFNPayry25PermisosUserPermissionsRecord!
+                                              .readTransfers,
+                                      onChanged: (newValue) async {
+                                        setState(() =>
+                                            _model.readTransfersSwitchValue =
+                                                newValue!);
+                                        if (newValue!) {
+                                          await oKFNPayry25PermisosUserPermissionsRecord!
+                                              .reference
+                                              .update(
+                                                  createUserPermissionsRecordData(
+                                            readTransfers:
+                                                _model.readTransfersSwitchValue,
+                                          ));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Permiso actualizado.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        } else {
+                                          await oKFNPayry25PermisosUserPermissionsRecord!
+                                              .reference
+                                              .update(
+                                                  createUserPermissionsRecordData(
+                                            readTransfers:
+                                                _model.readTransfersSwitchValue,
+                                          ));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Permiso actualizado.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        }
+                                      },
+                                      activeColor: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      activeTrackColor:
+                                          FlutterFlowTheme.of(context).accent1,
+                                      inactiveTrackColor:
+                                          FlutterFlowTheme.of(context).accent4,
+                                      inactiveThumbColor:
+                                          FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                    ),
+                                  ],
+                                ),
+                              ].divide(SizedBox(height: 5.0)),
                             ),
+                          ),
+                        ],
                       ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Flexible(
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 16.0, 0.0),
-                                        child: Icon(
-                                          FFIcons.kqr,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          size: 20.0,
-                                        ),
-                                      ),
-                                      Text(
-                                        'Generar QR',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Switch.adaptive(
-                                  value: _model.createQrSwitchValue ??=
-                                      oKFNPayry25PermisosUserPermissionsRecord!
-                                          .createQr,
-                                  onChanged: (newValue) async {
-                                    setState(() =>
-                                        _model.createQrSwitchValue = newValue!);
-                                    if (newValue!) {
-                                      await oKFNPayry25PermisosUserPermissionsRecord!
-                                          .reference
-                                          .update(
-                                              createUserPermissionsRecordData(
-                                        createQr: _model.createQrSwitchValue,
-                                      ));
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Permiso actualizado.',
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
-                                      );
-                                    } else {
-                                      await oKFNPayry25PermisosUserPermissionsRecord!
-                                          .reference
-                                          .update(
-                                              createUserPermissionsRecordData(
-                                        createQr: _model.createQrSwitchValue,
-                                      ));
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Permiso actualizado.',
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
-                                      );
-                                    }
-                                  },
-                                  activeColor:
-                                      FlutterFlowTheme.of(context).success,
-                                  activeTrackColor:
-                                      FlutterFlowTheme.of(context).accent1,
-                                  inactiveTrackColor:
-                                      FlutterFlowTheme.of(context).accent4,
-                                  inactiveThumbColor:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Flexible(
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 16.0, 0.0),
-                                        child: Icon(
-                                          FFIcons.kqrUsuario,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          size: 20.0,
-                                        ),
-                                      ),
-                                      Text(
-                                        'Consultar QR de todos \nlos usuarios',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Switch.adaptive(
-                                  value: _model.readQrSwitchValue ??=
-                                      oKFNPayry25PermisosUserPermissionsRecord!
-                                          .readQr,
-                                  onChanged: (newValue) async {
-                                    setState(() =>
-                                        _model.readQrSwitchValue = newValue!);
-                                    if (newValue!) {
-                                      await oKFNPayry25PermisosUserPermissionsRecord!
-                                          .reference
-                                          .update(
-                                              createUserPermissionsRecordData(
-                                        readQr: _model.readQrSwitchValue,
-                                      ));
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Permiso actualizado.',
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
-                                      );
-                                    } else {
-                                      await oKFNPayry25PermisosUserPermissionsRecord!
-                                          .reference
-                                          .update(
-                                              createUserPermissionsRecordData(
-                                        readQr: _model.readQrSwitchValue,
-                                      ));
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Permiso actualizado.',
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
-                                      );
-                                    }
-                                  },
-                                  activeColor:
-                                      FlutterFlowTheme.of(context).success,
-                                  activeTrackColor:
-                                      FlutterFlowTheme.of(context).accent1,
-                                  inactiveTrackColor:
-                                      FlutterFlowTheme.of(context).accent4,
-                                  inactiveThumbColor:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Flexible(
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 16.0, 0.0),
-                                        child: Icon(
-                                          FFIcons.ksms,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          size: 20.0,
-                                        ),
-                                      ),
-                                      Text(
-                                        'Generar SMS',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Switch.adaptive(
-                                  value: _model.createSmsSwitchValue ??=
-                                      oKFNPayry25PermisosUserPermissionsRecord!
-                                          .createSms,
-                                  onChanged: (newValue) async {
-                                    setState(() => _model.createSmsSwitchValue =
-                                        newValue!);
-                                    if (newValue!) {
-                                      await oKFNPayry25PermisosUserPermissionsRecord!
-                                          .reference
-                                          .update(
-                                              createUserPermissionsRecordData(
-                                        createSms: _model.createSmsSwitchValue,
-                                      ));
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Permiso actualizado.',
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
-                                      );
-                                    } else {
-                                      await oKFNPayry25PermisosUserPermissionsRecord!
-                                          .reference
-                                          .update(
-                                              createUserPermissionsRecordData(
-                                        createSms: _model.createSmsSwitchValue,
-                                      ));
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Permiso actualizado.',
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
-                                      );
-                                    }
-                                  },
-                                  activeColor:
-                                      FlutterFlowTheme.of(context).success,
-                                  activeTrackColor:
-                                      FlutterFlowTheme.of(context).accent1,
-                                  inactiveTrackColor:
-                                      FlutterFlowTheme.of(context).accent4,
-                                  inactiveThumbColor:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Flexible(
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 16.0, 0.0),
-                                        child: Icon(
-                                          FFIcons.ksmsUsuario,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          size: 20.0,
-                                        ),
-                                      ),
-                                      Text(
-                                        'Consultar SMS de todos\nlos usuarios',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Switch.adaptive(
-                                  value: _model.readSmsSwitchValue ??=
-                                      oKFNPayry25PermisosUserPermissionsRecord!
-                                          .readSms,
-                                  onChanged: (newValue) async {
-                                    setState(() =>
-                                        _model.readSmsSwitchValue = newValue!);
-                                    if (newValue!) {
-                                      await oKFNPayry25PermisosUserPermissionsRecord!
-                                          .reference
-                                          .update(
-                                              createUserPermissionsRecordData(
-                                        readSms: _model.readSmsSwitchValue,
-                                      ));
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Permiso actualizado.',
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
-                                      );
-                                    } else {
-                                      await oKFNPayry25PermisosUserPermissionsRecord!
-                                          .reference
-                                          .update(
-                                              createUserPermissionsRecordData(
-                                        readSms: _model.readSmsSwitchValue,
-                                      ));
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Permiso actualizado.',
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
-                                      );
-                                    }
-                                  },
-                                  activeColor:
-                                      FlutterFlowTheme.of(context).success,
-                                  activeTrackColor:
-                                      FlutterFlowTheme.of(context).accent1,
-                                  inactiveTrackColor:
-                                      FlutterFlowTheme.of(context).accent4,
-                                  inactiveThumbColor:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Flexible(
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 16.0, 0.0),
-                                        child: Icon(
-                                          FFIcons.kcargarDeNuevo,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          size: 20.0,
-                                        ),
-                                      ),
-                                      Text(
-                                        'Ver transferencias',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Switch.adaptive(
-                                  value: _model.readTransfersSwitchValue ??=
-                                      oKFNPayry25PermisosUserPermissionsRecord!
-                                          .readTransfers,
-                                  onChanged: (newValue) async {
-                                    setState(() => _model
-                                        .readTransfersSwitchValue = newValue!);
-                                    if (newValue!) {
-                                      await oKFNPayry25PermisosUserPermissionsRecord!
-                                          .reference
-                                          .update(
-                                              createUserPermissionsRecordData(
-                                        readTransfers:
-                                            _model.readTransfersSwitchValue,
-                                      ));
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Permiso actualizado.',
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
-                                      );
-                                    } else {
-                                      await oKFNPayry25PermisosUserPermissionsRecord!
-                                          .reference
-                                          .update(
-                                              createUserPermissionsRecordData(
-                                        readTransfers:
-                                            _model.readTransfersSwitchValue,
-                                      ));
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Permiso actualizado.',
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
-                                      );
-                                    }
-                                  },
-                                  activeColor:
-                                      FlutterFlowTheme.of(context).success,
-                                  activeTrackColor:
-                                      FlutterFlowTheme.of(context).accent1,
-                                  inactiveTrackColor:
-                                      FlutterFlowTheme.of(context).accent4,
-                                  inactiveThumbColor:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Flexible(
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 16.0, 0.0),
-                                        child: Icon(
-                                          FFIcons.kestadisticas,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          size: 20.0,
-                                        ),
-                                      ),
-                                      Text(
-                                        'Ver estadísticas',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Switch.adaptive(
-                                  value: _model.readStatisticsSwitchValue ??=
-                                      oKFNPayry25PermisosUserPermissionsRecord!
-                                          .readTransfers,
-                                  onChanged: (newValue) async {
-                                    setState(() => _model
-                                        .readStatisticsSwitchValue = newValue!);
-                                    if (newValue!) {
-                                      await oKFNPayry25PermisosUserPermissionsRecord!
-                                          .reference
-                                          .update(
-                                              createUserPermissionsRecordData(
-                                        readStatistics:
-                                            _model.readStatisticsSwitchValue,
-                                      ));
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Permiso actualizado.',
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
-                                      );
-                                    } else {
-                                      await oKFNPayry25PermisosUserPermissionsRecord!
-                                          .reference
-                                          .update(
-                                              createUserPermissionsRecordData(
-                                        readStatistics:
-                                            _model.readStatisticsSwitchValue,
-                                      ));
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Permiso actualizado.',
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
-                                      );
-                                    }
-                                  },
-                                  activeColor:
-                                      FlutterFlowTheme.of(context).success,
-                                  activeTrackColor:
-                                      FlutterFlowTheme.of(context).accent1,
-                                  inactiveTrackColor:
-                                      FlutterFlowTheme.of(context).accent4,
-                                  inactiveThumbColor:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Flexible(
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 16.0, 0.0),
-                                        child: Icon(
-                                          FFIcons.kmoneda,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          size: 20.0,
-                                        ),
-                                      ),
-                                      Text(
-                                        'Generar devoluciones',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Switch.adaptive(
-                                  value: _model.createRefundSwitchValue ??=
-                                      oKFNPayry25PermisosUserPermissionsRecord!
-                                          .createRefunds,
-                                  onChanged: (newValue) async {
-                                    setState(() => _model
-                                        .createRefundSwitchValue = newValue!);
-                                    if (newValue!) {
-                                      await oKFNPayry25PermisosUserPermissionsRecord!
-                                          .reference
-                                          .update(
-                                              createUserPermissionsRecordData(
-                                        createRefunds:
-                                            _model.createRefundSwitchValue,
-                                      ));
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Permiso actualizado.',
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
-                                      );
-                                    } else {
-                                      await oKFNPayry25PermisosUserPermissionsRecord!
-                                          .reference
-                                          .update(
-                                              createUserPermissionsRecordData(
-                                        createRefunds:
-                                            _model.createRefundSwitchValue,
-                                      ));
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Permiso actualizado.',
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
-                                      );
-                                    }
-                                  },
-                                  activeColor:
-                                      FlutterFlowTheme.of(context).success,
-                                  activeTrackColor:
-                                      FlutterFlowTheme.of(context).accent1,
-                                  inactiveTrackColor:
-                                      FlutterFlowTheme.of(context).accent4,
-                                  inactiveThumbColor:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                ),
-                              ],
-                            ),
-                          ].divide(SizedBox(height: 5.0)),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
           ),

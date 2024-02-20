@@ -139,7 +139,7 @@ class _OKFNPayry04Onboarding3WidgetState
                                                         AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Text(
-                                                      'Tu dinero el mismo\ndía en tu cuenta',
+                                                      'Tu dinero en tu cuenta\nal siguiente día hábil',
                                                       textAlign:
                                                           TextAlign.center,
                                                       style:

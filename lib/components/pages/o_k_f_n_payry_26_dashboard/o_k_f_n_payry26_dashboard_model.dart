@@ -37,10 +37,12 @@ class OKFNPayry26DashboardModel
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     navBarFlotingModel = createModel(context, () => NavBarFlotingModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     tabBarController?.dispose();

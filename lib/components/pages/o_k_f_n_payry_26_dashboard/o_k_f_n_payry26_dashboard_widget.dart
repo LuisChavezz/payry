@@ -319,7 +319,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                       ),
                                                     ),
                                                     Tab(
-                                                      text: ' QR\'s',
+                                                      text: 'CoDi®',
                                                     ),
                                                   ],
                                                 ),
@@ -341,7 +341,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                       ),
                                                     ),
                                                     Tab(
-                                                      text: ' SMS\'s',
+                                                      text: 'DiMo®',
                                                     ),
                                                   ],
                                                 ),
@@ -617,7 +617,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                                       ),
                                                                                 ),
                                                                                 Text(
-                                                                                  'QR',
+                                                                                  'CoDi®',
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Lexend',
                                                                                         fontSize: 12.0,
@@ -913,7 +913,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                                       ),
                                                                                 ),
                                                                                 Text(
-                                                                                  'SMS',
+                                                                                  'DiMo®',
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Lexend',
                                                                                         fontSize: 12.0,

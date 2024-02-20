@@ -135,10 +135,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   OKFNPayry11OlvidecontrasenanuevaWidget(),
             ),
             FFRoute(
-              name: 'OK_FN_Payry_14_Perfil_PENDSW',
-              path: 'oKFNPayry14PerfilPENDSW',
+              name: 'OK_FN_Payry_14_Perfil',
+              path: 'oKFNPayry14Perfil',
               requireAuth: true,
-              builder: (context, params) => OKFNPayry14PerfilPENDSWWidget(),
+              builder: (context, params) => OKFNPayry14PerfilWidget(),
             ),
             FFRoute(
               name: 'OK_FN_Payry_15_EditProfile',

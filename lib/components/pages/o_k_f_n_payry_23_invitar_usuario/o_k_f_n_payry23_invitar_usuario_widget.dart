@@ -117,7 +117,7 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 12.0),
                             child: Text(
-                              'Ingresa el correo electrónico de la persona a la que quieres invitar a tu sesión de Payry.',
+                              'Ingresa el correo electrónico de la persona a la que quieres invitar a tu cuenta de Payry.',
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium

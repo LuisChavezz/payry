@@ -100,7 +100,7 @@ class _OKFNPayry33SMSenviadoWidgetState
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 16.0, 0.0, 0.0),
                                       child: Text(
-                                        'SMS enviado a\nsu app bancaria',
+                                        'DiMo® enviado a\nla App Bancaria',
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
                                             .titleLarge

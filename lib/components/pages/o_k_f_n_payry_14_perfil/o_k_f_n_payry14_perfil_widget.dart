@@ -9,27 +9,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'o_k_f_n_payry14_perfil_p_e_n_d_s_w_model.dart';
-export 'o_k_f_n_payry14_perfil_p_e_n_d_s_w_model.dart';
+import 'o_k_f_n_payry14_perfil_model.dart';
+export 'o_k_f_n_payry14_perfil_model.dart';
 
-class OKFNPayry14PerfilPENDSWWidget extends StatefulWidget {
-  const OKFNPayry14PerfilPENDSWWidget({super.key});
+class OKFNPayry14PerfilWidget extends StatefulWidget {
+  const OKFNPayry14PerfilWidget({super.key});
 
   @override
-  State<OKFNPayry14PerfilPENDSWWidget> createState() =>
-      _OKFNPayry14PerfilPENDSWWidgetState();
+  State<OKFNPayry14PerfilWidget> createState() =>
+      _OKFNPayry14PerfilWidgetState();
 }
 
-class _OKFNPayry14PerfilPENDSWWidgetState
-    extends State<OKFNPayry14PerfilPENDSWWidget> {
-  late OKFNPayry14PerfilPENDSWModel _model;
+class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
+  late OKFNPayry14PerfilModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => OKFNPayry14PerfilPENDSWModel());
+    _model = createModel(context, () => OKFNPayry14PerfilModel());
   }
 
   @override
@@ -81,7 +80,7 @@ class _OKFNPayry14PerfilPENDSWWidgetState
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(105.0, 0.0, 0.0, 0.0),
               child: Text(
-                'Perfil',
+                'Mi perfil',
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).titleSmall.override(
                       fontFamily: 'Lexend',
@@ -459,7 +458,7 @@ class _OKFNPayry14PerfilPENDSWWidgetState
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 12.0, 0.0),
                                           child: Text(
-                                            'Empresa',
+                                            'Datos de Empresa',
                                             textAlign: TextAlign.start,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -609,7 +608,7 @@ class _OKFNPayry14PerfilPENDSWWidgetState
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 12.0, 0.0),
                                     child: Text(
-                                      'Notificaciones',
+                                      'Recibir Notificaciones',
                                       textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -627,8 +626,8 @@ class _OKFNPayry14PerfilPENDSWWidgetState
                                     setState(
                                         () => _model.switchValue = newValue!);
                                   },
-                                  activeColor:
-                                      FlutterFlowTheme.of(context).success,
+                                  activeColor: FlutterFlowTheme.of(context)
+                                      .secondaryText,
                                   activeTrackColor:
                                       FlutterFlowTheme.of(context).accent1,
                                   inactiveTrackColor:

@@ -131,7 +131,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                   ),
                 ),
                 title: Text(
-                  'Historial de SMS',
+                  'Historial de DiMo®',
                   style: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Lexend',
                         color: FlutterFlowTheme.of(context).primaryText,
@@ -154,7 +154,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Buscar concepto de SMS',
+                              'Buscar conceptos de DIMO®',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(

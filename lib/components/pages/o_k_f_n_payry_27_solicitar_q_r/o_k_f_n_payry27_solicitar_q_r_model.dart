@@ -29,8 +29,8 @@ class OKFNPayry27SolicitarQRModel
       return 'El concepto es requerido';
     }
 
-    if (val.length < 10) {
-      return 'El concepto debe contener al menos 10 caracteres';
+    if (val.length < 1) {
+      return 'El concepto debe contener al menos 1 caracter';
     }
     if (val.length > 20) {
       return 'El concepto solo puede contener un máximo de 20 caracteres';
@@ -62,11 +62,13 @@ class OKFNPayry27SolicitarQRModel
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     conceptFieldControllerValidator = _conceptFieldControllerValidator;
     amountFieldControllerValidator = _amountFieldControllerValidator;
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     conceptFieldFocusNode?.dispose();

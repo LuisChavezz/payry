@@ -131,7 +131,7 @@ class _OKFNPayry30HistorialQRsWidgetState
                   ),
                 ),
                 title: Text(
-                  'Historial de QR\'s',
+                  'Historial de CoDi®',
                   style: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Lexend',
                         color: FlutterFlowTheme.of(context).primaryText,
@@ -154,7 +154,7 @@ class _OKFNPayry30HistorialQRsWidgetState
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Buscar concepto de QR',
+                              'Busca por concepto de CoDi®',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(

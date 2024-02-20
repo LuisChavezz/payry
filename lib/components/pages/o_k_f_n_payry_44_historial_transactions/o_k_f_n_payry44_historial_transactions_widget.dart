@@ -77,7 +77,7 @@ class _OKFNPayry44HistorialTransactionsWidgetState
             ),
           ),
           title: Text(
-            'Historial de Transacciones',
+            'Historial de Transferencias',
             style: FlutterFlowTheme.of(context).titleSmall.override(
                   fontFamily: 'Lexend',
                   color: FlutterFlowTheme.of(context).primaryText,
@@ -103,14 +103,18 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                             EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                         child: AuthUserStreamWidget(
                           builder: (context) =>
-                              StreamBuilder<List<TransactionsRecord>>(
-                            stream: queryTransactionsRecord(
-                              queryBuilder: (transactionsRecord) =>
-                                  transactionsRecord
+                              StreamBuilder<List<RegistraOrdenRecordsRecord>>(
+                            stream: queryRegistraOrdenRecordsRecord(
+                              queryBuilder: (registraOrdenRecordsRecord) =>
+                                  registraOrdenRecordsRecord
                                       .where(
                                         'admin_id',
                                         isEqualTo: valueOrDefault(
                                             currentUserDocument?.adminId, ''),
+                                      )
+                                      .where(
+                                        'errorOcurs',
+                                        isEqualTo: false,
                                       )
                                       .orderBy('created_time',
                                           descending: true),
@@ -130,10 +134,11 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                   ),
                                 );
                               }
-                              List<TransactionsRecord>
-                                  listViewTransactionsRecordList =
+                              List<RegistraOrdenRecordsRecord>
+                                  listViewRegistraOrdenRecordsRecordList =
                                   snapshot.data!;
-                              if (listViewTransactionsRecordList.isEmpty) {
+                              if (listViewRegistraOrdenRecordsRecordList
+                                  .isEmpty) {
                                 return EmptyListWidget(
                                   title: 'Sin transacciones',
                                   message:
@@ -146,10 +151,11 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                 shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
                                 itemCount:
-                                    listViewTransactionsRecordList.length,
+                                    listViewRegistraOrdenRecordsRecordList
+                                        .length,
                                 itemBuilder: (context, listViewIndex) {
-                                  final listViewTransactionsRecord =
-                                      listViewTransactionsRecordList[
+                                  final listViewRegistraOrdenRecordsRecord =
+                                      listViewRegistraOrdenRecordsRecordList[
                                           listViewIndex];
                                   return Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
@@ -166,7 +172,7 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                           child: Text(
                                             dateTimeFormat(
                                               'd MMM, y',
-                                              listViewTransactionsRecord
+                                              listViewRegistraOrdenRecordsRecord
                                                   .createdTime!,
                                               locale:
                                                   FFLocalizations.of(context)
@@ -219,8 +225,8 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                                             .start,
                                                     children: [
                                                       Text(
-                                                        listViewTransactionsRecord
-                                                            .concept,
+                                                        listViewRegistraOrdenRecordsRecord
+                                                            .conceptoPago,
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -234,7 +240,7 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                                                 ),
                                                       ),
                                                       Text(
-                                                        listViewTransactionsRecord
+                                                        listViewRegistraOrdenRecordsRecord
                                                             .status,
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -254,13 +260,9 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                               ],
                                             ),
                                             Text(
-                                              formatNumber(
-                                                listViewTransactionsRecord
-                                                    .amount,
-                                                formatType: FormatType.custom,
-                                                currency: '\$',
-                                                format: '#,###.00##',
-                                                locale: 'es_MX',
+                                              valueOrDefault<String>(
+                                                '\$${listViewRegistraOrdenRecordsRecord.monto}',
+                                                '\$0.00',
                                               ),
                                               style: FlutterFlowTheme.of(
                                                       context)

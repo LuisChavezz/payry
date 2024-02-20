@@ -110,7 +110,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      18.0, 12.0, 18.0, 48.0),
+                                      18.0, 12.0, 18.0, 40.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [

@@ -151,7 +151,7 @@ class _OKFNPayry16VerificarNumeroWidgetState
                               Align(
                                 alignment: AlignmentDirectional(-1.0, 0.0),
                                 child: Text(
-                                  'Te enviaremos un SMS con un código de verficación',
+                                  'Te enviaremos un SMS con un código de verificación',
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -385,7 +385,7 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                         return;
                                       }
                                     },
-                                    text: 'Enviar código de validación',
+                                    text: 'Enviar código de verificación',
                                     options: FFButtonOptions(
                                       width: 300.0,
                                       height: 50.0,

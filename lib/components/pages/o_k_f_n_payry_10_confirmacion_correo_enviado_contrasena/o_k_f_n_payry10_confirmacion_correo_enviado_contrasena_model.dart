@@ -13,8 +13,10 @@ class OKFNPayry10ConfirmacionCorreoEnviadoContrasenaModel
         OKFNPayry10ConfirmacionCorreoEnviadoContrasenaWidget> {
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {}
 
   /// Action blocks are added here.

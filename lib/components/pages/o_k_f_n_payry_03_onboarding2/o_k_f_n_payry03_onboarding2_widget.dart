@@ -139,7 +139,7 @@ class _OKFNPayry03Onboarding2WidgetState
                                                         AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Text(
-                                                      'Puede solicitar pagos vía\nQR o SMS en segundos',
+                                                      'Solicita pagos vía\nCoDi® o DiMo® en segundos',
                                                       textAlign:
                                                           TextAlign.center,
                                                       style:

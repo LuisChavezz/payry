@@ -99,7 +99,7 @@ class _OKFNPayry29OpcionesQRWidgetState
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Más opciones para QR',
+                          'Más opciones para CoDi®',
                           style:
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Poppins',
@@ -149,7 +149,7 @@ class _OKFNPayry29OpcionesQRWidgetState
                                           ),
                                         ),
                                         Text(
-                                          'Generar QR',
+                                          'Generar CoDi®',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -187,7 +187,7 @@ class _OKFNPayry29OpcionesQRWidgetState
                                           ),
                                         ),
                                         Text(
-                                          'Consultar QR',
+                                          'Consultar CoDi®',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(

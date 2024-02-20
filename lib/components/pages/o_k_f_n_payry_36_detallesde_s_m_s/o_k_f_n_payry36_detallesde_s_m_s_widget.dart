@@ -109,7 +109,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
               title: Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Text(
-                  'Detalles de SMS',
+                  'Detalles de DiMo®',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).headlineSmall.override(
                         fontFamily: 'Lexend',
@@ -304,17 +304,22 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                       .primaryText,
                                                 ),
                                           ),
-                                          Text(
-                                            oKFNPayry36DetallesdeSMSSmsRecord
-                                                .status,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .accent3,
-                                                ),
+                                          Expanded(
+                                            child: Text(
+                                              oKFNPayry36DetallesdeSMSSmsRecord
+                                                  .status,
+                                              textAlign: TextAlign.end,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent3,
+                                                      ),
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -340,21 +345,112 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                       .primaryText,
                                             ),
                                       ),
-                                      Text(
-                                        oKFNPayry36DetallesdeSMSSmsRecord
-                                            .phoneNumber,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .accent3,
-                                            ),
+                                      Expanded(
+                                        child: Text(
+                                          oKFNPayry36DetallesdeSMSSmsRecord
+                                              .phoneNumber,
+                                          textAlign: TextAlign.end,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent3,
+                                              ),
+                                        ),
                                       ),
                                     ],
                                   ),
                                 ),
+                                if (oKFNPayry36DetallesdeSMSSmsRecord
+                                    .hasIdRastreo())
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        20.0, 20.0, 20.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'ID de rastreo',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodySmall
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                              ),
+                                        ),
+                                        Expanded(
+                                          child: Text(
+                                            oKFNPayry36DetallesdeSMSSmsRecord
+                                                .idRastreo
+                                                .toString(),
+                                            textAlign: TextAlign.end,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .accent3,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                if (oKFNPayry36DetallesdeSMSSmsRecord
+                                    .hasClaveRastreo())
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        20.0, 20.0, 20.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Clave de rastreo',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodySmall
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                              ),
+                                        ),
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    12.0, 0.0, 0.0, 0.0),
+                                            child: Text(
+                                              oKFNPayry36DetallesdeSMSSmsRecord
+                                                  .claveRastreo,
+                                              textAlign: TextAlign.end,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent3,
+                                                      ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       20.0, 20.0, 20.0, 0.0),
@@ -555,7 +651,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                   Align(
                                     alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Text(
-                                      'Devolver SMS',
+                                      'Devolver DiMo®',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),

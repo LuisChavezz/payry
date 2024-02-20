@@ -83,11 +83,15 @@
       ]
     },
     {
-      "collectionGroup": "transactions",
+      "collectionGroup": "registra_orden_records",
       "queryScope": "COLLECTION",
       "fields": [
         {
           "fieldPath": "admin_id",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "errorOcurs",
           "order": "ASCENDING"
         },
         {

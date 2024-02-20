@@ -99,7 +99,7 @@ class _OKFNPayry34OpcionesSMSWidgetState
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Más opciones para SMS',
+                          'Más opciones para DiMo®',
                           style:
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Poppins',
@@ -149,7 +149,7 @@ class _OKFNPayry34OpcionesSMSWidgetState
                                           ),
                                         ),
                                         Text(
-                                          'Generar SMS',
+                                          'Generar DiMo®',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -189,7 +189,7 @@ class _OKFNPayry34OpcionesSMSWidgetState
                                           ),
                                         ),
                                         Text(
-                                          'Consultar SMS',
+                                          'Consultar DiMo®',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(

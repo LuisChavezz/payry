@@ -115,7 +115,7 @@ final parametersBuilderMap =
   'OK_FN_Payry_02_onboarding1': ParameterData.none(),
   'OK_FN_Payry_06_confirmacionRegistro': ParameterData.none(),
   'OK_FN_Payry_11_olvidecontrasenanueva': ParameterData.none(),
-  'OK_FN_Payry_14_Perfil_PENDSW': ParameterData.none(),
+  'OK_FN_Payry_14_Perfil': ParameterData.none(),
   'OK_FN_Payry_15_EditProfile': ParameterData.none(),
   'OK_FN_Payry_16_verificarNumero': ParameterData.none(),
   'OK_FN_Payry_17_verificarOTP': (data) async => ParameterData(

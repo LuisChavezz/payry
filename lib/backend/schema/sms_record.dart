@@ -61,6 +61,16 @@ class SmsRecord extends FirestoreRecord {
   String get phoneNumber => _phoneNumber ?? '';
   bool hasPhoneNumber() => _phoneNumber != null;
 
+  // "claveRastreo" field.
+  String? _claveRastreo;
+  String get claveRastreo => _claveRastreo ?? '';
+  bool hasClaveRastreo() => _claveRastreo != null;
+
+  // "idRastreo" field.
+  double? _idRastreo;
+  double get idRastreo => _idRastreo ?? 0.0;
+  bool hasIdRastreo() => _idRastreo != null;
+
   void _initializeFields() {
     _uid = snapshotData['uid'] as String?;
     _adminId = snapshotData['admin_id'] as String?;
@@ -71,6 +81,8 @@ class SmsRecord extends FirestoreRecord {
     _voucherUrl = snapshotData['voucher_url'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
     _phoneNumber = snapshotData['phone_number'] as String?;
+    _claveRastreo = snapshotData['claveRastreo'] as String?;
+    _idRastreo = castToType<double>(snapshotData['idRastreo']);
   }
 
   static CollectionReference get collection =>
@@ -116,6 +128,8 @@ Map<String, dynamic> createSmsRecordData({
   String? voucherUrl,
   DateTime? createdTime,
   String? phoneNumber,
+  String? claveRastreo,
+  double? idRastreo,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -128,6 +142,8 @@ Map<String, dynamic> createSmsRecordData({
       'voucher_url': voucherUrl,
       'created_time': createdTime,
       'phone_number': phoneNumber,
+      'claveRastreo': claveRastreo,
+      'idRastreo': idRastreo,
     }.withoutNulls,
   );
 
@@ -147,7 +163,9 @@ class SmsRecordDocumentEquality implements Equality<SmsRecord> {
         e1?.status == e2?.status &&
         e1?.voucherUrl == e2?.voucherUrl &&
         e1?.createdTime == e2?.createdTime &&
-        e1?.phoneNumber == e2?.phoneNumber;
+        e1?.phoneNumber == e2?.phoneNumber &&
+        e1?.claveRastreo == e2?.claveRastreo &&
+        e1?.idRastreo == e2?.idRastreo;
   }
 
   @override
@@ -160,7 +178,9 @@ class SmsRecordDocumentEquality implements Equality<SmsRecord> {
         e?.status,
         e?.voucherUrl,
         e?.createdTime,
-        e?.phoneNumber
+        e?.phoneNumber,
+        e?.claveRastreo,
+        e?.idRastreo
       ]);
 
   @override

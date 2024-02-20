@@ -78,13 +78,6 @@ service cloud.firestore {
       allow delete: if false;
     }
 
-    match /transactions/{document} {
-      allow create: if request.auth != null;
-      allow read: if request.auth != null;
-      allow write: if false;
-      allow delete: if false;
-    }
-
     match /invoices/{document} {
       allow create: if request.auth != null;
       allow read: if request.auth != null;
@@ -102,8 +95,15 @@ service cloud.firestore {
     match /coupons/{document} {
       allow create: if true;
       allow read: if true;
-      allow write: if true;
-      allow delete: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /registra_orden_records/{document} {
+      allow create: if false;
+      allow read: if request.auth != null;
+      allow write: if false;
+      allow delete: if false;
     }
   }
 }

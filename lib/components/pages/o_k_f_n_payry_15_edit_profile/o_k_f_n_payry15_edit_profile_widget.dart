@@ -624,8 +624,8 @@ class _OKFNPayry15EditProfileWidgetState
                                       setState(() =>
                                           _model.statusSwitchValue = newValue!);
                                     },
-                                    activeColor:
-                                        FlutterFlowTheme.of(context).success,
+                                    activeColor: FlutterFlowTheme.of(context)
+                                        .secondaryText,
                                     activeTrackColor:
                                         FlutterFlowTheme.of(context).accent1,
                                     inactiveTrackColor:
@@ -671,8 +671,8 @@ class _OKFNPayry15EditProfileWidgetState
                                       if (Navigator.of(context).canPop()) {
                                         context.pop();
                                       }
-                                      context.pushNamed(
-                                          'OK_FN_Payry_14_Perfil_PENDSW');
+                                      context
+                                          .pushNamed('OK_FN_Payry_14_Perfil');
 
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
