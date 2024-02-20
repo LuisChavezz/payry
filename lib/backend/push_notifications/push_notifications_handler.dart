@@ -6,12 +6,18 @@ import '../backend.dart';
 import '../../flutter_flow/flutter_flow_theme.dart';
 import '../../flutter_flow/flutter_flow_util.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'package:flutter/material.dart';
 
 import '../../index.dart';
 import '../../main.dart';
 
 final _handledMessageIds = <String?>{};
+
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  FlutterAppBadger.updateBadgeCount(1);
+}
 
 class PushNotificationsHandler extends StatefulWidget {
   const PushNotificationsHandler({Key? key, required this.child})
@@ -60,6 +66,7 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
           extra: parameterData.extra,
         );
       }
+
     } catch (e) {
       print('Error: $e');
     } finally {
@@ -73,6 +80,7 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
   void initState() {
     super.initState();
     handleOpenedPushNotification();
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   }
 
   @override
@@ -115,7 +123,7 @@ final parametersBuilderMap =
   'OK_FN_Payry_02_onboarding1': ParameterData.none(),
   'OK_FN_Payry_06_confirmacionRegistro': ParameterData.none(),
   'OK_FN_Payry_11_olvidecontrasenanueva': ParameterData.none(),
-  'OK_FN_Payry_14_Perfil': ParameterData.none(),
+  'OK_FN_Payry_14_Perfil_PENDSW': ParameterData.none(),
   'OK_FN_Payry_15_EditProfile': ParameterData.none(),
   'OK_FN_Payry_16_verificarNumero': ParameterData.none(),
   'OK_FN_Payry_17_verificarOTP': (data) async => ParameterData(
