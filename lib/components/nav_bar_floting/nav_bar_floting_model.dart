@@ -1,7 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
@@ -15,11 +14,11 @@ import 'package:provider/provider.dart';
 class NavBarFlotingModel extends FlutterFlowModel<NavBarFlotingWidget> {
   ///  State fields for stateful widgets in this component.
 
-  // Stores action output result for [Cloud Function - verifyEmail] action in IconButton widget.
+  // Stores action output result for [Cloud Function - verifyEmail] action in Column widget.
   VerifyEmailCloudFunctionCallResponse? verifyEmailRespN1;
-  // Stores action output result for [Cloud Function - verifyEmail] action in IconButton widget.
+  // Stores action output result for [Cloud Function - verifyEmail] action in Column widget.
   VerifyEmailCloudFunctionCallResponse? verifyEmailRespN2;
-  // Stores action output result for [Cloud Function - verifyEmail] action in IconButton widget.
+  // Stores action output result for [Cloud Function - verifyEmail] action in Column widget.
   VerifyEmailCloudFunctionCallResponse? verifyEmailRespN3;
 
   /// Initialization and disposal methods.

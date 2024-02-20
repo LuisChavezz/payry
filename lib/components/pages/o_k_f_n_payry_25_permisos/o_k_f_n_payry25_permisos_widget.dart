@@ -250,8 +250,8 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                           );
                                         }
                                       },
-                                      activeColor: FlutterFlowTheme.of(context)
-                                          .secondaryText,
+                                      activeColor:
+                                          FlutterFlowTheme.of(context).success,
                                       activeTrackColor:
                                           FlutterFlowTheme.of(context).accent1,
                                       inactiveTrackColor:
@@ -356,8 +356,8 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                           );
                                         }
                                       },
-                                      activeColor: FlutterFlowTheme.of(context)
-                                          .secondaryText,
+                                      activeColor:
+                                          FlutterFlowTheme.of(context).success,
                                       activeTrackColor:
                                           FlutterFlowTheme.of(context).accent1,
                                       inactiveTrackColor:
@@ -464,8 +464,8 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                           );
                                         }
                                       },
-                                      activeColor: FlutterFlowTheme.of(context)
-                                          .secondaryText,
+                                      activeColor:
+                                          FlutterFlowTheme.of(context).success,
                                       activeTrackColor:
                                           FlutterFlowTheme.of(context).accent1,
                                       inactiveTrackColor:
@@ -570,8 +570,8 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                           );
                                         }
                                       },
-                                      activeColor: FlutterFlowTheme.of(context)
-                                          .secondaryText,
+                                      activeColor:
+                                          FlutterFlowTheme.of(context).success,
                                       activeTrackColor:
                                           FlutterFlowTheme.of(context).accent1,
                                       inactiveTrackColor:
@@ -679,8 +679,8 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                           );
                                         }
                                       },
-                                      activeColor: FlutterFlowTheme.of(context)
-                                          .secondaryText,
+                                      activeColor:
+                                          FlutterFlowTheme.of(context).success,
                                       activeTrackColor:
                                           FlutterFlowTheme.of(context).accent1,
                                       inactiveTrackColor:
@@ -788,8 +788,8 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                           );
                                         }
                                       },
-                                      activeColor: FlutterFlowTheme.of(context)
-                                          .secondaryText,
+                                      activeColor:
+                                          FlutterFlowTheme.of(context).success,
                                       activeTrackColor:
                                           FlutterFlowTheme.of(context).accent1,
                                       inactiveTrackColor:
@@ -897,8 +897,8 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                           );
                                         }
                                       },
-                                      activeColor: FlutterFlowTheme.of(context)
-                                          .secondaryText,
+                                      activeColor:
+                                          FlutterFlowTheme.of(context).success,
                                       activeTrackColor:
                                           FlutterFlowTheme.of(context).accent1,
                                       inactiveTrackColor:
@@ -1005,8 +1005,8 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                           );
                                         }
                                       },
-                                      activeColor: FlutterFlowTheme.of(context)
-                                          .secondaryText,
+                                      activeColor:
+                                          FlutterFlowTheme.of(context).success,
                                       activeTrackColor:
                                           FlutterFlowTheme.of(context).accent1,
                                       inactiveTrackColor:
@@ -1115,8 +1115,8 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                           );
                                         }
                                       },
-                                      activeColor: FlutterFlowTheme.of(context)
-                                          .secondaryText,
+                                      activeColor:
+                                          FlutterFlowTheme.of(context).success,
                                       activeTrackColor:
                                           FlutterFlowTheme.of(context).accent1,
                                       inactiveTrackColor:
@@ -1224,8 +1224,8 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                           );
                                         }
                                       },
-                                      activeColor: FlutterFlowTheme.of(context)
-                                          .secondaryText,
+                                      activeColor:
+                                          FlutterFlowTheme.of(context).success,
                                       activeTrackColor:
                                           FlutterFlowTheme.of(context).accent1,
                                       inactiveTrackColor:

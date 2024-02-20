@@ -626,8 +626,8 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                                     setState(
                                         () => _model.switchValue = newValue!);
                                   },
-                                  activeColor: FlutterFlowTheme.of(context)
-                                      .secondaryText,
+                                  activeColor:
+                                      FlutterFlowTheme.of(context).success,
                                   activeTrackColor:
                                       FlutterFlowTheme.of(context).accent1,
                                   inactiveTrackColor:

@@ -1,7 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
@@ -80,45 +79,80 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                 borderRadius: BorderRadius.circular(40.0),
               ),
               child: Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: EdgeInsetsDirectional.fromSTEB(12.0, 10.0, 12.0, 10.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    FlutterFlowIconButton(
-                      borderColor: Colors.transparent,
-                      borderRadius: 30.0,
-                      borderWidth: 1.0,
-                      buttonSize: 60.0,
-                      icon: Icon(
-                        FFIcons.kdashboard,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        size: 25.0,
-                      ),
-                      onPressed: () async {
-                        var _shouldSetState = false;
-                        if (valueOrDefault<bool>(
-                                currentUserDocument?.isAdmin, false) ||
-                            widget.userPermissions!.readQr ||
-                            widget.userPermissions!.readSms ||
-                            widget.userPermissions!.createQr ||
-                            widget.userPermissions!.createSms) {
+                    Container(
+                      width: MediaQuery.sizeOf(context).width * 0.15,
+                      decoration: BoxDecoration(),
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          var _shouldSetState = false;
                           if (valueOrDefault<bool>(
-                              currentUserDocument?.isValidMail, false)) {
+                                  currentUserDocument?.isAdmin, false) ||
+                              widget.userPermissions!.readQr ||
+                              widget.userPermissions!.readSms ||
+                              widget.userPermissions!.createQr ||
+                              widget.userPermissions!.createSms) {
                             if (valueOrDefault<bool>(
-                                    currentUserDocument?.isValidPhoneNumber,
-                                    false) ==
-                                true) {
+                                currentUserDocument?.isValidMail, false)) {
                               if (valueOrDefault<bool>(
-                                      currentUserDocument?.isAdmin, false)
-                                  ? valueOrDefault<bool>(
-                                      currentUserDocument?.isCompanyComplete,
-                                      false)
-                                  : true) {
-                                context.goNamed('OK_FN_Payry_26_Dashboard');
+                                      currentUserDocument?.isValidPhoneNumber,
+                                      false) ==
+                                  true) {
+                                if (valueOrDefault<bool>(
+                                        currentUserDocument?.isAdmin, false)
+                                    ? valueOrDefault<bool>(
+                                        currentUserDocument?.isCompanyComplete,
+                                        false)
+                                    : true) {
+                                  context.goNamed('OK_FN_Payry_26_Dashboard');
 
-                                if (_shouldSetState) setState(() {});
-                                return;
+                                  if (_shouldSetState) setState(() {});
+                                  return;
+                                } else {
+                                  var confirmDialogResponse = await showDialog<
+                                          bool>(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Acceso denegado'),
+                                            content: Text(
+                                                'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, false),
+                                                child: Text('Cancel'),
+                                              ),
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, true),
+                                                child:
+                                                    Text('Registrar empresa'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      ) ??
+                                      false;
+                                  if (confirmDialogResponse) {
+                                    context.pushNamed(
+                                        'OK_FN_Payry_19_formularioEmpresa');
+
+                                    if (_shouldSetState) setState(() {});
+                                    return;
+                                  } else {
+                                    if (_shouldSetState) setState(() {});
+                                    return;
+                                  }
+                                }
                               } else {
                                 var confirmDialogResponse = await showDialog<
                                         bool>(
@@ -127,7 +161,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                         return AlertDialog(
                                           title: Text('Acceso denegado'),
                                           content: Text(
-                                              'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                              'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
@@ -137,7 +171,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext, true),
-                                              child: Text('Registrar empresa'),
+                                              child: Text('Verificar número'),
                                             ),
                                           ],
                                         );
@@ -145,8 +179,8 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                     ) ??
                                     false;
                                 if (confirmDialogResponse) {
-                                  context.pushNamed(
-                                      'OK_FN_Payry_19_formularioEmpresa');
+                                  context
+                                      .pushNamed('OK_FN_Payry_15_EditProfile');
 
                                   if (_shouldSetState) setState(() {});
                                   return;
@@ -163,7 +197,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                           return AlertDialog(
                                             title: Text('Acceso denegado'),
                                             content: Text(
-                                                'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
+                                                'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
                                             actions: [
                                               TextButton(
                                                 onPressed: () => Navigator.pop(
@@ -173,7 +207,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                               TextButton(
                                                 onPressed: () => Navigator.pop(
                                                     alertDialogContext, true),
-                                                child: Text('Verificar número'),
+                                                child: Text('Reenviar'),
                                               ),
                                             ],
                                           );
@@ -181,7 +215,66 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                       ) ??
                                       false;
                               if (confirmDialogResponse) {
-                                context.pushNamed('OK_FN_Payry_15_EditProfile');
+                                try {
+                                  final result = await FirebaseFunctions
+                                      .instance
+                                      .httpsCallable('verifyEmail')
+                                      .call({
+                                    "email": currentUserEmail,
+                                  });
+                                  _model.verifyEmailRespN1 =
+                                      VerifyEmailCloudFunctionCallResponse(
+                                    data: result.data,
+                                    succeeded: true,
+                                    resultAsString: result.data.toString(),
+                                    jsonBody: result.data,
+                                  );
+                                } on FirebaseFunctionsException catch (error) {
+                                  _model.verifyEmailRespN1 =
+                                      VerifyEmailCloudFunctionCallResponse(
+                                    errorCode: error.code,
+                                    succeeded: false,
+                                  );
+                                }
+
+                                _shouldSetState = true;
+                                if (_model.verifyEmailRespN1!.succeeded!) {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        title: Text('Verificación enviada'),
+                                        content: Text(
+                                            'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: Text('Ok'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                } else {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        title: Text('Error'),
+                                        content: Text(
+                                            'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: Text('Ok'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                }
 
                                 if (_shouldSetState) setState(() {});
                                 return;
@@ -191,165 +284,129 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                               }
                             }
                           } else {
-                            var confirmDialogResponse = await showDialog<bool>(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('Acceso denegado'),
-                                      content: Text(
-                                          'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () => Navigator.pop(
-                                              alertDialogContext, false),
-                                          child: Text('Cancel'),
-                                        ),
-                                        TextButton(
-                                          onPressed: () => Navigator.pop(
-                                              alertDialogContext, true),
-                                          child: Text('Reenviar'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                ) ??
-                                false;
-                            if (confirmDialogResponse) {
-                              try {
-                                final result = await FirebaseFunctions.instance
-                                    .httpsCallable('verifyEmail')
-                                    .call({
-                                  "email": currentUserEmail,
-                                });
-                                _model.verifyEmailRespN1 =
-                                    VerifyEmailCloudFunctionCallResponse(
-                                  data: result.data,
-                                  succeeded: true,
-                                  resultAsString: result.data.toString(),
-                                  jsonBody: result.data,
+                            await showDialog(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: Text('Acceso Denegado'),
+                                  content: Text(
+                                      'No cuentas con permisos suficientes.'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(alertDialogContext),
+                                      child: Text('Ok'),
+                                    ),
+                                  ],
                                 );
-                              } on FirebaseFunctionsException catch (error) {
-                                _model.verifyEmailRespN1 =
-                                    VerifyEmailCloudFunctionCallResponse(
-                                  errorCode: error.code,
-                                  succeeded: false,
-                                );
-                              }
-
-                              _shouldSetState = true;
-                              if (_model.verifyEmailRespN1!.succeeded!) {
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('Verificación enviada'),
-                                      content: Text(
-                                          'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                              } else {
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('Error'),
-                                      content: Text(
-                                          'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                              }
-
-                              if (_shouldSetState) setState(() {});
-                              return;
-                            } else {
-                              if (_shouldSetState) setState(() {});
-                              return;
-                            }
+                              },
+                            );
+                            if (_shouldSetState) setState(() {});
+                            return;
                           }
-                        } else {
-                          await showDialog(
-                            context: context,
-                            builder: (alertDialogContext) {
-                              return AlertDialog(
-                                title: Text('Acceso Denegado'),
-                                content: Text(
-                                    'No cuentas con permisos suficientes.'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(alertDialogContext),
-                                    child: Text('Ok'),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
+
                           if (_shouldSetState) setState(() {});
-                          return;
-                        }
-
-                        if (_shouldSetState) setState(() {});
-                      },
-                    ),
-                    FlutterFlowIconButton(
-                      borderColor: Colors.transparent,
-                      borderRadius: 30.0,
-                      borderWidth: 1.0,
-                      buttonSize: 60.0,
-                      icon: Icon(
-                        FFIcons.kqr,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        size: 30.0,
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Icon(
+                              FFIcons.kestadisticas,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 25.0,
+                            ),
+                            Text(
+                              'Dashboard',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lexend',
+                                    fontSize: 10.0,
+                                  ),
+                            ),
+                          ].divide(SizedBox(height: 4.0)),
+                        ),
                       ),
-                      onPressed: () async {
-                        var _shouldSetState = false;
-                        if (valueOrDefault<bool>(
-                                currentUserDocument?.isAdmin, false) ||
-                            widget.userPermissions!.createQr) {
+                    ),
+                    Container(
+                      width: MediaQuery.sizeOf(context).width * 0.15,
+                      decoration: BoxDecoration(),
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          var _shouldSetState = false;
                           if (valueOrDefault<bool>(
-                              currentUserDocument?.isValidMail, false)) {
+                                  currentUserDocument?.isAdmin, false) ||
+                              widget.userPermissions!.createQr) {
                             if (valueOrDefault<bool>(
-                                    currentUserDocument?.isValidPhoneNumber,
-                                    false) ==
-                                true) {
+                                currentUserDocument?.isValidMail, false)) {
                               if (valueOrDefault<bool>(
-                                      currentUserDocument?.isAdmin, false)
-                                  ? valueOrDefault<bool>(
-                                      currentUserDocument?.isCompanyComplete,
-                                      false)
-                                  : true) {
-                                context.goNamed(
-                                  'OK_FN_Payry_27_solicitarQR',
-                                  queryParameters: {
-                                    'readQr': serializeParam(
-                                      widget.userPermissions?.readQr,
-                                      ParamType.bool,
-                                    ),
-                                    'createRefund': serializeParam(
-                                      widget.userPermissions?.createRefunds,
-                                      ParamType.bool,
-                                    ),
-                                  }.withoutNulls,
-                                );
+                                      currentUserDocument?.isValidPhoneNumber,
+                                      false) ==
+                                  true) {
+                                if (valueOrDefault<bool>(
+                                        currentUserDocument?.isAdmin, false)
+                                    ? valueOrDefault<bool>(
+                                        currentUserDocument?.isCompanyComplete,
+                                        false)
+                                    : true) {
+                                  context.goNamed(
+                                    'OK_FN_Payry_27_solicitarQR',
+                                    queryParameters: {
+                                      'readQr': serializeParam(
+                                        widget.userPermissions?.readQr,
+                                        ParamType.bool,
+                                      ),
+                                      'createRefund': serializeParam(
+                                        widget.userPermissions?.createRefunds,
+                                        ParamType.bool,
+                                      ),
+                                    }.withoutNulls,
+                                  );
 
-                                if (_shouldSetState) setState(() {});
-                                return;
+                                  if (_shouldSetState) setState(() {});
+                                  return;
+                                } else {
+                                  var confirmDialogResponse = await showDialog<
+                                          bool>(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Acceso denegado'),
+                                            content: Text(
+                                                'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, false),
+                                                child: Text('Cancel'),
+                                              ),
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, true),
+                                                child:
+                                                    Text('Registrar empresa'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      ) ??
+                                      false;
+                                  if (confirmDialogResponse) {
+                                    context.pushNamed(
+                                        'OK_FN_Payry_19_formularioEmpresa');
+
+                                    if (_shouldSetState) setState(() {});
+                                    return;
+                                  } else {
+                                    if (_shouldSetState) setState(() {});
+                                    return;
+                                  }
+                                }
                               } else {
                                 var confirmDialogResponse = await showDialog<
                                         bool>(
@@ -358,7 +415,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                         return AlertDialog(
                                           title: Text('Acceso denegado'),
                                           content: Text(
-                                              'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                              'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
@@ -368,7 +425,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext, true),
-                                              child: Text('Registrar empresa'),
+                                              child: Text('Verificar número'),
                                             ),
                                           ],
                                         );
@@ -376,8 +433,8 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                     ) ??
                                     false;
                                 if (confirmDialogResponse) {
-                                  context.pushNamed(
-                                      'OK_FN_Payry_19_formularioEmpresa');
+                                  context
+                                      .pushNamed('OK_FN_Payry_15_EditProfile');
 
                                   if (_shouldSetState) setState(() {});
                                   return;
@@ -394,7 +451,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                           return AlertDialog(
                                             title: Text('Acceso denegado'),
                                             content: Text(
-                                                'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
+                                                'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
                                             actions: [
                                               TextButton(
                                                 onPressed: () => Navigator.pop(
@@ -404,7 +461,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                               TextButton(
                                                 onPressed: () => Navigator.pop(
                                                     alertDialogContext, true),
-                                                child: Text('Verificar número'),
+                                                child: Text('Reenviar'),
                                               ),
                                             ],
                                           );
@@ -412,7 +469,66 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                       ) ??
                                       false;
                               if (confirmDialogResponse) {
-                                context.pushNamed('OK_FN_Payry_15_EditProfile');
+                                try {
+                                  final result = await FirebaseFunctions
+                                      .instance
+                                      .httpsCallable('verifyEmail')
+                                      .call({
+                                    "email": currentUserEmail,
+                                  });
+                                  _model.verifyEmailRespN2 =
+                                      VerifyEmailCloudFunctionCallResponse(
+                                    data: result.data,
+                                    succeeded: true,
+                                    resultAsString: result.data.toString(),
+                                    jsonBody: result.data,
+                                  );
+                                } on FirebaseFunctionsException catch (error) {
+                                  _model.verifyEmailRespN2 =
+                                      VerifyEmailCloudFunctionCallResponse(
+                                    errorCode: error.code,
+                                    succeeded: false,
+                                  );
+                                }
+
+                                _shouldSetState = true;
+                                if (_model.verifyEmailRespN2!.succeeded!) {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        title: Text('Verificación enviada'),
+                                        content: Text(
+                                            'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: Text('Ok'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                } else {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        title: Text('Error'),
+                                        content: Text(
+                                            'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: Text('Ok'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                }
 
                                 if (_shouldSetState) setState(() {});
                                 return;
@@ -422,165 +538,129 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                               }
                             }
                           } else {
-                            var confirmDialogResponse = await showDialog<bool>(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('Acceso denegado'),
-                                      content: Text(
-                                          'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () => Navigator.pop(
-                                              alertDialogContext, false),
-                                          child: Text('Cancel'),
-                                        ),
-                                        TextButton(
-                                          onPressed: () => Navigator.pop(
-                                              alertDialogContext, true),
-                                          child: Text('Reenviar'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                ) ??
-                                false;
-                            if (confirmDialogResponse) {
-                              try {
-                                final result = await FirebaseFunctions.instance
-                                    .httpsCallable('verifyEmail')
-                                    .call({
-                                  "email": currentUserEmail,
-                                });
-                                _model.verifyEmailRespN2 =
-                                    VerifyEmailCloudFunctionCallResponse(
-                                  data: result.data,
-                                  succeeded: true,
-                                  resultAsString: result.data.toString(),
-                                  jsonBody: result.data,
+                            await showDialog(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: Text('Acceso Denegado'),
+                                  content: Text(
+                                      'No cuentas con permisos suficientes.'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(alertDialogContext),
+                                      child: Text('Ok'),
+                                    ),
+                                  ],
                                 );
-                              } on FirebaseFunctionsException catch (error) {
-                                _model.verifyEmailRespN2 =
-                                    VerifyEmailCloudFunctionCallResponse(
-                                  errorCode: error.code,
-                                  succeeded: false,
-                                );
-                              }
-
-                              _shouldSetState = true;
-                              if (_model.verifyEmailRespN2!.succeeded!) {
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('Verificación enviada'),
-                                      content: Text(
-                                          'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                              } else {
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('Error'),
-                                      content: Text(
-                                          'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                              }
-
-                              if (_shouldSetState) setState(() {});
-                              return;
-                            } else {
-                              if (_shouldSetState) setState(() {});
-                              return;
-                            }
+                              },
+                            );
+                            if (_shouldSetState) setState(() {});
+                            return;
                           }
-                        } else {
-                          await showDialog(
-                            context: context,
-                            builder: (alertDialogContext) {
-                              return AlertDialog(
-                                title: Text('Acceso Denegado'),
-                                content: Text(
-                                    'No cuentas con permisos suficientes.'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(alertDialogContext),
-                                    child: Text('Ok'),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
+
                           if (_shouldSetState) setState(() {});
-                          return;
-                        }
-
-                        if (_shouldSetState) setState(() {});
-                      },
-                    ),
-                    FlutterFlowIconButton(
-                      borderColor: Colors.transparent,
-                      borderRadius: 30.0,
-                      borderWidth: 1.0,
-                      buttonSize: 60.0,
-                      icon: Icon(
-                        FFIcons.ksms,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        size: 30.0,
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Icon(
+                              FFIcons.kqr,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 25.0,
+                            ),
+                            Text(
+                              'CoDi®',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lexend',
+                                    fontSize: 10.0,
+                                  ),
+                            ),
+                          ].divide(SizedBox(height: 4.0)),
+                        ),
                       ),
-                      onPressed: () async {
-                        var _shouldSetState = false;
-                        if (valueOrDefault<bool>(
-                                currentUserDocument?.isAdmin, false) ||
-                            widget.userPermissions!.createSms) {
+                    ),
+                    Container(
+                      width: MediaQuery.sizeOf(context).width * 0.15,
+                      decoration: BoxDecoration(),
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          var _shouldSetState = false;
                           if (valueOrDefault<bool>(
-                              currentUserDocument?.isValidMail, false)) {
+                                  currentUserDocument?.isAdmin, false) ||
+                              widget.userPermissions!.createSms) {
                             if (valueOrDefault<bool>(
-                                    currentUserDocument?.isValidPhoneNumber,
-                                    false) ==
-                                true) {
+                                currentUserDocument?.isValidMail, false)) {
                               if (valueOrDefault<bool>(
-                                      currentUserDocument?.isAdmin, false)
-                                  ? valueOrDefault<bool>(
-                                      currentUserDocument?.isCompanyComplete,
-                                      false)
-                                  : true) {
-                                context.goNamed(
-                                  'OK_FN_Payry_32_solicitarSMS',
-                                  queryParameters: {
-                                    'readSms': serializeParam(
-                                      widget.userPermissions?.readSms,
-                                      ParamType.bool,
-                                    ),
-                                    'createRefund': serializeParam(
-                                      widget.userPermissions?.createRefunds,
-                                      ParamType.bool,
-                                    ),
-                                  }.withoutNulls,
-                                );
+                                      currentUserDocument?.isValidPhoneNumber,
+                                      false) ==
+                                  true) {
+                                if (valueOrDefault<bool>(
+                                        currentUserDocument?.isAdmin, false)
+                                    ? valueOrDefault<bool>(
+                                        currentUserDocument?.isCompanyComplete,
+                                        false)
+                                    : true) {
+                                  context.goNamed(
+                                    'OK_FN_Payry_32_solicitarSMS',
+                                    queryParameters: {
+                                      'readSms': serializeParam(
+                                        widget.userPermissions?.readSms,
+                                        ParamType.bool,
+                                      ),
+                                      'createRefund': serializeParam(
+                                        widget.userPermissions?.createRefunds,
+                                        ParamType.bool,
+                                      ),
+                                    }.withoutNulls,
+                                  );
 
-                                if (_shouldSetState) setState(() {});
-                                return;
+                                  if (_shouldSetState) setState(() {});
+                                  return;
+                                } else {
+                                  var confirmDialogResponse = await showDialog<
+                                          bool>(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Acceso denegado'),
+                                            content: Text(
+                                                'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, false),
+                                                child: Text('Cancel'),
+                                              ),
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, true),
+                                                child:
+                                                    Text('Registrar empresa'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      ) ??
+                                      false;
+                                  if (confirmDialogResponse) {
+                                    context.pushNamed(
+                                        'OK_FN_Payry_19_formularioEmpresa');
+
+                                    if (_shouldSetState) setState(() {});
+                                    return;
+                                  } else {
+                                    if (_shouldSetState) setState(() {});
+                                    return;
+                                  }
+                                }
                               } else {
                                 var confirmDialogResponse = await showDialog<
                                         bool>(
@@ -589,7 +669,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                         return AlertDialog(
                                           title: Text('Acceso denegado'),
                                           content: Text(
-                                              'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
+                                              'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
@@ -599,7 +679,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext, true),
-                                              child: Text('Registrar empresa'),
+                                              child: Text('Verificar número'),
                                             ),
                                           ],
                                         );
@@ -607,8 +687,8 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                     ) ??
                                     false;
                                 if (confirmDialogResponse) {
-                                  context.pushNamed(
-                                      'OK_FN_Payry_19_formularioEmpresa');
+                                  context
+                                      .pushNamed('OK_FN_Payry_15_EditProfile');
 
                                   if (_shouldSetState) setState(() {});
                                   return;
@@ -625,7 +705,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                           return AlertDialog(
                                             title: Text('Acceso denegado'),
                                             content: Text(
-                                                'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
+                                                'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
                                             actions: [
                                               TextButton(
                                                 onPressed: () => Navigator.pop(
@@ -635,7 +715,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                               TextButton(
                                                 onPressed: () => Navigator.pop(
                                                     alertDialogContext, true),
-                                                child: Text('Verificar número'),
+                                                child: Text('Reenviar'),
                                               ),
                                             ],
                                           );
@@ -643,7 +723,66 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                       ) ??
                                       false;
                               if (confirmDialogResponse) {
-                                context.pushNamed('OK_FN_Payry_15_EditProfile');
+                                try {
+                                  final result = await FirebaseFunctions
+                                      .instance
+                                      .httpsCallable('verifyEmail')
+                                      .call({
+                                    "email": currentUserEmail,
+                                  });
+                                  _model.verifyEmailRespN3 =
+                                      VerifyEmailCloudFunctionCallResponse(
+                                    data: result.data,
+                                    succeeded: true,
+                                    resultAsString: result.data.toString(),
+                                    jsonBody: result.data,
+                                  );
+                                } on FirebaseFunctionsException catch (error) {
+                                  _model.verifyEmailRespN3 =
+                                      VerifyEmailCloudFunctionCallResponse(
+                                    errorCode: error.code,
+                                    succeeded: false,
+                                  );
+                                }
+
+                                _shouldSetState = true;
+                                if (_model.verifyEmailRespN3!.succeeded!) {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        title: Text('Verificación enviada'),
+                                        content: Text(
+                                            'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: Text('Ok'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                } else {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        title: Text('Error'),
+                                        content: Text(
+                                            'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: Text('Ok'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                }
 
                                 if (_shouldSetState) setState(() {});
                                 return;
@@ -653,149 +792,150 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                               }
                             }
                           } else {
-                            var confirmDialogResponse = await showDialog<bool>(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('Acceso denegado'),
-                                      content: Text(
-                                          'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () => Navigator.pop(
-                                              alertDialogContext, false),
-                                          child: Text('Cancel'),
-                                        ),
-                                        TextButton(
-                                          onPressed: () => Navigator.pop(
-                                              alertDialogContext, true),
-                                          child: Text('Reenviar'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                ) ??
-                                false;
-                            if (confirmDialogResponse) {
-                              try {
-                                final result = await FirebaseFunctions.instance
-                                    .httpsCallable('verifyEmail')
-                                    .call({
-                                  "email": currentUserEmail,
-                                });
-                                _model.verifyEmailRespN3 =
-                                    VerifyEmailCloudFunctionCallResponse(
-                                  data: result.data,
-                                  succeeded: true,
-                                  resultAsString: result.data.toString(),
-                                  jsonBody: result.data,
+                            await showDialog(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: Text('Acceso Denegado'),
+                                  content: Text(
+                                      'No cuentas con permisos suficientes.'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(alertDialogContext),
+                                      child: Text('Ok'),
+                                    ),
+                                  ],
                                 );
-                              } on FirebaseFunctionsException catch (error) {
-                                _model.verifyEmailRespN3 =
-                                    VerifyEmailCloudFunctionCallResponse(
-                                  errorCode: error.code,
-                                  succeeded: false,
-                                );
-                              }
-
-                              _shouldSetState = true;
-                              if (_model.verifyEmailRespN3!.succeeded!) {
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('Verificación enviada'),
-                                      content: Text(
-                                          'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                              } else {
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('Error'),
-                                      content: Text(
-                                          'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                              }
-
-                              if (_shouldSetState) setState(() {});
-                              return;
-                            } else {
-                              if (_shouldSetState) setState(() {});
-                              return;
-                            }
+                              },
+                            );
+                            if (_shouldSetState) setState(() {});
+                            return;
                           }
-                        } else {
-                          await showDialog(
-                            context: context,
-                            builder: (alertDialogContext) {
-                              return AlertDialog(
-                                title: Text('Acceso Denegado'),
-                                content: Text(
-                                    'No cuentas con permisos suficientes.'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(alertDialogContext),
-                                    child: Text('Ok'),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                          if (_shouldSetState) setState(() {});
-                          return;
-                        }
 
-                        if (_shouldSetState) setState(() {});
-                      },
-                    ),
-                    FlutterFlowIconButton(
-                      borderColor: Colors.transparent,
-                      borderRadius: 30.0,
-                      borderWidth: 1.0,
-                      buttonSize: 60.0,
-                      icon: Icon(
-                        FFIcons.knotificaciones,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        size: 30.0,
+                          if (_shouldSetState) setState(() {});
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Icon(
+                              FFIcons.ksms,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 25.0,
+                            ),
+                            Text(
+                              'DiMo®',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lexend',
+                                    fontSize: 10.0,
+                                  ),
+                            ),
+                          ].divide(SizedBox(height: 4.0)),
+                        ),
                       ),
-                      onPressed: () async {
-                        context.goNamed('OK_FN_Payry_40_Notificaciones');
-                      },
                     ),
-                    FlutterFlowIconButton(
-                      borderColor: Colors.transparent,
-                      borderRadius: 30.0,
-                      borderWidth: 1.0,
-                      buttonSize: 60.0,
-                      icon: Icon(
-                        FFIcons.kmas,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        size: 30.0,
+                    Container(
+                      width: MediaQuery.sizeOf(context).width * 0.15,
+                      decoration: BoxDecoration(),
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.goNamed('OK_FN_Payry_40_Notificaciones');
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Icon(
+                              FFIcons.knotificaciones,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 25.0,
+                            ),
+                            Text(
+                              'Notificaciones',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lexend',
+                                    fontSize: valueOrDefault<double>(
+                                      () {
+                                        if (MediaQuery.sizeOf(context).width <
+                                            375.0) {
+                                          return 7.0;
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            428.0) {
+                                          return 8.0;
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            480.0) {
+                                          return 9.0;
+                                        } else {
+                                          return 10.0;
+                                        }
+                                      }(),
+                                      7.0,
+                                    ),
+                                  ),
+                            ),
+                          ].divide(SizedBox(
+                              height: valueOrDefault<double>(
+                            () {
+                              if (MediaQuery.sizeOf(context).width < 375.0) {
+                                return 8.0;
+                              } else if (MediaQuery.sizeOf(context).width <
+                                  428.0) {
+                                return 7.0;
+                              } else if (MediaQuery.sizeOf(context).width <
+                                  480.0) {
+                                return 6.0;
+                              } else {
+                                return 4.0;
+                              }
+                            }(),
+                            4.0,
+                          ))),
+                        ),
                       ),
-                      onPressed: () async {
-                        context.goNamed('OK_FN_Payry_13_Menumas');
-                      },
+                    ),
+                    Container(
+                      width: MediaQuery.sizeOf(context).width * 0.15,
+                      decoration: BoxDecoration(),
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.goNamed('OK_FN_Payry_13_Menumas');
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Icon(
+                              FFIcons.kmas,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 25.0,
+                            ),
+                            Text(
+                              'Más',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lexend',
+                                    fontSize: 10.0,
+                                  ),
+                            ),
+                          ].divide(SizedBox(height: 4.0)),
+                        ),
+                      ),
                     ),
                   ],
                 ),
