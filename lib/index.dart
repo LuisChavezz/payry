@@ -69,7 +69,7 @@ export '/components/pages/o_k_f_n_payry_07_confirmacion_correo_enviado_register/
     show OKFNPayry07ConfirmacionCorreoEnviadoRegisterWidget;
 export '/components/pages/o_k_f_n_payry_10_confirmacion_correo_enviado_contrasena/o_k_f_n_payry10_confirmacion_correo_enviado_contrasena_widget.dart'
     show OKFNPayry10ConfirmacionCorreoEnviadoContrasenaWidget;
-export '/components/o_k_f_n_payry_12_confirmacion_contrasena_actualizada/o_k_f_n_payry12_confirmacion_contrasena_actualizada_widget.dart'
+export '/components/pages/o_k_f_n_payry_12_confirmacion_contrasena_actualizada/o_k_f_n_payry12_confirmacion_contrasena_actualizada_widget.dart'
     show OKFNPayry12ConfirmacionContrasenaActualizadaWidget;
 export '/components/pages/o_k_f_n_payry_18_confirmacion_telefono/o_k_f_n_payry18_confirmacion_telefono_widget.dart'
     show OKFNPayry18ConfirmacionTelefonoWidget;

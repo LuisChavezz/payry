@@ -88,7 +88,7 @@ class _DynamicSwitchWidgetState extends State<DynamicSwitchWidget> {
           );
         }
       },
-      activeColor: FlutterFlowTheme.of(context).accent3,
+      activeColor: FlutterFlowTheme.of(context).success,
       activeTrackColor: FlutterFlowTheme.of(context).accent1,
       inactiveTrackColor: FlutterFlowTheme.of(context).alternate,
       inactiveThumbColor: FlutterFlowTheme.of(context).secondaryText,

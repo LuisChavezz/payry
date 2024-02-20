@@ -243,12 +243,17 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                             ),
                                           if (_model.balance == null ||
                                               _model.balance == '')
-                                            Lottie.asset(
-                                              'assets/lottie_animations/Animation_-_1707507579278.json',
-                                              width: 60.0,
-                                              height: 60.0,
-                                              fit: BoxFit.cover,
-                                              animate: true,
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 20.0, 0.0),
+                                              child: Lottie.asset(
+                                                'assets/lottie_animations/Animation_-_1707507579278.json',
+                                                width: 60.0,
+                                                height: 60.0,
+                                                fit: BoxFit.cover,
+                                                animate: true,
+                                              ),
                                             ),
                                         ],
                                       ),

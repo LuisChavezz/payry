@@ -14,11 +14,6 @@ import '../../main.dart';
 
 final _handledMessageIds = <String?>{};
 
-
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  FlutterAppBadger.updateBadgeCount(1);
-}
-
 class PushNotificationsHandler extends StatefulWidget {
   const PushNotificationsHandler({Key? key, required this.child})
       : super(key: key);
@@ -80,7 +75,6 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
   void initState() {
     super.initState();
     handleOpenedPushNotification();
-    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   }
 
   @override
@@ -147,6 +141,7 @@ final parametersBuilderMap =
   'OK_FN_Payry_25_permisos': (data) async => ParameterData(
         allParams: {
           'uid': getParameter<String>(data, 'uid'),
+          'userName': getParameter<String>(data, 'userName'),
         },
       ),
   'OK_FN_Payry_27_solicitarQR': (data) async => ParameterData(

@@ -624,8 +624,8 @@ class _OKFNPayry15EditProfileWidgetState
                                       setState(() =>
                                           _model.statusSwitchValue = newValue!);
                                     },
-                                    activeColor: FlutterFlowTheme.of(context)
-                                        .secondaryText,
+                                    activeColor:
+                                        FlutterFlowTheme.of(context).success,
                                     activeTrackColor:
                                         FlutterFlowTheme.of(context).accent1,
                                     inactiveTrackColor:
