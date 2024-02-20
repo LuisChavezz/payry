@@ -139,6 +139,7 @@ final parametersBuilderMap =
   'OK_FN_Payry_25_permisos': (data) async => ParameterData(
         allParams: {
           'uid': getParameter<String>(data, 'uid'),
+          'userName': getParameter<String>(data, 'userName'),
         },
       ),
   'OK_FN_Payry_27_solicitarQR': (data) async => ParameterData(

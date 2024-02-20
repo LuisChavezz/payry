@@ -15,9 +15,11 @@ class OKFNPayry25PermisosWidget extends StatefulWidget {
   const OKFNPayry25PermisosWidget({
     super.key,
     required this.uid,
+    required this.userName,
   });
 
   final String? uid;
+  final String? userName;
 
   @override
   State<OKFNPayry25PermisosWidget> createState() =>
@@ -138,15 +140,24 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          Text(
-                            'Permisos ',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Lexend',
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                'Permisos ',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Lexend',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                    ),
+                              ),
+                              Text(
+                                'Hello World',
+                                style: FlutterFlowTheme.of(context).bodyMedium,
+                              ),
+                            ].divide(SizedBox(width: 4.0)),
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(

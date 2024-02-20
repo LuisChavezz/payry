@@ -200,6 +200,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               requireAuth: true,
               builder: (context, params) => OKFNPayry25PermisosWidget(
                 uid: params.getParam('uid', ParamType.String),
+                userName: params.getParam('userName', ParamType.String),
               ),
             ),
             FFRoute(
