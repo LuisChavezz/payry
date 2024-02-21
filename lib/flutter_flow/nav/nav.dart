@@ -253,7 +253,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             FFRoute(
               name: 'OK_FN_Payry_31_detallesdeQR',
-              path: 'qrdetails/:qrDocReference',
+              path: 'qrdetails',
               requireAuth: true,
               builder: (context, params) => OKFNPayry31DetallesdeQRWidget(
                 qrDocReference: params.getParam('qrDocReference',
