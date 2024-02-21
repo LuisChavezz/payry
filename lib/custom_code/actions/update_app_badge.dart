@@ -10,6 +10,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_app_badger/flutter_app_badger.dart';
 
-Future<void> removeAppBadge() async {
-  FlutterAppBadger.removeBadge();
+Future<void> updateAppBadge(int number) async {
+  FlutterAppBadger.updateBadgeCount(number);
 }

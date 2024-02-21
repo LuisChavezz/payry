@@ -157,7 +157,7 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                 widget.userName!,
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
-                            ].divide(SizedBox(width: 4.0)),
+                            ],
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
