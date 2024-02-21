@@ -5,6 +5,7 @@ import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -440,6 +441,11 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                 null);
                                                             await _model
                                                                 .waitForFirestoreRequestCompleted();
+                                                            await actions
+                                                                .updateAppBadge(
+                                                              oKFNPayry40NotificacionesNotificationRecordList
+                                                                  .length,
+                                                            );
                                                           },
                                                           child: Row(
                                                             mainAxisSize:

@@ -391,7 +391,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                'Calve de rastreo',
+                                                'Clave de rastreo',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodySmall

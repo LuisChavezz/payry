@@ -6,7 +6,6 @@ import '../backend.dart';
 import '../../flutter_flow/flutter_flow_theme.dart';
 import '../../flutter_flow/flutter_flow_util.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'package:flutter/material.dart';
 
 import '../../index.dart';
@@ -50,6 +49,8 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
       setState(() => _loading = true);
     }
     try {
+      // final data = message.data;
+      // print(data);
       final initialPageName = message.data['initialPageName'] as String;
       final initialParameterData = getInitialParameterData(message.data);
       final parametersBuilder = parametersBuilderMap[initialPageName];

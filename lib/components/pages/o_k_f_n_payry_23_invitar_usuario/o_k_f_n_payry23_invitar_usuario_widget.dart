@@ -276,7 +276,8 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                         UserInvitationsRecord.collection.doc();
                                     await userInvitationsRecordReference.set({
                                       ...createUserInvitationsRecordData(
-                                        adminId: currentUserUid,
+                                        adminId: valueOrDefault(
+                                            currentUserDocument?.adminId, ''),
                                         invitedUserEmail:
                                             _model.emailFieldController.text,
                                         accepted: false,
@@ -292,7 +293,8 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                         UserInvitationsRecord
                                             .getDocumentFromData({
                                       ...createUserInvitationsRecordData(
-                                        adminId: currentUserUid,
+                                        adminId: valueOrDefault(
+                                            currentUserDocument?.adminId, ''),
                                         invitedUserEmail:
                                             _model.emailFieldController.text,
                                         accepted: false,
