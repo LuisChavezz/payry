@@ -390,13 +390,11 @@ class _OKFNPayry27SolicitarQRWidgetState
                                       context.pushNamedAuth(
                                         'OK_FN_Payry_31_detallesdeQR',
                                         context.mounted,
-                                        pathParameters: {
+                                        queryParameters: {
                                           'qrDocReference': serializeParam(
                                             _model.createdQR?.reference,
                                             ParamType.DocumentReference,
                                           ),
-                                        }.withoutNulls,
-                                        queryParameters: {
                                           'createRefund': serializeParam(
                                             widget.createRefund,
                                             ParamType.bool,

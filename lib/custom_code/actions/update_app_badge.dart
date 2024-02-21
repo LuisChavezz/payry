@@ -11,5 +11,5 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_badger/flutter_app_badger.dart';
 
 Future<void> updateAppBadge(int number) async {
-  FlutterAppBadger.updateBadgeCount(number);
+  FlutterAppBadger.updateBadgeCount(number - 1);
 }

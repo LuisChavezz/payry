@@ -216,7 +216,7 @@ class _OKFNPayry40NotificacionesWidgetState
                                                     'qr') {
                                                   context.pushNamed(
                                                     'OK_FN_Payry_31_detallesdeQR',
-                                                    pathParameters: {
+                                                    queryParameters: {
                                                       'qrDocReference':
                                                           serializeParam(
                                                         functions
@@ -229,8 +229,6 @@ class _OKFNPayry40NotificacionesWidgetState
                                                         ParamType
                                                             .DocumentReference,
                                                       ),
-                                                    }.withoutNulls,
-                                                    queryParameters: {
                                                       'createRefund':
                                                           serializeParam(
                                                         stackUserPermissionsRecord

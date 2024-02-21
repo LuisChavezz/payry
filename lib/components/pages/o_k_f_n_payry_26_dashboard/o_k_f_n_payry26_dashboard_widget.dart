@@ -571,16 +571,13 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                       context
                                                                           .pushNamed(
                                                                         'OK_FN_Payry_31_detallesdeQR',
-                                                                        pathParameters:
+                                                                        queryParameters:
                                                                             {
                                                                           'qrDocReference':
                                                                               serializeParam(
                                                                             listViewQrRecord.reference,
                                                                             ParamType.DocumentReference,
                                                                           ),
-                                                                        }.withoutNulls,
-                                                                        queryParameters:
-                                                                            {
                                                                           'createRefund':
                                                                               serializeParam(
                                                                             oKFNPayry26DashboardUserPermissionsRecord?.createRefunds,

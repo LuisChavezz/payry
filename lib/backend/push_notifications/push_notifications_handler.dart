@@ -168,21 +168,13 @@ final parametersBuilderMap =
         },
       ),
   'OK_FN_Payry_34_opcionesSMS': ParameterData.none(),
-  'OK_FN_Payry_31_detallesdeQR': (data) async {
-    final allParams = {
-      'qrDocReference': getParameter<DocumentReference>(data, 'qrDocReference'),
-      'createRefund': getParameter<bool>(data, 'createRefund'),
-    };
-    return ParameterData(
-      requiredParams: {
-        'qrDocReference': serializeParam(
-          allParams['qrDocReference'],
-          ParamType.DocumentReference,
-        ),
-      },
-      allParams: allParams,
-    );
-  },
+  'OK_FN_Payry_31_detallesdeQR': (data) async => ParameterData(
+        allParams: {
+          'qrDocReference':
+              getParameter<DocumentReference>(data, 'qrDocReference'),
+          'createRefund': getParameter<bool>(data, 'createRefund'),
+        },
+      ),
   'OK_FN_Payry_37_facturas': ParameterData.none(),
   'OK_FN_Payry_42_Terminosycondiciones': ParameterData.none(),
   'OK_FN_Payry_36_detallesdeSMS': (data) async {
