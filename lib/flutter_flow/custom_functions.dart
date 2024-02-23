@@ -74,10 +74,11 @@ dynamic notificationRedirect(
     String path = uri.queryParameters['link'] ?? '';
     String id = path.substring(path.lastIndexOf('/') + 1);
 
-    bool redirect = subject.toLowerCase().contains('qr') ||
-        subject.toLowerCase().contains('sms');
-    String type =
-        redirect ? (subject.toLowerCase().contains('qr') ? 'qr' : 'sms') : '';
+    bool redirect = subject.toLowerCase().contains('codi') ||
+        subject.toLowerCase().contains('dimo');
+    String type = redirect
+        ? (subject.toLowerCase().contains('codi') ? 'codi' : 'dimo')
+        : '';
 
     // Return the result as a JSON map
     return {'redirect': redirect, 'type': type, 'id': id};

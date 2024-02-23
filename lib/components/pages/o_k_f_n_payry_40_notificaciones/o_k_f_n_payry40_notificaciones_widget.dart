@@ -213,7 +213,7 @@ class _OKFNPayry40NotificacionesWidgetState
                                                           .notificationRedirect,
                                                       r'''$.type''',
                                                     ).toString()) ==
-                                                    'qr') {
+                                                    'codi') {
                                                   context.pushNamed(
                                                     'OK_FN_Payry_31_detallesdeQR',
                                                     queryParameters: {
@@ -247,7 +247,7 @@ class _OKFNPayry40NotificacionesWidgetState
                                                             .notificationRedirect,
                                                         r'''$.type''',
                                                       ).toString()) ==
-                                                      'sms') {
+                                                      'DiMo') {
                                                     context.pushNamed(
                                                       'OK_FN_Payry_36_detallesdeSMS',
                                                       pathParameters: {

@@ -49,20 +49,27 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
       setState(() => _loading = true);
     }
     try {
-      // final data = message.data;
-      // print(data);
-      final initialPageName = message.data['initialPageName'] as String;
-      final initialParameterData = getInitialParameterData(message.data);
+      // print(message.data);
+      final initialPage = message.data['initialPage'] as String; // Default FF line
+      // 4fcTl1uwbzCqPEZNsanc
+
+      context.pushNamed(
+        initialPage,
+        queryParameters: message.data,
+      );
+
+      /*final initialParameterData = getInitialParameterData(message.data);
       final parametersBuilder = parametersBuilderMap[initialPageName];
       if (parametersBuilder != null) {
         final parameterData = await parametersBuilder(initialParameterData);
+        print(parameterData.pathParameters);
+        print(parameterData.allParams);
         context.pushNamed(
           initialPageName,
           pathParameters: parameterData.pathParameters,
           extra: parameterData.extra,
         );
-      }
-
+      }*/
     } catch (e) {
       print('Error: $e');
     } finally {
@@ -175,7 +182,7 @@ final parametersBuilderMap =
         allParams: {
           'qrDocReference':
               getParameter<DocumentReference>(data, 'qrDocReference'),
-          'createRefund': getParameter<bool>(data, 'createRefund'),
+          'createRefund': getParameter<String>(data, 'createRefund'),
         },
       ),
   'OK_FN_Payry_37_facturas': ParameterData.none(),
