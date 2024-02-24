@@ -10,7 +10,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'o_k_f_n_payry40_notificaciones_model.dart';
@@ -45,15 +44,6 @@ class _OKFNPayry40NotificacionesWidgetState
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return FutureBuilder<List<NotificationRecord>>(
@@ -250,7 +240,7 @@ class _OKFNPayry40NotificacionesWidgetState
                                                       'DiMo') {
                                                     context.pushNamed(
                                                       'OK_FN_Payry_36_detallesdeSMS',
-                                                      pathParameters: {
+                                                      queryParameters: {
                                                         'smsDocReference':
                                                             serializeParam(
                                                           functions
@@ -263,8 +253,6 @@ class _OKFNPayry40NotificacionesWidgetState
                                                           ParamType
                                                               .DocumentReference,
                                                         ),
-                                                      }.withoutNulls,
-                                                      queryParameters: {
                                                         'createRefund':
                                                             serializeParam(
                                                           stackUserPermissionsRecord

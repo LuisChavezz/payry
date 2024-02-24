@@ -6,7 +6,6 @@ import 'o_k_f_n_payry28_qr_generado_widget.dart'
     show OKFNPayry28QrGeneradoWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 

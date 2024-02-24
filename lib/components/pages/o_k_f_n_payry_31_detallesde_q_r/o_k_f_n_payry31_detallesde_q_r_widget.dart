@@ -10,7 +10,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
@@ -53,15 +52,6 @@ class _OKFNPayry31DetallesdeQRWidgetState
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return StreamBuilder<QrRecord>(
@@ -345,7 +335,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                'ID de rastreo',
+                                                'ID rastreo',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodySmall
@@ -391,7 +381,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                'Clave de rastreo',
+                                                'Clave rastreo',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodySmall

@@ -8,7 +8,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
@@ -60,15 +59,6 @@ class _OKFNPayry32SolicitarSMSWidgetState
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -499,7 +489,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                           return AlertDialog(
                                             title: Text('Completado'),
                                             content: Text(
-                                                'El SMS se ha generado con éxito.'),
+                                                'El DiMo® se ha generado con éxito.'),
                                             actions: [
                                               TextButton(
                                                 onPressed: () => Navigator.pop(
@@ -516,13 +506,11 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                       context.pushNamedAuth(
                                         'OK_FN_Payry_36_detallesdeSMS',
                                         context.mounted,
-                                        pathParameters: {
+                                        queryParameters: {
                                           'smsDocReference': serializeParam(
                                             _model.createdSms?.reference,
                                             ParamType.DocumentReference,
                                           ),
-                                        }.withoutNulls,
-                                        queryParameters: {
                                           'createRefund': serializeParam(
                                             false,
                                             ParamType.bool,

@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'o_k_f_n_payry29_opciones_q_r_widget.dart'
     show OKFNPayry29OpcionesQRWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 

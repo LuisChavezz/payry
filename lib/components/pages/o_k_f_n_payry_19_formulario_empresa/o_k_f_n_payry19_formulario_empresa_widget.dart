@@ -14,7 +14,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'o_k_f_n_payry19_formulario_empresa_model.dart';
@@ -116,15 +115,6 @@ class _OKFNPayry19FormularioEmpresaWidgetState
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return Builder(
@@ -1520,6 +1510,246 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                       },
                                     ),
                                   ),
+                                  if (false)
+                                    StreamBuilder<List<GirosRecord>>(
+                                      stream: queryGirosRecord(),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 40.0,
+                                              height: 40.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
+                                                  FlutterFlowTheme.of(context)
+                                                      .accent3,
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                        List<GirosRecord>
+                                            containerGirosRecordList =
+                                            snapshot.data!;
+                                        return Container(
+                                          decoration: BoxDecoration(),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      'Categoría',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium,
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 12.0),
+                                                    child: FlutterFlowDropDown<
+                                                        String>(
+                                                      controller: _model
+                                                              .giroCatDropDownValueController ??=
+                                                          FormFieldController<
+                                                              String>(
+                                                        _model.giroCatDropDownValue ??=
+                                                            containerGirosRecordList
+                                                                .where((e) =>
+                                                                    e.category ==
+                                                                    oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                                        ?.giroCategory)
+                                                                .toList()
+                                                                .first
+                                                                .category,
+                                                      ),
+                                                      options:
+                                                          containerGirosRecordList
+                                                              .map((e) =>
+                                                                  e.category)
+                                                              .toList(),
+                                                      onChanged: (val) async {
+                                                        setState(() => _model
+                                                                .giroCatDropDownValue =
+                                                            val);
+                                                        setState(() {
+                                                          _model.girosDocSelected =
+                                                              containerGirosRecordList
+                                                                  .where((e) =>
+                                                                      e.category ==
+                                                                      _model
+                                                                          .giroCatDropDownValue)
+                                                                  .toList()
+                                                                  .first;
+                                                        });
+                                                      },
+                                                      width: double.infinity,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Lexend',
+                                                                color: Color(
+                                                                    0xFF8788A5),
+                                                              ),
+                                                      hintText:
+                                                          'Selecciona la categoria de tu empresa...',
+                                                      icon: Icon(
+                                                        Icons
+                                                            .keyboard_arrow_down_rounded,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        size: 24.0,
+                                                      ),
+                                                      elevation: 1.0,
+                                                      borderColor:
+                                                          Color(0xFF8788A5),
+                                                      borderWidth: 1.0,
+                                                      borderRadius: 8.0,
+                                                      margin:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  16.0,
+                                                                  4.0,
+                                                                  16.0,
+                                                                  4.0),
+                                                      hidesUnderline: true,
+                                                      isSearchable: false,
+                                                      isMultiSelect: false,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              if ((_model.girosDocSelected !=
+                                                      null) ||
+                                                  (oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                              ?.giroName !=
+                                                          null &&
+                                                      oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                              ?.giroName !=
+                                                          ''))
+                                                Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  4.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        'Giro',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  4.0,
+                                                                  0.0,
+                                                                  12.0),
+                                                      child:
+                                                          FlutterFlowDropDown<
+                                                              String>(
+                                                        controller: _model
+                                                                .giroDropDownValueController ??=
+                                                            FormFieldController<
+                                                                String>(
+                                                          _model.giroDropDownValue ??=
+                                                              oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                                  ?.giroName,
+                                                        ),
+                                                        options: _model.girosDocSelected !=
+                                                                null
+                                                            ? _model
+                                                                .girosDocSelected!
+                                                                .giros
+                                                            : functions.returnGirosArray(
+                                                                containerGirosRecordList
+                                                                    .where((e) =>
+                                                                        e.category ==
+                                                                        oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                                            ?.giroCategory)
+                                                                    .toList()
+                                                                    .first),
+                                                        onChanged: (val) =>
+                                                            setState(() => _model
+                                                                    .giroDropDownValue =
+                                                                val),
+                                                        width: double.infinity,
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Lexend',
+                                                                  color: Color(
+                                                                      0xFF8788A5),
+                                                                ),
+                                                        hintText:
+                                                            'Selecciona el giro de tu empresa...',
+                                                        icon: Icon(
+                                                          Icons
+                                                              .keyboard_arrow_down_rounded,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          size: 24.0,
+                                                        ),
+                                                        elevation: 1.0,
+                                                        borderColor:
+                                                            Color(0xFF8788A5),
+                                                        borderWidth: 1.0,
+                                                        borderRadius: 8.0,
+                                                        margin:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    16.0,
+                                                                    4.0,
+                                                                    16.0,
+                                                                    4.0),
+                                                        hidesUnderline: true,
+                                                        isSearchable: false,
+                                                        isMultiSelect: false,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    ),
                                   Align(
                                     alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
