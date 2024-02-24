@@ -151,6 +151,16 @@ class CompaniesRecord extends FirestoreRecord {
   String get coupon => _coupon ?? '';
   bool hasCoupon() => _coupon != null;
 
+  // "giro_name" field.
+  String? _giroName;
+  String get giroName => _giroName ?? '';
+  bool hasGiroName() => _giroName != null;
+
+  // "giro_category" field.
+  String? _giroCategory;
+  String get giroCategory => _giroCategory ?? '';
+  bool hasGiroCategory() => _giroCategory != null;
+
   void _initializeFields() {
     _createdBy = snapshotData['created_by'] as String?;
     _name = snapshotData['name'] as String?;
@@ -179,6 +189,8 @@ class CompaniesRecord extends FirestoreRecord {
     _createdTime = snapshotData['created_time'] as DateTime?;
     _bankid = snapshotData['bankid'] as String?;
     _coupon = snapshotData['coupon'] as String?;
+    _giroName = snapshotData['giro_name'] as String?;
+    _giroCategory = snapshotData['giro_category'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -243,6 +255,8 @@ Map<String, dynamic> createCompaniesRecordData({
   DateTime? createdTime,
   String? bankid,
   String? coupon,
+  String? giroName,
+  String? giroCategory,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -273,6 +287,8 @@ Map<String, dynamic> createCompaniesRecordData({
       'created_time': createdTime,
       'bankid': bankid,
       'coupon': coupon,
+      'giro_name': giroName,
+      'giro_category': giroCategory,
     }.withoutNulls,
   );
 
@@ -310,7 +326,9 @@ class CompaniesRecordDocumentEquality implements Equality<CompaniesRecord> {
         e1?.street == e2?.street &&
         e1?.createdTime == e2?.createdTime &&
         e1?.bankid == e2?.bankid &&
-        e1?.coupon == e2?.coupon;
+        e1?.coupon == e2?.coupon &&
+        e1?.giroName == e2?.giroName &&
+        e1?.giroCategory == e2?.giroCategory;
   }
 
   @override
@@ -341,7 +359,9 @@ class CompaniesRecordDocumentEquality implements Equality<CompaniesRecord> {
         e?.street,
         e?.createdTime,
         e?.bankid,
-        e?.coupon
+        e?.coupon,
+        e?.giroName,
+        e?.giroCategory
       ]);
 
   @override

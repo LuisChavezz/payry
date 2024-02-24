@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:text_search/text_search.dart';
@@ -58,15 +57,6 @@ class _OKFNPayry35HistorialSMSWidgetState
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return AuthUserStreamWidget(
@@ -378,14 +368,12 @@ class _OKFNPayry35HistorialSMSWidgetState
                                             onTap: () async {
                                               context.pushNamed(
                                                 'OK_FN_Payry_36_detallesdeSMS',
-                                                pathParameters: {
+                                                queryParameters: {
                                                   'smsDocReference':
                                                       serializeParam(
                                                     smsItem1Item.reference,
                                                     ParamType.DocumentReference,
                                                   ),
-                                                }.withoutNulls,
-                                                queryParameters: {
                                                   'createRefund':
                                                       serializeParam(
                                                     widget.createRefund,
@@ -581,14 +569,12 @@ class _OKFNPayry35HistorialSMSWidgetState
                                             onTap: () async {
                                               context.pushNamed(
                                                 'OK_FN_Payry_36_detallesdeSMS',
-                                                pathParameters: {
+                                                queryParameters: {
                                                   'smsDocReference':
                                                       serializeParam(
                                                     smsItem2Item.reference,
                                                     ParamType.DocumentReference,
                                                   ),
-                                                }.withoutNulls,
-                                                queryParameters: {
                                                   'createRefund':
                                                       serializeParam(
                                                     widget.createRefund,

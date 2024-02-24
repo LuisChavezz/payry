@@ -187,22 +187,13 @@ final parametersBuilderMap =
       ),
   'OK_FN_Payry_37_facturas': ParameterData.none(),
   'OK_FN_Payry_42_Terminosycondiciones': ParameterData.none(),
-  'OK_FN_Payry_36_detallesdeSMS': (data) async {
-    final allParams = {
-      'smsDocReference':
-          getParameter<DocumentReference>(data, 'smsDocReference'),
-      'createRefund': getParameter<bool>(data, 'createRefund'),
-    };
-    return ParameterData(
-      requiredParams: {
-        'smsDocReference': serializeParam(
-          allParams['smsDocReference'],
-          ParamType.DocumentReference,
-        ),
-      },
-      allParams: allParams,
-    );
-  },
+  'OK_FN_Payry_36_detallesdeSMS': (data) async => ParameterData(
+        allParams: {
+          'smsDocReference':
+              getParameter<DocumentReference>(data, 'smsDocReference'),
+          'createRefund': getParameter<bool>(data, 'createRefund'),
+        },
+      ),
   'OK_FN_Payry_32_solicitarSMS': (data) async => ParameterData(
         allParams: {
           'readSms': getParameter<bool>(data, 'readSms'),

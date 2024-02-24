@@ -275,7 +275,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             FFRoute(
               name: 'OK_FN_Payry_36_detallesdeSMS',
-              path: 'smsdetails/:smsDocReference',
+              path: 'smsdetails',
               requireAuth: true,
               builder: (context, params) => OKFNPayry36DetallesdeSMSWidget(
                 smsDocReference: params.getParam('smsDocReference',
@@ -573,6 +573,7 @@ class FFRoute {
           return null;
         },
         pageBuilder: (context, state) {
+          fixStatusBarOniOS16AndBelow(context);
           final ffParams = FFParameters(state, asyncParams);
           final page = ffParams.hasFutures
               ? FutureBuilder(

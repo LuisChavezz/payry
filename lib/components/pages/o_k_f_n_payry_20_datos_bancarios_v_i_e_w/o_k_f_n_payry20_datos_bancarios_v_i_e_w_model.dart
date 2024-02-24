@@ -6,7 +6,6 @@ import 'o_k_f_n_payry20_datos_bancarios_v_i_e_w_widget.dart'
     show OKFNPayry20DatosBancariosVIEWWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 

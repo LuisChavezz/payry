@@ -10,7 +10,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
@@ -106,15 +105,6 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return StreamBuilder<List<UserPermissionsRecord>>(
@@ -864,16 +854,13 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                       context
                                                                           .pushNamed(
                                                                         'OK_FN_Payry_36_detallesdeSMS',
-                                                                        pathParameters:
+                                                                        queryParameters:
                                                                             {
                                                                           'smsDocReference':
                                                                               serializeParam(
                                                                             listViewSmsRecord.reference,
                                                                             ParamType.DocumentReference,
                                                                           ),
-                                                                        }.withoutNulls,
-                                                                        queryParameters:
-                                                                            {
                                                                           'createRefund':
                                                                               serializeParam(
                                                                             oKFNPayry26DashboardUserPermissionsRecord?.createRefunds,

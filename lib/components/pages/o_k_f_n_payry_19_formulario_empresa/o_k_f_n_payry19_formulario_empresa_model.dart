@@ -16,12 +16,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class OKFNPayry19FormularioEmpresaModel
     extends FlutterFlowModel<OKFNPayry19FormularioEmpresaWidget> {
+  ///  Local state fields for this page.
+
+  GirosRecord? girosDocSelected;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -159,6 +162,12 @@ class OKFNPayry19FormularioEmpresaModel
   // State field(s) for CFDIDropDown widget.
   String? cFDIDropDownValue;
   FormFieldController<String>? cFDIDropDownValueController;
+  // State field(s) for giroCatDropDown widget.
+  String? giroCatDropDownValue;
+  FormFieldController<String>? giroCatDropDownValueController;
+  // State field(s) for giroDropDown widget.
+  String? giroDropDownValue;
+  FormFieldController<String>? giroDropDownValueController;
   // Stores action output result for [Cloud Function - saveCompany] action in Button widget.
   SaveCompanyCloudFunctionCallResponse? cloudFunctionCompany;
   // Stores action output result for [Cloud Function - generateToken] action in Button widget.

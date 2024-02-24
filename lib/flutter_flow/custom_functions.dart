@@ -132,3 +132,13 @@ bool? amountLimit(String amountString) {
     return null;
   }
 }
+
+List<String> returnGirosArray(GirosRecord document) {
+  List<String> giros = [];
+
+  if (document != null && document.giros != null) {
+    giros.addAll(document.giros!);
+  }
+
+  return giros;
+}
