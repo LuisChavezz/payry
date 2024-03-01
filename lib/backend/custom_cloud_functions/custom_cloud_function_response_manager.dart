@@ -106,6 +106,21 @@ class GetStatisticsCloudFunctionCallResponse {
   dynamic data;
 }
 
+class GetStatisticsTestCloudFunctionCallResponse {
+  GetStatisticsTestCloudFunctionCallResponse({
+    this.errorCode,
+    this.succeeded,
+    this.jsonBody,
+    this.resultAsString,
+    this.data,
+  });
+  String? errorCode;
+  bool? succeeded;
+  dynamic jsonBody;
+  String? resultAsString;
+  dynamic data;
+}
+
 class SendInvitationCloudFunctionCallResponse {
   SendInvitationCloudFunctionCallResponse({
     this.errorCode,
@@ -164,6 +179,51 @@ class SendWelcomeEmailCloudFunctionCallResponse {
 
 class GetBalanceCloudFunctionCallResponse {
   GetBalanceCloudFunctionCallResponse({
+    this.errorCode,
+    this.succeeded,
+    this.jsonBody,
+    this.resultAsString,
+    this.data,
+  });
+  String? errorCode;
+  bool? succeeded;
+  dynamic jsonBody;
+  String? resultAsString;
+  dynamic data;
+}
+
+class GenerateCodiCloudFunctionCallResponse {
+  GenerateCodiCloudFunctionCallResponse({
+    this.errorCode,
+    this.succeeded,
+    this.jsonBody,
+    this.resultAsString,
+    this.data,
+  });
+  String? errorCode;
+  bool? succeeded;
+  dynamic jsonBody;
+  String? resultAsString;
+  dynamic data;
+}
+
+class GenerateTokenTestCloudFunctionCallResponse {
+  GenerateTokenTestCloudFunctionCallResponse({
+    this.errorCode,
+    this.succeeded,
+    this.jsonBody,
+    this.resultAsString,
+    this.data,
+  });
+  String? errorCode;
+  bool? succeeded;
+  dynamic jsonBody;
+  String? resultAsString;
+  String? data;
+}
+
+class GenerateDimoCloudFunctionCallResponse {
+  GenerateDimoCloudFunctionCallResponse({
     this.errorCode,
     this.succeeded,
     this.jsonBody,

@@ -14,6 +14,10 @@ import 'package:provider/provider.dart';
 
 class OKFNPayry13MenumasModel
     extends FlutterFlowModel<OKFNPayry13MenumasWidget> {
+  ///  Local state fields for this page.
+
+  String? testValue;
+
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Cloud Function - verifyEmail] action in Container widget.

@@ -1,9 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/components/empty_list/empty_list_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'o_k_f_n_payry35_historial_s_m_s_widget.dart'
     show OKFNPayry35HistorialSMSWidget;
 import 'package:easy_debounce/easy_debounce.dart';
@@ -22,7 +24,7 @@ class OKFNPayry35HistorialSMSModel
   FocusNode? searchFieldFocusNode;
   TextEditingController? searchFieldController;
   String? Function(BuildContext, String?)? searchFieldControllerValidator;
-  List<SmsRecord> simpleSearchResults = [];
+  List<DetallesCobroRecord> simpleSearchResults = [];
 
   /// Initialization and disposal methods.
 

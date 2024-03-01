@@ -2,14 +2,14 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const fetch = require("node-fetch");
 
-exports.refund = functions.https.onCall(async (data, context) => {
+exports.generateDimo = functions.https.onCall(async (data, context) => {
   const { token, id, test } = data;
 
   // Test url for the API
-  const testUrl = `https://qa-api.payry.mx/stp/refund/${id}`;
+  const testUrl = "https://qa-api.payry.mx/stp/cobro-sms";
 
   // Prod url for the API
-  const prodUrl = `https://api.payry.mx/stp/refund/${id}`;
+  const prodUrl = "https://api.payry.mx/stp/cobro-sms";
 
   try {
     const req_api = await fetch(test ? testUrl : prodUrl, {
@@ -19,7 +19,7 @@ exports.refund = functions.https.onCall(async (data, context) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // Empty
+        id,
       }),
     });
 

@@ -1,9 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/components/empty_list/empty_list_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -60,9 +62,9 @@ class _OKFNPayry30HistorialQRsWidgetState
     context.watch<FFAppState>();
 
     return AuthUserStreamWidget(
-      builder: (context) => StreamBuilder<List<QrRecord>>(
-        stream: queryQrRecord(
-          queryBuilder: (qrRecord) => qrRecord
+      builder: (context) => StreamBuilder<List<DetallesCobroRecord>>(
+        stream: queryDetallesCobroRecord(
+          queryBuilder: (detallesCobroRecord) => detallesCobroRecord
               .where(
                 'admin_id',
                 isEqualTo: valueOrDefault(currentUserDocument?.adminId, ''),
@@ -74,6 +76,10 @@ class _OKFNPayry30HistorialQRsWidgetState
                             currentUserDocument?.isAdmin, false)
                     ? null
                     : currentUserUid,
+              )
+              .where(
+                'type',
+                isEqualTo: PaymentType.QR.serialize(),
               )
               .orderBy('created_time', descending: true),
         ),
@@ -95,7 +101,8 @@ class _OKFNPayry30HistorialQRsWidgetState
               ),
             );
           }
-          List<QrRecord> oKFNPayry30HistorialQRsQrRecordList = snapshot.data!;
+          List<DetallesCobroRecord>
+              oKFNPayry30HistorialQRsDetallesCobroRecordList = snapshot.data!;
           return GestureDetector(
             onTap: () => _model.unfocusNode.canRequestFocus
                 ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -261,7 +268,7 @@ class _OKFNPayry30HistorialQRsWidgetState
                                     onTap: () async {
                                       safeSetState(() {
                                         _model.simpleSearchResults = TextSearch(
-                                          oKFNPayry30HistorialQRsQrRecordList
+                                          oKFNPayry30HistorialQRsDetallesCobroRecordList
                                               .map(
                                                 (record) =>
                                                     TextSearchItem.fromTerms(
@@ -335,7 +342,7 @@ class _OKFNPayry30HistorialQRsWidgetState
                                 child: Builder(
                                   builder: (context) {
                                     final qrItem =
-                                        oKFNPayry30HistorialQRsQrRecordList
+                                        oKFNPayry30HistorialQRsDetallesCobroRecordList
                                             .toList();
                                     if (qrItem.isEmpty) {
                                       return Container(
@@ -368,15 +375,23 @@ class _OKFNPayry30HistorialQRsWidgetState
                                               context.pushNamed(
                                                 'OK_FN_Payry_31_detallesdeQR',
                                                 queryParameters: {
-                                                  'qrDocReference':
+                                                  'registraCobroRef':
                                                       serializeParam(
-                                                    qrItemItem.reference,
+                                                    functions
+                                                        .jsonPathToRegistraCobroDocRef(
+                                                            qrItemItem
+                                                                .registraCobroId),
                                                     ParamType.DocumentReference,
                                                   ),
                                                   'createRefund':
                                                       serializeParam(
                                                     widget.createRefund,
                                                     ParamType.bool,
+                                                  ),
+                                                  'detallesCobroRef':
+                                                      serializeParam(
+                                                    qrItemItem.reference,
+                                                    ParamType.DocumentReference,
                                                   ),
                                                 }.withoutNulls,
                                               );
@@ -477,7 +492,8 @@ class _OKFNPayry30HistorialQRsWidgetState
                                                               ),
                                                               Text(
                                                                 qrItemItem
-                                                                    .status,
+                                                                    .status!
+                                                                    .name,
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -558,15 +574,23 @@ class _OKFNPayry30HistorialQRsWidgetState
                                               context.pushNamed(
                                                 'OK_FN_Payry_31_detallesdeQR',
                                                 queryParameters: {
-                                                  'qrDocReference':
+                                                  'registraCobroRef':
                                                       serializeParam(
-                                                    qrItemItem.reference,
+                                                    functions
+                                                        .jsonPathToRegistraCobroDocRef(
+                                                            qrItemItem
+                                                                .registraCobroId),
                                                     ParamType.DocumentReference,
                                                   ),
                                                   'createRefund':
                                                       serializeParam(
                                                     widget.createRefund,
                                                     ParamType.bool,
+                                                  ),
+                                                  'detallesCobroRef':
+                                                      serializeParam(
+                                                    qrItemItem.reference,
+                                                    ParamType.DocumentReference,
                                                   ),
                                                 }.withoutNulls,
                                               );
@@ -667,7 +691,8 @@ class _OKFNPayry30HistorialQRsWidgetState
                                                               ),
                                                               Text(
                                                                 qrItemItem
-                                                                    .status,
+                                                                    .status!
+                                                                    .name,
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium

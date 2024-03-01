@@ -10,6 +10,7 @@ import 'place.dart';
 import 'uploaded_file.dart';
 import '/backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '/backend/schema/enums/enums.dart';
 import '/auth/firebase_auth/auth_util.dart';
 
 String? getFirstThreeCharacters(String inputString) {
@@ -141,4 +142,12 @@ List<String> returnGirosArray(GirosRecord document) {
   }
 
   return giros;
+}
+
+DocumentReference? jsonPathToRegistraCobroDocRef(String? id) {
+  try {
+    return FirebaseFirestore.instance.collection('registraCobro').doc(id);
+  } catch (e) {
+    throw e;
+  }
 }

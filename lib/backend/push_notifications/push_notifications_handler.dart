@@ -180,18 +180,22 @@ final parametersBuilderMap =
   'OK_FN_Payry_34_opcionesSMS': ParameterData.none(),
   'OK_FN_Payry_31_detallesdeQR': (data) async => ParameterData(
         allParams: {
-          'qrDocReference':
-              getParameter<DocumentReference>(data, 'qrDocReference'),
-          'createRefund': getParameter<String>(data, 'createRefund'),
+          'registraCobroRef':
+              getParameter<DocumentReference>(data, 'registraCobroRef'),
+          'createRefund': getParameter<bool>(data, 'createRefund'),
+          'detallesCobroRef':
+              getParameter<DocumentReference>(data, 'detallesCobroRef'),
         },
       ),
   'OK_FN_Payry_37_facturas': ParameterData.none(),
   'OK_FN_Payry_42_Terminosycondiciones': ParameterData.none(),
   'OK_FN_Payry_36_detallesdeSMS': (data) async => ParameterData(
         allParams: {
-          'smsDocReference':
-              getParameter<DocumentReference>(data, 'smsDocReference'),
+          'registraCobroRef':
+              getParameter<DocumentReference>(data, 'registraCobroRef'),
           'createRefund': getParameter<bool>(data, 'createRefund'),
+          'detallesCobroRef':
+              getParameter<DocumentReference>(data, 'detallesCobroRef'),
         },
       ),
   'OK_FN_Payry_32_solicitarSMS': (data) async => ParameterData(
@@ -231,6 +235,11 @@ final parametersBuilderMap =
   'OK_FN_Payry_44_historialTransactions': ParameterData.none(),
   'testShareImage': ParameterData.none(),
   'OK_FN_Payry_20_datosBancariosVIEW': ParameterData.none(),
+  'testPage': (data) async => ParameterData(
+        allParams: {
+          'docId': getParameter<String>(data, 'docId'),
+        },
+      ),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

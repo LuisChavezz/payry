@@ -2,24 +2,20 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const fetch = require("node-fetch");
 
-exports.refund = functions.https.onCall(async (data, context) => {
-  const { token, id, test } = data;
-
-  // Test url for the API
-  const testUrl = `https://qa-api.payry.mx/stp/refund/${id}`;
-
-  // Prod url for the API
-  const prodUrl = `https://api.payry.mx/stp/refund/${id}`;
+exports.getStatisticsTest = functions.https.onCall(async (data, context) => {
+  const { startDate, endDate, token } = data;
 
   try {
-    const req_api = await fetch(test ? testUrl : prodUrl, {
+    const req_api = await fetch("https://api.payry.mx/statistics", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // Empty
+        startDate,
+        endDate,
+        token,
       }),
     });
 

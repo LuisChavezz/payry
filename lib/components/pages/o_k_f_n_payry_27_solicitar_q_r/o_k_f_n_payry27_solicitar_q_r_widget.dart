@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
+import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -275,21 +276,25 @@ class _OKFNPayry27SolicitarQRWidgetState
                                   }
                                   if (functions.amountLimit(
                                       _model.amountFieldController.text)!) {
-                                    var qrRecordReference =
-                                        QrRecord.collection.doc();
-                                    await qrRecordReference.set({
-                                      ...createQrRecordData(
-                                        uid: currentUserUid,
+                                    var registraCobroRecordReference =
+                                        RegistraCobroRecord.collection.doc();
+                                    await registraCobroRecordReference.set({
+                                      ...createRegistraCobroRecordData(
                                         adminId: valueOrDefault(
                                             currentUserDocument?.adminId, ''),
-                                        qrId: '',
                                         amount: double.tryParse(
                                             _model.amountFieldController.text),
                                         concept:
                                             _model.conceptFieldController.text,
-                                        status: 'PENDIENTE',
+                                        uid: currentUserUid,
                                         qrUrl: '',
-                                        voucherUrl: '',
+                                        shareableQrUrl: '',
+                                        companyId: '',
+                                        errorMessage: '',
+                                        errorOcurs: false,
+                                        numeroReferenciaComercio: null,
+                                        status: PaymentStatus.PENDIENTE,
+                                        type: PaymentType.QR,
                                       ),
                                       ...mapToFirestore(
                                         {
@@ -298,50 +303,51 @@ class _OKFNPayry27SolicitarQRWidgetState
                                         },
                                       ),
                                     });
-                                    _model.createdQR =
-                                        QrRecord.getDocumentFromData({
-                                      ...createQrRecordData(
-                                        uid: currentUserUid,
+                                    _model.codiResp = RegistraCobroRecord
+                                        .getDocumentFromData({
+                                      ...createRegistraCobroRecordData(
                                         adminId: valueOrDefault(
                                             currentUserDocument?.adminId, ''),
-                                        qrId: '',
                                         amount: double.tryParse(
                                             _model.amountFieldController.text),
                                         concept:
                                             _model.conceptFieldController.text,
-                                        status: 'PENDIENTE',
+                                        uid: currentUserUid,
                                         qrUrl: '',
-                                        voucherUrl: '',
+                                        shareableQrUrl: '',
+                                        companyId: '',
+                                        errorMessage: '',
+                                        errorOcurs: false,
+                                        numeroReferenciaComercio: null,
+                                        status: PaymentStatus.PENDIENTE,
+                                        type: PaymentType.QR,
                                       ),
                                       ...mapToFirestore(
                                         {
                                           'created_time': DateTime.now(),
                                         },
                                       ),
-                                    }, qrRecordReference);
+                                    }, registraCobroRecordReference);
                                     _shouldSetState = true;
                                     try {
                                       final result = await FirebaseFunctions
                                           .instance
-                                          .httpsCallable('crearMovimientoQR')
+                                          .httpsCallable('generateCodi')
                                           .call({
-                                        "monto":
-                                            _model.amountFieldController.text,
-                                        "concepto":
-                                            _model.conceptFieldController.text,
+                                        "id": _model.codiResp!.reference.id,
+                                        "test": true,
                                         "token": FFAppState().serverToken,
-                                        "qrId": _model.createdQR?.reference.id,
                                       });
-                                      _model.qrCloundFunction =
-                                          CrearMovimientoQRCloudFunctionCallResponse(
+                                      _model.codiCF =
+                                          GenerateCodiCloudFunctionCallResponse(
                                         data: result.data,
                                         succeeded: true,
                                         resultAsString: result.data.toString(),
                                         jsonBody: result.data,
                                       );
                                     } on FirebaseFunctionsException catch (error) {
-                                      _model.qrCloundFunction =
-                                          CrearMovimientoQRCloudFunctionCallResponse(
+                                      _model.codiCF =
+                                          GenerateCodiCloudFunctionCallResponse(
                                         errorCode: error.code,
                                         succeeded: false,
                                       );
@@ -349,32 +355,26 @@ class _OKFNPayry27SolicitarQRWidgetState
 
                                     _shouldSetState = true;
                                     if (getJsonField(
-                                      _model.qrCloundFunction!.jsonBody,
+                                      _model.codiCF!.jsonBody,
                                       r'''$.success''',
                                     )) {
-                                      await _model.createdQR!.reference
-                                          .update(createQrRecordData(
-                                        qrUrl: getJsonField(
-                                          _model.qrCloundFunction?.jsonBody,
-                                          r'''$.data''',
-                                        ).toString(),
-                                      ));
-
-                                      await QrHistoryRecord.collection
-                                          .doc()
-                                          .set({
-                                        ...createQrHistoryRecordData(
-                                          qrId: _model.createdQR?.reference.id,
-                                          status: _model.createdQR?.status,
-                                          modifiedBy: currentUserUid,
-                                        ),
-                                        ...mapToFirestore(
-                                          {
-                                            'created_time':
-                                                FieldValue.serverTimestamp(),
-                                          },
-                                        ),
-                                      });
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Codi reference'),
+                                            content: Text(
+                                                _model.codiResp!.reference.id),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
                                       if (Navigator.of(context).canPop()) {
                                         context.pop();
                                       }
@@ -382,8 +382,8 @@ class _OKFNPayry27SolicitarQRWidgetState
                                         'OK_FN_Payry_31_detallesdeQR',
                                         context.mounted,
                                         queryParameters: {
-                                          'qrDocReference': serializeParam(
-                                            _model.createdQR?.reference,
+                                          'registraCobroRef': serializeParam(
+                                            _model.codiResp?.reference,
                                             ParamType.DocumentReference,
                                           ),
                                           'createRefund': serializeParam(
@@ -396,15 +396,14 @@ class _OKFNPayry27SolicitarQRWidgetState
                                       if (_shouldSetState) setState(() {});
                                       return;
                                     } else {
-                                      await _model.createdQR!.reference
-                                          .delete();
+                                      await _model.codiResp!.reference.delete();
                                       await showDialog(
                                         context: context,
                                         builder: (alertDialogContext) {
                                           return AlertDialog(
                                             title: Text('Error'),
                                             content: Text(getJsonField(
-                                              _model.qrCloundFunction!.jsonBody,
+                                              _model.codiCF!.jsonBody,
                                               r'''$.message''',
                                             ).toString()),
                                             actions: [
@@ -419,7 +418,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                                       );
                                       if (!functions.includeTheString(
                                           getJsonField(
-                                            _model.qrCloundFunction!.jsonBody,
+                                            _model.codiCF!.jsonBody,
                                             r'''$.message''',
                                           ).toString(),
                                           'expirada')!) {

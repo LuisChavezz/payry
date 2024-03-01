@@ -104,6 +104,8 @@ class _OKFNPayry19FormularioEmpresaWidgetState
     _model.zipCodeFieldFocusNode ??= FocusNode();
 
     _model.rFCFieldFocusNode ??= FocusNode();
+
+    _model.couponFieldFocusNode ??= FocusNode();
   }
 
   @override
@@ -1510,35 +1512,132 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                       },
                                     ),
                                   ),
-                                  if (false)
-                                    StreamBuilder<List<GirosRecord>>(
-                                      stream: queryGirosRecord(),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 40.0,
-                                              height: 40.0,
-                                              child: CircularProgressIndicator(
-                                                valueColor:
-                                                    AlwaysStoppedAnimation<
-                                                        Color>(
-                                                  FlutterFlowTheme.of(context)
-                                                      .accent3,
-                                                ),
+                                  StreamBuilder<List<GirosRecord>>(
+                                    stream: queryGirosRecord(),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 40.0,
+                                            height: 40.0,
+                                            child: CircularProgressIndicator(
+                                              valueColor:
+                                                  AlwaysStoppedAnimation<Color>(
+                                                FlutterFlowTheme.of(context)
+                                                    .accent3,
                                               ),
                                             ),
-                                          );
-                                        }
-                                        List<GirosRecord>
-                                            containerGirosRecordList =
-                                            snapshot.data!;
-                                        return Container(
-                                          decoration: BoxDecoration(),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
+                                          ),
+                                        );
+                                      }
+                                      List<GirosRecord>
+                                          containerGirosRecordList =
+                                          snapshot.data!;
+                                      return Container(
+                                        decoration: BoxDecoration(),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 4.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Categoría',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 4.0, 0.0, 12.0),
+                                                  child: FlutterFlowDropDown<
+                                                      String>(
+                                                    controller: _model
+                                                            .giroCatDropDownValueController ??=
+                                                        FormFieldController<
+                                                            String>(
+                                                      _model.giroCatDropDownValue ??=
+                                                          oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                              ?.giroCategory,
+                                                    ),
+                                                    options:
+                                                        containerGirosRecordList
+                                                            .map((e) =>
+                                                                e.category)
+                                                            .toList(),
+                                                    onChanged: (val) async {
+                                                      setState(() => _model
+                                                              .giroCatDropDownValue =
+                                                          val);
+                                                      setState(() {
+                                                        _model
+                                                            .giroDropDownValueController
+                                                            ?.value = '';
+                                                      });
+                                                      setState(() {
+                                                        _model.girosDocSelected =
+                                                            containerGirosRecordList
+                                                                .where((e) =>
+                                                                    e.category ==
+                                                                    _model
+                                                                        .giroCatDropDownValue)
+                                                                .toList()
+                                                                .first;
+                                                      });
+                                                    },
+                                                    width: double.infinity,
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color:
+                                                              Color(0xFF8788A5),
+                                                        ),
+                                                    hintText:
+                                                        'Selecciona la categoria de tu empresa...',
+                                                    icon: Icon(
+                                                      Icons
+                                                          .keyboard_arrow_down_rounded,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      size: 24.0,
+                                                    ),
+                                                    elevation: 1.0,
+                                                    borderColor:
+                                                        Color(0xFF8788A5),
+                                                    borderWidth: 1.0,
+                                                    borderRadius: 8.0,
+                                                    margin:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(16.0, 4.0,
+                                                                16.0, 4.0),
+                                                    hidesUnderline: true,
+                                                    isSearchable: false,
+                                                    isMultiSelect: false,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            if ((_model.girosDocSelected !=
+                                                    null) ||
+                                                (oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                            ?.giroName !=
+                                                        null &&
+                                                    oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                            ?.giroName !=
+                                                        ''))
                                               Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
@@ -1550,7 +1649,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      'Categoría',
+                                                      'Giro',
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1565,39 +1664,30 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                     child: FlutterFlowDropDown<
                                                         String>(
                                                       controller: _model
-                                                              .giroCatDropDownValueController ??=
+                                                              .giroDropDownValueController ??=
                                                           FormFieldController<
                                                               String>(
-                                                        _model.giroCatDropDownValue ??=
-                                                            containerGirosRecordList
-                                                                .where((e) =>
-                                                                    e.category ==
-                                                                    oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                                        ?.giroCategory)
-                                                                .toList()
-                                                                .first
-                                                                .category,
+                                                        _model.giroDropDownValue ??=
+                                                            oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                                ?.giroName,
                                                       ),
-                                                      options:
-                                                          containerGirosRecordList
-                                                              .map((e) =>
-                                                                  e.category)
-                                                              .toList(),
-                                                      onChanged: (val) async {
-                                                        setState(() => _model
-                                                                .giroCatDropDownValue =
-                                                            val);
-                                                        setState(() {
-                                                          _model.girosDocSelected =
+                                                      options: _model.girosDocSelected !=
+                                                              null
+                                                          ? _model
+                                                              .girosDocSelected!
+                                                              .giros
+                                                          : functions.returnGirosArray(
                                                               containerGirosRecordList
                                                                   .where((e) =>
                                                                       e.category ==
-                                                                      _model
-                                                                          .giroCatDropDownValue)
+                                                                      oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                                          ?.giroCategory)
                                                                   .toList()
-                                                                  .first;
-                                                        });
-                                                      },
+                                                                  .first),
+                                                      onChanged: (val) =>
+                                                          setState(() => _model
+                                                                  .giroDropDownValue =
+                                                              val),
                                                       width: double.infinity,
                                                       textStyle:
                                                           FlutterFlowTheme.of(
@@ -1610,7 +1700,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                                     0xFF8788A5),
                                                               ),
                                                       hintText:
-                                                          'Selecciona la categoria de tu empresa...',
+                                                          'Selecciona el giro de tu empresa...',
                                                       icon: Icon(
                                                         Icons
                                                             .keyboard_arrow_down_rounded,
@@ -1639,117 +1729,94 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                   ),
                                                 ],
                                               ),
-                                              if ((_model.girosDocSelected !=
-                                                      null) ||
-                                                  (oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                              ?.giroName !=
-                                                          null &&
-                                                      oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                              ?.giroName !=
-                                                          ''))
-                                                Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  4.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        'Giro',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium,
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  4.0,
-                                                                  0.0,
-                                                                  12.0),
-                                                      child:
-                                                          FlutterFlowDropDown<
-                                                              String>(
-                                                        controller: _model
-                                                                .giroDropDownValueController ??=
-                                                            FormFieldController<
-                                                                String>(
-                                                          _model.giroDropDownValue ??=
-                                                              oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                                  ?.giroName,
-                                                        ),
-                                                        options: _model.girosDocSelected !=
-                                                                null
-                                                            ? _model
-                                                                .girosDocSelected!
-                                                                .giros
-                                                            : functions.returnGirosArray(
-                                                                containerGirosRecordList
-                                                                    .where((e) =>
-                                                                        e.category ==
-                                                                        oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                                            ?.giroCategory)
-                                                                    .toList()
-                                                                    .first),
-                                                        onChanged: (val) =>
-                                                            setState(() => _model
-                                                                    .giroDropDownValue =
-                                                                val),
-                                                        width: double.infinity,
-                                                        textStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Lexend',
-                                                                  color: Color(
-                                                                      0xFF8788A5),
-                                                                ),
-                                                        hintText:
-                                                            'Selecciona el giro de tu empresa...',
-                                                        icon: Icon(
-                                                          Icons
-                                                              .keyboard_arrow_down_rounded,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                          size: 24.0,
-                                                        ),
-                                                        elevation: 1.0,
-                                                        borderColor:
-                                                            Color(0xFF8788A5),
-                                                        borderWidth: 1.0,
-                                                        borderRadius: 8.0,
-                                                        margin:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    16.0,
-                                                                    4.0,
-                                                                    16.0,
-                                                                    4.0),
-                                                        hidesUnderline: true,
-                                                        isSearchable: false,
-                                                        isMultiSelect: false,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                            ],
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 12.0, 0.0, 12.0),
+                                    child: TextFormField(
+                                      controller:
+                                          _model.couponFieldController ??=
+                                              TextEditingController(
+                                        text:
+                                            oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                ?.coupon,
+                                      ),
+                                      focusNode: _model.couponFieldFocusNode,
+                                      textCapitalization:
+                                          TextCapitalization.sentences,
+                                      obscureText: false,
+                                      decoration: InputDecoration(
+                                        labelText: 'Cupón',
+                                        labelStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Lexend',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                            ),
+                                        hintText: 'Ingresa un cupón...',
+                                        hintStyle: FlutterFlowTheme.of(context)
+                                            .bodySmall
+                                            .override(
+                                              fontFamily: 'Lexend',
+                                              color: Color(0xFF8788A5),
+                                            ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0xFF8788A5),
+                                            width: 1.0,
                                           ),
-                                        );
-                                      },
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Colors.white,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        errorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        focusedErrorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        contentPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                20.0, 24.0, 20.0, 24.0),
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                      validator: _model
+                                          .couponFieldControllerValidator
+                                          .asValidator(context),
                                     ),
+                                  ),
                                   Align(
                                     alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
@@ -1757,68 +1824,181 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           0.0, 10.0, 0.0, 10.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
+                                          var _shouldSetState = false;
                                           if (_model.formKey.currentState ==
                                                   null ||
                                               !_model.formKey.currentState!
                                                   .validate()) {
                                             return;
                                           }
-                                          try {
-                                            final result =
-                                                await FirebaseFunctions.instance
-                                                    .httpsCallable(
-                                                        'saveCompany')
-                                                    .call({
-                                              "name": _model
-                                                  .nameFieldController.text,
-                                              "alias": _model
-                                                  .aliasFieldController.text,
-                                              "email": _model
-                                                  .emailFieldController.text,
-                                              "street": _model
-                                                  .streetFieldController.text,
-                                              "intnumber": _model
-                                                  .streetNumberFieldController
-                                                  .text,
-                                              "colony": _model
-                                                  .neighborhoodFieldController
-                                                  .text,
-                                              "population": _model
-                                                  .cityFieldController.text,
-                                              "state":
-                                                  _model.stateDropDownValue!,
-                                              "country":
-                                                  _model.countryDropDownValue!,
-                                              "zipcode": _model
-                                                  .zipCodeFieldController.text,
-                                              "status": 'true',
-                                              "invoicerequired": _model
-                                                  .requireBillSwitchValue!
-                                                  .toString(),
-                                              "rfc": _model
-                                                  .rFCFieldController.text,
-                                              "taxregimesid": 24,
-                                              "usecfdiid": 6,
-                                              "uid": FFAppState().serverToken,
-                                            });
-                                            _model.cloudFunctionCompany =
-                                                SaveCompanyCloudFunctionCallResponse(
-                                              succeeded: true,
-                                            );
-                                          } on FirebaseFunctionsException catch (error) {
-                                            _model.cloudFunctionCompany =
-                                                SaveCompanyCloudFunctionCallResponse(
-                                              errorCode: error.code,
-                                              succeeded: false,
-                                            );
-                                          }
+                                          if ((_model.giroCatDropDownValue !=
+                                                      null &&
+                                                  _model.giroCatDropDownValue !=
+                                                      '') &&
+                                              (_model.giroDropDownValue !=
+                                                      null &&
+                                                  _model.giroDropDownValue !=
+                                                      '')) {
+                                            try {
+                                              final result =
+                                                  await FirebaseFunctions
+                                                      .instance
+                                                      .httpsCallable(
+                                                          'saveCompany')
+                                                      .call({
+                                                "name": _model
+                                                    .nameFieldController.text,
+                                                "alias": _model
+                                                    .aliasFieldController.text,
+                                                "email": _model
+                                                    .emailFieldController.text,
+                                                "street": _model
+                                                    .streetFieldController.text,
+                                                "intnumber": _model
+                                                    .streetNumberFieldController
+                                                    .text,
+                                                "colony": _model
+                                                    .neighborhoodFieldController
+                                                    .text,
+                                                "population": _model
+                                                    .cityFieldController.text,
+                                                "state":
+                                                    _model.stateDropDownValue!,
+                                                "country": _model
+                                                    .countryDropDownValue!,
+                                                "zipcode": _model
+                                                    .zipCodeFieldController
+                                                    .text,
+                                                "status": 'true',
+                                                "invoicerequired": _model
+                                                    .requireBillSwitchValue!
+                                                    .toString(),
+                                                "rfc": _model
+                                                    .rFCFieldController.text,
+                                                "taxregimesid": 24,
+                                                "usecfdiid": 6,
+                                                "uid": FFAppState().serverToken,
+                                              });
+                                              _model.cloudFunctionCompany =
+                                                  SaveCompanyCloudFunctionCallResponse(
+                                                succeeded: true,
+                                              );
+                                            } on FirebaseFunctionsException catch (error) {
+                                              _model.cloudFunctionCompany =
+                                                  SaveCompanyCloudFunctionCallResponse(
+                                                errorCode: error.code,
+                                                succeeded: false,
+                                              );
+                                            }
 
-                                          if (!(oKFNPayry19FormularioEmpresaCompaniesRecord !=
-                                              null)) {
-                                            await CompaniesRecord.collection
-                                                .doc()
-                                                .set({
-                                              ...createCompaniesRecordData(
+                                            _shouldSetState = true;
+                                            if (!(oKFNPayry19FormularioEmpresaCompaniesRecord !=
+                                                null)) {
+                                              await CompaniesRecord.collection
+                                                  .doc()
+                                                  .set({
+                                                ...createCompaniesRecordData(
+                                                  createdBy: currentUserUid,
+                                                  name: _model
+                                                      .nameFieldController.text,
+                                                  alias: _model
+                                                      .aliasFieldController
+                                                      .text,
+                                                  email: _model
+                                                      .emailFieldController
+                                                      .text,
+                                                  taxRegime: _model
+                                                      .taxRegimeDropDownValue,
+                                                  rfc: functions.toUppercase(
+                                                      _model.rFCFieldController
+                                                          .text),
+                                                  street: _model
+                                                      .streetFieldController
+                                                      .text,
+                                                  streetNumber: _model
+                                                      .streetNumberFieldController
+                                                      .text,
+                                                  intStreetNumber: '',
+                                                  neighborhood: _model
+                                                      .neighborhoodFieldController
+                                                      .text,
+                                                  zipcode: _model
+                                                      .zipCodeFieldController
+                                                      .text,
+                                                  city: _model
+                                                      .cityFieldController.text,
+                                                  state:
+                                                      _model.stateDropDownValue,
+                                                  country: _model
+                                                      .countryDropDownValue,
+                                                  status: _model
+                                                          .statusDropDownValue ==
+                                                      'Activo',
+                                                  allowTip: false,
+                                                  requireBill: _model
+                                                      .requireBillSwitchValue,
+                                                  cfdi:
+                                                      _model.cFDIDropDownValue,
+                                                  bank: '',
+                                                  clabe: '',
+                                                  verifiedClabe: false,
+                                                  apiKey: '',
+                                                  apiSecret: '',
+                                                  imageUrl: () {
+                                                    if (_model.uploadedFileUrl !=
+                                                            null &&
+                                                        _model.uploadedFileUrl !=
+                                                            '') {
+                                                      return _model
+                                                          .uploadedFileUrl;
+                                                    } else if (oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                                ?.imageUrl !=
+                                                            null &&
+                                                        oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                                ?.imageUrl !=
+                                                            '') {
+                                                      return oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                          ?.imageUrl;
+                                                    } else {
+                                                      return null;
+                                                    }
+                                                  }(),
+                                                  bankid: '',
+                                                  coupon: _model
+                                                      .couponFieldController
+                                                      .text,
+                                                  giroName:
+                                                      _model.giroDropDownValue,
+                                                  giroCategory: _model
+                                                      .giroCatDropDownValue,
+                                                ),
+                                                ...mapToFirestore(
+                                                  {
+                                                    'created_time': FieldValue
+                                                        .serverTimestamp(),
+                                                  },
+                                                ),
+                                              });
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'La empresa ha sido registrada con éxito',
+                                                    style: TextStyle(
+                                                      color: Color(0xFFFAF9FE),
+                                                    ),
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 4000),
+                                                  backgroundColor:
+                                                      Color(0xFF25253F),
+                                                ),
+                                              );
+                                            } else {
+                                              await oKFNPayry19FormularioEmpresaCompaniesRecord!
+                                                  .reference
+                                                  .update(
+                                                      createCompaniesRecordData(
                                                 createdBy: currentUserUid,
                                                 name: _model
                                                     .nameFieldController.text,
@@ -1856,8 +2036,6 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 requireBill: _model
                                                     .requireBillSwitchValue,
                                                 cfdi: _model.cFDIDropDownValue,
-                                                bank: '',
-                                                clabe: '',
                                                 verifiedClabe: false,
                                                 apiKey: '',
                                                 apiSecret: '',
@@ -1880,138 +2058,87 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                     return null;
                                                   }
                                                 }(),
-                                                bankid: '',
-                                                coupon: '',
-                                              ),
-                                              ...mapToFirestore(
-                                                {
-                                                  'created_time': FieldValue
-                                                      .serverTimestamp(),
-                                                },
-                                              ),
-                                            });
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'La empresa ha sido registrada con éxito',
-                                                  style: TextStyle(
-                                                    color: Color(0xFFFAF9FE),
+                                                giroName:
+                                                    _model.giroDropDownValue,
+                                                giroCategory:
+                                                    _model.giroCatDropDownValue,
+                                                coupon: _model
+                                                    .couponFieldController.text,
+                                              ));
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'La empresa ha sido actualizada con éxito',
+                                                    style: TextStyle(
+                                                      color: Color(0xFFFAF9FE),
+                                                    ),
                                                   ),
+                                                  duration: Duration(
+                                                      milliseconds: 4000),
+                                                  backgroundColor:
+                                                      Color(0xFF25253F),
                                                 ),
-                                                duration: Duration(
-                                                    milliseconds: 4000),
-                                                backgroundColor:
-                                                    Color(0xFF25253F),
-                                              ),
-                                            );
+                                              );
+                                            }
+
+                                            try {
+                                              final result =
+                                                  await FirebaseFunctions
+                                                      .instance
+                                                      .httpsCallable(
+                                                          'generateToken')
+                                                      .call({
+                                                "uid": currentUserUid,
+                                              });
+                                              _model.cloudFunctionGT =
+                                                  GenerateTokenCloudFunctionCallResponse(
+                                                data: result.data,
+                                                succeeded: true,
+                                                resultAsString:
+                                                    result.data.toString(),
+                                                jsonBody: result.data,
+                                              );
+                                            } on FirebaseFunctionsException catch (error) {
+                                              _model.cloudFunctionGT =
+                                                  GenerateTokenCloudFunctionCallResponse(
+                                                errorCode: error.code,
+                                                succeeded: false,
+                                              );
+                                            }
+
+                                            _shouldSetState = true;
+                                            FFAppState().serverToken = _model
+                                                .cloudFunctionGT!.jsonBody!
+                                                .toString();
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
                                           } else {
-                                            await oKFNPayry19FormularioEmpresaCompaniesRecord!
-                                                .reference
-                                                .update(
-                                                    createCompaniesRecordData(
-                                              createdBy: currentUserUid,
-                                              name: _model
-                                                  .nameFieldController.text,
-                                              alias: _model
-                                                  .aliasFieldController.text,
-                                              email: _model
-                                                  .emailFieldController.text,
-                                              taxRegime:
-                                                  _model.taxRegimeDropDownValue,
-                                              rfc: functions.toUppercase(_model
-                                                  .rFCFieldController.text),
-                                              street: _model
-                                                  .streetFieldController.text,
-                                              streetNumber: _model
-                                                  .streetNumberFieldController
-                                                  .text,
-                                              intStreetNumber: '',
-                                              neighborhood: _model
-                                                  .neighborhoodFieldController
-                                                  .text,
-                                              zipcode: _model
-                                                  .zipCodeFieldController.text,
-                                              city: _model
-                                                  .cityFieldController.text,
-                                              state: _model.stateDropDownValue,
-                                              country:
-                                                  _model.countryDropDownValue,
-                                              status:
-                                                  _model.statusDropDownValue ==
-                                                      'Activo',
-                                              allowTip: false,
-                                              requireBill:
-                                                  _model.requireBillSwitchValue,
-                                              cfdi: _model.cFDIDropDownValue,
-                                              verifiedClabe: false,
-                                              apiKey: '',
-                                              apiSecret: '',
-                                              imageUrl: () {
-                                                if (_model.uploadedFileUrl !=
-                                                        null &&
-                                                    _model.uploadedFileUrl !=
-                                                        '') {
-                                                  return _model.uploadedFileUrl;
-                                                } else if (oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                            ?.imageUrl !=
-                                                        null &&
-                                                    oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                            ?.imageUrl !=
-                                                        '') {
-                                                  return oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                      ?.imageUrl;
-                                                } else {
-                                                  return null;
-                                                }
-                                              }(),
-                                            ));
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'La empresa ha sido actualizada con éxito',
-                                                  style: TextStyle(
-                                                    color: Color(0xFFFAF9FE),
-                                                  ),
-                                                ),
-                                                duration: Duration(
-                                                    milliseconds: 4000),
-                                                backgroundColor:
-                                                    Color(0xFF25253F),
-                                              ),
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text('Error'),
+                                                  content: Text(
+                                                      'Debes seleccionar la categoria y giro de tu empresa.'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
                                             );
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
                                           }
 
-                                          try {
-                                            final result =
-                                                await FirebaseFunctions.instance
-                                                    .httpsCallable(
-                                                        'generateToken')
-                                                    .call({
-                                              "uid": currentUserUid,
-                                            });
-                                            _model.cloudFunctionGT =
-                                                GenerateTokenCloudFunctionCallResponse(
-                                              data: result.data,
-                                              succeeded: true,
-                                              resultAsString:
-                                                  result.data.toString(),
-                                              jsonBody: result.data,
-                                            );
-                                          } on FirebaseFunctionsException catch (error) {
-                                            _model.cloudFunctionGT =
-                                                GenerateTokenCloudFunctionCallResponse(
-                                              errorCode: error.code,
-                                              succeeded: false,
-                                            );
-                                          }
-
-                                          FFAppState().serverToken = _model
-                                              .cloudFunctionGT!.jsonBody!
-                                              .toString();
-
-                                          setState(() {});
+                                          if (_shouldSetState) setState(() {});
                                         },
                                         text: 'Guardar',
                                         options: FFButtonOptions(
