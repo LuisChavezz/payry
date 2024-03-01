@@ -1,9 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/components/empty_list/empty_list_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'o_k_f_n_payry30_historial_q_rs_widget.dart'
     show OKFNPayry30HistorialQRsWidget;
 import 'package:easy_debounce/easy_debounce.dart';
@@ -22,7 +24,7 @@ class OKFNPayry30HistorialQRsModel
   FocusNode? searchFieldFocusNode;
   TextEditingController? searchFieldController;
   String? Function(BuildContext, String?)? searchFieldControllerValidator;
-  List<QrRecord> simpleSearchResults = [];
+  List<DetallesCobroRecord> simpleSearchResults = [];
 
   /// Initialization and disposal methods.
 

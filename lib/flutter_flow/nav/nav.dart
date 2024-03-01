@@ -7,6 +7,8 @@ import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 
+import '/backend/schema/enums/enums.dart';
+
 import '/auth/base_auth_user_provider.dart';
 
 import '/backend/push_notifications/push_notifications_handler.dart'
@@ -256,9 +258,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'qrdetails',
               requireAuth: true,
               builder: (context, params) => OKFNPayry31DetallesdeQRWidget(
-                qrDocReference: params.getParam('qrDocReference',
-                    ParamType.DocumentReference, false, ['qr']),
+                registraCobroRef: params.getParam('registraCobroRef',
+                    ParamType.DocumentReference, false, ['registraCobro']),
                 createRefund: params.getParam('createRefund', ParamType.bool),
+                detallesCobroRef: params.getParam('detallesCobroRef',
+                    ParamType.DocumentReference, false, ['detallesCobro']),
               ),
             ),
             FFRoute(
@@ -278,9 +282,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'smsdetails',
               requireAuth: true,
               builder: (context, params) => OKFNPayry36DetallesdeSMSWidget(
-                smsDocReference: params.getParam('smsDocReference',
-                    ParamType.DocumentReference, false, ['sms']),
+                registraCobroRef: params.getParam('registraCobroRef',
+                    ParamType.DocumentReference, false, ['registraCobro']),
                 createRefund: params.getParam('createRefund', ParamType.bool),
+                detallesCobroRef: params.getParam('detallesCobroRef',
+                    ParamType.DocumentReference, false, ['detallesCobro']),
               ),
             ),
             FFRoute(
@@ -400,6 +406,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'oKFNPayry20DatosBancariosVIEW',
               builder: (context, params) =>
                   OKFNPayry20DatosBancariosVIEWWidget(),
+            ),
+            FFRoute(
+              name: 'testPage',
+              path: 'testPage',
+              requireAuth: true,
+              builder: (context, params) => TestPageWidget(
+                docId: params.getParam('docId', ParamType.String),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

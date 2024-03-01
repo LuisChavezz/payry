@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
+import '/backend/schema/enums/enums.dart';
 import '/components/empty_list/empty_list_widget.dart';
 import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -236,7 +237,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 0.0, 20.0, 0.0),
+                                                      0.0, 0.0, 24.0, 0.0),
                                               child: Lottie.asset(
                                                 'assets/lottie_animations/Animation_-_1707507579278.json',
                                                 width: 60.0,
@@ -455,11 +456,12 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                       0.0,
                                                                       0.0),
                                                           child: StreamBuilder<
-                                                              List<QrRecord>>(
+                                                              List<
+                                                                  DetallesCobroRecord>>(
                                                             stream:
-                                                                queryQrRecord(
-                                                              queryBuilder: (qrRecord) =>
-                                                                  qrRecord
+                                                                queryDetallesCobroRecord(
+                                                              queryBuilder: (detallesCobroRecord) =>
+                                                                  detallesCobroRecord
                                                                       .where(
                                                                         'admin_id',
                                                                         isEqualTo: valueOrDefault(
@@ -472,6 +474,12 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                                 valueOrDefault<bool>(currentUserDocument?.isAdmin, false)
                                                                             ? null
                                                                             : currentUserUid,
+                                                                      )
+                                                                      .where(
+                                                                        'type',
+                                                                        isEqualTo: PaymentType
+                                                                            .QR
+                                                                            .serialize(),
                                                                       )
                                                                       .orderBy(
                                                                           'created_time',
@@ -502,11 +510,11 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                   ),
                                                                 );
                                                               }
-                                                              List<QrRecord>
-                                                                  listViewQrRecordList =
+                                                              List<DetallesCobroRecord>
+                                                                  listViewDetallesCobroRecordList =
                                                                   snapshot
                                                                       .data!;
-                                                              if (listViewQrRecordList
+                                                              if (listViewDetallesCobroRecordList
                                                                   .isEmpty) {
                                                                 return Container(
                                                                   height: 100.0,
@@ -530,7 +538,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                 scrollDirection:
                                                                     Axis.vertical,
                                                                 itemCount:
-                                                                    listViewQrRecordList
+                                                                    listViewDetallesCobroRecordList
                                                                         .length,
                                                                 separatorBuilder: (_,
                                                                         __) =>
@@ -540,8 +548,8 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                 itemBuilder:
                                                                     (context,
                                                                         listViewIndex) {
-                                                                  final listViewQrRecord =
-                                                                      listViewQrRecordList[
+                                                                  final listViewDetallesCobroRecord =
+                                                                      listViewDetallesCobroRecordList[
                                                                           listViewIndex];
                                                                   return InkWell(
                                                                     splashColor:
@@ -563,15 +571,20 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                         'OK_FN_Payry_31_detallesdeQR',
                                                                         queryParameters:
                                                                             {
-                                                                          'qrDocReference':
+                                                                          'registraCobroRef':
                                                                               serializeParam(
-                                                                            listViewQrRecord.reference,
+                                                                            functions.jsonPathToRegistraCobroDocRef(listViewDetallesCobroRecord.registraCobroId),
                                                                             ParamType.DocumentReference,
                                                                           ),
                                                                           'createRefund':
                                                                               serializeParam(
                                                                             oKFNPayry26DashboardUserPermissionsRecord?.createRefunds,
                                                                             ParamType.bool,
+                                                                          ),
+                                                                          'detallesCobroRef':
+                                                                              serializeParam(
+                                                                            listViewDetallesCobroRecord.reference,
+                                                                            ParamType.DocumentReference,
                                                                           ),
                                                                         }.withoutNulls,
                                                                       );
@@ -599,7 +612,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                               crossAxisAlignment: CrossAxisAlignment.start,
                                                                               children: [
                                                                                 Text(
-                                                                                  listViewQrRecord.concept.maybeHandleOverflow(
+                                                                                  listViewDetallesCobroRecord.concept.maybeHandleOverflow(
                                                                                     maxChars: 25,
                                                                                     replacement: '…',
                                                                                   ),
@@ -621,7 +634,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                         ),
                                                                         Text(
                                                                           formatNumber(
-                                                                            listViewQrRecord.amount,
+                                                                            listViewDetallesCobroRecord.amount,
                                                                             formatType:
                                                                                 FormatType.custom,
                                                                             currency:
@@ -748,11 +761,12 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                       0.0,
                                                                       0.0),
                                                           child: StreamBuilder<
-                                                              List<SmsRecord>>(
+                                                              List<
+                                                                  DetallesCobroRecord>>(
                                                             stream:
-                                                                querySmsRecord(
-                                                              queryBuilder: (smsRecord) =>
-                                                                  smsRecord
+                                                                queryDetallesCobroRecord(
+                                                              queryBuilder: (detallesCobroRecord) =>
+                                                                  detallesCobroRecord
                                                                       .where(
                                                                         'admin_id',
                                                                         isEqualTo: valueOrDefault(
@@ -765,6 +779,12 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                                 valueOrDefault<bool>(currentUserDocument?.isAdmin, false)
                                                                             ? null
                                                                             : currentUserUid,
+                                                                      )
+                                                                      .where(
+                                                                        'type',
+                                                                        isEqualTo: PaymentType
+                                                                            .SMS
+                                                                            .serialize(),
                                                                       )
                                                                       .orderBy(
                                                                           'created_time',
@@ -795,11 +815,11 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                   ),
                                                                 );
                                                               }
-                                                              List<SmsRecord>
-                                                                  listViewSmsRecordList =
+                                                              List<DetallesCobroRecord>
+                                                                  listViewDetallesCobroRecordList =
                                                                   snapshot
                                                                       .data!;
-                                                              if (listViewSmsRecordList
+                                                              if (listViewDetallesCobroRecordList
                                                                   .isEmpty) {
                                                                 return Container(
                                                                   height: 100.0,
@@ -823,7 +843,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                 scrollDirection:
                                                                     Axis.vertical,
                                                                 itemCount:
-                                                                    listViewSmsRecordList
+                                                                    listViewDetallesCobroRecordList
                                                                         .length,
                                                                 separatorBuilder: (_,
                                                                         __) =>
@@ -833,8 +853,8 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                 itemBuilder:
                                                                     (context,
                                                                         listViewIndex) {
-                                                                  final listViewSmsRecord =
-                                                                      listViewSmsRecordList[
+                                                                  final listViewDetallesCobroRecord =
+                                                                      listViewDetallesCobroRecordList[
                                                                           listViewIndex];
                                                                   return InkWell(
                                                                     splashColor:
@@ -856,15 +876,20 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                         'OK_FN_Payry_36_detallesdeSMS',
                                                                         queryParameters:
                                                                             {
-                                                                          'smsDocReference':
+                                                                          'registraCobroRef':
                                                                               serializeParam(
-                                                                            listViewSmsRecord.reference,
+                                                                            functions.jsonPathToRegistraCobroDocRef(listViewDetallesCobroRecord.registraCobroId),
                                                                             ParamType.DocumentReference,
                                                                           ),
                                                                           'createRefund':
                                                                               serializeParam(
                                                                             oKFNPayry26DashboardUserPermissionsRecord?.createRefunds,
                                                                             ParamType.bool,
+                                                                          ),
+                                                                          'detallesCobroRef':
+                                                                              serializeParam(
+                                                                            listViewDetallesCobroRecord.reference,
+                                                                            ParamType.DocumentReference,
                                                                           ),
                                                                         }.withoutNulls,
                                                                       );
@@ -892,7 +917,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                               crossAxisAlignment: CrossAxisAlignment.start,
                                                                               children: [
                                                                                 Text(
-                                                                                  listViewSmsRecord.concept.maybeHandleOverflow(
+                                                                                  listViewDetallesCobroRecord.concept.maybeHandleOverflow(
                                                                                     maxChars: 25,
                                                                                     replacement: '…',
                                                                                   ),
@@ -914,7 +939,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                         ),
                                                                         Text(
                                                                           formatNumber(
-                                                                            listViewSmsRecord.amount,
+                                                                            listViewDetallesCobroRecord.amount,
                                                                             formatType:
                                                                                 FormatType.custom,
                                                                             currency:

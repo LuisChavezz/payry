@@ -204,30 +204,6 @@ class _OKFNPayry40NotificacionesWidgetState
                                                       r'''$.type''',
                                                     ).toString()) ==
                                                     'codi') {
-                                                  context.pushNamed(
-                                                    'OK_FN_Payry_31_detallesdeQR',
-                                                    queryParameters: {
-                                                      'qrDocReference':
-                                                          serializeParam(
-                                                        functions
-                                                            .jsonPathToQrDocRef(
-                                                                getJsonField(
-                                                          _model
-                                                              .notificationRedirect,
-                                                          r'''$.id''',
-                                                        ).toString()),
-                                                        ParamType
-                                                            .DocumentReference,
-                                                      ),
-                                                      'createRefund':
-                                                          serializeParam(
-                                                        stackUserPermissionsRecord
-                                                            ?.createRefunds,
-                                                        ParamType.bool,
-                                                      ),
-                                                    }.withoutNulls,
-                                                  );
-
                                                   return;
                                                 } else {
                                                   if (functions
@@ -238,30 +214,6 @@ class _OKFNPayry40NotificacionesWidgetState
                                                         r'''$.type''',
                                                       ).toString()) ==
                                                       'DiMo') {
-                                                    context.pushNamed(
-                                                      'OK_FN_Payry_36_detallesdeSMS',
-                                                      queryParameters: {
-                                                        'smsDocReference':
-                                                            serializeParam(
-                                                          functions
-                                                              .jsonPathToSmsDocRef(
-                                                                  getJsonField(
-                                                            _model
-                                                                .notificationRedirect,
-                                                            r'''$.id''',
-                                                          ).toString()),
-                                                          ParamType
-                                                              .DocumentReference,
-                                                        ),
-                                                        'createRefund':
-                                                            serializeParam(
-                                                          stackUserPermissionsRecord
-                                                              ?.createRefunds,
-                                                          ParamType.bool,
-                                                        ),
-                                                      }.withoutNulls,
-                                                    );
-
                                                     return;
                                                   } else {
                                                     return;

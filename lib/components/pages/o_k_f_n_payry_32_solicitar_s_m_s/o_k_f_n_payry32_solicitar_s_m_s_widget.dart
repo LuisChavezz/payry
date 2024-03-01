@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
+import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -385,22 +386,23 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                   }
                                   if (functions.amountLimit(
                                       _model.amountFieldController.text)!) {
-                                    var smsRecordReference =
-                                        SmsRecord.collection.doc();
-                                    await smsRecordReference.set({
-                                      ...createSmsRecordData(
-                                        uid: currentUserUid,
+                                    var registraCobroRecordReference =
+                                        RegistraCobroRecord.collection.doc();
+                                    await registraCobroRecordReference.set({
+                                      ...createRegistraCobroRecordData(
                                         adminId: valueOrDefault(
                                             currentUserDocument?.adminId, ''),
-                                        smsId: '',
                                         amount: double.tryParse(
                                             _model.amountFieldController.text),
                                         concept:
                                             _model.conceptFieldController.text,
-                                        status: 'PENDIENTE',
-                                        voucherUrl: '',
-                                        phoneNumber:
-                                            _model.phoneFieldController.text,
+                                        phoneNumber: currentPhoneNumber,
+                                        uid: currentUserUid,
+                                        companyId: '',
+                                        errorMessage: '',
+                                        errorOcurs: false,
+                                        status: PaymentStatus.PENDIENTE,
+                                        type: PaymentType.SMS,
                                       ),
                                       ...mapToFirestore(
                                         {
@@ -409,54 +411,49 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                         },
                                       ),
                                     });
-                                    _model.createdSms =
-                                        SmsRecord.getDocumentFromData({
-                                      ...createSmsRecordData(
-                                        uid: currentUserUid,
+                                    _model.dimoResp = RegistraCobroRecord
+                                        .getDocumentFromData({
+                                      ...createRegistraCobroRecordData(
                                         adminId: valueOrDefault(
                                             currentUserDocument?.adminId, ''),
-                                        smsId: '',
                                         amount: double.tryParse(
                                             _model.amountFieldController.text),
                                         concept:
                                             _model.conceptFieldController.text,
-                                        status: 'PENDIENTE',
-                                        voucherUrl: '',
-                                        phoneNumber:
-                                            _model.phoneFieldController.text,
+                                        phoneNumber: currentPhoneNumber,
+                                        uid: currentUserUid,
+                                        companyId: '',
+                                        errorMessage: '',
+                                        errorOcurs: false,
+                                        status: PaymentStatus.PENDIENTE,
+                                        type: PaymentType.SMS,
                                       ),
                                       ...mapToFirestore(
                                         {
                                           'created_time': DateTime.now(),
                                         },
                                       ),
-                                    }, smsRecordReference);
+                                    }, registraCobroRecordReference);
                                     _shouldSetState = true;
                                     try {
                                       final result = await FirebaseFunctions
                                           .instance
-                                          .httpsCallable('crearMovimientoSMS')
+                                          .httpsCallable('generateDimo')
                                           .call({
-                                        "monto":
-                                            _model.amountFieldController.text,
-                                        "concepto":
-                                            _model.conceptFieldController.text,
+                                        "id": _model.dimoResp!.reference.id,
+                                        "test": true,
                                         "token": FFAppState().serverToken,
-                                        "celularcliente":
-                                            _model.phoneFieldController.text,
-                                        "smsId":
-                                            _model.createdSms?.reference.id,
                                       });
-                                      _model.smsCloudFunction =
-                                          CrearMovimientoSMSCloudFunctionCallResponse(
+                                      _model.dimoCF =
+                                          GenerateDimoCloudFunctionCallResponse(
                                         data: result.data,
                                         succeeded: true,
                                         resultAsString: result.data.toString(),
                                         jsonBody: result.data,
                                       );
                                     } on FirebaseFunctionsException catch (error) {
-                                      _model.smsCloudFunction =
-                                          CrearMovimientoSMSCloudFunctionCallResponse(
+                                      _model.dimoCF =
+                                          GenerateDimoCloudFunctionCallResponse(
                                         errorCode: error.code,
                                         succeeded: false,
                                       );
@@ -464,25 +461,9 @@ class _OKFNPayry32SolicitarSMSWidgetState
 
                                     _shouldSetState = true;
                                     if (getJsonField(
-                                      _model.smsCloudFunction!.jsonBody,
+                                      _model.dimoCF!.jsonBody,
                                       r'''$.success''',
                                     )) {
-                                      await SmsHistoryRecord.collection
-                                          .doc()
-                                          .set({
-                                        ...createSmsHistoryRecordData(
-                                          smsId:
-                                              _model.createdSms?.reference.id,
-                                          status: _model.createdSms?.status,
-                                          modifiedBy: currentUserUid,
-                                        ),
-                                        ...mapToFirestore(
-                                          {
-                                            'created_time':
-                                                FieldValue.serverTimestamp(),
-                                          },
-                                        ),
-                                      });
                                       await showDialog(
                                         context: context,
                                         builder: (alertDialogContext) {
@@ -507,8 +488,8 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                         'OK_FN_Payry_36_detallesdeSMS',
                                         context.mounted,
                                         queryParameters: {
-                                          'smsDocReference': serializeParam(
-                                            _model.createdSms?.reference,
+                                          'registraCobroRef': serializeParam(
+                                            _model.dimoResp?.reference,
                                             ParamType.DocumentReference,
                                           ),
                                           'createRefund': serializeParam(
@@ -521,15 +502,14 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                       if (_shouldSetState) setState(() {});
                                       return;
                                     } else {
-                                      await _model.createdSms!.reference
-                                          .delete();
+                                      await _model.dimoResp!.reference.delete();
                                       await showDialog(
                                         context: context,
                                         builder: (alertDialogContext) {
                                           return AlertDialog(
                                             title: Text('Error'),
                                             content: Text(getJsonField(
-                                              _model.smsCloudFunction!.jsonBody,
+                                              _model.dimoCF!.jsonBody,
                                               r'''$.message''',
                                             ).toString()),
                                             actions: [
@@ -544,7 +524,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                       );
                                       if (!functions.includeTheString(
                                           getJsonField(
-                                            _model.smsCloudFunction!.jsonBody,
+                                            _model.dimoCF!.jsonBody,
                                             r'''$.message''',
                                           ).toString(),
                                           'expirada')!) {

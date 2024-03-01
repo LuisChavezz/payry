@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
+import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -9,7 +10,9 @@ import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
@@ -19,12 +22,14 @@ export 'o_k_f_n_payry31_detallesde_q_r_model.dart';
 class OKFNPayry31DetallesdeQRWidget extends StatefulWidget {
   const OKFNPayry31DetallesdeQRWidget({
     super.key,
-    required this.qrDocReference,
+    required this.registraCobroRef,
     required this.createRefund,
+    this.detallesCobroRef,
   });
 
-  final DocumentReference? qrDocReference;
+  final DocumentReference? registraCobroRef;
   final bool? createRefund;
+  final DocumentReference? detallesCobroRef;
 
   @override
   State<OKFNPayry31DetallesdeQRWidget> createState() =>
@@ -41,6 +46,22 @@ class _OKFNPayry31DetallesdeQRWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => OKFNPayry31DetallesdeQRModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (widget.detallesCobroRef != null) {
+        _model.detallesCobro = await queryDetallesCobroRecordOnce(
+          queryBuilder: (detallesCobroRecord) => detallesCobroRecord.where(
+            'registraCobroId',
+            isEqualTo: widget.registraCobroRef?.id,
+          ),
+          singleRecord: true,
+        ).then((s) => s.firstOrNull);
+        return;
+      } else {
+        return;
+      }
+    });
   }
 
   @override
@@ -54,8 +75,8 @@ class _OKFNPayry31DetallesdeQRWidgetState
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return StreamBuilder<QrRecord>(
-      stream: QrRecord.getDocument(widget.qrDocReference!),
+    return StreamBuilder<RegistraCobroRecord>(
+      stream: RegistraCobroRecord.getDocument(widget.registraCobroRef!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -74,7 +95,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
             ),
           );
         }
-        final oKFNPayry31DetallesdeQRQrRecord = snapshot.data!;
+        final oKFNPayry31DetallesdeQRRegistraCobroRecord = snapshot.data!;
         return GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus
               ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -165,7 +186,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                           0.0, 0.0, 0.0, 8.0),
                                       child: Text(
                                         '${formatNumber(
-                                          oKFNPayry31DetallesdeQRQrRecord
+                                          oKFNPayry31DetallesdeQRRegistraCobroRecord
                                               .amount,
                                           formatType: FormatType.custom,
                                           currency: '\$',
@@ -184,13 +205,13 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                     Text(
                                       '${dateTimeFormat(
                                         'd MMM y',
-                                        oKFNPayry31DetallesdeQRQrRecord
+                                        oKFNPayry31DetallesdeQRRegistraCobroRecord
                                             .createdTime,
                                         locale: FFLocalizations.of(context)
                                             .languageCode,
                                       )} a las ${dateTimeFormat(
                                         'h:mm a',
-                                        oKFNPayry31DetallesdeQRQrRecord
+                                        oKFNPayry31DetallesdeQRRegistraCobroRecord
                                             .createdTime,
                                         locale: FFLocalizations.of(context)
                                             .languageCode,
@@ -264,7 +285,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                     .fromSTEB(
                                                         12.0, 0.0, 0.0, 0.0),
                                                 child: Text(
-                                                  oKFNPayry31DetallesdeQRQrRecord
+                                                  oKFNPayry31DetallesdeQRRegistraCobroRecord
                                                       .concept,
                                                   textAlign: TextAlign.end,
                                                   style: FlutterFlowTheme.of(
@@ -283,48 +304,51 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                           ],
                                         ),
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            20.0, 20.0, 20.0, 0.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              'Estatus',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmall
+                                      if (_model.detallesCobro?.reference !=
+                                          null)
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  20.0, 20.0, 20.0, 0.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                'Estatus',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                              ),
+                                              Expanded(
+                                                child: Text(
+                                                  _model.detallesCobro!.status!
+                                                      .name,
+                                                  textAlign: TextAlign.end,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Lexend',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primaryText,
+                                                                .accent3,
                                                       ),
-                                            ),
-                                            Expanded(
-                                              child: Text(
-                                                oKFNPayry31DetallesdeQRQrRecord
-                                                    .status,
-                                                textAlign: TextAlign.end,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Lexend',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .accent3,
-                                                        ),
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                      if (oKFNPayry31DetallesdeQRQrRecord
-                                          .hasIdRastreo())
+                                      if (_model.detallesCobro?.reference !=
+                                          null)
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
@@ -348,8 +372,8 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                               ),
                                               Expanded(
                                                 child: Text(
-                                                  oKFNPayry31DetallesdeQRQrRecord
-                                                      .idRastreo
+                                                  _model
+                                                      .detallesCobro!.idRastreo
                                                       .toString(),
                                                   textAlign: TextAlign.end,
                                                   style: FlutterFlowTheme.of(
@@ -367,8 +391,8 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                             ],
                                           ),
                                         ),
-                                      if (oKFNPayry31DetallesdeQRQrRecord
-                                          .hasClaveRastreo())
+                                      if (_model.detallesCobro?.reference !=
+                                          null)
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
@@ -398,7 +422,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                       .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                                   child: Text(
-                                                    oKFNPayry31DetallesdeQRQrRecord
+                                                    _model.detallesCobro!
                                                         .claveRastreo,
                                                     textAlign: TextAlign.end,
                                                     style: FlutterFlowTheme.of(
@@ -425,7 +449,8 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(8.0),
                                       child: Image.network(
-                                        oKFNPayry31DetallesdeQRQrRecord.qrUrl,
+                                        oKFNPayry31DetallesdeQRRegistraCobroRecord
+                                            .qrUrl,
                                         width: 300.0,
                                         height: 300.0,
                                         fit: BoxFit.cover,
@@ -491,8 +516,8 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                           onPressed: () async {
                                             await actions.shareImage(
                                               functions.imagePathToString(
-                                                  oKFNPayry31DetallesdeQRQrRecord
-                                                      .qrUrl)!,
+                                                  oKFNPayry31DetallesdeQRRegistraCobroRecord
+                                                      .shareableQrUrl)!,
                                             );
                                           },
                                         ),
@@ -527,7 +552,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                           onPressed: () async {
                                             await launchURL(
                                                 functions.imagePathToString(
-                                                    oKFNPayry31DetallesdeQRQrRecord
+                                                    oKFNPayry31DetallesdeQRRegistraCobroRecord
                                                         .qrUrl)!);
                                           },
                                         ),
@@ -562,9 +587,9 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                           ),
                                           showLoadingIndicator: true,
                                           onPressed:
-                                              (oKFNPayry31DetallesdeQRQrRecord
+                                              (oKFNPayry31DetallesdeQRRegistraCobroRecord
                                                           .status !=
-                                                      'PENDIENTE')
+                                                      PaymentStatus.PENDIENTE)
                                                   ? null
                                                   : () async {
                                                       var confirmDialogResponse =
@@ -600,11 +625,12 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                               ) ??
                                                               false;
                                                       if (confirmDialogResponse) {
-                                                        await oKFNPayry31DetallesdeQRQrRecord
+                                                        await oKFNPayry31DetallesdeQRRegistraCobroRecord
                                                             .reference
                                                             .update(
-                                                                createQrRecordData(
-                                                          status: 'CANCELADO',
+                                                                createRegistraCobroRecordData(
+                                                          status: PaymentStatus
+                                                              .CANCELADO,
                                                         ));
 
                                                         await QrHistoryRecord
@@ -613,7 +639,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                             .set({
                                                           ...createQrHistoryRecordData(
                                                             qrId:
-                                                                oKFNPayry31DetallesdeQRQrRecord
+                                                                oKFNPayry31DetallesdeQRRegistraCobroRecord
                                                                     .reference
                                                                     .id,
                                                             status: 'CANCELADO',
@@ -687,173 +713,169 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                               size: 24.0,
                                             ),
                                             showLoadingIndicator: true,
-                                            onPressed:
-                                                ((oKFNPayry31DetallesdeQRQrRecord
-                                                                .status !=
-                                                            'PAGADO') ||
-                                                        (!widget.createRefund! &&
-                                                            !valueOrDefault<
-                                                                    bool>(
-                                                                currentUserDocument
-                                                                    ?.isAdmin,
-                                                                false)))
-                                                    ? null
-                                                    : () async {
-                                                        var _shouldSetState =
+                                            onPressed: ((_model.detallesCobro
+                                                            ?.status !=
+                                                        PaymentStatus.PAGADO) ||
+                                                    (!widget.createRefund! &&
+                                                        !valueOrDefault<bool>(
+                                                            currentUserDocument
+                                                                ?.isAdmin,
+                                                            false)))
+                                                ? null
+                                                : () async {
+                                                    var _shouldSetState = false;
+                                                    var confirmDialogResponse =
+                                                        await showDialog<bool>(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return AlertDialog(
+                                                                  title: Text(
+                                                                      'Devolver QR'),
+                                                                  content: Text(
+                                                                      '¿Estás seguro de querer devolver el monto de este QR?'),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed: () => Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          false),
+                                                                      child: Text(
+                                                                          'No'),
+                                                                    ),
+                                                                    TextButton(
+                                                                      onPressed: () => Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          true),
+                                                                      child: Text(
+                                                                          'Si'),
+                                                                    ),
+                                                                  ],
+                                                                );
+                                                              },
+                                                            ) ??
                                                             false;
-                                                        var confirmDialogResponse =
-                                                            await showDialog<
-                                                                    bool>(
-                                                                  context:
-                                                                      context,
-                                                                  builder:
-                                                                      (alertDialogContext) {
-                                                                    return AlertDialog(
-                                                                      title: Text(
-                                                                          'Devolver QR'),
-                                                                      content: Text(
-                                                                          '¿Estás seguro de querer devolver el monto de este QR?'),
-                                                                      actions: [
-                                                                        TextButton(
-                                                                          onPressed: () => Navigator.pop(
-                                                                              alertDialogContext,
-                                                                              false),
-                                                                          child:
-                                                                              Text('No'),
-                                                                        ),
-                                                                        TextButton(
-                                                                          onPressed: () => Navigator.pop(
-                                                                              alertDialogContext,
-                                                                              true),
-                                                                          child:
-                                                                              Text('Si'),
-                                                                        ),
-                                                                      ],
-                                                                    );
-                                                                  },
-                                                                ) ??
-                                                                false;
-                                                        if (confirmDialogResponse) {
-                                                          try {
-                                                            final result =
-                                                                await FirebaseFunctions
-                                                                    .instance
-                                                                    .httpsCallable(
-                                                                        'refund')
-                                                                    .call({
-                                                              "token": FFAppState()
-                                                                  .serverToken,
-                                                              "id":
-                                                                  oKFNPayry31DetallesdeQRQrRecord
-                                                                      .reference
-                                                                      .id,
-                                                            });
-                                                            _model.refundCF =
-                                                                RefundCloudFunctionCallResponse(
-                                                              data: result.data,
-                                                              succeeded: true,
-                                                              resultAsString:
-                                                                  result.data
-                                                                      .toString(),
-                                                              jsonBody:
-                                                                  result.data,
-                                                            );
-                                                          } on FirebaseFunctionsException catch (error) {
-                                                            _model.refundCF =
-                                                                RefundCloudFunctionCallResponse(
-                                                              errorCode:
-                                                                  error.code,
-                                                              succeeded: false,
-                                                            );
-                                                          }
+                                                    if (confirmDialogResponse) {
+                                                      try {
+                                                        final result =
+                                                            await FirebaseFunctions
+                                                                .instance
+                                                                .httpsCallable(
+                                                                    'refund')
+                                                                .call({
+                                                          "token": FFAppState()
+                                                              .serverToken,
+                                                          "id": widget
+                                                              .detallesCobroRef
+                                                              ?.id,
+                                                          "test": true,
+                                                        });
+                                                        _model.refundCF =
+                                                            RefundCloudFunctionCallResponse(
+                                                          data: result.data,
+                                                          succeeded: true,
+                                                          resultAsString: result
+                                                              .data
+                                                              .toString(),
+                                                          jsonBody: result.data,
+                                                        );
+                                                      } on FirebaseFunctionsException catch (error) {
+                                                        _model.refundCF =
+                                                            RefundCloudFunctionCallResponse(
+                                                          errorCode: error.code,
+                                                          succeeded: false,
+                                                        );
+                                                      }
 
-                                                          _shouldSetState =
-                                                              true;
-                                                          if (getJsonField(
-                                                            _model.refundCF!
-                                                                .jsonBody,
-                                                            r'''$.success''',
-                                                          )) {
-                                                            await QrHistoryRecord
-                                                                .collection
-                                                                .doc()
-                                                                .set({
-                                                              ...createQrHistoryRecordData(
-                                                                qrId: oKFNPayry31DetallesdeQRQrRecord
-                                                                    .reference
-                                                                    .id,
-                                                                status:
-                                                                    'DEVUELTO',
-                                                                modifiedBy:
-                                                                    currentUserUid,
-                                                              ),
-                                                              ...mapToFirestore(
-                                                                {
-                                                                  'created_time':
-                                                                      FieldValue
-                                                                          .serverTimestamp(),
-                                                                },
-                                                              ),
-                                                            });
-                                                            await showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (alertDialogContext) {
-                                                                return AlertDialog(
-                                                                  title: Text(
-                                                                      'QR Devulto'),
-                                                                  content: Text(
-                                                                      'La devolución del QR se ha efectuado con éxito.'),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed:
-                                                                          () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                      child: Text(
-                                                                          'Ok'),
-                                                                    ),
-                                                                  ],
-                                                                );
-                                                              },
+                                                      _shouldSetState = true;
+                                                      if (getJsonField(
+                                                        _model
+                                                            .refundCF!.jsonBody,
+                                                        r'''$.success''',
+                                                      )) {
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'QR Devulto'),
+                                                              content: Text(
+                                                                  'La devolución del QR se ha efectuado con éxito.'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
                                                             );
-                                                            if (_shouldSetState)
-                                                              setState(() {});
-                                                            return;
-                                                          } else {
-                                                            await showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (alertDialogContext) {
-                                                                return AlertDialog(
-                                                                  title: Text(
-                                                                      'Error'),
-                                                                  content: Text(
-                                                                      'Ha ocurrido un error en ejecución de su solicitud.'),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed:
-                                                                          () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                      child: Text(
-                                                                          'Ok'),
-                                                                    ),
-                                                                  ],
-                                                                );
-                                                              },
+                                                          },
+                                                        );
+                                                        if (_shouldSetState)
+                                                          setState(() {});
+                                                        return;
+                                                      } else {
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title:
+                                                                  Text('Error'),
+                                                              content: Text(
+                                                                  'Ha ocurrido un error en ejecución de su solicitud.'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
                                                             );
-                                                            if (_shouldSetState)
-                                                              setState(() {});
-                                                            return;
-                                                          }
-                                                        } else {
+                                                          },
+                                                        );
+                                                        if (!functions
+                                                            .includeTheString(
+                                                                getJsonField(
+                                                                  _model
+                                                                      .refundCF!
+                                                                      .jsonBody,
+                                                                  r'''$.message''',
+                                                                ).toString(),
+                                                                'expirada')!) {
                                                           if (_shouldSetState)
                                                             setState(() {});
                                                           return;
                                                         }
 
+                                                        GoRouter.of(context)
+                                                            .prepareAuthEvent();
+                                                        await authManager
+                                                            .signOut();
+                                                        GoRouter.of(context)
+                                                            .clearRedirectLocation();
+
+                                                        context.goNamedAuth(
+                                                            'OK_FN_Payry_08_iniciasesion',
+                                                            context.mounted);
+
                                                         if (_shouldSetState)
                                                           setState(() {});
-                                                      },
+                                                        return;
+                                                      }
+                                                    } else {
+                                                      if (_shouldSetState)
+                                                        setState(() {});
+                                                      return;
+                                                    }
+
+                                                    if (_shouldSetState)
+                                                      setState(() {});
+                                                  },
                                           ),
                                         ),
                                         Text(
@@ -887,9 +909,9 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                           ),
                                           showLoadingIndicator: true,
                                           onPressed:
-                                              (oKFNPayry31DetallesdeQRQrRecord
+                                              (oKFNPayry31DetallesdeQRRegistraCobroRecord
                                                           .status !=
-                                                      'PENDIENTE')
+                                                      PaymentStatus.PENDIENTE)
                                                   ? null
                                                   : () async {
                                                       var _shouldSetState =
@@ -906,16 +928,16 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                                     'crearMovimientoQR')
                                                                 .call({
                                                           "monto":
-                                                              oKFNPayry31DetallesdeQRQrRecord
+                                                              oKFNPayry31DetallesdeQRRegistraCobroRecord
                                                                   .amount
                                                                   .toString(),
                                                           "concepto":
-                                                              oKFNPayry31DetallesdeQRQrRecord
+                                                              oKFNPayry31DetallesdeQRRegistraCobroRecord
                                                                   .concept,
                                                           "token": FFAppState()
                                                               .serverToken,
                                                           "qrId":
-                                                              oKFNPayry31DetallesdeQRQrRecord
+                                                              oKFNPayry31DetallesdeQRRegistraCobroRecord
                                                                   .reference.id,
                                                         });
                                                         _model.generateQrResp =
@@ -942,9 +964,9 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                         r'''$.success''',
                                                       )) {
                                                         await widget
-                                                            .qrDocReference!
+                                                            .registraCobroRef!
                                                             .update(
-                                                                createQrRecordData(
+                                                                createRegistraCobroRecordData(
                                                           qrUrl: getJsonField(
                                                             _model
                                                                 .generateQrResp

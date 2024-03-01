@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
+import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -56,9 +57,9 @@ class OKFNPayry27SolicitarQRModel
   }
 
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
-  QrRecord? createdQR;
-  // Stores action output result for [Cloud Function - crearMovimientoQR] action in Button widget.
-  CrearMovimientoQRCloudFunctionCallResponse? qrCloundFunction;
+  RegistraCobroRecord? codiResp;
+  // Stores action output result for [Cloud Function - generateCodi] action in Button widget.
+  GenerateCodiCloudFunctionCallResponse? codiCF;
 
   /// Initialization and disposal methods.
 

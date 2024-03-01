@@ -15,7 +15,7 @@
       ]
     },
     {
-      "collectionGroup": "qr",
+      "collectionGroup": "detallesCobro",
       "queryScope": "COLLECTION",
       "fields": [
         {
@@ -27,21 +27,7 @@
           "order": "ASCENDING"
         },
         {
-          "fieldPath": "created_time",
-          "order": "DESCENDING"
-        }
-      ]
-    },
-    {
-      "collectionGroup": "sms",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "admin_id",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "uid",
+          "fieldPath": "type",
           "order": "ASCENDING"
         },
         {

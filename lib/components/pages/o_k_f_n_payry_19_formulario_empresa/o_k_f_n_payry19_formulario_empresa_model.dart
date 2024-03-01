@@ -168,6 +168,10 @@ class OKFNPayry19FormularioEmpresaModel
   // State field(s) for giroDropDown widget.
   String? giroDropDownValue;
   FormFieldController<String>? giroDropDownValueController;
+  // State field(s) for CouponField widget.
+  FocusNode? couponFieldFocusNode;
+  TextEditingController? couponFieldController;
+  String? Function(BuildContext, String?)? couponFieldControllerValidator;
   // Stores action output result for [Cloud Function - saveCompany] action in Button widget.
   SaveCompanyCloudFunctionCallResponse? cloudFunctionCompany;
   // Stores action output result for [Cloud Function - generateToken] action in Button widget.
@@ -218,6 +222,9 @@ class OKFNPayry19FormularioEmpresaModel
 
     rFCFieldFocusNode?.dispose();
     rFCFieldController?.dispose();
+
+    couponFieldFocusNode?.dispose();
+    couponFieldController?.dispose();
   }
 
   /// Action blocks are added here.

@@ -448,12 +448,13 @@ class _OKFNPayry08IniciasesionWidgetState
                                                         await FirebaseFunctions
                                                             .instance
                                                             .httpsCallable(
-                                                                'generateToken')
+                                                                'generateTokenTest')
                                                             .call({
                                                       "uid": currentUserUid,
+                                                      "test": true,
                                                     });
-                                                    _model.cloudFunctionGT =
-                                                        GenerateTokenCloudFunctionCallResponse(
+                                                    _model.genTokenTest =
+                                                        GenerateTokenTestCloudFunctionCallResponse(
                                                       data: result.data,
                                                       succeeded: true,
                                                       resultAsString: result
@@ -462,15 +463,15 @@ class _OKFNPayry08IniciasesionWidgetState
                                                       jsonBody: result.data,
                                                     );
                                                   } on FirebaseFunctionsException catch (error) {
-                                                    _model.cloudFunctionGT =
-                                                        GenerateTokenCloudFunctionCallResponse(
+                                                    _model.genTokenTest =
+                                                        GenerateTokenTestCloudFunctionCallResponse(
                                                       errorCode: error.code,
                                                       succeeded: false,
                                                     );
                                                   }
 
                                                   FFAppState().serverToken =
-                                                      _model.cloudFunctionGT!
+                                                      _model.genTokenTest!
                                                           .jsonBody!
                                                           .toString();
                                                   if (_model

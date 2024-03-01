@@ -1,9 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/components/empty_list/empty_list_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -60,9 +62,9 @@ class _OKFNPayry35HistorialSMSWidgetState
     context.watch<FFAppState>();
 
     return AuthUserStreamWidget(
-      builder: (context) => StreamBuilder<List<SmsRecord>>(
-        stream: querySmsRecord(
-          queryBuilder: (smsRecord) => smsRecord
+      builder: (context) => StreamBuilder<List<DetallesCobroRecord>>(
+        stream: queryDetallesCobroRecord(
+          queryBuilder: (detallesCobroRecord) => detallesCobroRecord
               .where(
                 'admin_id',
                 isEqualTo: valueOrDefault(currentUserDocument?.adminId, ''),
@@ -74,6 +76,10 @@ class _OKFNPayry35HistorialSMSWidgetState
                             currentUserDocument?.isAdmin, false)
                     ? null
                     : currentUserUid,
+              )
+              .where(
+                'type',
+                isEqualTo: PaymentType.SMS.serialize(),
               )
               .orderBy('created_time', descending: true),
         ),
@@ -95,7 +101,8 @@ class _OKFNPayry35HistorialSMSWidgetState
               ),
             );
           }
-          List<SmsRecord> oKFNPayry35HistorialSMSSmsRecordList = snapshot.data!;
+          List<DetallesCobroRecord>
+              oKFNPayry35HistorialSMSDetallesCobroRecordList = snapshot.data!;
           return GestureDetector(
             onTap: () => _model.unfocusNode.canRequestFocus
                 ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -261,7 +268,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                     onTap: () async {
                                       safeSetState(() {
                                         _model.simpleSearchResults = TextSearch(
-                                          oKFNPayry35HistorialSMSSmsRecordList
+                                          oKFNPayry35HistorialSMSDetallesCobroRecordList
                                               .map(
                                                 (record) =>
                                                     TextSearchItem.fromTerms(
@@ -335,7 +342,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                 child: Builder(
                                   builder: (context) {
                                     final smsItem1 =
-                                        oKFNPayry35HistorialSMSSmsRecordList
+                                        oKFNPayry35HistorialSMSDetallesCobroRecordList
                                             .toList();
                                     if (smsItem1.isEmpty) {
                                       return Container(
@@ -369,15 +376,23 @@ class _OKFNPayry35HistorialSMSWidgetState
                                               context.pushNamed(
                                                 'OK_FN_Payry_36_detallesdeSMS',
                                                 queryParameters: {
-                                                  'smsDocReference':
+                                                  'registraCobroRef':
                                                       serializeParam(
-                                                    smsItem1Item.reference,
+                                                    functions
+                                                        .jsonPathToRegistraCobroDocRef(
+                                                            smsItem1Item
+                                                                .registraCobroId),
                                                     ParamType.DocumentReference,
                                                   ),
                                                   'createRefund':
                                                       serializeParam(
                                                     widget.createRefund,
                                                     ParamType.bool,
+                                                  ),
+                                                  'detallesCobroRef':
+                                                      serializeParam(
+                                                    smsItem1Item.reference,
+                                                    ParamType.DocumentReference,
                                                   ),
                                                 }.withoutNulls,
                                               );
@@ -478,7 +493,8 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                               ),
                                                               Text(
                                                                 smsItem1Item
-                                                                    .status,
+                                                                    .status!
+                                                                    .name,
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -570,15 +586,23 @@ class _OKFNPayry35HistorialSMSWidgetState
                                               context.pushNamed(
                                                 'OK_FN_Payry_36_detallesdeSMS',
                                                 queryParameters: {
-                                                  'smsDocReference':
+                                                  'registraCobroRef':
                                                       serializeParam(
-                                                    smsItem2Item.reference,
+                                                    functions
+                                                        .jsonPathToRegistraCobroDocRef(
+                                                            smsItem2Item
+                                                                .registraCobroId),
                                                     ParamType.DocumentReference,
                                                   ),
                                                   'createRefund':
                                                       serializeParam(
                                                     widget.createRefund,
                                                     ParamType.bool,
+                                                  ),
+                                                  'detallesCobroRef':
+                                                      serializeParam(
+                                                    smsItem2Item.reference,
+                                                    ParamType.DocumentReference,
                                                   ),
                                                 }.withoutNulls,
                                               );
@@ -679,7 +703,8 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                               ),
                                                               Text(
                                                                 smsItem2Item
-                                                                    .status,
+                                                                    .status!
+                                                                    .name,
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
