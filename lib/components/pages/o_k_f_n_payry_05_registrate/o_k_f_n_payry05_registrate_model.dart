@@ -84,7 +84,7 @@ class OKFNPayry05RegistrateModel
   // Stores action output result for [Cloud Function - verifyEmail] action in Button widget.
   VerifyEmailCloudFunctionCallResponse? cfve;
   // Stores action output result for [Cloud Function - generateToken] action in Button widget.
-  GenerateTokenCloudFunctionCallResponse? cloudFunctionGT;
+  GenerateTokenCloudFunctionCallResponse? genToken;
   // Stores action output result for [Cloud Function - sendWelcomeEmail] action in Button widget.
   SendWelcomeEmailCloudFunctionCallResponse? cloudFunctiona55;
   // State field(s) for acceptCheck widget.

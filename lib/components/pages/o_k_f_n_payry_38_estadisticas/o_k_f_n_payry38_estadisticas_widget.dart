@@ -328,6 +328,7 @@ class _OKFNPayry38EstadisticasWidgetState
                                     FFLocalizations.of(context).languageCode,
                               )}T23:59:59.000Z',
                               "token": FFAppState().serverToken,
+                              "test": false,
                             });
                             _model.statisticsResponse =
                                 GetStatisticsCloudFunctionCallResponse(

@@ -3,11 +3,16 @@ const admin = require("firebase-admin");
 const fetch = require("node-fetch");
 
 exports.getStatistics = functions.https.onCall(async (data, context) => {
-  //
-  const { startDate, endDate, token } = data;
+  const { startDate, endDate, token, test } = data;
+
+  // Test url for the API
+  const testUrl = "https://qa-api.payry.mx/statistics";
+
+  // Prod url for the API
+  const prodUrl = "https://api.payry.mx/statistics";
 
   try {
-    const req_api = await fetch("https://api.payry.mx/statistics", {
+    const req_api = await fetch(test ? testUrl : prodUrl, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,

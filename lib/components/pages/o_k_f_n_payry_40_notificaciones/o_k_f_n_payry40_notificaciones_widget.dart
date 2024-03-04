@@ -184,40 +184,99 @@ class _OKFNPayry40NotificacionesWidgetState
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
-                                              setState(() {
-                                                _model.notificationRedirect =
-                                                    functions
-                                                        .notificationRedirect(
+                                              if (notificationItemItem
+                                                  .redirect) {
+                                                if (functions.includeTheString(
+                                                    notificationItemItem
+                                                        .subject,
+                                                    'CoDi')!) {
+                                                  context.pushNamed(
+                                                    'OK_FN_Payry_31_detallesdeQR',
+                                                    queryParameters: {
+                                                      'registraCobroRef':
+                                                          serializeParam(
+                                                        functions.jsonPathToRegistraCobroDocRef(
                                                             notificationItemItem
-                                                                .redirectUrl,
+                                                                .registraCobroRef),
+                                                        ParamType
+                                                            .DocumentReference,
+                                                      ),
+                                                      'createRefund':
+                                                          serializeParam(
+                                                        stackUserPermissionsRecord
+                                                            ?.createRefunds,
+                                                        ParamType.bool,
+                                                      ),
+                                                      'detallesCobroRef':
+                                                          serializeParam(
+                                                        functions.jsonPathToDetallesCobroRef(
                                                             notificationItemItem
-                                                                .subject);
-                                              });
-                                              if (getJsonField(
-                                                _model.notificationRedirect,
-                                                r'''$.redirect''',
-                                              )) {
-                                                if (functions.jsonPathToString(
-                                                        getJsonField(
-                                                      _model
-                                                          .notificationRedirect,
-                                                      r'''$.type''',
-                                                    ).toString()) ==
-                                                    'codi') {
+                                                                .detallesCobroRef),
+                                                        ParamType
+                                                            .DocumentReference,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
+
                                                   return;
                                                 } else {
                                                   if (functions
-                                                          .jsonPathToString(
-                                                              getJsonField(
-                                                        _model
-                                                            .notificationRedirect,
-                                                        r'''$.type''',
-                                                      ).toString()) ==
-                                                      'DiMo') {
-                                                    return;
+                                                      .includeTheString(
+                                                          notificationItemItem
+                                                              .subject,
+                                                          'DiMo')!) {
+                                                    context.pushNamed(
+                                                      'OK_FN_Payry_36_detallesdeSMS',
+                                                      queryParameters: {
+                                                        'registraCobroRef':
+                                                            serializeParam(
+                                                          functions.jsonPathToRegistraCobroDocRef(functions
+                                                              .jsonPathToRegistraCobroDocRef(
+                                                                  notificationItemItem
+                                                                      .registraCobroRef)
+                                                              ?.id),
+                                                          ParamType
+                                                              .DocumentReference,
+                                                        ),
+                                                        'createRefund':
+                                                            serializeParam(
+                                                          stackUserPermissionsRecord
+                                                              ?.createRefunds,
+                                                          ParamType.bool,
+                                                        ),
+                                                        'detallesCobroRef':
+                                                            serializeParam(
+                                                          functions.jsonPathToDetallesCobroRef(
+                                                              notificationItemItem
+                                                                  .detallesCobroRef),
+                                                          ParamType
+                                                              .DocumentReference,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
                                                   } else {
-                                                    return;
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return AlertDialog(
+                                                          title: Text('Error'),
+                                                          content: Text(
+                                                              'Hubo un error en la navegación, favor de reportar error con soporte.'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    );
                                                   }
+
+                                                  return;
                                                 }
                                               } else {
                                                 return;

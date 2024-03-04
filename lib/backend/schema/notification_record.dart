@@ -37,23 +37,35 @@ class NotificationRecord extends FirestoreRecord {
   String get receiverId => _receiverId ?? '';
   bool hasReceiverId() => _receiverId != null;
 
-  // "redirect_url" field.
-  String? _redirectUrl;
-  String get redirectUrl => _redirectUrl ?? '';
-  bool hasRedirectUrl() => _redirectUrl != null;
-
   // "subject" field.
   String? _subject;
   String get subject => _subject ?? '';
   bool hasSubject() => _subject != null;
+
+  // "redirect" field.
+  bool? _redirect;
+  bool get redirect => _redirect ?? false;
+  bool hasRedirect() => _redirect != null;
+
+  // "detallesCobroRef" field.
+  String? _detallesCobroRef;
+  String get detallesCobroRef => _detallesCobroRef ?? '';
+  bool hasDetallesCobroRef() => _detallesCobroRef != null;
+
+  // "registraCobroRef" field.
+  String? _registraCobroRef;
+  String get registraCobroRef => _registraCobroRef ?? '';
+  bool hasRegistraCobroRef() => _registraCobroRef != null;
 
   void _initializeFields() {
     _content = snapshotData['content'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
     _isRead = snapshotData['is_read'] as bool?;
     _receiverId = snapshotData['receiver_id'] as String?;
-    _redirectUrl = snapshotData['redirect_url'] as String?;
     _subject = snapshotData['subject'] as String?;
+    _redirect = snapshotData['redirect'] as bool?;
+    _detallesCobroRef = snapshotData['detallesCobroRef'] as String?;
+    _registraCobroRef = snapshotData['registraCobroRef'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -95,8 +107,10 @@ Map<String, dynamic> createNotificationRecordData({
   DateTime? createdTime,
   bool? isRead,
   String? receiverId,
-  String? redirectUrl,
   String? subject,
+  bool? redirect,
+  String? detallesCobroRef,
+  String? registraCobroRef,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -104,8 +118,10 @@ Map<String, dynamic> createNotificationRecordData({
       'created_time': createdTime,
       'is_read': isRead,
       'receiver_id': receiverId,
-      'redirect_url': redirectUrl,
       'subject': subject,
+      'redirect': redirect,
+      'detallesCobroRef': detallesCobroRef,
+      'registraCobroRef': registraCobroRef,
     }.withoutNulls,
   );
 
@@ -122,8 +138,10 @@ class NotificationRecordDocumentEquality
         e1?.createdTime == e2?.createdTime &&
         e1?.isRead == e2?.isRead &&
         e1?.receiverId == e2?.receiverId &&
-        e1?.redirectUrl == e2?.redirectUrl &&
-        e1?.subject == e2?.subject;
+        e1?.subject == e2?.subject &&
+        e1?.redirect == e2?.redirect &&
+        e1?.detallesCobroRef == e2?.detallesCobroRef &&
+        e1?.registraCobroRef == e2?.registraCobroRef;
   }
 
   @override
@@ -132,8 +150,10 @@ class NotificationRecordDocumentEquality
         e?.createdTime,
         e?.isRead,
         e?.receiverId,
-        e?.redirectUrl,
-        e?.subject
+        e?.subject,
+        e?.redirect,
+        e?.detallesCobroRef,
+        e?.registraCobroRef
       ]);
 
   @override

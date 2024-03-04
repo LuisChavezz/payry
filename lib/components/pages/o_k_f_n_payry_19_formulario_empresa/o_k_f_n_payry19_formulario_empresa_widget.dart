@@ -2090,8 +2090,9 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                           'generateToken')
                                                       .call({
                                                 "uid": currentUserUid,
+                                                "test": false,
                                               });
-                                              _model.cloudFunctionGT =
+                                              _model.genToken =
                                                   GenerateTokenCloudFunctionCallResponse(
                                                 data: result.data,
                                                 succeeded: true,
@@ -2100,7 +2101,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 jsonBody: result.data,
                                               );
                                             } on FirebaseFunctionsException catch (error) {
-                                              _model.cloudFunctionGT =
+                                              _model.genToken =
                                                   GenerateTokenCloudFunctionCallResponse(
                                                 errorCode: error.code,
                                                 succeeded: false,
@@ -2109,7 +2110,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
 
                                             _shouldSetState = true;
                                             FFAppState().serverToken = _model
-                                                .cloudFunctionGT!.jsonBody!
+                                                .genToken!.jsonBody!
                                                 .toString();
                                             if (_shouldSetState)
                                               setState(() {});

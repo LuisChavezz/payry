@@ -49,7 +49,6 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
       setState(() => _loading = true);
     }
     try {
-      // print(message.data);
       final initialPage = message.data['initialPage'] as String; // Default FF line
       // 4fcTl1uwbzCqPEZNsanc
 
@@ -238,6 +237,20 @@ final parametersBuilderMap =
   'testPage': (data) async => ParameterData(
         allParams: {
           'docId': getParameter<String>(data, 'docId'),
+        },
+      ),
+  'OK_FN_Payry_31_detallesdeQRTemp': (data) async => ParameterData(
+        allParams: {
+          'registraCobroRef':
+              getParameter<DocumentReference>(data, 'registraCobroRef'),
+          'createRefund': getParameter<bool>(data, 'createRefund'),
+        },
+      ),
+  'OK_FN_Payry_36_detallesdeSMSTemp': (data) async => ParameterData(
+        allParams: {
+          'registraCobroRef':
+              getParameter<DocumentReference>(data, 'registraCobroRef'),
+          'createRefund': getParameter<bool>(data, 'createRefund'),
         },
       ),
 };

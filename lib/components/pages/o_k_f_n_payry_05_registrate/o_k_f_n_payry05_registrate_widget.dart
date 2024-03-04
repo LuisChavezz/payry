@@ -545,8 +545,9 @@ class _OKFNPayry05RegistrateWidgetState
                                                           'generateToken')
                                                       .call({
                                                 "uid": currentUserUid,
+                                                "test": false,
                                               });
-                                              _model.cloudFunctionGT =
+                                              _model.genToken =
                                                   GenerateTokenCloudFunctionCallResponse(
                                                 data: result.data,
                                                 succeeded: true,
@@ -555,7 +556,7 @@ class _OKFNPayry05RegistrateWidgetState
                                                 jsonBody: result.data,
                                               );
                                             } on FirebaseFunctionsException catch (error) {
-                                              _model.cloudFunctionGT =
+                                              _model.genToken =
                                                   GenerateTokenCloudFunctionCallResponse(
                                                 errorCode: error.code,
                                                 succeeded: false,
@@ -564,7 +565,7 @@ class _OKFNPayry05RegistrateWidgetState
 
                                             _shouldSetState = true;
                                             FFAppState().serverToken = _model
-                                                .cloudFunctionGT!.jsonBody!
+                                                .genToken!.jsonBody!
                                                 .toString();
                                             FFAppState().tutorialDialogs = true;
 

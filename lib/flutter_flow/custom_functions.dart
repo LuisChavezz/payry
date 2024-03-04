@@ -151,3 +151,11 @@ DocumentReference? jsonPathToRegistraCobroDocRef(String? id) {
     throw e;
   }
 }
+
+DocumentReference? jsonPathToDetallesCobroRef(String? id) {
+  try {
+    return FirebaseFirestore.instance.collection('detallesCobro').doc(id);
+  } catch (e) {
+    throw e;
+  }
+}

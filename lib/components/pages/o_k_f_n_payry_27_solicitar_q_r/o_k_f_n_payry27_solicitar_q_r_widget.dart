@@ -335,7 +335,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                                           .httpsCallable('generateCodi')
                                           .call({
                                         "id": _model.codiResp!.reference.id,
-                                        "test": true,
+                                        "test": false,
                                         "token": FFAppState().serverToken,
                                       });
                                       _model.codiCF =
@@ -358,28 +358,11 @@ class _OKFNPayry27SolicitarQRWidgetState
                                       _model.codiCF!.jsonBody,
                                       r'''$.success''',
                                     )) {
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: Text('Codi reference'),
-                                            content: Text(
-                                                _model.codiResp!.reference.id),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
                                       if (Navigator.of(context).canPop()) {
                                         context.pop();
                                       }
                                       context.pushNamedAuth(
-                                        'OK_FN_Payry_31_detallesdeQR',
+                                        'OK_FN_Payry_31_detallesdeQRTemp',
                                         context.mounted,
                                         queryParameters: {
                                           'registraCobroRef': serializeParam(
@@ -387,7 +370,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                                             ParamType.DocumentReference,
                                           ),
                                           'createRefund': serializeParam(
-                                            widget.createRefund,
+                                            false,
                                             ParamType.bool,
                                           ),
                                         }.withoutNulls,
