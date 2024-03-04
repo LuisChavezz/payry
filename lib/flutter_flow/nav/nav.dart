@@ -414,6 +414,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => TestPageWidget(
                 docId: params.getParam('docId', ParamType.String),
               ),
+            ),
+            FFRoute(
+              name: 'OK_FN_Payry_31_detallesdeQRTemp',
+              path: 'qrdetailstemp',
+              requireAuth: true,
+              builder: (context, params) => OKFNPayry31DetallesdeQRTempWidget(
+                registraCobroRef: params.getParam('registraCobroRef',
+                    ParamType.DocumentReference, false, ['registraCobro']),
+                createRefund: params.getParam('createRefund', ParamType.bool),
+              ),
+            ),
+            FFRoute(
+              name: 'OK_FN_Payry_36_detallesdeSMSTemp',
+              path: 'smsdetailstemp',
+              requireAuth: true,
+              builder: (context, params) => OKFNPayry36DetallesdeSMSTempWidget(
+                registraCobroRef: params.getParam('registraCobroRef',
+                    ParamType.DocumentReference, false, ['registraCobro']),
+                createRefund: params.getParam('createRefund', ParamType.bool),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

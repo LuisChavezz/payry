@@ -13,51 +13,6 @@ class TestCloudFunctionCloudFunctionCallResponse {
   String? data;
 }
 
-class CrearMovimientoQRCloudFunctionCallResponse {
-  CrearMovimientoQRCloudFunctionCallResponse({
-    this.errorCode,
-    this.succeeded,
-    this.jsonBody,
-    this.resultAsString,
-    this.data,
-  });
-  String? errorCode;
-  bool? succeeded;
-  dynamic jsonBody;
-  String? resultAsString;
-  dynamic data;
-}
-
-class CrearMovimientoSMSCloudFunctionCallResponse {
-  CrearMovimientoSMSCloudFunctionCallResponse({
-    this.errorCode,
-    this.succeeded,
-    this.jsonBody,
-    this.resultAsString,
-    this.data,
-  });
-  String? errorCode;
-  bool? succeeded;
-  dynamic jsonBody;
-  String? resultAsString;
-  dynamic data;
-}
-
-class GenerateTokenCloudFunctionCallResponse {
-  GenerateTokenCloudFunctionCallResponse({
-    this.errorCode,
-    this.succeeded,
-    this.jsonBody,
-    this.resultAsString,
-    this.data,
-  });
-  String? errorCode;
-  bool? succeeded;
-  dynamic jsonBody;
-  String? resultAsString;
-  String? data;
-}
-
 class ObtenerMiscCompanyCloudFunctionCallResponse {
   ObtenerMiscCompanyCloudFunctionCallResponse({
     this.errorCode,
@@ -207,8 +162,8 @@ class GenerateCodiCloudFunctionCallResponse {
   dynamic data;
 }
 
-class GenerateTokenTestCloudFunctionCallResponse {
-  GenerateTokenTestCloudFunctionCallResponse({
+class GenerateTokenCloudFunctionCallResponse {
+  GenerateTokenCloudFunctionCallResponse({
     this.errorCode,
     this.succeeded,
     this.jsonBody,

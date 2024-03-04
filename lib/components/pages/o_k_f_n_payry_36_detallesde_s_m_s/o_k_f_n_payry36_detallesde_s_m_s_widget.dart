@@ -9,9 +9,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'o_k_f_n_payry36_detallesde_s_m_s_model.dart';
@@ -44,22 +42,6 @@ class _OKFNPayry36DetallesdeSMSWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => OKFNPayry36DetallesdeSMSModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (widget.detallesCobroRef != null) {
-        _model.detallesCobro = await queryDetallesCobroRecordOnce(
-          queryBuilder: (detallesCobroRecord) => detallesCobroRecord.where(
-            'registraCobroId',
-            isEqualTo: widget.registraCobroRef?.id,
-          ),
-          singleRecord: true,
-        ).then((s) => s.firstOrNull);
-        return;
-      } else {
-        return;
-      }
-    });
   }
 
   @override
@@ -143,121 +125,187 @@ class _OKFNPayry36DetallesdeSMSWidgetState
               top: true,
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 18.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                        child: Container(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [Color(0xFF965EBE), Color(0xFF601C80)],
-                              stops: [0.0, 1.0],
-                              begin: AlignmentDirectional(-1.0, 0.0),
-                              end: AlignmentDirectional(1.0, 0),
-                            ),
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(0.0),
-                              bottomRight: Radius.circular(0.0),
-                              topLeft: Radius.circular(16.0),
-                              topRight: Radius.circular(16.0),
+                child: StreamBuilder<DetallesCobroRecord>(
+                  stream:
+                      DetallesCobroRecord.getDocument(widget.detallesCobroRef!),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 40.0,
+                          height: 40.0,
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              FlutterFlowTheme.of(context).accent3,
                             ),
                           ),
-                          child: Padding(
+                        ),
+                      );
+                    }
+                    final columnDetallesCobroRecord = snapshot.data!;
+                    return SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                12.0, 40.0, 12.0, 40.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Column(
+                                0.0, 12.0, 0.0, 0.0),
+                            child: Container(
+                              width: MediaQuery.sizeOf(context).width * 1.0,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Color(0xFF965EBE),
+                                    Color(0xFF601C80)
+                                  ],
+                                  stops: [0.0, 1.0],
+                                  begin: AlignmentDirectional(-1.0, 0.0),
+                                  end: AlignmentDirectional(1.0, 0),
+                                ),
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(0.0),
+                                  bottomRight: Radius.circular(0.0),
+                                  topLeft: Radius.circular(16.0),
+                                  topRight: Radius.circular(16.0),
+                                ),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    12.0, 40.0, 12.0, 40.0),
+                                child: Column(
                                   mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 8.0),
-                                      child: Text(
-                                        '${formatNumber(
-                                          oKFNPayry36DetallesdeSMSRegistraCobroRecord
-                                              .amount,
-                                          formatType: FormatType.custom,
-                                          currency: '\$',
-                                          format: '#,##0.00##',
-                                          locale: 'es_MX',
-                                        )} MXN',
-                                        textAlign: TextAlign.center,
-                                        style: FlutterFlowTheme.of(context)
-                                            .headlineLarge
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color: Colors.white,
-                                            ),
-                                      ),
-                                    ),
-                                    Text(
-                                      '${dateTimeFormat(
-                                        'd MMM y',
-                                        oKFNPayry36DetallesdeSMSRegistraCobroRecord
-                                            .createdTime,
-                                        locale: FFLocalizations.of(context)
-                                            .languageCode,
-                                      )} a las ${dateTimeFormat(
-                                        'h:mm a',
-                                        oKFNPayry36DetallesdeSMSRegistraCobroRecord
-                                            .createdTime,
-                                        locale: FFLocalizations.of(context)
-                                            .languageCode,
-                                      )}',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodySmall
-                                          .override(
-                                            fontFamily: 'Lexend',
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.normal,
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 8.0),
+                                          child: Text(
+                                            '${formatNumber(
+                                              oKFNPayry36DetallesdeSMSRegistraCobroRecord
+                                                  .amount,
+                                              formatType: FormatType.custom,
+                                              currency: '\$',
+                                              format: '#,##0.00##',
+                                              locale: 'es_MX',
+                                            )} MXN',
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context)
+                                                .headlineLarge
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  color: Colors.white,
+                                                ),
                                           ),
+                                        ),
+                                        Text(
+                                          '${dateTimeFormat(
+                                            'd MMM y',
+                                            oKFNPayry36DetallesdeSMSRegistraCobroRecord
+                                                .createdTime,
+                                            locale: FFLocalizations.of(context)
+                                                .languageCode,
+                                          )} a las ${dateTimeFormat(
+                                            'h:mm a',
+                                            oKFNPayry36DetallesdeSMSRegistraCobroRecord
+                                                .createdTime,
+                                            locale: FFLocalizations.of(context)
+                                                .languageCode,
+                                          )}',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodySmall
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                              ],
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                      Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 3.0,
-                              color: Color(0x33000000),
-                              offset: Offset(0.0, -1.0),
-                            )
-                          ],
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(16.0),
-                            bottomRight: Radius.circular(16.0),
-                            topLeft: Radius.circular(0.0),
-                            topRight: Radius.circular(0.0),
-                          ),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Column(
+                          Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 3.0,
+                                  color: Color(0x33000000),
+                                  offset: Offset(0.0, -1.0),
+                                )
+                              ],
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(16.0),
+                                bottomRight: Radius.circular(16.0),
+                                topLeft: Radius.circular(0.0),
+                                topRight: Radius.circular(0.0),
+                              ),
+                            ),
+                            child: Column(
                               mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  20.0, 20.0, 20.0, 0.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                'Concepto',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                              ),
+                                              Expanded(
+                                                child: Text(
+                                                  oKFNPayry36DetallesdeSMSRegistraCobroRecord
+                                                      .concept,
+                                                  textAlign: TextAlign.end,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent3,
+                                                      ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           20.0, 20.0, 20.0, 0.0),
@@ -267,7 +315,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            'Concepto',
+                                            'Número',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodySmall
                                                 .override(
@@ -280,7 +328,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                           Expanded(
                                             child: Text(
                                               oKFNPayry36DetallesdeSMSRegistraCobroRecord
-                                                  .concept,
+                                                  .phoneNumber,
                                               textAlign: TextAlign.end,
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -297,153 +345,124 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                         ],
                                       ),
                                     ),
-                                  ],
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      20.0, 20.0, 20.0, 0.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Número',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodySmall
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                      ),
-                                      Expanded(
-                                        child: Text(
-                                          oKFNPayry36DetallesdeSMSRegistraCobroRecord
-                                              .phoneNumber,
-                                          textAlign: TextAlign.end,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Lexend',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent3,
-                                              ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                if (_model.detallesCobro?.reference != null)
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        20.0, 20.0, 20.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'Estatus',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodySmall
-                                              .override(
-                                                fontFamily: 'Lexend',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                        ),
-                                        Expanded(
-                                          child: Text(
-                                            _model.detallesCobro!.status!.name,
-                                            textAlign: TextAlign.end,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .accent3,
-                                                ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                if (_model.detallesCobro?.reference != null)
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        20.0, 20.0, 20.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'ID de rastreo',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodySmall
-                                              .override(
-                                                fontFamily: 'Lexend',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                        ),
-                                        Expanded(
-                                          child: Text(
-                                            _model.detallesCobro!.idRastreo
-                                                .toString(),
-                                            textAlign: TextAlign.end,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .accent3,
-                                                ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                if (_model.detallesCobro?.reference != null)
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        20.0, 20.0, 20.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Clave de rastreo',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodySmall
-                                              .override(
-                                                fontFamily: 'Lexend',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                        ),
-                                        Expanded(
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 0.0, 0.0, 0.0),
-                                            child: Text(
-                                              _model
-                                                  .detallesCobro!.claveRastreo,
-                                              textAlign: TextAlign.end,
+                                    if (columnDetallesCobroRecord != null)
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20.0, 20.0, 20.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'Estatus',
                                               style:
                                                   FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                      ),
+                                            ),
+                                            Expanded(
+                                              child: Text(
+                                                columnDetallesCobroRecord
+                                                    .status!.name,
+                                                textAlign: TextAlign.end,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .accent3,
+                                                        ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    if (columnDetallesCobroRecord != null)
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20.0, 20.0, 20.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'ID de rastreo',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                      ),
+                                            ),
+                                            Expanded(
+                                              child: Text(
+                                                columnDetallesCobroRecord
+                                                    .idRastreo
+                                                    .toString(),
+                                                textAlign: TextAlign.end,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .accent3,
+                                                        ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    if (columnDetallesCobroRecord != null)
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20.0, 20.0, 20.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Clave de rastreo',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                      ),
+                                            ),
+                                            Expanded(
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        12.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  columnDetallesCobroRecord
+                                                      .claveRastreo,
+                                                  textAlign: TextAlign.end,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'Lexend',
@@ -452,223 +471,234 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                                     context)
                                                                 .accent3,
                                                       ),
+                                                ),
+                                              ),
                                             ),
-                                          ),
+                                          ],
                                         ),
-                                      ],
+                                      ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          20.0, 20.0, 20.0, 0.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Divider(
+                                            thickness: 1.0,
+                                            color: FlutterFlowTheme.of(context)
+                                                .accent4,
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
+                                  ],
+                                ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      20.0, 20.0, 20.0, 0.0),
+                                      20.0, 16.0, 20.0, 32.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Divider(
-                                        thickness: 1.0,
-                                        color: FlutterFlowTheme.of(context)
-                                            .accent4,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 16.0, 20.0, 32.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  AuthUserStreamWidget(
-                                    builder: (context) => FlutterFlowIconButton(
-                                      borderRadius: 100.0,
-                                      borderWidth: 0.0,
-                                      buttonSize: 60.0,
-                                      fillColor:
-                                          FlutterFlowTheme.of(context).errorRed,
-                                      disabledColor: Color(0x83CCCCCC),
-                                      disabledIconColor: Color(0xFFA1A1A1),
-                                      icon: Icon(
-                                        FFIcons.kqrUsuario,
-                                        color: Colors.white,
-                                        size: 25.0,
-                                      ),
-                                      onPressed: ((_model
-                                                      .detallesCobro?.status !=
-                                                  PaymentStatus.PAGADO) ||
-                                              (!widget.createRefund! &&
-                                                  !valueOrDefault<bool>(
-                                                      currentUserDocument
-                                                          ?.isAdmin,
-                                                      false)))
-                                          ? null
-                                          : () async {
-                                              var _shouldSetState = false;
-                                              var confirmDialogResponse =
-                                                  await showDialog<bool>(
+                                      AuthUserStreamWidget(
+                                        builder: (context) =>
+                                            FlutterFlowIconButton(
+                                          borderRadius: 100.0,
+                                          borderWidth: 0.0,
+                                          buttonSize: 60.0,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .errorRed,
+                                          disabledColor: Color(0x83CCCCCC),
+                                          disabledIconColor: Color(0xFFA1A1A1),
+                                          icon: Icon(
+                                            FFIcons.kqrUsuario,
+                                            color: Colors.white,
+                                            size: 25.0,
+                                          ),
+                                          onPressed: ((columnDetallesCobroRecord
+                                                          .status !=
+                                                      PaymentStatus.PAGADO) ||
+                                                  (!widget.createRefund! &&
+                                                      !valueOrDefault<bool>(
+                                                          currentUserDocument
+                                                              ?.isAdmin,
+                                                          false)))
+                                              ? null
+                                              : () async {
+                                                  var _shouldSetState = false;
+                                                  var confirmDialogResponse =
+                                                      await showDialog<bool>(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Devolver SMS'),
+                                                                content: Text(
+                                                                    '¿Estás seguro de querer devolver el monto de este SMS?'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            false),
+                                                                    child: Text(
+                                                                        'No'),
+                                                                  ),
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            true),
+                                                                    child: Text(
+                                                                        'Si'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          ) ??
+                                                          false;
+                                                  if (confirmDialogResponse) {
+                                                    try {
+                                                      final result =
+                                                          await FirebaseFunctions
+                                                              .instance
+                                                              .httpsCallable(
+                                                                  'refund')
+                                                              .call({
+                                                        "token": FFAppState()
+                                                            .serverToken,
+                                                        "id": widget
+                                                            .detallesCobroRef
+                                                            ?.id,
+                                                        "test": false,
+                                                      });
+                                                      _model.refundCF =
+                                                          RefundCloudFunctionCallResponse(
+                                                        data: result.data,
+                                                        succeeded: true,
+                                                        resultAsString: result
+                                                            .data
+                                                            .toString(),
+                                                        jsonBody: result.data,
+                                                      );
+                                                    } on FirebaseFunctionsException catch (error) {
+                                                      _model.refundCF =
+                                                          RefundCloudFunctionCallResponse(
+                                                        errorCode: error.code,
+                                                        succeeded: false,
+                                                      );
+                                                    }
+
+                                                    _shouldSetState = true;
+                                                    if (getJsonField(
+                                                      _model.refundCF!.jsonBody,
+                                                      r'''$.success''',
+                                                    )) {
+                                                      await showDialog(
                                                         context: context,
                                                         builder:
                                                             (alertDialogContext) {
                                                           return AlertDialog(
                                                             title: Text(
-                                                                'Devolver SMS'),
+                                                                'QR Devulto'),
                                                             content: Text(
-                                                                '¿Estás seguro de querer devolver el monto de este SMS?'),
+                                                                'La devolución del QR se ha efectuado con éxito.'),
                                                             actions: [
                                                               TextButton(
                                                                 onPressed: () =>
                                                                     Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        false),
+                                                                        alertDialogContext),
                                                                 child:
-                                                                    Text('No'),
-                                                              ),
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        true),
-                                                                child:
-                                                                    Text('Si'),
+                                                                    Text('Ok'),
                                                               ),
                                                             ],
                                                           );
                                                         },
-                                                      ) ??
-                                                      false;
-                                              if (confirmDialogResponse) {
-                                                try {
-                                                  final result =
-                                                      await FirebaseFunctions
-                                                          .instance
-                                                          .httpsCallable(
-                                                              'refund')
-                                                          .call({
-                                                    "token": FFAppState()
-                                                        .serverToken,
-                                                    "id": widget
-                                                        .detallesCobroRef?.id,
-                                                    "test": true,
-                                                  });
-                                                  _model.refundCF =
-                                                      RefundCloudFunctionCallResponse(
-                                                    data: result.data,
-                                                    succeeded: true,
-                                                    resultAsString:
-                                                        result.data.toString(),
-                                                    jsonBody: result.data,
-                                                  );
-                                                } on FirebaseFunctionsException catch (error) {
-                                                  _model.refundCF =
-                                                      RefundCloudFunctionCallResponse(
-                                                    errorCode: error.code,
-                                                    succeeded: false,
-                                                  );
-                                                }
+                                                      );
+                                                      if (_shouldSetState)
+                                                        setState(() {});
+                                                      return;
+                                                    } else {
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title:
+                                                                Text('Error'),
+                                                            content: Text(
+                                                                'Ha ocurrido un error en ejecución de su solicitud.'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child:
+                                                                    Text('Ok'),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      );
+                                                      if (!functions
+                                                          .includeTheString(
+                                                              getJsonField(
+                                                                _model.refundCF!
+                                                                    .jsonBody,
+                                                                r'''$.message''',
+                                                              ).toString(),
+                                                              'expirada')!) {
+                                                        if (_shouldSetState)
+                                                          setState(() {});
+                                                        return;
+                                                      }
 
-                                                _shouldSetState = true;
-                                                if (getJsonField(
-                                                  _model.refundCF!.jsonBody,
-                                                  r'''$.success''',
-                                                )) {
-                                                  await showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        title:
-                                                            Text('QR Devulto'),
-                                                        content: Text(
-                                                            'La devolución del QR se ha efectuado con éxito.'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: Text('Ok'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  );
-                                                  if (_shouldSetState)
-                                                    setState(() {});
-                                                  return;
-                                                } else {
-                                                  await showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        title: Text('Error'),
-                                                        content: Text(
-                                                            'Ha ocurrido un error en ejecución de su solicitud.'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: Text('Ok'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  );
-                                                  if (!functions
-                                                      .includeTheString(
-                                                          getJsonField(
-                                                            _model.refundCF!
-                                                                .jsonBody,
-                                                            r'''$.message''',
-                                                          ).toString(),
-                                                          'expirada')!) {
+                                                      GoRouter.of(context)
+                                                          .prepareAuthEvent();
+                                                      await authManager
+                                                          .signOut();
+                                                      GoRouter.of(context)
+                                                          .clearRedirectLocation();
+
+                                                      context.goNamedAuth(
+                                                          'OK_FN_Payry_08_iniciasesion',
+                                                          context.mounted);
+
+                                                      if (_shouldSetState)
+                                                        setState(() {});
+                                                      return;
+                                                    }
+                                                  } else {
                                                     if (_shouldSetState)
                                                       setState(() {});
                                                     return;
                                                   }
 
-                                                  GoRouter.of(context)
-                                                      .prepareAuthEvent();
-                                                  await authManager.signOut();
-                                                  GoRouter.of(context)
-                                                      .clearRedirectLocation();
-
-                                                  context.goNamedAuth(
-                                                      'OK_FN_Payry_08_iniciasesion',
-                                                      context.mounted);
-
                                                   if (_shouldSetState)
                                                     setState(() {});
-                                                  return;
-                                                }
-                                              } else {
-                                                if (_shouldSetState)
-                                                  setState(() {});
-                                                return;
-                                              }
-
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                            },
-                                    ),
+                                                },
+                                        ),
+                                      ),
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: Text(
+                                          'Devolver DiMo®',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
+                                      ),
+                                    ].divide(SizedBox(height: 5.0)),
                                   ),
-                                  Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: Text(
-                                      'Devolver DiMo®',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                    ),
-                                  ),
-                                ].divide(SizedBox(height: 5.0)),
-                              ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
               ),
             ),

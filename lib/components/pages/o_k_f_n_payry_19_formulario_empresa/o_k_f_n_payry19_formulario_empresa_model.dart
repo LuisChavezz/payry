@@ -175,7 +175,7 @@ class OKFNPayry19FormularioEmpresaModel
   // Stores action output result for [Cloud Function - saveCompany] action in Button widget.
   SaveCompanyCloudFunctionCallResponse? cloudFunctionCompany;
   // Stores action output result for [Cloud Function - generateToken] action in Button widget.
-  GenerateTokenCloudFunctionCallResponse? cloudFunctionGT;
+  GenerateTokenCloudFunctionCallResponse? genToken;
 
   /// Initialization and disposal methods.
 

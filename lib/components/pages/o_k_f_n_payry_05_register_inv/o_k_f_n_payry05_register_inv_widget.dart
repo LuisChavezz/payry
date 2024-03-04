@@ -632,8 +632,9 @@ class _OKFNPayry05RegisterInvWidgetState
                                                               'generateToken')
                                                           .call({
                                                     "uid": currentUserUid,
+                                                    "test": false,
                                                   });
-                                                  _model.cloudFunctionGT =
+                                                  _model.genToken =
                                                       GenerateTokenCloudFunctionCallResponse(
                                                     data: result.data,
                                                     succeeded: true,
@@ -642,7 +643,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                     jsonBody: result.data,
                                                   );
                                                 } on FirebaseFunctionsException catch (error) {
-                                                  _model.cloudFunctionGT =
+                                                  _model.genToken =
                                                       GenerateTokenCloudFunctionCallResponse(
                                                     errorCode: error.code,
                                                     succeeded: false,
@@ -651,8 +652,7 @@ class _OKFNPayry05RegisterInvWidgetState
 
                                                 _shouldSetState = true;
                                                 FFAppState().serverToken =
-                                                    _model.cloudFunctionGT!
-                                                        .jsonBody!
+                                                    _model.genToken!.jsonBody!
                                                         .toString();
                                                 FFAppState().tutorialDialogs =
                                                     true;

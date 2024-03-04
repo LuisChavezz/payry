@@ -396,7 +396,8 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                             _model.amountFieldController.text),
                                         concept:
                                             _model.conceptFieldController.text,
-                                        phoneNumber: currentPhoneNumber,
+                                        phoneNumber:
+                                            _model.phoneFieldController.text,
                                         uid: currentUserUid,
                                         companyId: '',
                                         errorMessage: '',
@@ -420,7 +421,8 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                             _model.amountFieldController.text),
                                         concept:
                                             _model.conceptFieldController.text,
-                                        phoneNumber: currentPhoneNumber,
+                                        phoneNumber:
+                                            _model.phoneFieldController.text,
                                         uid: currentUserUid,
                                         companyId: '',
                                         errorMessage: '',
@@ -441,7 +443,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                           .httpsCallable('generateDimo')
                                           .call({
                                         "id": _model.dimoResp!.reference.id,
-                                        "test": true,
+                                        "test": false,
                                         "token": FFAppState().serverToken,
                                       });
                                       _model.dimoCF =
@@ -485,7 +487,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                         context.pop();
                                       }
                                       context.pushNamedAuth(
-                                        'OK_FN_Payry_36_detallesdeSMS',
+                                        'OK_FN_Payry_36_detallesdeSMSTemp',
                                         context.mounted,
                                         queryParameters: {
                                           'registraCobroRef': serializeParam(

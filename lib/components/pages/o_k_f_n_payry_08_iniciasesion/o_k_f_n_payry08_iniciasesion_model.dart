@@ -50,8 +50,8 @@ class OKFNPayry08IniciasesionModel
 
   // State field(s) for RememberMeCheck widget.
   bool? rememberMeCheckValue;
-  // Stores action output result for [Cloud Function - generateTokenTest] action in Button-Login widget.
-  GenerateTokenTestCloudFunctionCallResponse? genTokenTest;
+  // Stores action output result for [Cloud Function - generateToken] action in Button-Login widget.
+  GenerateTokenCloudFunctionCallResponse? genToken;
 
   /// Initialization and disposal methods.
 

@@ -448,13 +448,13 @@ class _OKFNPayry08IniciasesionWidgetState
                                                         await FirebaseFunctions
                                                             .instance
                                                             .httpsCallable(
-                                                                'generateTokenTest')
+                                                                'generateToken')
                                                             .call({
                                                       "uid": currentUserUid,
-                                                      "test": true,
+                                                      "test": false,
                                                     });
-                                                    _model.genTokenTest =
-                                                        GenerateTokenTestCloudFunctionCallResponse(
+                                                    _model.genToken =
+                                                        GenerateTokenCloudFunctionCallResponse(
                                                       data: result.data,
                                                       succeeded: true,
                                                       resultAsString: result
@@ -463,16 +463,15 @@ class _OKFNPayry08IniciasesionWidgetState
                                                       jsonBody: result.data,
                                                     );
                                                   } on FirebaseFunctionsException catch (error) {
-                                                    _model.genTokenTest =
-                                                        GenerateTokenTestCloudFunctionCallResponse(
+                                                    _model.genToken =
+                                                        GenerateTokenCloudFunctionCallResponse(
                                                       errorCode: error.code,
                                                       succeeded: false,
                                                     );
                                                   }
 
                                                   FFAppState().serverToken =
-                                                      _model.genTokenTest!
-                                                          .jsonBody!
+                                                      _model.genToken!.jsonBody!
                                                           .toString();
                                                   if (_model
                                                       .rememberMeCheckValue!) {

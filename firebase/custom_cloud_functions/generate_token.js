@@ -3,10 +3,16 @@ const admin = require("firebase-admin");
 const fetch = require("node-fetch");
 
 exports.generateToken = functions.https.onCall(async (data, context) => {
-  const { uid } = data;
+  const { uid, test } = data;
+
+  // Test url for the API
+  const testUrl = "https://qa-api.payry.mx/auth/generateToken";
+
+  // Prod url for the API
+  const prodUrl = "https://api.payry.mx/auth/generateToken";
 
   try {
-    const req_api = await fetch("https://api.payry.mx/auth/generateToken", {
+    const req_api = await fetch(test ? testUrl : prodUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
