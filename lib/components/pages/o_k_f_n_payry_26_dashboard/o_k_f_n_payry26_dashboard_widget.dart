@@ -481,6 +481,11 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                             .QR
                                                                             .serialize(),
                                                                       )
+                                                                      .where(
+                                                                        'created_time',
+                                                                        isGreaterThanOrEqualTo:
+                                                                            functions.todayFilter(),
+                                                                      )
                                                                       .orderBy(
                                                                           'created_time',
                                                                           descending:
@@ -785,6 +790,11 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                         isEqualTo: PaymentType
                                                                             .SMS
                                                                             .serialize(),
+                                                                      )
+                                                                      .where(
+                                                                        'created_time',
+                                                                        isGreaterThanOrEqualTo:
+                                                                            functions.todayFilter(),
                                                                       )
                                                                       .orderBy(
                                                                           'created_time',

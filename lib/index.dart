@@ -92,7 +92,7 @@ export '/test_share_image/test_share_image_widget.dart'
 export '/components/pages/o_k_f_n_payry_20_datos_bancarios_v_i_e_w/o_k_f_n_payry20_datos_bancarios_v_i_e_w_widget.dart'
     show OKFNPayry20DatosBancariosVIEWWidget;
 export '/components/pages/test_page/test_page_widget.dart' show TestPageWidget;
-export '/components/pages/o_k_f_n_payry_31_detallesde_q_r_temp/o_k_f_n_payry31_detallesde_q_r_temp_widget.dart'
-    show OKFNPayry31DetallesdeQRTempWidget;
-export '/components/pages/o_k_f_n_payry_36_detallesde_s_m_s_temp/o_k_f_n_payry36_detallesde_s_m_s_temp_widget.dart'
-    show OKFNPayry36DetallesdeSMSTempWidget;
+export '/components/pages/o_k_f_n_payry_31_detallesde_q_r_code/o_k_f_n_payry31_detallesde_q_r_code_widget.dart'
+    show OKFNPayry31DetallesdeQRCodeWidget;
+export '/components/pages/o_k_f_n_payry_36_detallesde_s_m_s_code/o_k_f_n_payry36_detallesde_s_m_s_code_widget.dart'
+    show OKFNPayry36DetallesdeSMSCodeWidget;

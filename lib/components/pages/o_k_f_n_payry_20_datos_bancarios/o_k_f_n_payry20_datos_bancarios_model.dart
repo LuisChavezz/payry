@@ -55,8 +55,8 @@ class OKFNPayry20DatosBancariosModel
     return null;
   }
 
-  // Stores action output result for [Cloud Function - saveBankCompany] action in Button widget.
-  SaveBankCompanyCloudFunctionCallResponse? cloudFunctionBankCompany;
+  // Stores action output result for [Cloud Function - reportCompany] action in Button widget.
+  ReportCompanyCloudFunctionCallResponse? reportCompFC;
 
   /// Initialization and disposal methods.
 

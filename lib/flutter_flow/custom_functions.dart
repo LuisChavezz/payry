@@ -159,3 +159,10 @@ DocumentReference? jsonPathToDetallesCobroRef(String? id) {
     throw e;
   }
 }
+
+DateTime? todayFilter() {
+  DateTime now = DateTime.now();
+  // Remueve la zona horaria para asegurar la comparación
+  DateTime today = DateTime(now.year, now.month, now.day);
+  return today;
+}

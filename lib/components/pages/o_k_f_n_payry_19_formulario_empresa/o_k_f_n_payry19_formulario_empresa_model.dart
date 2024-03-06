@@ -172,8 +172,6 @@ class OKFNPayry19FormularioEmpresaModel
   FocusNode? couponFieldFocusNode;
   TextEditingController? couponFieldController;
   String? Function(BuildContext, String?)? couponFieldControllerValidator;
-  // Stores action output result for [Cloud Function - saveCompany] action in Button widget.
-  SaveCompanyCloudFunctionCallResponse? cloudFunctionCompany;
   // Stores action output result for [Cloud Function - generateToken] action in Button widget.
   GenerateTokenCloudFunctionCallResponse? genToken;
 

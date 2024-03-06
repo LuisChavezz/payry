@@ -91,11 +91,6 @@ class DetallesCobroRecord extends FirestoreRecord {
   PaymentType? get type => _type;
   bool hasType() => _type != null;
 
-  // "status" field.
-  PaymentStatus? _status;
-  PaymentStatus? get status => _status;
-  bool hasStatus() => _status != null;
-
   // "uid" field.
   String? _uid;
   String get uid => _uid ?? '';
@@ -116,6 +111,11 @@ class DetallesCobroRecord extends FirestoreRecord {
   String get claveRastreo => _claveRastreo ?? '';
   bool hasClaveRastreo() => _claveRastreo != null;
 
+  // "status" field.
+  PaymentStatus? _status;
+  PaymentStatus? get status => _status;
+  bool hasStatus() => _status != null;
+
   void _initializeFields() {
     _adminId = snapshotData['admin_id'] as String?;
     _amount = castToType<double>(snapshotData['amount']);
@@ -135,11 +135,11 @@ class DetallesCobroRecord extends FirestoreRecord {
     _rfcCurpBeneficiarioDevolucion =
         snapshotData['rfcCurpBeneficiario_devolucion'] as String?;
     _type = deserializeEnum<PaymentType>(snapshotData['type']);
-    _status = deserializeEnum<PaymentStatus>(snapshotData['status']);
     _uid = snapshotData['uid'] as String?;
     _id = snapshotData['id'] as String?;
     _idRastreo = castToType<double>(snapshotData['idRastreo']);
     _claveRastreo = snapshotData['claveRastreo'] as String?;
+    _status = deserializeEnum<PaymentStatus>(snapshotData['status']);
   }
 
   static CollectionReference get collection =>
@@ -191,11 +191,11 @@ Map<String, dynamic> createDetallesCobroRecordData({
   String? registraCobroId,
   String? rfcCurpBeneficiarioDevolucion,
   PaymentType? type,
-  PaymentStatus? status,
   String? uid,
   String? id,
   double? idRastreo,
   String? claveRastreo,
+  PaymentStatus? status,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -213,11 +213,11 @@ Map<String, dynamic> createDetallesCobroRecordData({
       'registraCobroId': registraCobroId,
       'rfcCurpBeneficiario_devolucion': rfcCurpBeneficiarioDevolucion,
       'type': type,
-      'status': status,
       'uid': uid,
       'id': id,
       'idRastreo': idRastreo,
       'claveRastreo': claveRastreo,
+      'status': status,
     }.withoutNulls,
   );
 
@@ -245,11 +245,11 @@ class DetallesCobroRecordDocumentEquality
         e1?.rfcCurpBeneficiarioDevolucion ==
             e2?.rfcCurpBeneficiarioDevolucion &&
         e1?.type == e2?.type &&
-        e1?.status == e2?.status &&
         e1?.uid == e2?.uid &&
         e1?.id == e2?.id &&
         e1?.idRastreo == e2?.idRastreo &&
-        e1?.claveRastreo == e2?.claveRastreo;
+        e1?.claveRastreo == e2?.claveRastreo &&
+        e1?.status == e2?.status;
   }
 
   @override
@@ -268,11 +268,11 @@ class DetallesCobroRecordDocumentEquality
         e?.registraCobroId,
         e?.rfcCurpBeneficiarioDevolucion,
         e?.type,
-        e?.status,
         e?.uid,
         e?.id,
         e?.idRastreo,
-        e?.claveRastreo
+        e?.claveRastreo,
+        e?.status
       ]);
 
   @override

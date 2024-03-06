@@ -324,30 +324,11 @@ class _OKFNPayry20DatosBancariosWidgetState
                                       null)
                                   ? null
                                   : () async {
+                                      var _shouldSetState = false;
                                       if (_model.formKey.currentState == null ||
                                           !_model.formKey.currentState!
                                               .validate()) {
                                         return;
-                                      }
-                                      try {
-                                        final result = await FirebaseFunctions
-                                            .instance
-                                            .httpsCallable('saveBankCompany')
-                                            .call({
-                                          "uid": FFAppState().serverToken,
-                                          "clabe":
-                                              _model.clabeFieldController.text,
-                                        });
-                                        _model.cloudFunctionBankCompany =
-                                            SaveBankCompanyCloudFunctionCallResponse(
-                                          succeeded: true,
-                                        );
-                                      } on FirebaseFunctionsException catch (error) {
-                                        _model.cloudFunctionBankCompany =
-                                            SaveBankCompanyCloudFunctionCallResponse(
-                                          errorCode: error.code,
-                                          succeeded: false,
-                                        );
                                       }
 
                                       await widget.companyDocRef!
@@ -369,9 +350,43 @@ class _OKFNPayry20DatosBancariosWidgetState
                                           .update(createUsersRecordData(
                                         isCompanyComplete: true,
                                       ));
-                                      context.safePop();
+                                      try {
+                                        final result = await FirebaseFunctions
+                                            .instance
+                                            .httpsCallable('reportCompany')
+                                            .call({
+                                          "token": FFAppState().serverToken,
+                                          "id": widget.companyDocRef!.id,
+                                          "test": false,
+                                        });
+                                        _model.reportCompFC =
+                                            ReportCompanyCloudFunctionCallResponse(
+                                          data: result.data,
+                                          succeeded: true,
+                                          resultAsString:
+                                              result.data.toString(),
+                                          jsonBody: result.data,
+                                        );
+                                      } on FirebaseFunctionsException catch (error) {
+                                        _model.reportCompFC =
+                                            ReportCompanyCloudFunctionCallResponse(
+                                          errorCode: error.code,
+                                          succeeded: false,
+                                        );
+                                      }
 
-                                      setState(() {});
+                                      _shouldSetState = true;
+                                      if (_model.reportCompFC!.succeeded!) {
+                                        context.safePop();
+                                        if (_shouldSetState) setState(() {});
+                                        return;
+                                      } else {
+                                        context.safePop();
+                                        if (_shouldSetState) setState(() {});
+                                        return;
+                                      }
+
+                                      if (_shouldSetState) setState(() {});
                                     },
                               text: 'Guardar',
                               options: FFButtonOptions(

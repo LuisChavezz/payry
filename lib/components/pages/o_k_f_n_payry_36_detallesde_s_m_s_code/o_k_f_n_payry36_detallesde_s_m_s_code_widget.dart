@@ -7,11 +7,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'o_k_f_n_payry36_detallesde_s_m_s_temp_model.dart';
-export 'o_k_f_n_payry36_detallesde_s_m_s_temp_model.dart';
+import 'o_k_f_n_payry36_detallesde_s_m_s_code_model.dart';
+export 'o_k_f_n_payry36_detallesde_s_m_s_code_model.dart';
 
-class OKFNPayry36DetallesdeSMSTempWidget extends StatefulWidget {
-  const OKFNPayry36DetallesdeSMSTempWidget({
+class OKFNPayry36DetallesdeSMSCodeWidget extends StatefulWidget {
+  const OKFNPayry36DetallesdeSMSCodeWidget({
     super.key,
     required this.registraCobroRef,
     required this.createRefund,
@@ -21,20 +21,20 @@ class OKFNPayry36DetallesdeSMSTempWidget extends StatefulWidget {
   final bool? createRefund;
 
   @override
-  State<OKFNPayry36DetallesdeSMSTempWidget> createState() =>
-      _OKFNPayry36DetallesdeSMSTempWidgetState();
+  State<OKFNPayry36DetallesdeSMSCodeWidget> createState() =>
+      _OKFNPayry36DetallesdeSMSCodeWidgetState();
 }
 
-class _OKFNPayry36DetallesdeSMSTempWidgetState
-    extends State<OKFNPayry36DetallesdeSMSTempWidget> {
-  late OKFNPayry36DetallesdeSMSTempModel _model;
+class _OKFNPayry36DetallesdeSMSCodeWidgetState
+    extends State<OKFNPayry36DetallesdeSMSCodeWidget> {
+  late OKFNPayry36DetallesdeSMSCodeModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => OKFNPayry36DetallesdeSMSTempModel());
+    _model = createModel(context, () => OKFNPayry36DetallesdeSMSCodeModel());
   }
 
   @override
@@ -68,7 +68,7 @@ class _OKFNPayry36DetallesdeSMSTempWidgetState
             ),
           );
         }
-        final oKFNPayry36DetallesdeSMSTempRegistraCobroRecord = snapshot.data!;
+        final oKFNPayry36DetallesdeSMSCodeRegistraCobroRecord = snapshot.data!;
         return GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus
               ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -158,7 +158,7 @@ class _OKFNPayry36DetallesdeSMSTempWidgetState
                                           0.0, 0.0, 0.0, 8.0),
                                       child: Text(
                                         '${formatNumber(
-                                          oKFNPayry36DetallesdeSMSTempRegistraCobroRecord
+                                          oKFNPayry36DetallesdeSMSCodeRegistraCobroRecord
                                               .amount,
                                           formatType: FormatType.custom,
                                           currency: '\$',
@@ -177,13 +177,13 @@ class _OKFNPayry36DetallesdeSMSTempWidgetState
                                     Text(
                                       '${dateTimeFormat(
                                         'd MMM y',
-                                        oKFNPayry36DetallesdeSMSTempRegistraCobroRecord
+                                        oKFNPayry36DetallesdeSMSCodeRegistraCobroRecord
                                             .createdTime,
                                         locale: FFLocalizations.of(context)
                                             .languageCode,
                                       )} a las ${dateTimeFormat(
                                         'h:mm a',
-                                        oKFNPayry36DetallesdeSMSTempRegistraCobroRecord
+                                        oKFNPayry36DetallesdeSMSCodeRegistraCobroRecord
                                             .createdTime,
                                         locale: FFLocalizations.of(context)
                                             .languageCode,
@@ -254,7 +254,7 @@ class _OKFNPayry36DetallesdeSMSTempWidgetState
                                           ),
                                           Expanded(
                                             child: Text(
-                                              oKFNPayry36DetallesdeSMSTempRegistraCobroRecord
+                                              oKFNPayry36DetallesdeSMSCodeRegistraCobroRecord
                                                   .concept,
                                               textAlign: TextAlign.end,
                                               style:
@@ -295,8 +295,45 @@ class _OKFNPayry36DetallesdeSMSTempWidgetState
                                       ),
                                       Expanded(
                                         child: Text(
-                                          oKFNPayry36DetallesdeSMSTempRegistraCobroRecord
+                                          oKFNPayry36DetallesdeSMSCodeRegistraCobroRecord
                                               .phoneNumber,
+                                          textAlign: TextAlign.end,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent3,
+                                              ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20.0, 20.0, 20.0, 0.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'Estatus',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodySmall
+                                            .override(
+                                              fontFamily: 'Lexend',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                            ),
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          oKFNPayry36DetallesdeSMSCodeRegistraCobroRecord
+                                              .status!.name,
                                           textAlign: TextAlign.end,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
