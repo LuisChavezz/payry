@@ -239,14 +239,14 @@ final parametersBuilderMap =
           'docId': getParameter<String>(data, 'docId'),
         },
       ),
-  'OK_FN_Payry_31_detallesdeQRTemp': (data) async => ParameterData(
+  'OK_FN_Payry_31_detallesdeQRCode': (data) async => ParameterData(
         allParams: {
           'registraCobroRef':
               getParameter<DocumentReference>(data, 'registraCobroRef'),
           'createRefund': getParameter<bool>(data, 'createRefund'),
         },
       ),
-  'OK_FN_Payry_36_detallesdeSMSTemp': (data) async => ParameterData(
+  'OK_FN_Payry_36_detallesdeSMSCode': (data) async => ParameterData(
         allParams: {
           'registraCobroRef':
               getParameter<DocumentReference>(data, 'registraCobroRef'),

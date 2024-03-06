@@ -1839,59 +1839,6 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                       null &&
                                                   _model.giroDropDownValue !=
                                                       '')) {
-                                            try {
-                                              final result =
-                                                  await FirebaseFunctions
-                                                      .instance
-                                                      .httpsCallable(
-                                                          'saveCompany')
-                                                      .call({
-                                                "name": _model
-                                                    .nameFieldController.text,
-                                                "alias": _model
-                                                    .aliasFieldController.text,
-                                                "email": _model
-                                                    .emailFieldController.text,
-                                                "street": _model
-                                                    .streetFieldController.text,
-                                                "intnumber": _model
-                                                    .streetNumberFieldController
-                                                    .text,
-                                                "colony": _model
-                                                    .neighborhoodFieldController
-                                                    .text,
-                                                "population": _model
-                                                    .cityFieldController.text,
-                                                "state":
-                                                    _model.stateDropDownValue!,
-                                                "country": _model
-                                                    .countryDropDownValue!,
-                                                "zipcode": _model
-                                                    .zipCodeFieldController
-                                                    .text,
-                                                "status": 'true',
-                                                "invoicerequired": _model
-                                                    .requireBillSwitchValue!
-                                                    .toString(),
-                                                "rfc": _model
-                                                    .rFCFieldController.text,
-                                                "taxregimesid": 24,
-                                                "usecfdiid": 6,
-                                                "uid": FFAppState().serverToken,
-                                              });
-                                              _model.cloudFunctionCompany =
-                                                  SaveCompanyCloudFunctionCallResponse(
-                                                succeeded: true,
-                                              );
-                                            } on FirebaseFunctionsException catch (error) {
-                                              _model.cloudFunctionCompany =
-                                                  SaveCompanyCloudFunctionCallResponse(
-                                                errorCode: error.code,
-                                                succeeded: false,
-                                              );
-                                            }
-
-                                            _shouldSetState = true;
                                             if (!(oKFNPayry19FormularioEmpresaCompaniesRecord !=
                                                 null)) {
                                               await CompaniesRecord.collection

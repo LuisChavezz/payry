@@ -14,11 +14,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'o_k_f_n_payry31_detallesde_q_r_temp_model.dart';
-export 'o_k_f_n_payry31_detallesde_q_r_temp_model.dart';
+import 'o_k_f_n_payry31_detallesde_q_r_code_model.dart';
+export 'o_k_f_n_payry31_detallesde_q_r_code_model.dart';
 
-class OKFNPayry31DetallesdeQRTempWidget extends StatefulWidget {
-  const OKFNPayry31DetallesdeQRTempWidget({
+class OKFNPayry31DetallesdeQRCodeWidget extends StatefulWidget {
+  const OKFNPayry31DetallesdeQRCodeWidget({
     super.key,
     required this.registraCobroRef,
     required this.createRefund,
@@ -28,20 +28,20 @@ class OKFNPayry31DetallesdeQRTempWidget extends StatefulWidget {
   final bool? createRefund;
 
   @override
-  State<OKFNPayry31DetallesdeQRTempWidget> createState() =>
-      _OKFNPayry31DetallesdeQRTempWidgetState();
+  State<OKFNPayry31DetallesdeQRCodeWidget> createState() =>
+      _OKFNPayry31DetallesdeQRCodeWidgetState();
 }
 
-class _OKFNPayry31DetallesdeQRTempWidgetState
-    extends State<OKFNPayry31DetallesdeQRTempWidget> {
-  late OKFNPayry31DetallesdeQRTempModel _model;
+class _OKFNPayry31DetallesdeQRCodeWidgetState
+    extends State<OKFNPayry31DetallesdeQRCodeWidget> {
+  late OKFNPayry31DetallesdeQRCodeModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => OKFNPayry31DetallesdeQRTempModel());
+    _model = createModel(context, () => OKFNPayry31DetallesdeQRCodeModel());
   }
 
   @override
@@ -75,7 +75,7 @@ class _OKFNPayry31DetallesdeQRTempWidgetState
             ),
           );
         }
-        final oKFNPayry31DetallesdeQRTempRegistraCobroRecord = snapshot.data!;
+        final oKFNPayry31DetallesdeQRCodeRegistraCobroRecord = snapshot.data!;
         return GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus
               ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -166,7 +166,7 @@ class _OKFNPayry31DetallesdeQRTempWidgetState
                                           0.0, 0.0, 0.0, 8.0),
                                       child: Text(
                                         '${formatNumber(
-                                          oKFNPayry31DetallesdeQRTempRegistraCobroRecord
+                                          oKFNPayry31DetallesdeQRCodeRegistraCobroRecord
                                               .amount,
                                           formatType: FormatType.custom,
                                           currency: '\$',
@@ -185,13 +185,13 @@ class _OKFNPayry31DetallesdeQRTempWidgetState
                                     Text(
                                       '${dateTimeFormat(
                                         'd MMM y',
-                                        oKFNPayry31DetallesdeQRTempRegistraCobroRecord
+                                        oKFNPayry31DetallesdeQRCodeRegistraCobroRecord
                                             .createdTime,
                                         locale: FFLocalizations.of(context)
                                             .languageCode,
                                       )} a las ${dateTimeFormat(
                                         'h:mm a',
-                                        oKFNPayry31DetallesdeQRTempRegistraCobroRecord
+                                        oKFNPayry31DetallesdeQRCodeRegistraCobroRecord
                                             .createdTime,
                                         locale: FFLocalizations.of(context)
                                             .languageCode,
@@ -265,7 +265,7 @@ class _OKFNPayry31DetallesdeQRTempWidgetState
                                                     .fromSTEB(
                                                         12.0, 0.0, 0.0, 0.0),
                                                 child: Text(
-                                                  oKFNPayry31DetallesdeQRTempRegistraCobroRecord
+                                                  oKFNPayry31DetallesdeQRCodeRegistraCobroRecord
                                                       .concept,
                                                   textAlign: TextAlign.end,
                                                   style: FlutterFlowTheme.of(
@@ -284,6 +284,46 @@ class _OKFNPayry31DetallesdeQRTempWidgetState
                                           ],
                                         ),
                                       ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20.0, 20.0, 20.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'Estatus',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                      ),
+                                            ),
+                                            Expanded(
+                                              child: Text(
+                                                oKFNPayry31DetallesdeQRCodeRegistraCobroRecord
+                                                    .status!.name,
+                                                textAlign: TextAlign.end,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .accent3,
+                                                        ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -293,7 +333,7 @@ class _OKFNPayry31DetallesdeQRTempWidgetState
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(8.0),
                                       child: Image.network(
-                                        oKFNPayry31DetallesdeQRTempRegistraCobroRecord
+                                        oKFNPayry31DetallesdeQRCodeRegistraCobroRecord
                                             .qrUrl,
                                         width: 300.0,
                                         height: 300.0,
@@ -360,7 +400,7 @@ class _OKFNPayry31DetallesdeQRTempWidgetState
                                           onPressed: () async {
                                             await actions.shareImage(
                                               functions.imagePathToString(
-                                                  oKFNPayry31DetallesdeQRTempRegistraCobroRecord
+                                                  oKFNPayry31DetallesdeQRCodeRegistraCobroRecord
                                                       .shareableQrUrl)!,
                                             );
                                           },
@@ -396,7 +436,7 @@ class _OKFNPayry31DetallesdeQRTempWidgetState
                                           onPressed: () async {
                                             await launchURL(
                                                 functions.imagePathToString(
-                                                    oKFNPayry31DetallesdeQRTempRegistraCobroRecord
+                                                    oKFNPayry31DetallesdeQRCodeRegistraCobroRecord
                                                         .qrUrl)!);
                                           },
                                         ),
@@ -431,7 +471,7 @@ class _OKFNPayry31DetallesdeQRTempWidgetState
                                           ),
                                           showLoadingIndicator: true,
                                           onPressed:
-                                              (oKFNPayry31DetallesdeQRTempRegistraCobroRecord
+                                              (oKFNPayry31DetallesdeQRCodeRegistraCobroRecord
                                                           .status !=
                                                       PaymentStatus.PENDIENTE)
                                                   ? null
@@ -469,7 +509,7 @@ class _OKFNPayry31DetallesdeQRTempWidgetState
                                                               ) ??
                                                               false;
                                                       if (confirmDialogResponse) {
-                                                        await oKFNPayry31DetallesdeQRTempRegistraCobroRecord
+                                                        await oKFNPayry31DetallesdeQRCodeRegistraCobroRecord
                                                             .reference
                                                             .update(
                                                                 createRegistraCobroRecordData(
@@ -483,7 +523,7 @@ class _OKFNPayry31DetallesdeQRTempWidgetState
                                                             .set({
                                                           ...createQrHistoryRecordData(
                                                             qrId:
-                                                                oKFNPayry31DetallesdeQRTempRegistraCobroRecord
+                                                                oKFNPayry31DetallesdeQRCodeRegistraCobroRecord
                                                                     .reference
                                                                     .id,
                                                             status: 'CANCELADO',
@@ -592,9 +632,9 @@ class _OKFNPayry31DetallesdeQRTempWidgetState
                                           ),
                                           showLoadingIndicator: true,
                                           onPressed:
-                                              (oKFNPayry31DetallesdeQRTempRegistraCobroRecord
-                                                          .status !=
-                                                      PaymentStatus.PENDIENTE)
+                                              (oKFNPayry31DetallesdeQRCodeRegistraCobroRecord
+                                                          .status ==
+                                                      PaymentStatus.CANCELADO)
                                                   ? null
                                                   : () async {
                                                       setState(() {
@@ -609,7 +649,7 @@ class _OKFNPayry31DetallesdeQRTempWidgetState
                                                                     'generateCodi')
                                                                 .call({
                                                           "id":
-                                                              oKFNPayry31DetallesdeQRTempRegistraCobroRecord
+                                                              oKFNPayry31DetallesdeQRCodeRegistraCobroRecord
                                                                   .reference.id,
                                                           "test": true,
                                                           "token": FFAppState()

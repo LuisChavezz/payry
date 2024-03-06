@@ -487,7 +487,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                         context.pop();
                                       }
                                       context.pushNamedAuth(
-                                        'OK_FN_Payry_36_detallesdeSMSTemp',
+                                        'OK_FN_Payry_36_detallesdeSMSCode',
                                         context.mounted,
                                         queryParameters: {
                                           'registraCobroRef': serializeParam(

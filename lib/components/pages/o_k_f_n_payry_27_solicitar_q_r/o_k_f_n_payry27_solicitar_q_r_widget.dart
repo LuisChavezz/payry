@@ -293,8 +293,8 @@ class _OKFNPayry27SolicitarQRWidgetState
                                         errorMessage: '',
                                         errorOcurs: false,
                                         numeroReferenciaComercio: null,
-                                        status: PaymentStatus.PENDIENTE,
                                         type: PaymentType.QR,
+                                        status: PaymentStatus.PENDIENTE,
                                       ),
                                       ...mapToFirestore(
                                         {
@@ -319,8 +319,8 @@ class _OKFNPayry27SolicitarQRWidgetState
                                         errorMessage: '',
                                         errorOcurs: false,
                                         numeroReferenciaComercio: null,
-                                        status: PaymentStatus.PENDIENTE,
                                         type: PaymentType.QR,
+                                        status: PaymentStatus.PENDIENTE,
                                       ),
                                       ...mapToFirestore(
                                         {
@@ -362,7 +362,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                                         context.pop();
                                       }
                                       context.pushNamedAuth(
-                                        'OK_FN_Payry_31_detallesdeQRTemp',
+                                        'OK_FN_Payry_31_detallesdeQRCode',
                                         context.mounted,
                                         queryParameters: {
                                           'registraCobroRef': serializeParam(

@@ -20,11 +20,21 @@ class OKFNPayry35HistorialSMSModel
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // State field(s) for TabBar widget.
+  TabController? tabBarController;
+  int get tabBarCurrentIndex =>
+      tabBarController != null ? tabBarController!.index : 0;
+
   // State field(s) for SearchField widget.
-  FocusNode? searchFieldFocusNode;
-  TextEditingController? searchFieldController;
-  String? Function(BuildContext, String?)? searchFieldControllerValidator;
-  List<DetallesCobroRecord> simpleSearchResults = [];
+  FocusNode? searchFieldFocusNode1;
+  TextEditingController? searchFieldController1;
+  String? Function(BuildContext, String?)? searchFieldController1Validator;
+  List<DetallesCobroRecord> simpleSearchResults1 = [];
+  // State field(s) for SearchField widget.
+  FocusNode? searchFieldFocusNode2;
+  TextEditingController? searchFieldController2;
+  String? Function(BuildContext, String?)? searchFieldController2Validator;
+  List<RegistraCobroRecord> simpleSearchResults2 = [];
 
   /// Initialization and disposal methods.
 
@@ -34,8 +44,12 @@ class OKFNPayry35HistorialSMSModel
   @override
   void dispose() {
     unfocusNode.dispose();
-    searchFieldFocusNode?.dispose();
-    searchFieldController?.dispose();
+    tabBarController?.dispose();
+    searchFieldFocusNode1?.dispose();
+    searchFieldController1?.dispose();
+
+    searchFieldFocusNode2?.dispose();
+    searchFieldController2?.dispose();
   }
 
   /// Action blocks are added here.

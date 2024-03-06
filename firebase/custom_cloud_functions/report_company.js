@@ -2,20 +2,24 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const fetch = require("node-fetch");
 
-exports.getStatisticsTest = functions.https.onCall(async (data, context) => {
-  const { startDate, endDate, token } = data;
+exports.reportCompany = functions.https.onCall(async (data, context) => {
+  const { token, id, test } = data;
+
+  // Test url for the API
+  const testUrl = `https://qa-api.payry.mx/sqlReport/reportCompanyToSQL/${id}`;
+
+  // Prod url for the API
+  const prodUrl = `https://api.payry.mx/sqlReport/reportCompanyToSQL/${id}`;
 
   try {
-    const req_api = await fetch("https://api.payry.mx/statistics", {
+    const req_api = await fetch(test ? testUrl : prodUrl, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        startDate,
-        endDate,
-        token,
+        // Empty
       }),
     });
 

@@ -62,11 +62,6 @@ class RegistraCobroRecord extends FirestoreRecord {
   String get companyId => _companyId ?? '';
   bool hasCompanyId() => _companyId != null;
 
-  // "status" field.
-  PaymentStatus? _status;
-  PaymentStatus? get status => _status;
-  bool hasStatus() => _status != null;
-
   // "type" field.
   PaymentType? _type;
   PaymentType? get type => _type;
@@ -92,6 +87,11 @@ class RegistraCobroRecord extends FirestoreRecord {
   double get numeroReferenciaComercio => _numeroReferenciaComercio ?? 0.0;
   bool hasNumeroReferenciaComercio() => _numeroReferenciaComercio != null;
 
+  // "status" field.
+  PaymentStatus? _status;
+  PaymentStatus? get status => _status;
+  bool hasStatus() => _status != null;
+
   void _initializeFields() {
     _adminId = snapshotData['admin_id'] as String?;
     _amount = castToType<double>(snapshotData['amount']);
@@ -102,13 +102,13 @@ class RegistraCobroRecord extends FirestoreRecord {
     _qrUrl = snapshotData['qr_url'] as String?;
     _shareableQrUrl = snapshotData['shareable_qr_url'] as String?;
     _companyId = snapshotData['company_id'] as String?;
-    _status = deserializeEnum<PaymentStatus>(snapshotData['status']);
     _type = deserializeEnum<PaymentType>(snapshotData['type']);
     _id = snapshotData['id'] as String?;
     _errorMessage = snapshotData['errorMessage'] as String?;
     _errorOcurs = snapshotData['errorOcurs'] as bool?;
     _numeroReferenciaComercio =
         castToType<double>(snapshotData['numeroReferenciaComercio']);
+    _status = deserializeEnum<PaymentStatus>(snapshotData['status']);
   }
 
   static CollectionReference get collection =>
@@ -155,12 +155,12 @@ Map<String, dynamic> createRegistraCobroRecordData({
   String? qrUrl,
   String? shareableQrUrl,
   String? companyId,
-  PaymentStatus? status,
   PaymentType? type,
   String? id,
   String? errorMessage,
   bool? errorOcurs,
   double? numeroReferenciaComercio,
+  PaymentStatus? status,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -173,12 +173,12 @@ Map<String, dynamic> createRegistraCobroRecordData({
       'qr_url': qrUrl,
       'shareable_qr_url': shareableQrUrl,
       'company_id': companyId,
-      'status': status,
       'type': type,
       'id': id,
       'errorMessage': errorMessage,
       'errorOcurs': errorOcurs,
       'numeroReferenciaComercio': numeroReferenciaComercio,
+      'status': status,
     }.withoutNulls,
   );
 
@@ -200,12 +200,12 @@ class RegistraCobroRecordDocumentEquality
         e1?.qrUrl == e2?.qrUrl &&
         e1?.shareableQrUrl == e2?.shareableQrUrl &&
         e1?.companyId == e2?.companyId &&
-        e1?.status == e2?.status &&
         e1?.type == e2?.type &&
         e1?.id == e2?.id &&
         e1?.errorMessage == e2?.errorMessage &&
         e1?.errorOcurs == e2?.errorOcurs &&
-        e1?.numeroReferenciaComercio == e2?.numeroReferenciaComercio;
+        e1?.numeroReferenciaComercio == e2?.numeroReferenciaComercio &&
+        e1?.status == e2?.status;
   }
 
   @override
@@ -219,12 +219,12 @@ class RegistraCobroRecordDocumentEquality
         e?.qrUrl,
         e?.shareableQrUrl,
         e?.companyId,
-        e?.status,
         e?.type,
         e?.id,
         e?.errorMessage,
         e?.errorOcurs,
-        e?.numeroReferenciaComercio
+        e?.numeroReferenciaComercio,
+        e?.status
       ]);
 
   @override
