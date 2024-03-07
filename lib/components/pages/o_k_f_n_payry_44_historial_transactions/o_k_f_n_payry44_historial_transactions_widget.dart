@@ -130,9 +130,9 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                               if (listViewRegistraOrdenRecordsRecordList
                                   .isEmpty) {
                                 return EmptyListWidget(
-                                  title: 'Sin transacciones',
+                                  title: 'Sin transferencias',
                                   message:
-                                      'Aun no hay transacciones realizadas',
+                                      'Aun no hay transferencias realizadas',
                                 );
                               }
                               return ListView.builder(

@@ -378,7 +378,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                   .spaceBetween,
                                                           children: [
                                                             Text(
-                                                              'Últimas transacciones',
+                                                              'Últimas transferencias',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium
@@ -526,9 +526,9 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                   child:
                                                                       EmptyListWidget(
                                                                     title:
-                                                                        'No hay QR\'s',
+                                                                        'No hay CoDis',
                                                                     message:
-                                                                        'Aun no hay transacciones por QR',
+                                                                        'Aun no hay transferencias por CoDi®',
                                                                   ),
                                                                 );
                                                               }
@@ -688,7 +688,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                   .spaceBetween,
                                                           children: [
                                                             Text(
-                                                              'Últimas transacciones',
+                                                              'Últimas transferencias',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium
@@ -836,9 +836,9 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                   child:
                                                                       EmptyListWidget(
                                                                     title:
-                                                                        'No hay SMS\'s',
+                                                                        'No hay DiMos',
                                                                     message:
-                                                                        'Aun no hay transacciones por QR',
+                                                                        'Aun no hay transferencias por DiMo®',
                                                                   ),
                                                                 );
                                                               }
