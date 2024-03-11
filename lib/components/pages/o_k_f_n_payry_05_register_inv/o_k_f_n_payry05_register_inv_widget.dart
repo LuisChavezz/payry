@@ -57,8 +57,6 @@ class _OKFNPayry05RegisterInvWidgetState
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return StreamBuilder<UserInvitationsRecord>(
       stream: UserInvitationsRecord.getDocument(widget.id!),
       builder: (context, snapshot) {

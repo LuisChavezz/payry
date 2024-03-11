@@ -40,8 +40,6 @@ class _OKFNPayry37FacturasWidgetState extends State<OKFNPayry37FacturasWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,

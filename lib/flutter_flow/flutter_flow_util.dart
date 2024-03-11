@@ -9,6 +9,7 @@ import 'package:from_css_color/from_css_color.dart';
 import 'package:intl/intl.dart';
 import 'package:json_path/json_path.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../main.dart';
@@ -52,9 +53,9 @@ String dateTimeFormat(String format, DateTime? dateTime, {String? locale}) {
 }
 
 Future launchURL(String url) async {
-  var uri = Uri.parse(url).toString();
+  var uri = Uri.parse(url);
   try {
-    await launch(uri);
+    await launchUrl(uri);
   } catch (e) {
     throw 'Could not launch $uri: $e';
   }
@@ -350,6 +351,19 @@ extension StatefulWidgetExtensions on State<StatefulWidget> {
   }
 }
 
+extension WalkthroughWrapperExtension on Widget {
+  Widget addWalkthrough(
+    GlobalKey walkthroughKey,
+    TutorialCoachMark? controller,
+  ) =>
+      controller?.isShowing ?? false
+          ? KeyedSubtree(
+              key: walkthroughKey,
+              child: this,
+            )
+          : this;
+}
+
 // For iOS 16 and below, set the status bar color to match the app's theme.
 // https://github.com/flutter/flutter/issues/41067
 Brightness? _lastBrightness;
@@ -366,5 +380,18 @@ void fixStatusBarOniOS16AndBelow(BuildContext context) {
         systemStatusBarContrastEnforced: true,
       ),
     );
+  }
+}
+
+extension ListUniqueExt<T> on Iterable<T> {
+  List<T> unique(dynamic Function(T) getKey) {
+    var distinctSet = <T>{};
+    var distinctList = <T>[];
+    for (var item in this) {
+      if (distinctSet.add(getKey(item))) {
+        distinctList.add(getKey(item));
+      }
+    }
+    return distinctList;
   }
 }

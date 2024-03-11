@@ -5,7 +5,11 @@ import '/components/empty_list/empty_list_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/walkthroughs/crear_usuarios.dart';
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
+    show TutorialCoachMark;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'o_k_f_n_payry24_listado_usuarios_model.dart';
@@ -29,6 +33,12 @@ class _OKFNPayry24ListadoUsuariosWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => OKFNPayry24ListadoUsuariosModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.crearUsuariosController = _model.createPageWalkthrough(context);
+      _model.crearUsuariosController?.show(context: context);
+    });
   }
 
   @override
@@ -40,8 +50,6 @@ class _OKFNPayry24ListadoUsuariosWidgetState
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -117,6 +125,9 @@ class _OKFNPayry24ListadoUsuariosWidgetState
                             ),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
+                        ).addWalkthrough(
+                          button5k9z6m33,
+                          _model.crearUsuariosController,
                         ),
                       ),
                     ],
@@ -266,6 +277,9 @@ class _OKFNPayry24ListadoUsuariosWidgetState
                           ),
                         );
                       },
+                    ).addWalkthrough(
+                      listViewBm8rc1kb,
+                      _model.crearUsuariosController,
                     );
                   },
                 ),

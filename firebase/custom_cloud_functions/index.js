@@ -25,3 +25,5 @@ const generateDimo = require("./generate_dimo.js");
 exports.generateDimo = generateDimo.generateDimo;
 const reportCompany = require("./report_company.js");
 exports.reportCompany = reportCompany.reportCompany;
+const reportUser = require("./report_user.js");
+exports.reportUser = reportUser.reportUser;

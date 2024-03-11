@@ -7,7 +7,10 @@ import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/walkthroughs/elementos_en_el_dashboard.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
+    show TutorialCoachMark;
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -66,7 +69,6 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
             r'''$.balance''',
           ).toString().toString();
         });
-        return;
       } else {
         if (!functions.includeTheString(
             getJsonField(
@@ -88,6 +90,10 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
           return;
         }
       }
+
+      _model.elementosEnElDashboardController =
+          _model.createPageWalkthrough(context);
+      _model.elementosEnElDashboardController?.show(context: context);
     });
 
     _model.tabBarController = TabController(
@@ -247,6 +253,9 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                               ),
                                             ),
                                         ],
+                                      ).addWalkthrough(
+                                        row1h1fcomo,
+                                        _model.elementosEnElDashboardController,
                                       ),
                                     ),
                                   ],
@@ -318,6 +327,10 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                       text: 'CoDi®',
                                                     ),
                                                   ],
+                                                ).addWalkthrough(
+                                                  tabVzlr16om,
+                                                  _model
+                                                      .elementosEnElDashboardController,
                                                 ),
                                                 Row(
                                                   mainAxisAlignment:
@@ -340,6 +353,10 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                       text: 'DiMo®',
                                                     ),
                                                   ],
+                                                ).addWalkthrough(
+                                                  tabNqfrth42,
+                                                  _model
+                                                      .elementosEnElDashboardController,
                                                 ),
                                               ],
                                               controller:
@@ -378,7 +395,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                   .spaceBetween,
                                                           children: [
                                                             Text(
-                                                              'Últimas transferencias',
+                                                              'Últimas operaciones',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium
@@ -485,6 +502,12 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                         'created_time',
                                                                         isGreaterThanOrEqualTo:
                                                                             functions.todayFilter(),
+                                                                      )
+                                                                      .where(
+                                                                        'status',
+                                                                        isEqualTo: PaymentStatus
+                                                                            .PAGADO
+                                                                            .serialize(),
                                                                       )
                                                                       .orderBy(
                                                                           'created_time',
@@ -688,7 +711,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                   .spaceBetween,
                                                           children: [
                                                             Text(
-                                                              'Últimas transferencias',
+                                                              'Últimas operaciones',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium
@@ -795,6 +818,12 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                         'created_time',
                                                                         isGreaterThanOrEqualTo:
                                                                             functions.todayFilter(),
+                                                                      )
+                                                                      .where(
+                                                                        'status',
+                                                                        isEqualTo: PaymentStatus
+                                                                            .PAGADO
+                                                                            .serialize(),
                                                                       )
                                                                       .orderBy(
                                                                           'created_time',
@@ -966,6 +995,10 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                     ),
                                                                   );
                                                                 },
+                                                              ).addWalkthrough(
+                                                                listViewL0xh1w34,
+                                                                _model
+                                                                    .elementosEnElDashboardController,
                                                               );
                                                             },
                                                           ),
@@ -1000,6 +1033,9 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                           userPermissions:
                               oKFNPayry26DashboardUserPermissionsRecord!,
                         ),
+                      ).addWalkthrough(
+                        containerA1rtbpk8,
+                        _model.elementosEnElDashboardController,
                       ),
                     ),
                   ),

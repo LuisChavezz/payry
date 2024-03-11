@@ -47,8 +47,6 @@ class _DynamicSwitchWidgetState extends State<DynamicSwitchWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Switch.adaptive(
       value: _model.switchValue ??= widget.initialValue!,
       onChanged: (newValue) async {

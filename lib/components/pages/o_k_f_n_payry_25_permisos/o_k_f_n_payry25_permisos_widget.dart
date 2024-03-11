@@ -3,8 +3,12 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/walkthroughs/asignar_permisos_a_usuarios.dart';
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
+    show TutorialCoachMark;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'o_k_f_n_payry25_permisos_model.dart';
@@ -34,6 +38,13 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => OKFNPayry25PermisosModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.asignarPermisosAUsuariosController =
+          _model.createPageWalkthrough(context);
+      _model.asignarPermisosAUsuariosController?.show(context: context);
+    });
   }
 
   @override
@@ -45,8 +56,6 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return StreamBuilder<List<UserPermissionsRecord>>(
       stream: queryUserPermissionsRecord(
         queryBuilder: (userPermissionsRecord) => userPermissionsRecord.where(
@@ -1242,6 +1251,9 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                           ),
                         ],
                       ),
+                    ).addWalkthrough(
+                      columnEwc1x5il,
+                      _model.asignarPermisosAUsuariosController,
                     ),
                   ),
                 ],

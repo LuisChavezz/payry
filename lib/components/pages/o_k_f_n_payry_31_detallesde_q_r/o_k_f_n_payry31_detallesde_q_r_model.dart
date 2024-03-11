@@ -28,6 +28,8 @@ class OKFNPayry31DetallesdeQRModel
   final unfocusNode = FocusNode();
   // Stores action output result for [Cloud Function - refund] action in IconButton widget.
   RefundCloudFunctionCallResponse? refundCF;
+  // Stores action output result for [Backend Call - Create Document] action in IconButton widget.
+  RegistraCobroRecord? codiResp;
   // Stores action output result for [Cloud Function - generateCodi] action in IconButton widget.
   GenerateCodiCloudFunctionCallResponse? codiCF;
 

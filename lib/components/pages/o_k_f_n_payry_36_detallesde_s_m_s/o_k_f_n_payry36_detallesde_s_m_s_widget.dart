@@ -396,7 +396,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              'ID de rastreo',
+                                              'ID rastreo',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodySmall
@@ -440,7 +440,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              'Clave de rastreo',
+                                              'Clave rastreo',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodySmall

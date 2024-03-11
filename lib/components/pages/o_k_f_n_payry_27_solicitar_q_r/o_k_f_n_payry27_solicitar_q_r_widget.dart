@@ -5,10 +5,14 @@ import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/walkthroughs/como_generar_un_co_di.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
+    show TutorialCoachMark;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -40,6 +44,13 @@ class _OKFNPayry27SolicitarQRWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => OKFNPayry27SolicitarQRModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.comoGenerarUnCoDiController =
+          _model.createPageWalkthrough(context);
+      _model.comoGenerarUnCoDiController?.show(context: context);
+    });
 
     _model.conceptFieldController ??= TextEditingController();
     _model.conceptFieldFocusNode ??= FocusNode();
@@ -189,6 +200,9 @@ class _OKFNPayry27SolicitarQRWidgetState
                                 validator: _model
                                     .conceptFieldControllerValidator
                                     .asValidator(context),
+                              ).addWalkthrough(
+                                textFieldY48usnf1,
+                                _model.comoGenerarUnCoDiController,
                               ),
                             ),
                             Padding(
@@ -261,6 +275,9 @@ class _OKFNPayry27SolicitarQRWidgetState
                                         decimal: true),
                                 validator: _model.amountFieldControllerValidator
                                     .asValidator(context),
+                              ).addWalkthrough(
+                                textFieldHb4avouw,
+                                _model.comoGenerarUnCoDiController,
                               ),
                             ),
                             Padding(
@@ -467,6 +484,9 @@ class _OKFNPayry27SolicitarQRWidgetState
                                   ),
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
+                              ).addWalkthrough(
+                                buttonEpcgn4br,
+                                _model.comoGenerarUnCoDiController,
                               ),
                             ),
                           ],
@@ -515,6 +535,9 @@ class _OKFNPayry27SolicitarQRWidgetState
                         ),
                         borderRadius: BorderRadius.circular(10.0),
                       ),
+                    ).addWalkthrough(
+                      buttonRbdslzww,
+                      _model.comoGenerarUnCoDiController,
                     ),
                   ),
                 ),

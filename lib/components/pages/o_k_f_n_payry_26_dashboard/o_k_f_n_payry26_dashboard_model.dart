@@ -7,8 +7,11 @@ import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/walkthroughs/elementos_en_el_dashboard.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'o_k_f_n_payry26_dashboard_widget.dart' show OKFNPayry26DashboardWidget;
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
+    show TutorialCoachMark;
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -27,6 +30,7 @@ class OKFNPayry26DashboardModel
   final unfocusNode = FocusNode();
   // Stores action output result for [Cloud Function - getBalance] action in OK_FN_Payry_26_Dashboard widget.
   GetBalanceCloudFunctionCallResponse? getBalanceCF;
+  TutorialCoachMark? elementosEnElDashboardController;
   // State field(s) for TabBar widget.
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
@@ -45,6 +49,7 @@ class OKFNPayry26DashboardModel
   @override
   void dispose() {
     unfocusNode.dispose();
+    elementosEnElDashboardController?.finish();
     tabBarController?.dispose();
     navBarFlotingModel.dispose();
   }
@@ -52,4 +57,12 @@ class OKFNPayry26DashboardModel
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
+
+  TutorialCoachMark createPageWalkthrough(BuildContext context) =>
+      TutorialCoachMark(
+        targets: createWalkthroughTargets(context),
+        onSkip: () {
+          return true;
+        },
+      );
 }

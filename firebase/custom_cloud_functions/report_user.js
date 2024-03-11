@@ -2,24 +2,24 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const fetch = require("node-fetch");
 
-exports.generateCodi = functions.https.onCall(async (data, context) => {
+exports.reportUser = functions.https.onCall(async (data, context) => {
   const { token, id, test } = data;
 
   // Test url for the API
-  const testUrl = "https://qa-api.payry.mx/stp/cobro-qr";
+  const testUrl = `https://qa-api.payry.mx/sqlReport/reportUserToSQL/${id}`;
 
   // Prod url for the API
-  const prodUrl = "https://api.payry.mx/stp/cobro-qr";
+  const prodUrl = `https://api.payry.mx/sqlReport/reportUserToSQL/${id}`;
 
   try {
-    const req_api = await fetch("https://api.payry.mx/stp/cobro-qr", {
+    const req_api = await fetch(test ? testUrl : prodUrl, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id,
+        // Empty
       }),
     });
 

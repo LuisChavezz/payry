@@ -5,10 +5,14 @@ import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/walkthroughs/como_crear_un_di_mo.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
+    show TutorialCoachMark;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
@@ -40,6 +44,12 @@ class _OKFNPayry32SolicitarSMSWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => OKFNPayry32SolicitarSMSModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.comoCrearUnDiMoController = _model.createPageWalkthrough(context);
+      _model.comoCrearUnDiMoController?.show(context: context);
+    });
 
     _model.phoneFieldController ??= TextEditingController();
     _model.phoneFieldFocusNode ??= FocusNode();
@@ -223,6 +233,9 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                         inputFormatters: [
                                           _model.phoneFieldMask
                                         ],
+                                      ).addWalkthrough(
+                                        textFieldKyj8705m,
+                                        _model.comoCrearUnDiMoController,
                                       ),
                                     ),
                                   ),
@@ -299,6 +312,9 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                 validator: _model
                                     .conceptFieldControllerValidator
                                     .asValidator(context),
+                              ).addWalkthrough(
+                                textField3t6or890,
+                                _model.comoCrearUnDiMoController,
                               ),
                             ),
                             Padding(
@@ -371,6 +387,9 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                         decimal: true),
                                 validator: _model.amountFieldControllerValidator
                                     .asValidator(context),
+                              ).addWalkthrough(
+                                textFieldYm31jmhf,
+                                _model.comoCrearUnDiMoController,
                               ),
                             ),
                             Padding(
@@ -592,6 +611,9 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                   ),
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
+                              ).addWalkthrough(
+                                button4vvi5acz,
+                                _model.comoCrearUnDiMoController,
                               ),
                             ),
                           ],
@@ -638,6 +660,9 @@ class _OKFNPayry32SolicitarSMSWidgetState
                       ),
                       borderRadius: BorderRadius.circular(10.0),
                     ),
+                  ).addWalkthrough(
+                    button3ksruh3m,
+                    _model.comoCrearUnDiMoController,
                   ),
                 ),
               ],
