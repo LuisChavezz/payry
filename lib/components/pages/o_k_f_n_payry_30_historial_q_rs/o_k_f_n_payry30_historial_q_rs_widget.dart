@@ -136,7 +136,7 @@ class _OKFNPayry30HistorialQRsWidgetState
                                 ),
                               ),
                               Tab(
-                                text: 'Pagos',
+                                text: 'Pagados',
                               ),
                             ],
                           ),
@@ -521,9 +521,9 @@ class _OKFNPayry30HistorialQRsWidgetState
                                                           child:
                                                               EmptyListWidget(
                                                             title:
-                                                                'No hay QR\'s',
+                                                                'No hay CoDis',
                                                             message:
-                                                                'Aun no hay transacciones por QR',
+                                                                'Aun no hay transferencias por CoDi®',
                                                           ),
                                                         );
                                                       }
@@ -728,6 +728,18 @@ class _OKFNPayry30HistorialQRsWidgetState
                                                       final qrItem = _model
                                                           .simpleSearchResults1
                                                           .toList();
+                                                      if (qrItem.isEmpty) {
+                                                        return Container(
+                                                          height: 100.0,
+                                                          child:
+                                                              EmptyListWidget(
+                                                            title:
+                                                                'No hay CoDis',
+                                                            message:
+                                                                'No hubo resultados de tu búsqueda',
+                                                          ),
+                                                        );
+                                                      }
                                                       return ListView.builder(
                                                         padding:
                                                             EdgeInsets.zero,
@@ -1288,9 +1300,9 @@ class _OKFNPayry30HistorialQRsWidgetState
                                                           child:
                                                               EmptyListWidget(
                                                             title:
-                                                                'No hay QR\'s',
+                                                                'No hay CoDis',
                                                             message:
-                                                                'Aun no hay transacciones por QR',
+                                                                'Aun no hay transferencias por CoDi®',
                                                           ),
                                                         );
                                                       }
@@ -1487,6 +1499,18 @@ class _OKFNPayry30HistorialQRsWidgetState
                                                       final qrItem = _model
                                                           .simpleSearchResults2
                                                           .toList();
+                                                      if (qrItem.isEmpty) {
+                                                        return Container(
+                                                          height: 100.0,
+                                                          child:
+                                                              EmptyListWidget(
+                                                            title:
+                                                                'No hay CoDis',
+                                                            message:
+                                                                'No hubo resultados de tu búsqueda',
+                                                          ),
+                                                        );
+                                                      }
                                                       return ListView.builder(
                                                         padding:
                                                             EdgeInsets.zero,
