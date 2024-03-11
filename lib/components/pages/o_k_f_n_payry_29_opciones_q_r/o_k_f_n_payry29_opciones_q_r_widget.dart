@@ -39,8 +39,6 @@ class _OKFNPayry29OpcionesQRWidgetState
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return StreamBuilder<List<UserPermissionsRecord>>(
       stream: queryUserPermissionsRecord(
         queryBuilder: (userPermissionsRecord) => userPermissionsRecord.where(

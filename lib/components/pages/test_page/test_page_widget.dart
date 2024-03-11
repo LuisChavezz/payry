@@ -41,8 +41,6 @@ class _TestPageWidgetState extends State<TestPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return StreamBuilder<List<RegistraCobroRecord>>(
       stream: queryRegistraCobroRecord(
         queryBuilder: (registraCobroRecord) => registraCobroRecord.where(

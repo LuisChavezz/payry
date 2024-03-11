@@ -49,8 +49,6 @@ class _StatusDropdownWidgetState extends State<StatusDropdownWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return FlutterFlowDropDown<String>(
       controller: _model.statusDropDownValueController ??=
           FormFieldController<String>(

@@ -44,8 +44,6 @@ class _OKFNPayry40NotificacionesWidgetState
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return FutureBuilder<List<NotificationRecord>>(
       future: (_model.firestoreRequestCompleter ??=
               Completer<List<NotificationRecord>>()

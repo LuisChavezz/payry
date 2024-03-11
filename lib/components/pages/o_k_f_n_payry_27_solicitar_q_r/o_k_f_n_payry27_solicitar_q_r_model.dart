@@ -5,12 +5,16 @@ import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/walkthroughs/como_generar_un_co_di.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'o_k_f_n_payry27_solicitar_q_r_widget.dart'
     show OKFNPayry27SolicitarQRWidget;
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
+    show TutorialCoachMark;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -21,6 +25,7 @@ class OKFNPayry27SolicitarQRModel
 
   final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
+  TutorialCoachMark? comoGenerarUnCoDiController;
   // State field(s) for ConceptField widget.
   FocusNode? conceptFieldFocusNode;
   TextEditingController? conceptFieldController;
@@ -72,6 +77,7 @@ class OKFNPayry27SolicitarQRModel
   @override
   void dispose() {
     unfocusNode.dispose();
+    comoGenerarUnCoDiController?.finish();
     conceptFieldFocusNode?.dispose();
     conceptFieldController?.dispose();
 
@@ -82,4 +88,12 @@ class OKFNPayry27SolicitarQRModel
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
+
+  TutorialCoachMark createPageWalkthrough(BuildContext context) =>
+      TutorialCoachMark(
+        targets: createWalkthroughTargets(context),
+        onSkip: () {
+          return true;
+        },
+      );
 }

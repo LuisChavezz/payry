@@ -43,8 +43,6 @@ class _OKFNPayry01SplashWidgetState extends State<OKFNPayry01SplashWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,

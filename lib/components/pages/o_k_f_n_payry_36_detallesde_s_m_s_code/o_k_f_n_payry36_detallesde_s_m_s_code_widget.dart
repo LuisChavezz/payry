@@ -46,8 +46,6 @@ class _OKFNPayry36DetallesdeSMSCodeWidgetState
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return StreamBuilder<RegistraCobroRecord>(
       stream: RegistraCobroRecord.getDocument(widget.registraCobroRef!),
       builder: (context, snapshot) {

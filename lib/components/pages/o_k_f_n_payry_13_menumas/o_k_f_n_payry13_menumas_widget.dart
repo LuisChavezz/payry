@@ -5,6 +5,9 @@ import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/walkthroughs/primeros_pasos_menu_mas.dart';
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
+    show TutorialCoachMark;
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -33,13 +36,9 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (FFAppState().tutorialDialogs) {
-        context.goNamed('OK_FN_Payry_15_EditProfile');
-
-        return;
-      } else {
-        return;
-      }
+      _model.primerosPasosMenuMasController =
+          _model.createPageWalkthrough(context);
+      _model.primerosPasosMenuMasController?.show(context: context);
     });
   }
 
@@ -52,8 +51,6 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return StreamBuilder<List<UserPermissionsRecord>>(
       stream: queryUserPermissionsRecord(
         queryBuilder: (userPermissionsRecord) => userPermissionsRecord.where(
@@ -105,14 +102,29 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          Text(
-                            'Más opciones',
-                            style: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  fontFamily: 'Poppins',
-                                  color: FlutterFlowTheme.of(context).accent3,
-                                ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Text(
+                                      'Más opciones',
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleLarge
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .accent3,
+                                          ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
@@ -504,6 +516,9 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                         ),
                                       ),
                                     ),
+                                  ).addWalkthrough(
+                                    container4zzotb73,
+                                    _model.primerosPasosMenuMasController,
                                   ),
                                 ),
                                 AuthUserStreamWidget(
@@ -987,6 +1002,9 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                       ),
                                     ),
                                   ),
+                                ).addWalkthrough(
+                                  containerBkgp3rtd,
+                                  _model.primerosPasosMenuMasController,
                                 ),
                                 AuthUserStreamWidget(
                                   builder: (context) => InkWell(
@@ -1291,6 +1309,9 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                         ),
                                       ),
                                     ),
+                                  ).addWalkthrough(
+                                    containerUroenb4x,
+                                    _model.primerosPasosMenuMasController,
                                   ),
                                 ),
                                 AuthUserStreamWidget(

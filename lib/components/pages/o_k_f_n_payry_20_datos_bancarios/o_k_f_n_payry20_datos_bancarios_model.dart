@@ -4,10 +4,13 @@ import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.d
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/walkthroughs/agregar_datos_bancarios.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'o_k_f_n_payry20_datos_bancarios_widget.dart'
     show OKFNPayry20DatosBancariosWidget;
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
+    show TutorialCoachMark;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:collection/collection.dart';
@@ -24,6 +27,7 @@ class OKFNPayry20DatosBancariosModel
 
   final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
+  TutorialCoachMark? agregarDatosBancariosController;
   // State field(s) for ClabeField widget.
   FocusNode? clabeFieldFocusNode;
   TextEditingController? clabeFieldController;
@@ -69,6 +73,7 @@ class OKFNPayry20DatosBancariosModel
   @override
   void dispose() {
     unfocusNode.dispose();
+    agregarDatosBancariosController?.finish();
     clabeFieldFocusNode?.dispose();
     clabeFieldController?.dispose();
 
@@ -79,4 +84,12 @@ class OKFNPayry20DatosBancariosModel
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
+
+  TutorialCoachMark createPageWalkthrough(BuildContext context) =>
+      TutorialCoachMark(
+        targets: createWalkthroughTargets(context),
+        onSkip: () {
+          return true;
+        },
+      );
 }

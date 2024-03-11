@@ -26,6 +26,8 @@ class OKFNPayry31DetallesdeQRCodeModel
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Stores action output result for [Backend Call - Create Document] action in IconButton widget.
+  RegistraCobroRecord? codiResp;
   // Stores action output result for [Cloud Function - generateCodi] action in IconButton widget.
   GenerateCodiCloudFunctionCallResponse? codiCF;
 

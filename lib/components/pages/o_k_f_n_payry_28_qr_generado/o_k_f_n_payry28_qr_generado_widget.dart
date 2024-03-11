@@ -43,8 +43,6 @@ class _OKFNPayry28QrGeneradoWidgetState
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return StreamBuilder<QrRecord>(
       stream: QrRecord.getDocument(widget.createdQrReference!),
       builder: (context, snapshot) {

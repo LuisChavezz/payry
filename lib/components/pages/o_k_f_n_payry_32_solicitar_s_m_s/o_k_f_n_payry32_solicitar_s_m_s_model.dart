@@ -5,12 +5,16 @@ import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/walkthroughs/como_crear_un_di_mo.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'o_k_f_n_payry32_solicitar_s_m_s_widget.dart'
     show OKFNPayry32SolicitarSMSWidget;
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
+    show TutorialCoachMark;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
@@ -21,6 +25,7 @@ class OKFNPayry32SolicitarSMSModel
 
   final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
+  TutorialCoachMark? comoCrearUnDiMoController;
   // State field(s) for PhoneField widget.
   FocusNode? phoneFieldFocusNode;
   TextEditingController? phoneFieldController;
@@ -86,6 +91,7 @@ class OKFNPayry32SolicitarSMSModel
   @override
   void dispose() {
     unfocusNode.dispose();
+    comoCrearUnDiMoController?.finish();
     phoneFieldFocusNode?.dispose();
     phoneFieldController?.dispose();
 
@@ -99,4 +105,12 @@ class OKFNPayry32SolicitarSMSModel
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
+
+  TutorialCoachMark createPageWalkthrough(BuildContext context) =>
+      TutorialCoachMark(
+        targets: createWalkthroughTargets(context),
+        onSkip: () {
+          return true;
+        },
+      );
 }
