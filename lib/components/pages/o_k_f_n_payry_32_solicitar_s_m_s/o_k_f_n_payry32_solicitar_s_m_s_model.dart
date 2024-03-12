@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/backend/schema/enums/enums.dart';
+import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -78,6 +79,8 @@ class OKFNPayry32SolicitarSMSModel
   RegistraCobroRecord? dimoResp;
   // Stores action output result for [Cloud Function - generateDimo] action in Button widget.
   GenerateDimoCloudFunctionCallResponse? dimoCF;
+  // Model for NavBarFloting component.
+  late NavBarFlotingModel navBarFlotingModel;
 
   /// Initialization and disposal methods.
 
@@ -86,6 +89,7 @@ class OKFNPayry32SolicitarSMSModel
     phoneFieldControllerValidator = _phoneFieldControllerValidator;
     conceptFieldControllerValidator = _conceptFieldControllerValidator;
     amountFieldControllerValidator = _amountFieldControllerValidator;
+    navBarFlotingModel = createModel(context, () => NavBarFlotingModel());
   }
 
   @override
@@ -100,6 +104,8 @@ class OKFNPayry32SolicitarSMSModel
 
     amountFieldFocusNode?.dispose();
     amountFieldController?.dispose();
+
+    navBarFlotingModel.dispose();
   }
 
   /// Action blocks are added here.

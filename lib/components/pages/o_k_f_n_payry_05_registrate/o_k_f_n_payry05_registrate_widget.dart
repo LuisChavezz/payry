@@ -773,7 +773,7 @@ class _OKFNPayry05RegistrateWidgetState
                                                     'https://www.payry.mx/terminos-y-condiciones/');
                                               },
                                               child: Text(
-                                                'Terminos y condiciones',
+                                                'Términos y condiciones',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium

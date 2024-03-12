@@ -411,9 +411,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'testPage',
               path: 'testPage',
               requireAuth: true,
-              builder: (context, params) => TestPageWidget(
-                docId: params.getParam('docId', ParamType.String),
-              ),
+              builder: (context, params) => TestPageWidget(),
             ),
             FFRoute(
               name: 'OK_FN_Payry_31_detallesdeQRCode',

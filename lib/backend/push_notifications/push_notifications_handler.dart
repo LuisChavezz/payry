@@ -225,11 +225,7 @@ final parametersBuilderMap =
   'OK_FN_Payry_44_historialTransactions': ParameterData.none(),
   'testShareImage': ParameterData.none(),
   'OK_FN_Payry_20_datosBancariosVIEW': ParameterData.none(),
-  'testPage': (data) async => ParameterData(
-        allParams: {
-          'docId': getParameter<String>(data, 'docId'),
-        },
-      ),
+  'testPage': ParameterData.none(),
   'OK_FN_Payry_31_detallesdeQRCode': (data) async => ParameterData(
         allParams: {
           'registraCobroRef':

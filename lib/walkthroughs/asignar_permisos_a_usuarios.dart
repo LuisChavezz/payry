@@ -5,7 +5,7 @@ import '/components/mensaje_walk_through_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 
 // Focus widget keys for this walkthrough
-final columnEwc1x5il = GlobalKey();
+final columnU579nx4d = GlobalKey();
 
 /// Asignar permisos a usuarios
 ///
@@ -13,7 +13,7 @@ final columnEwc1x5il = GlobalKey();
 List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       /// Step 1
       TargetFocus(
-        keyTarget: columnEwc1x5il,
+        keyTarget: columnU579nx4d,
         enableOverlayTab: true,
         alignSkip: Alignment.bottomCenter,
         shape: ShapeLightFocus.RRect,

@@ -8,14 +8,10 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
-import '/walkthroughs/datos_empresa.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
-    show TutorialCoachMark;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'o_k_f_n_payry19_formulario_empresa_model.dart';
@@ -39,12 +35,6 @@ class _OKFNPayry19FormularioEmpresaWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => OKFNPayry19FormularioEmpresaModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.datosEmpresaController = _model.createPageWalkthrough(context);
-      _model.datosEmpresaController?.show(context: context);
-    });
 
     _model.nameFieldFocusNode ??= FocusNode();
 
@@ -352,9 +342,6 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                     validator: _model
                                         .nameFieldControllerValidator
                                         .asValidator(context),
-                                  ).addWalkthrough(
-                                    textField1k7siihm,
-                                    _model.datosEmpresaController,
                                   ),
                                 ),
                                 Padding(
@@ -2211,9 +2198,6 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                         borderRadius:
                                             BorderRadius.circular(10.0),
                                       ),
-                                    ).addWalkthrough(
-                                      button0mk72b7s,
-                                      _model.datosEmpresaController,
                                     ),
                                   ),
                                 ),
@@ -2276,9 +2260,6 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           borderRadius:
                                               BorderRadius.circular(10.0),
                                         ),
-                                      ).addWalkthrough(
-                                        buttonOpo9q8j2,
-                                        _model.datosEmpresaController,
                                       ),
                                     ),
                                   ),

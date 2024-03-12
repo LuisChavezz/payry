@@ -6,13 +6,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import '/walkthroughs/test.dart';
-import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
-    show TutorialCoachMark;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
@@ -37,12 +33,6 @@ class _OKFNPayry15EditProfileWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => OKFNPayry15EditProfileModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.testController = _model.createPageWalkthrough(context);
-      _model.testController?.show(context: context);
-    });
 
     _model.nameFieldController ??=
         TextEditingController(text: currentUserDisplayName);
@@ -522,9 +512,6 @@ class _OKFNPayry15EditProfileWidgetState
                                     ),
                                   ),
                                 ].divide(SizedBox(width: 10.0)),
-                              ).addWalkthrough(
-                                rowZnhqodfj,
-                                _model.testController,
                               ),
                             ),
                             Align(

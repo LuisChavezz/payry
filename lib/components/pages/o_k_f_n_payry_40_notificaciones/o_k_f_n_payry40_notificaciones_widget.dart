@@ -80,159 +80,126 @@ class _OKFNPayry40NotificacionesWidgetState
         }
         List<NotificationRecord>
             oKFNPayry40NotificacionesNotificationRecordList = snapshot.data!;
-        return Scaffold(
-          key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          body: SafeArea(
-            top: true,
-            child: StreamBuilder<List<UserPermissionsRecord>>(
-              stream: queryUserPermissionsRecord(
-                queryBuilder: (userPermissionsRecord) =>
-                    userPermissionsRecord.where(
-                  'uid',
-                  isEqualTo: currentUserUid,
+        return WillPopScope(
+          onWillPop: () async => false,
+          child: Scaffold(
+            key: scaffoldKey,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            body: SafeArea(
+              top: true,
+              child: StreamBuilder<List<UserPermissionsRecord>>(
+                stream: queryUserPermissionsRecord(
+                  queryBuilder: (userPermissionsRecord) =>
+                      userPermissionsRecord.where(
+                    'uid',
+                    isEqualTo: currentUserUid,
+                  ),
+                  singleRecord: true,
                 ),
-                singleRecord: true,
-              ),
-              builder: (context, snapshot) {
-                // Customize what your widget looks like when it's loading.
-                if (!snapshot.hasData) {
-                  return Center(
-                    child: SizedBox(
-                      width: 40.0,
-                      height: 40.0,
-                      child: CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation<Color>(
-                          FlutterFlowTheme.of(context).accent3,
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 40.0,
+                        height: 40.0,
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            FlutterFlowTheme.of(context).accent3,
+                          ),
                         ),
                       ),
-                    ),
-                  );
-                }
-                List<UserPermissionsRecord> stackUserPermissionsRecordList =
-                    snapshot.data!;
-                final stackUserPermissionsRecord =
-                    stackUserPermissionsRecordList.isNotEmpty
-                        ? stackUserPermissionsRecordList.first
-                        : null;
-                return Stack(
-                  children: [
-                    Container(
-                      height: MediaQuery.sizeOf(context).height * 0.85,
-                      decoration: BoxDecoration(),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            18.0, 36.0, 18.0, 0.0),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 30.0),
-                                child: Text(
-                                  'Notificaciones',
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleLarge
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: FlutterFlowTheme.of(context)
-                                            .accent3,
-                                      ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 108.0),
-                                child: Builder(
-                                  builder: (context) {
-                                    final notificationItem =
-                                        oKFNPayry40NotificacionesNotificationRecordList
-                                            .toList();
-                                    if (notificationItem.isEmpty) {
-                                      return Container(
-                                        height: 300.0,
-                                        child: EmptyListWidget(
-                                          title: 'Sin notificaciones',
-                                          message:
-                                              'No tienes notificaciones nuevas.',
+                    );
+                  }
+                  List<UserPermissionsRecord> stackUserPermissionsRecordList =
+                      snapshot.data!;
+                  final stackUserPermissionsRecord =
+                      stackUserPermissionsRecordList.isNotEmpty
+                          ? stackUserPermissionsRecordList.first
+                          : null;
+                  return Stack(
+                    children: [
+                      Container(
+                        height: MediaQuery.sizeOf(context).height * 0.85,
+                        decoration: BoxDecoration(),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              18.0, 36.0, 18.0, 0.0),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 30.0),
+                                  child: Text(
+                                    'Notificaciones',
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleLarge
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: FlutterFlowTheme.of(context)
+                                              .accent3,
                                         ),
-                                      );
-                                    }
-                                    return ListView.separated(
-                                      padding: EdgeInsets.zero,
-                                      primary: false,
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: notificationItem.length,
-                                      separatorBuilder: (_, __) =>
-                                          SizedBox(height: 20.0),
-                                      itemBuilder:
-                                          (context, notificationItemIndex) {
-                                        final notificationItemItem =
-                                            notificationItem[
-                                                notificationItemIndex];
-                                        return Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, 0.0),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              if (notificationItemItem
-                                                  .redirect) {
-                                                if (functions.includeTheString(
-                                                    notificationItemItem
-                                                        .subject,
-                                                    'CoDi')!) {
-                                                  context.pushNamed(
-                                                    'OK_FN_Payry_31_detallesdeQR',
-                                                    queryParameters: {
-                                                      'registraCobroRef':
-                                                          serializeParam(
-                                                        functions.jsonPathToRegistraCobroDocRef(
-                                                            notificationItemItem
-                                                                .registraCobroRef),
-                                                        ParamType
-                                                            .DocumentReference,
-                                                      ),
-                                                      'createRefund':
-                                                          serializeParam(
-                                                        stackUserPermissionsRecord
-                                                            ?.createRefunds,
-                                                        ParamType.bool,
-                                                      ),
-                                                      'detallesCobroRef':
-                                                          serializeParam(
-                                                        functions.jsonPathToDetallesCobroRef(
-                                                            notificationItemItem
-                                                                .detallesCobroRef),
-                                                        ParamType
-                                                            .DocumentReference,
-                                                      ),
-                                                    }.withoutNulls,
-                                                  );
-
-                                                  return;
-                                                } else {
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 108.0),
+                                  child: Builder(
+                                    builder: (context) {
+                                      final notificationItem =
+                                          oKFNPayry40NotificacionesNotificationRecordList
+                                              .toList();
+                                      if (notificationItem.isEmpty) {
+                                        return Container(
+                                          height: 300.0,
+                                          child: EmptyListWidget(
+                                            title: 'Sin notificaciones',
+                                            message:
+                                                'No tienes notificaciones nuevas.',
+                                          ),
+                                        );
+                                      }
+                                      return ListView.separated(
+                                        padding: EdgeInsets.zero,
+                                        primary: false,
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: notificationItem.length,
+                                        separatorBuilder: (_, __) =>
+                                            SizedBox(height: 20.0),
+                                        itemBuilder:
+                                            (context, notificationItemIndex) {
+                                          final notificationItemItem =
+                                              notificationItem[
+                                                  notificationItemIndex];
+                                          return Align(
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                if (notificationItemItem
+                                                    .redirect) {
                                                   if (functions
                                                       .includeTheString(
                                                           notificationItemItem
                                                               .subject,
-                                                          'DiMo')!) {
+                                                          'CoDi')!) {
                                                     context.pushNamed(
-                                                      'OK_FN_Payry_36_detallesdeSMS',
+                                                      'OK_FN_Payry_31_detallesdeQR',
                                                       queryParameters: {
                                                         'registraCobroRef':
                                                             serializeParam(
-                                                          functions.jsonPathToRegistraCobroDocRef(functions
-                                                              .jsonPathToRegistraCobroDocRef(
-                                                                  notificationItemItem
-                                                                      .registraCobroRef)
-                                                              ?.id),
+                                                          functions.jsonPathToRegistraCobroDocRef(
+                                                              notificationItemItem
+                                                                  .registraCobroRef),
                                                           ParamType
                                                               .DocumentReference,
                                                         ),
@@ -252,61 +219,210 @@ class _OKFNPayry40NotificacionesWidgetState
                                                         ),
                                                       }.withoutNulls,
                                                     );
-                                                  } else {
-                                                    await showDialog(
-                                                      context: context,
-                                                      builder:
-                                                          (alertDialogContext) {
-                                                        return AlertDialog(
-                                                          title: Text('Error'),
-                                                          content: Text(
-                                                              'Hubo un error en la navegación, favor de reportar error con soporte.'),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext),
-                                                              child: Text('Ok'),
-                                                            ),
-                                                          ],
-                                                        );
-                                                      },
-                                                    );
-                                                  }
 
+                                                    return;
+                                                  } else {
+                                                    if (functions
+                                                        .includeTheString(
+                                                            notificationItemItem
+                                                                .subject,
+                                                            'DiMo')!) {
+                                                      context.pushNamed(
+                                                        'OK_FN_Payry_36_detallesdeSMS',
+                                                        queryParameters: {
+                                                          'registraCobroRef':
+                                                              serializeParam(
+                                                            functions.jsonPathToRegistraCobroDocRef(functions
+                                                                .jsonPathToRegistraCobroDocRef(
+                                                                    notificationItemItem
+                                                                        .registraCobroRef)
+                                                                ?.id),
+                                                            ParamType
+                                                                .DocumentReference,
+                                                          ),
+                                                          'createRefund':
+                                                              serializeParam(
+                                                            stackUserPermissionsRecord
+                                                                ?.createRefunds,
+                                                            ParamType.bool,
+                                                          ),
+                                                          'detallesCobroRef':
+                                                              serializeParam(
+                                                            functions.jsonPathToDetallesCobroRef(
+                                                                notificationItemItem
+                                                                    .detallesCobroRef),
+                                                            ParamType
+                                                                .DocumentReference,
+                                                          ),
+                                                        }.withoutNulls,
+                                                      );
+                                                    } else {
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title:
+                                                                Text('Error'),
+                                                            content: Text(
+                                                                'Hubo un error en la navegación, favor de reportar error con soporte.'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child:
+                                                                    Text('Ok'),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      );
+                                                    }
+
+                                                    return;
+                                                  }
+                                                } else {
                                                   return;
                                                 }
-                                              } else {
-                                                return;
-                                              }
-                                            },
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                borderRadius:
-                                                    BorderRadius.circular(15.0),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsets.all(16.0),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      8.0,
-                                                                      10.0,
-                                                                      8.0),
-                                                          child: InkWell(
+                                              },
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15.0),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsets.all(16.0),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        8.0,
+                                                                        10.0,
+                                                                        8.0),
+                                                            child: InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                context.pushNamed(
+                                                                    'OK_FN_Payry_15_EditProfile');
+                                                              },
+                                                              child: Icon(
+                                                                FFIcons
+                                                                    .knotificaciones,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                size: 20.0,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Text(
+                                                            notificationItemItem
+                                                                .subject,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Lexend',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    12.0,
+                                                                    0.0,
+                                                                    16.0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Expanded(
+                                                              child: Text(
+                                                                notificationItemItem
+                                                                    .content,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Lexend',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Expanded(
+                                                            child: Text(
+                                                              '${dateTimeFormat(
+                                                                'dd MMM, y',
+                                                                notificationItemItem
+                                                                    .createdTime,
+                                                                locale: FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode,
+                                                              )} a las ${dateTimeFormat(
+                                                                'jm',
+                                                                notificationItemItem
+                                                                    .createdTime,
+                                                                locale: FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode,
+                                                              )}',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Lexend',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
+                                                                    fontSize:
+                                                                        12.0,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                          InkWell(
                                                             splashColor: Colors
                                                                 .transparent,
                                                             focusColor: Colors
@@ -317,204 +433,96 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                 Colors
                                                                     .transparent,
                                                             onTap: () async {
-                                                              context.pushNamed(
-                                                                  'OK_FN_Payry_15_EditProfile');
+                                                              await notificationItemItem
+                                                                  .reference
+                                                                  .update(
+                                                                      createNotificationRecordData(
+                                                                isRead: true,
+                                                              ));
+                                                              setState(() =>
+                                                                  _model.firestoreRequestCompleter =
+                                                                      null);
+                                                              await _model
+                                                                  .waitForFirestoreRequestCompleted();
+                                                              await actions
+                                                                  .updateAppBadge(
+                                                                oKFNPayry40NotificacionesNotificationRecordList
+                                                                    .length,
+                                                              );
                                                             },
-                                                            child: Icon(
-                                                              FFIcons
-                                                                  .knotificaciones,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryText,
-                                                              size: 20.0,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Text(
-                                                          notificationItemItem
-                                                              .subject,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Lexend',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                              ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  12.0,
-                                                                  0.0,
-                                                                  16.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Expanded(
-                                                            child: Text(
-                                                              notificationItemItem
-                                                                  .content,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodySmall
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Lexend',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryText,
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          6.0,
+                                                                          0.0),
+                                                                  child: Icon(
+                                                                    Icons
+                                                                        .remove_red_eye,
+                                                                    color: Color(
+                                                                        0xFF0FB978),
+                                                                    size: 18.0,
                                                                   ),
+                                                                ),
+                                                                Text(
+                                                                  'Marcar como leído',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Lexend',
+                                                                        color: Color(
+                                                                            0xFF0FB978),
+                                                                        fontSize:
+                                                                            12.0,
+                                                                      ),
+                                                                ),
+                                                              ],
                                                             ),
                                                           ),
                                                         ],
                                                       ),
-                                                    ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: [
-                                                        Expanded(
-                                                          child: Text(
-                                                            '${dateTimeFormat(
-                                                              'dd MMM, y',
-                                                              notificationItemItem
-                                                                  .createdTime,
-                                                              locale: FFLocalizations
-                                                                      .of(context)
-                                                                  .languageCode,
-                                                            )} a las ${dateTimeFormat(
-                                                              'jm',
-                                                              notificationItemItem
-                                                                  .createdTime,
-                                                              locale: FFLocalizations
-                                                                      .of(context)
-                                                                  .languageCode,
-                                                            )}',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodySmall
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Lexend',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText,
-                                                                  fontSize:
-                                                                      12.0,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                        InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            await notificationItemItem
-                                                                .reference
-                                                                .update(
-                                                                    createNotificationRecordData(
-                                                              isRead: true,
-                                                            ));
-                                                            setState(() => _model
-                                                                    .firestoreRequestCompleter =
-                                                                null);
-                                                            await _model
-                                                                .waitForFirestoreRequestCompleted();
-                                                            await actions
-                                                                .updateAppBadge(
-                                                              oKFNPayry40NotificacionesNotificationRecordList
-                                                                  .length,
-                                                            );
-                                                          },
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            6.0,
-                                                                            0.0),
-                                                                child: Icon(
-                                                                  Icons
-                                                                      .remove_red_eye,
-                                                                  color: Color(
-                                                                      0xFF0FB978),
-                                                                  size: 18.0,
-                                                                ),
-                                                              ),
-                                                              Text(
-                                                                'Marcar como leído',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Lexend',
-                                                                      color: Color(
-                                                                          0xFF0FB978),
-                                                                      fontSize:
-                                                                          12.0,
-                                                                    ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional(0.0, 1.0),
-                      child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 18.0),
-                        child: wrapWithModel(
-                          model: _model.navBarFlotingModel,
-                          updateCallback: () => setState(() {}),
-                          child: NavBarFlotingWidget(
-                            userPermissions: stackUserPermissionsRecord!,
+                      Align(
+                        alignment: AlignmentDirectional(0.0, 1.0),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 18.0),
+                          child: wrapWithModel(
+                            model: _model.navBarFlotingModel,
+                            updateCallback: () => setState(() {}),
+                            child: NavBarFlotingWidget(
+                              userPermissions: stackUserPermissionsRecord!,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                );
-              },
+                    ],
+                  );
+                },
+              ),
             ),
           ),
         );

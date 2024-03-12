@@ -11,6 +11,7 @@ import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -22,6 +23,7 @@ class OKFNPayry13MenumasModel
 
   ///  State fields for stateful widgets in this page.
 
+  TutorialCoachMark? primerosPasosMenuMasController;
   // Stores action output result for [Cloud Function - verifyEmail] action in Container widget.
   VerifyEmailCloudFunctionCallResponse? verifyEmailResp1;
   // Stores action output result for [Cloud Function - verifyEmail] action in Container widget.
@@ -36,7 +38,6 @@ class OKFNPayry13MenumasModel
   VerifyEmailCloudFunctionCallResponse? verifyEmailResp6;
   // Stores action output result for [Cloud Function - verifyEmail] action in Container widget.
   VerifyEmailCloudFunctionCallResponse? verifyEmailResp7;
-  TutorialCoachMark? primerosPasosMenuMasController;
   // Model for NavBarFloting component.
   late NavBarFlotingModel navBarFlotingModel;
 
