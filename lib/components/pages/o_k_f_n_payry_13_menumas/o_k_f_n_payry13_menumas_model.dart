@@ -23,6 +23,8 @@ class OKFNPayry13MenumasModel
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Cloud Function - testCloudFunction] action in OK_FN_Payry_13_Menumas widget.
+  TestCloudFunctionCloudFunctionCallResponse? cloudFunctiono6o;
   TutorialCoachMark? primerosPasosMenuMasController;
   // Stores action output result for [Cloud Function - verifyEmail] action in Container widget.
   VerifyEmailCloudFunctionCallResponse? verifyEmailResp1;

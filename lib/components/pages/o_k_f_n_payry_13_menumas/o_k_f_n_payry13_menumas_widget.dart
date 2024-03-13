@@ -36,7 +36,24 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (true) {
+      try {
+        final result = await FirebaseFunctions.instance
+            .httpsCallable('testCloudFunction')
+            .call({});
+        _model.cloudFunctiono6o = TestCloudFunctionCloudFunctionCallResponse(
+          data: result.data,
+          succeeded: true,
+          resultAsString: result.data.toString(),
+          jsonBody: result.data,
+        );
+      } on FirebaseFunctionsException catch (error) {
+        _model.cloudFunctiono6o = TestCloudFunctionCloudFunctionCallResponse(
+          errorCode: error.code,
+          succeeded: false,
+        );
+      }
+
+      if (_model.cloudFunctiono6o!.succeeded!) {
         _model.primerosPasosMenuMasController =
             _model.createPageWalkthrough(context);
         _model.primerosPasosMenuMasController?.show(context: context);
