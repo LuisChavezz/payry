@@ -5,15 +5,15 @@ import '/components/mensaje_walk_through_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 
 // Focus widget keys for this walkthrough
-final text6atu6ur6 = GlobalKey();
+final rowZnhqodfj = GlobalKey();
 
-/// Asignar permisos a usuarios
+/// Verificar telefono
 ///
-/// Pasos para asignar permisos personalizados  a diferentes usuarios.
+///
 List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       /// Step 1
       TargetFocus(
-        keyTarget: text6atu6ur6,
+        keyTarget: rowZnhqodfj,
         enableOverlayTab: true,
         alignSkip: Alignment.bottomCenter,
         shape: ShapeLightFocus.RRect,
@@ -23,7 +23,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
             align: ContentAlign.bottom,
             builder: (context, __) => MensajeWalkThroughWidget(
               texto:
-                  'Ahora que tienes usuarios vinculados, puedes encender o apagar los permisos necesarios para cada uno.',
+                  'Aquí deberas ingresar tu número de teléfono y continuar en \"verificar\".',
             ),
           ),
         ],

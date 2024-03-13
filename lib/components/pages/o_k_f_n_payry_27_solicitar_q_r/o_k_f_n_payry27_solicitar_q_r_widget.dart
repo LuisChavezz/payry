@@ -48,6 +48,7 @@ class _OKFNPayry27SolicitarQRWidgetState
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await Future.delayed(const Duration(milliseconds: 600));
       _model.comoGenerarUnCoDiController =
           _model.createPageWalkthrough(context);
       _model.comoGenerarUnCoDiController?.show(context: context);
