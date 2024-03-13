@@ -43,28 +43,29 @@ class _MensajeWalkThroughWidgetState extends State<MensajeWalkThroughWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.sizeOf(context).width * 0.8,
-      height: 100.0,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 4.0,
-            color: Color(0x33000000),
-            offset: Offset(0.0, 2.0),
-          )
-        ],
-        borderRadius: BorderRadius.circular(15.0),
-      ),
-      child: Align(
-        alignment: AlignmentDirectional(0.0, 0.0),
-        child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 15.0),
-          child: Text(
-            widget.texto,
-            textAlign: TextAlign.center,
-            style: FlutterFlowTheme.of(context).bodyMedium,
+    return Padding(
+      padding: EdgeInsets.all(18.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 4.0,
+              color: Color(0x33000000),
+              offset: Offset(0.0, 2.0),
+            )
+          ],
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        child: Align(
+          alignment: AlignmentDirectional(0.0, 0.0),
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(30.0, 15.0, 30.0, 15.0),
+            child: Text(
+              widget.texto,
+              textAlign: TextAlign.center,
+              style: FlutterFlowTheme.of(context).bodyMedium,
+            ),
           ),
         ),
       ),

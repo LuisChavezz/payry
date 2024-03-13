@@ -8,8 +8,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 final row1h1fcomo = GlobalKey();
 final tabVzlr16om = GlobalKey();
 final tabNqfrth42 = GlobalKey();
-final listViewL0xh1w34 = GlobalKey();
-final containerA1rtbpk8 = GlobalKey();
+final placeholderWidgetZlutfnme = GlobalKey();
 
 /// Elementos en el dashboard
 ///
@@ -71,9 +70,9 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
 
       /// Step 4
       TargetFocus(
-        keyTarget: listViewL0xh1w34,
+        keyTarget: placeholderWidgetZlutfnme,
         enableOverlayTab: true,
-        alignSkip: Alignment.bottomCenter,
+        alignSkip: Alignment.topCenter,
         shape: ShapeLightFocus.RRect,
         color: FlutterFlowTheme.of(context).primary,
         contents: [
@@ -81,24 +80,6 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
             align: ContentAlign.top,
             builder: (context, __) => MensajeWalkThroughWidget(
               texto: 'Consulta los detalles de las transacciones realizadas.',
-            ),
-          ),
-        ],
-      ),
-
-      /// Step 5
-      TargetFocus(
-        keyTarget: containerA1rtbpk8,
-        enableOverlayTab: true,
-        alignSkip: Alignment.bottomCenter,
-        shape: ShapeLightFocus.RRect,
-        color: FlutterFlowTheme.of(context).primary,
-        contents: [
-          TargetContent(
-            align: ContentAlign.top,
-            builder: (context, __) => MensajeWalkThroughWidget(
-              texto:
-                  'Aquí podrás acceder más fácil a las funcionalidades principales de PAYRY y al menú principal con más opciones.',
             ),
           ),
         ],

@@ -60,7 +60,7 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
       stream: queryUserPermissionsRecord(
         queryBuilder: (userPermissionsRecord) => userPermissionsRecord.where(
           'uid',
-          isEqualTo: widget.uid,
+          isEqualTo: currentUserUid,
         ),
         singleRecord: true,
       ),
@@ -84,10 +84,6 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
         }
         List<UserPermissionsRecord>
             oKFNPayry25PermisosUserPermissionsRecordList = snapshot.data!;
-        // Return an empty Container when the item does not exist.
-        if (snapshot.data!.isEmpty) {
-          return Container();
-        }
         final oKFNPayry25PermisosUserPermissionsRecord =
             oKFNPayry25PermisosUserPermissionsRecordList.isNotEmpty
                 ? oKFNPayry25PermisosUserPermissionsRecordList.first
@@ -129,8 +125,7 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
             ),
             body: SafeArea(
               top: true,
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
+              child: Stack(
                 children: [
                   Padding(
                     padding: EdgeInsets.all(18.0),
@@ -1252,7 +1247,7 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                         ],
                       ),
                     ).addWalkthrough(
-                      columnEwc1x5il,
+                      columnU579nx4d,
                       _model.asignarPermisosAUsuariosController,
                     ),
                   ),
