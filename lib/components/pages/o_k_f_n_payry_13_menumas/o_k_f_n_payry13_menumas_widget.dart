@@ -36,10 +36,14 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await Future.delayed(const Duration(milliseconds: 15));
-      _model.primerosPasosMenuMasController =
-          _model.createPageWalkthrough(context);
-      _model.primerosPasosMenuMasController?.show(context: context);
+      if (true) {
+        _model.primerosPasosMenuMasController =
+            _model.createPageWalkthrough(context);
+        _model.primerosPasosMenuMasController?.show(context: context);
+        return;
+      } else {
+        return;
+      }
     });
   }
 
