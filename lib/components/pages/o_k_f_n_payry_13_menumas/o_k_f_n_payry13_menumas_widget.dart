@@ -6,8 +6,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/walkthroughs/primeros_pasos_menu_mas.dart';
-import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
-    show TutorialCoachMark;
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -36,31 +34,8 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      try {
-        final result = await FirebaseFunctions.instance
-            .httpsCallable('testCloudFunction')
-            .call({});
-        _model.cloudFunctiono6o = TestCloudFunctionCloudFunctionCallResponse(
-          data: result.data,
-          succeeded: true,
-          resultAsString: result.data.toString(),
-          jsonBody: result.data,
-        );
-      } on FirebaseFunctionsException catch (error) {
-        _model.cloudFunctiono6o = TestCloudFunctionCloudFunctionCallResponse(
-          errorCode: error.code,
-          succeeded: false,
-        );
-      }
-
-      if (_model.cloudFunctiono6o!.succeeded!) {
-        _model.primerosPasosMenuMasController =
-            _model.createPageWalkthrough(context);
-        _model.primerosPasosMenuMasController?.show(context: context);
-        return;
-      } else {
-        return;
-      }
+      await Future.delayed(const Duration(milliseconds: 3000));
+      setState(() {});
     });
   }
 
@@ -938,111 +913,112 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                       ),
                                     ),
                                   ),
-                                  InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      context
-                                          .pushNamed('OK_FN_Payry_14_Perfil');
-                                    },
-                                    child: Container(
-                                      width: () {
-                                        if (MediaQuery.sizeOf(context).width <
-                                            390.0) {
-                                          return (MediaQuery.sizeOf(context)
-                                                  .width *
-                                              0.42);
-                                        } else if (MediaQuery.sizeOf(context)
-                                                .width <
-                                            480.0) {
-                                          return (MediaQuery.sizeOf(context)
-                                                  .width *
-                                              0.44);
-                                        } else if (MediaQuery.sizeOf(context)
-                                                .width <
-                                            900.0) {
-                                          return (MediaQuery.sizeOf(context)
-                                                  .width *
-                                              0.3);
-                                        } else if (MediaQuery.sizeOf(context)
-                                                .width <
-                                            1025.0) {
-                                          return (MediaQuery.sizeOf(context)
-                                                  .width *
-                                              0.23);
-                                        } else if (MediaQuery.sizeOf(context)
-                                                .width <
-                                            1300.0) {
-                                          return (MediaQuery.sizeOf(context)
-                                                  .width *
-                                              0.18);
-                                        } else if (MediaQuery.sizeOf(context)
-                                                .width <
-                                            1600.0) {
-                                          return (MediaQuery.sizeOf(context)
-                                                  .width *
-                                              0.14);
-                                        } else {
-                                          return (MediaQuery.sizeOf(context)
-                                                  .width *
-                                              0.1);
-                                        }
-                                      }(),
-                                      height: 75.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            blurRadius: 4.0,
-                                            color: Color(0x33000000),
-                                            offset: Offset(0.0, 2.0),
-                                          )
-                                        ],
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 0.0, 16.0, 0.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 10.0, 0.0),
-                                              child: Icon(
-                                                FFIcons.kusuario,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                size: 20.0,
+                                  if (_model.show)
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        context
+                                            .pushNamed('OK_FN_Payry_14_Perfil');
+                                      },
+                                      child: Container(
+                                        width: () {
+                                          if (MediaQuery.sizeOf(context).width <
+                                              390.0) {
+                                            return (MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.42);
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              480.0) {
+                                            return (MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.44);
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              900.0) {
+                                            return (MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.3);
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              1025.0) {
+                                            return (MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.23);
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              1300.0) {
+                                            return (MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.18);
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              1600.0) {
+                                            return (MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.14);
+                                          } else {
+                                            return (MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.1);
+                                          }
+                                        }(),
+                                        height: 75.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              blurRadius: 4.0,
+                                              color: Color(0x33000000),
+                                              offset: Offset(0.0, 2.0),
+                                            )
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 0.0, 16.0, 0.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 10.0, 0.0),
+                                                child: Icon(
+                                                  FFIcons.kusuario,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  size: 20.0,
+                                                ),
                                               ),
-                                            ),
-                                            Text(
-                                              'Mi perfil',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                      ),
-                                            ),
-                                          ].divide(SizedBox(width: 5.0)),
+                                              Text(
+                                                'Mi perfil',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                              ),
+                                            ].divide(SizedBox(width: 5.0)),
+                                          ),
                                         ),
                                       ),
+                                    ).addWalkthrough(
+                                      containerBkgp3rtd,
+                                      _model.primerosPasosMenuMasController,
                                     ),
-                                  ).addWalkthrough(
-                                    containerBkgp3rtd,
-                                    _model.primerosPasosMenuMasController,
-                                  ),
                                   AuthUserStreamWidget(
                                     builder: (context) => InkWell(
                                       splashColor: Colors.transparent,
