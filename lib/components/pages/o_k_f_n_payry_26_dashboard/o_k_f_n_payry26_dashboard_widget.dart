@@ -1004,10 +1004,6 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                         ],
                                                       ),
                                                     ),
-                                                  ).addWalkthrough(
-                                                    placeholderWidgetZlutfnme,
-                                                    _model
-                                                        .elementosEnElDashboardController,
                                                   ),
                                                 ],
                                               ),

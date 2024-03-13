@@ -59,8 +59,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
           TargetContent(
             align: ContentAlign.bottom,
             builder: (context, __) => MensajeWalkThroughWidget(
-              texto:
-                  '¡Y listo! Ahora puedes comenzar a cobrar con PAYRY. Si tienes dudas, puedes tocar el botón con el signo de ?',
+              texto: '¡Y listo! Ahora puedes comenzar a cobrar con PAYRY.',
             ),
           ),
         ],

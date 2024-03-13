@@ -118,6 +118,9 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                       fontFamily: 'Lexend',
                       color: FlutterFlowTheme.of(context).primaryText,
                     ),
+              ).addWalkthrough(
+                text6atu6ur6,
+                _model.asignarPermisosAUsuariosController,
               ),
               actions: [],
               centerTitle: true,
@@ -1246,9 +1249,6 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                           ),
                         ],
                       ),
-                    ).addWalkthrough(
-                      columnU579nx4d,
-                      _model.asignarPermisosAUsuariosController,
                     ),
                   ),
                 ],

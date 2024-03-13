@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 final row1h1fcomo = GlobalKey();
 final tabVzlr16om = GlobalKey();
 final tabNqfrth42 = GlobalKey();
-final placeholderWidgetZlutfnme = GlobalKey();
 
 /// Elementos en el dashboard
 ///
@@ -63,23 +62,6 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
             builder: (context, __) => MensajeWalkThroughWidget(
               texto:
                   'Ve a esta pestaña para consultar los DiMo que cobraste en esta fecha.',
-            ),
-          ),
-        ],
-      ),
-
-      /// Step 4
-      TargetFocus(
-        keyTarget: placeholderWidgetZlutfnme,
-        enableOverlayTab: true,
-        alignSkip: Alignment.topCenter,
-        shape: ShapeLightFocus.RRect,
-        color: FlutterFlowTheme.of(context).primary,
-        contents: [
-          TargetContent(
-            align: ContentAlign.top,
-            builder: (context, __) => MensajeWalkThroughWidget(
-              texto: 'Consulta los detalles de las transacciones realizadas.',
             ),
           ),
         ],
