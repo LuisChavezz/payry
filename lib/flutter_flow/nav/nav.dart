@@ -402,12 +402,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => TestShareImageWidget(),
             ),
             FFRoute(
-              name: 'OK_FN_Payry_20_datosBancariosVIEW',
-              path: 'oKFNPayry20DatosBancariosVIEW',
-              builder: (context, params) =>
-                  OKFNPayry20DatosBancariosVIEWWidget(),
-            ),
-            FFRoute(
               name: 'testPage',
               path: 'testPage',
               requireAuth: true,

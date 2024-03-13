@@ -36,8 +36,23 @@ class _OKFNPayry24ListadoUsuariosWidgetState
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.crearUsuariosController = _model.createPageWalkthrough(context);
-      _model.crearUsuariosController?.show(context: context);
+      if (getJsonField(
+        FFAppState().walkthroughs,
+        r'''$.add_users''',
+      )) {
+        await Future.delayed(const Duration(milliseconds: 300));
+        setState(() {
+          _model.show = true;
+        });
+        _model.crearUsuariosController = _model.createPageWalkthrough(context);
+        _model.crearUsuariosController?.show(context: context);
+        return;
+      } else {
+        setState(() {
+          _model.show = true;
+        });
+        return;
+      }
     });
   }
 
@@ -50,6 +65,8 @@ class _OKFNPayry24ListadoUsuariosWidgetState
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<List<UserPermissionsRecord>>(
       stream: queryUserPermissionsRecord(
         queryBuilder: (userPermissionsRecord) => userPermissionsRecord.where(
@@ -122,218 +139,222 @@ class _OKFNPayry24ListadoUsuariosWidgetState
               top: true,
               child: Stack(
                 children: [
-                  SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.all(20.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    context.pushNamed(
-                                        'OK_FN_Payry_23_invitarUsuario');
-                                  },
-                                  text: 'Invitar usuario',
-                                  options: FFButtonOptions(
-                                    width: 300.0,
-                                    height: 50.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: Color(0xFF5E4A98),
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: Colors.white,
-                                        ),
-                                    elevation: 3.0,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                ).addWalkthrough(
-                                  button5k9z6m33,
-                                  _model.crearUsuariosController,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        StreamBuilder<List<UsersRecord>>(
-                          stream: queryUsersRecord(
-                            queryBuilder: (usersRecord) => usersRecord
-                                .where(
-                                  'adminId',
-                                  isEqualTo: currentUserUid,
-                                )
-                                .orderBy('created_time', descending: true),
-                          ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 40.0,
-                                  height: 40.0,
-                                  child: CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                      FlutterFlowTheme.of(context).accent3,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }
-                            List<UsersRecord> listViewUsersRecordList = snapshot
-                                .data!
-                                .where((u) => u.uid != currentUserUid)
-                                .toList();
-                            if (listViewUsersRecordList.isEmpty) {
-                              return Container(
-                                height: 300.0,
-                                child: EmptyListWidget(
-                                  title: 'Sin usuarios',
-                                  message:
-                                      'Aún no has agregado usuarios a tu empresa.',
-                                ),
-                              );
-                            }
-                            return ListView.builder(
-                              padding: EdgeInsets.zero,
-                              primary: false,
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              itemCount: listViewUsersRecordList.length,
-                              itemBuilder: (context, listViewIndex) {
-                                final listViewUsersRecord =
-                                    listViewUsersRecordList[listViewIndex];
-                                return Padding(
-                                  padding: EdgeInsets.all(16.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
+                  if (_model.show)
+                    SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(20.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
                                       context.pushNamed(
-                                        'OK_FN_Payry_25_permisos',
-                                        queryParameters: {
-                                          'uid': serializeParam(
-                                            listViewUsersRecord.uid,
-                                            ParamType.String,
-                                          ),
-                                          'userName': serializeParam(
-                                            listViewUsersRecord.displayName,
-                                            ParamType.String,
-                                          ),
-                                        }.withoutNulls,
-                                      );
+                                          'OK_FN_Payry_23_invitarUsuario');
                                     },
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, 0.0),
-                                          child: Container(
-                                            width: 60.0,
-                                            height: 60.0,
-                                            decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                fit: BoxFit.cover,
-                                                image: Image.network(
-                                                  valueOrDefault<String>(
-                                                    listViewUsersRecord
-                                                        .photoUrl,
-                                                    'https://res.cloudinary.com/dshn8thfr/image/upload/v1694029660/blank-profile-picture-973460_1920_lc1bnn.png',
-                                                  ),
-                                                ).image,
-                                              ),
-                                              shape: BoxShape.circle,
-                                            ),
+                                    text: 'Invitar usuario',
+                                    options: FFButtonOptions(
+                                      width: 300.0,
+                                      height: 50.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: Color(0xFF5E4A98),
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            color: Colors.white,
                                           ),
-                                        ),
-                                        Expanded(
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        12.0, 0.0, 0.0, 0.0),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      listViewUsersRecord
-                                                          .displayName,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Lexend',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                              ),
-                                                    ),
-                                                    DynamicSwitchWidget(
-                                                      key: Key(
-                                                          'Keysgn_${listViewIndex}_of_${listViewUsersRecordList.length}'),
-                                                      initialValue:
-                                                          listViewUsersRecord
-                                                              .status,
-                                                      userDocRef:
-                                                          listViewUsersRecord
-                                                              .reference,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Icon(
-                                                Icons.arrow_forward_ios_sharp,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                size: 16.0,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
+                                      elevation: 3.0,
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                  ).addWalkthrough(
+                                    button5k9z6m33,
+                                    _model.crearUsuariosController,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          StreamBuilder<List<UsersRecord>>(
+                            stream: queryUsersRecord(
+                              queryBuilder: (usersRecord) => usersRecord
+                                  .where(
+                                    'adminId',
+                                    isEqualTo: currentUserUid,
+                                  )
+                                  .orderBy('created_time', descending: true),
+                            ),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 40.0,
+                                    height: 40.0,
+                                    child: CircularProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                        FlutterFlowTheme.of(context).accent3,
+                                      ),
                                     ),
                                   ),
                                 );
-                              },
-                            ).addWalkthrough(
-                              listViewBm8rc1kb,
-                              _model.crearUsuariosController,
-                            );
-                          },
-                        ),
-                      ],
+                              }
+                              List<UsersRecord> listViewUsersRecordList =
+                                  snapshot.data!
+                                      .where((u) => u.uid != currentUserUid)
+                                      .toList();
+                              if (listViewUsersRecordList.isEmpty) {
+                                return Container(
+                                  height: 300.0,
+                                  child: EmptyListWidget(
+                                    title: 'Sin usuarios',
+                                    message:
+                                        'Aún no has agregado usuarios a tu empresa.',
+                                  ),
+                                );
+                              }
+                              return ListView.builder(
+                                padding: EdgeInsets.zero,
+                                primary: false,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: listViewUsersRecordList.length,
+                                itemBuilder: (context, listViewIndex) {
+                                  final listViewUsersRecord =
+                                      listViewUsersRecordList[listViewIndex];
+                                  return Padding(
+                                    padding: EdgeInsets.all(16.0),
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        context.pushNamed(
+                                          'OK_FN_Payry_25_permisos',
+                                          queryParameters: {
+                                            'uid': serializeParam(
+                                              listViewUsersRecord.uid,
+                                              ParamType.String,
+                                            ),
+                                            'userName': serializeParam(
+                                              listViewUsersRecord.displayName,
+                                              ParamType.String,
+                                            ),
+                                          }.withoutNulls,
+                                        );
+                                      },
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
+                                            child: Container(
+                                              width: 60.0,
+                                              height: 60.0,
+                                              decoration: BoxDecoration(
+                                                image: DecorationImage(
+                                                  fit: BoxFit.cover,
+                                                  image: Image.network(
+                                                    valueOrDefault<String>(
+                                                      listViewUsersRecord
+                                                          .photoUrl,
+                                                      'https://res.cloudinary.com/dshn8thfr/image/upload/v1694029660/blank-profile-picture-973460_1920_lc1bnn.png',
+                                                    ),
+                                                  ).image,
+                                                ),
+                                                shape: BoxShape.circle,
+                                              ),
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          12.0, 0.0, 0.0, 0.0),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        listViewUsersRecord
+                                                            .displayName,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Lexend',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                ),
+                                                      ),
+                                                      DynamicSwitchWidget(
+                                                        key: Key(
+                                                            'Keysgn_${listViewIndex}_of_${listViewUsersRecordList.length}'),
+                                                        initialValue:
+                                                            listViewUsersRecord
+                                                                .status,
+                                                        userDocRef:
+                                                            listViewUsersRecord
+                                                                .reference,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Icon(
+                                                  Icons.arrow_forward_ios_sharp,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 16.0,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ).addWalkthrough(
+                                listViewBm8rc1kb,
+                                _model.crearUsuariosController,
+                              );
+                            },
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
                 ],
               ),
             ),

@@ -15,6 +15,10 @@ import 'package:provider/provider.dart';
 
 class OKFNPayry25PermisosModel
     extends FlutterFlowModel<OKFNPayry25PermisosWidget> {
+  ///  Local state fields for this page.
+
+  bool show = false;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

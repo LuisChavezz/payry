@@ -23,6 +23,10 @@ import 'package:provider/provider.dart';
 
 class OKFNPayry20DatosBancariosModel
     extends FlutterFlowModel<OKFNPayry20DatosBancariosWidget> {
+  ///  Local state fields for this page.
+
+  bool show = false;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

@@ -22,6 +22,10 @@ import 'package:provider/provider.dart';
 
 class OKFNPayry32SolicitarSMSModel
     extends FlutterFlowModel<OKFNPayry32SolicitarSMSWidget> {
+  ///  Local state fields for this page.
+
+  bool show = false;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

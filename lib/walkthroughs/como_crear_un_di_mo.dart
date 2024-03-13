@@ -5,7 +5,7 @@ import '/components/mensaje_walk_through_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 
 // Focus widget keys for this walkthrough
-final textFieldKyj8705m = GlobalKey();
+final rowTe1kbo70 = GlobalKey();
 final textField3t6or890 = GlobalKey();
 final textFieldYm31jmhf = GlobalKey();
 final button4vvi5acz = GlobalKey();
@@ -17,7 +17,7 @@ final button3ksruh3m = GlobalKey();
 List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       /// Step 1
       TargetFocus(
-        keyTarget: textFieldKyj8705m,
+        keyTarget: rowTe1kbo70,
         enableOverlayTab: true,
         alignSkip: Alignment.bottomCenter,
         shape: ShapeLightFocus.RRect,

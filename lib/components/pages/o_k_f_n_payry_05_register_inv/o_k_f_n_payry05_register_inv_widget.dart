@@ -652,8 +652,17 @@ class _OKFNPayry05RegisterInvWidgetState
                                                 FFAppState().serverToken =
                                                     _model.genToken!.jsonBody!
                                                         .toString();
-                                                FFAppState().tutorialDialogs =
-                                                    true;
+                                                FFAppState().walkthroughs =
+                                                    <String, bool?>{
+                                                  'menu_mas': true,
+                                                  'dashboard': true,
+                                                  'datos_bancarios': true,
+                                                  'add_users': true,
+                                                  'user_permissions': true,
+                                                  'create_codi': true,
+                                                  'create_dimo': true,
+                                                  'edit_profile': true,
+                                                };
 
                                                 context.goNamedAuth(
                                                     'OK_FN_Payry_06_confirmacionRegistro',
