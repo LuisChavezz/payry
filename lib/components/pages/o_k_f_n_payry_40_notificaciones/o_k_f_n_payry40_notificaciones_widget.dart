@@ -515,6 +515,7 @@ class _OKFNPayry40NotificacionesWidgetState
                             updateCallback: () => setState(() {}),
                             child: NavBarFlotingWidget(
                               userPermissions: stackUserPermissionsRecord!,
+                              pageName: 'notificaciones',
                             ),
                           ),
                         ),

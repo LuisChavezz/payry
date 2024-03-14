@@ -154,7 +154,6 @@ final parametersBuilderMap =
               getParameter<DocumentReference>(data, 'createdQrReference'),
         },
       ),
-  'OK_FN_Payry_29_opcionesQR': ParameterData.none(),
   'OK_FN_Payry_30_historialQRs': (data) async => ParameterData(
         allParams: {
           'readAll': getParameter<bool>(data, 'readAll'),
@@ -167,7 +166,6 @@ final parametersBuilderMap =
           'createRefund': getParameter<bool>(data, 'createRefund'),
         },
       ),
-  'OK_FN_Payry_34_opcionesSMS': ParameterData.none(),
   'OK_FN_Payry_31_detallesdeQR': (data) async => ParameterData(
         allParams: {
           'registraCobroRef':

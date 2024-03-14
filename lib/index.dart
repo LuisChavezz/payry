@@ -37,14 +37,10 @@ export '/components/pages/o_k_f_n_payry_27_solicitar_q_r/o_k_f_n_payry27_solicit
     show OKFNPayry27SolicitarQRWidget;
 export '/components/pages/o_k_f_n_payry_28_qr_generado/o_k_f_n_payry28_qr_generado_widget.dart'
     show OKFNPayry28QrGeneradoWidget;
-export '/components/pages/o_k_f_n_payry_29_opciones_q_r/o_k_f_n_payry29_opciones_q_r_widget.dart'
-    show OKFNPayry29OpcionesQRWidget;
 export '/components/pages/o_k_f_n_payry_30_historial_q_rs/o_k_f_n_payry30_historial_q_rs_widget.dart'
     show OKFNPayry30HistorialQRsWidget;
 export '/components/pages/o_k_f_n_payry_35_historial_s_m_s/o_k_f_n_payry35_historial_s_m_s_widget.dart'
     show OKFNPayry35HistorialSMSWidget;
-export '/components/pages/o_k_f_n_payry_34_opciones_s_m_s/o_k_f_n_payry34_opciones_s_m_s_widget.dart'
-    show OKFNPayry34OpcionesSMSWidget;
 export '/components/pages/o_k_f_n_payry_31_detallesde_q_r/o_k_f_n_payry31_detallesde_q_r_widget.dart'
     show OKFNPayry31DetallesdeQRWidget;
 export '/components/pages/o_k_f_n_payry_37_facturas/o_k_f_n_payry37_facturas_widget.dart'

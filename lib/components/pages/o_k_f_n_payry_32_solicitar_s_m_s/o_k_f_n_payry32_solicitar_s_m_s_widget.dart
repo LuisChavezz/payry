@@ -860,6 +860,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                           child: NavBarFlotingWidget(
                             userPermissions:
                                 oKFNPayry32SolicitarSMSUserPermissionsRecord!,
+                            pageName: 'dimo',
                           ),
                         ),
                       ),

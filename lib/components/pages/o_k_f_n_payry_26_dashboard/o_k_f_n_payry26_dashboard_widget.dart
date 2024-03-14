@@ -1033,6 +1033,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                           child: NavBarFlotingWidget(
                             userPermissions:
                                 oKFNPayry26DashboardUserPermissionsRecord!,
+                            pageName: 'dashboard',
                           ),
                         ),
                       ),

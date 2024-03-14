@@ -3546,6 +3546,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                         child: NavBarFlotingWidget(
                           userPermissions:
                               oKFNPayry13MenumasUserPermissionsRecord!,
+                          pageName: 'menu',
                         ),
                       ),
                     ),

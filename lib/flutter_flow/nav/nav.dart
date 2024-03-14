@@ -224,12 +224,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'OK_FN_Payry_29_opcionesQR',
-              path: 'oKFNPayry29OpcionesQR',
-              requireAuth: true,
-              builder: (context, params) => OKFNPayry29OpcionesQRWidget(),
-            ),
-            FFRoute(
               name: 'OK_FN_Payry_30_historialQRs',
               path: 'oKFNPayry30HistorialQRs',
               requireAuth: true,
@@ -246,12 +240,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 readAll: params.getParam('readAll', ParamType.bool),
                 createRefund: params.getParam('createRefund', ParamType.bool),
               ),
-            ),
-            FFRoute(
-              name: 'OK_FN_Payry_34_opcionesSMS',
-              path: 'oKFNPayry34OpcionesSMS',
-              requireAuth: true,
-              builder: (context, params) => OKFNPayry34OpcionesSMSWidget(),
             ),
             FFRoute(
               name: 'OK_FN_Payry_31_detallesdeQR',

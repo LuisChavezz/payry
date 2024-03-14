@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -362,40 +363,154 @@ class _OKFNPayry36DetallesdeSMSCodeWidgetState
                                 ),
                               ],
                             ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 16.0, 20.0, 32.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  FlutterFlowIconButton(
-                                    borderRadius: 100.0,
-                                    borderWidth: 0.0,
-                                    buttonSize: 60.0,
-                                    fillColor:
-                                        FlutterFlowTheme.of(context).errorRed,
-                                    disabledColor: Color(0x83CCCCCC),
-                                    disabledIconColor: Color(0xFFA1A1A1),
-                                    icon: Icon(
-                                      FFIcons.kqrUsuario,
-                                      color: Colors.white,
-                                      size: 25.0,
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    20.0, 16.0, 20.0, 32.0),
+                                child: Wrap(
+                                  spacing: 24.0,
+                                  runSpacing: 24.0,
+                                  alignment: WrapAlignment.center,
+                                  crossAxisAlignment: WrapCrossAlignment.center,
+                                  direction: Axis.horizontal,
+                                  runAlignment: WrapAlignment.start,
+                                  verticalDirection: VerticalDirection.down,
+                                  clipBehavior: Clip.none,
+                                  children: [
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        FlutterFlowIconButton(
+                                          borderRadius: 100.0,
+                                          borderWidth: 0.0,
+                                          buttonSize: 50.0,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .errorRed,
+                                          disabledColor: Color(0x83CCCCCC),
+                                          disabledIconColor: Color(0xFFA1A1A1),
+                                          icon: Icon(
+                                            FFIcons.kqrUsuario,
+                                            color: Colors.white,
+                                            size: 25.0,
+                                          ),
+                                          onPressed: true
+                                              ? null
+                                              : () {
+                                                  print(
+                                                      'IconButton pressed ...');
+                                                },
+                                        ),
+                                        Text(
+                                          'Devolver DiMo®',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                fontSize: 14.0,
+                                              ),
+                                        ),
+                                      ].divide(SizedBox(height: 5.0)),
                                     ),
-                                    onPressed: true
-                                        ? null
-                                        : () {
-                                            print('IconButton pressed ...');
-                                          },
-                                  ),
-                                  Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: Text(
-                                      'Devolver DiMo®',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        FlutterFlowIconButton(
+                                          borderColor: Colors.transparent,
+                                          borderRadius: 100.0,
+                                          borderWidth: 0.0,
+                                          buttonSize: 50.0,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .accent3,
+                                          disabledColor: Color(0x83CCCCCC),
+                                          disabledIconColor: Color(0xFFA1A1A1),
+                                          icon: Icon(
+                                            FFIcons.ksms,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondary,
+                                            size: 24.0,
+                                          ),
+                                          showLoadingIndicator: true,
+                                          onPressed:
+                                              (oKFNPayry36DetallesdeSMSCodeRegistraCobroRecord
+                                                          .status ==
+                                                      PaymentStatus.CANCELADO)
+                                                  ? null
+                                                  : () async {
+                                                      var confirmDialogResponse =
+                                                          await showDialog<
+                                                                  bool>(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (alertDialogContext) {
+                                                                  return AlertDialog(
+                                                                    title: Text(
+                                                                        '¿Estás seguro?'),
+                                                                    content: Text(
+                                                                        '¿Estás seguro de querer regenerar el código QR de este pago?'),
+                                                                    actions: [
+                                                                      TextButton(
+                                                                        onPressed: () => Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            false),
+                                                                        child: Text(
+                                                                            'Cancelar'),
+                                                                      ),
+                                                                      TextButton(
+                                                                        onPressed: () => Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            true),
+                                                                        child: Text(
+                                                                            'Aceptar'),
+                                                                      ),
+                                                                    ],
+                                                                  );
+                                                                },
+                                                              ) ??
+                                                              false;
+                                                      if (confirmDialogResponse) {
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'wefdwefwef'),
+                                                              content: Text(
+                                                                  'wefwefew'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
+                                                      } else {
+                                                        return;
+                                                      }
+                                                    },
+                                        ),
+                                        Text(
+                                          'Reenviar DiMo®',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                fontSize: 14.0,
+                                              ),
+                                        ),
+                                      ].divide(SizedBox(height: 5.0)),
                                     ),
-                                  ),
-                                ].divide(SizedBox(height: 5.0)),
+                                  ],
+                                ),
                               ),
                             ),
                           ],

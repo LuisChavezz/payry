@@ -704,6 +704,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                           child: NavBarFlotingWidget(
                             userPermissions:
                                 oKFNPayry27SolicitarQRUserPermissionsRecord!,
+                            pageName: 'codi',
                           ),
                         ),
                       ),
