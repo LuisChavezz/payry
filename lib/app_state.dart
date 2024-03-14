@@ -40,8 +40,13 @@ class FFAppState extends ChangeNotifier {
       }
     });
     _safeInit(() {
-      _tutorialDialogs =
-          prefs.getBool('ff_tutorialDialogs') ?? _tutorialDialogs;
+      if (prefs.containsKey('ff_walkthroughs')) {
+        try {
+          _walkthroughs = jsonDecode(prefs.getString('ff_walkthroughs') ?? '');
+        } catch (e) {
+          print("Can't decode persisted json. Error: $e.");
+        }
+      }
     });
   }
 
@@ -98,11 +103,11 @@ class FFAppState extends ChangeNotifier {
     prefs.setString('ff_userCredentials', jsonEncode(_value));
   }
 
-  bool _tutorialDialogs = false;
-  bool get tutorialDialogs => _tutorialDialogs;
-  set tutorialDialogs(bool _value) {
-    _tutorialDialogs = _value;
-    prefs.setBool('ff_tutorialDialogs', _value);
+  dynamic _walkthroughs;
+  dynamic get walkthroughs => _walkthroughs;
+  set walkthroughs(dynamic _value) {
+    _walkthroughs = _value;
+    prefs.setString('ff_walkthroughs', jsonEncode(_value));
   }
 }
 
