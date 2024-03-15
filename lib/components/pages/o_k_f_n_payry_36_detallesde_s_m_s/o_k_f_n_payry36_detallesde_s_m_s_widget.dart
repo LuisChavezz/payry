@@ -623,9 +623,9 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                                   (alertDialogContext) {
                                                                 return AlertDialog(
                                                                   title: Text(
-                                                                      'QR Devulto'),
+                                                                      'DiMo® Devulto'),
                                                                   content: Text(
-                                                                      'La devolución del QR se ha efectuado con éxito.'),
+                                                                      'La devolución del DiMo® se ha efectuado con éxito.'),
                                                                   actions: [
                                                                     TextButton(
                                                                       onPressed:
@@ -745,6 +745,8 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                               .CANCELADO)
                                                       ? null
                                                       : () async {
+                                                          var _shouldSetState =
+                                                              false;
                                                           var confirmDialogResponse =
                                                               await showDialog<
                                                                       bool>(
@@ -756,7 +758,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                                         title: Text(
                                                                             '¿Estás seguro?'),
                                                                         content:
-                                                                            Text('¿Estás seguro de querer regenerar el código QR de este pago?'),
+                                                                            Text('¿Estás seguro de querer reenviar este DiMo®?'),
                                                                         actions: [
                                                                           TextButton(
                                                                             onPressed: () =>
@@ -776,30 +778,258 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                                   ) ??
                                                                   false;
                                                           if (confirmDialogResponse) {
-                                                            await showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (alertDialogContext) {
-                                                                return AlertDialog(
-                                                                  title: Text(
-                                                                      'wefdwefwef'),
-                                                                  content: Text(
-                                                                      'wefwefew'),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed:
-                                                                          () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                      child: Text(
-                                                                          'Ok'),
-                                                                    ),
-                                                                  ],
-                                                                );
-                                                              },
-                                                            );
+                                                            var registraCobroRecordReference =
+                                                                RegistraCobroRecord
+                                                                    .collection
+                                                                    .doc();
+                                                            await registraCobroRecordReference
+                                                                .set({
+                                                              ...createRegistraCobroRecordData(
+                                                                adminId: valueOrDefault(
+                                                                    currentUserDocument
+                                                                        ?.adminId,
+                                                                    ''),
+                                                                amount:
+                                                                    oKFNPayry36DetallesdeSMSRegistraCobroRecord
+                                                                        .amount,
+                                                                concept:
+                                                                    oKFNPayry36DetallesdeSMSRegistraCobroRecord
+                                                                        .concept,
+                                                                phoneNumber:
+                                                                    oKFNPayry36DetallesdeSMSRegistraCobroRecord
+                                                                        .phoneNumber,
+                                                                uid:
+                                                                    currentUserUid,
+                                                                companyId: '',
+                                                                errorMessage:
+                                                                    '',
+                                                                errorOcurs:
+                                                                    false,
+                                                                status:
+                                                                    PaymentStatus
+                                                                        .PENDIENTE,
+                                                                type:
+                                                                    PaymentType
+                                                                        .SMS,
+                                                              ),
+                                                              ...mapToFirestore(
+                                                                {
+                                                                  'created_time':
+                                                                      FieldValue
+                                                                          .serverTimestamp(),
+                                                                },
+                                                              ),
+                                                            });
+                                                            _model.dimoResp =
+                                                                RegistraCobroRecord
+                                                                    .getDocumentFromData({
+                                                              ...createRegistraCobroRecordData(
+                                                                adminId: valueOrDefault(
+                                                                    currentUserDocument
+                                                                        ?.adminId,
+                                                                    ''),
+                                                                amount:
+                                                                    oKFNPayry36DetallesdeSMSRegistraCobroRecord
+                                                                        .amount,
+                                                                concept:
+                                                                    oKFNPayry36DetallesdeSMSRegistraCobroRecord
+                                                                        .concept,
+                                                                phoneNumber:
+                                                                    oKFNPayry36DetallesdeSMSRegistraCobroRecord
+                                                                        .phoneNumber,
+                                                                uid:
+                                                                    currentUserUid,
+                                                                companyId: '',
+                                                                errorMessage:
+                                                                    '',
+                                                                errorOcurs:
+                                                                    false,
+                                                                status:
+                                                                    PaymentStatus
+                                                                        .PENDIENTE,
+                                                                type:
+                                                                    PaymentType
+                                                                        .SMS,
+                                                              ),
+                                                              ...mapToFirestore(
+                                                                {
+                                                                  'created_time':
+                                                                      DateTime
+                                                                          .now(),
+                                                                },
+                                                              ),
+                                                            }, registraCobroRecordReference);
+                                                            _shouldSetState =
+                                                                true;
+                                                            try {
+                                                              final result =
+                                                                  await FirebaseFunctions
+                                                                      .instance
+                                                                      .httpsCallable(
+                                                                          'generateDimo')
+                                                                      .call({
+                                                                "id": _model
+                                                                    .dimoResp!
+                                                                    .reference
+                                                                    .id,
+                                                                "test": false,
+                                                                "token":
+                                                                    FFAppState()
+                                                                        .serverToken,
+                                                              });
+                                                              _model.dimoCF =
+                                                                  GenerateDimoCloudFunctionCallResponse(
+                                                                data:
+                                                                    result.data,
+                                                                succeeded: true,
+                                                                resultAsString:
+                                                                    result.data
+                                                                        .toString(),
+                                                                jsonBody:
+                                                                    result.data,
+                                                              );
+                                                            } on FirebaseFunctionsException catch (error) {
+                                                              _model.dimoCF =
+                                                                  GenerateDimoCloudFunctionCallResponse(
+                                                                errorCode:
+                                                                    error.code,
+                                                                succeeded:
+                                                                    false,
+                                                              );
+                                                            }
+
+                                                            _shouldSetState =
+                                                                true;
+                                                            if (getJsonField(
+                                                              _model.dimoCF!
+                                                                  .jsonBody,
+                                                              r'''$.success''',
+                                                            )) {
+                                                              await showDialog(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (alertDialogContext) {
+                                                                  return AlertDialog(
+                                                                    title: Text(
+                                                                        'Completado'),
+                                                                    content: Text(
+                                                                        'El DiMo® se ha generado con éxito.'),
+                                                                    actions: [
+                                                                      TextButton(
+                                                                        onPressed:
+                                                                            () =>
+                                                                                Navigator.pop(alertDialogContext),
+                                                                        child: Text(
+                                                                            'Ok'),
+                                                                      ),
+                                                                    ],
+                                                                  );
+                                                                },
+                                                              );
+                                                              if (Navigator.of(
+                                                                      context)
+                                                                  .canPop()) {
+                                                                context.pop();
+                                                              }
+                                                              context
+                                                                  .pushNamedAuth(
+                                                                'OK_FN_Payry_36_detallesdeSMSCode',
+                                                                context.mounted,
+                                                                queryParameters:
+                                                                    {
+                                                                  'registraCobroRef':
+                                                                      serializeParam(
+                                                                    _model
+                                                                        .dimoResp
+                                                                        ?.reference,
+                                                                    ParamType
+                                                                        .DocumentReference,
+                                                                  ),
+                                                                  'createRefund':
+                                                                      serializeParam(
+                                                                    false,
+                                                                    ParamType
+                                                                        .bool,
+                                                                  ),
+                                                                }.withoutNulls,
+                                                              );
+
+                                                              if (_shouldSetState)
+                                                                setState(() {});
+                                                              return;
+                                                            } else {
+                                                              await _model
+                                                                  .dimoResp!
+                                                                  .reference
+                                                                  .delete();
+                                                              await showDialog(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (alertDialogContext) {
+                                                                  return AlertDialog(
+                                                                    title: Text(
+                                                                        'Error'),
+                                                                    content: Text(
+                                                                        getJsonField(
+                                                                      _model
+                                                                          .dimoCF!
+                                                                          .jsonBody,
+                                                                      r'''$.message''',
+                                                                    ).toString()),
+                                                                    actions: [
+                                                                      TextButton(
+                                                                        onPressed:
+                                                                            () =>
+                                                                                Navigator.pop(alertDialogContext),
+                                                                        child: Text(
+                                                                            'Ok'),
+                                                                      ),
+                                                                    ],
+                                                                  );
+                                                                },
+                                                              );
+                                                              if (!functions.includeTheString(
+                                                                  getJsonField(
+                                                                    _model
+                                                                        .dimoCF!
+                                                                        .jsonBody,
+                                                                    r'''$.message''',
+                                                                  ).toString(),
+                                                                  'expirada')!) {
+                                                                if (_shouldSetState)
+                                                                  setState(
+                                                                      () {});
+                                                                return;
+                                                              }
+
+                                                              GoRouter.of(
+                                                                      context)
+                                                                  .prepareAuthEvent();
+                                                              await authManager
+                                                                  .signOut();
+                                                              GoRouter.of(
+                                                                      context)
+                                                                  .clearRedirectLocation();
+
+                                                              context.goNamedAuth(
+                                                                  'OK_FN_Payry_08_iniciasesion',
+                                                                  context
+                                                                      .mounted);
+
+                                                              if (_shouldSetState)
+                                                                setState(() {});
+                                                              return;
+                                                            }
                                                           } else {
+                                                            if (_shouldSetState)
+                                                              setState(() {});
                                                             return;
                                                           }
+
+                                                          if (_shouldSetState)
+                                                            setState(() {});
                                                         },
                                             ),
                                             Text(

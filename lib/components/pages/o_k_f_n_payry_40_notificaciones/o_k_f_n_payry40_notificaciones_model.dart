@@ -23,9 +23,14 @@ class OKFNPayry40NotificacionesModel
 
   ///  State fields for stateful widgets in this page.
 
-  Completer<List<NotificationRecord>>? firestoreRequestCompleter;
   // Model for NavBarFloting component.
   late NavBarFlotingModel navBarFlotingModel;
+  // State field(s) for TabBar widget.
+  TabController? tabBarController;
+  int get tabBarCurrentIndex =>
+      tabBarController != null ? tabBarController!.index : 0;
+
+  Completer<List<NotificationRecord>>? firestoreRequestCompleter;
 
   /// Initialization and disposal methods.
 
@@ -37,6 +42,7 @@ class OKFNPayry40NotificacionesModel
   @override
   void dispose() {
     navBarFlotingModel.dispose();
+    tabBarController?.dispose();
   }
 
   /// Action blocks are added here.

@@ -22,6 +22,10 @@ class OKFNPayry36DetallesdeSMSModel
   final unfocusNode = FocusNode();
   // Stores action output result for [Cloud Function - refund] action in IconButton widget.
   RefundCloudFunctionCallResponse? refundCF;
+  // Stores action output result for [Backend Call - Create Document] action in IconButton widget.
+  RegistraCobroRecord? dimoResp;
+  // Stores action output result for [Cloud Function - generateDimo] action in IconButton widget.
+  GenerateDimoCloudFunctionCallResponse? dimoCF;
 
   /// Initialization and disposal methods.
 

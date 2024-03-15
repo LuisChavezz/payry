@@ -28,9 +28,9 @@ class OKFNPayry27SolicitarQRModel
 
   ///  State fields for stateful widgets in this page.
 
+  TutorialCoachMark? comoGenerarUnCoDiController;
   final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
-  TutorialCoachMark? comoGenerarUnCoDiController;
   // State field(s) for ConceptField widget.
   FocusNode? conceptFieldFocusNode;
   TextEditingController? conceptFieldController;
@@ -84,8 +84,8 @@ class OKFNPayry27SolicitarQRModel
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     comoGenerarUnCoDiController?.finish();
+    unfocusNode.dispose();
     conceptFieldFocusNode?.dispose();
     conceptFieldController?.dispose();
 
@@ -98,76 +98,4 @@ class OKFNPayry27SolicitarQRModel
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
-
-  TutorialCoachMark createPageWalkthrough(BuildContext context) =>
-      TutorialCoachMark(
-        targets: createWalkthroughTargets(context),
-        onFinish: () async {
-          FFAppState().walkthroughs = <String, bool?>{
-            'menu_mas': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.menu_mas''',
-            ),
-            'dashboard': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.dashboard''',
-            ),
-            'datos_bancarios': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.datos_bancarios''',
-            ),
-            'add_users': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.add_users''',
-            ),
-            'user_permissions': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.user_permissions''',
-            ),
-            'create_codi': false,
-            'create_dimo': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.create_dimo''',
-            ),
-            'edit_profile': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.edit_profile''',
-            ),
-          };
-        },
-        onSkip: () {
-          FFAppState().walkthroughs = <String, bool?>{
-            'menu_mas': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.menu_mas''',
-            ),
-            'dashboard': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.dashboard''',
-            ),
-            'datos_bancarios': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.datos_bancarios''',
-            ),
-            'add_users': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.add_users''',
-            ),
-            'user_permissions': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.user_permissions''',
-            ),
-            'create_codi': false,
-            'create_dimo': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.create_dimo''',
-            ),
-            'edit_profile': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.edit_profile''',
-            ),
-          };
-          return true;
-        },
-      );
 }
