@@ -82,7 +82,71 @@ class OKFNPayry15EditProfileModel
   TutorialCoachMark createPageWalkthrough(BuildContext context) =>
       TutorialCoachMark(
         targets: createWalkthroughTargets(context),
+        onFinish: () async {
+          FFAppState().walkthroughs = <String, bool?>{
+            'menu_mas': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.menu_mas''',
+            ),
+            'dashboard': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.dashboard''',
+            ),
+            'datos_bancarios': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.datos_bancarios''',
+            ),
+            'add_users': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.add_users''',
+            ),
+            'user_permissions': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.user_permissions''',
+            ),
+            'create_codi': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.create_codi''',
+            ),
+            'create_dimo': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.create_dimo''',
+            ),
+            'edit_profile': false,
+          };
+        },
         onSkip: () {
+          FFAppState().walkthroughs = <String, bool?>{
+            'menu_mas': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.menu_mas''',
+            ),
+            'dashboard': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.dashboard''',
+            ),
+            'datos_bancarios': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.datos_bancarios''',
+            ),
+            'add_users': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.add_users''',
+            ),
+            'user_permissions': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.user_permissions''',
+            ),
+            'create_codi': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.create_codi''',
+            ),
+            'create_dimo': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.create_dimo''',
+            ),
+            'edit_profile': false,
+          };
           return true;
         },
       );

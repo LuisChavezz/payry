@@ -40,9 +40,24 @@ class _OKFNPayry15EditProfileWidgetState
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.verificarTelefonoController =
-          _model.createPageWalkthrough(context);
-      _model.verificarTelefonoController?.show(context: context);
+      if (getJsonField(
+        FFAppState().walkthroughs,
+        r'''$.edit_profile''',
+      )) {
+        await Future.delayed(const Duration(milliseconds: 300));
+        setState(() {
+          _model.show = true;
+        });
+        _model.verificarTelefonoController =
+            _model.createPageWalkthrough(context);
+        _model.verificarTelefonoController?.show(context: context);
+        return;
+      } else {
+        setState(() {
+          _model.show = true;
+        });
+        return;
+      }
     });
 
     _model.nameFieldController ??=

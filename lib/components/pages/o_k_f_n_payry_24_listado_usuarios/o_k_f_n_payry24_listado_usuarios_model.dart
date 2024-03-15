@@ -44,7 +44,71 @@ class OKFNPayry24ListadoUsuariosModel
   TutorialCoachMark createPageWalkthrough(BuildContext context) =>
       TutorialCoachMark(
         targets: createWalkthroughTargets(context),
+        onFinish: () async {
+          FFAppState().walkthroughs = <String, bool?>{
+            'menu_mas': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.menu_mas''',
+            ),
+            'dashboard': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.dashboard''',
+            ),
+            'datos_bancarios': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.datos_bancarios''',
+            ),
+            'add_users': false,
+            'user_permissions': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.user_permissions''',
+            ),
+            'create_codi': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.create_codi''',
+            ),
+            'create_dimo': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.create_dimo''',
+            ),
+            'edit_profile': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.edit_profile''',
+            ),
+          };
+        },
         onSkip: () {
+          FFAppState().walkthroughs = <String, bool?>{
+            'menu_mas': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.menu_mas''',
+            ),
+            'dashboard': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.dashboard''',
+            ),
+            'datos_bancarios': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.datos_bancarios''',
+            ),
+            'add_users': false,
+            'user_permissions': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.user_permissions''',
+            ),
+            'create_codi': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.create_codi''',
+            ),
+            'create_dimo': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.create_dimo''',
+            ),
+            'edit_profile': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.edit_profile''',
+            ),
+          };
           return true;
         },
       );
