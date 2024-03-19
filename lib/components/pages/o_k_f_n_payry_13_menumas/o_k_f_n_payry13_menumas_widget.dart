@@ -3351,16 +3351,16 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           onTap: () async {
                                             await requestPermission(
                                                 contactsPermission);
-                                            _model.contact =
-                                                await actions.selectContact();
+                                            _model.contact = await actions
+                                                .pickContactFromPhoneBook();
                                             await showDialog(
                                               context: context,
                                               builder: (alertDialogContext) {
                                                 return AlertDialog(
                                                   title: Text(
                                                       'Contacto seleccionado'),
-                                                  content:
-                                                      Text(_model.contact!),
+                                                  content: Text(_model.contact!
+                                                      .toString()),
                                                   actions: [
                                                     TextButton(
                                                       onPressed: () =>
