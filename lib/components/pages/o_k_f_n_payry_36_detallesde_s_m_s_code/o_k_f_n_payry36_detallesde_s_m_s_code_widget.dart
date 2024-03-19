@@ -1,9 +1,14 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
+import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -46,6 +51,8 @@ class _OKFNPayry36DetallesdeSMSCodeWidgetState
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<RegistraCobroRecord>(
       stream: RegistraCobroRecord.getDocument(widget.registraCobroRef!),
       builder: (context, snapshot) {
@@ -362,40 +369,362 @@ class _OKFNPayry36DetallesdeSMSCodeWidgetState
                                 ),
                               ],
                             ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 16.0, 20.0, 32.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  FlutterFlowIconButton(
-                                    borderRadius: 100.0,
-                                    borderWidth: 0.0,
-                                    buttonSize: 60.0,
-                                    fillColor:
-                                        FlutterFlowTheme.of(context).errorRed,
-                                    disabledColor: Color(0x83CCCCCC),
-                                    disabledIconColor: Color(0xFFA1A1A1),
-                                    icon: Icon(
-                                      FFIcons.kqrUsuario,
-                                      color: Colors.white,
-                                      size: 25.0,
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    20.0, 16.0, 20.0, 32.0),
+                                child: Wrap(
+                                  spacing: 24.0,
+                                  runSpacing: 24.0,
+                                  alignment: WrapAlignment.center,
+                                  crossAxisAlignment: WrapCrossAlignment.center,
+                                  direction: Axis.horizontal,
+                                  runAlignment: WrapAlignment.start,
+                                  verticalDirection: VerticalDirection.down,
+                                  clipBehavior: Clip.none,
+                                  children: [
+                                    if (false)
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          FlutterFlowIconButton(
+                                            borderRadius: 100.0,
+                                            borderWidth: 0.0,
+                                            buttonSize: 50.0,
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .errorRed,
+                                            disabledColor: Color(0x83CCCCCC),
+                                            disabledIconColor:
+                                                Color(0xFFA1A1A1),
+                                            icon: Icon(
+                                              FFIcons.kqrUsuario,
+                                              color: Colors.white,
+                                              size: 25.0,
+                                            ),
+                                            onPressed: true
+                                                ? null
+                                                : () {
+                                                    print(
+                                                        'IconButton pressed ...');
+                                                  },
+                                          ),
+                                          Text(
+                                            'Devolver DiMo®',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  fontSize: 14.0,
+                                                ),
+                                          ),
+                                        ].divide(SizedBox(height: 5.0)),
+                                      ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        FlutterFlowIconButton(
+                                          borderColor: Colors.transparent,
+                                          borderRadius: 100.0,
+                                          borderWidth: 0.0,
+                                          buttonSize: 50.0,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .accent3,
+                                          disabledColor: Color(0x83CCCCCC),
+                                          disabledIconColor: Color(0xFFA1A1A1),
+                                          icon: Icon(
+                                            FFIcons.ksms,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondary,
+                                            size: 24.0,
+                                          ),
+                                          showLoadingIndicator: true,
+                                          onPressed:
+                                              (oKFNPayry36DetallesdeSMSCodeRegistraCobroRecord
+                                                          .status ==
+                                                      PaymentStatus.CANCELADO)
+                                                  ? null
+                                                  : () async {
+                                                      var _shouldSetState =
+                                                          false;
+                                                      var confirmDialogResponse =
+                                                          await showDialog<
+                                                                  bool>(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (alertDialogContext) {
+                                                                  return AlertDialog(
+                                                                    title: Text(
+                                                                        '¿Estás seguro?'),
+                                                                    content: Text(
+                                                                        '¿Estás seguro de querer reenviar este DiMo®?'),
+                                                                    actions: [
+                                                                      TextButton(
+                                                                        onPressed: () => Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            false),
+                                                                        child: Text(
+                                                                            'Cancelar'),
+                                                                      ),
+                                                                      TextButton(
+                                                                        onPressed: () => Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            true),
+                                                                        child: Text(
+                                                                            'Aceptar'),
+                                                                      ),
+                                                                    ],
+                                                                  );
+                                                                },
+                                                              ) ??
+                                                              false;
+                                                      if (confirmDialogResponse) {
+                                                        var registraCobroRecordReference =
+                                                            RegistraCobroRecord
+                                                                .collection
+                                                                .doc();
+                                                        await registraCobroRecordReference
+                                                            .set({
+                                                          ...createRegistraCobroRecordData(
+                                                            adminId: valueOrDefault(
+                                                                currentUserDocument
+                                                                    ?.adminId,
+                                                                ''),
+                                                            amount:
+                                                                oKFNPayry36DetallesdeSMSCodeRegistraCobroRecord
+                                                                    .amount,
+                                                            concept:
+                                                                oKFNPayry36DetallesdeSMSCodeRegistraCobroRecord
+                                                                    .concept,
+                                                            phoneNumber:
+                                                                oKFNPayry36DetallesdeSMSCodeRegistraCobroRecord
+                                                                    .phoneNumber,
+                                                            uid: currentUserUid,
+                                                            companyId: '',
+                                                            errorMessage: '',
+                                                            errorOcurs: false,
+                                                            status:
+                                                                PaymentStatus
+                                                                    .PENDIENTE,
+                                                            type:
+                                                                PaymentType.SMS,
+                                                          ),
+                                                          ...mapToFirestore(
+                                                            {
+                                                              'created_time':
+                                                                  FieldValue
+                                                                      .serverTimestamp(),
+                                                            },
+                                                          ),
+                                                        });
+                                                        _model.dimoResp =
+                                                            RegistraCobroRecord
+                                                                .getDocumentFromData({
+                                                          ...createRegistraCobroRecordData(
+                                                            adminId: valueOrDefault(
+                                                                currentUserDocument
+                                                                    ?.adminId,
+                                                                ''),
+                                                            amount:
+                                                                oKFNPayry36DetallesdeSMSCodeRegistraCobroRecord
+                                                                    .amount,
+                                                            concept:
+                                                                oKFNPayry36DetallesdeSMSCodeRegistraCobroRecord
+                                                                    .concept,
+                                                            phoneNumber:
+                                                                oKFNPayry36DetallesdeSMSCodeRegistraCobroRecord
+                                                                    .phoneNumber,
+                                                            uid: currentUserUid,
+                                                            companyId: '',
+                                                            errorMessage: '',
+                                                            errorOcurs: false,
+                                                            status:
+                                                                PaymentStatus
+                                                                    .PENDIENTE,
+                                                            type:
+                                                                PaymentType.SMS,
+                                                          ),
+                                                          ...mapToFirestore(
+                                                            {
+                                                              'created_time':
+                                                                  DateTime
+                                                                      .now(),
+                                                            },
+                                                          ),
+                                                        }, registraCobroRecordReference);
+                                                        _shouldSetState = true;
+                                                        try {
+                                                          final result =
+                                                              await FirebaseFunctions
+                                                                  .instance
+                                                                  .httpsCallable(
+                                                                      'generateDimo')
+                                                                  .call({
+                                                            "id": _model
+                                                                .dimoResp!
+                                                                .reference
+                                                                .id,
+                                                            "test": false,
+                                                            "token": FFAppState()
+                                                                .serverToken,
+                                                          });
+                                                          _model.dimoCF =
+                                                              GenerateDimoCloudFunctionCallResponse(
+                                                            data: result.data,
+                                                            succeeded: true,
+                                                            resultAsString:
+                                                                result.data
+                                                                    .toString(),
+                                                            jsonBody:
+                                                                result.data,
+                                                          );
+                                                        } on FirebaseFunctionsException catch (error) {
+                                                          _model.dimoCF =
+                                                              GenerateDimoCloudFunctionCallResponse(
+                                                            errorCode:
+                                                                error.code,
+                                                            succeeded: false,
+                                                          );
+                                                        }
+
+                                                        _shouldSetState = true;
+                                                        if (getJsonField(
+                                                          _model
+                                                              .dimoCF!.jsonBody,
+                                                          r'''$.success''',
+                                                        )) {
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Completado'),
+                                                                content: Text(
+                                                                    'El DiMo® se ha generado con éxito.'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
+                                                          if (Navigator.of(
+                                                                  context)
+                                                              .canPop()) {
+                                                            context.pop();
+                                                          }
+                                                          context.pushNamedAuth(
+                                                            'OK_FN_Payry_36_detallesdeSMSCode',
+                                                            context.mounted,
+                                                            queryParameters: {
+                                                              'registraCobroRef':
+                                                                  serializeParam(
+                                                                _model.dimoResp
+                                                                    ?.reference,
+                                                                ParamType
+                                                                    .DocumentReference,
+                                                              ),
+                                                              'createRefund':
+                                                                  serializeParam(
+                                                                false,
+                                                                ParamType.bool,
+                                                              ),
+                                                            }.withoutNulls,
+                                                          );
+
+                                                          if (_shouldSetState)
+                                                            setState(() {});
+                                                          return;
+                                                        } else {
+                                                          await _model.dimoResp!
+                                                              .reference
+                                                              .delete();
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Error'),
+                                                                content: Text(
+                                                                    getJsonField(
+                                                                  _model.dimoCF!
+                                                                      .jsonBody,
+                                                                  r'''$.message''',
+                                                                ).toString()),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
+                                                          if (!functions
+                                                              .includeTheString(
+                                                                  getJsonField(
+                                                                    _model
+                                                                        .dimoCF!
+                                                                        .jsonBody,
+                                                                    r'''$.message''',
+                                                                  ).toString(),
+                                                                  'expirada')!) {
+                                                            if (_shouldSetState)
+                                                              setState(() {});
+                                                            return;
+                                                          }
+
+                                                          GoRouter.of(context)
+                                                              .prepareAuthEvent();
+                                                          await authManager
+                                                              .signOut();
+                                                          GoRouter.of(context)
+                                                              .clearRedirectLocation();
+
+                                                          context.goNamedAuth(
+                                                              'OK_FN_Payry_08_iniciasesion',
+                                                              context.mounted);
+
+                                                          if (_shouldSetState)
+                                                            setState(() {});
+                                                          return;
+                                                        }
+                                                      } else {
+                                                        if (_shouldSetState)
+                                                          setState(() {});
+                                                        return;
+                                                      }
+
+                                                      if (_shouldSetState)
+                                                        setState(() {});
+                                                    },
+                                        ),
+                                        Text(
+                                          'Reenviar DiMo®',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                fontSize: 14.0,
+                                              ),
+                                        ),
+                                      ].divide(SizedBox(height: 5.0)),
                                     ),
-                                    onPressed: true
-                                        ? null
-                                        : () {
-                                            print('IconButton pressed ...');
-                                          },
-                                  ),
-                                  Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: Text(
-                                      'Devolver DiMo®',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                    ),
-                                  ),
-                                ].divide(SizedBox(height: 5.0)),
+                                  ],
+                                ),
                               ),
                             ),
                           ],

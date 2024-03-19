@@ -172,7 +172,8 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                                   fontFamily: 'Lexend',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primaryText,
+                                                      .accent3,
+                                                  fontSize: 15.0,
                                                 ),
                                           ),
                                         ),
@@ -194,7 +195,7 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                                     shape: BoxShape.circle,
                                                   ),
                                                   child: Icon(
-                                                    FFIcons.kcompartir,
+                                                    FFIcons.kpago,
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .accent3,
@@ -224,7 +225,7 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                                                       'Lexend',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryText,
+                                                                      .accent3,
                                                                 ),
                                                       ),
                                                       Text(
@@ -239,7 +240,22 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                                                       'Lexend',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .accent3,
+                                                                      .primaryText,
+                                                                ),
+                                                      ),
+                                                      Text(
+                                                        listViewRegistraOrdenRecordsRecord
+                                                            .claveRastreo,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Lexend',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
                                                                 ),
                                                       ),
                                                     ],

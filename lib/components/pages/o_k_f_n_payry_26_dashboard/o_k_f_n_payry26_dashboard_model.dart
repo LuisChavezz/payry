@@ -27,10 +27,10 @@ class OKFNPayry26DashboardModel
 
   ///  State fields for stateful widgets in this page.
 
+  TutorialCoachMark? elementosEnElDashboardController;
   final unfocusNode = FocusNode();
   // Stores action output result for [Cloud Function - getBalance] action in OK_FN_Payry_26_Dashboard widget.
   GetBalanceCloudFunctionCallResponse? getBalanceCF;
-  TutorialCoachMark? elementosEnElDashboardController;
   // State field(s) for TabBar widget.
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
@@ -48,8 +48,8 @@ class OKFNPayry26DashboardModel
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     elementosEnElDashboardController?.finish();
+    unfocusNode.dispose();
     tabBarController?.dispose();
     navBarFlotingModel.dispose();
   }
@@ -57,76 +57,4 @@ class OKFNPayry26DashboardModel
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
-
-  TutorialCoachMark createPageWalkthrough(BuildContext context) =>
-      TutorialCoachMark(
-        targets: createWalkthroughTargets(context),
-        onFinish: () async {
-          FFAppState().walkthroughs = <String, bool?>{
-            'menu_mas': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.menu_mas''',
-            ),
-            'dashboard': false,
-            'datos_bancarios': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.datos_bancarios''',
-            ),
-            'add_users': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.add_users''',
-            ),
-            'user_permissions': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.user_permissions''',
-            ),
-            'create_codi': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.create_codi''',
-            ),
-            'create_dimo': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.create_dimo''',
-            ),
-            'edit_profile': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.edit_profile''',
-            ),
-          };
-        },
-        onSkip: () {
-          FFAppState().walkthroughs = <String, bool?>{
-            'menu_mas': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.menu_mas''',
-            ),
-            'dashboard': false,
-            'datos_bancarios': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.datos_bancarios''',
-            ),
-            'add_users': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.add_users''',
-            ),
-            'user_permissions': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.user_permissions''',
-            ),
-            'create_codi': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.create_codi''',
-            ),
-            'create_dimo': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.create_dimo''',
-            ),
-            'edit_profile': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.edit_profile''',
-            ),
-          };
-          return true;
-        },
-      );
 }

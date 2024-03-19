@@ -48,8 +48,8 @@ class _OKFNPayry15EditProfileWidgetState
         setState(() {
           _model.show = true;
         });
-        _model.verificarTelefonoController =
-            _model.createPageWalkthrough(context);
+        safeSetState(() => _model.verificarTelefonoController =
+            createPageWalkthrough(context));
         _model.verificarTelefonoController?.show(context: context);
         return;
       } else {
@@ -894,4 +894,77 @@ class _OKFNPayry15EditProfileWidgetState
       },
     );
   }
+
+  TutorialCoachMark createPageWalkthrough(BuildContext context) =>
+      TutorialCoachMark(
+        targets: createWalkthroughTargets(context),
+        onFinish: () {
+          safeSetState(() => _model.verificarTelefonoController = null);
+          FFAppState().walkthroughs = <String, bool?>{
+            'menu_mas': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.menu_mas''',
+            ),
+            'dashboard': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.dashboard''',
+            ),
+            'datos_bancarios': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.datos_bancarios''',
+            ),
+            'add_users': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.add_users''',
+            ),
+            'user_permissions': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.user_permissions''',
+            ),
+            'create_codi': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.create_codi''',
+            ),
+            'create_dimo': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.create_dimo''',
+            ),
+            'edit_profile': false,
+          };
+        },
+        onSkip: () {
+          FFAppState().walkthroughs = <String, bool?>{
+            'menu_mas': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.menu_mas''',
+            ),
+            'dashboard': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.dashboard''',
+            ),
+            'datos_bancarios': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.datos_bancarios''',
+            ),
+            'add_users': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.add_users''',
+            ),
+            'user_permissions': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.user_permissions''',
+            ),
+            'create_codi': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.create_codi''',
+            ),
+            'create_dimo': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.create_dimo''',
+            ),
+            'edit_profile': false,
+          };
+          return true;
+        },
+      );
 }

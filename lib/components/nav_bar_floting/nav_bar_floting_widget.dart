@@ -15,9 +15,11 @@ class NavBarFlotingWidget extends StatefulWidget {
   const NavBarFlotingWidget({
     super.key,
     required this.userPermissions,
+    required this.pageName,
   });
 
   final UserPermissionsRecord? userPermissions;
+  final String? pageName;
 
   @override
   State<NavBarFlotingWidget> createState() => _NavBarFlotingWidgetState();
@@ -310,7 +312,9 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                           children: [
                             Icon(
                               FFIcons.kestadisticas,
-                              color: FlutterFlowTheme.of(context).secondaryText,
+                              color: widget.pageName == 'dashboard'
+                                  ? FlutterFlowTheme.of(context).success
+                                  : FlutterFlowTheme.of(context).secondaryText,
                               size: 25.0,
                             ),
                             Text(
@@ -319,6 +323,10 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Lexend',
+                                    color: widget.pageName == 'dashboard'
+                                        ? FlutterFlowTheme.of(context).success
+                                        : FlutterFlowTheme.of(context)
+                                            .secondaryText,
                                     fontSize: 10.0,
                                   ),
                             ),
@@ -564,7 +572,9 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                           children: [
                             Icon(
                               FFIcons.kqr,
-                              color: FlutterFlowTheme.of(context).secondaryText,
+                              color: widget.pageName == 'codi'
+                                  ? FlutterFlowTheme.of(context).success
+                                  : FlutterFlowTheme.of(context).secondaryText,
                               size: 25.0,
                             ),
                             Text(
@@ -573,6 +583,10 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Lexend',
+                                    color: widget.pageName == 'codi'
+                                        ? FlutterFlowTheme.of(context).success
+                                        : FlutterFlowTheme.of(context)
+                                            .secondaryText,
                                     fontSize: 10.0,
                                   ),
                             ),
@@ -818,7 +832,9 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                           children: [
                             Icon(
                               FFIcons.ksms,
-                              color: FlutterFlowTheme.of(context).secondaryText,
+                              color: widget.pageName == 'dimo'
+                                  ? FlutterFlowTheme.of(context).success
+                                  : FlutterFlowTheme.of(context).secondaryText,
                               size: 25.0,
                             ),
                             Text(
@@ -827,6 +843,10 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Lexend',
+                                    color: widget.pageName == 'dimo'
+                                        ? FlutterFlowTheme.of(context).success
+                                        : FlutterFlowTheme.of(context)
+                                            .secondaryText,
                                     fontSize: 10.0,
                                   ),
                             ),
@@ -851,7 +871,9 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                           children: [
                             Icon(
                               FFIcons.knotificaciones,
-                              color: FlutterFlowTheme.of(context).secondaryText,
+                              color: widget.pageName == 'notificaciones'
+                                  ? FlutterFlowTheme.of(context).success
+                                  : FlutterFlowTheme.of(context).secondaryText,
                               size: 25.0,
                             ),
                             Text(
@@ -860,6 +882,10 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Lexend',
+                                    color: widget.pageName == 'notificaciones'
+                                        ? FlutterFlowTheme.of(context).success
+                                        : FlutterFlowTheme.of(context)
+                                            .secondaryText,
                                     fontSize: valueOrDefault<double>(
                                       () {
                                         if (MediaQuery.sizeOf(context).width <
@@ -918,7 +944,9 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                           children: [
                             Icon(
                               FFIcons.kmas,
-                              color: FlutterFlowTheme.of(context).secondaryText,
+                              color: widget.pageName == 'menu'
+                                  ? FlutterFlowTheme.of(context).success
+                                  : FlutterFlowTheme.of(context).secondaryText,
                               size: 25.0,
                             ),
                             Text(
@@ -927,6 +955,10 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Lexend',
+                                    color: widget.pageName == 'menu'
+                                        ? FlutterFlowTheme.of(context).success
+                                        : FlutterFlowTheme.of(context)
+                                            .secondaryText,
                                     fontSize: 10.0,
                                   ),
                             ),

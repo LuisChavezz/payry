@@ -59,8 +59,8 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
         setState(() {
           _model.show = true;
         });
-        _model.primerosPasosMenuMasController =
-            _model.createPageWalkthrough(context);
+        safeSetState(() => _model.primerosPasosMenuMasController =
+            createPageWalkthrough(context));
         _model.primerosPasosMenuMasController?.show(context: context);
         return;
       } else {
@@ -3546,6 +3546,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                         child: NavBarFlotingWidget(
                           userPermissions:
                               oKFNPayry13MenumasUserPermissionsRecord!,
+                          pageName: 'menu',
                         ),
                       ),
                     ),
@@ -3558,4 +3559,77 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
       },
     );
   }
+
+  TutorialCoachMark createPageWalkthrough(BuildContext context) =>
+      TutorialCoachMark(
+        targets: createWalkthroughTargets(context),
+        onFinish: () {
+          safeSetState(() => _model.primerosPasosMenuMasController = null);
+          FFAppState().walkthroughs = <String, bool?>{
+            'menu_mas': false,
+            'dashboard': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.dashboard''',
+            ),
+            'datos_bancarios': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.datos_bancarios''',
+            ),
+            'add_users': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.add_users''',
+            ),
+            'user_permissions': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.user_permissions''',
+            ),
+            'create_codi': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.create_codi''',
+            ),
+            'create_dimo': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.create_dimo''',
+            ),
+            'edit_profile': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.edit_profile''',
+            ),
+          };
+        },
+        onSkip: () {
+          FFAppState().walkthroughs = <String, bool?>{
+            'menu_mas': false,
+            'dashboard': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.dashboard''',
+            ),
+            'datos_bancarios': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.datos_bancarios''',
+            ),
+            'add_users': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.add_users''',
+            ),
+            'user_permissions': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.user_permissions''',
+            ),
+            'create_codi': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.create_codi''',
+            ),
+            'create_dimo': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.create_dimo''',
+            ),
+            'edit_profile': getJsonField(
+              FFAppState().walkthroughs,
+              r'''$.edit_profile''',
+            ),
+          };
+          return true;
+        },
+      );
 }

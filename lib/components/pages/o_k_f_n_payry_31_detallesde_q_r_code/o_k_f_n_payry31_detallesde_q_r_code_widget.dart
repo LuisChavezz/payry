@@ -576,42 +576,44 @@ class _OKFNPayry31DetallesdeQRCodeWidgetState
                                         ),
                                       ].divide(SizedBox(height: 5.0)),
                                     ),
-                                    Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        FlutterFlowIconButton(
-                                          borderRadius: 100.0,
-                                          borderWidth: 0.0,
-                                          buttonSize: 50.0,
-                                          fillColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .errorRed,
-                                          disabledColor: Color(0x83CCCCCC),
-                                          disabledIconColor: Color(0xFFA1A1A1),
-                                          icon: Icon(
-                                            FFIcons.kqrUsuario,
-                                            color: Colors.white,
-                                            size: 24.0,
+                                    if (false)
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          FlutterFlowIconButton(
+                                            borderRadius: 100.0,
+                                            borderWidth: 0.0,
+                                            buttonSize: 50.0,
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .errorRed,
+                                            disabledColor: Color(0x83CCCCCC),
+                                            disabledIconColor:
+                                                Color(0xFFA1A1A1),
+                                            icon: Icon(
+                                              FFIcons.kqrUsuario,
+                                              color: Colors.white,
+                                              size: 24.0,
+                                            ),
+                                            showLoadingIndicator: true,
+                                            onPressed: true
+                                                ? null
+                                                : () {
+                                                    print(
+                                                        'IconButton pressed ...');
+                                                  },
                                           ),
-                                          showLoadingIndicator: true,
-                                          onPressed: true
-                                              ? null
-                                              : () {
-                                                  print(
-                                                      'IconButton pressed ...');
-                                                },
-                                        ),
-                                        Text(
-                                          'Devolver CoDi®',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Lexend',
-                                                fontSize: 14.0,
-                                              ),
-                                        ),
-                                      ].divide(SizedBox(height: 5.0)),
-                                    ),
+                                          Text(
+                                            'Devolver CoDi®',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  fontSize: 14.0,
+                                                ),
+                                          ),
+                                        ].divide(SizedBox(height: 5.0)),
+                                      ),
                                     Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
