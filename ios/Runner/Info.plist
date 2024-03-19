@@ -56,11 +56,13 @@
 	<false/>
 
 	<key>NSCameraUsageDescription</key>
-    <string>In order to take a picture or video, this app requires permission to access the camera.</string>
+    <string>Payry solicita tener acceso a la camara para tomar foto de perfil</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-    <string>In order to upload data, this app requires permission to access the photo library.</string>
+    <string>Payry solicita tener acceso a la galería para seleccionar imagenes de perfil de empresa</string>
 	<key>PermissionGroupNotification</key>
     <string>In order to notify, this app rquieres permission to access notify you</string>
+	<key>NSContactsUsageDescription</key>
+    <string>Payry solicita tener acceso a los contactos de su teléfono para la solicitud de DiMo</string>
     <key>UIBackgroundModes</key>
     <array>
         <string>fetch</string>
