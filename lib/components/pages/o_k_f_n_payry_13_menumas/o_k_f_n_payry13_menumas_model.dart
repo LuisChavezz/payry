@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/walkthroughs/primeros_pasos_menu_mas.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'o_k_f_n_payry13_menumas_widget.dart' show OKFNPayry13MenumasWidget;
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
@@ -38,6 +39,8 @@ class OKFNPayry13MenumasModel
   VerifyEmailCloudFunctionCallResponse? verifyEmailResp6;
   // Stores action output result for [Cloud Function - verifyEmail] action in Container widget.
   VerifyEmailCloudFunctionCallResponse? verifyEmailResp7;
+  // Stores action output result for [Custom Action - selectContact] action in Container widget.
+  String? contact;
   // Model for NavBarFloting component.
   late NavBarFlotingModel navBarFlotingModel;
 
