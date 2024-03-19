@@ -19,10 +19,12 @@ class OKFNPayry25PermisosWidget extends StatefulWidget {
     super.key,
     required this.uid,
     required this.userName,
+    required this.userEmail,
   });
 
   final String? uid;
   final String? userName;
+  final String? userEmail;
 
   @override
   State<OKFNPayry25PermisosWidget> createState() =>
@@ -77,7 +79,7 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
       stream: queryUserPermissionsRecord(
         queryBuilder: (userPermissionsRecord) => userPermissionsRecord.where(
           'uid',
-          isEqualTo: currentUserUid,
+          isEqualTo: widget.uid,
         ),
         singleRecord: true,
       ),
@@ -153,23 +155,34 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
+                            Align(
+                              alignment: AlignmentDirectional(-1.0, -1.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(1.0, 0.0),
+                                    child: Text(
+                                      widget.userName!,
+                                      textAlign: TextAlign.center,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyLarge,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                             Row(
                               mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'Permisos de ',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Lexend',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                      ),
-                                ),
-                                Text(
-                                  widget.userName!,
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  valueOrDefault<String>(
+                                    widget.userEmail,
+                                    'a',
+                                  ),
+                                  style: FlutterFlowTheme.of(context).bodyLarge,
                                 ),
                               ],
                             ),
@@ -279,16 +292,16 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                         },
                                         activeColor:
                                             FlutterFlowTheme.of(context)
-                                                .success,
+                                                .accent1,
                                         activeTrackColor:
                                             FlutterFlowTheme.of(context)
-                                                .accent1,
+                                                .success,
                                         inactiveTrackColor:
                                             FlutterFlowTheme.of(context)
-                                                .accent4,
+                                                .alternate,
                                         inactiveThumbColor:
                                             FlutterFlowTheme.of(context)
-                                                .primaryText,
+                                                .secondaryText,
                                       ),
                                     ],
                                   ).addWalkthrough(
@@ -335,7 +348,7 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                       Switch.adaptive(
                                         value: _model.readQrSwitchValue ??=
                                             oKFNPayry25PermisosUserPermissionsRecord!
-                                                .readQr,
+                                                .createQr,
                                         onChanged: (newValue) async {
                                           setState(() => _model
                                               .readQrSwitchValue = newValue!);
@@ -393,16 +406,16 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                         },
                                         activeColor:
                                             FlutterFlowTheme.of(context)
-                                                .success,
+                                                .accent1,
                                         activeTrackColor:
                                             FlutterFlowTheme.of(context)
-                                                .accent1,
+                                                .success,
                                         inactiveTrackColor:
                                             FlutterFlowTheme.of(context)
-                                                .accent4,
+                                                .alternate,
                                         inactiveThumbColor:
                                             FlutterFlowTheme.of(context)
-                                                .primaryText,
+                                                .secondaryText,
                                       ),
                                     ],
                                   ),
@@ -446,7 +459,7 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                       Switch.adaptive(
                                         value: _model.createSmsSwitchValue ??=
                                             oKFNPayry25PermisosUserPermissionsRecord!
-                                                .createSms,
+                                                .createQr,
                                         onChanged: (newValue) async {
                                           setState(() =>
                                               _model.createSmsSwitchValue =
@@ -507,16 +520,16 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                         },
                                         activeColor:
                                             FlutterFlowTheme.of(context)
-                                                .success,
+                                                .accent1,
                                         activeTrackColor:
                                             FlutterFlowTheme.of(context)
-                                                .accent1,
+                                                .success,
                                         inactiveTrackColor:
                                             FlutterFlowTheme.of(context)
-                                                .accent4,
+                                                .alternate,
                                         inactiveThumbColor:
                                             FlutterFlowTheme.of(context)
-                                                .primaryText,
+                                                .secondaryText,
                                       ),
                                     ],
                                   ),
@@ -560,7 +573,7 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                       Switch.adaptive(
                                         value: _model.readSmsSwitchValue ??=
                                             oKFNPayry25PermisosUserPermissionsRecord!
-                                                .readSms,
+                                                .createQr,
                                         onChanged: (newValue) async {
                                           setState(() => _model
                                               .readSmsSwitchValue = newValue!);
@@ -620,16 +633,16 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                         },
                                         activeColor:
                                             FlutterFlowTheme.of(context)
-                                                .success,
+                                                .accent1,
                                         activeTrackColor:
                                             FlutterFlowTheme.of(context)
-                                                .accent1,
+                                                .success,
                                         inactiveTrackColor:
                                             FlutterFlowTheme.of(context)
-                                                .accent4,
+                                                .alternate,
                                         inactiveThumbColor:
                                             FlutterFlowTheme.of(context)
-                                                .primaryText,
+                                                .secondaryText,
                                       ),
                                     ],
                                   ),
@@ -674,7 +687,7 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                         value: _model
                                                 .createRefundSwitchValue ??=
                                             oKFNPayry25PermisosUserPermissionsRecord!
-                                                .createRefunds,
+                                                .createQr,
                                         onChanged: (newValue) async {
                                           setState(() =>
                                               _model.createRefundSwitchValue =
@@ -735,16 +748,16 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                         },
                                         activeColor:
                                             FlutterFlowTheme.of(context)
-                                                .success,
+                                                .accent1,
                                         activeTrackColor:
                                             FlutterFlowTheme.of(context)
-                                                .accent1,
+                                                .success,
                                         inactiveTrackColor:
                                             FlutterFlowTheme.of(context)
-                                                .accent4,
+                                                .alternate,
                                         inactiveThumbColor:
                                             FlutterFlowTheme.of(context)
-                                                .primaryText,
+                                                .secondaryText,
                                       ),
                                     ],
                                   ),
@@ -789,7 +802,7 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                         value: _model
                                                 .readCompaniesSwitchValue ??=
                                             oKFNPayry25PermisosUserPermissionsRecord!
-                                                .readCompanies,
+                                                .createQr,
                                         onChanged: (newValue) async {
                                           setState(() =>
                                               _model.readCompaniesSwitchValue =
@@ -850,16 +863,16 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                         },
                                         activeColor:
                                             FlutterFlowTheme.of(context)
-                                                .success,
+                                                .accent1,
                                         activeTrackColor:
                                             FlutterFlowTheme.of(context)
-                                                .accent1,
+                                                .success,
                                         inactiveTrackColor:
                                             FlutterFlowTheme.of(context)
-                                                .accent4,
+                                                .alternate,
                                         inactiveThumbColor:
                                             FlutterFlowTheme.of(context)
-                                                .primaryText,
+                                                .secondaryText,
                                       ),
                                     ],
                                   ),
@@ -904,7 +917,7 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                         value: _model
                                                 .readInvoicesSwitchValue ??=
                                             oKFNPayry25PermisosUserPermissionsRecord!
-                                                .readInvoices,
+                                                .createQr,
                                         onChanged: (newValue) async {
                                           setState(() =>
                                               _model.readInvoicesSwitchValue =
@@ -965,16 +978,16 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                         },
                                         activeColor:
                                             FlutterFlowTheme.of(context)
-                                                .success,
+                                                .accent1,
                                         activeTrackColor:
                                             FlutterFlowTheme.of(context)
-                                                .accent1,
+                                                .success,
                                         inactiveTrackColor:
                                             FlutterFlowTheme.of(context)
-                                                .accent4,
+                                                .alternate,
                                         inactiveThumbColor:
                                             FlutterFlowTheme.of(context)
-                                                .primaryText,
+                                                .secondaryText,
                                       ),
                                     ],
                                   ),
@@ -1018,7 +1031,7 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                       Switch.adaptive(
                                         value: _model.readUsersSwitchValue ??=
                                             oKFNPayry25PermisosUserPermissionsRecord!
-                                                .readUsers,
+                                                .createQr,
                                         onChanged: (newValue) async {
                                           setState(() =>
                                               _model.readUsersSwitchValue =
@@ -1079,16 +1092,16 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                         },
                                         activeColor:
                                             FlutterFlowTheme.of(context)
-                                                .success,
+                                                .accent1,
                                         activeTrackColor:
                                             FlutterFlowTheme.of(context)
-                                                .accent1,
+                                                .success,
                                         inactiveTrackColor:
                                             FlutterFlowTheme.of(context)
-                                                .accent4,
+                                                .alternate,
                                         inactiveThumbColor:
                                             FlutterFlowTheme.of(context)
-                                                .primaryText,
+                                                .secondaryText,
                                       ),
                                     ],
                                   ),
@@ -1133,7 +1146,7 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                         value: _model
                                                 .readStatisticsSwitchValue ??=
                                             oKFNPayry25PermisosUserPermissionsRecord!
-                                                .readTransfers,
+                                                .createQr,
                                         onChanged: (newValue) async {
                                           setState(() =>
                                               _model.readStatisticsSwitchValue =
@@ -1194,16 +1207,16 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                         },
                                         activeColor:
                                             FlutterFlowTheme.of(context)
-                                                .success,
+                                                .accent1,
                                         activeTrackColor:
                                             FlutterFlowTheme.of(context)
-                                                .accent1,
+                                                .success,
                                         inactiveTrackColor:
                                             FlutterFlowTheme.of(context)
-                                                .accent4,
+                                                .alternate,
                                         inactiveThumbColor:
                                             FlutterFlowTheme.of(context)
-                                                .primaryText,
+                                                .secondaryText,
                                       ),
                                     ],
                                   ),
@@ -1248,7 +1261,7 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                         value: _model
                                                 .readTransfersSwitchValue ??=
                                             oKFNPayry25PermisosUserPermissionsRecord!
-                                                .readTransfers,
+                                                .createQr,
                                         onChanged: (newValue) async {
                                           setState(() =>
                                               _model.readTransfersSwitchValue =
@@ -1309,16 +1322,16 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                         },
                                         activeColor:
                                             FlutterFlowTheme.of(context)
-                                                .success,
+                                                .accent1,
                                         activeTrackColor:
                                             FlutterFlowTheme.of(context)
-                                                .accent1,
+                                                .success,
                                         inactiveTrackColor:
                                             FlutterFlowTheme.of(context)
-                                                .accent4,
+                                                .alternate,
                                         inactiveThumbColor:
                                             FlutterFlowTheme.of(context)
-                                                .primaryText,
+                                                .secondaryText,
                                       ),
                                     ],
                                   ),

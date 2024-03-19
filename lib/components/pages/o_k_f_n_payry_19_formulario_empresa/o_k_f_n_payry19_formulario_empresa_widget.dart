@@ -1178,13 +1178,13 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           },
                                           activeColor:
                                               FlutterFlowTheme.of(context)
-                                                  .success,
+                                                  .alternate,
                                           activeTrackColor:
                                               FlutterFlowTheme.of(context)
-                                                  .accent1,
+                                                  .success,
                                           inactiveTrackColor:
                                               FlutterFlowTheme.of(context)
-                                                  .accent4,
+                                                  .accent1,
                                           inactiveThumbColor:
                                               FlutterFlowTheme.of(context)
                                                   .primaryText,
