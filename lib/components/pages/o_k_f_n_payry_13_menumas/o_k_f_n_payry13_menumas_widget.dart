@@ -2447,7 +2447,6 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                           currentUserDocument
                                                               ?.isAdmin,
                                                           false) ||
-                                                      true ||
                                                       oKFNPayry13MenumasUserPermissionsRecord!
                                                           .readInvoices
                                                   ? FlutterFlowTheme.of(context)

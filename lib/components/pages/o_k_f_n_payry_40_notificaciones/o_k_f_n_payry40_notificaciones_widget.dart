@@ -150,7 +150,7 @@ class _OKFNPayry40NotificacionesWidgetState
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 4.0, 0.0),
                                             child: Icon(
-                                              Icons.monetization_on_outlined,
+                                              FFIcons.knuevaNotificacion,
                                               size: 18.0,
                                             ),
                                           ),
@@ -168,7 +168,7 @@ class _OKFNPayry40NotificacionesWidgetState
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 4.0, 0.0),
                                             child: Icon(
-                                              Icons.watch_later_outlined,
+                                              FFIcons.knotificaciones,
                                               size: 18.0,
                                             ),
                                           ),

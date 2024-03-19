@@ -255,6 +255,10 @@ class _OKFNPayry24ListadoUsuariosWidgetState
                                               listViewUsersRecord.displayName,
                                               ParamType.String,
                                             ),
+                                            'userEmail': serializeParam(
+                                              listViewUsersRecord.email,
+                                              ParamType.String,
+                                            ),
                                           }.withoutNulls,
                                         );
                                       },
