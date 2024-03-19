@@ -3,11 +3,14 @@ import '/backend/backend.dart';
 import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/backend/schema/enums/enums.dart';
 import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/walkthroughs/como_crear_un_di_mo.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/flutter_flow/permissions_util.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -234,8 +237,8 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                               Expanded(
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0.0, 12.0, 10.0,
-                                                          12.0),
+                                                      .fromSTEB(
+                                                          0.0, 12.0, 0.0, 12.0),
                                                   child: TextFormField(
                                                     controller: _model
                                                         .phoneFieldController,
@@ -320,6 +323,45 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                       _model.phoneFieldMask
                                                     ],
                                                   ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 16.0),
+                                                child: FlutterFlowIconButton(
+                                                  borderColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryText,
+                                                  borderRadius: 20.0,
+                                                  borderWidth: 1.0,
+                                                  buttonSize: 40.0,
+                                                  icon: Icon(
+                                                    Icons.contacts_outlined,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    size: 24.0,
+                                                  ),
+                                                  onPressed: () async {
+                                                    await requestPermission(
+                                                        contactsPermission);
+                                                    _model.contact = await actions
+                                                        .pickContactFromPhoneBook();
+                                                    setState(() {
+                                                      _model.phoneFieldController
+                                                              ?.text =
+                                                          functions
+                                                              .formatPhoneNumber(
+                                                                  getJsonField(
+                                                        _model.contact,
+                                                        r'''$.phone''',
+                                                      ).toString())!;
+                                                    });
+
+                                                    setState(() {});
+                                                  },
                                                 ),
                                               ),
                                             ].divide(SizedBox(width: 10.0)),
