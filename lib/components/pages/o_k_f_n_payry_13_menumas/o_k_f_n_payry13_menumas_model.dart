@@ -41,7 +41,7 @@ class OKFNPayry13MenumasModel
   // Stores action output result for [Cloud Function - verifyEmail] action in Container widget.
   VerifyEmailCloudFunctionCallResponse? verifyEmailResp7;
   // Stores action output result for [Custom Action - selectContact] action in Container widget.
-  String? contact;
+  dynamic? contact;
   // Model for NavBarFloting component.
   late NavBarFlotingModel navBarFlotingModel;
 
