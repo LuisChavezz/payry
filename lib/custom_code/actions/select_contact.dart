@@ -26,7 +26,7 @@ Future<String?> selectContact() async {
       }
     }
   }
-  return null; // Devolver null si no se puede obtener el contacto o el número de teléfono
+  return ''; // Devolver null si no se puede obtener el contacto o el número de teléfono
 }
 
 // Set your action name, define your arguments and return parameter,
