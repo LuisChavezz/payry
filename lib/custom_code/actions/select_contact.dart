@@ -10,19 +10,17 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import 'package:contacts_service/contacts_service.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 Future<String?> selectContact() async {
-  PermissionStatus permissionStatus = await Permission.contacts.request();
-  if (permissionStatus.isGranted) {
-    Iterable<Contact>? contacts = await ContactsService.getContacts();
-    if (contacts != null && contacts.isNotEmpty) {
-      Contact? firstContact = contacts.firstOrNull;
-      if (firstContact != null) {
-        Item? phoneItem = firstContact.phones?.firstOrNull;
-        if (phoneItem != null && phoneItem.value != null) {
-          return phoneItem.value;
-        }
+  List<Contact> contacts = await ContactsService.getContacts();
+  if (contacts.isNotEmpty) {
+    // Aquí podrías realizar algún procesamiento adicional con la lista de contactos,
+    // como seleccionar un contacto específico y obtener su número de teléfono
+    Contact? firstContact = contacts.firstOrNull;
+    if (firstContact != null) {
+      Item? phoneItem = firstContact.phones?.firstOrNull;
+      if (phoneItem != null && phoneItem.value != null) {
+        return phoneItem.value;
       }
     }
   }
