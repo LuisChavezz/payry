@@ -166,3 +166,16 @@ DateTime? todayFilter() {
   DateTime today = DateTime(now.year, now.month, now.day);
   return today;
 }
+
+String? formatPhoneNumber(String? phoneNumber) {
+  if (phoneNumber == null || phoneNumber.isEmpty) {
+    return '';
+  }
+
+  final cleanedPhoneNumber = phoneNumber.replaceAll(RegExp(r'\D+'), '');
+
+  final last10Digits =
+      cleanedPhoneNumber.substring(cleanedPhoneNumber.length - 10);
+
+  return last10Digits;
+}
