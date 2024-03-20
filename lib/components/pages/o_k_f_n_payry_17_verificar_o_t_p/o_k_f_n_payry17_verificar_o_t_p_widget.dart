@@ -328,7 +328,7 @@ class _OKFNPayry17VerificarOTPWidgetState
                                                 .update(createUsersRecordData(
                                                   isValidPhoneNumber: true,
                                                   phoneNumber:
-                                                      widget.phoneNumber,
+                                                      FFAppState().phoneNumber,
                                                 ));
                                             await currentUserReference!
                                                 .delete();
