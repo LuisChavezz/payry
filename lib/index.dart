@@ -5,10 +5,6 @@ export '/components/pages/o_k_f_n_payry_05_registrate/o_k_f_n_payry05_registrate
     show OKFNPayry05RegistrateWidget;
 export '/components/pages/o_k_f_n_payry_09_olvidecontrasena/o_k_f_n_payry09_olvidecontrasena_widget.dart'
     show OKFNPayry09OlvidecontrasenaWidget;
-export '/components/pages/o_k_f_n_payry_01_splash/o_k_f_n_payry01_splash_widget.dart'
-    show OKFNPayry01SplashWidget;
-export '/components/pages/o_k_f_n_payry_02_onboarding1/o_k_f_n_payry02_onboarding1_widget.dart'
-    show OKFNPayry02Onboarding1Widget;
 export '/components/pages/o_k_f_n_payry_06_confirmacion_registro/o_k_f_n_payry06_confirmacion_registro_widget.dart'
     show OKFNPayry06ConfirmacionRegistroWidget;
 export '/components/pages/o_k_f_n_payry_11_olvidecontrasenanueva/o_k_f_n_payry11_olvidecontrasenanueva_widget.dart'
@@ -35,8 +31,6 @@ export '/components/pages/o_k_f_n_payry_25_permisos/o_k_f_n_payry25_permisos_wid
     show OKFNPayry25PermisosWidget;
 export '/components/pages/o_k_f_n_payry_27_solicitar_q_r/o_k_f_n_payry27_solicitar_q_r_widget.dart'
     show OKFNPayry27SolicitarQRWidget;
-export '/components/pages/o_k_f_n_payry_28_qr_generado/o_k_f_n_payry28_qr_generado_widget.dart'
-    show OKFNPayry28QrGeneradoWidget;
 export '/components/pages/o_k_f_n_payry_30_historial_q_rs/o_k_f_n_payry30_historial_q_rs_widget.dart'
     show OKFNPayry30HistorialQRsWidget;
 export '/components/pages/o_k_f_n_payry_35_historial_s_m_s/o_k_f_n_payry35_historial_s_m_s_widget.dart'
@@ -57,22 +51,12 @@ export '/components/pages/o_k_f_n_payry_41_f_a_qs/o_k_f_n_payry41_f_a_qs_widget.
     show OKFNPayry41FAQsWidget;
 export '/components/pages/o_k_f_n_payry_38_estadisticas/o_k_f_n_payry38_estadisticas_widget.dart'
     show OKFNPayry38EstadisticasWidget;
-export '/components/pages/o_k_f_n_payry_03_onboarding2/o_k_f_n_payry03_onboarding2_widget.dart'
-    show OKFNPayry03Onboarding2Widget;
-export '/components/pages/o_k_f_n_payry_04_onboarding3/o_k_f_n_payry04_onboarding3_widget.dart'
-    show OKFNPayry04Onboarding3Widget;
-export '/components/pages/o_k_f_n_payry_07_confirmacion_correo_enviado_register/o_k_f_n_payry07_confirmacion_correo_enviado_register_widget.dart'
-    show OKFNPayry07ConfirmacionCorreoEnviadoRegisterWidget;
 export '/components/pages/o_k_f_n_payry_10_confirmacion_correo_enviado_contrasena/o_k_f_n_payry10_confirmacion_correo_enviado_contrasena_widget.dart'
     show OKFNPayry10ConfirmacionCorreoEnviadoContrasenaWidget;
 export '/components/pages/o_k_f_n_payry_12_confirmacion_contrasena_actualizada/o_k_f_n_payry12_confirmacion_contrasena_actualizada_widget.dart'
     show OKFNPayry12ConfirmacionContrasenaActualizadaWidget;
-export '/components/pages/o_k_f_n_payry_18_confirmacion_telefono/o_k_f_n_payry18_confirmacion_telefono_widget.dart'
-    show OKFNPayry18ConfirmacionTelefonoWidget;
 export '/components/pages/o_k_f_n_payry_21_confirmacion_datos_bancarios/o_k_f_n_payry21_confirmacion_datos_bancarios_widget.dart'
     show OKFNPayry21ConfirmacionDatosBancariosWidget;
-export '/components/pages/o_k_f_n_payry_33_s_m_senviado/o_k_f_n_payry33_s_m_senviado_widget.dart'
-    show OKFNPayry33SMSenviadoWidget;
 export '/components/pages/o_k_f_n_payry_13_menumas/o_k_f_n_payry13_menumas_widget.dart'
     show OKFNPayry13MenumasWidget;
 export '/components/pages/o_k_f_n_payry_43_politicadeprivacidad/o_k_f_n_payry43_politicadeprivacidad_widget.dart'
@@ -83,9 +67,6 @@ export '/components/pages/o_k_f_n_payry_05_register_inv/o_k_f_n_payry05_register
     show OKFNPayry05RegisterInvWidget;
 export '/components/pages/o_k_f_n_payry_44_historial_transactions/o_k_f_n_payry44_historial_transactions_widget.dart'
     show OKFNPayry44HistorialTransactionsWidget;
-export '/test_share_image/test_share_image_widget.dart'
-    show TestShareImageWidget;
-export '/components/pages/test_page/test_page_widget.dart' show TestPageWidget;
 export '/components/pages/o_k_f_n_payry_31_detallesde_q_r_code/o_k_f_n_payry31_detallesde_q_r_code_widget.dart'
     show OKFNPayry31DetallesdeQRCodeWidget;
 export '/components/pages/o_k_f_n_payry_36_detallesde_s_m_s_code/o_k_f_n_payry36_detallesde_s_m_s_code_widget.dart'

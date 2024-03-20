@@ -23,9 +23,9 @@ class OKFNPayry17VerificarOTPModel
   TextEditingController? pinCodeController;
   String? Function(BuildContext, String?)? pinCodeControllerValidator;
   // State field(s) for Timer widget.
-  int timerMilliseconds = 45000;
+  int timerMilliseconds = 90000;
   String timerValue = StopWatchTimer.getDisplayTime(
-    45000,
+    90000,
     hours: false,
     milliSecond: false,
   );

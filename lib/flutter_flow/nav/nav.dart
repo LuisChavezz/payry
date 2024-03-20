@@ -115,16 +115,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => OKFNPayry09OlvidecontrasenaWidget(),
             ),
             FFRoute(
-              name: 'OK_FN_Payry_01_Splash',
-              path: 'oKFNPayry01Splash',
-              builder: (context, params) => OKFNPayry01SplashWidget(),
-            ),
-            FFRoute(
-              name: 'OK_FN_Payry_02_onboarding1',
-              path: 'oKFNPayry02Onboarding1',
-              builder: (context, params) => OKFNPayry02Onboarding1Widget(),
-            ),
-            FFRoute(
               name: 'OK_FN_Payry_06_confirmacionRegistro',
               path: 'oKFNPayry06ConfirmacionRegistro',
               builder: (context, params) =>
@@ -216,15 +206,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'OK_FN_Payry_28_qrGenerado',
-              path: 'oKFNPayry28QrGenerado',
-              requireAuth: true,
-              builder: (context, params) => OKFNPayry28QrGeneradoWidget(
-                createdQrReference: params.getParam('createdQrReference',
-                    ParamType.DocumentReference, false, ['qr']),
-              ),
-            ),
-            FFRoute(
               name: 'OK_FN_Payry_30_historialQRs',
               path: 'oKFNPayry30HistorialQRs',
               requireAuth: true,
@@ -305,22 +286,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => OKFNPayry38EstadisticasWidget(),
             ),
             FFRoute(
-              name: 'OK_FN_Payry_03_onboarding2',
-              path: 'oKFNPayry03Onboarding2',
-              builder: (context, params) => OKFNPayry03Onboarding2Widget(),
-            ),
-            FFRoute(
-              name: 'OK_FN_Payry_04_onboarding3',
-              path: 'oKFNPayry04Onboarding3',
-              builder: (context, params) => OKFNPayry04Onboarding3Widget(),
-            ),
-            FFRoute(
-              name: 'OK_FN_Payry_07_confirmacionCorreoEnviadoRegister',
-              path: 'oKFNPayry07ConfirmacionCorreoEnviadoRegister',
-              builder: (context, params) =>
-                  OKFNPayry07ConfirmacionCorreoEnviadoRegisterWidget(),
-            ),
-            FFRoute(
               name: 'OK_FN_Payry_10_confirmacionCorreoEnviadoContrasena',
               path: 'oKFNPayry10ConfirmacionCorreoEnviadoContrasena',
               builder: (context, params) =>
@@ -333,24 +298,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   OKFNPayry12ConfirmacionContrasenaActualizadaWidget(),
             ),
             FFRoute(
-              name: 'OK_FN_Payry_18_confirmacionTelefono',
-              path: 'oKFNPayry18ConfirmacionTelefono',
-              requireAuth: true,
-              builder: (context, params) =>
-                  OKFNPayry18ConfirmacionTelefonoWidget(),
-            ),
-            FFRoute(
               name: 'OK_FN_Payry_21_confirmacionDatosBancarios',
               path: 'oKFNPayry21ConfirmacionDatosBancarios',
               requireAuth: true,
               builder: (context, params) =>
                   OKFNPayry21ConfirmacionDatosBancariosWidget(),
-            ),
-            FFRoute(
-              name: 'OK_FN_Payry_33_SMSenviado',
-              path: 'oKFNPayry33SMSenviado',
-              requireAuth: true,
-              builder: (context, params) => OKFNPayry33SMSenviadoWidget(),
             ),
             FFRoute(
               name: 'OK_FN_Payry_13_Menumas',
@@ -384,17 +336,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               requireAuth: true,
               builder: (context, params) =>
                   OKFNPayry44HistorialTransactionsWidget(),
-            ),
-            FFRoute(
-              name: 'testShareImage',
-              path: 'testShareImage',
-              builder: (context, params) => TestShareImageWidget(),
-            ),
-            FFRoute(
-              name: 'testPage',
-              path: 'testPage',
-              requireAuth: true,
-              builder: (context, params) => TestPageWidget(),
             ),
             FFRoute(
               name: 'OK_FN_Payry_31_detallesdeQRCode',
