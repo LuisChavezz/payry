@@ -213,26 +213,6 @@ class _OKFNPayry17VerificarOTPWidgetState
                                   _model.timerValue = displayTime;
                                   if (shouldUpdate) setState(() {});
                                 },
-                                onEnded: () async {
-                                  context.pop();
-                                  await showDialog(
-                                    context: context,
-                                    builder: (alertDialogContext) {
-                                      return AlertDialog(
-                                        title: Text('Tiempo expirado'),
-                                        content: Text(
-                                            'El tiempo para ingresar el código de verificación ha expirado. Vuelva a intenter enviado un nuevo código.'),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () => Navigator.pop(
-                                                alertDialogContext),
-                                            child: Text('Aceptar'),
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  );
-                                },
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
                                     .headlineSmall
