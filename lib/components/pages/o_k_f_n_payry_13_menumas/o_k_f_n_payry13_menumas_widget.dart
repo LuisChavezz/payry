@@ -6,8 +6,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/walkthroughs/primeros_pasos_menu_mas.dart';
-import '/custom_code/actions/index.dart' as actions;
-import '/flutter_flow/permissions_util.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:cloud_functions/cloud_functions.dart';
@@ -3349,18 +3347,13 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           hoverColor: Colors.transparent,
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
-                                            await requestPermission(
-                                                contactsPermission);
-                                            _model.contact = await actions
-                                                .pickContactFromPhoneBook();
                                             await showDialog(
                                               context: context,
                                               builder: (alertDialogContext) {
                                                 return AlertDialog(
-                                                  title: Text(
-                                                      'Contacto seleccionado'),
-                                                  content: Text(_model.contact!
-                                                      .toString()),
+                                                  title: Text('No test'),
+                                                  content: Text(
+                                                      'No hay nada que probar joven 🤓'),
                                                   actions: [
                                                     TextButton(
                                                       onPressed: () =>
@@ -3372,8 +3365,6 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                 );
                                               },
                                             );
-
-                                            setState(() {});
                                           },
                                           child: Container(
                                             width: () {

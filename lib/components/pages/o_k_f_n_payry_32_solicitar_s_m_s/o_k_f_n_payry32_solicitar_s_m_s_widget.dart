@@ -334,11 +334,12 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .primaryText,
-                                                  borderRadius: 20.0,
+                                                  borderRadius: 7.0,
                                                   borderWidth: 1.0,
                                                   buttonSize: 40.0,
                                                   icon: Icon(
-                                                    Icons.contacts_outlined,
+                                                    Icons
+                                                        .contact_phone_outlined,
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText,
