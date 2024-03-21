@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/backend/schema/enums/enums.dart';
+import '/components/phone_submit_dialog/phone_submit_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -1213,6 +1214,123 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                       ),
                                             ),
                                           ].divide(SizedBox(height: 5.0)),
+                                        ),
+                                        StreamBuilder<CompaniesRecord>(
+                                          stream: CompaniesRecord.getDocument(
+                                              functions.jsonPathToCompanyRef(
+                                                  columnDetallesCobroRecord
+                                                      .companyId)!),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 40.0,
+                                                  height: 40.0,
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    valueColor:
+                                                        AlwaysStoppedAnimation<
+                                                            Color>(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .accent3,
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                            final columnCompaniesRecord =
+                                                snapshot.data!;
+                                            return Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Builder(
+                                                  builder: (context) =>
+                                                      FlutterFlowIconButton(
+                                                    borderRadius: 100.0,
+                                                    borderWidth: 0.0,
+                                                    buttonSize: 50.0,
+                                                    fillColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .accent3,
+                                                    disabledColor:
+                                                        Color(0x83CCCCCC),
+                                                    disabledIconColor:
+                                                        Color(0xFFA1A1A1),
+                                                    icon: Icon(
+                                                      FFIcons.kcompartir,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondary,
+                                                      size: 20.0,
+                                                    ),
+                                                    showLoadingIndicator: true,
+                                                    onPressed:
+                                                        (oKFNPayry31DetallesdeQRRegistraCobroRecord
+                                                                    .status ==
+                                                                PaymentStatus
+                                                                    .CANCELADO)
+                                                            ? null
+                                                            : () async {
+                                                                await showDialog(
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (dialogContext) {
+                                                                    return Dialog(
+                                                                      elevation:
+                                                                          0,
+                                                                      insetPadding:
+                                                                          EdgeInsets
+                                                                              .zero,
+                                                                      backgroundColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      alignment: AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0)
+                                                                          .resolve(
+                                                                              Directionality.of(context)),
+                                                                      child:
+                                                                          GestureDetector(
+                                                                        onTap: () => _model.unfocusNode.canRequestFocus
+                                                                            ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                                                                            : FocusScope.of(context).unfocus(),
+                                                                        child:
+                                                                            PhoneSubmitDialogWidget(
+                                                                          companyAlias:
+                                                                              columnCompaniesRecord.alias,
+                                                                          paymentId: widget
+                                                                              .detallesCobroRef!
+                                                                              .id,
+                                                                          dismissAction:
+                                                                              () async {},
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ).then((value) =>
+                                                                    setState(
+                                                                        () {}));
+                                                              },
+                                                  ),
+                                                ),
+                                                Text(
+                                                  'Compartir recibo',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        fontSize: 14.0,
+                                                      ),
+                                                ),
+                                              ].divide(SizedBox(height: 5.0)),
+                                            );
+                                          },
                                         ),
                                       ],
                                     ),
