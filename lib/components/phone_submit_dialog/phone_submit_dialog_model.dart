@@ -30,9 +30,6 @@ class PhoneSubmitDialogModel extends FlutterFlowModel<PhoneSubmitDialogWidget> {
       return 'Debe contener al menos 10 dígitos';
     }
 
-    if (!RegExp('/^[0-9]+\$').hasMatch(val)) {
-      return 'Formato es inválido';
-    }
     return null;
   }
 
