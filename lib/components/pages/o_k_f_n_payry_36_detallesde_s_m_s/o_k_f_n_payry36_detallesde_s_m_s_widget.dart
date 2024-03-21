@@ -706,7 +706,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                               ),
                                             ),
                                             Text(
-                                              'Devolver',
+                                              'Devolver DiMo®',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -1034,7 +1034,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                         },
                                             ),
                                             Text(
-                                              'Reenviar',
+                                              'Reenviar DiMo®',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -1045,64 +1045,97 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                             ),
                                           ].divide(SizedBox(height: 5.0)),
                                         ),
-                                        Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            FlutterFlowIconButton(
-                                              borderColor: Colors.transparent,
-                                              borderRadius: 100.0,
-                                              borderWidth: 0.0,
-                                              buttonSize: 50.0,
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .accent3,
-                                              disabledColor: Color(0x83CCCCCC),
-                                              disabledIconColor:
-                                                  Color(0xFFA1A1A1),
-                                              icon: Icon(
-                                                FFIcons.kcompartir,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
+                                        StreamBuilder<CompaniesRecord>(
+                                          stream: CompaniesRecord.getDocument(
+                                              functions.jsonPathToCompanyRef(
+                                                  columnDetallesCobroRecord
+                                                      .companyId)!),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 40.0,
+                                                  height: 40.0,
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    valueColor:
+                                                        AlwaysStoppedAnimation<
+                                                            Color>(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .accent3,
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                            final columnCompaniesRecord =
+                                                snapshot.data!;
+                                            return Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                FlutterFlowIconButton(
+                                                  borderColor:
+                                                      Colors.transparent,
+                                                  borderRadius: 100.0,
+                                                  borderWidth: 0.0,
+                                                  buttonSize: 50.0,
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .accent3,
+                                                  disabledColor:
+                                                      Color(0x83CCCCCC),
+                                                  disabledIconColor:
+                                                      Color(0xFFA1A1A1),
+                                                  icon: Icon(
+                                                    FFIcons.kcompartir,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
                                                         .secondary,
-                                                size: 24.0,
-                                              ),
-                                              showLoadingIndicator: true,
-                                              onPressed:
-                                                  (columnDetallesCobroRecord
-                                                              .status ==
-                                                          PaymentStatus
-                                                              .CANCELADO)
-                                                      ? null
-                                                      : () async {
-                                                          if (isiOS) {
-                                                            await launchUrl(
-                                                                Uri.parse(
-                                                                    "sms:${'3331318810'}&body=${Uri.encodeComponent('Revisa tu recibo de @Alias: https://www.payry.mx/rdp/?id=${columnDetallesCobroRecord.reference.id}')}"));
-                                                          } else {
-                                                            await launchUrl(Uri(
-                                                              scheme: 'sms',
-                                                              path:
-                                                                  '3331318810',
-                                                              queryParameters: <String,
-                                                                  String>{
-                                                                'body':
-                                                                    'Revisa tu recibo de @Alias: https://www.payry.mx/rdp/?id=${columnDetallesCobroRecord.reference.id}',
-                                                              },
-                                                            ));
-                                                          }
-                                                        },
-                                            ),
-                                            Text(
-                                              'Compartir SMS',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
+                                                    size: 20.0,
+                                                  ),
+                                                  showLoadingIndicator: true,
+                                                  onPressed:
+                                                      (columnDetallesCobroRecord
+                                                                  .status ==
+                                                              PaymentStatus
+                                                                  .PAGADO)
+                                                          ? null
+                                                          : () async {
+                                                              if (isiOS) {
+                                                                await launchUrl(
+                                                                    Uri.parse(
+                                                                        "sms:${oKFNPayry36DetallesdeSMSRegistraCobroRecord.phoneNumber}&body=${Uri.encodeComponent('Revisa tu recibo de ${columnCompaniesRecord.alias}: https://www.payry.mx/rdp/?id=${columnDetallesCobroRecord.reference.id}')}"));
+                                                              } else {
+                                                                await launchUrl(
+                                                                    Uri(
+                                                                  scheme: 'sms',
+                                                                  path: oKFNPayry36DetallesdeSMSRegistraCobroRecord
+                                                                      .phoneNumber,
+                                                                  queryParameters: <String,
+                                                                      String>{
+                                                                    'body':
+                                                                        'Revisa tu recibo de ${columnCompaniesRecord.alias}: https://www.payry.mx/rdp/?id=${columnDetallesCobroRecord.reference.id}',
+                                                                  },
+                                                                ));
+                                                              }
+                                                            },
+                                                ),
+                                                Text(
+                                                  'Compartir recibo',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'Lexend',
                                                         fontSize: 14.0,
                                                       ),
-                                            ),
-                                          ].divide(SizedBox(height: 5.0)),
+                                                ),
+                                              ].divide(SizedBox(height: 5.0)),
+                                            );
+                                          },
                                         ),
                                       ],
                                     ),

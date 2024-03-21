@@ -179,3 +179,11 @@ String? formatPhoneNumber(String? phoneNumber) {
 
   return last10Digits;
 }
+
+DocumentReference? jsonPathToCompanyRef(String? id) {
+  try {
+    return FirebaseFirestore.instance.collection('companies').doc(id);
+  } catch (e) {
+    throw e;
+  }
+}
