@@ -16,14 +16,14 @@ export 'phone_submit_dialog_model.dart';
 class PhoneSubmitDialogWidget extends StatefulWidget {
   const PhoneSubmitDialogWidget({
     super.key,
-    required this.dismissAction,
     required this.companyAlias,
     required this.paymentId,
+    required this.dismissAction,
   });
 
-  final Future Function()? dismissAction;
   final String? companyAlias;
   final String? paymentId;
+  final Future Function()? dismissAction;
 
   @override
   State<PhoneSubmitDialogWidget> createState() =>
@@ -58,7 +58,7 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+      padding: EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 0.0),
       child: Container(
         width: MediaQuery.sizeOf(context).width * 1.0,
         decoration: BoxDecoration(
@@ -67,7 +67,7 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
         ),
         child: Form(
           key: _model.formKey,
-          autovalidateMode: AutovalidateMode.disabled,
+          autovalidateMode: AutovalidateMode.always,
           child: Padding(
             padding: EdgeInsets.all(20.0),
             child: Column(
@@ -76,7 +76,7 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  'Compartir recibo',
+                  'Compartir recibo por SMS',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Lexend',

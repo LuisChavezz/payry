@@ -1300,14 +1300,20 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                                             ? FocusScope.of(context).requestFocus(_model.unfocusNode)
                                                                             : FocusScope.of(context).unfocus(),
                                                                         child:
-                                                                            PhoneSubmitDialogWidget(
-                                                                          companyAlias:
-                                                                              columnCompaniesRecord.alias,
-                                                                          paymentId: widget
-                                                                              .detallesCobroRef!
-                                                                              .id,
-                                                                          dismissAction:
-                                                                              () async {},
+                                                                            Container(
+                                                                          height:
+                                                                              MediaQuery.sizeOf(context).height * 0.35,
+                                                                          child:
+                                                                              PhoneSubmitDialogWidget(
+                                                                            companyAlias:
+                                                                                columnCompaniesRecord.alias,
+                                                                            paymentId:
+                                                                                widget.detallesCobroRef!.id,
+                                                                            dismissAction:
+                                                                                () async {
+                                                                              Navigator.pop(context);
+                                                                            },
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                     );
