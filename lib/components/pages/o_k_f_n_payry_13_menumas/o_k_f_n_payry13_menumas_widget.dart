@@ -3,9 +3,11 @@ import '/backend/backend.dart';
 import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/walkthroughs/primeros_pasos_menu_mas.dart';
+import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:cloud_functions/cloud_functions.dart';
@@ -70,6 +72,8 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
         return;
       }
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -3347,24 +3351,13 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           hoverColor: Colors.transparent,
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text('No test'),
-                                                  content: Text(
-                                                      'No hay nada que probar joven 🤓'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
+                                            if (_model.timerMilliseconds > 00) {
+                                              _model.timerController
+                                                  .onStartTimer();
+                                            } else {
+                                              _model.timerController
+                                                  .onResetTimer();
+                                            }
                                           },
                                           child: Container(
                                             width: () {
@@ -3514,6 +3507,27 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           ),
                                         ),
                                       ),
+                                    FlutterFlowTimer(
+                                      initialTime: _model.timerMilliseconds,
+                                      getDisplayTime: (value) =>
+                                          StopWatchTimer.getDisplayTime(
+                                        value,
+                                        hours: false,
+                                        milliSecond: false,
+                                      ),
+                                      controller: _model.timerController,
+                                      updateStateInterval:
+                                          Duration(milliseconds: 1000),
+                                      onChanged:
+                                          (value, displayTime, shouldUpdate) {
+                                        _model.timerMilliseconds = value;
+                                        _model.timerValue = displayTime;
+                                        if (shouldUpdate) setState(() {});
+                                      },
+                                      textAlign: TextAlign.start,
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineSmall,
+                                    ),
                                   ],
                                 ),
                               ),

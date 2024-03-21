@@ -427,6 +427,10 @@ class _OKFNPayry17VerificarOTPWidgetState
                                         );
                                       },
                                     );
+
+                                    _model.timerController.onResetTimer();
+
+                                    _model.timerController.onStartTimer();
                                   },
                                   text: 'Reenviar código',
                                   options: FFButtonOptions(
