@@ -12,6 +12,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'o_k_f_n_payry36_detallesde_s_m_s_model.dart';
 export 'o_k_f_n_payry36_detallesde_s_m_s_model.dart';
 
@@ -705,7 +706,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                               ),
                                             ),
                                             Text(
-                                              'Devolver DiMo®',
+                                              'Devolver',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -1033,7 +1034,66 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                         },
                                             ),
                                             Text(
-                                              'Reenviar DiMo®',
+                                              'Reenviar',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        fontSize: 14.0,
+                                                      ),
+                                            ),
+                                          ].divide(SizedBox(height: 5.0)),
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            FlutterFlowIconButton(
+                                              borderColor: Colors.transparent,
+                                              borderRadius: 100.0,
+                                              borderWidth: 0.0,
+                                              buttonSize: 50.0,
+                                              fillColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .accent3,
+                                              disabledColor: Color(0x83CCCCCC),
+                                              disabledIconColor:
+                                                  Color(0xFFA1A1A1),
+                                              icon: Icon(
+                                                FFIcons.kcompartir,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondary,
+                                                size: 24.0,
+                                              ),
+                                              showLoadingIndicator: true,
+                                              onPressed:
+                                                  (columnDetallesCobroRecord
+                                                              .status ==
+                                                          PaymentStatus
+                                                              .CANCELADO)
+                                                      ? null
+                                                      : () async {
+                                                          if (isiOS) {
+                                                            await launchUrl(
+                                                                Uri.parse(
+                                                                    "sms:${'3331318810'}&body=${Uri.encodeComponent('Revisa tu recibo de @Alias: https://www.payry.mx/rdp/?id=${columnDetallesCobroRecord.reference.id}')}"));
+                                                          } else {
+                                                            await launchUrl(Uri(
+                                                              scheme: 'sms',
+                                                              path:
+                                                                  '3331318810',
+                                                              queryParameters: <String,
+                                                                  String>{
+                                                                'body':
+                                                                    'Revisa tu recibo de @Alias: https://www.payry.mx/rdp/?id=${columnDetallesCobroRecord.reference.id}',
+                                                              },
+                                                            ));
+                                                          }
+                                                        },
+                                            ),
+                                            Text(
+                                              'Compartir SMS',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium

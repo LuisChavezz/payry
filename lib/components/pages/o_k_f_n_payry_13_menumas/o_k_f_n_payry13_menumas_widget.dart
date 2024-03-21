@@ -3357,6 +3357,9 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                             } else {
                                               _model.timerController
                                                   .onResetTimer();
+
+                                              _model.timerController
+                                                  .onStartTimer();
                                             }
                                           },
                                           child: Container(
