@@ -3,10 +3,12 @@ import '/backend/backend.dart';
 import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/walkthroughs/primeros_pasos_menu_mas.dart';
 import 'o_k_f_n_payry13_menumas_widget.dart' show OKFNPayry13MenumasWidget;
+import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:cloud_functions/cloud_functions.dart';
@@ -38,6 +40,16 @@ class OKFNPayry13MenumasModel
   VerifyEmailCloudFunctionCallResponse? verifyEmailResp6;
   // Stores action output result for [Cloud Function - verifyEmail] action in Container widget.
   VerifyEmailCloudFunctionCallResponse? verifyEmailResp7;
+  // State field(s) for Timer widget.
+  int timerMilliseconds = 5000;
+  String timerValue = StopWatchTimer.getDisplayTime(
+    5000,
+    hours: false,
+    milliSecond: false,
+  );
+  FlutterFlowTimerController timerController =
+      FlutterFlowTimerController(StopWatchTimer(mode: StopWatchMode.countDown));
+
   // Model for NavBarFloting component.
   late NavBarFlotingModel navBarFlotingModel;
 
@@ -51,6 +63,7 @@ class OKFNPayry13MenumasModel
   @override
   void dispose() {
     primerosPasosMenuMasController?.finish();
+    timerController.dispose();
     navBarFlotingModel.dispose();
   }
 
