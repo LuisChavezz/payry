@@ -35,15 +35,15 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       TargetFocus(
         keyTarget: listViewBm8rc1kb,
         enableOverlayTab: true,
-        alignSkip: Alignment.bottomCenter,
+        alignSkip: Alignment.topCenter,
         shape: ShapeLightFocus.RRect,
         color: FlutterFlowTheme.of(context).primary,
         contents: [
           TargetContent(
-            align: ContentAlign.bottom,
+            align: ContentAlign.top,
             builder: (context, __) => MensajeWalkThroughWidget(
               texto:
-                  'Aquí podrás ver a los usuarios que has invitado, asignarles permisos y activar o desactivar su perfil.',
+                  'Abajo podrás ver a los usuarios que has invitado, asignarles permisos o desactivar su perfil.',
             ),
           ),
         ],

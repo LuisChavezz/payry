@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/backend/schema/enums/enums.dart';
 import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -15,6 +16,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'o_k_f_n_payry27_solicitar_q_r_model.dart';
@@ -147,12 +149,37 @@ class _OKFNPayry27SolicitarQRWidgetState
                     ),
                   ),
                 ),
-                title: Text(
-                  'Cobrar con CoDi®',
-                  style: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Lexend',
-                        color: FlutterFlowTheme.of(context).primaryText,
+                title: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Cobrar con CoDi®  ',
+                      style: FlutterFlowTheme.of(context).titleSmall.override(
+                            fontFamily: 'Lexend',
+                            color: FlutterFlowTheme.of(context).primaryText,
+                          ),
+                    ),
+                    FlutterFlowIconButton(
+                      borderColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      borderRadius: 20.0,
+                      borderWidth: 1.0,
+                      buttonSize: 40.0,
+                      fillColor: FlutterFlowTheme.of(context).primaryBackground,
+                      icon: FaIcon(
+                        FontAwesomeIcons.questionCircle,
+                        color: FlutterFlowTheme.of(context).accent1,
+                        size: 24.0,
                       ),
+                      onPressed: () async {
+                        safeSetState(() => _model.comoGenerarUnCoDiController =
+                            createPageWalkthrough(context));
+                        _model.comoGenerarUnCoDiController
+                            ?.show(context: context);
+                      },
+                    ),
+                  ],
                 ),
                 actions: [],
                 centerTitle: true,
@@ -722,7 +749,7 @@ class _OKFNPayry27SolicitarQRWidgetState
   TutorialCoachMark createPageWalkthrough(BuildContext context) =>
       TutorialCoachMark(
         targets: createWalkthroughTargets(context),
-        onFinish: () {
+        onFinish: () async {
           safeSetState(() => _model.comoGenerarUnCoDiController = null);
           FFAppState().walkthroughs = <String, bool?>{
             'menu_mas': getJsonField(
@@ -757,37 +784,39 @@ class _OKFNPayry27SolicitarQRWidgetState
           };
         },
         onSkip: () {
-          FFAppState().walkthroughs = <String, bool?>{
-            'menu_mas': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.menu_mas''',
-            ),
-            'dashboard': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.dashboard''',
-            ),
-            'datos_bancarios': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.datos_bancarios''',
-            ),
-            'add_users': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.add_users''',
-            ),
-            'user_permissions': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.user_permissions''',
-            ),
-            'create_codi': false,
-            'create_dimo': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.create_dimo''',
-            ),
-            'edit_profile': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.edit_profile''',
-            ),
-          };
+          () async {
+            FFAppState().walkthroughs = <String, bool?>{
+              'menu_mas': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.menu_mas''',
+              ),
+              'dashboard': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.dashboard''',
+              ),
+              'datos_bancarios': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.datos_bancarios''',
+              ),
+              'add_users': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.add_users''',
+              ),
+              'user_permissions': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.user_permissions''',
+              ),
+              'create_codi': false,
+              'create_dimo': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.create_dimo''',
+              ),
+              'edit_profile': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.edit_profile''',
+              ),
+            };
+          }();
           return true;
         },
       );

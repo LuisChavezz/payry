@@ -4,6 +4,7 @@ import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.d
 import '/backend/schema/enums/enums.dart';
 import '/components/empty_list/empty_list_widget.dart';
 import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -14,6 +15,7 @@ import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
@@ -194,7 +196,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        'Dashboard',
+                                        'Dashboard   ',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -203,6 +205,30 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                               fontSize: 16.0,
                                               fontWeight: FontWeight.w600,
                                             ),
+                                      ),
+                                      FlutterFlowIconButton(
+                                        borderColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                        borderRadius: 20.0,
+                                        borderWidth: 1.0,
+                                        buttonSize: 40.0,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        icon: FaIcon(
+                                          FontAwesomeIcons.questionCircle,
+                                          color: FlutterFlowTheme.of(context)
+                                              .accent1,
+                                          size: 24.0,
+                                        ),
+                                        onPressed: () async {
+                                          safeSetState(() => _model
+                                                  .elementosEnElDashboardController =
+                                              createPageWalkthrough(context));
+                                          _model
+                                              .elementosEnElDashboardController
+                                              ?.show(context: context);
+                                        },
                                       ),
                                     ],
                                   ),
@@ -1051,7 +1077,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
   TutorialCoachMark createPageWalkthrough(BuildContext context) =>
       TutorialCoachMark(
         targets: createWalkthroughTargets(context),
-        onFinish: () {
+        onFinish: () async {
           safeSetState(() => _model.elementosEnElDashboardController = null);
           FFAppState().walkthroughs = <String, bool?>{
             'menu_mas': getJsonField(
@@ -1086,37 +1112,39 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
           };
         },
         onSkip: () {
-          FFAppState().walkthroughs = <String, bool?>{
-            'menu_mas': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.menu_mas''',
-            ),
-            'dashboard': false,
-            'datos_bancarios': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.datos_bancarios''',
-            ),
-            'add_users': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.add_users''',
-            ),
-            'user_permissions': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.user_permissions''',
-            ),
-            'create_codi': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.create_codi''',
-            ),
-            'create_dimo': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.create_dimo''',
-            ),
-            'edit_profile': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.edit_profile''',
-            ),
-          };
+          () async {
+            FFAppState().walkthroughs = <String, bool?>{
+              'menu_mas': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.menu_mas''',
+              ),
+              'dashboard': false,
+              'datos_bancarios': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.datos_bancarios''',
+              ),
+              'add_users': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.add_users''',
+              ),
+              'user_permissions': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.user_permissions''',
+              ),
+              'create_codi': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.create_codi''',
+              ),
+              'create_dimo': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.create_dimo''',
+              ),
+              'edit_profile': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.edit_profile''',
+              ),
+            };
+          }();
           return true;
         },
       );

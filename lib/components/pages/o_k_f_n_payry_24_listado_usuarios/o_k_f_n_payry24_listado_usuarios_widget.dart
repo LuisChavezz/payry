@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/dynamic_switch/dynamic_switch_widget.dart';
 import '/components/empty_list/empty_list_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -10,6 +11,7 @@ import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'o_k_f_n_payry24_listado_usuarios_model.dart';
@@ -125,12 +127,37 @@ class _OKFNPayry24ListadoUsuariosWidgetState
                   size: 24.0,
                 ),
               ),
-              title: Text(
-                'Listado de usuarios',
-                style: FlutterFlowTheme.of(context).titleSmall.override(
-                      fontFamily: 'Lexend',
-                      color: FlutterFlowTheme.of(context).primaryText,
+              title: Align(
+                alignment: AlignmentDirectional(0.0, 0.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Listado de usuarios  ',
+                      style: FlutterFlowTheme.of(context).titleSmall.override(
+                            fontFamily: 'Lexend',
+                            color: FlutterFlowTheme.of(context).primaryText,
+                          ),
                     ),
+                    FlutterFlowIconButton(
+                      borderColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      borderRadius: 20.0,
+                      borderWidth: 1.0,
+                      buttonSize: 40.0,
+                      fillColor: FlutterFlowTheme.of(context).primaryBackground,
+                      icon: FaIcon(
+                        FontAwesomeIcons.questionCircle,
+                        color: FlutterFlowTheme.of(context).accent1,
+                        size: 24.0,
+                      ),
+                      onPressed: () {
+                        print('IconButton pressed ...');
+                      },
+                    ),
+                  ],
+                ),
               ),
               actions: [],
               centerTitle: true,
@@ -372,7 +399,7 @@ class _OKFNPayry24ListadoUsuariosWidgetState
   TutorialCoachMark createPageWalkthrough(BuildContext context) =>
       TutorialCoachMark(
         targets: createWalkthroughTargets(context),
-        onFinish: () {
+        onFinish: () async {
           safeSetState(() => _model.crearUsuariosController = null);
           FFAppState().walkthroughs = <String, bool?>{
             'menu_mas': getJsonField(
@@ -407,37 +434,39 @@ class _OKFNPayry24ListadoUsuariosWidgetState
           };
         },
         onSkip: () {
-          FFAppState().walkthroughs = <String, bool?>{
-            'menu_mas': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.menu_mas''',
-            ),
-            'dashboard': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.dashboard''',
-            ),
-            'datos_bancarios': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.datos_bancarios''',
-            ),
-            'add_users': false,
-            'user_permissions': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.user_permissions''',
-            ),
-            'create_codi': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.create_codi''',
-            ),
-            'create_dimo': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.create_dimo''',
-            ),
-            'edit_profile': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.edit_profile''',
-            ),
-          };
+          () async {
+            FFAppState().walkthroughs = <String, bool?>{
+              'menu_mas': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.menu_mas''',
+              ),
+              'dashboard': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.dashboard''',
+              ),
+              'datos_bancarios': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.datos_bancarios''',
+              ),
+              'add_users': false,
+              'user_permissions': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.user_permissions''',
+              ),
+              'create_codi': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.create_codi''',
+              ),
+              'create_dimo': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.create_dimo''',
+              ),
+              'edit_profile': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.edit_profile''',
+              ),
+            };
+          }();
           return true;
         },
       );

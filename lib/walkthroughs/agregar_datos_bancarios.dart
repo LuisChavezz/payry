@@ -25,7 +25,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
           TargetContent(
             align: ContentAlign.bottom,
             builder: (context, __) => MensajeWalkThroughWidget(
-              texto: 'Ingresa tu número de CLABE interbancaria a 18 dígitos.',
+              texto: 'Ingresa tu CLABE interbancaria a 18 dígitos.',
             ),
           ),
         ],
@@ -60,7 +60,8 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
           TargetContent(
             align: ContentAlign.bottom,
             builder: (context, __) => MensajeWalkThroughWidget(
-              texto: 'Da clic en GUARDAR para que validemos tus datos.',
+              texto:
+                  'Al guardar tus datos, te enviarémos un centavo para verificar tu cuenta.',
             ),
           ),
         ],

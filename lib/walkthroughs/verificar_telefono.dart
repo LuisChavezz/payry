@@ -24,7 +24,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
             align: ContentAlign.bottom,
             builder: (context, __) => MensajeWalkThroughWidget(
               texto:
-                  'Aquí deberas ingresar tu número de teléfono y continuar en \"verificar\".',
+                  'Ingresa tu número de teléfono a 10 digitos y selecciona verificar.',
             ),
           ),
         ],

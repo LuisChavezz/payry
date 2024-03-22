@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -9,6 +10,7 @@ import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'o_k_f_n_payry25_permisos_model.dart';
@@ -131,12 +133,49 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                   size: 24.0,
                 ),
               ),
-              title: Text(
-                'Permisos',
-                style: FlutterFlowTheme.of(context).titleSmall.override(
-                      fontFamily: 'Lexend',
-                      color: FlutterFlowTheme.of(context).primaryText,
+              title: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Align(
+                      alignment: AlignmentDirectional(1.0, 0.0),
+                      child: Text(
+                        'Permisos',
+                        style: FlutterFlowTheme.of(context).titleSmall.override(
+                              fontFamily: 'Lexend',
+                              color: FlutterFlowTheme.of(context).primaryText,
+                            ),
+                      ),
                     ),
+                  ),
+                  Expanded(
+                    child: Align(
+                      alignment: AlignmentDirectional(1.0, 0.0),
+                      child: FlutterFlowIconButton(
+                        borderColor:
+                            FlutterFlowTheme.of(context).secondaryBackground,
+                        borderRadius: 20.0,
+                        borderWidth: 1.0,
+                        buttonSize: 40.0,
+                        fillColor:
+                            FlutterFlowTheme.of(context).primaryBackground,
+                        icon: FaIcon(
+                          FontAwesomeIcons.questionCircle,
+                          color: FlutterFlowTheme.of(context).accent1,
+                          size: 24.0,
+                        ),
+                        onPressed: () async {
+                          safeSetState(() =>
+                              _model.asignarPermisosAUsuariosController =
+                                  createPageWalkthrough(context));
+                          _model.asignarPermisosAUsuariosController
+                              ?.show(context: context);
+                        },
+                      ),
+                    ),
+                  ),
+                ],
               ),
               actions: [],
               centerTitle: true,
@@ -1355,7 +1394,7 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
   TutorialCoachMark createPageWalkthrough(BuildContext context) =>
       TutorialCoachMark(
         targets: createWalkthroughTargets(context),
-        onFinish: () {
+        onFinish: () async {
           safeSetState(() => _model.asignarPermisosAUsuariosController = null);
           FFAppState().walkthroughs = <String, bool?>{
             'menu_mas': getJsonField(
@@ -1390,37 +1429,39 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
           };
         },
         onSkip: () {
-          FFAppState().walkthroughs = <String, bool?>{
-            'menu_mas': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.menu_mas''',
-            ),
-            'dashboard': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.dashboard''',
-            ),
-            'datos_bancarios': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.datos_bancarios''',
-            ),
-            'add_users': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.add_users''',
-            ),
-            'user_permissions': false,
-            'create_codi': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.create_codi''',
-            ),
-            'create_dimo': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.create_dimo''',
-            ),
-            'edit_profile': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.edit_profile''',
-            ),
-          };
+          () async {
+            FFAppState().walkthroughs = <String, bool?>{
+              'menu_mas': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.menu_mas''',
+              ),
+              'dashboard': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.dashboard''',
+              ),
+              'datos_bancarios': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.datos_bancarios''',
+              ),
+              'add_users': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.add_users''',
+              ),
+              'user_permissions': false,
+              'create_codi': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.create_codi''',
+              ),
+              'create_dimo': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.create_dimo''',
+              ),
+              'edit_profile': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.edit_profile''',
+              ),
+            };
+          }();
           return true;
         },
       );

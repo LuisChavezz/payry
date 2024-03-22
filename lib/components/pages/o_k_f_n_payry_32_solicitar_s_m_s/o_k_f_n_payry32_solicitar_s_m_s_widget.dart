@@ -17,6 +17,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
@@ -153,12 +154,37 @@ class _OKFNPayry32SolicitarSMSWidgetState
                     ),
                   ),
                 ),
-                title: Text(
-                  'Cobrar con DiMo®',
-                  style: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Lexend',
-                        color: FlutterFlowTheme.of(context).primaryText,
+                title: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Cobrar con DiMo®  ',
+                      style: FlutterFlowTheme.of(context).titleSmall.override(
+                            fontFamily: 'Lexend',
+                            color: FlutterFlowTheme.of(context).primaryText,
+                          ),
+                    ),
+                    FlutterFlowIconButton(
+                      borderColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      borderRadius: 20.0,
+                      borderWidth: 1.0,
+                      buttonSize: 40.0,
+                      fillColor: FlutterFlowTheme.of(context).primaryBackground,
+                      icon: FaIcon(
+                        FontAwesomeIcons.questionCircle,
+                        color: FlutterFlowTheme.of(context).accent1,
+                        size: 24.0,
                       ),
+                      onPressed: () async {
+                        safeSetState(() => _model.comoCrearUnDiMoController =
+                            createPageWalkthrough(context));
+                        _model.comoCrearUnDiMoController
+                            ?.show(context: context);
+                      },
+                    ),
+                  ],
                 ),
                 actions: [],
                 centerTitle: true,
@@ -921,7 +947,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
   TutorialCoachMark createPageWalkthrough(BuildContext context) =>
       TutorialCoachMark(
         targets: createWalkthroughTargets(context),
-        onFinish: () {
+        onFinish: () async {
           safeSetState(() => _model.comoCrearUnDiMoController = null);
           FFAppState().walkthroughs = <String, bool?>{
             'menu_mas': getJsonField(
@@ -956,37 +982,39 @@ class _OKFNPayry32SolicitarSMSWidgetState
           };
         },
         onSkip: () {
-          FFAppState().walkthroughs = <String, bool?>{
-            'menu_mas': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.menu_mas''',
-            ),
-            'dashboard': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.dashboard''',
-            ),
-            'datos_bancarios': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.datos_bancarios''',
-            ),
-            'add_users': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.add_users''',
-            ),
-            'user_permissions': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.user_permissions''',
-            ),
-            'create_codi': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.create_codi''',
-            ),
-            'create_dimo': false,
-            'edit_profile': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.edit_profile''',
-            ),
-          };
+          () async {
+            FFAppState().walkthroughs = <String, bool?>{
+              'menu_mas': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.menu_mas''',
+              ),
+              'dashboard': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.dashboard''',
+              ),
+              'datos_bancarios': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.datos_bancarios''',
+              ),
+              'add_users': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.add_users''',
+              ),
+              'user_permissions': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.user_permissions''',
+              ),
+              'create_codi': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.create_codi''',
+              ),
+              'create_dimo': false,
+              'edit_profile': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.edit_profile''',
+              ),
+            };
+          }();
           return true;
         },
       );

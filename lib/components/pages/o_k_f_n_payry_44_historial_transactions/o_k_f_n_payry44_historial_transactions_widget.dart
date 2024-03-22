@@ -226,6 +226,8 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .accent3,
+                                                                  fontSize:
+                                                                      15.0,
                                                                 ),
                                                       ),
                                                       Text(
@@ -258,6 +260,42 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                                                       .primaryText,
                                                                 ),
                                                       ),
+                                                      if (listViewRegistraOrdenRecordsRecord
+                                                                  .cepRoute !=
+                                                              null &&
+                                                          listViewRegistraOrdenRecordsRecord
+                                                                  .cepRoute !=
+                                                              '')
+                                                        InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            await launchURL(
+                                                                listViewRegistraOrdenRecordsRecord
+                                                                    .cepRoute);
+                                                          },
+                                                          child: Text(
+                                                            'https://www.banxico.org.mx/cep/',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Lexend',
+                                                                  color: Color(
+                                                                      0xFF80BFFF),
+                                                                  decoration:
+                                                                      TextDecoration
+                                                                          .underline,
+                                                                ),
+                                                          ),
+                                                        ),
                                                     ],
                                                   ),
                                                 ),
@@ -276,7 +314,8 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .accent3,
-                                                    fontWeight: FontWeight.w200,
+                                                    fontSize: 16.0,
+                                                    fontWeight: FontWeight.w600,
                                                   ),
                                             ),
                                           ],
