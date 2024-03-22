@@ -1270,9 +1270,9 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                     showLoadingIndicator: true,
                                                     onPressed:
                                                         (oKFNPayry31DetallesdeQRRegistraCobroRecord
-                                                                    .status ==
+                                                                    .status !=
                                                                 PaymentStatus
-                                                                    .CANCELADO)
+                                                                    .PAGADO)
                                                             ? null
                                                             : () async {
                                                                 await showDialog(

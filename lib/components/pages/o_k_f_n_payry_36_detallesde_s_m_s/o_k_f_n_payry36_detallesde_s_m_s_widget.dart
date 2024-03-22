@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/backend/schema/enums/enums.dart';
+import '/components/phone_submit_dialog/phone_submit_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -1075,53 +1076,127 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                             return Column(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
-                                                FlutterFlowIconButton(
-                                                  borderColor:
-                                                      Colors.transparent,
-                                                  borderRadius: 100.0,
-                                                  borderWidth: 0.0,
-                                                  buttonSize: 50.0,
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .accent3,
-                                                  disabledColor:
-                                                      Color(0x83CCCCCC),
-                                                  disabledIconColor:
-                                                      Color(0xFFA1A1A1),
-                                                  icon: Icon(
-                                                    FFIcons.kcompartir,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondary,
-                                                    size: 20.0,
+                                                Builder(
+                                                  builder: (context) =>
+                                                      FlutterFlowIconButton(
+                                                    borderColor:
+                                                        Colors.transparent,
+                                                    borderRadius: 100.0,
+                                                    borderWidth: 0.0,
+                                                    buttonSize: 50.0,
+                                                    fillColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .accent3,
+                                                    disabledColor:
+                                                        Color(0x83CCCCCC),
+                                                    disabledIconColor:
+                                                        Color(0xFFA1A1A1),
+                                                    icon: Icon(
+                                                      FFIcons.kcompartir,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondary,
+                                                      size: 20.0,
+                                                    ),
+                                                    showLoadingIndicator: true,
+                                                    onPressed:
+                                                        (columnDetallesCobroRecord
+                                                                    .status !=
+                                                                PaymentStatus
+                                                                    .PAGADO)
+                                                            ? null
+                                                            : () async {
+                                                                var confirmDialogResponse =
+                                                                    await showDialog<
+                                                                            bool>(
+                                                                          context:
+                                                                              context,
+                                                                          builder:
+                                                                              (alertDialogContext) {
+                                                                            return AlertDialog(
+                                                                              title: Text('Compartir Recibo'),
+                                                                              content: Text('¿Deseas compartir este recibo al número \"${oKFNPayry36DetallesdeSMSRegistraCobroRecord.phoneNumber}\"?'),
+                                                                              actions: [
+                                                                                TextButton(
+                                                                                  onPressed: () => Navigator.pop(alertDialogContext, false),
+                                                                                  child: Text('Otro'),
+                                                                                ),
+                                                                                TextButton(
+                                                                                  onPressed: () => Navigator.pop(alertDialogContext, true),
+                                                                                  child: Text('Confirmar'),
+                                                                                ),
+                                                                              ],
+                                                                            );
+                                                                          },
+                                                                        ) ??
+                                                                        false;
+                                                                if (confirmDialogResponse) {
+                                                                  if (isiOS) {
+                                                                    await launchUrl(
+                                                                        Uri.parse(
+                                                                            "sms:${oKFNPayry36DetallesdeSMSRegistraCobroRecord.phoneNumber}&body=${Uri.encodeComponent('Revisa tu recibo de ${columnCompaniesRecord.alias}: https://www.payry.mx/rdp/?id=${columnDetallesCobroRecord.reference.id}')}"));
+                                                                  } else {
+                                                                    await launchUrl(
+                                                                        Uri(
+                                                                      scheme:
+                                                                          'sms',
+                                                                      path: oKFNPayry36DetallesdeSMSRegistraCobroRecord
+                                                                          .phoneNumber,
+                                                                      queryParameters: <String,
+                                                                          String>{
+                                                                        'body':
+                                                                            'Revisa tu recibo de ${columnCompaniesRecord.alias}: https://www.payry.mx/rdp/?id=${columnDetallesCobroRecord.reference.id}',
+                                                                      },
+                                                                    ));
+                                                                  }
+
+                                                                  return;
+                                                                } else {
+                                                                  await showDialog(
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (dialogContext) {
+                                                                      return Dialog(
+                                                                        elevation:
+                                                                            0,
+                                                                        insetPadding:
+                                                                            EdgeInsets.zero,
+                                                                        backgroundColor:
+                                                                            Colors.transparent,
+                                                                        alignment:
+                                                                            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                        child:
+                                                                            GestureDetector(
+                                                                          onTap: () => _model.unfocusNode.canRequestFocus
+                                                                              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                                                                              : FocusScope.of(context).unfocus(),
+                                                                          child:
+                                                                              Container(
+                                                                            height:
+                                                                                MediaQuery.sizeOf(context).height * 0.35,
+                                                                            child:
+                                                                                PhoneSubmitDialogWidget(
+                                                                              companyAlias: columnCompaniesRecord.alias,
+                                                                              paymentId: columnDetallesCobroRecord.reference.id,
+                                                                              dismissAction: () async {
+                                                                                Navigator.pop(context);
+                                                                              },
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    },
+                                                                  ).then((value) =>
+                                                                      setState(
+                                                                          () {}));
+
+                                                                  return;
+                                                                }
+                                                              },
                                                   ),
-                                                  showLoadingIndicator: true,
-                                                  onPressed:
-                                                      (columnDetallesCobroRecord
-                                                                  .status ==
-                                                              PaymentStatus
-                                                                  .PAGADO)
-                                                          ? null
-                                                          : () async {
-                                                              if (isiOS) {
-                                                                await launchUrl(
-                                                                    Uri.parse(
-                                                                        "sms:${oKFNPayry36DetallesdeSMSRegistraCobroRecord.phoneNumber}&body=${Uri.encodeComponent('Revisa tu recibo de ${columnCompaniesRecord.alias}: https://www.payry.mx/rdp/?id=${columnDetallesCobroRecord.reference.id}')}"));
-                                                              } else {
-                                                                await launchUrl(
-                                                                    Uri(
-                                                                  scheme: 'sms',
-                                                                  path: oKFNPayry36DetallesdeSMSRegistraCobroRecord
-                                                                      .phoneNumber,
-                                                                  queryParameters: <String,
-                                                                      String>{
-                                                                    'body':
-                                                                        'Revisa tu recibo de ${columnCompaniesRecord.alias}: https://www.payry.mx/rdp/?id=${columnDetallesCobroRecord.reference.id}',
-                                                                  },
-                                                                ));
-                                                              }
-                                                            },
                                                 ),
                                                 Text(
                                                   'Compartir recibo',
