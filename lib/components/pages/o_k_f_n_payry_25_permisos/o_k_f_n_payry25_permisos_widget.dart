@@ -135,44 +135,39 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
               ),
               title: Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(
-                    child: Align(
-                      alignment: AlignmentDirectional(1.0, 0.0),
-                      child: Text(
-                        'Permisos',
-                        style: FlutterFlowTheme.of(context).titleSmall.override(
-                              fontFamily: 'Lexend',
-                              color: FlutterFlowTheme.of(context).primaryText,
-                            ),
-                      ),
+                  Align(
+                    alignment: AlignmentDirectional(1.0, 0.0),
+                    child: Text(
+                      'Permisos  ',
+                      style: FlutterFlowTheme.of(context).titleSmall.override(
+                            fontFamily: 'Lexend',
+                            color: FlutterFlowTheme.of(context).primaryText,
+                          ),
                     ),
                   ),
-                  Expanded(
-                    child: Align(
-                      alignment: AlignmentDirectional(1.0, 0.0),
-                      child: FlutterFlowIconButton(
-                        borderColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
-                        borderRadius: 20.0,
-                        borderWidth: 1.0,
-                        buttonSize: 40.0,
-                        fillColor:
-                            FlutterFlowTheme.of(context).primaryBackground,
-                        icon: FaIcon(
-                          FontAwesomeIcons.questionCircle,
-                          color: FlutterFlowTheme.of(context).accent1,
-                          size: 24.0,
-                        ),
-                        onPressed: () async {
-                          safeSetState(() =>
-                              _model.asignarPermisosAUsuariosController =
-                                  createPageWalkthrough(context));
-                          _model.asignarPermisosAUsuariosController
-                              ?.show(context: context);
-                        },
+                  Align(
+                    alignment: AlignmentDirectional(1.0, 0.0),
+                    child: FlutterFlowIconButton(
+                      borderColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      borderRadius: 20.0,
+                      borderWidth: 1.0,
+                      buttonSize: 40.0,
+                      fillColor: FlutterFlowTheme.of(context).primaryBackground,
+                      icon: FaIcon(
+                        FontAwesomeIcons.questionCircle,
+                        color: FlutterFlowTheme.of(context).accent1,
+                        size: 24.0,
                       ),
+                      onPressed: () async {
+                        safeSetState(() =>
+                            _model.asignarPermisosAUsuariosController =
+                                createPageWalkthrough(context));
+                        _model.asignarPermisosAUsuariosController
+                            ?.show(context: context);
+                      },
                     ),
                   ),
                 ],
