@@ -152,8 +152,10 @@ class _OKFNPayry24ListadoUsuariosWidgetState
                         color: FlutterFlowTheme.of(context).accent1,
                         size: 24.0,
                       ),
-                      onPressed: () {
-                        print('IconButton pressed ...');
+                      onPressed: () async {
+                        safeSetState(() => _model.crearUsuariosController =
+                            createPageWalkthrough(context));
+                        _model.crearUsuariosController?.show(context: context);
                       },
                     ),
                   ],
