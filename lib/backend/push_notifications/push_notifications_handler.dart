@@ -50,7 +50,9 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
     }
     try {
       final initialPage = message.data['initialPage'] as String; // Default FF line
-      // 4fcTl1uwbzCqPEZNsanc
+      print(message.data);
+
+      FFAppState().notificationBadge = true;
 
       context.pushNamed(
         initialPage,

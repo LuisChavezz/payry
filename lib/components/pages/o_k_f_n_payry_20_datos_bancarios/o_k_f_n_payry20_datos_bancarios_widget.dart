@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -16,6 +17,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'o_k_f_n_payry20_datos_bancarios_model.dart';
@@ -146,12 +148,38 @@ class _OKFNPayry20DatosBancariosWidgetState
                   size: 24.0,
                 ),
               ),
-              title: Text(
-                'Datos bancarios',
-                style: FlutterFlowTheme.of(context).titleSmall.override(
-                      fontFamily: 'Lexend',
-                      color: FlutterFlowTheme.of(context).primaryText,
+              title: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Datos bancarios  ',
+                    style: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Lexend',
+                          color: FlutterFlowTheme.of(context).primaryText,
+                        ),
+                  ),
+                  FlutterFlowIconButton(
+                    borderColor:
+                        FlutterFlowTheme.of(context).secondaryBackground,
+                    borderRadius: 20.0,
+                    borderWidth: 1.0,
+                    buttonSize: 40.0,
+                    fillColor: FlutterFlowTheme.of(context).primaryBackground,
+                    icon: FaIcon(
+                      FontAwesomeIcons.questionCircle,
+                      color: FlutterFlowTheme.of(context).accent1,
+                      size: 24.0,
                     ),
+                    onPressed: () async {
+                      safeSetState(() =>
+                          _model.agregarDatosBancariosController =
+                              createPageWalkthrough(context));
+                      _model.agregarDatosBancariosController
+                          ?.show(context: context);
+                    },
+                  ),
+                ],
               ),
               actions: [],
               centerTitle: true,
@@ -576,7 +604,7 @@ class _OKFNPayry20DatosBancariosWidgetState
   TutorialCoachMark createPageWalkthrough(BuildContext context) =>
       TutorialCoachMark(
         targets: createWalkthroughTargets(context),
-        onFinish: () {
+        onFinish: () async {
           safeSetState(() => _model.agregarDatosBancariosController = null);
           FFAppState().walkthroughs = <String, bool?>{
             'menu_mas': getJsonField(
@@ -611,37 +639,39 @@ class _OKFNPayry20DatosBancariosWidgetState
           };
         },
         onSkip: () {
-          FFAppState().walkthroughs = <String, bool?>{
-            'menu_mas': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.menu_mas''',
-            ),
-            'dashboard': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.dashboard''',
-            ),
-            'datos_bancarios': false,
-            'add_users': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.add_users''',
-            ),
-            'user_permissions': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.user_permissions''',
-            ),
-            'create_codi': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.create_codi''',
-            ),
-            'create_dimo': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.create_dimo''',
-            ),
-            'edit_profile': getJsonField(
-              FFAppState().walkthroughs,
-              r'''$.edit_profile''',
-            ),
-          };
+          () async {
+            FFAppState().walkthroughs = <String, bool?>{
+              'menu_mas': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.menu_mas''',
+              ),
+              'dashboard': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.dashboard''',
+              ),
+              'datos_bancarios': false,
+              'add_users': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.add_users''',
+              ),
+              'user_permissions': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.user_permissions''',
+              ),
+              'create_codi': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.create_codi''',
+              ),
+              'create_dimo': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.create_dimo''',
+              ),
+              'edit_profile': getJsonField(
+                FFAppState().walkthroughs,
+                r'''$.edit_profile''',
+              ),
+            };
+          }();
           return true;
         },
       );
