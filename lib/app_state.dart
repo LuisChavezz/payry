@@ -24,10 +24,6 @@ class FFAppState extends ChangeNotifier {
       _notify = prefs.getBool('ff_notify') ?? _notify;
     });
     _safeInit(() {
-      _notificationBadge =
-          prefs.getBool('ff_notificationBadge') ?? _notificationBadge;
-    });
-    _safeInit(() {
       _serverToken = prefs.getString('ff_serverToken') ?? _serverToken;
     });
     _safeInit(() {
@@ -72,13 +68,6 @@ class FFAppState extends ChangeNotifier {
   set notify(bool _value) {
     _notify = _value;
     prefs.setBool('ff_notify', _value);
-  }
-
-  bool _notificationBadge = false;
-  bool get notificationBadge => _notificationBadge;
-  set notificationBadge(bool _value) {
-    _notificationBadge = _value;
-    prefs.setBool('ff_notificationBadge', _value);
   }
 
   String _phoneNumber = '';
