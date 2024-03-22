@@ -3530,6 +3530,11 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           ),
                                         ),
                                       ),
+                                    Text(
+                                      FFAppState().notificationBadge.toString(),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
                                   ],
                                 ),
                               ),
