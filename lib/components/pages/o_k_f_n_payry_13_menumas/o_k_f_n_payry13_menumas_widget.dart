@@ -3370,17 +3370,24 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           hoverColor: Colors.transparent,
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
-                                            FFAppState().walkthroughs =
-                                                <String, bool?>{
-                                              'menu_mas': true,
-                                              'dashboard': true,
-                                              'datos_bancarios': true,
-                                              'add_users': true,
-                                              'user_permissions': true,
-                                              'create_codi': true,
-                                              'create_dimo': true,
-                                              'edit_profile': true,
-                                            };
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text('No test'),
+                                                  content: Text(
+                                                      'No hay nada que probar joven 🤓'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
                                           },
                                           child: Container(
                                             width: () {
@@ -3530,11 +3537,6 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           ),
                                         ),
                                       ),
-                                    Text(
-                                      FFAppState().notificationBadge.toString(),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                    ),
                                   ],
                                 ),
                               ),
