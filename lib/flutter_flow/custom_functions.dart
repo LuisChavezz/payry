@@ -159,3 +159,31 @@ DocumentReference? jsonPathToDetallesCobroRef(String? id) {
     throw e;
   }
 }
+
+DateTime? todayFilter() {
+  DateTime now = DateTime.now();
+  // Remueve la zona horaria para asegurar la comparación
+  DateTime today = DateTime(now.year, now.month, now.day);
+  return today;
+}
+
+String? formatPhoneNumber(String? phoneNumber) {
+  if (phoneNumber == null || phoneNumber.isEmpty) {
+    return '';
+  }
+
+  final cleanedPhoneNumber = phoneNumber.replaceAll(RegExp(r'\D+'), '');
+
+  final last10Digits =
+      cleanedPhoneNumber.substring(cleanedPhoneNumber.length - 10);
+
+  return last10Digits;
+}
+
+DocumentReference? jsonPathToCompanyRef(String? id) {
+  try {
+    return FirebaseFirestore.instance.collection('companies').doc(id);
+  } catch (e) {
+    throw e;
+  }
+}

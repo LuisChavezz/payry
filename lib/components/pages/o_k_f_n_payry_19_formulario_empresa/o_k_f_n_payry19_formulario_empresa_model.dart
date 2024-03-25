@@ -2,7 +2,6 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/backend/firebase_storage/storage.dart';
-import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -15,7 +14,6 @@ import 'o_k_f_n_payry19_formulario_empresa_widget.dart'
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -172,8 +170,12 @@ class OKFNPayry19FormularioEmpresaModel
   FocusNode? couponFieldFocusNode;
   TextEditingController? couponFieldController;
   String? Function(BuildContext, String?)? couponFieldControllerValidator;
-  // Stores action output result for [Cloud Function - saveCompany] action in Button widget.
-  SaveCompanyCloudFunctionCallResponse? cloudFunctionCompany;
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  CompaniesRecord? companyCreatedResp;
+  // Stores action output result for [Cloud Function - reportCompany] action in Button widget.
+  ReportCompanyCloudFunctionCallResponse? rccdCF;
+  // Stores action output result for [Cloud Function - reportCompany] action in Button widget.
+  ReportCompanyCloudFunctionCallResponse? rcudCF;
   // Stores action output result for [Cloud Function - generateToken] action in Button widget.
   GenerateTokenCloudFunctionCallResponse? genToken;
 

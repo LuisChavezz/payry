@@ -50,7 +50,6 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
     }
     try {
       final initialPage = message.data['initialPage'] as String; // Default FF line
-      // 4fcTl1uwbzCqPEZNsanc
 
       context.pushNamed(
         initialPage,
@@ -120,8 +119,6 @@ final parametersBuilderMap =
   'OK_FN_Payry_08_iniciasesion': ParameterData.none(),
   'OK_FN_Payry_05_Registrate': ParameterData.none(),
   'OK_FN_Payry_09_olvidecontrasena': ParameterData.none(),
-  'OK_FN_Payry_01_Splash': ParameterData.none(),
-  'OK_FN_Payry_02_onboarding1': ParameterData.none(),
   'OK_FN_Payry_06_confirmacionRegistro': ParameterData.none(),
   'OK_FN_Payry_11_olvidecontrasenanueva': ParameterData.none(),
   'OK_FN_Payry_14_Perfil_PENDSW': ParameterData.none(),
@@ -149,6 +146,7 @@ final parametersBuilderMap =
         allParams: {
           'uid': getParameter<String>(data, 'uid'),
           'userName': getParameter<String>(data, 'userName'),
+          'userEmail': getParameter<String>(data, 'userEmail'),
         },
       ),
   'OK_FN_Payry_27_solicitarQR': (data) async => ParameterData(
@@ -157,13 +155,6 @@ final parametersBuilderMap =
           'createRefund': getParameter<bool>(data, 'createRefund'),
         },
       ),
-  'OK_FN_Payry_28_qrGenerado': (data) async => ParameterData(
-        allParams: {
-          'createdQrReference':
-              getParameter<DocumentReference>(data, 'createdQrReference'),
-        },
-      ),
-  'OK_FN_Payry_29_opcionesQR': ParameterData.none(),
   'OK_FN_Payry_30_historialQRs': (data) async => ParameterData(
         allParams: {
           'readAll': getParameter<bool>(data, 'readAll'),
@@ -176,7 +167,6 @@ final parametersBuilderMap =
           'createRefund': getParameter<bool>(data, 'createRefund'),
         },
       ),
-  'OK_FN_Payry_34_opcionesSMS': ParameterData.none(),
   'OK_FN_Payry_31_detallesdeQR': (data) async => ParameterData(
         allParams: {
           'registraCobroRef':
@@ -206,14 +196,9 @@ final parametersBuilderMap =
   'OK_FN_Payry_40_Notificaciones': ParameterData.none(),
   'OK_FN_Payry_41_FAQs': ParameterData.none(),
   'OK_FN_Payry_38_Estadisticas': ParameterData.none(),
-  'OK_FN_Payry_03_onboarding2': ParameterData.none(),
-  'OK_FN_Payry_04_onboarding3': ParameterData.none(),
-  'OK_FN_Payry_07_confirmacionCorreoEnviadoRegister': ParameterData.none(),
   'OK_FN_Payry_10_confirmacionCorreoEnviadoContrasena': ParameterData.none(),
   'OK_FN_Payry_12_confirmacionContrasenaActualizada': ParameterData.none(),
-  'OK_FN_Payry_18_confirmacionTelefono': ParameterData.none(),
   'OK_FN_Payry_21_confirmacionDatosBancarios': ParameterData.none(),
-  'OK_FN_Payry_33_SMSenviado': ParameterData.none(),
   'OK_FN_Payry_13_Menumas': ParameterData.none(),
   'OK_FN_Payry_43_Politicadeprivacidad': ParameterData.none(),
   'OK_FN_Payry_26_Dashboard': ParameterData.none(),
@@ -232,21 +217,14 @@ final parametersBuilderMap =
     );
   },
   'OK_FN_Payry_44_historialTransactions': ParameterData.none(),
-  'testShareImage': ParameterData.none(),
-  'OK_FN_Payry_20_datosBancariosVIEW': ParameterData.none(),
-  'testPage': (data) async => ParameterData(
-        allParams: {
-          'docId': getParameter<String>(data, 'docId'),
-        },
-      ),
-  'OK_FN_Payry_31_detallesdeQRTemp': (data) async => ParameterData(
+  'OK_FN_Payry_31_detallesdeQRCode': (data) async => ParameterData(
         allParams: {
           'registraCobroRef':
               getParameter<DocumentReference>(data, 'registraCobroRef'),
           'createRefund': getParameter<bool>(data, 'createRefund'),
         },
       ),
-  'OK_FN_Payry_36_detallesdeSMSTemp': (data) async => ParameterData(
+  'OK_FN_Payry_36_detallesdeSMSCode': (data) async => ParameterData(
         allParams: {
           'registraCobroRef':
               getParameter<DocumentReference>(data, 'registraCobroRef'),

@@ -39,8 +39,6 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -484,6 +482,7 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    var _shouldSetState = false;
                                     var confirmDialogResponse =
                                         await showDialog<bool>(
                                               context: context,
@@ -514,29 +513,79 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                                             ) ??
                                             false;
                                     if (confirmDialogResponse) {
-                                      await authManager.sendEmailVerification();
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Se ha enviado la verificación a tu correo electrónico.',
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
-                                      );
+                                      try {
+                                        final result = await FirebaseFunctions
+                                            .instance
+                                            .httpsCallable('verifyEmail')
+                                            .call({
+                                          "email": currentUserEmail,
+                                        });
+                                        _model.verifyEmailResp1 =
+                                            VerifyEmailCloudFunctionCallResponse(
+                                          data: result.data,
+                                          succeeded: true,
+                                          resultAsString:
+                                              result.data.toString(),
+                                          jsonBody: result.data,
+                                        );
+                                      } on FirebaseFunctionsException catch (error) {
+                                        _model.verifyEmailResp1 =
+                                            VerifyEmailCloudFunctionCallResponse(
+                                          errorCode: error.code,
+                                          succeeded: false,
+                                        );
+                                      }
+
+                                      _shouldSetState = true;
+                                      if (_model.verifyEmailResp1!.succeeded!) {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title:
+                                                  Text('Verificación enviada'),
+                                              content: Text(
+                                                  'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      } else {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text('Error'),
+                                              content: Text(
+                                                  'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      }
+
+                                      if (_shouldSetState) setState(() {});
                                       return;
                                     } else {
+                                      if (_shouldSetState) setState(() {});
                                       return;
                                     }
+
+                                    if (_shouldSetState) setState(() {});
                                   },
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,

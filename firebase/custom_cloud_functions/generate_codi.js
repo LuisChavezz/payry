@@ -12,7 +12,7 @@ exports.generateCodi = functions.https.onCall(async (data, context) => {
   const prodUrl = "https://api.payry.mx/stp/cobro-qr";
 
   try {
-    const req_api = await fetch(test ? testUrl : prodUrl, {
+    const req_api = await fetch("https://api.payry.mx/stp/cobro-qr", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,

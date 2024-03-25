@@ -419,6 +419,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                                       0.0, 10.0, 0.0, 10.0),
                                               child: FFButtonWidget(
                                                 onPressed: () async {
+                                                  var _shouldSetState = false;
                                                   if (_model.formKey
                                                               .currentState ==
                                                           null ||
@@ -443,63 +444,105 @@ class _OKFNPayry08IniciasesionWidgetState
                                                     return;
                                                   }
 
-                                                  try {
-                                                    final result =
-                                                        await FirebaseFunctions
-                                                            .instance
-                                                            .httpsCallable(
-                                                                'generateToken')
-                                                            .call({
-                                                      "uid": currentUserUid,
-                                                      "test": false,
-                                                    });
-                                                    _model.genToken =
-                                                        GenerateTokenCloudFunctionCallResponse(
-                                                      data: result.data,
-                                                      succeeded: true,
-                                                      resultAsString: result
-                                                          .data
-                                                          .toString(),
-                                                      jsonBody: result.data,
-                                                    );
-                                                  } on FirebaseFunctionsException catch (error) {
-                                                    _model.genToken =
-                                                        GenerateTokenCloudFunctionCallResponse(
-                                                      errorCode: error.code,
-                                                      succeeded: false,
-                                                    );
-                                                  }
+                                                  if (valueOrDefault<bool>(
+                                                      currentUserDocument
+                                                          ?.status,
+                                                      false)) {
+                                                    try {
+                                                      final result =
+                                                          await FirebaseFunctions
+                                                              .instance
+                                                              .httpsCallable(
+                                                                  'generateToken')
+                                                              .call({
+                                                        "uid": currentUserUid,
+                                                        "test": false,
+                                                      });
+                                                      _model.genToken =
+                                                          GenerateTokenCloudFunctionCallResponse(
+                                                        data: result.data,
+                                                        succeeded: true,
+                                                        resultAsString: result
+                                                            .data
+                                                            .toString(),
+                                                        jsonBody: result.data,
+                                                      );
+                                                    } on FirebaseFunctionsException catch (error) {
+                                                      _model.genToken =
+                                                          GenerateTokenCloudFunctionCallResponse(
+                                                        errorCode: error.code,
+                                                        succeeded: false,
+                                                      );
+                                                    }
 
-                                                  FFAppState().serverToken =
-                                                      _model.genToken!.jsonBody!
-                                                          .toString();
-                                                  if (_model
-                                                      .rememberMeCheckValue!) {
-                                                    setState(() {
-                                                      FFAppState()
-                                                              .userCredentials =
-                                                          <String, String>{
-                                                        'email': _model
-                                                            .emailFieldController
-                                                            .text,
-                                                        'password': _model
-                                                            .passwordFieldController
-                                                            .text,
-                                                      };
-                                                    });
+                                                    _shouldSetState = true;
+                                                    FFAppState().serverToken =
+                                                        _model
+                                                            .genToken!.jsonBody!
+                                                            .toString();
+                                                    if (_model
+                                                        .rememberMeCheckValue!) {
+                                                      setState(() {
+                                                        FFAppState()
+                                                                .userCredentials =
+                                                            <String, String>{
+                                                          'email': _model
+                                                              .emailFieldController
+                                                              .text,
+                                                          'password': _model
+                                                              .passwordFieldController
+                                                              .text,
+                                                        };
+                                                      });
+                                                    } else {
+                                                      setState(() {
+                                                        FFAppState()
+                                                                .userCredentials =
+                                                            null;
+                                                      });
+                                                    }
+
+                                                    context.pushNamedAuth(
+                                                        'OK_FN_Payry_13_Menumas',
+                                                        context.mounted);
+
+                                                    if (_shouldSetState)
+                                                      setState(() {});
+                                                    return;
                                                   } else {
-                                                    setState(() {
-                                                      FFAppState()
-                                                              .userCredentials =
-                                                          null;
-                                                    });
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return AlertDialog(
+                                                          title: Text(
+                                                              'Usuario Baja'),
+                                                          content: Text(
+                                                              'Este usuario se encuentra dado de baja'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    );
+                                                    GoRouter.of(context)
+                                                        .prepareAuthEvent();
+                                                    await authManager.signOut();
+                                                    GoRouter.of(context)
+                                                        .clearRedirectLocation();
+
+                                                    if (_shouldSetState)
+                                                      setState(() {});
+                                                    return;
                                                   }
 
-                                                  context.pushNamedAuth(
-                                                      'OK_FN_Payry_13_Menumas',
-                                                      context.mounted);
-
-                                                  setState(() {});
+                                                  if (_shouldSetState)
+                                                    setState(() {});
                                                 },
                                                 text: 'Iniciar sesión',
                                                 options: FFButtonOptions(

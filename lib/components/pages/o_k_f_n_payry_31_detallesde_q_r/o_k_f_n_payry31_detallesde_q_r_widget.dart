@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/backend/schema/enums/enums.dart';
+import '/components/phone_submit_dialog/phone_submit_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -458,6 +459,88 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                 ],
                                               ),
                                             ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20.0, 20.0, 20.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                await launchURL(
+                                                    columnDetallesCobroRecord
+                                                        .cepRoute);
+                                              },
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  if (columnDetallesCobroRecord
+                                                              .cepRoute !=
+                                                          null &&
+                                                      columnDetallesCobroRecord
+                                                              .cepRoute !=
+                                                          '')
+                                                    Expanded(
+                                                      child: Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0.0, 0.0),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      12.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: InkWell(
+                                                            splashColor: Colors
+                                                                .transparent,
+                                                            focusColor: Colors
+                                                                .transparent,
+                                                            hoverColor: Colors
+                                                                .transparent,
+                                                            highlightColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            onTap: () async {
+                                                              await launchURL(
+                                                                  columnDetallesCobroRecord
+                                                                      .cepRoute);
+                                                            },
+                                                            child: Text(
+                                                              'https://www.banxico.org.mx/cep/',
+                                                              textAlign:
+                                                                  TextAlign.end,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Lexend',
+                                                                    color: Color(
+                                                                        0xFF80BFFF),
+                                                                    decoration:
+                                                                        TextDecoration
+                                                                            .underline,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -933,95 +1016,273 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                               .CANCELADO)
                                                       ? null
                                                       : () async {
-                                                          setState(() {
-                                                            _model.isUpdating =
-                                                                true;
-                                                          });
-                                                          try {
-                                                            final result =
-                                                                await FirebaseFunctions
-                                                                    .instance
-                                                                    .httpsCallable(
-                                                                        'generateCodi')
-                                                                    .call({
-                                                              "id":
-                                                                  oKFNPayry31DetallesdeQRRegistraCobroRecord
-                                                                      .reference
-                                                                      .id,
-                                                              "test": false,
-                                                              "token": FFAppState()
-                                                                  .serverToken,
+                                                          var _shouldSetState =
+                                                              false;
+                                                          var confirmDialogResponse =
+                                                              await showDialog<
+                                                                      bool>(
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (alertDialogContext) {
+                                                                      return AlertDialog(
+                                                                        title: Text(
+                                                                            '¿Estás seguro?'),
+                                                                        content:
+                                                                            Text('¿Estás seguro de querer regenerar el código QR de este pago?'),
+                                                                        actions: [
+                                                                          TextButton(
+                                                                            onPressed: () =>
+                                                                                Navigator.pop(alertDialogContext, false),
+                                                                            child:
+                                                                                Text('Cancelar'),
+                                                                          ),
+                                                                          TextButton(
+                                                                            onPressed: () =>
+                                                                                Navigator.pop(alertDialogContext, true),
+                                                                            child:
+                                                                                Text('Aceptar'),
+                                                                          ),
+                                                                        ],
+                                                                      );
+                                                                    },
+                                                                  ) ??
+                                                                  false;
+                                                          if (confirmDialogResponse) {
+                                                            var registraCobroRecordReference =
+                                                                RegistraCobroRecord
+                                                                    .collection
+                                                                    .doc();
+                                                            await registraCobroRecordReference
+                                                                .set({
+                                                              ...createRegistraCobroRecordData(
+                                                                adminId: valueOrDefault(
+                                                                    currentUserDocument
+                                                                        ?.adminId,
+                                                                    ''),
+                                                                amount:
+                                                                    oKFNPayry31DetallesdeQRRegistraCobroRecord
+                                                                        .amount,
+                                                                concept:
+                                                                    oKFNPayry31DetallesdeQRRegistraCobroRecord
+                                                                        .concept,
+                                                                uid:
+                                                                    currentUserUid,
+                                                                qrUrl: '',
+                                                                shareableQrUrl:
+                                                                    '',
+                                                                companyId: '',
+                                                                errorMessage:
+                                                                    '',
+                                                                errorOcurs:
+                                                                    false,
+                                                                numeroReferenciaComercio:
+                                                                    null,
+                                                                type:
+                                                                    PaymentType
+                                                                        .QR,
+                                                                status:
+                                                                    PaymentStatus
+                                                                        .PENDIENTE,
+                                                              ),
+                                                              ...mapToFirestore(
+                                                                {
+                                                                  'created_time':
+                                                                      FieldValue
+                                                                          .serverTimestamp(),
+                                                                },
+                                                              ),
                                                             });
-                                                            _model.codiCF =
-                                                                GenerateCodiCloudFunctionCallResponse(
-                                                              data: result.data,
-                                                              succeeded: true,
-                                                              resultAsString:
-                                                                  result.data
-                                                                      .toString(),
-                                                              jsonBody:
-                                                                  result.data,
-                                                            );
-                                                          } on FirebaseFunctionsException catch (error) {
-                                                            _model.codiCF =
-                                                                GenerateCodiCloudFunctionCallResponse(
-                                                              errorCode:
-                                                                  error.code,
-                                                              succeeded: false,
-                                                            );
-                                                          }
+                                                            _model.codiResp =
+                                                                RegistraCobroRecord
+                                                                    .getDocumentFromData({
+                                                              ...createRegistraCobroRecordData(
+                                                                adminId: valueOrDefault(
+                                                                    currentUserDocument
+                                                                        ?.adminId,
+                                                                    ''),
+                                                                amount:
+                                                                    oKFNPayry31DetallesdeQRRegistraCobroRecord
+                                                                        .amount,
+                                                                concept:
+                                                                    oKFNPayry31DetallesdeQRRegistraCobroRecord
+                                                                        .concept,
+                                                                uid:
+                                                                    currentUserUid,
+                                                                qrUrl: '',
+                                                                shareableQrUrl:
+                                                                    '',
+                                                                companyId: '',
+                                                                errorMessage:
+                                                                    '',
+                                                                errorOcurs:
+                                                                    false,
+                                                                numeroReferenciaComercio:
+                                                                    null,
+                                                                type:
+                                                                    PaymentType
+                                                                        .QR,
+                                                                status:
+                                                                    PaymentStatus
+                                                                        .PENDIENTE,
+                                                              ),
+                                                              ...mapToFirestore(
+                                                                {
+                                                                  'created_time':
+                                                                      DateTime
+                                                                          .now(),
+                                                                },
+                                                              ),
+                                                            }, registraCobroRecordReference);
+                                                            _shouldSetState =
+                                                                true;
+                                                            try {
+                                                              final result =
+                                                                  await FirebaseFunctions
+                                                                      .instance
+                                                                      .httpsCallable(
+                                                                          'generateCodi')
+                                                                      .call({
+                                                                "id": _model
+                                                                    .codiResp!
+                                                                    .reference
+                                                                    .id,
+                                                                "test": false,
+                                                                "token":
+                                                                    FFAppState()
+                                                                        .serverToken,
+                                                              });
+                                                              _model.codiCF =
+                                                                  GenerateCodiCloudFunctionCallResponse(
+                                                                data:
+                                                                    result.data,
+                                                                succeeded: true,
+                                                                resultAsString:
+                                                                    result.data
+                                                                        .toString(),
+                                                                jsonBody:
+                                                                    result.data,
+                                                              );
+                                                            } on FirebaseFunctionsException catch (error) {
+                                                              _model.codiCF =
+                                                                  GenerateCodiCloudFunctionCallResponse(
+                                                                errorCode:
+                                                                    error.code,
+                                                                succeeded:
+                                                                    false,
+                                                              );
+                                                            }
 
-                                                          if (getJsonField(
-                                                            _model.codiCF!
-                                                                .jsonBody,
-                                                            r'''$.success''',
-                                                          )) {
-                                                            await widget
-                                                                .registraCobroRef!
-                                                                .update(
-                                                                    createRegistraCobroRecordData(
-                                                              qrUrl:
+                                                            _shouldSetState =
+                                                                true;
+                                                            if (getJsonField(
+                                                              _model.codiCF!
+                                                                  .jsonBody,
+                                                              r'''$.success''',
+                                                            )) {
+                                                              if (Navigator.of(
+                                                                      context)
+                                                                  .canPop()) {
+                                                                context.pop();
+                                                              }
+                                                              context
+                                                                  .pushNamedAuth(
+                                                                'OK_FN_Payry_31_detallesdeQRCode',
+                                                                context.mounted,
+                                                                queryParameters:
+                                                                    {
+                                                                  'registraCobroRef':
+                                                                      serializeParam(
+                                                                    _model
+                                                                        .codiResp
+                                                                        ?.reference,
+                                                                    ParamType
+                                                                        .DocumentReference,
+                                                                  ),
+                                                                  'createRefund':
+                                                                      serializeParam(
+                                                                    false,
+                                                                    ParamType
+                                                                        .bool,
+                                                                  ),
+                                                                }.withoutNulls,
+                                                              );
+
+                                                              if (_shouldSetState)
+                                                                setState(() {});
+                                                              return;
+                                                            } else {
+                                                              await _model
+                                                                  .codiResp!
+                                                                  .reference
+                                                                  .delete();
+                                                              await showDialog(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (alertDialogContext) {
+                                                                  return AlertDialog(
+                                                                    title: Text(
+                                                                        'Error'),
+                                                                    content: Text(
+                                                                        getJsonField(
+                                                                      _model
+                                                                          .codiCF!
+                                                                          .jsonBody,
+                                                                      r'''$.message''',
+                                                                    ).toString()),
+                                                                    actions: [
+                                                                      TextButton(
+                                                                        onPressed:
+                                                                            () =>
+                                                                                Navigator.pop(alertDialogContext),
+                                                                        child: Text(
+                                                                            'Ok'),
+                                                                      ),
+                                                                    ],
+                                                                  );
+                                                                },
+                                                              );
+                                                              if (!functions.includeTheString(
                                                                   getJsonField(
-                                                                _model.codiCF
-                                                                    ?.jsonBody,
-                                                                r'''$.data''',
-                                                              ).toString(),
-                                                            ));
-                                                          } else {
-                                                            await showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (alertDialogContext) {
-                                                                return AlertDialog(
-                                                                  title: Text(
-                                                                      'Error'),
-                                                                  content: Text(
-                                                                      getJsonField(
                                                                     _model
                                                                         .codiCF!
                                                                         .jsonBody,
                                                                     r'''$.message''',
-                                                                  ).toString()),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed:
-                                                                          () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                      child: Text(
-                                                                          'Ok'),
-                                                                    ),
-                                                                  ],
-                                                                );
-                                                              },
-                                                            );
+                                                                  ).toString(),
+                                                                  'expirada')!) {
+                                                                if (_shouldSetState)
+                                                                  setState(
+                                                                      () {});
+                                                                return;
+                                                              }
+
+                                                              GoRouter.of(
+                                                                      context)
+                                                                  .prepareAuthEvent();
+                                                              await authManager
+                                                                  .signOut();
+                                                              GoRouter.of(
+                                                                      context)
+                                                                  .clearRedirectLocation();
+
+                                                              context.goNamedAuth(
+                                                                  'OK_FN_Payry_08_iniciasesion',
+                                                                  context
+                                                                      .mounted);
+
+                                                              if (_shouldSetState)
+                                                                setState(() {});
+                                                              return;
+                                                            }
+                                                          } else {
+                                                            if (_shouldSetState)
+                                                              setState(() {});
+                                                            return;
                                                           }
 
-                                                          setState(() {
-                                                            _model.isUpdating =
-                                                                false;
-                                                          });
-
-                                                          setState(() {});
+                                                          if (_shouldSetState)
+                                                            setState(() {});
                                                         },
                                             ),
                                             Text(
@@ -1035,6 +1296,129 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                       ),
                                             ),
                                           ].divide(SizedBox(height: 5.0)),
+                                        ),
+                                        StreamBuilder<CompaniesRecord>(
+                                          stream: CompaniesRecord.getDocument(
+                                              functions.jsonPathToCompanyRef(
+                                                  columnDetallesCobroRecord
+                                                      .companyId)!),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 40.0,
+                                                  height: 40.0,
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    valueColor:
+                                                        AlwaysStoppedAnimation<
+                                                            Color>(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .accent3,
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                            final columnCompaniesRecord =
+                                                snapshot.data!;
+                                            return Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Builder(
+                                                  builder: (context) =>
+                                                      FlutterFlowIconButton(
+                                                    borderRadius: 100.0,
+                                                    borderWidth: 0.0,
+                                                    buttonSize: 50.0,
+                                                    fillColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .accent3,
+                                                    disabledColor:
+                                                        Color(0x83CCCCCC),
+                                                    disabledIconColor:
+                                                        Color(0xFFA1A1A1),
+                                                    icon: Icon(
+                                                      FFIcons.kcompartir,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondary,
+                                                      size: 20.0,
+                                                    ),
+                                                    showLoadingIndicator: true,
+                                                    onPressed:
+                                                        (oKFNPayry31DetallesdeQRRegistraCobroRecord
+                                                                    .status !=
+                                                                PaymentStatus
+                                                                    .PAGADO)
+                                                            ? null
+                                                            : () async {
+                                                                await showDialog(
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (dialogContext) {
+                                                                    return Dialog(
+                                                                      elevation:
+                                                                          0,
+                                                                      insetPadding:
+                                                                          EdgeInsets
+                                                                              .zero,
+                                                                      backgroundColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      alignment: AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0)
+                                                                          .resolve(
+                                                                              Directionality.of(context)),
+                                                                      child:
+                                                                          GestureDetector(
+                                                                        onTap: () => _model.unfocusNode.canRequestFocus
+                                                                            ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                                                                            : FocusScope.of(context).unfocus(),
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              MediaQuery.sizeOf(context).height * 0.35,
+                                                                          child:
+                                                                              PhoneSubmitDialogWidget(
+                                                                            companyAlias:
+                                                                                columnCompaniesRecord.alias,
+                                                                            paymentId:
+                                                                                widget.detallesCobroRef!.id,
+                                                                            dismissAction:
+                                                                                () async {
+                                                                              Navigator.pop(context);
+                                                                            },
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ).then((value) =>
+                                                                    setState(
+                                                                        () {}));
+                                                              },
+                                                  ),
+                                                ),
+                                                Text(
+                                                  'Compartir recibo',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        fontSize: 14.0,
+                                                      ),
+                                                ),
+                                              ].divide(SizedBox(height: 5.0)),
+                                            );
+                                          },
                                         ),
                                       ],
                                     ),

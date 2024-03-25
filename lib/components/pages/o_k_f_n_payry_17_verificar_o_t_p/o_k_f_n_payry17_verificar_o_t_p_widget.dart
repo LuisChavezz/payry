@@ -45,6 +45,7 @@ class _OKFNPayry17VerificarOTPWidgetState
       _model.timerController.onStartTimer();
     });
 
+    authManager.handlePhoneAuthStateChanges(context);
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -212,26 +213,6 @@ class _OKFNPayry17VerificarOTPWidgetState
                                   _model.timerValue = displayTime;
                                   if (shouldUpdate) setState(() {});
                                 },
-                                onEnded: () async {
-                                  context.pop();
-                                  await showDialog(
-                                    context: context,
-                                    builder: (alertDialogContext) {
-                                      return AlertDialog(
-                                        title: Text('Tiempo expirado'),
-                                        content: Text(
-                                            'El tiempo para ingresar el código de verificación ha expirado. Vuelva a intenter enviado un nuevo código.'),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () => Navigator.pop(
-                                                alertDialogContext),
-                                            child: Text('Aceptar'),
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  );
-                                },
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
                                     .headlineSmall
@@ -256,136 +237,227 @@ class _OKFNPayry17VerificarOTPWidgetState
                               ),
                             ],
                           ),
-                          Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 10.0, 0.0, 10.0),
-                              child: FFButtonWidget(
-                                onPressed: () async {
-                                  if (_model.timerMilliseconds <= 0) {
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title: Text('El tiempo ha expirado'),
-                                          content: Text(
-                                              'El tiempo ha expirado, favor de volver a intentarlo.'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: Text('Ok'),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                    return;
-                                  } else {
-                                    FFAppState().tempUserReference =
-                                        currentUserReference;
-                                    if (widget.otpCode != null &&
-                                        widget.otpCode != '') {
-                                      GoRouter.of(context).prepareAuthEvent();
-                                      final smsCodeVal = widget.otpCode;
-                                      if (smsCodeVal == null ||
-                                          smsCodeVal.isEmpty) {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                                'Enter SMS verification code.'),
-                                          ),
-                                        );
-                                        return;
-                                      }
-                                      final phoneVerifiedUser =
-                                          await authManager.verifySmsCode(
-                                        context: context,
-                                        smsCode: smsCodeVal,
-                                      );
-                                      if (phoneVerifiedUser == null) {
-                                        return;
-                                      }
-                                    } else {
-                                      GoRouter.of(context).prepareAuthEvent();
-                                      final smsCodeVal =
-                                          _model.pinCodeController!.text;
-                                      if (smsCodeVal == null ||
-                                          smsCodeVal.isEmpty) {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                                'Enter SMS verification code.'),
-                                          ),
-                                        );
-                                        return;
-                                      }
-                                      final phoneVerifiedUser =
-                                          await authManager.verifySmsCode(
-                                        context: context,
-                                        smsCode: smsCodeVal,
-                                      );
-                                      if (phoneVerifiedUser == null) {
-                                        return;
-                                      }
-                                    }
+                          if (_model.timerMilliseconds > 0)
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 10.0),
+                                child: FFButtonWidget(
+                                  onPressed: (_model.timerMilliseconds <= 0)
+                                      ? null
+                                      : () async {
+                                          if (_model.timerMilliseconds <= 0) {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text(
+                                                      'El tiempo ha expirado'),
+                                                  content: Text(
+                                                      'El tiempo ha expirado, favor de volver a intentarlo.'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                            return;
+                                          } else {
+                                            FFAppState().tempUserReference =
+                                                currentUserReference;
+                                            if (widget.otpCode != null &&
+                                                widget.otpCode != '') {
+                                              GoRouter.of(context)
+                                                  .prepareAuthEvent();
+                                              final smsCodeVal = widget.otpCode;
+                                              if (smsCodeVal == null ||
+                                                  smsCodeVal.isEmpty) {
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  SnackBar(
+                                                    content: Text(
+                                                        'Enter SMS verification code.'),
+                                                  ),
+                                                );
+                                                return;
+                                              }
+                                              final phoneVerifiedUser =
+                                                  await authManager
+                                                      .verifySmsCode(
+                                                context: context,
+                                                smsCode: smsCodeVal,
+                                              );
+                                              if (phoneVerifiedUser == null) {
+                                                return;
+                                              }
+                                            } else {
+                                              GoRouter.of(context)
+                                                  .prepareAuthEvent();
+                                              final smsCodeVal = _model
+                                                  .pinCodeController!.text;
+                                              if (smsCodeVal == null ||
+                                                  smsCodeVal.isEmpty) {
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  SnackBar(
+                                                    content: Text(
+                                                        'Enter SMS verification code.'),
+                                                  ),
+                                                );
+                                                return;
+                                              }
+                                              final phoneVerifiedUser =
+                                                  await authManager
+                                                      .verifySmsCode(
+                                                context: context,
+                                                smsCode: smsCodeVal,
+                                              );
+                                              if (phoneVerifiedUser == null) {
+                                                return;
+                                              }
+                                            }
 
-                                    await FFAppState()
-                                        .tempUserReference!
-                                        .update(createUsersRecordData(
-                                          isValidPhoneNumber: true,
-                                          phoneNumber: widget.phoneNumber,
-                                        ));
-                                    await currentUserReference!.delete();
-                                    await authManager.deleteUser(context);
+                                            await FFAppState()
+                                                .tempUserReference!
+                                                .update(createUsersRecordData(
+                                                  isValidPhoneNumber: true,
+                                                  phoneNumber:
+                                                      FFAppState().phoneNumber,
+                                                ));
+                                            await currentUserReference!
+                                                .delete();
+                                            await authManager
+                                                .deleteUser(context);
 
-                                    context.goNamedAuth(
-                                        'OK_FN_Payry_08_iniciasesion',
-                                        context.mounted);
+                                            context.goNamedAuth(
+                                                'OK_FN_Payry_08_iniciasesion',
+                                                context.mounted);
 
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          'Su número de teléfono ha sido verificado con éxito!',
-                                          style: TextStyle(
-                                            color: Color(0xFFFAF9FE),
-                                          ),
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  'Su número de teléfono ha sido verificado con éxito!',
+                                                  style: TextStyle(
+                                                    color: Color(0xFFFAF9FE),
+                                                  ),
+                                                ),
+                                                duration: Duration(
+                                                    milliseconds: 4000),
+                                                backgroundColor:
+                                                    Color(0xFF25253F),
+                                              ),
+                                            );
+                                            return;
+                                          }
+                                        },
+                                  text: 'Verificar',
+                                  options: FFButtonOptions(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    height: 50.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: Color(0xFF5E4A98),
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Lexend',
+                                          color: Color(0xFFFAF9FE),
                                         ),
-                                        duration: Duration(milliseconds: 4000),
-                                        backgroundColor: Color(0xFF25253F),
-                                      ),
-                                    );
-                                    return;
-                                  }
-                                },
-                                text: 'Verificar',
-                                options: FFButtonOptions(
-                                  width: MediaQuery.sizeOf(context).width * 1.0,
-                                  height: 50.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: Color(0xFF5E4A98),
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Lexend',
-                                        color: Color(0xFFFAF9FE),
-                                      ),
-                                  elevation: 3.0,
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1.0,
+                                    elevation: 3.0,
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    disabledColor: Color(0x83CCCCCC),
+                                    disabledTextColor: Color(0xFFA1A1A1),
                                   ),
-                                  borderRadius: BorderRadius.circular(10.0),
                                 ),
                               ),
                             ),
-                          ),
+                          if (_model.timerMilliseconds <= 0)
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 10.0),
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    final phoneNumberVal = widget.phoneNumber;
+                                    if (phoneNumberVal == null ||
+                                        phoneNumberVal.isEmpty ||
+                                        !phoneNumberVal.startsWith('+')) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                              'Phone Number is required and has to start with +.'),
+                                        ),
+                                      );
+                                      return;
+                                    }
+                                    await authManager.beginPhoneAuth(
+                                      context: context,
+                                      phoneNumber: phoneNumberVal,
+                                      onCodeSent: (context) async {
+                                        context.goNamedAuth(
+                                          'OK_FN_Payry_17_verificarOTP',
+                                          context.mounted,
+                                          queryParameters: {
+                                            'otpCode': serializeParam(
+                                              '',
+                                              ParamType.String,
+                                            ),
+                                            'phoneNumber': serializeParam(
+                                              widget.phoneNumber,
+                                              ParamType.String,
+                                            ),
+                                          }.withoutNulls,
+                                          ignoreRedirect: true,
+                                        );
+                                      },
+                                    );
+
+                                    _model.timerController.onResetTimer();
+
+                                    _model.timerController.onStartTimer();
+                                  },
+                                  text: 'Reenviar código',
+                                  options: FFButtonOptions(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    height: 50.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: Color(0xFF5E4A98),
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Lexend',
+                                          color: Color(0xFFFAF9FE),
+                                        ),
+                                    elevation: 3.0,
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                ),
+                              ),
+                            ),
                         ],
                       ),
                     ),

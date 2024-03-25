@@ -16,6 +16,8 @@ class OKFNPayry14PerfilModel extends FlutterFlowModel<OKFNPayry14PerfilWidget> {
   final unfocusNode = FocusNode();
   // Stores action output result for [Cloud Function - verifyEmail] action in Row widget.
   VerifyEmailCloudFunctionCallResponse? verifyEmailResp;
+  // Stores action output result for [Cloud Function - verifyEmail] action in Row widget.
+  VerifyEmailCloudFunctionCallResponse? verifyEmailResp1;
   // State field(s) for Switch widget.
   bool? switchValue;
 

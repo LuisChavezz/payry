@@ -47,8 +47,6 @@ class _DynamicSwitchWidgetState extends State<DynamicSwitchWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Switch.adaptive(
       value: _model.switchValue ??= widget.initialValue!,
       onChanged: (newValue) async {
@@ -87,8 +85,8 @@ class _DynamicSwitchWidgetState extends State<DynamicSwitchWidget> {
           );
         }
       },
-      activeColor: FlutterFlowTheme.of(context).success,
-      activeTrackColor: FlutterFlowTheme.of(context).accent1,
+      activeColor: FlutterFlowTheme.of(context).accent1,
+      activeTrackColor: FlutterFlowTheme.of(context).success,
       inactiveTrackColor: FlutterFlowTheme.of(context).alternate,
       inactiveThumbColor: FlutterFlowTheme.of(context).secondaryText,
     );

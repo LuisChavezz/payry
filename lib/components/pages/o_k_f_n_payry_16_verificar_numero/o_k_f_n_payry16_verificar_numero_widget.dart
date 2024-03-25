@@ -339,7 +339,8 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                                     ParamType.String,
                                                   ),
                                                   'phoneNumber': serializeParam(
-                                                    FFAppState().phoneNumber,
+                                                    _model.phoneFieldController
+                                                        .text,
                                                     ParamType.String,
                                                   ),
                                                 }.withoutNulls,

@@ -53,8 +53,6 @@ class _OKFNPayry05RegistrateWidgetState
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -567,7 +565,17 @@ class _OKFNPayry05RegistrateWidgetState
                                             FFAppState().serverToken = _model
                                                 .genToken!.jsonBody!
                                                 .toString();
-                                            FFAppState().tutorialDialogs = true;
+                                            FFAppState().walkthroughs =
+                                                <String, bool?>{
+                                              'menu_mas': true,
+                                              'dashboard': true,
+                                              'datos_bancarios': true,
+                                              'add_users': true,
+                                              'user_permissions': true,
+                                              'create_codi': true,
+                                              'create_dimo': true,
+                                              'edit_profile': true,
+                                            };
 
                                             context.goNamedAuth(
                                                 'OK_FN_Payry_06_confirmacionRegistro',
@@ -775,7 +783,7 @@ class _OKFNPayry05RegistrateWidgetState
                                                     'https://www.payry.mx/terminos-y-condiciones/');
                                               },
                                               child: Text(
-                                                'Terminos y condiciones',
+                                                'Términos y condiciones',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium

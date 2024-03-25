@@ -142,6 +142,11 @@ class RegistraOrdenRecordsRecord extends FirestoreRecord {
   double get totalBruto => _totalBruto ?? 0.0;
   bool hasTotalBruto() => _totalBruto != null;
 
+  // "cep_route" field.
+  String? _cepRoute;
+  String get cepRoute => _cepRoute ?? '';
+  bool hasCepRoute() => _cepRoute != null;
+
   void _initializeFields() {
     _adminId = snapshotData['admin_id'] as String?;
     _claveRastreo = snapshotData['claveRastreo'] as String?;
@@ -172,6 +177,7 @@ class RegistraOrdenRecordsRecord extends FirestoreRecord {
     _tipoCuentaOrdenante = castToType<int>(snapshotData['tipoCuentaOrdenante']);
     _tipoPago = castToType<int>(snapshotData['tipoPago']);
     _totalBruto = castToType<double>(snapshotData['total_bruto']);
+    _cepRoute = snapshotData['cep_route'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -236,6 +242,7 @@ Map<String, dynamic> createRegistraOrdenRecordsRecordData({
   int? tipoCuentaOrdenante,
   int? tipoPago,
   double? totalBruto,
+  String? cepRoute,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -264,6 +271,7 @@ Map<String, dynamic> createRegistraOrdenRecordsRecordData({
       'tipoCuentaOrdenante': tipoCuentaOrdenante,
       'tipoPago': tipoPago,
       'total_bruto': totalBruto,
+      'cep_route': cepRoute,
     }.withoutNulls,
   );
 
@@ -300,7 +308,8 @@ class RegistraOrdenRecordsRecordDocumentEquality
         e1?.tipoCuentaBeneficiario == e2?.tipoCuentaBeneficiario &&
         e1?.tipoCuentaOrdenante == e2?.tipoCuentaOrdenante &&
         e1?.tipoPago == e2?.tipoPago &&
-        e1?.totalBruto == e2?.totalBruto;
+        e1?.totalBruto == e2?.totalBruto &&
+        e1?.cepRoute == e2?.cepRoute;
   }
 
   @override
@@ -329,7 +338,8 @@ class RegistraOrdenRecordsRecordDocumentEquality
         e?.tipoCuentaBeneficiario,
         e?.tipoCuentaOrdenante,
         e?.tipoPago,
-        e?.totalBruto
+        e?.totalBruto,
+        e?.cepRoute
       ]);
 
   @override

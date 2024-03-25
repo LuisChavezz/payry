@@ -40,8 +40,6 @@ class _OKFNPayry44HistorialTransactionsWidgetState
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -130,9 +128,9 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                               if (listViewRegistraOrdenRecordsRecordList
                                   .isEmpty) {
                                 return EmptyListWidget(
-                                  title: 'Sin transacciones',
+                                  title: 'Sin transferencias',
                                   message:
-                                      'Aun no hay transacciones realizadas',
+                                      'Aun no hay transferencias realizadas',
                                 );
                               }
                               return ListView.builder(
@@ -174,7 +172,8 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                                   fontFamily: 'Lexend',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primaryText,
+                                                      .accent3,
+                                                  fontSize: 15.0,
                                                 ),
                                           ),
                                         ),
@@ -196,7 +195,7 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                                     shape: BoxShape.circle,
                                                   ),
                                                   child: Icon(
-                                                    FFIcons.kcompartir,
+                                                    FFIcons.kpago,
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .accent3,
@@ -226,7 +225,9 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                                                       'Lexend',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryText,
+                                                                      .accent3,
+                                                                  fontSize:
+                                                                      15.0,
                                                                 ),
                                                       ),
                                                       Text(
@@ -241,9 +242,60 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                                                       'Lexend',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .accent3,
+                                                                      .primaryText,
                                                                 ),
                                                       ),
+                                                      Text(
+                                                        listViewRegistraOrdenRecordsRecord
+                                                            .claveRastreo,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Lexend',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                ),
+                                                      ),
+                                                      if (listViewRegistraOrdenRecordsRecord
+                                                                  .cepRoute !=
+                                                              null &&
+                                                          listViewRegistraOrdenRecordsRecord
+                                                                  .cepRoute !=
+                                                              '')
+                                                        InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            await launchURL(
+                                                                listViewRegistraOrdenRecordsRecord
+                                                                    .cepRoute);
+                                                          },
+                                                          child: Text(
+                                                            'https://www.banxico.org.mx/cep/',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Lexend',
+                                                                  color: Color(
+                                                                      0xFF80BFFF),
+                                                                  decoration:
+                                                                      TextDecoration
+                                                                          .underline,
+                                                                ),
+                                                          ),
+                                                        ),
                                                     ],
                                                   ),
                                                 ),
@@ -262,7 +314,8 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .accent3,
-                                                    fontWeight: FontWeight.w200,
+                                                    fontSize: 16.0,
+                                                    fontWeight: FontWeight.w600,
                                                   ),
                                             ),
                                           ],

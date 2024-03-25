@@ -1,18 +1,29 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/walkthroughs/asignar_permisos_a_usuarios.dart';
 import 'o_k_f_n_payry25_permisos_widget.dart' show OKFNPayry25PermisosWidget;
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
+    show TutorialCoachMark;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class OKFNPayry25PermisosModel
     extends FlutterFlowModel<OKFNPayry25PermisosWidget> {
+  ///  Local state fields for this page.
+
+  bool show = false;
+
   ///  State fields for stateful widgets in this page.
 
+  TutorialCoachMark? asignarPermisosAUsuariosController;
   final unfocusNode = FocusNode();
   // State field(s) for CreateQrSwitch widget.
   bool? createQrSwitchValue;
@@ -42,6 +53,7 @@ class OKFNPayry25PermisosModel
 
   @override
   void dispose() {
+    asignarPermisosAUsuariosController?.finish();
     unfocusNode.dispose();
   }
 

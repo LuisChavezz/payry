@@ -24,45 +24,8 @@ class ObtenerMiscCompanyCloudFunctionCallResponse {
   dynamic jsonBody;
 }
 
-class SaveCompanyCloudFunctionCallResponse {
-  SaveCompanyCloudFunctionCallResponse({
-    this.errorCode,
-    this.succeeded,
-    this.jsonBody,
-  });
-  String? errorCode;
-  bool? succeeded;
-  dynamic jsonBody;
-}
-
-class SaveBankCompanyCloudFunctionCallResponse {
-  SaveBankCompanyCloudFunctionCallResponse({
-    this.errorCode,
-    this.succeeded,
-    this.jsonBody,
-  });
-  String? errorCode;
-  bool? succeeded;
-  dynamic jsonBody;
-}
-
 class GetStatisticsCloudFunctionCallResponse {
   GetStatisticsCloudFunctionCallResponse({
-    this.errorCode,
-    this.succeeded,
-    this.jsonBody,
-    this.resultAsString,
-    this.data,
-  });
-  String? errorCode;
-  bool? succeeded;
-  dynamic jsonBody;
-  String? resultAsString;
-  dynamic data;
-}
-
-class GetStatisticsTestCloudFunctionCallResponse {
-  GetStatisticsTestCloudFunctionCallResponse({
     this.errorCode,
     this.succeeded,
     this.jsonBody,
@@ -179,6 +142,36 @@ class GenerateTokenCloudFunctionCallResponse {
 
 class GenerateDimoCloudFunctionCallResponse {
   GenerateDimoCloudFunctionCallResponse({
+    this.errorCode,
+    this.succeeded,
+    this.jsonBody,
+    this.resultAsString,
+    this.data,
+  });
+  String? errorCode;
+  bool? succeeded;
+  dynamic jsonBody;
+  String? resultAsString;
+  dynamic data;
+}
+
+class ReportCompanyCloudFunctionCallResponse {
+  ReportCompanyCloudFunctionCallResponse({
+    this.errorCode,
+    this.succeeded,
+    this.jsonBody,
+    this.resultAsString,
+    this.data,
+  });
+  String? errorCode;
+  bool? succeeded;
+  dynamic jsonBody;
+  String? resultAsString;
+  dynamic data;
+}
+
+class ReportUserCloudFunctionCallResponse {
+  ReportUserCloudFunctionCallResponse({
     this.errorCode,
     this.succeeded,
     this.jsonBody,

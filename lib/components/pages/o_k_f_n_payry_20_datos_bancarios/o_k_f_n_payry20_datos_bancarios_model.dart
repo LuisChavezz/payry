@@ -1,13 +1,17 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/walkthroughs/agregar_datos_bancarios.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'o_k_f_n_payry20_datos_bancarios_widget.dart'
     show OKFNPayry20DatosBancariosWidget;
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
+    show TutorialCoachMark;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:collection/collection.dart';
@@ -15,13 +19,19 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class OKFNPayry20DatosBancariosModel
     extends FlutterFlowModel<OKFNPayry20DatosBancariosWidget> {
+  ///  Local state fields for this page.
+
+  bool show = false;
+
   ///  State fields for stateful widgets in this page.
 
+  TutorialCoachMark? agregarDatosBancariosController;
   final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   // State field(s) for ClabeField widget.
@@ -55,8 +65,8 @@ class OKFNPayry20DatosBancariosModel
     return null;
   }
 
-  // Stores action output result for [Cloud Function - saveBankCompany] action in Button widget.
-  SaveBankCompanyCloudFunctionCallResponse? cloudFunctionBankCompany;
+  // Stores action output result for [Cloud Function - reportCompany] action in Button widget.
+  ReportCompanyCloudFunctionCallResponse? reportCompFC;
 
   /// Initialization and disposal methods.
 
@@ -68,6 +78,7 @@ class OKFNPayry20DatosBancariosModel
 
   @override
   void dispose() {
+    agregarDatosBancariosController?.finish();
     unfocusNode.dispose();
     clabeFieldFocusNode?.dispose();
     clabeFieldController?.dispose();
