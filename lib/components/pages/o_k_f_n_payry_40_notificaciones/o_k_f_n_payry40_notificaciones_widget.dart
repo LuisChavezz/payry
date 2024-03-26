@@ -90,21 +90,6 @@ class _OKFNPayry40NotificacionesWidgetState
                       : null;
               return Stack(
                 children: [
-                  Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 18.0),
-                      child: wrapWithModel(
-                        model: _model.navBarFlotingModel,
-                        updateCallback: () => setState(() {}),
-                        child: NavBarFlotingWidget(
-                          userPermissions: stackUserPermissionsRecord!,
-                          pageName: 'notificaciones',
-                        ),
-                      ),
-                    ),
-                  ),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(18.0, 36.0, 18.0, 0.0),
@@ -294,6 +279,23 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                       unreadNotiItemsItem
                                                                           .subject,
                                                                       'CoDi')!) {
+                                                                await unreadNotiItemsItem
+                                                                    .reference
+                                                                    .update(
+                                                                        createNotificationRecordData(
+                                                                  isRead: true,
+                                                                ));
+                                                                setState(() =>
+                                                                    _model.firestoreRequestCompleter =
+                                                                        null);
+                                                                await _model
+                                                                    .waitForFirestoreRequestCompleted();
+                                                                await actions
+                                                                    .updateAppBadge(
+                                                                  containerNotificationRecordList
+                                                                      .length,
+                                                                );
+
                                                                 context
                                                                     .pushNamed(
                                                                   'OK_FN_Payry_31_detallesdeQR',
@@ -331,6 +333,24 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                     unreadNotiItemsItem
                                                                         .subject,
                                                                     'DiMo')!) {
+                                                                  await unreadNotiItemsItem
+                                                                      .reference
+                                                                      .update(
+                                                                          createNotificationRecordData(
+                                                                    isRead:
+                                                                        true,
+                                                                  ));
+                                                                  setState(() =>
+                                                                      _model.firestoreRequestCompleter =
+                                                                          null);
+                                                                  await _model
+                                                                      .waitForFirestoreRequestCompleted();
+                                                                  await actions
+                                                                      .updateAppBadge(
+                                                                    containerNotificationRecordList
+                                                                        .length,
+                                                                  );
+
                                                                   context
                                                                       .pushNamed(
                                                                     'OK_FN_Payry_36_detallesdeSMS',
@@ -361,27 +381,53 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                     }.withoutNulls,
                                                                   );
                                                                 } else {
-                                                                  await showDialog(
-                                                                    context:
-                                                                        context,
-                                                                    builder:
-                                                                        (alertDialogContext) {
-                                                                      return AlertDialog(
-                                                                        title: Text(
-                                                                            'Error'),
-                                                                        content:
-                                                                            Text('Hubo un error en la navegación, favor de reportar error con soporte.'),
-                                                                        actions: [
-                                                                          TextButton(
-                                                                            onPressed: () =>
-                                                                                Navigator.pop(alertDialogContext),
-                                                                            child:
-                                                                                Text('Ok'),
-                                                                          ),
-                                                                        ],
-                                                                      );
-                                                                    },
-                                                                  );
+                                                                  if (functions.includeTheString(
+                                                                      unreadNotiItemsItem
+                                                                          .subject,
+                                                                      'Transferencia')!) {
+                                                                    await unreadNotiItemsItem
+                                                                        .reference
+                                                                        .update(
+                                                                            createNotificationRecordData(
+                                                                      isRead:
+                                                                          true,
+                                                                    ));
+                                                                    setState(() =>
+                                                                        _model.firestoreRequestCompleter =
+                                                                            null);
+                                                                    await _model
+                                                                        .waitForFirestoreRequestCompleted();
+                                                                    await actions
+                                                                        .updateAppBadge(
+                                                                      containerNotificationRecordList
+                                                                          .length,
+                                                                    );
+
+                                                                    context.pushNamed(
+                                                                        'OK_FN_Payry_44_historialTransactions');
+                                                                  } else {
+                                                                    await showDialog(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (alertDialogContext) {
+                                                                        return AlertDialog(
+                                                                          title:
+                                                                              Text('Error'),
+                                                                          content:
+                                                                              Text('Hubo un error en la navegación.'),
+                                                                          actions: [
+                                                                            TextButton(
+                                                                              onPressed: () => Navigator.pop(alertDialogContext),
+                                                                              child: Text('Ok'),
+                                                                            ),
+                                                                          ],
+                                                                        );
+                                                                      },
+                                                                    );
+                                                                  }
+
+                                                                  return;
                                                                 }
 
                                                                 return;
@@ -742,27 +788,35 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                     }.withoutNulls,
                                                                   );
                                                                 } else {
-                                                                  await showDialog(
-                                                                    context:
-                                                                        context,
-                                                                    builder:
-                                                                        (alertDialogContext) {
-                                                                      return AlertDialog(
-                                                                        title: Text(
-                                                                            'Error'),
-                                                                        content:
-                                                                            Text('Hubo un error en la navegación, favor de reportar error con soporte.'),
-                                                                        actions: [
-                                                                          TextButton(
-                                                                            onPressed: () =>
-                                                                                Navigator.pop(alertDialogContext),
-                                                                            child:
-                                                                                Text('Ok'),
-                                                                          ),
-                                                                        ],
-                                                                      );
-                                                                    },
-                                                                  );
+                                                                  if (functions.includeTheString(
+                                                                      unreadNotiItemsItem
+                                                                          .subject,
+                                                                      'Transferencia')!) {
+                                                                    context.pushNamed(
+                                                                        'OK_FN_Payry_44_historialTransactions');
+                                                                  } else {
+                                                                    await showDialog(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (alertDialogContext) {
+                                                                        return AlertDialog(
+                                                                          title:
+                                                                              Text('Error'),
+                                                                          content:
+                                                                              Text('Hubo un error en la navegación.'),
+                                                                          actions: [
+                                                                            TextButton(
+                                                                              onPressed: () => Navigator.pop(alertDialogContext),
+                                                                              child: Text('Ok'),
+                                                                            ),
+                                                                          ],
+                                                                        );
+                                                                      },
+                                                                    );
+                                                                  }
+
+                                                                  return;
                                                                 }
 
                                                                 return;
@@ -919,6 +973,17 @@ class _OKFNPayry40NotificacionesWidgetState
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(0.0, 1.0),
+                    child: wrapWithModel(
+                      model: _model.navBarFlotingModel,
+                      updateCallback: () => setState(() {}),
+                      child: NavBarFlotingWidget(
+                        pageName: 'notificaciones',
+                        userPermissions: stackUserPermissionsRecord!,
+                      ),
                     ),
                   ),
                 ],
