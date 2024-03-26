@@ -1174,6 +1174,8 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                                     .PAGADO)
                                                             ? null
                                                             : () async {
+                                                                var _shouldSetState =
+                                                                    false;
                                                                 var confirmDialogResponse =
                                                                     await showDialog<
                                                                             bool>(
@@ -1218,7 +1220,133 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                                     ));
                                                                   }
 
-                                                                  return;
+                                                                  try {
+                                                                    final result = await FirebaseFunctions
+                                                                        .instance
+                                                                        .httpsCallable(
+                                                                            'sendSms')
+                                                                        .call({
+                                                                      "token":
+                                                                          FFAppState()
+                                                                              .serverToken,
+                                                                      "phoneNumber":
+                                                                          '+52${oKFNPayry36DetallesdeSMSRegistraCobroRecord.phoneNumber}',
+                                                                      "message":
+                                                                          'Revisa tu recibo de ${columnCompaniesRecord.alias}: https://www.payry.mx/rdp/?id=${columnDetallesCobroRecord.reference.id}',
+                                                                      "test":
+                                                                          false,
+                                                                    });
+                                                                    _model.smsResp =
+                                                                        SendSmsCloudFunctionCallResponse(
+                                                                      data: result
+                                                                          .data,
+                                                                      succeeded:
+                                                                          true,
+                                                                      resultAsString: result
+                                                                          .data
+                                                                          .toString(),
+                                                                      jsonBody:
+                                                                          result
+                                                                              .data,
+                                                                    );
+                                                                  } on FirebaseFunctionsException catch (error) {
+                                                                    _model.smsResp =
+                                                                        SendSmsCloudFunctionCallResponse(
+                                                                      errorCode:
+                                                                          error
+                                                                              .code,
+                                                                      succeeded:
+                                                                          false,
+                                                                    );
+                                                                  }
+
+                                                                  _shouldSetState =
+                                                                      true;
+                                                                  if (getJsonField(
+                                                                    _model
+                                                                        .smsResp!
+                                                                        .jsonBody,
+                                                                    r'''$.success''',
+                                                                  )) {
+                                                                    await showDialog(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (alertDialogContext) {
+                                                                        return AlertDialog(
+                                                                          title:
+                                                                              Text('SMS enviado'),
+                                                                          content:
+                                                                              Text('Se ha compartido el recibo a través de un SMS de manera exitosa.'),
+                                                                          actions: [
+                                                                            TextButton(
+                                                                              onPressed: () => Navigator.pop(alertDialogContext),
+                                                                              child: Text('Ok'),
+                                                                            ),
+                                                                          ],
+                                                                        );
+                                                                      },
+                                                                    );
+                                                                    if (_shouldSetState)
+                                                                      setState(
+                                                                          () {});
+                                                                    return;
+                                                                  } else {
+                                                                    await showDialog(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (alertDialogContext) {
+                                                                        return AlertDialog(
+                                                                          title:
+                                                                              Text('Error'),
+                                                                          content:
+                                                                              Text(getJsonField(
+                                                                            _model.smsResp!.jsonBody,
+                                                                            r'''$.message''',
+                                                                          ).toString()),
+                                                                          actions: [
+                                                                            TextButton(
+                                                                              onPressed: () => Navigator.pop(alertDialogContext),
+                                                                              child: Text('Ok'),
+                                                                            ),
+                                                                          ],
+                                                                        );
+                                                                      },
+                                                                    );
+                                                                    if (!functions.includeTheString(
+                                                                        getJsonField(
+                                                                          _model
+                                                                              .smsResp!
+                                                                              .jsonBody,
+                                                                          r'''$.message''',
+                                                                        ).toString(),
+                                                                        'expirada')!) {
+                                                                      if (_shouldSetState)
+                                                                        setState(
+                                                                            () {});
+                                                                      return;
+                                                                    }
+
+                                                                    GoRouter.of(
+                                                                            context)
+                                                                        .prepareAuthEvent();
+                                                                    await authManager
+                                                                        .signOut();
+                                                                    GoRouter.of(
+                                                                            context)
+                                                                        .clearRedirectLocation();
+
+                                                                    context.goNamedAuth(
+                                                                        'OK_FN_Payry_08_iniciasesion',
+                                                                        context
+                                                                            .mounted);
+
+                                                                    if (_shouldSetState)
+                                                                      setState(
+                                                                          () {});
+                                                                    return;
+                                                                  }
                                                                 } else {
                                                                   await showDialog(
                                                                     context:
@@ -1259,8 +1387,15 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                                       setState(
                                                                           () {}));
 
+                                                                  if (_shouldSetState)
+                                                                    setState(
+                                                                        () {});
                                                                   return;
                                                                 }
+
+                                                                if (_shouldSetState)
+                                                                  setState(
+                                                                      () {});
                                                               },
                                                   ),
                                                 ),

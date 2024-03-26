@@ -28,6 +28,8 @@ class OKFNPayry36DetallesdeSMSModel
   RegistraCobroRecord? dimoResp;
   // Stores action output result for [Cloud Function - generateDimo] action in IconButton widget.
   GenerateDimoCloudFunctionCallResponse? dimoCF;
+  // Stores action output result for [Cloud Function - sendSms] action in IconButton widget.
+  SendSmsCloudFunctionCallResponse? smsResp;
 
   /// Initialization and disposal methods.
 
