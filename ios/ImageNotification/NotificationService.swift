@@ -1,4 +1,10 @@
-import FirebaseMessaging
+//
+//  NotificationService.swift
+//  ImageNotification
+//
+//  Created by Luis Ceja on 25/03/24.
+//
+
 import UserNotifications
 
 class NotificationService: UNNotificationServiceExtension {
@@ -8,12 +14,14 @@ class NotificationService: UNNotificationServiceExtension {
 
     override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
         self.contentHandler = contentHandler
-        bestAttemptContent = request.content
-          .mutableCopy() as? UNMutableNotificationContent
-        guard let bestAttemptContent = bestAttemptContent else { return }
-        FIRMessagingExtensionHelper().populateNotificationContent(
-          bestAttemptContent,
-          withContentHandler: contentHandler)
+        bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
+        
+        if let bestAttemptContent = bestAttemptContent {
+            // Modify the notification content here...
+            bestAttemptContent.title = "\(bestAttemptContent.title) [modified]"
+            
+            contentHandler(bestAttemptContent)
+        }
     }
     
     override func serviceExtensionTimeWillExpire() {

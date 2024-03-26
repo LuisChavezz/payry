@@ -1010,7 +1010,6 @@ DEPENDENCIES:
   - cloud_functions (from `.symlinks/plugins/cloud_functions/ios`)
   - contacts_service (from `.symlinks/plugins/contacts_service/ios`)
   - file_picker (from `.symlinks/plugins/file_picker/ios`)
-  - Firebase/Messaging
   - firebase_app_check (from `.symlinks/plugins/firebase_app_check/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
@@ -1196,6 +1195,6 @@ SPEC CHECKSUMS:
   url_launcher_ios: 6116280ddcfe98ab8820085d8d76ae7449447586
   video_player_avfoundation: 8563f13d8fc8b2c29dc2d09e60b660e4e8128837
 
-PODFILE CHECKSUM: f8081902f62550738633693911a8f28202592964
+PODFILE CHECKSUM: cb93b6267a6861689031785c58b675f5ffd4e2b3
 
 COCOAPODS: 1.14.2
