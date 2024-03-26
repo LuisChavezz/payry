@@ -1,3 +1,5 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -5,11 +7,11 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/permissions_util.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'phone_submit_dialog_model.dart';
 export 'phone_submit_dialog_model.dart';
 
@@ -57,6 +59,8 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 0.0),
       child: Container(
@@ -205,23 +209,100 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
                 ),
                 FFButtonWidget(
                   onPressed: () async {
+                    var _shouldSetState = false;
                     if (_model.formKey.currentState == null ||
                         !_model.formKey.currentState!.validate()) {
                       return;
                     }
-                    if (isiOS) {
-                      await launchUrl(Uri.parse(
-                          "sms:${_model.phoneFieldController.text}&body=${Uri.encodeComponent('Revisa tu recibo de ${widget.companyAlias}: https://www.payry.mx/rdp/?id=${widget.paymentId}')}"));
-                    } else {
-                      await launchUrl(Uri(
-                        scheme: 'sms',
-                        path: _model.phoneFieldController.text,
-                        queryParameters: <String, String>{
-                          'body':
-                              'Revisa tu recibo de ${widget.companyAlias}: https://www.payry.mx/rdp/?id=${widget.paymentId}',
-                        },
-                      ));
+                    try {
+                      final result = await FirebaseFunctions.instance
+                          .httpsCallable('sendSms')
+                          .call({
+                        "token": FFAppState().serverToken,
+                        "phoneNumber": '+52${_model.phoneFieldController.text}',
+                        "message":
+                            'Revisa tu recibo de ${widget.companyAlias}: https://www.payry.mx/rdp/?id=${widget.paymentId}',
+                        "test": false,
+                      });
+                      _model.smsResp = SendSmsCloudFunctionCallResponse(
+                        data: result.data,
+                        succeeded: true,
+                        resultAsString: result.data.toString(),
+                        jsonBody: result.data,
+                      );
+                    } on FirebaseFunctionsException catch (error) {
+                      _model.smsResp = SendSmsCloudFunctionCallResponse(
+                        errorCode: error.code,
+                        succeeded: false,
+                      );
                     }
+
+                    _shouldSetState = true;
+                    if (getJsonField(
+                      _model.smsResp!.jsonBody,
+                      r'''$.success''',
+                    )) {
+                      await showDialog(
+                        context: context,
+                        builder: (alertDialogContext) {
+                          return AlertDialog(
+                            title: Text('SMS enviado'),
+                            content: Text(
+                                'Se ha compartido el recibo a través de un SMS de manera exitosa.'),
+                            actions: [
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.pop(alertDialogContext),
+                                child: Text('Ok'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                      if (_shouldSetState) setState(() {});
+                      return;
+                    } else {
+                      await showDialog(
+                        context: context,
+                        builder: (alertDialogContext) {
+                          return AlertDialog(
+                            title: Text('Error'),
+                            content: Text(getJsonField(
+                              _model.smsResp!.jsonBody,
+                              r'''$.message''',
+                            ).toString()),
+                            actions: [
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.pop(alertDialogContext),
+                                child: Text('Ok'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                      if (!functions.includeTheString(
+                          getJsonField(
+                            _model.smsResp!.jsonBody,
+                            r'''$.message''',
+                          ).toString(),
+                          'expirada')!) {
+                        if (_shouldSetState) setState(() {});
+                        return;
+                      }
+
+                      GoRouter.of(context).prepareAuthEvent();
+                      await authManager.signOut();
+                      GoRouter.of(context).clearRedirectLocation();
+
+                      context.goNamedAuth(
+                          'OK_FN_Payry_08_iniciasesion', context.mounted);
+
+                      if (_shouldSetState) setState(() {});
+                      return;
+                    }
+
+                    if (_shouldSetState) setState(() {});
                   },
                   text: 'Compartir',
                   options: FFButtonOptions(

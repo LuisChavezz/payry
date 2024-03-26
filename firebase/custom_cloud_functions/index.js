@@ -27,3 +27,5 @@ const reportCompany = require("./report_company.js");
 exports.reportCompany = reportCompany.reportCompany;
 const reportUser = require("./report_user.js");
 exports.reportUser = reportUser.reportUser;
+const sendSms = require("./send_sms.js");
+exports.sendSms = sendSms.sendSms;
