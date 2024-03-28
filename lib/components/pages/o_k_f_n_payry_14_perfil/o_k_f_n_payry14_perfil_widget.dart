@@ -73,6 +73,7 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                 style: FlutterFlowTheme.of(context).titleSmall.override(
                       fontFamily: 'Lexend',
                       color: FlutterFlowTheme.of(context).primaryText,
+                      letterSpacing: 0.0,
                     ),
               ),
             ),
@@ -153,6 +154,7 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                                           .override(
                                             fontFamily: 'Lexend',
                                             color: Colors.white,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                   ),
@@ -164,6 +166,7 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                                       .override(
                                         fontFamily: 'Poppins',
                                         color: Colors.white,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ],
@@ -181,7 +184,10 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                         BoxShadow(
                           blurRadius: 3.0,
                           color: Color(0x33000000),
-                          offset: Offset(0.0, -1.0),
+                          offset: Offset(
+                            0.0,
+                            -1.0,
+                          ),
                         )
                       ],
                       borderRadius: BorderRadius.only(
@@ -236,6 +242,7 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),
@@ -455,6 +462,7 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
+                                                  letterSpacing: 0.0,
                                                 ),
                                           ),
                                         ),
@@ -616,6 +624,7 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
+                                                  letterSpacing: 0.0,
                                                 ),
                                           ),
                                         ),
@@ -655,6 +664,7 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                                             fontFamily: 'Lexend',
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                   ),
@@ -720,6 +730,7 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                                             .override(
                                               fontFamily: 'Lexend',
                                               color: Color(0xFF0FB978),
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),

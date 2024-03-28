@@ -89,6 +89,7 @@ class _OKFNPayry17VerificarOTPWidgetState
             style: FlutterFlowTheme.of(context).titleSmall.override(
                   fontFamily: 'Lexend',
                   color: FlutterFlowTheme.of(context).primaryText,
+                  letterSpacing: 0.0,
                 ),
           ),
           actions: [],
@@ -125,6 +126,7 @@ class _OKFNPayry17VerificarOTPWidgetState
                                     fontFamily: 'Lexend',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
+                                    letterSpacing: 0.0,
                                   ),
                             ),
                           ),
@@ -141,6 +143,7 @@ class _OKFNPayry17VerificarOTPWidgetState
                                     fontFamily: 'Poppins',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
+                                    letterSpacing: 0.0,
                                   ),
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               enableActiveFill: false,
@@ -196,6 +199,7 @@ class _OKFNPayry17VerificarOTPWidgetState
                                       .override(
                                         fontFamily: 'Lexend',
                                         fontSize: 10.0,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ),
@@ -219,6 +223,7 @@ class _OKFNPayry17VerificarOTPWidgetState
                                     .override(
                                       fontFamily: 'Lexend',
                                       fontSize: 15.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
                                     ),
                               ),
@@ -232,6 +237,7 @@ class _OKFNPayry17VerificarOTPWidgetState
                                       .override(
                                         fontFamily: 'Lexend',
                                         fontSize: 10.0,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ),
@@ -372,6 +378,7 @@ class _OKFNPayry17VerificarOTPWidgetState
                                         .override(
                                           fontFamily: 'Lexend',
                                           color: Color(0xFFFAF9FE),
+                                          letterSpacing: 0.0,
                                         ),
                                     elevation: 3.0,
                                     borderSide: BorderSide(
@@ -447,6 +454,7 @@ class _OKFNPayry17VerificarOTPWidgetState
                                         .override(
                                           fontFamily: 'Lexend',
                                           color: Color(0xFFFAF9FE),
+                                          letterSpacing: 0.0,
                                         ),
                                     elevation: 3.0,
                                     borderSide: BorderSide(

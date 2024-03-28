@@ -63,6 +63,7 @@ class _EmptyListWidgetState extends State<EmptyListWidget> {
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Lexend',
                   fontSize: 14.0,
+                  letterSpacing: 0.0,
                 ),
           ),
         ),
@@ -72,6 +73,7 @@ class _EmptyListWidgetState extends State<EmptyListWidget> {
           style: FlutterFlowTheme.of(context).bodyMedium.override(
                 fontFamily: 'Lexend',
                 fontSize: 10.0,
+                letterSpacing: 0.0,
               ),
         ),
       ],

@@ -96,6 +96,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
             style: FlutterFlowTheme.of(context).titleSmall.override(
                   fontFamily: 'Lexend',
                   color: FlutterFlowTheme.of(context).primaryText,
+                  letterSpacing: 0.0,
                 ),
           ),
           actions: [],
@@ -134,6 +135,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -153,6 +155,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w300,
                                         ),
                                   ),
@@ -199,6 +202,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -218,6 +222,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w300,
                                         ),
                                   ),
@@ -264,6 +269,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -283,6 +289,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w300,
                                         ),
                                   ),
@@ -329,6 +336,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -348,6 +356,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w300,
                                         ),
                                   ),
@@ -394,6 +403,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -413,6 +423,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w300,
                                         ),
                                   ),
@@ -459,6 +470,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -478,6 +490,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w300,
                                         ),
                                   ),
@@ -524,6 +537,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -543,6 +557,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w300,
                                         ),
                                   ),
@@ -589,6 +604,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -608,6 +624,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w300,
                                         ),
                                   ),
@@ -654,6 +671,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -673,6 +691,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w300,
                                         ),
                                   ),
@@ -719,6 +738,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -738,6 +758,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w300,
                                         ),
                                   ),
@@ -784,6 +805,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -803,6 +825,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w300,
                                         ),
                                   ),
@@ -849,6 +872,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -868,6 +892,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w300,
                                         ),
                                   ),
@@ -914,6 +939,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -933,6 +959,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w300,
                                         ),
                                   ),
@@ -979,6 +1006,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -998,6 +1026,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w300,
                                         ),
                                   ),
@@ -1044,6 +1073,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -1063,6 +1093,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w300,
                                         ),
                                   ),
@@ -1109,6 +1140,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -1128,6 +1160,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w300,
                                         ),
                                   ),
@@ -1174,6 +1207,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -1193,6 +1227,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w300,
                                         ),
                                   ),
@@ -1239,6 +1274,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -1258,6 +1294,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w300,
                                         ),
                                   ),
@@ -1304,6 +1341,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -1323,6 +1361,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w300,
                                         ),
                                   ),
@@ -1369,6 +1408,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -1388,6 +1428,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w300,
                                         ),
                                   ),

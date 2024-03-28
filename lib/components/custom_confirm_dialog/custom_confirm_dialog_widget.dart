@@ -15,13 +15,15 @@ class CustomConfirmDialogWidget extends StatefulWidget {
     this.buttonText,
     required this.dismissAction,
     required this.mainAction,
-  });
+    bool? showDismissButton,
+  }) : this.showDismissButton = showDismissButton ?? true;
 
   final String? title;
   final String? description;
   final String? buttonText;
   final Future Function()? dismissAction;
   final Future Function()? mainAction;
+  final bool showDismissButton;
 
   @override
   State<CustomConfirmDialogWidget> createState() =>
@@ -77,6 +79,7 @@ class _CustomConfirmDialogWidgetState extends State<CustomConfirmDialogWidget> {
                       fontFamily: 'Lexend',
                       color: FlutterFlowTheme.of(context).accent3,
                       fontSize: 18.0,
+                      letterSpacing: 0.0,
                       fontWeight: FontWeight.w600,
                     ),
               ),
@@ -92,6 +95,7 @@ class _CustomConfirmDialogWidgetState extends State<CustomConfirmDialogWidget> {
                         fontFamily: 'Lexend',
                         color: FlutterFlowTheme.of(context).secondaryText,
                         fontSize: 12.0,
+                        letterSpacing: 0.0,
                       ),
                 ),
               ),
@@ -113,6 +117,7 @@ class _CustomConfirmDialogWidgetState extends State<CustomConfirmDialogWidget> {
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Lexend',
                         color: Colors.white,
+                        letterSpacing: 0.0,
                       ),
                   elevation: 3.0,
                   borderSide: BorderSide(
@@ -122,24 +127,26 @@ class _CustomConfirmDialogWidgetState extends State<CustomConfirmDialogWidget> {
                   borderRadius: BorderRadius.circular(8.0),
                 ),
               ),
-              InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onTap: () async {
-                  await widget.dismissAction?.call();
-                },
-                child: Text(
-                  'Omitir',
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Lexend',
-                        color: FlutterFlowTheme.of(context).accent3,
-                        fontSize: 12.0,
-                        decoration: TextDecoration.underline,
-                      ),
+              if (widget.showDismissButton)
+                InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    await widget.dismissAction?.call();
+                  },
+                  child: Text(
+                    'Omitir',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Lexend',
+                          color: FlutterFlowTheme.of(context).accent3,
+                          fontSize: 12.0,
+                          letterSpacing: 0.0,
+                          decoration: TextDecoration.underline,
+                        ),
+                  ),
                 ),
-              ),
             ].divide(SizedBox(height: 12.0)),
           ),
         ),

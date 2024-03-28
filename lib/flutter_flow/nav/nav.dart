@@ -115,12 +115,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => OKFNPayry09OlvidecontrasenaWidget(),
             ),
             FFRoute(
-              name: 'OK_FN_Payry_06_confirmacionRegistro',
-              path: 'oKFNPayry06ConfirmacionRegistro',
-              builder: (context, params) =>
-                  OKFNPayry06ConfirmacionRegistroWidget(),
-            ),
-            FFRoute(
               name: 'OK_FN_Payry_11_olvidecontrasenanueva',
               path: 'oKFNPayry11Olvidecontrasenanueva',
               builder: (context, params) =>
@@ -147,8 +141,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'OK_FN_Payry_17_verificarOTP',
               path: 'oKFNPayry17VerificarOTP',
               builder: (context, params) => OKFNPayry17VerificarOTPWidget(
-                otpCode: params.getParam('otpCode', ParamType.String),
-                phoneNumber: params.getParam('phoneNumber', ParamType.String),
+                otpCode: params.getParam(
+                  'otpCode',
+                  ParamType.String,
+                ),
+                phoneNumber: params.getParam(
+                  'phoneNumber',
+                  ParamType.String,
+                ),
               ),
             ),
             FFRoute(
@@ -162,10 +162,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'OK_FN_Payry_20_datosBancarios',
               path: 'oKFNPayry20DatosBancarios',
               builder: (context, params) => OKFNPayry20DatosBancariosWidget(
-                companyDocRef: params.getParam('companyDocRef',
-                    ParamType.DocumentReference, false, ['companies']),
-                clabe: params.getParam('clabe', ParamType.String),
-                bank: params.getParam('bank', ParamType.String),
+                companyDocRef: params.getParam(
+                  'companyDocRef',
+                  ParamType.DocumentReference,
+                  false,
+                  ['companies'],
+                ),
+                clabe: params.getParam(
+                  'clabe',
+                  ParamType.String,
+                ),
+                bank: params.getParam(
+                  'bank',
+                  ParamType.String,
+                ),
               ),
             ),
             FFRoute(
@@ -191,9 +201,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'oKFNPayry25Permisos',
               requireAuth: true,
               builder: (context, params) => OKFNPayry25PermisosWidget(
-                uid: params.getParam('uid', ParamType.String),
-                userName: params.getParam('userName', ParamType.String),
-                userEmail: params.getParam('userEmail', ParamType.String),
+                uid: params.getParam(
+                  'uid',
+                  ParamType.String,
+                ),
+                userName: params.getParam(
+                  'userName',
+                  ParamType.String,
+                ),
+                userEmail: params.getParam(
+                  'userEmail',
+                  ParamType.String,
+                ),
               ),
             ),
             FFRoute(
@@ -201,8 +220,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'oKFNPayry27SolicitarQR',
               requireAuth: true,
               builder: (context, params) => OKFNPayry27SolicitarQRWidget(
-                readQr: params.getParam('readQr', ParamType.bool),
-                createRefund: params.getParam('createRefund', ParamType.bool),
+                readQr: params.getParam(
+                  'readQr',
+                  ParamType.bool,
+                ),
+                createRefund: params.getParam(
+                  'createRefund',
+                  ParamType.bool,
+                ),
               ),
             ),
             FFRoute(
@@ -210,8 +235,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'oKFNPayry30HistorialQRs',
               requireAuth: true,
               builder: (context, params) => OKFNPayry30HistorialQRsWidget(
-                readAll: params.getParam('readAll', ParamType.bool),
-                createRefund: params.getParam('createRefund', ParamType.bool),
+                readAll: params.getParam(
+                  'readAll',
+                  ParamType.bool,
+                ),
+                createRefund: params.getParam(
+                  'createRefund',
+                  ParamType.bool,
+                ),
               ),
             ),
             FFRoute(
@@ -219,8 +250,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'oKFNPayry35HistorialSMS',
               requireAuth: true,
               builder: (context, params) => OKFNPayry35HistorialSMSWidget(
-                readAll: params.getParam('readAll', ParamType.bool),
-                createRefund: params.getParam('createRefund', ParamType.bool),
+                readAll: params.getParam(
+                  'readAll',
+                  ParamType.bool,
+                ),
+                createRefund: params.getParam(
+                  'createRefund',
+                  ParamType.bool,
+                ),
               ),
             ),
             FFRoute(
@@ -228,11 +265,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'qrdetails',
               requireAuth: true,
               builder: (context, params) => OKFNPayry31DetallesdeQRWidget(
-                registraCobroRef: params.getParam('registraCobroRef',
-                    ParamType.DocumentReference, false, ['registraCobro']),
-                createRefund: params.getParam('createRefund', ParamType.bool),
-                detallesCobroRef: params.getParam('detallesCobroRef',
-                    ParamType.DocumentReference, false, ['detallesCobro']),
+                registraCobroRef: params.getParam(
+                  'registraCobroRef',
+                  ParamType.DocumentReference,
+                  false,
+                  ['registraCobro'],
+                ),
+                createRefund: params.getParam(
+                  'createRefund',
+                  ParamType.bool,
+                ),
+                detallesCobroRef: params.getParam(
+                  'detallesCobroRef',
+                  ParamType.DocumentReference,
+                  false,
+                  ['detallesCobro'],
+                ),
               ),
             ),
             FFRoute(
@@ -252,11 +300,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'smsdetails',
               requireAuth: true,
               builder: (context, params) => OKFNPayry36DetallesdeSMSWidget(
-                registraCobroRef: params.getParam('registraCobroRef',
-                    ParamType.DocumentReference, false, ['registraCobro']),
-                createRefund: params.getParam('createRefund', ParamType.bool),
-                detallesCobroRef: params.getParam('detallesCobroRef',
-                    ParamType.DocumentReference, false, ['detallesCobro']),
+                registraCobroRef: params.getParam(
+                  'registraCobroRef',
+                  ParamType.DocumentReference,
+                  false,
+                  ['registraCobro'],
+                ),
+                createRefund: params.getParam(
+                  'createRefund',
+                  ParamType.bool,
+                ),
+                detallesCobroRef: params.getParam(
+                  'detallesCobroRef',
+                  ParamType.DocumentReference,
+                  false,
+                  ['detallesCobro'],
+                ),
               ),
             ),
             FFRoute(
@@ -264,8 +323,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'oKFNPayry32SolicitarSMS',
               requireAuth: true,
               builder: (context, params) => OKFNPayry32SolicitarSMSWidget(
-                readSms: params.getParam('readSms', ParamType.bool),
-                createRefund: params.getParam('createRefund', ParamType.bool),
+                readSms: params.getParam(
+                  'readSms',
+                  ParamType.bool,
+                ),
+                createRefund: params.getParam(
+                  'createRefund',
+                  ParamType.bool,
+                ),
               ),
             ),
             FFRoute(
@@ -308,7 +373,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'OK_FN_Payry_13_Menumas',
               path: 'oKFNPayry13Menumas',
               requireAuth: true,
-              builder: (context, params) => OKFNPayry13MenumasWidget(),
+              builder: (context, params) => OKFNPayry13MenumasWidget(
+                showWT: params.getParam(
+                  'showWT',
+                  ParamType.bool,
+                ),
+              ),
             ),
             FFRoute(
               name: 'OK_FN_Payry_43_Politicadeprivacidad',
@@ -326,8 +396,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'OK_FN_Payry_05_RegisterInv',
               path: 'registerinv/:id',
               builder: (context, params) => OKFNPayry05RegisterInvWidget(
-                id: params.getParam('id', ParamType.DocumentReference, false,
-                    ['user_invitations']),
+                id: params.getParam(
+                  'id',
+                  ParamType.DocumentReference,
+                  false,
+                  ['user_invitations'],
+                ),
               ),
             ),
             FFRoute(
@@ -342,9 +416,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'qrdetailstemp',
               requireAuth: true,
               builder: (context, params) => OKFNPayry31DetallesdeQRCodeWidget(
-                registraCobroRef: params.getParam('registraCobroRef',
-                    ParamType.DocumentReference, false, ['registraCobro']),
-                createRefund: params.getParam('createRefund', ParamType.bool),
+                registraCobroRef: params.getParam(
+                  'registraCobroRef',
+                  ParamType.DocumentReference,
+                  false,
+                  ['registraCobro'],
+                ),
+                createRefund: params.getParam(
+                  'createRefund',
+                  ParamType.bool,
+                ),
               ),
             ),
             FFRoute(
@@ -352,9 +433,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'smsdetailstemp',
               requireAuth: true,
               builder: (context, params) => OKFNPayry36DetallesdeSMSCodeWidget(
-                registraCobroRef: params.getParam('registraCobroRef',
-                    ParamType.DocumentReference, false, ['registraCobro']),
-                createRefund: params.getParam('createRefund', ParamType.bool),
+                registraCobroRef: params.getParam(
+                  'registraCobroRef',
+                  ParamType.DocumentReference,
+                  false,
+                  ['registraCobro'],
+                ),
+                createRefund: params.getParam(
+                  'createRefund',
+                  ParamType.bool,
+                ),
               ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
@@ -490,8 +578,12 @@ class FFParameters {
       return param;
     }
     // Return serialized value.
-    return deserializeParam<T>(param, type, isList,
-        collectionNamePath: collectionNamePath);
+    return deserializeParam<T>(
+      param,
+      type,
+      isList,
+      collectionNamePath: collectionNamePath,
+    );
   }
 }
 

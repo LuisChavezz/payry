@@ -86,6 +86,7 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
                         fontFamily: 'Lexend',
                         color: FlutterFlowTheme.of(context).accent3,
                         fontSize: 18.0,
+                        letterSpacing: 0.0,
                         fontWeight: FontWeight.w600,
                       ),
                 ),
@@ -116,7 +117,12 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
                                 0.0, 6.0, 0.0, 0.0),
                             child: Text(
                               '+52',
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lexend',
+                                    letterSpacing: 0.0,
+                                  ),
                             ),
                           ),
                         ],
@@ -131,10 +137,19 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: 'Celular',
-                              labelStyle:
-                                  FlutterFlowTheme.of(context).bodyMedium,
+                              labelStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lexend',
+                                    letterSpacing: 0.0,
+                                  ),
                               hintText: 'Ingresa el número celular...',
-                              hintStyle: FlutterFlowTheme.of(context).bodySmall,
+                              hintStyle: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .override(
+                                    fontFamily: 'Lexend',
+                                    letterSpacing: 0.0,
+                                  ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0xFF8788A5),
@@ -166,7 +181,13 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
                               contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 24.0, 20.0, 24.0),
                             ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Lexend',
+                                  letterSpacing: 0.0,
+                                ),
+                            minLines: null,
                             maxLength: 10,
                             keyboardType: TextInputType.phone,
                             validator: _model.phoneFieldControllerValidator
@@ -259,6 +280,7 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
                           );
                         },
                       );
+                      Navigator.pop(context);
                       if (_shouldSetState) setState(() {});
                       return;
                     } else {
@@ -316,6 +338,7 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Lexend',
                           color: Colors.white,
+                          letterSpacing: 0.0,
                         ),
                     elevation: 3.0,
                     borderSide: BorderSide(
@@ -339,6 +362,7 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
                           fontFamily: 'Lexend',
                           color: FlutterFlowTheme.of(context).accent3,
                           fontSize: 12.0,
+                          letterSpacing: 0.0,
                           decoration: TextDecoration.underline,
                         ),
                   ),

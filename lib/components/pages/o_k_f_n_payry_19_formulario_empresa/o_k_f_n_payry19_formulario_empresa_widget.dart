@@ -134,6 +134,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                     style: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Lexend',
                           color: FlutterFlowTheme.of(context).primaryText,
+                          letterSpacing: 0.0,
                         ),
                   ),
                 ),
@@ -284,6 +285,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                             fontFamily: 'Lexend',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
+                                            letterSpacing: 0.0,
                                           ),
                                       hintText:
                                           'Ingresa el nombre de tu empresa...',
@@ -292,6 +294,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           .override(
                                             fontFamily: 'Lexend',
                                             color: Color(0xFF8788A5),
+                                            letterSpacing: 0.0,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -337,8 +340,10 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           fontFamily: 'Lexend',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
                                         ),
+                                    minLines: null,
                                     validator: _model
                                         .nameFieldControllerValidator
                                         .asValidator(context),
@@ -366,6 +371,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                             fontFamily: 'Lexend',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
                                           ),
                                       hintText:
@@ -375,6 +381,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           .override(
                                             fontFamily: 'Lexend',
                                             color: Color(0xFF8788A5),
+                                            letterSpacing: 0.0,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -420,8 +427,11 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           fontFamily: 'Lexend',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
                                         ),
+                                    minLines: null,
+                                    maxLength: 18,
                                     validator: _model
                                         .aliasFieldControllerValidator
                                         .asValidator(context),
@@ -447,6 +457,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                             fontFamily: 'Lexend',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
                                           ),
                                       hintText:
@@ -456,6 +467,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           .override(
                                             fontFamily: 'Lexend',
                                             color: Color(0xFF8788A5),
+                                            letterSpacing: 0.0,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -501,8 +513,10 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           fontFamily: 'Lexend',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
                                         ),
+                                    minLines: null,
                                     keyboardType: TextInputType.emailAddress,
                                     validator: _model
                                         .emailFieldControllerValidator
@@ -541,6 +555,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryText,
+                                                  letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
                                                 ),
                                             hintText: 'Ingresa la calle...',
@@ -550,6 +565,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                     .override(
                                                       fontFamily: 'Lexend',
                                                       color: Color(0xFF8788A5),
+                                                      letterSpacing: 0.0,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
@@ -599,8 +615,10 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
+                                                letterSpacing: 0.0,
                                                 fontWeight: FontWeight.normal,
                                               ),
+                                          minLines: null,
                                           validator: _model
                                               .streetFieldControllerValidator
                                               .asValidator(context),
@@ -632,6 +650,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryText,
+                                                  letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
                                                 ),
                                             hintText: 'Ingresa el número...',
@@ -641,6 +660,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                     .override(
                                                       fontFamily: 'Lexend',
                                                       color: Color(0xFF8788A5),
+                                                      letterSpacing: 0.0,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
@@ -690,8 +710,10 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
+                                                letterSpacing: 0.0,
                                                 fontWeight: FontWeight.normal,
                                               ),
+                                          minLines: null,
                                           validator: _model
                                               .streetNumberFieldControllerValidator
                                               .asValidator(context),
@@ -724,6 +746,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                             fontFamily: 'Lexend',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
                                           ),
                                       hintText: 'Ingresa la colonia...',
@@ -732,6 +755,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           .override(
                                             fontFamily: 'Lexend',
                                             color: Color(0xFF8788A5),
+                                            letterSpacing: 0.0,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -777,8 +801,10 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           fontFamily: 'Lexend',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
                                         ),
+                                    minLines: null,
                                     validator: _model
                                         .neighborhoodFieldControllerValidator
                                         .asValidator(context),
@@ -806,6 +832,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                             fontFamily: 'Lexend',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
                                           ),
                                       hintText: 'Ingresa la ciudad...',
@@ -814,6 +841,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           .override(
                                             fontFamily: 'Lexend',
                                             color: Color(0xFF8788A5),
+                                            letterSpacing: 0.0,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -859,8 +887,10 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           fontFamily: 'Lexend',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
                                         ),
+                                    minLines: null,
                                     validator: _model
                                         .cityFieldControllerValidator
                                         .asValidator(context),
@@ -871,8 +901,12 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                       0.0, 4.0, 0.0, 0.0),
                                   child: Text(
                                     'Estado',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Lexend',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ),
                                 Padding(
@@ -932,6 +966,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           fontFamily: 'Lexend',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
+                                          letterSpacing: 0.0,
                                         ),
                                     hintText: 'Selecciona el estado...',
                                     icon: Icon(
@@ -955,8 +990,12 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                       0.0, 4.0, 0.0, 0.0),
                                   child: Text(
                                     'País',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Lexend',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ),
                                 Padding(
@@ -983,6 +1022,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           fontFamily: 'Lexend',
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
+                                          letterSpacing: 0.0,
                                         ),
                                     hintText: 'Selecciona el país...',
                                     icon: Icon(
@@ -1023,6 +1063,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                             fontFamily: 'Lexend',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
                                           ),
                                       hintText: 'Ingresa el código postal...',
@@ -1031,6 +1072,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           .override(
                                             fontFamily: 'Lexend',
                                             color: Color(0xFF8788A5),
+                                            letterSpacing: 0.0,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -1076,8 +1118,10 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           fontFamily: 'Lexend',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
                                         ),
+                                    minLines: null,
                                     keyboardType: TextInputType.number,
                                     validator: _model
                                         .zipCodeFieldControllerValidator
@@ -1089,8 +1133,12 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                       0.0, 4.0, 0.0, 0.0),
                                   child: Text(
                                     'Estatus',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Lexend',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ),
                                 Padding(
@@ -1125,6 +1173,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           fontFamily: 'Lexend',
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
+                                          letterSpacing: 0.0,
                                         ),
                                     hintText: 'Selecciona el estatus...',
                                     icon: Icon(
@@ -1156,6 +1205,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                             fontFamily: 'Lexend',
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                     Row(
@@ -1215,6 +1265,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                             fontFamily: 'Lexend',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
                                           ),
                                       hintText:
@@ -1224,6 +1275,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           .override(
                                             fontFamily: 'Lexend',
                                             color: Color(0xFF8788A5),
+                                            letterSpacing: 0.0,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -1269,8 +1321,10 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           fontFamily: 'Lexend',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
                                         ),
+                                    minLines: null,
                                     maxLength: 13,
                                     validator: _model
                                         .rFCFieldControllerValidator
@@ -1282,8 +1336,12 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                       0.0, 4.0, 0.0, 0.0),
                                   child: Text(
                                     'Régimen fiscal',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Lexend',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ),
                                 Padding(
@@ -1332,6 +1390,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                             .override(
                                               fontFamily: 'Lexend',
                                               color: Color(0xFF8788A5),
+                                              letterSpacing: 0.0,
                                             ),
                                         hintText:
                                             'Selecciona el régimen fiscal...',
@@ -1359,8 +1418,12 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                       0.0, 4.0, 0.0, 0.0),
                                   child: Text(
                                     'Uso de CFDI',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Lexend',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ),
                                 Padding(
@@ -1407,6 +1470,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                             .override(
                                               fontFamily: 'Lexend',
                                               color: Color(0xFF8788A5),
+                                              letterSpacing: 0.0,
                                             ),
                                         hintText:
                                             'Selecciona el uso del CFDI...',
@@ -1468,7 +1532,11 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                   'Categoría',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyMedium,
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                                 ),
                                               ),
                                               Padding(
@@ -1518,6 +1586,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                         fontFamily: 'Lexend',
                                                         color:
                                                             Color(0xFF8788A5),
+                                                        letterSpacing: 0.0,
                                                       ),
                                                   hintText:
                                                       'Selecciona la categoria de tu empresa...',
@@ -1565,7 +1634,11 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                     'Giro',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
                                                 ),
                                                 Padding(
@@ -1608,6 +1681,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                           fontFamily: 'Lexend',
                                                           color:
                                                               Color(0xFF8788A5),
+                                                          letterSpacing: 0.0,
                                                         ),
                                                     hintText:
                                                         'Selecciona el giro de tu empresa...',
@@ -1663,6 +1737,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                             fontFamily: 'Lexend',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
+                                            letterSpacing: 0.0,
                                           ),
                                       hintText: 'Ingresa un cupón...',
                                       hintStyle: FlutterFlowTheme.of(context)
@@ -1670,6 +1745,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           .override(
                                             fontFamily: 'Lexend',
                                             color: Color(0xFF8788A5),
+                                            letterSpacing: 0.0,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -1715,8 +1791,10 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           fontFamily: 'Lexend',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
                                         ),
+                                    minLines: null,
                                     validator: _model
                                         .couponFieldControllerValidator
                                         .asValidator(context),
@@ -2146,6 +2224,28 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           FFAppState().serverToken = _model
                                               .genToken!.jsonBody!
                                               .toString();
+
+                                          context.pushNamed(
+                                            'OK_FN_Payry_20_datosBancarios',
+                                            queryParameters: {
+                                              'companyDocRef': serializeParam(
+                                                oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                    ?.reference,
+                                                ParamType.DocumentReference,
+                                              ),
+                                              'clabe': serializeParam(
+                                                oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                    ?.clabe,
+                                                ParamType.String,
+                                              ),
+                                              'bank': serializeParam(
+                                                oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                    ?.bank,
+                                                ParamType.String,
+                                              ),
+                                            }.withoutNulls,
+                                          );
+
                                           if (_shouldSetState) setState(() {});
                                           return;
                                         } else {
@@ -2189,6 +2289,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                             .override(
                                               fontFamily: 'Lexend',
                                               color: Colors.white,
+                                              letterSpacing: 0.0,
                                             ),
                                         elevation: 3.0,
                                         borderSide: BorderSide(
@@ -2251,6 +2352,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primary,
+                                                letterSpacing: 0.0,
                                               ),
                                           elevation: 3.0,
                                           borderSide: BorderSide(
@@ -2294,6 +2396,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primary,
+                                                letterSpacing: 0.0,
                                               ),
                                           elevation: 3.0,
                                           borderSide: BorderSide(

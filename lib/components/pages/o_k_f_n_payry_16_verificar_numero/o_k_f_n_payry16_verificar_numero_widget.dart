@@ -112,6 +112,7 @@ class _OKFNPayry16VerificarNumeroWidgetState
                 style: FlutterFlowTheme.of(context).titleSmall.override(
                       fontFamily: 'Lexend',
                       color: FlutterFlowTheme.of(context).primaryText,
+                      letterSpacing: 0.0,
                     ),
               ),
               actions: [],
@@ -149,6 +150,7 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                         fontFamily: 'Lexend',
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ),
@@ -197,7 +199,11 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                               labelText: 'Celular',
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                               hintText:
                                                   'Ingresa los 10 digitos de tu celular...',
                                               hintStyle:
@@ -209,6 +215,7 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
@@ -255,7 +262,12 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                                           20.0, 24.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                            minLines: null,
                                             keyboardType: TextInputType.phone,
                                             validator: _model
                                                 .phoneFieldControllerValidator
@@ -391,6 +403,7 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                           .override(
                                             fontFamily: 'Lexend',
                                             color: Colors.white,
+                                            letterSpacing: 0.0,
                                           ),
                                       elevation: 3.0,
                                       borderSide: BorderSide(

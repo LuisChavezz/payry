@@ -52,7 +52,10 @@ class _MensajeWalkThroughWidgetState extends State<MensajeWalkThroughWidget> {
             BoxShadow(
               blurRadius: 4.0,
               color: Color(0x33000000),
-              offset: Offset(0.0, 2.0),
+              offset: Offset(
+                0.0,
+                2.0,
+              ),
             )
           ],
           borderRadius: BorderRadius.circular(15.0),
@@ -64,7 +67,10 @@ class _MensajeWalkThroughWidgetState extends State<MensajeWalkThroughWidget> {
             child: Text(
               widget.texto,
               textAlign: TextAlign.center,
-              style: FlutterFlowTheme.of(context).bodyMedium,
+              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    fontFamily: 'Lexend',
+                    letterSpacing: 0.0,
+                  ),
             ),
           ),
         ),

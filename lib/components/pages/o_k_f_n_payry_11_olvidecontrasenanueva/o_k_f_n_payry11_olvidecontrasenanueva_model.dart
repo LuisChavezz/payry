@@ -23,8 +23,6 @@ class OKFNPayry11OlvidecontrasenanuevaModel
   late bool newPasswordVisibility2;
   String? Function(BuildContext, String?)? newPasswordController2Validator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     newPasswordVisibility1 = false;
@@ -39,8 +37,4 @@ class OKFNPayry11OlvidecontrasenanuevaModel
     newPasswordFocusNode2?.dispose();
     newPasswordController2?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

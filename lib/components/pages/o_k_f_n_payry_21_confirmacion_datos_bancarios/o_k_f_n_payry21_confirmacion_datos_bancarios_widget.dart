@@ -94,6 +94,7 @@ class _OKFNPayry21ConfirmacionDatosBancariosWidgetState
                                           fontFamily: 'Poppins',
                                           color: FlutterFlowTheme.of(context)
                                               .accent3,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ),
@@ -121,6 +122,7 @@ class _OKFNPayry21ConfirmacionDatosBancariosWidgetState
                                   .override(
                                     fontFamily: 'Lexend',
                                     color: Colors.white,
+                                    letterSpacing: 0.0,
                                   ),
                               elevation: 3.0,
                               borderSide: BorderSide(

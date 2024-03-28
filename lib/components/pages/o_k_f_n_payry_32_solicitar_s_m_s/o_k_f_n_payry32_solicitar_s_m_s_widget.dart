@@ -163,6 +163,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                       style: FlutterFlowTheme.of(context).titleSmall.override(
                             fontFamily: 'Lexend',
                             color: FlutterFlowTheme.of(context).primaryText,
+                            letterSpacing: 0.0,
                           ),
                     ),
                     FlutterFlowIconButton(
@@ -252,10 +253,14 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                                 0.0, 0.0),
                                                     child: Text(
                                                       '+52',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Lexend',
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                 ],
@@ -276,13 +281,25 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMedium,
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Lexend',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
                                                       hintText:
                                                           'Ingresa el número celular...',
                                                       hintStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodySmall,
+                                                              .bodySmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Lexend',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
                                                         borderSide: BorderSide(
@@ -338,7 +355,12 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    minLines: null,
                                                     maxLength: 10,
                                                     keyboardType:
                                                         TextInputType.phone,
@@ -420,6 +442,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
@@ -432,6 +455,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                         fontFamily: 'Lexend',
                                                         color:
                                                             Color(0xFF8788A5),
+                                                        letterSpacing: 0.0,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
@@ -482,8 +506,10 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                 .override(
                                                   fontFamily: 'Lexend',
                                                   color: Color(0xFF8788A5),
+                                                  letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
                                                 ),
+                                            minLines: null,
                                             maxLength: 20,
                                             validator: _model
                                                 .conceptFieldControllerValidator
@@ -514,6 +540,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
@@ -526,6 +553,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                         fontFamily: 'Lexend',
                                                         color:
                                                             Color(0xFF8788A5),
+                                                        letterSpacing: 0.0,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
@@ -576,8 +604,10 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                 .override(
                                                   fontFamily: 'Lexend',
                                                   color: Color(0xFF8788A5),
+                                                  letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
                                                 ),
+                                            minLines: null,
                                             keyboardType: const TextInputType
                                                 .numberWithOptions(
                                                 decimal: true),
@@ -850,6 +880,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                       .override(
                                                         fontFamily: 'Lexend',
                                                         color: Colors.white,
+                                                        letterSpacing: 0.0,
                                                       ),
                                               elevation: 3.0,
                                               borderSide: BorderSide(
@@ -902,6 +933,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                       .override(
                                         fontFamily: 'Lexend',
                                         color: Color(0xFF5E4A98),
+                                        letterSpacing: 0.0,
                                       ),
                                   elevation: 3.0,
                                   borderSide: BorderSide(

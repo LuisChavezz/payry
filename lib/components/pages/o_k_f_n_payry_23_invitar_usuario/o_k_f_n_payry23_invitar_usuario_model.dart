@@ -43,8 +43,6 @@ class OKFNPayry23InvitarUsuarioModel
   // Stores action output result for [Cloud Function - sendInvitation] action in Button widget.
   SendInvitationCloudFunctionCallResponse? sendInvCF;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     emailFieldControllerValidator = _emailFieldControllerValidator;
@@ -56,8 +54,4 @@ class OKFNPayry23InvitarUsuarioModel
     emailFieldFocusNode?.dispose();
     emailFieldController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

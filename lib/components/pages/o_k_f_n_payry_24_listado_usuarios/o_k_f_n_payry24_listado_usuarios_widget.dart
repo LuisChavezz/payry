@@ -138,6 +138,7 @@ class _OKFNPayry24ListadoUsuariosWidgetState
                       style: FlutterFlowTheme.of(context).titleSmall.override(
                             fontFamily: 'Lexend',
                             color: FlutterFlowTheme.of(context).primaryText,
+                            letterSpacing: 0.0,
                           ),
                     ),
                     FlutterFlowIconButton(
@@ -202,6 +203,7 @@ class _OKFNPayry24ListadoUsuariosWidgetState
                                           .override(
                                             fontFamily: 'Lexend',
                                             color: Colors.white,
+                                            letterSpacing: 0.0,
                                           ),
                                       elevation: 3.0,
                                       borderSide: BorderSide(
@@ -350,6 +352,8 @@ class _OKFNPayry24ListadoUsuariosWidgetState
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                 ),
                                                       ),
                                                       DynamicSwitchWidget(

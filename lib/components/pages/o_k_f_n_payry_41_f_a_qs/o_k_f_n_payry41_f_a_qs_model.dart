@@ -71,8 +71,6 @@ class OKFNPayry41FAQsModel extends FlutterFlowModel<OKFNPayry41FAQsWidget> {
   // State field(s) for Expandable widget.
   late ExpandableController expandableController20;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -100,8 +98,4 @@ class OKFNPayry41FAQsModel extends FlutterFlowModel<OKFNPayry41FAQsWidget> {
     expandableController19.dispose();
     expandableController20.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

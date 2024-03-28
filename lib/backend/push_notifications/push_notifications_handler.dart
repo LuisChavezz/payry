@@ -111,7 +111,6 @@ final parametersBuilderMap =
   'OK_FN_Payry_08_iniciasesion': ParameterData.none(),
   'OK_FN_Payry_05_Registrate': ParameterData.none(),
   'OK_FN_Payry_09_olvidecontrasena': ParameterData.none(),
-  'OK_FN_Payry_06_confirmacionRegistro': ParameterData.none(),
   'OK_FN_Payry_11_olvidecontrasenanueva': ParameterData.none(),
   'OK_FN_Payry_14_Perfil': ParameterData.none(),
   'OK_FN_Payry_15_EditProfile': ParameterData.none(),
@@ -191,7 +190,11 @@ final parametersBuilderMap =
   'OK_FN_Payry_10_confirmacionCorreoEnviadoContrasena': ParameterData.none(),
   'OK_FN_Payry_12_confirmacionContrasenaActualizada': ParameterData.none(),
   'OK_FN_Payry_21_confirmacionDatosBancarios': ParameterData.none(),
-  'OK_FN_Payry_13_Menumas': ParameterData.none(),
+  'OK_FN_Payry_13_Menumas': (data) async => ParameterData(
+        allParams: {
+          'showWT': getParameter<bool>(data, 'showWT'),
+        },
+      ),
   'OK_FN_Payry_43_Politicadeprivacidad': ParameterData.none(),
   'OK_FN_Payry_26_Dashboard': ParameterData.none(),
   'OK_FN_Payry_05_RegisterInv': (data) async {

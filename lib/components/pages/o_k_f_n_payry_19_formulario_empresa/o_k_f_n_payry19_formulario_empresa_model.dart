@@ -179,8 +179,6 @@ class OKFNPayry19FormularioEmpresaModel
   // Stores action output result for [Cloud Function - generateToken] action in Button widget.
   GenerateTokenCloudFunctionCallResponse? genToken;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     nameFieldControllerValidator = _nameFieldControllerValidator;
@@ -228,8 +226,4 @@ class OKFNPayry19FormularioEmpresaModel
     couponFieldFocusNode?.dispose();
     couponFieldController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

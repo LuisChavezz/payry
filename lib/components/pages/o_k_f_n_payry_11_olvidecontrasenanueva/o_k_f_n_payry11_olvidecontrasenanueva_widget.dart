@@ -69,6 +69,7 @@ class _OKFNPayry11OlvidecontrasenanuevaWidgetState
           style: FlutterFlowTheme.of(context).titleSmall.override(
                 fontFamily: 'Lexend',
                 color: FlutterFlowTheme.of(context).primaryText,
+                letterSpacing: 0.0,
               ),
         ),
         actions: [],
@@ -112,6 +113,7 @@ class _OKFNPayry11OlvidecontrasenanuevaWidgetState
                                 fontFamily: 'Lexend',
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 fontSize: 16.0,
+                                letterSpacing: 0.0,
                               ),
                         ),
                       ),
@@ -130,12 +132,14 @@ class _OKFNPayry11OlvidecontrasenanuevaWidgetState
                           FlutterFlowTheme.of(context).bodyMedium.override(
                                 fontFamily: 'Lexend',
                                 color: FlutterFlowTheme.of(context).primaryText,
+                                letterSpacing: 0.0,
                               ),
                       hintText: 'Ingresa tu nueva contraseña...',
                       hintStyle:
                           FlutterFlowTheme.of(context).bodySmall.override(
                                 fontFamily: 'Lexend',
                                 color: Color(0xFF8788A5),
+                                letterSpacing: 0.0,
                               ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -187,7 +191,9 @@ class _OKFNPayry11OlvidecontrasenanuevaWidgetState
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Lexend',
                           color: FlutterFlowTheme.of(context).primaryText,
+                          letterSpacing: 0.0,
                         ),
+                    minLines: null,
                     validator: _model.newPasswordController1Validator
                         .asValidator(context),
                   ),
@@ -200,12 +206,17 @@ class _OKFNPayry11OlvidecontrasenanuevaWidgetState
                     obscureText: !_model.newPasswordVisibility2,
                     decoration: InputDecoration(
                       labelText: 'Confirmar contraseña',
-                      labelStyle: FlutterFlowTheme.of(context).bodyMedium,
+                      labelStyle:
+                          FlutterFlowTheme.of(context).bodyMedium.override(
+                                fontFamily: 'Lexend',
+                                letterSpacing: 0.0,
+                              ),
                       hintText: 'Confirma tu nueva contraseña...',
                       hintStyle:
                           FlutterFlowTheme.of(context).bodySmall.override(
                                 fontFamily: 'Lexend',
                                 color: Color(0xFF8788A5),
+                                letterSpacing: 0.0,
                               ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -254,7 +265,11 @@ class _OKFNPayry11OlvidecontrasenanuevaWidgetState
                         ),
                       ),
                     ),
-                    style: FlutterFlowTheme.of(context).bodyMedium,
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Lexend',
+                          letterSpacing: 0.0,
+                        ),
+                    minLines: null,
                     validator: _model.newPasswordController2Validator
                         .asValidator(context),
                   ),
@@ -281,6 +296,7 @@ class _OKFNPayry11OlvidecontrasenanuevaWidgetState
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Lexend',
                                   color: Colors.white,
+                                  letterSpacing: 0.0,
                                 ),
                         elevation: 3.0,
                         borderSide: BorderSide(

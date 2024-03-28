@@ -68,8 +68,6 @@ class OKFNPayry20DatosBancariosModel
   // Stores action output result for [Cloud Function - reportCompany] action in Button widget.
   ReportCompanyCloudFunctionCallResponse? reportCompFC;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     clabeFieldControllerValidator = _clabeFieldControllerValidator;
@@ -86,8 +84,4 @@ class OKFNPayry20DatosBancariosModel
     bankFieldFocusNode?.dispose();
     bankFieldController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

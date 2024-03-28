@@ -75,8 +75,6 @@ class OKFNPayry27SolicitarQRModel
   // Model for NavBarFloting component.
   late NavBarFlotingModel navBarFlotingModel;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     conceptFieldControllerValidator = _conceptFieldControllerValidator;
@@ -96,8 +94,4 @@ class OKFNPayry27SolicitarQRModel
 
     navBarFlotingModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

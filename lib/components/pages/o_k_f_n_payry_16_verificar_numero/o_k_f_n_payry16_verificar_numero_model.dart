@@ -19,8 +19,6 @@ class OKFNPayry16VerificarNumeroModel
   TextEditingController? phoneFieldController;
   String? Function(BuildContext, String?)? phoneFieldControllerValidator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -30,8 +28,4 @@ class OKFNPayry16VerificarNumeroModel
     phoneFieldFocusNode?.dispose();
     phoneFieldController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }
