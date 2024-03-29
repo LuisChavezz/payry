@@ -307,7 +307,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                   BorderRadius.circular(8.0),
                                             ),
                                             filled: true,
-                                            fillColor: Color(0x83CCCCCC),
+                                            fillColor: Color(0x1ACCCCCC),
                                             contentPadding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     20.0, 24.0, 20.0, 24.0),
@@ -576,7 +576,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                         .showSnackBar(
                                                       SnackBar(
                                                         content: Text(
-                                                          'Passwords don\'t match!',
+                                                          'Las contraseñas no coinciden.',
                                                         ),
                                                       ),
                                                     );

@@ -137,6 +137,12 @@ class OKFNPayry19FormularioEmpresaModel
   // State field(s) for StatusDropDown widget.
   String? statusDropDownValue;
   FormFieldController<String>? statusDropDownValueController;
+  // State field(s) for giroCatDropDown widget.
+  String? giroCatDropDownValue;
+  FormFieldController<String>? giroCatDropDownValueController;
+  // State field(s) for giroDropDown widget.
+  String? giroDropDownValue;
+  FormFieldController<String>? giroDropDownValueController;
   // State field(s) for RequireBillSwitch widget.
   bool? requireBillSwitchValue;
   // State field(s) for RFCField widget.
@@ -160,12 +166,6 @@ class OKFNPayry19FormularioEmpresaModel
   // State field(s) for CFDIDropDown widget.
   String? cFDIDropDownValue;
   FormFieldController<String>? cFDIDropDownValueController;
-  // State field(s) for giroCatDropDown widget.
-  String? giroCatDropDownValue;
-  FormFieldController<String>? giroCatDropDownValueController;
-  // State field(s) for giroDropDown widget.
-  String? giroDropDownValue;
-  FormFieldController<String>? giroDropDownValueController;
   // State field(s) for CouponField widget.
   FocusNode? couponFieldFocusNode;
   TextEditingController? couponFieldController;

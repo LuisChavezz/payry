@@ -52,8 +52,6 @@ class OKFNPayry15EditProfileModel
   TextEditingController? phoneFieldController;
   final phoneFieldMask = MaskTextInputFormatter(mask: '##########');
   String? Function(BuildContext, String?)? phoneFieldControllerValidator;
-  // State field(s) for StatusSwitch widget.
-  bool? statusSwitchValue;
   // Stores action output result for [Cloud Function - reportUser] action in Button widget.
   ReportUserCloudFunctionCallResponse? reportUserCF;
 

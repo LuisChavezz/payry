@@ -340,7 +340,9 @@ class _OKFNPayry15EditProfileWidgetState
                                                       ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
-                                                  color: Color(0xFF8788A5),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
                                                   width: 1.0,
                                                 ),
                                                 borderRadius:
@@ -348,7 +350,9 @@ class _OKFNPayry15EditProfileWidgetState
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
-                                                  color: Colors.white,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
                                                   width: 1.0,
                                                 ),
                                                 borderRadius:
@@ -494,8 +498,9 @@ class _OKFNPayry15EditProfileWidgetState
                                                       enabledBorder:
                                                           OutlineInputBorder(
                                                         borderSide: BorderSide(
-                                                          color:
-                                                              Color(0xFF8788A5),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           width: 1.0,
                                                         ),
                                                         borderRadius:
@@ -505,7 +510,9 @@ class _OKFNPayry15EditProfileWidgetState
                                                       focusedBorder:
                                                           OutlineInputBorder(
                                                         borderSide: BorderSide(
-                                                          color: Colors.white,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           width: 1.0,
                                                         ),
                                                         borderRadius:
@@ -705,58 +712,6 @@ class _OKFNPayry15EditProfileWidgetState
                                       ),
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(-1.0, 0.0),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 8.0, 0.0, 4.0),
-                                          child: Text(
-                                            'Estatus',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  fontSize: 12.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w300,
-                                                ),
-                                          ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(-1.0, 0.0),
-                                        child: AuthUserStreamWidget(
-                                          builder: (context) => Switch.adaptive(
-                                            value: _model.statusSwitchValue ??=
-                                                valueOrDefault<bool>(
-                                                    currentUserDocument?.status,
-                                                    false),
-                                            onChanged: (newValue) async {
-                                              setState(() =>
-                                                  _model.statusSwitchValue =
-                                                      newValue!);
-                                            },
-                                            activeColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .success,
-                                            activeTrackColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .accent1,
-                                            inactiveTrackColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .accent4,
-                                            inactiveThumbColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryText,
-                                          ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment:
                                             AlignmentDirectional(0.0, 0.0),
                                         child: Padding(
                                           padding:
@@ -764,7 +719,6 @@ class _OKFNPayry15EditProfileWidgetState
                                                   0.0, 20.0, 0.0, 10.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
-                                              var _shouldSetState = false;
                                               if (_model.formKey.currentState ==
                                                       null ||
                                                   !_model.formKey.currentState!
@@ -778,8 +732,6 @@ class _OKFNPayry15EditProfileWidgetState
                                                     .nameFieldController.text,
                                                 phoneNumber: _model
                                                     .phoneFieldController.text,
-                                                status:
-                                                    _model.statusSwitchValue,
                                                 photoUrl: () {
                                                   if (_model.uploadedFileUrl !=
                                                           null &&
@@ -796,13 +748,6 @@ class _OKFNPayry15EditProfileWidgetState
                                                   }
                                                 }(),
                                               ));
-                                              if (Navigator.of(context)
-                                                  .canPop()) {
-                                                context.pop();
-                                              }
-                                              context.pushNamed(
-                                                  'OK_FN_Payry_14_Perfil');
-
                                               try {
                                                 final result =
                                                     await FirebaseFunctions
@@ -831,7 +776,6 @@ class _OKFNPayry15EditProfileWidgetState
                                                 );
                                               }
 
-                                              _shouldSetState = true;
                                               if (_model
                                                   .reportUserCF!.succeeded!) {
                                                 await showDialog(
@@ -854,9 +798,6 @@ class _OKFNPayry15EditProfileWidgetState
                                                     );
                                                   },
                                                 );
-                                                if (_shouldSetState)
-                                                  setState(() {});
-                                                return;
                                               } else {
                                                 await showDialog(
                                                   context: context,
@@ -877,13 +818,11 @@ class _OKFNPayry15EditProfileWidgetState
                                                     );
                                                   },
                                                 );
-                                                if (_shouldSetState)
-                                                  setState(() {});
-                                                return;
                                               }
 
-                                              if (_shouldSetState)
-                                                setState(() {});
+                                              context.safePop();
+
+                                              setState(() {});
                                             },
                                             text: 'Guardar',
                                             options: FFButtonOptions(

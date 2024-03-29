@@ -169,7 +169,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                               borderSide: BorderSide(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondaryText,
+                                                        .primaryText,
                                                 width: 1.0,
                                               ),
                                               borderRadius:
@@ -245,7 +245,9 @@ class _OKFNPayry08IniciasesionWidgetState
                                                     ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
-                                                color: Color(0xFF8788A5),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
                                                 width: 1.0,
                                               ),
                                               borderRadius:
@@ -253,7 +255,9 @@ class _OKFNPayry08IniciasesionWidgetState
                                             ),
                                             focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
-                                                color: Colors.white,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
                                                 width: 1.0,
                                               ),
                                               borderRadius:

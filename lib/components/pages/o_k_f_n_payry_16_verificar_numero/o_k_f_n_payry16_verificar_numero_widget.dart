@@ -255,7 +255,7 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                                     BorderRadius.circular(8.0),
                                               ),
                                               filled: true,
-                                              fillColor: Color(0x83CCCCCC),
+                                              fillColor: Color(0x1ACCCCCC),
                                               contentPadding:
                                                   EdgeInsetsDirectional
                                                       .fromSTEB(20.0, 24.0,
@@ -333,7 +333,7 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                                 .showSnackBar(
                                               SnackBar(
                                                 content: Text(
-                                                    'Phone Number is required and has to start with +.'),
+                                                    'El número de teléfono es requerido, y debe comenzar con \'+\'.'),
                                               ),
                                             );
                                             return;
