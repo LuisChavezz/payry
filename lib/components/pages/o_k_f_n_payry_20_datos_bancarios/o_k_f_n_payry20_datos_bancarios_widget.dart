@@ -440,7 +440,7 @@ class _OKFNPayry20DatosBancariosWidgetState
                                                 BorderRadius.circular(8.0),
                                           ),
                                           filled: true,
-                                          fillColor: Color(0x83CCCCCC),
+                                          fillColor: Color(0x1ACCCCCC),
                                           contentPadding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   20.0, 24.0, 20.0, 24.0),
@@ -586,6 +586,8 @@ class _OKFNPayry20DatosBancariosWidgetState
                                             borderRadius:
                                                 BorderRadius.circular(10.0),
                                             disabledColor: Color(0x83CCCCCC),
+                                            disabledTextColor:
+                                                Color(0xFFA1A1A1),
                                           ),
                                         ).addWalkthrough(
                                           buttonK3vkl7p3,

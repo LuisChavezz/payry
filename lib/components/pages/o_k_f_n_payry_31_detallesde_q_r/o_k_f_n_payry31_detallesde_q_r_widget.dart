@@ -702,15 +702,13 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                               buttonSize: 50.0,
                                               fillColor:
                                                   FlutterFlowTheme.of(context)
-                                                      .accent3,
+                                                      .errorRed,
                                               disabledColor: Color(0x83CCCCCC),
                                               disabledIconColor:
                                                   Color(0xFFA1A1A1),
                                               icon: Icon(
                                                 Icons.cancel_outlined,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondary,
+                                                color: Colors.white,
                                                 size: 30.0,
                                               ),
                                               showLoadingIndicator: true,

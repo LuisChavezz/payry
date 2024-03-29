@@ -166,15 +166,17 @@ class _OKFNPayry17VerificarOTPWidgetState
                                 ),
                                 shape: PinCodeFieldShape.box,
                                 activeColor:
-                                    FlutterFlowTheme.of(context).secondaryText,
+                                    FlutterFlowTheme.of(context).primaryText,
                                 inactiveColor:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                selectedColor: Colors.white,
+                                    FlutterFlowTheme.of(context).primaryText,
+                                selectedColor:
+                                    FlutterFlowTheme.of(context).primaryText,
                                 activeFillColor:
-                                    FlutterFlowTheme.of(context).secondaryText,
+                                    FlutterFlowTheme.of(context).primaryText,
                                 inactiveFillColor:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                selectedFillColor: Colors.white,
+                                    FlutterFlowTheme.of(context).primaryText,
+                                selectedFillColor:
+                                    FlutterFlowTheme.of(context).primaryText,
                               ),
                               controller: _model.pinCodeController,
                               onChanged: (_) {},
@@ -288,7 +290,7 @@ class _OKFNPayry17VerificarOTPWidgetState
                                                     .showSnackBar(
                                                   SnackBar(
                                                     content: Text(
-                                                        'Enter SMS verification code.'),
+                                                        'Ingresa el código de verificación del SMS.'),
                                                   ),
                                                 );
                                                 return;
@@ -313,7 +315,7 @@ class _OKFNPayry17VerificarOTPWidgetState
                                                     .showSnackBar(
                                                   SnackBar(
                                                     content: Text(
-                                                        'Enter SMS verification code.'),
+                                                        'Ingresa el código de verificación del SMS.'),
                                                   ),
                                                 );
                                                 return;
@@ -408,7 +410,7 @@ class _OKFNPayry17VerificarOTPWidgetState
                                           .showSnackBar(
                                         SnackBar(
                                           content: Text(
-                                              'Phone Number is required and has to start with +.'),
+                                              'El número de teléfono es requerido, y debe comenzar con \'+\'.'),
                                         ),
                                       );
                                       return;

@@ -495,7 +495,7 @@ class _OKFNPayry05RegistrateWidgetState
                                                     .showSnackBar(
                                                   SnackBar(
                                                     content: Text(
-                                                      'Passwords don\'t match!',
+                                                      'Las contraseñas no coinciden.',
                                                     ),
                                                   ),
                                                 );

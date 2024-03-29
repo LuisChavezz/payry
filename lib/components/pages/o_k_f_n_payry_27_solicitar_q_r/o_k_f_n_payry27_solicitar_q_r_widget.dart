@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/walkthroughs/como_generar_un_co_di.dart';
+import 'dart:async';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
@@ -16,6 +17,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -42,6 +44,8 @@ class _OKFNPayry27SolicitarQRWidgetState
   late OKFNPayry27SolicitarQRModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  late StreamSubscription<bool> _keyboardVisibilitySubscription;
+  bool _isKeyboardVisible = false;
 
   @override
   void initState() {
@@ -70,6 +74,15 @@ class _OKFNPayry27SolicitarQRWidgetState
       }
     });
 
+    if (!isWeb) {
+      _keyboardVisibilitySubscription =
+          KeyboardVisibilityController().onChange.listen((bool visible) {
+        setState(() {
+          _isKeyboardVisible = visible;
+        });
+      });
+    }
+
     _model.conceptFieldController ??= TextEditingController();
     _model.conceptFieldFocusNode ??= FocusNode();
 
@@ -81,6 +94,9 @@ class _OKFNPayry27SolicitarQRWidgetState
   void dispose() {
     _model.dispose();
 
+    if (!isWeb) {
+      _keyboardVisibilitySubscription.cancel();
+    }
     super.dispose();
   }
 
@@ -254,7 +270,9 @@ class _OKFNPayry27SolicitarQRWidgetState
                                                       ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
-                                                  color: Color(0xFF8788A5),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
                                                   width: 1.0,
                                                 ),
                                                 borderRadius:
@@ -354,7 +372,9 @@ class _OKFNPayry27SolicitarQRWidgetState
                                                       ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
-                                                  color: Color(0xFF8788A5),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
                                                   width: 1.0,
                                                 ),
                                                 borderRadius:
@@ -731,22 +751,25 @@ class _OKFNPayry27SolicitarQRWidgetState
                           ],
                         ),
                       ),
-                    Align(
-                      alignment: AlignmentDirectional(0.0, 1.0),
-                      child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 18.0),
-                        child: wrapWithModel(
-                          model: _model.navBarFlotingModel,
-                          updateCallback: () => setState(() {}),
-                          child: NavBarFlotingWidget(
-                            userPermissions:
-                                oKFNPayry27SolicitarQRUserPermissionsRecord!,
-                            pageName: 'codi',
+                    if (!(isWeb
+                        ? MediaQuery.viewInsetsOf(context).bottom > 0
+                        : _isKeyboardVisible))
+                      Align(
+                        alignment: AlignmentDirectional(0.0, 1.0),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 18.0),
+                          child: wrapWithModel(
+                            model: _model.navBarFlotingModel,
+                            updateCallback: () => setState(() {}),
+                            child: NavBarFlotingWidget(
+                              userPermissions:
+                                  oKFNPayry27SolicitarQRUserPermissionsRecord!,
+                              pageName: 'codi',
+                            ),
                           ),
                         ),
                       ),
-                    ),
                   ],
                 ),
               ),

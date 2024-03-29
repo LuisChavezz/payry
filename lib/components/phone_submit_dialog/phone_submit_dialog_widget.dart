@@ -152,14 +152,16 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: Color(0xFF8788A5),
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: Colors.white,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(8.0),
