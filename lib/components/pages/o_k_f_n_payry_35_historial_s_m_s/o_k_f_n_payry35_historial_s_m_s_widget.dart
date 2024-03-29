@@ -98,6 +98,7 @@ class _OKFNPayry35HistorialSMSWidgetState
             style: FlutterFlowTheme.of(context).titleSmall.override(
                   fontFamily: 'Lexend',
                   color: FlutterFlowTheme.of(context).primaryText,
+                  letterSpacing: 0.0,
                 ),
           ),
           actions: [],
@@ -119,7 +120,11 @@ class _OKFNPayry35HistorialSMSWidgetState
                         labelColor: FlutterFlowTheme.of(context).primaryText,
                         unselectedLabelColor:
                             FlutterFlowTheme.of(context).secondaryText,
-                        labelStyle: FlutterFlowTheme.of(context).titleSmall,
+                        labelStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Lexend',
+                                  letterSpacing: 0.0,
+                                ),
                         unselectedLabelStyle: TextStyle(),
                         indicatorColor: FlutterFlowTheme.of(context).primary,
                         padding: EdgeInsets.all(4.0),
@@ -241,6 +246,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                   .of(context)
                                                               .primaryText,
                                                           fontSize: 14.0,
+                                                          letterSpacing: 0.0,
                                                         ),
                                               ),
                                               Container(
@@ -281,6 +287,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                             }
                                                           },
                                                         ),
+                                                        autofocus: false,
                                                         obscureText: false,
                                                         decoration:
                                                             InputDecoration(
@@ -295,6 +302,8 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                         'Poppins',
                                                                     color: Color(
                                                                         0xFF8788A5),
+                                                                    letterSpacing:
+                                                                        0.0,
                                                                   ),
                                                           hintStyle:
                                                               FlutterFlowTheme.of(
@@ -305,6 +314,8 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                         'Poppins',
                                                                     color: Colors
                                                                         .white,
+                                                                    letterSpacing:
+                                                                        0.0,
                                                                   ),
                                                           enabledBorder:
                                                               UnderlineInputBorder(
@@ -394,7 +405,10 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                       'Lexend',
                                                                   color: Color(
                                                                       0xFF8788A5),
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                 ),
+                                                        minLines: null,
                                                         validator: _model
                                                             .searchFieldController1Validator
                                                             .asValidator(
@@ -621,6 +635,8 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                                 'Lexend',
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primaryText,
+                                                                            letterSpacing:
+                                                                                0.0,
                                                                           ),
                                                                     ),
                                                                   ),
@@ -672,6 +688,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Lexend',
                                                                                         color: FlutterFlowTheme.of(context).primaryText,
+                                                                                        letterSpacing: 0.0,
                                                                                       ),
                                                                                 ),
                                                                                 Text(
@@ -679,6 +696,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Lexend',
                                                                                         color: FlutterFlowTheme.of(context).accent3,
+                                                                                        letterSpacing: 0.0,
                                                                                       ),
                                                                                 ),
                                                                               ],
@@ -704,6 +722,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                             .override(
                                                                               fontFamily: 'Lexend',
                                                                               color: FlutterFlowTheme.of(context).accent3,
+                                                                              letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w200,
                                                                             ),
                                                                       ),
@@ -834,6 +853,8 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                                 'Lexend',
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primaryText,
+                                                                            letterSpacing:
+                                                                                0.0,
                                                                           ),
                                                                     ),
                                                                   ),
@@ -885,6 +906,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Lexend',
                                                                                         color: FlutterFlowTheme.of(context).primaryText,
+                                                                                        letterSpacing: 0.0,
                                                                                       ),
                                                                                 ),
                                                                                 Text(
@@ -892,6 +914,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Lexend',
                                                                                         color: FlutterFlowTheme.of(context).accent3,
+                                                                                        letterSpacing: 0.0,
                                                                                       ),
                                                                                 ),
                                                                               ],
@@ -917,6 +940,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                             .override(
                                                                               fontFamily: 'Lexend',
                                                                               color: FlutterFlowTheme.of(context).accent3,
+                                                                              letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w200,
                                                                             ),
                                                                       ),
@@ -1020,6 +1044,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                   .of(context)
                                                               .primaryText,
                                                           fontSize: 14.0,
+                                                          letterSpacing: 0.0,
                                                         ),
                                               ),
                                               Container(
@@ -1060,6 +1085,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                             }
                                                           },
                                                         ),
+                                                        autofocus: false,
                                                         obscureText: false,
                                                         decoration:
                                                             InputDecoration(
@@ -1074,6 +1100,8 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                         'Poppins',
                                                                     color: Color(
                                                                         0xFF8788A5),
+                                                                    letterSpacing:
+                                                                        0.0,
                                                                   ),
                                                           hintStyle:
                                                               FlutterFlowTheme.of(
@@ -1084,6 +1112,8 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                         'Poppins',
                                                                     color: Colors
                                                                         .white,
+                                                                    letterSpacing:
+                                                                        0.0,
                                                                   ),
                                                           enabledBorder:
                                                               UnderlineInputBorder(
@@ -1173,7 +1203,10 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                       'Lexend',
                                                                   color: Color(
                                                                       0xFF8788A5),
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                 ),
+                                                        minLines: null,
                                                         validator: _model
                                                             .searchFieldController2Validator
                                                             .asValidator(
@@ -1392,6 +1425,8 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                                 'Lexend',
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primaryText,
+                                                                            letterSpacing:
+                                                                                0.0,
                                                                           ),
                                                                     ),
                                                                   ),
@@ -1443,6 +1478,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Lexend',
                                                                                         color: FlutterFlowTheme.of(context).primaryText,
+                                                                                        letterSpacing: 0.0,
                                                                                       ),
                                                                                 ),
                                                                                 Text(
@@ -1450,6 +1486,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Lexend',
                                                                                         color: FlutterFlowTheme.of(context).accent3,
+                                                                                        letterSpacing: 0.0,
                                                                                       ),
                                                                                 ),
                                                                               ],
@@ -1475,6 +1512,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                             .override(
                                                                               fontFamily: 'Lexend',
                                                                               color: FlutterFlowTheme.of(context).accent3,
+                                                                              letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w200,
                                                                             ),
                                                                       ),
@@ -1597,6 +1635,8 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                                 'Lexend',
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primaryText,
+                                                                            letterSpacing:
+                                                                                0.0,
                                                                           ),
                                                                     ),
                                                                   ),
@@ -1648,6 +1688,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Lexend',
                                                                                         color: FlutterFlowTheme.of(context).primaryText,
+                                                                                        letterSpacing: 0.0,
                                                                                       ),
                                                                                 ),
                                                                                 Text(
@@ -1655,6 +1696,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Lexend',
                                                                                         color: FlutterFlowTheme.of(context).accent3,
+                                                                                        letterSpacing: 0.0,
                                                                                       ),
                                                                                 ),
                                                                               ],
@@ -1680,6 +1722,7 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                             .override(
                                                                               fontFamily: 'Lexend',
                                                                               color: FlutterFlowTheme.of(context).accent3,
+                                                                              letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w200,
                                                                             ),
                                                                       ),

@@ -5,8 +5,6 @@ export '/components/pages/o_k_f_n_payry_05_registrate/o_k_f_n_payry05_registrate
     show OKFNPayry05RegistrateWidget;
 export '/components/pages/o_k_f_n_payry_09_olvidecontrasena/o_k_f_n_payry09_olvidecontrasena_widget.dart'
     show OKFNPayry09OlvidecontrasenaWidget;
-export '/components/pages/o_k_f_n_payry_06_confirmacion_registro/o_k_f_n_payry06_confirmacion_registro_widget.dart'
-    show OKFNPayry06ConfirmacionRegistroWidget;
 export '/components/pages/o_k_f_n_payry_11_olvidecontrasenanueva/o_k_f_n_payry11_olvidecontrasenanueva_widget.dart'
     show OKFNPayry11OlvidecontrasenanuevaWidget;
 export '/components/pages/o_k_f_n_payry_14_perfil/o_k_f_n_payry14_perfil_widget.dart'

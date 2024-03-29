@@ -92,8 +92,6 @@ class OKFNPayry32SolicitarSMSModel
   // Model for NavBarFloting component.
   late NavBarFlotingModel navBarFlotingModel;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     phoneFieldControllerValidator = _phoneFieldControllerValidator;
@@ -117,8 +115,4 @@ class OKFNPayry32SolicitarSMSModel
 
     navBarFlotingModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

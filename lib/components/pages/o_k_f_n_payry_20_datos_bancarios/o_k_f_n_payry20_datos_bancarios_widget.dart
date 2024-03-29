@@ -157,6 +157,7 @@ class _OKFNPayry20DatosBancariosWidgetState
                     style: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Lexend',
                           color: FlutterFlowTheme.of(context).primaryText,
+                          letterSpacing: 0.0,
                         ),
                   ),
                   FlutterFlowIconButton(
@@ -297,6 +298,7 @@ class _OKFNPayry20DatosBancariosWidgetState
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
+                                                letterSpacing: 0.0,
                                                 fontWeight: FontWeight.normal,
                                               ),
                                           hintText:
@@ -307,6 +309,7 @@ class _OKFNPayry20DatosBancariosWidgetState
                                                   .override(
                                                     fontFamily: 'Lexend',
                                                     color: Color(0xFF8788A5),
+                                                    letterSpacing: 0.0,
                                                   ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
@@ -356,7 +359,9 @@ class _OKFNPayry20DatosBancariosWidgetState
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
+                                              letterSpacing: 0.0,
                                             ),
+                                        minLines: null,
                                         maxLength: 18,
                                         keyboardType: TextInputType.number,
                                         validator: _model
@@ -385,6 +390,7 @@ class _OKFNPayry20DatosBancariosWidgetState
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
+                                                letterSpacing: 0.0,
                                                 fontWeight: FontWeight.normal,
                                               ),
                                           hintText: 'Banco',
@@ -394,6 +400,7 @@ class _OKFNPayry20DatosBancariosWidgetState
                                                   .override(
                                                     fontFamily: 'Lexend',
                                                     color: Color(0xFF8788A5),
+                                                    letterSpacing: 0.0,
                                                   ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
@@ -445,8 +452,10 @@ class _OKFNPayry20DatosBancariosWidgetState
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
+                                              letterSpacing: 0.0,
                                               fontWeight: FontWeight.normal,
                                             ),
+                                        minLines: null,
                                         validator: _model
                                             .bankFieldControllerValidator
                                             .asValidator(context),
@@ -567,6 +576,7 @@ class _OKFNPayry20DatosBancariosWidgetState
                                                     .override(
                                                       fontFamily: 'Lexend',
                                                       color: Colors.white,
+                                                      letterSpacing: 0.0,
                                                     ),
                                             elevation: 3.0,
                                             borderSide: BorderSide(

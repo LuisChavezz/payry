@@ -32,8 +32,6 @@ class OKFNPayry40NotificacionesModel
   // Model for NavBarFloting component.
   late NavBarFlotingModel navBarFlotingModel;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     navBarFlotingModel = createModel(context, () => NavBarFlotingModel());
@@ -45,10 +43,7 @@ class OKFNPayry40NotificacionesModel
     navBarFlotingModel.dispose();
   }
 
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
-
+  /// Additional helper methods.
   Future waitForFirestoreRequestCompleted({
     double minWait = 0,
     double maxWait = double.infinity,

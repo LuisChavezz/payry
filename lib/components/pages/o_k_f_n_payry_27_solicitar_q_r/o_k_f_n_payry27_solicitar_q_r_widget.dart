@@ -158,6 +158,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                       style: FlutterFlowTheme.of(context).titleSmall.override(
                             fontFamily: 'Lexend',
                             color: FlutterFlowTheme.of(context).primaryText,
+                            letterSpacing: 0.0,
                           ),
                     ),
                     FlutterFlowIconButton(
@@ -236,6 +237,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
@@ -248,6 +250,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                                                         fontFamily: 'Lexend',
                                                         color:
                                                             Color(0xFF8788A5),
+                                                        letterSpacing: 0.0,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
@@ -298,8 +301,10 @@ class _OKFNPayry27SolicitarQRWidgetState
                                                 .override(
                                                   fontFamily: 'Lexend',
                                                   color: Color(0xFF8788A5),
+                                                  letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
                                                 ),
+                                            minLines: null,
                                             maxLength: 20,
                                             maxLengthEnforcement:
                                                 MaxLengthEnforcement.enforced,
@@ -332,6 +337,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
@@ -344,6 +350,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                                                         fontFamily: 'Lexend',
                                                         color:
                                                             Color(0xFF8788A5),
+                                                        letterSpacing: 0.0,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
@@ -394,8 +401,10 @@ class _OKFNPayry27SolicitarQRWidgetState
                                                 .override(
                                                   fontFamily: 'Lexend',
                                                   color: Color(0xFF8788A5),
+                                                  letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
                                                 ),
+                                            minLines: null,
                                             keyboardType: const TextInputType
                                                 .numberWithOptions(
                                                 decimal: true),
@@ -650,6 +659,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                                                       .override(
                                                         fontFamily: 'Lexend',
                                                         color: Colors.white,
+                                                        letterSpacing: 0.0,
                                                       ),
                                               elevation: 3.0,
                                               borderSide: BorderSide(
@@ -703,6 +713,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                                         .override(
                                           fontFamily: 'Lexend',
                                           color: Color(0xFF5E4A98),
+                                          letterSpacing: 0.0,
                                         ),
                                     elevation: 3.0,
                                     borderSide: BorderSide(

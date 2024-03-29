@@ -69,6 +69,7 @@ class _OKFNPayry44HistorialTransactionsWidgetState
             style: FlutterFlowTheme.of(context).titleSmall.override(
                   fontFamily: 'Lexend',
                   color: FlutterFlowTheme.of(context).primaryText,
+                  letterSpacing: 0.0,
                 ),
           ),
           actions: [],
@@ -174,6 +175,7 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                                           context)
                                                       .accent3,
                                                   fontSize: 15.0,
+                                                  letterSpacing: 0.0,
                                                 ),
                                           ),
                                         ),
@@ -228,6 +230,8 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                                                       .accent3,
                                                                   fontSize:
                                                                       15.0,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                 ),
                                                       ),
                                                       Text(
@@ -243,6 +247,8 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                 ),
                                                       ),
                                                       Text(
@@ -258,6 +264,8 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                 ),
                                                       ),
                                                       if (listViewRegistraOrdenRecordsRecord
@@ -290,6 +298,8 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                                                       'Lexend',
                                                                   color: Color(
                                                                       0xFF80BFFF),
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   decoration:
                                                                       TextDecoration
                                                                           .underline,
@@ -315,6 +325,7 @@ class _OKFNPayry44HistorialTransactionsWidgetState
                                                             context)
                                                         .accent3,
                                                     fontSize: 16.0,
+                                                    letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w600,
                                                   ),
                                             ),

@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
+import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -90,8 +91,6 @@ class OKFNPayry05RegistrateModel
   // State field(s) for acceptCheck widget.
   bool? acceptCheckValue;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     nameFieldControllerValidator = _nameFieldControllerValidator;
@@ -117,8 +116,4 @@ class OKFNPayry05RegistrateModel
     passwordConfirmFocusNode?.dispose();
     passwordConfirmController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

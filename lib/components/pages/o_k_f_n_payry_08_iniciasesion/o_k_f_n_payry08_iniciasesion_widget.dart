@@ -133,6 +133,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                           controller:
                                               _model.emailFieldController,
                                           focusNode: _model.emailFieldFocusNode,
+                                          autofocus: false,
                                           textCapitalization:
                                               TextCapitalization.none,
                                           obscureText: false,
@@ -140,7 +141,11 @@ class _OKFNPayry08IniciasesionWidgetState
                                             labelText: 'Correo electrónico',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyMedium,
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Lexend',
+                                                      letterSpacing: 0.0,
+                                                    ),
                                             hintText: 'Ingresa tu email...',
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
@@ -148,10 +153,13 @@ class _OKFNPayry08IniciasesionWidgetState
                                                     .override(
                                                       fontFamily: 'Lexend',
                                                       color: Color(0xFF8788A5),
+                                                      letterSpacing: 0.0,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
-                                                color: Color(0xFF8788A5),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
                                                 width: 1.0,
                                               ),
                                               borderRadius:
@@ -159,7 +167,9 @@ class _OKFNPayry08IniciasesionWidgetState
                                             ),
                                             focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
-                                                color: Colors.white,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
                                                 width: 1.0,
                                               ),
                                               borderRadius:
@@ -191,7 +201,12 @@ class _OKFNPayry08IniciasesionWidgetState
                                                     20.0, 24.0, 20.0, 24.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                letterSpacing: 0.0,
+                                              ),
+                                          minLines: null,
                                           keyboardType:
                                               TextInputType.emailAddress,
                                           validator: _model
@@ -213,7 +228,11 @@ class _OKFNPayry08IniciasesionWidgetState
                                             labelText: 'Contraseña',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyMedium,
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Lexend',
+                                                      letterSpacing: 0.0,
+                                                    ),
                                             hintText:
                                                 'Ingresa tu contraseña...',
                                             hintStyle:
@@ -222,6 +241,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                                     .override(
                                                       fontFamily: 'Lexend',
                                                       color: Color(0xFF8788A5),
+                                                      letterSpacing: 0.0,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
@@ -285,7 +305,12 @@ class _OKFNPayry08IniciasesionWidgetState
                                             ),
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                letterSpacing: 0.0,
+                                              ),
+                                          minLines: null,
                                           validator: _model
                                               .passwordFieldControllerValidator
                                               .asValidator(context),
@@ -367,6 +392,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                                           fontFamily: 'Lexend',
                                                           color:
                                                               Color(0xFF8788A5),
+                                                          letterSpacing: 0.0,
                                                         ),
                                               ),
                                             ],
@@ -390,6 +416,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                                         fontFamily: 'Lexend',
                                                         color:
                                                             Color(0xFF0FB978),
+                                                        letterSpacing: 0.0,
                                                       ),
                                               elevation: 0.0,
                                               borderSide: BorderSide(
@@ -503,8 +530,16 @@ class _OKFNPayry08IniciasesionWidgetState
                                                     }
 
                                                     context.pushNamedAuth(
-                                                        'OK_FN_Payry_13_Menumas',
-                                                        context.mounted);
+                                                      'OK_FN_Payry_13_Menumas',
+                                                      context.mounted,
+                                                      queryParameters: {
+                                                        'showWT':
+                                                            serializeParam(
+                                                          false,
+                                                          ParamType.bool,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
 
                                                     if (_shouldSetState)
                                                       setState(() {});
@@ -565,6 +600,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                                       .override(
                                                         fontFamily: 'Lexend',
                                                         color: Colors.white,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                   elevation: 3.0,
                                                   borderSide: BorderSide(
@@ -608,6 +644,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                                           fontFamily: 'Lexend',
                                                           color:
                                                               Color(0xFF8788A5),
+                                                          letterSpacing: 0.0,
                                                         ),
                                               ),
                                               InkWell(
@@ -633,6 +670,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                                         fontFamily: 'Lexend',
                                                         color:
                                                             Color(0xFF0FB978),
+                                                        letterSpacing: 0.0,
                                                       ),
                                                 ),
                                               ),

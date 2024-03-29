@@ -32,8 +32,6 @@ class OKFNPayry17VerificarOTPModel
   FlutterFlowTimerController timerController =
       FlutterFlowTimerController(StopWatchTimer(mode: StopWatchMode.countDown));
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     pinCodeController = TextEditingController();
@@ -45,8 +43,4 @@ class OKFNPayry17VerificarOTPModel
     pinCodeController?.dispose();
     timerController.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

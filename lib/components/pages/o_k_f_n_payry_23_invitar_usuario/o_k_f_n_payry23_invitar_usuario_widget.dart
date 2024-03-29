@@ -76,6 +76,7 @@ class _OKFNPayry23InvitarUsuarioWidgetState
             style: FlutterFlowTheme.of(context).titleSmall.override(
                   fontFamily: 'Lexend',
                   color: FlutterFlowTheme.of(context).primaryText,
+                  letterSpacing: 0.0,
                 ),
           ),
           actions: [],
@@ -115,6 +116,7 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                     fontFamily: 'Lexend',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
+                                    letterSpacing: 0.0,
                                   ),
                             ),
                           ),
@@ -134,6 +136,7 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                     fontFamily: 'Lexend',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
                               hintText: 'Ingresa un correo electrónico...',
@@ -142,6 +145,7 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                   .override(
                                     fontFamily: 'Lexend',
                                     color: Color(0xFF8788A5),
+                                    letterSpacing: 0.0,
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -180,8 +184,10 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                   fontFamily: 'Lexend',
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
                                 ),
+                            minLines: null,
                             validator: _model.emailFieldControllerValidator
                                 .asValidator(context),
                           ),
@@ -402,6 +408,7 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                     .override(
                                       fontFamily: 'Lexend',
                                       color: Colors.white,
+                                      letterSpacing: 0.0,
                                     ),
                                 elevation: 3.0,
                                 borderSide: BorderSide(

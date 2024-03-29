@@ -25,8 +25,6 @@ class OKFNPayry37FacturasModel
   Query? listViewPagingQuery;
   List<StreamSubscription?> listViewStreamSubscriptions = [];
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -36,10 +34,7 @@ class OKFNPayry37FacturasModel
     listViewPagingController?.dispose();
   }
 
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
-
+  /// Additional helper methods.
   PagingController<DocumentSnapshot?, InvoicesRecord> setListViewController(
     Query query, {
     DocumentReference<Object?>? parent,

@@ -43,8 +43,6 @@ class OKFNPayry13MenumasModel
   // Model for NavBarFloting component.
   late NavBarFlotingModel navBarFlotingModel;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     navBarFlotingModel = createModel(context, () => NavBarFlotingModel());
@@ -55,8 +53,4 @@ class OKFNPayry13MenumasModel
     primerosPasosMenuMasController?.finish();
     navBarFlotingModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

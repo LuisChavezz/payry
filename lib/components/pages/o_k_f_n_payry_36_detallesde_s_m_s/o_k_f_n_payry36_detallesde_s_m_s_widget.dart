@@ -110,6 +110,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                   style: FlutterFlowTheme.of(context).headlineSmall.override(
                         fontFamily: 'Lexend',
                         color: FlutterFlowTheme.of(context).primaryText,
+                        letterSpacing: 0.0,
                       ),
                 ),
               ),
@@ -203,6 +204,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                 .override(
                                                   fontFamily: 'Poppins',
                                                   color: Colors.white,
+                                                  letterSpacing: 0.0,
                                                 ),
                                           ),
                                         ),
@@ -225,6 +227,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                               .override(
                                                 fontFamily: 'Lexend',
                                                 color: Colors.white,
+                                                letterSpacing: 0.0,
                                                 fontWeight: FontWeight.normal,
                                               ),
                                         ),
@@ -244,7 +247,10 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                 BoxShadow(
                                   blurRadius: 3.0,
                                   color: Color(0x33000000),
-                                  offset: Offset(0.0, -1.0),
+                                  offset: Offset(
+                                    0.0,
+                                    -1.0,
+                                  ),
                                 )
                               ],
                               borderRadius: BorderRadius.only(
@@ -284,6 +290,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
+                                                          letterSpacing: 0.0,
                                                         ),
                                               ),
                                               Expanded(
@@ -300,6 +307,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .accent3,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                 ),
                                               ),
@@ -325,6 +333,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
+                                                  letterSpacing: 0.0,
                                                 ),
                                           ),
                                           Expanded(
@@ -341,6 +350,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .accent3,
+                                                        letterSpacing: 0.0,
                                                       ),
                                             ),
                                           ),
@@ -367,6 +377,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                             ),
                                             Expanded(
@@ -382,6 +393,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .accent3,
+                                                          letterSpacing: 0.0,
                                                         ),
                                               ),
                                             ),
@@ -408,6 +420,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                             ),
                                             Expanded(
@@ -424,6 +437,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .accent3,
+                                                          letterSpacing: 0.0,
                                                         ),
                                               ),
                                             ),
@@ -452,6 +466,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                             ),
                                             Expanded(
@@ -472,6 +487,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .accent3,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                 ),
                                               ),
@@ -533,6 +549,8 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                                       'Lexend',
                                                                   color: Color(
                                                                       0xFF80BFFF),
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   decoration:
                                                                       TextDecoration
                                                                           .underline,
@@ -780,6 +798,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                       .override(
                                                         fontFamily: 'Lexend',
                                                         fontSize: 14.0,
+                                                        letterSpacing: 0.0,
                                                       ),
                                             ),
                                           ].divide(SizedBox(height: 5.0)),
@@ -1108,6 +1127,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                       .override(
                                                         fontFamily: 'Lexend',
                                                         fontSize: 14.0,
+                                                        letterSpacing: 0.0,
                                                       ),
                                             ),
                                           ].divide(SizedBox(height: 5.0)),
@@ -1407,6 +1427,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                       .override(
                                                         fontFamily: 'Lexend',
                                                         fontSize: 14.0,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                 ),
                                               ].divide(SizedBox(height: 5.0)),

@@ -103,6 +103,7 @@ class _OKFNPayry40NotificacionesWidgetState
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Poppins',
                                     color: FlutterFlowTheme.of(context).accent3,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                         Expanded(
@@ -119,8 +120,12 @@ class _OKFNPayry40NotificacionesWidgetState
                                     unselectedLabelColor:
                                         FlutterFlowTheme.of(context)
                                             .secondaryText,
-                                    labelStyle:
-                                        FlutterFlowTheme.of(context).titleSmall,
+                                    labelStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Lexend',
+                                          letterSpacing: 0.0,
+                                        ),
                                     unselectedLabelStyle: TextStyle(),
                                     indicatorColor:
                                         FlutterFlowTheme.of(context).primary,
@@ -500,6 +505,7 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                             .override(
                                                                               fontFamily: 'Lexend',
                                                                               color: FlutterFlowTheme.of(context).primaryText,
+                                                                              letterSpacing: 0.0,
                                                                             ),
                                                                       ),
                                                                     ],
@@ -523,6 +529,7 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                             style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                   fontFamily: 'Lexend',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
+                                                                                  letterSpacing: 0.0,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -557,6 +564,7 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                                 fontFamily: 'Lexend',
                                                                                 color: FlutterFlowTheme.of(context).primaryText,
                                                                                 fontSize: 12.0,
+                                                                                letterSpacing: 0.0,
                                                                               ),
                                                                         ),
                                                                       ),
@@ -605,6 +613,7 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                                     fontFamily: 'Lexend',
                                                                                     color: Color(0xFF0FB978),
                                                                                     fontSize: 12.0,
+                                                                                    letterSpacing: 0.0,
                                                                                   ),
                                                                             ),
                                                                           ],
@@ -889,6 +898,7 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                             .override(
                                                                               fontFamily: 'Lexend',
                                                                               color: FlutterFlowTheme.of(context).primaryText,
+                                                                              letterSpacing: 0.0,
                                                                             ),
                                                                       ),
                                                                     ],
@@ -912,6 +922,7 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                             style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                   fontFamily: 'Lexend',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
+                                                                                  letterSpacing: 0.0,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -946,6 +957,7 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                                 fontFamily: 'Lexend',
                                                                                 color: FlutterFlowTheme.of(context).primaryText,
                                                                                 fontSize: 12.0,
+                                                                                letterSpacing: 0.0,
                                                                               ),
                                                                         ),
                                                                       ),

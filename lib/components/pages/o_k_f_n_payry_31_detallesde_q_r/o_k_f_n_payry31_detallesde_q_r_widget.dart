@@ -112,6 +112,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                         fontFamily: 'Lexend',
                         color: FlutterFlowTheme.of(context).primaryText,
                         fontSize: 18.0,
+                        letterSpacing: 0.0,
                       ),
                 ),
               ),
@@ -205,6 +206,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                 .override(
                                                   fontFamily: 'Poppins',
                                                   color: Colors.white,
+                                                  letterSpacing: 0.0,
                                                 ),
                                           ),
                                         ),
@@ -227,6 +229,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                               .override(
                                                 fontFamily: 'Lexend',
                                                 color: Colors.white,
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                       ],
@@ -285,6 +288,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                 ),
                                                 Expanded(
@@ -307,6 +311,8 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .accent3,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
                                                     ),
                                                   ),
@@ -335,6 +341,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                   ),
                                                   Expanded(
@@ -352,6 +359,8 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .accent3,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
                                                     ),
                                                   ),
@@ -379,6 +388,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                   ),
                                                   Expanded(
@@ -397,6 +407,8 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .accent3,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
                                                     ),
                                                   ),
@@ -426,6 +438,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                   ),
                                                   Expanded(
@@ -452,6 +465,8 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .accent3,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                 ),
                                                       ),
                                                     ),
@@ -528,6 +543,8 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                                         'Lexend',
                                                                     color: Color(
                                                                         0xFF80BFFF),
+                                                                    letterSpacing:
+                                                                        0.0,
                                                                     decoration:
                                                                         TextDecoration
                                                                             .underline,
@@ -633,6 +650,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                       .override(
                                                         fontFamily: 'Lexend',
                                                         fontSize: 14.0,
+                                                        letterSpacing: 0.0,
                                                       ),
                                             ),
                                           ].divide(SizedBox(height: 5.0)),
@@ -670,6 +688,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                       .override(
                                                         fontFamily: 'Lexend',
                                                         fontSize: 14.0,
+                                                        letterSpacing: 0.0,
                                                       ),
                                             ),
                                           ].divide(SizedBox(height: 5.0)),
@@ -776,6 +795,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                       .override(
                                                         fontFamily: 'Lexend',
                                                         fontSize: 14.0,
+                                                        letterSpacing: 0.0,
                                                       ),
                                             ),
                                           ].divide(SizedBox(height: 5.0)),
@@ -984,6 +1004,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                       .override(
                                                         fontFamily: 'Lexend',
                                                         fontSize: 14.0,
+                                                        letterSpacing: 0.0,
                                                       ),
                                             ),
                                           ].divide(SizedBox(height: 5.0)),
@@ -1293,6 +1314,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                       .override(
                                                         fontFamily: 'Lexend',
                                                         fontSize: 14.0,
+                                                        letterSpacing: 0.0,
                                                       ),
                                             ),
                                           ].divide(SizedBox(height: 5.0)),
@@ -1414,6 +1436,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                       .override(
                                                         fontFamily: 'Lexend',
                                                         fontSize: 14.0,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                 ),
                                               ].divide(SizedBox(height: 5.0)),

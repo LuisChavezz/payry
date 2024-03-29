@@ -57,8 +57,6 @@ class OKFNPayry15EditProfileModel
   // Stores action output result for [Cloud Function - reportUser] action in Button widget.
   ReportUserCloudFunctionCallResponse? reportUserCF;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     nameFieldControllerValidator = _nameFieldControllerValidator;
@@ -74,8 +72,4 @@ class OKFNPayry15EditProfileModel
     phoneFieldFocusNode?.dispose();
     phoneFieldController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

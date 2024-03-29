@@ -82,6 +82,7 @@ class _OKFNPayry43PoliticadeprivacidadWidgetState
                                 .override(
                                   fontFamily: 'Poppins',
                                   color: FlutterFlowTheme.of(context).accent3,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                         ),
@@ -103,6 +104,7 @@ class _OKFNPayry43PoliticadeprivacidadWidgetState
                                   fontFamily: 'Lexend',
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                         ),
