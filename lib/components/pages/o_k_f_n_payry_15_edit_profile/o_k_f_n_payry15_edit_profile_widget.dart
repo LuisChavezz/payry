@@ -549,7 +549,7 @@ class _OKFNPayry15EditProfileWidgetState
                                                               currentUserDocument
                                                                   ?.isValidPhoneNumber,
                                                               false)
-                                                          ? Color(0x83CCCCCC)
+                                                          ? Color(0x1ACCCCCC)
                                                           : Color(0x00000000),
                                                       contentPadding:
                                                           EdgeInsetsDirectional
@@ -697,7 +697,7 @@ class _OKFNPayry15EditProfileWidgetState
                                                         disabledColor:
                                                             Color(0x83CCCCCC),
                                                         disabledTextColor:
-                                                            Color(0x85584898),
+                                                            Color(0xFFA1A1A1),
                                                       ),
                                                     ),
                                                   ),
@@ -716,7 +716,7 @@ class _OKFNPayry15EditProfileWidgetState
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 20.0, 0.0, 10.0),
+                                                  0.0, 12.0, 0.0, 10.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
                                               if (_model.formKey.currentState ==

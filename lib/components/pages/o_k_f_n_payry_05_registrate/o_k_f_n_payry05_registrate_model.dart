@@ -58,7 +58,7 @@ class OKFNPayry05RegistrateModel
     }
 
     if (val.length < 6) {
-      return 'La contraseña debe ser de almenos 6 carácteres de longitud';
+      return 'Debe contener al menos 6 caracteres';
     }
 
     return null;
@@ -72,11 +72,11 @@ class OKFNPayry05RegistrateModel
   String? _passwordConfirmControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'La confirmación de contraseña es requerida';
+      return 'La confirmación  es requerida';
     }
 
     if (val.length < 6) {
-      return 'La confirmación de contraseña debe ser de almenos 6 carácteres de longitud';
+      return 'Debe contener al menos 6 caracteres';
     }
 
     return null;
