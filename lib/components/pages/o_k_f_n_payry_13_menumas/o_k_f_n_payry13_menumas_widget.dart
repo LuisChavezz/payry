@@ -43,6 +43,15 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (currentUserUid == null || currentUserUid == '') {
+        GoRouter.of(context).prepareAuthEvent();
+        await authManager.signOut();
+        GoRouter.of(context).clearRedirectLocation();
+
+        context.pushNamedAuth('OK_FN_Payry_08_iniciasesion', context.mounted);
+
+        return;
+      }
       if (FFAppState().walkthroughs == null) {
         FFAppState().walkthroughs = <String, bool?>{
           'menu_mas': true,
@@ -70,7 +79,6 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
         safeSetState(() => _model.primerosPasosMenuMasController =
             createPageWalkthrough(context));
         _model.primerosPasosMenuMasController?.show(context: context);
-        return;
       } else {
         setState(() {
           _model.show = true;
