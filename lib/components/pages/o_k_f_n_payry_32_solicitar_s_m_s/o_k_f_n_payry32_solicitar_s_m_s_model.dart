@@ -67,7 +67,9 @@ class OKFNPayry32SolicitarSMSModel
     if (val.length > 20) {
       return 'El concepto solo puede contener un máximo de 20 caracteres';
     }
-
+    if (!RegExp('^(?!\\s)(?!.*\\s+\$).*').hasMatch(val)) {
+      return 'Formato de concepto inválido';
+    }
     return null;
   }
 
@@ -82,7 +84,7 @@ class OKFNPayry32SolicitarSMSModel
 
     if (!RegExp('^(?!0*(\\.0{1,2})?\$)([1-9]\\d{0,3}|0)(?:\\.\\d{1,2})?\$')
         .hasMatch(val)) {
-      return 'El formato del importe es inválido.';
+      return 'Formato de importe inválido.';
     }
     return null;
   }

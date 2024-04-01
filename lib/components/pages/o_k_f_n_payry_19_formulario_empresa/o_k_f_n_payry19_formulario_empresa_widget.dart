@@ -2128,6 +2128,27 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 },
                                               );
                                             }
+
+                                            context.pushNamed(
+                                              'OK_FN_Payry_20_datosBancarios',
+                                              queryParameters: {
+                                                'companyDocRef': serializeParam(
+                                                  _model.companyCreatedResp
+                                                      ?.reference,
+                                                  ParamType.DocumentReference,
+                                                ),
+                                                'clabe': serializeParam(
+                                                  oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                      ?.clabe,
+                                                  ParamType.String,
+                                                ),
+                                                'bank': serializeParam(
+                                                  oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                      ?.bank,
+                                                  ParamType.String,
+                                                ),
+                                              }.withoutNulls,
+                                            );
                                           } else {
                                             await oKFNPayry19FormularioEmpresaCompaniesRecord!
                                                 .reference
@@ -2266,6 +2287,35 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 },
                                               );
                                             }
+
+                                            if (oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                        ?.bankid ==
+                                                    null ||
+                                                oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                        ?.bankid ==
+                                                    '') {
+                                              context.pushNamed(
+                                                'OK_FN_Payry_20_datosBancarios',
+                                                queryParameters: {
+                                                  'companyDocRef':
+                                                      serializeParam(
+                                                    oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                        ?.reference,
+                                                    ParamType.DocumentReference,
+                                                  ),
+                                                  'clabe': serializeParam(
+                                                    oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                        ?.clabe,
+                                                    ParamType.String,
+                                                  ),
+                                                  'bank': serializeParam(
+                                                    oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                        ?.bank,
+                                                    ParamType.String,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
+                                            }
                                           }
 
                                           try {
@@ -2297,41 +2347,8 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           FFAppState().serverToken = _model
                                               .genToken!.jsonBody!
                                               .toString();
-                                          if (oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                      ?.bankid ==
-                                                  null ||
-                                              oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                      ?.bankid ==
-                                                  '') {
-                                            context.pushNamed(
-                                              'OK_FN_Payry_20_datosBancarios',
-                                              queryParameters: {
-                                                'companyDocRef': serializeParam(
-                                                  oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                      ?.reference,
-                                                  ParamType.DocumentReference,
-                                                ),
-                                                'clabe': serializeParam(
-                                                  oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                      ?.clabe,
-                                                  ParamType.String,
-                                                ),
-                                                'bank': serializeParam(
-                                                  oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                      ?.bank,
-                                                  ParamType.String,
-                                                ),
-                                              }.withoutNulls,
-                                            );
-
-                                            if (_shouldSetState)
-                                              setState(() {});
-                                            return;
-                                          } else {
-                                            if (_shouldSetState)
-                                              setState(() {});
-                                            return;
-                                          }
+                                          if (_shouldSetState) setState(() {});
+                                          return;
                                         } else {
                                           await showDialog(
                                             context: context,
