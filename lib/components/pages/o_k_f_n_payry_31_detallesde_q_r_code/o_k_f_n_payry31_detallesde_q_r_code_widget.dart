@@ -524,28 +524,6 @@ class _OKFNPayry31DetallesdeQRCodeWidgetState
                                                           status: PaymentStatus
                                                               .CANCELADO,
                                                         ));
-
-                                                        await QrHistoryRecord
-                                                            .collection
-                                                            .doc()
-                                                            .set({
-                                                          ...createQrHistoryRecordData(
-                                                            qrId:
-                                                                oKFNPayry31DetallesdeQRCodeRegistraCobroRecord
-                                                                    .reference
-                                                                    .id,
-                                                            status: 'CANCELADO',
-                                                            modifiedBy:
-                                                                currentUserUid,
-                                                          ),
-                                                          ...mapToFirestore(
-                                                            {
-                                                              'created_time':
-                                                                  FieldValue
-                                                                      .serverTimestamp(),
-                                                            },
-                                                          ),
-                                                        });
                                                         await showDialog(
                                                           context: context,
                                                           builder:
