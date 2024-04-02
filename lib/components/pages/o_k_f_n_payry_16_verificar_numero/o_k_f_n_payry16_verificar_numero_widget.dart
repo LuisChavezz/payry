@@ -1,8 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +12,12 @@ import 'o_k_f_n_payry16_verificar_numero_model.dart';
 export 'o_k_f_n_payry16_verificar_numero_model.dart';
 
 class OKFNPayry16VerificarNumeroWidget extends StatefulWidget {
-  const OKFNPayry16VerificarNumeroWidget({super.key});
+  const OKFNPayry16VerificarNumeroWidget({
+    super.key,
+    required this.phoneNumber,
+  });
+
+  final String? phoneNumber;
 
   @override
   State<OKFNPayry16VerificarNumeroWidget> createState() =>
@@ -29,10 +36,8 @@ class _OKFNPayry16VerificarNumeroWidgetState
     _model = createModel(context, () => OKFNPayry16VerificarNumeroModel());
 
     _model.phoneFieldController ??=
-        TextEditingController(text: '+52${FFAppState().phoneNumber}');
+        TextEditingController(text: '+52${widget.phoneNumber}');
     _model.phoneFieldFocusNode ??= FocusNode();
-
-    authManager.handlePhoneAuthStateChanges(context);
   }
 
   @override
@@ -51,7 +56,7 @@ class _OKFNPayry16VerificarNumeroWidgetState
         queryBuilder: (usersRecord) => usersRecord
             .where(
               'phone_number',
-              isEqualTo: FFAppState().phoneNumber,
+              isEqualTo: widget.phoneNumber,
             )
             .where(
               'is_valid_phone_number',
@@ -286,84 +291,76 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                       0.0, 30.0, 0.0, 10.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
+                                      var _shouldSetState = false;
                                       if (!((oKFNPayry16VerificarNumeroUsersRecord !=
                                               null) &&
-                                          (FFAppState().phoneNumber ==
+                                          (widget.phoneNumber ==
                                               oKFNPayry16VerificarNumeroUsersRecord
                                                   ?.phoneNumber))) {
-                                        var confirmDialogResponse =
-                                            await showDialog<bool>(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title:
-                                                          Text('Advertencia'),
-                                                      content: Text(
-                                                          'Tras verificar número de teléfono se cerrará la sesión. ¿Deseas continuar?'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  false),
-                                                          child:
-                                                              Text('Regresar'),
-                                                        ),
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  true),
-                                                          child:
-                                                              Text('Continuar'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                ) ??
-                                                false;
-                                        if (confirmDialogResponse) {
-                                          final phoneNumberVal =
-                                              _model.phoneFieldController.text;
-                                          if (phoneNumberVal == null ||
-                                              phoneNumberVal.isEmpty ||
-                                              !phoneNumberVal.startsWith('+')) {
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                    'El número de teléfono es requerido, y debe comenzar con \'+\'.'),
+                                        try {
+                                          final result = await FirebaseFunctions
+                                              .instance
+                                              .httpsCallable(
+                                                  'requestVerifyPhone')
+                                              .call({
+                                            "token": FFAppState().serverToken,
+                                            "phone": widget.phoneNumber,
+                                          });
+                                          _model.cfResp =
+                                              RequestVerifyPhoneCloudFunctionCallResponse(
+                                            data: result.data,
+                                            succeeded: true,
+                                            resultAsString:
+                                                result.data.toString(),
+                                            jsonBody: result.data,
+                                          );
+                                        } on FirebaseFunctionsException catch (error) {
+                                          _model.cfResp =
+                                              RequestVerifyPhoneCloudFunctionCallResponse(
+                                            errorCode: error.code,
+                                            succeeded: false,
+                                          );
+                                        }
+
+                                        _shouldSetState = true;
+                                        if (getJsonField(
+                                          _model.cfResp!.jsonBody,
+                                          r'''$.success''',
+                                        )) {
+                                          context.pushNamed(
+                                            'OK_FN_Payry_17_verificarOTP',
+                                            queryParameters: {
+                                              'phoneNumber': serializeParam(
+                                                widget.phoneNumber,
+                                                ParamType.String,
                                               ),
-                                            );
-                                            return;
-                                          }
-                                          await authManager.beginPhoneAuth(
+                                            }.withoutNulls,
+                                          );
+
+                                          if (_shouldSetState) setState(() {});
+                                          return;
+                                        } else {
+                                          await showDialog(
                                             context: context,
-                                            phoneNumber: phoneNumberVal,
-                                            onCodeSent: (context) async {
-                                              context.goNamedAuth(
-                                                'OK_FN_Payry_17_verificarOTP',
-                                                context.mounted,
-                                                queryParameters: {
-                                                  'otpCode': serializeParam(
-                                                    '',
-                                                    ParamType.String,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text('Error'),
+                                                content: Text(getJsonField(
+                                                  _model.cfResp!.jsonBody,
+                                                  r'''$.message''',
+                                                ).toString()),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
                                                   ),
-                                                  'phoneNumber': serializeParam(
-                                                    _model.phoneFieldController
-                                                        .text,
-                                                    ParamType.String,
-                                                  ),
-                                                }.withoutNulls,
-                                                ignoreRedirect: true,
+                                                ],
                                               );
                                             },
                                           );
-
-                                          return;
-                                        } else {
-                                          context.safePop();
+                                          if (_shouldSetState) setState(() {});
                                           return;
                                         }
                                       } else {
@@ -385,8 +382,11 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                             );
                                           },
                                         );
+                                        if (_shouldSetState) setState(() {});
                                         return;
                                       }
+
+                                      if (_shouldSetState) setState(() {});
                                     },
                                     text: 'Enviar código de verificación',
                                     options: FFButtonOptions(

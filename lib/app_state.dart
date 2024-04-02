@@ -70,12 +70,6 @@ class FFAppState extends ChangeNotifier {
     prefs.setBool('ff_notify', _value);
   }
 
-  String _phoneNumber = '';
-  String get phoneNumber => _phoneNumber;
-  set phoneNumber(String _value) {
-    _phoneNumber = _value;
-  }
-
   DocumentReference? _tempUserReference;
   DocumentReference? get tempUserReference => _tempUserReference;
   set tempUserReference(DocumentReference? _value) {

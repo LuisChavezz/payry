@@ -114,10 +114,13 @@ final parametersBuilderMap =
   'OK_FN_Payry_11_olvidecontrasenanueva': ParameterData.none(),
   'OK_FN_Payry_14_Perfil': ParameterData.none(),
   'OK_FN_Payry_15_EditProfile': ParameterData.none(),
-  'OK_FN_Payry_16_verificarNumero': ParameterData.none(),
+  'OK_FN_Payry_16_verificarNumero': (data) async => ParameterData(
+        allParams: {
+          'phoneNumber': getParameter<String>(data, 'phoneNumber'),
+        },
+      ),
   'OK_FN_Payry_17_verificarOTP': (data) async => ParameterData(
         allParams: {
-          'otpCode': getParameter<String>(data, 'otpCode'),
           'phoneNumber': getParameter<String>(data, 'phoneNumber'),
         },
       ),

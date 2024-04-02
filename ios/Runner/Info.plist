@@ -52,8 +52,6 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>FirebaseAppDelegateProxyEnabled</key>
-	<false/>
 
 	<key>NSCameraUsageDescription</key>
     <string>Payry solicita tener acceso a la camara para tomar foto de perfil</string>

@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -7,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,11 +19,9 @@ export 'o_k_f_n_payry17_verificar_o_t_p_model.dart';
 class OKFNPayry17VerificarOTPWidget extends StatefulWidget {
   const OKFNPayry17VerificarOTPWidget({
     super.key,
-    required this.otpCode,
     required this.phoneNumber,
   });
 
-  final String? otpCode;
   final String? phoneNumber;
 
   @override
@@ -45,7 +45,6 @@ class _OKFNPayry17VerificarOTPWidgetState
       _model.timerController.onStartTimer();
     });
 
-    authManager.handlePhoneAuthStateChanges(context);
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -110,365 +109,386 @@ class _OKFNPayry17VerificarOTPWidgetState
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                       borderRadius: BorderRadius.circular(15.0),
                     ),
-                    child: Padding(
-                      padding: EdgeInsets.all(12.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: Text(
-                              'Ingresa el código aquí',
-                              textAlign: TextAlign.start,
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Lexend',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    letterSpacing: 0.0,
-                                  ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 12.0, 0.0, 0.0),
-                            child: PinCodeTextField(
-                              autoDisposeControllers: false,
-                              appContext: context,
-                              length: 6,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .bodyLarge
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    letterSpacing: 0.0,
-                                  ),
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              enableActiveFill: false,
-                              autoFocus: true,
-                              enablePinAutofill: false,
-                              errorTextSpace: 16.0,
-                              showCursor: true,
-                              cursorColor: Colors.white,
-                              obscureText: false,
-                              keyboardType: TextInputType.number,
-                              pinTheme: PinTheme(
-                                fieldHeight: 44.0,
-                                fieldWidth: 44.0,
-                                borderWidth: 1.0,
-                                borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(12.0),
-                                  bottomRight: Radius.circular(12.0),
-                                  topLeft: Radius.circular(12.0),
-                                  topRight: Radius.circular(12.0),
-                                ),
-                                shape: PinCodeFieldShape.box,
-                                activeColor:
-                                    FlutterFlowTheme.of(context).primaryText,
-                                inactiveColor:
-                                    FlutterFlowTheme.of(context).primaryText,
-                                selectedColor:
-                                    FlutterFlowTheme.of(context).primaryText,
-                                activeFillColor:
-                                    FlutterFlowTheme.of(context).primaryText,
-                                inactiveFillColor:
-                                    FlutterFlowTheme.of(context).primaryText,
-                                selectedFillColor:
-                                    FlutterFlowTheme.of(context).primaryText,
-                              ),
-                              controller: _model.pinCodeController,
-                              onChanged: (_) {},
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              validator: _model.pinCodeControllerValidator
-                                  .asValidator(context),
-                            ),
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    4.0, 0.0, 4.0, 0.0),
-                                child: Text(
-                                  'Tiempo restante para verificar código:',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Lexend',
-                                        fontSize: 10.0,
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                              ),
-                              FlutterFlowTimer(
-                                initialTime: _model.timerMilliseconds,
-                                getDisplayTime: (value) =>
-                                    StopWatchTimer.getDisplayTime(
-                                  value,
-                                  hours: false,
-                                  milliSecond: false,
-                                ),
-                                controller: _model.timerController,
-                                onChanged: (value, displayTime, shouldUpdate) {
-                                  _model.timerMilliseconds = value;
-                                  _model.timerValue = displayTime;
-                                  if (shouldUpdate) setState(() {});
-                                },
+                    child: Form(
+                      key: _model.formKey,
+                      autovalidateMode: AutovalidateMode.disabled,
+                      child: Padding(
+                        padding: EdgeInsets.all(12.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Text(
+                                'Ingresa el código aquí',
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
-                                    .headlineSmall
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Lexend',
-                                      fontSize: 15.0,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
                                       letterSpacing: 0.0,
-                                      fontWeight: FontWeight.normal,
                                     ),
                               ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    2.0, 0.0, 0.0, 0.0),
-                                child: Text(
-                                  'seg.',
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 12.0, 0.0, 0.0),
+                              child: PinCodeTextField(
+                                autoDisposeControllers: false,
+                                appContext: context,
+                                length: 6,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      letterSpacing: 0.0,
+                                    ),
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                enableActiveFill: false,
+                                autoFocus: true,
+                                enablePinAutofill: false,
+                                errorTextSpace: 16.0,
+                                showCursor: true,
+                                cursorColor: Colors.white,
+                                obscureText: false,
+                                keyboardType: TextInputType.number,
+                                pinTheme: PinTheme(
+                                  fieldHeight: 44.0,
+                                  fieldWidth: 44.0,
+                                  borderWidth: 1.0,
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(12.0),
+                                    bottomRight: Radius.circular(12.0),
+                                    topLeft: Radius.circular(12.0),
+                                    topRight: Radius.circular(12.0),
+                                  ),
+                                  shape: PinCodeFieldShape.box,
+                                  activeColor:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  inactiveColor:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  selectedColor:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  activeFillColor:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  inactiveFillColor:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  selectedFillColor:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                                controller: _model.pinCodeController,
+                                onChanged: (_) {},
+                                autovalidateMode: AutovalidateMode.disabled,
+                                validator: _model.pinCodeControllerValidator
+                                    .asValidator(context),
+                              ),
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      4.0, 0.0, 4.0, 0.0),
+                                  child: Text(
+                                    'Tiempo restante para verificar código:',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Lexend',
+                                          fontSize: 10.0,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ),
+                                FlutterFlowTimer(
+                                  initialTime: _model.timerMilliseconds,
+                                  getDisplayTime: (value) =>
+                                      StopWatchTimer.getDisplayTime(
+                                    value,
+                                    hours: false,
+                                    milliSecond: false,
+                                  ),
+                                  controller: _model.timerController,
+                                  onChanged:
+                                      (value, displayTime, shouldUpdate) {
+                                    _model.timerMilliseconds = value;
+                                    _model.timerValue = displayTime;
+                                    if (shouldUpdate) setState(() {});
+                                  },
+                                  textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
+                                      .headlineSmall
                                       .override(
                                         fontFamily: 'Lexend',
-                                        fontSize: 10.0,
+                                        fontSize: 15.0,
                                         letterSpacing: 0.0,
+                                        fontWeight: FontWeight.normal,
                                       ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          if (_model.timerMilliseconds > 0)
-                            Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 10.0, 0.0, 10.0),
-                                child: FFButtonWidget(
-                                  onPressed: (_model.timerMilliseconds <= 0)
-                                      ? null
-                                      : () async {
-                                          if (_model.timerMilliseconds <= 0) {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text(
-                                                      'El tiempo ha expirado'),
-                                                  content: Text(
-                                                      'El tiempo ha expirado, favor de volver a intentarlo.'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                            return;
-                                          } else {
-                                            FFAppState().tempUserReference =
-                                                currentUserReference;
-                                            if (widget.otpCode != null &&
-                                                widget.otpCode != '') {
-                                              GoRouter.of(context)
-                                                  .prepareAuthEvent();
-                                              final smsCodeVal = widget.otpCode;
-                                              if (smsCodeVal == null ||
-                                                  smsCodeVal.isEmpty) {
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(
-                                                  SnackBar(
-                                                    content: Text(
-                                                        'Ingresa el código de verificación del SMS.'),
-                                                  ),
-                                                );
-                                                return;
-                                              }
-                                              final phoneVerifiedUser =
-                                                  await authManager
-                                                      .verifySmsCode(
-                                                context: context,
-                                                smsCode: smsCodeVal,
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      2.0, 0.0, 0.0, 0.0),
+                                  child: Text(
+                                    'seg.',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Lexend',
+                                          fontSize: 10.0,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            if (_model.timerMilliseconds > 0)
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 10.0, 0.0, 10.0),
+                                  child: FFButtonWidget(
+                                    onPressed: (_model.timerMilliseconds <= 0)
+                                        ? null
+                                        : () async {
+                                            var _shouldSetState = false;
+                                            if (_model.formKey.currentState ==
+                                                    null ||
+                                                !_model.formKey.currentState!
+                                                    .validate()) {
+                                              return;
+                                            }
+                                            try {
+                                              final result =
+                                                  await FirebaseFunctions
+                                                      .instance
+                                                      .httpsCallable(
+                                                          'verifyPhone')
+                                                      .call({
+                                                "token":
+                                                    FFAppState().serverToken,
+                                                "otp": _model
+                                                    .pinCodeController!.text,
+                                              });
+                                              _model.cfResp =
+                                                  VerifyPhoneCloudFunctionCallResponse(
+                                                data: result.data,
+                                                succeeded: true,
+                                                resultAsString:
+                                                    result.data.toString(),
+                                                jsonBody: result.data,
                                               );
-                                              if (phoneVerifiedUser == null) {
-                                                return;
-                                              }
-                                            } else {
-                                              GoRouter.of(context)
-                                                  .prepareAuthEvent();
-                                              final smsCodeVal = _model
-                                                  .pinCodeController!.text;
-                                              if (smsCodeVal == null ||
-                                                  smsCodeVal.isEmpty) {
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(
-                                                  SnackBar(
-                                                    content: Text(
-                                                        'Ingresa el código de verificación del SMS.'),
-                                                  ),
-                                                );
-                                                return;
-                                              }
-                                              final phoneVerifiedUser =
-                                                  await authManager
-                                                      .verifySmsCode(
-                                                context: context,
-                                                smsCode: smsCodeVal,
+                                            } on FirebaseFunctionsException catch (error) {
+                                              _model.cfResp =
+                                                  VerifyPhoneCloudFunctionCallResponse(
+                                                errorCode: error.code,
+                                                succeeded: false,
                                               );
-                                              if (phoneVerifiedUser == null) {
-                                                return;
-                                              }
                                             }
 
-                                            await FFAppState()
-                                                .tempUserReference!
-                                                .update(createUsersRecordData(
-                                                  isValidPhoneNumber: true,
-                                                  phoneNumber:
-                                                      FFAppState().phoneNumber,
-                                                ));
-                                            await currentUserReference!
-                                                .delete();
-                                            await authManager
-                                                .deleteUser(context);
+                                            _shouldSetState = true;
+                                            if (getJsonField(
+                                              _model.cfResp!.jsonBody,
+                                              r'''$.success''',
+                                            )) {
+                                              await currentUserReference!
+                                                  .update(createUsersRecordData(
+                                                phoneNumber: widget.phoneNumber,
+                                              ));
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text(getJsonField(
+                                                      _model.cfResp!.jsonBody,
+                                                      r'''$.data.message''',
+                                                    ).toString()),
+                                                    content: Text(
+                                                        'El número de teléfono ha sido verificado con éxito.'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
 
-                                            context.goNamedAuth(
-                                                'OK_FN_Payry_08_iniciasesion',
-                                                context.mounted);
+                                              context.goNamed(
+                                                  'OK_FN_Payry_15_EditProfile');
 
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'Su número de teléfono ha sido verificado con éxito!',
-                                                  style: TextStyle(
-                                                    color: Color(0xFFFAF9FE),
-                                                  ),
-                                                ),
-                                                duration: Duration(
-                                                    milliseconds: 4000),
-                                                backgroundColor:
-                                                    Color(0xFF25253F),
-                                              ),
-                                            );
-                                            return;
-                                          }
-                                        },
-                                  text: 'Verificar',
-                                  options: FFButtonOptions(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 1.0,
-                                    height: 50.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: Color(0xFF5E4A98),
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: Color(0xFFFAF9FE),
-                                          letterSpacing: 0.0,
-                                        ),
-                                    elevation: 3.0,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            } else {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text('Error'),
+                                                    content: Text(getJsonField(
+                                                      _model.cfResp!.jsonBody,
+                                                      r'''$.message''',
+                                                    ).toString()),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            }
+
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                          },
+                                    text: 'Verificar',
+                                    options: FFButtonOptions(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          1.0,
+                                      height: 50.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: Color(0xFF5E4A98),
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            color: Color(0xFFFAF9FE),
+                                            letterSpacing: 0.0,
+                                          ),
+                                      elevation: 3.0,
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      disabledColor: Color(0x83CCCCCC),
+                                      disabledTextColor: Color(0xFFA1A1A1),
                                     ),
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    disabledColor: Color(0x83CCCCCC),
-                                    disabledTextColor: Color(0xFFA1A1A1),
                                   ),
                                 ),
                               ),
-                            ),
-                          if (_model.timerMilliseconds <= 0)
-                            Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 10.0, 0.0, 10.0),
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    final phoneNumberVal = widget.phoneNumber;
-                                    if (phoneNumberVal == null ||
-                                        phoneNumberVal.isEmpty ||
-                                        !phoneNumberVal.startsWith('+')) {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                              'El número de teléfono es requerido, y debe comenzar con \'+\'.'),
-                                        ),
-                                      );
-                                      return;
-                                    }
-                                    await authManager.beginPhoneAuth(
-                                      context: context,
-                                      phoneNumber: phoneNumberVal,
-                                      onCodeSent: (context) async {
-                                        context.goNamedAuth(
-                                          'OK_FN_Payry_17_verificarOTP',
-                                          context.mounted,
-                                          queryParameters: {
-                                            'otpCode': serializeParam(
-                                              '',
-                                              ParamType.String,
-                                            ),
-                                            'phoneNumber': serializeParam(
-                                              widget.phoneNumber,
-                                              ParamType.String,
-                                            ),
-                                          }.withoutNulls,
-                                          ignoreRedirect: true,
+                            if (_model.timerMilliseconds <= 0)
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 10.0, 0.0, 10.0),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      var _shouldSetState = false;
+                                      try {
+                                        final result = await FirebaseFunctions
+                                            .instance
+                                            .httpsCallable('requestVerifyPhone')
+                                            .call({
+                                          "token": FFAppState().serverToken,
+                                          "phone": widget.phoneNumber,
+                                        });
+                                        _model.cfRequestResp =
+                                            RequestVerifyPhoneCloudFunctionCallResponse(
+                                          data: result.data,
+                                          succeeded: true,
+                                          resultAsString:
+                                              result.data.toString(),
+                                          jsonBody: result.data,
                                         );
-                                      },
-                                    );
+                                      } on FirebaseFunctionsException catch (error) {
+                                        _model.cfRequestResp =
+                                            RequestVerifyPhoneCloudFunctionCallResponse(
+                                          errorCode: error.code,
+                                          succeeded: false,
+                                        );
+                                      }
 
-                                    _model.timerController.onResetTimer();
+                                      _shouldSetState = true;
+                                      if (getJsonField(
+                                        _model.cfRequestResp!.jsonBody,
+                                        r'''$.success''',
+                                      )) {
+                                        _model.timerController.onResetTimer();
 
-                                    _model.timerController.onStartTimer();
-                                  },
-                                  text: 'Reenviar código',
-                                  options: FFButtonOptions(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 1.0,
-                                    height: 50.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: Color(0xFF5E4A98),
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: Color(0xFFFAF9FE),
-                                          letterSpacing: 0.0,
-                                        ),
-                                    elevation: 3.0,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
+                                        _model.timerController.onStartTimer();
+                                        if (_shouldSetState) setState(() {});
+                                        return;
+                                      } else {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text('Error'),
+                                              content: Text(getJsonField(
+                                                _model.cfRequestResp!.jsonBody,
+                                                r'''$.message''',
+                                              ).toString()),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                        if (_shouldSetState) setState(() {});
+                                        return;
+                                      }
+
+                                      if (_shouldSetState) setState(() {});
+                                    },
+                                    text: 'Reenviar código',
+                                    options: FFButtonOptions(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          1.0,
+                                      height: 50.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: Color(0xFF5E4A98),
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            color: Color(0xFFFAF9FE),
+                                            letterSpacing: 0.0,
+                                          ),
+                                      elevation: 3.0,
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
-                                    borderRadius: BorderRadius.circular(10.0),
                                   ),
                                 ),
                               ),
-                            ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),

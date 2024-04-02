@@ -199,3 +199,33 @@ class SendSmsCloudFunctionCallResponse {
   String? resultAsString;
   dynamic data;
 }
+
+class RequestVerifyPhoneCloudFunctionCallResponse {
+  RequestVerifyPhoneCloudFunctionCallResponse({
+    this.errorCode,
+    this.succeeded,
+    this.jsonBody,
+    this.resultAsString,
+    this.data,
+  });
+  String? errorCode;
+  bool? succeeded;
+  dynamic jsonBody;
+  String? resultAsString;
+  dynamic data;
+}
+
+class VerifyPhoneCloudFunctionCallResponse {
+  VerifyPhoneCloudFunctionCallResponse({
+    this.errorCode,
+    this.succeeded,
+    this.jsonBody,
+    this.resultAsString,
+    this.data,
+  });
+  String? errorCode;
+  bool? succeeded;
+  dynamic jsonBody;
+  String? resultAsString;
+  dynamic data;
+}
