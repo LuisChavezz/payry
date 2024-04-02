@@ -476,7 +476,6 @@ class _OKFNPayry20DatosBancariosWidgetState
                                                   null)
                                               ? null
                                               : () async {
-                                                  var _shouldSetState = false;
                                                   if (_model.formKey
                                                               .currentState ==
                                                           null ||
@@ -542,22 +541,35 @@ class _OKFNPayry20DatosBancariosWidgetState
                                                     );
                                                   }
 
-                                                  _shouldSetState = true;
                                                   if (_model.reportCompFC!
                                                       .succeeded!) {
                                                     context.safePop();
-                                                    if (_shouldSetState)
-                                                      setState(() {});
-                                                    return;
                                                   } else {
                                                     context.safePop();
-                                                    if (_shouldSetState)
-                                                      setState(() {});
-                                                    return;
                                                   }
 
-                                                  if (_shouldSetState)
-                                                    setState(() {});
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            'Datos actualizados'),
+                                                        content: Text(
+                                                            'Los datos bancarios de tu empresa han sido actualizados con éxito.'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  );
+
+                                                  setState(() {});
                                                 },
                                           text: 'Guardar',
                                           options: FFButtonOptions(

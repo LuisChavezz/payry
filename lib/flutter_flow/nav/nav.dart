@@ -135,16 +135,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'OK_FN_Payry_16_verificarNumero',
               path: 'oKFNPayry16VerificarNumero',
-              builder: (context, params) => OKFNPayry16VerificarNumeroWidget(),
+              builder: (context, params) => OKFNPayry16VerificarNumeroWidget(
+                phoneNumber: params.getParam(
+                  'phoneNumber',
+                  ParamType.String,
+                ),
+              ),
             ),
             FFRoute(
               name: 'OK_FN_Payry_17_verificarOTP',
               path: 'oKFNPayry17VerificarOTP',
               builder: (context, params) => OKFNPayry17VerificarOTPWidget(
-                otpCode: params.getParam(
-                  'otpCode',
-                  ParamType.String,
-                ),
                 phoneNumber: params.getParam(
                   'phoneNumber',
                   ParamType.String,

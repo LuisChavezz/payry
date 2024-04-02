@@ -597,21 +597,27 @@ class _OKFNPayry15EditProfileWidgetState
                                                               false)
                                                           ? null
                                                           : () async {
-                                                              setState(() {
-                                                                FFAppState()
-                                                                        .phoneNumber =
-                                                                    _model
-                                                                        .phoneFieldController
-                                                                        .text;
-                                                              });
                                                               if (_model.phoneFieldController
                                                                           .text !=
                                                                       null &&
                                                                   _model.phoneFieldController
                                                                           .text !=
                                                                       '') {
-                                                                context.pushNamed(
-                                                                    'OK_FN_Payry_16_verificarNumero');
+                                                                context
+                                                                    .pushNamed(
+                                                                  'OK_FN_Payry_16_verificarNumero',
+                                                                  queryParameters:
+                                                                      {
+                                                                    'phoneNumber':
+                                                                        serializeParam(
+                                                                      _model
+                                                                          .phoneFieldController
+                                                                          .text,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                  }.withoutNulls,
+                                                                );
 
                                                                 return;
                                                               } else {

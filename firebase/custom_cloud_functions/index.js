@@ -29,3 +29,7 @@ const reportUser = require("./report_user.js");
 exports.reportUser = reportUser.reportUser;
 const sendSms = require("./send_sms.js");
 exports.sendSms = sendSms.sendSms;
+const requestVerifyPhone = require("./request_verify_phone.js");
+exports.requestVerifyPhone = requestVerifyPhone.requestVerifyPhone;
+const verifyPhone = require("./verify_phone.js");
+exports.verifyPhone = verifyPhone.verifyPhone;
