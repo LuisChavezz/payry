@@ -117,7 +117,8 @@ class FirebaseAuthManager extends AuthManager
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: Hubo un error en la autenticación.')),
+        SnackBar(
+            content: Text('Error: hubo un error con nuestros servidores.')),
       );
       return null;
     }
@@ -190,7 +191,7 @@ class FirebaseAuthManager extends AuthManager
       } else if (phoneAuthManager.phoneAuthError != null) {
         final e = phoneAuthManager.phoneAuthError!;
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Error: Hubo un error en la autenticación.'),
+          content: Text('Error: hubo un error con nuestros servidores.'),
         ));
         phoneAuthManager.update(() => phoneAuthManager.phoneAuthError = null);
       }
@@ -299,7 +300,7 @@ class FirebaseAuthManager extends AuthManager
         'email-already-in-use' => 'El correo electrónico ya está en uso.',
         'INVALID_LOGIN_CREDENTIALS' =>
           'Las credenciales ingresadas son incorrectas.',
-        _ => 'Error: Hubo un error en la autenticación.',
+        _ => 'Error: hubo un error con nuestros servidores.',
       };
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(

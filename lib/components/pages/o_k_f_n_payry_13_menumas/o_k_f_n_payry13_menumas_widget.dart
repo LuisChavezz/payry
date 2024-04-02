@@ -48,7 +48,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
         await authManager.signOut();
         GoRouter.of(context).clearRedirectLocation();
 
-        context.pushNamedAuth('OK_FN_Payry_08_iniciasesion', context.mounted);
+        context.goNamedAuth('OK_FN_Payry_08_iniciasesion', context.mounted);
 
         return;
       }
@@ -66,23 +66,8 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
         setState(() {
           _model.show = true;
         });
-      }
-      if (getJsonField(
-            FFAppState().walkthroughs,
-            r'''$.menu_mas''',
-          ) &&
-          widget.showWT) {
-        await Future.delayed(const Duration(milliseconds: 300));
-        setState(() {
-          _model.show = true;
-        });
-        safeSetState(() => _model.primerosPasosMenuMasController =
-            createPageWalkthrough(context));
-        _model.primerosPasosMenuMasController?.show(context: context);
+        return;
       } else {
-        setState(() {
-          _model.show = true;
-        });
         return;
       }
     });
@@ -2495,7 +2480,8 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                               currentUserDocument
                                                                   ?.isAdmin,
                                                               false) ||
-                                                          true
+                                                          oKFNPayry13MenumasUserPermissionsRecord!
+                                                              .readInvoices
                                                       ? FlutterFlowTheme.of(
                                                               context)
                                                           .primaryText
@@ -2515,7 +2501,8 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                   currentUserDocument
                                                                       ?.isAdmin,
                                                                   false) ||
-                                                              true
+                                                              oKFNPayry13MenumasUserPermissionsRecord!
+                                                                  .readInvoices
                                                           ? FlutterFlowTheme.of(
                                                                   context)
                                                               .primaryText
