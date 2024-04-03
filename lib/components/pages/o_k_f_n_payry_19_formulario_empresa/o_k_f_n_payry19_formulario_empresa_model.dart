@@ -48,21 +48,18 @@ class OKFNPayry19FormularioEmpresaModel
   FocusNode? aliasFieldFocusNode;
   TextEditingController? aliasFieldController;
   String? Function(BuildContext, String?)? aliasFieldControllerValidator;
+  String? _aliasFieldControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'El alias es requerido';
+    }
+
+    return null;
+  }
+
   // State field(s) for EmailField widget.
   FocusNode? emailFieldFocusNode;
   TextEditingController? emailFieldController;
   String? Function(BuildContext, String?)? emailFieldControllerValidator;
-  String? _emailFieldControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'El correo electrónico es requerido';
-    }
-
-    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
-      return 'El correo electrónico es inválido';
-    }
-    return null;
-  }
-
   // State field(s) for StreetField widget.
   FocusNode? streetFieldFocusNode;
   TextEditingController? streetFieldController;
@@ -182,7 +179,7 @@ class OKFNPayry19FormularioEmpresaModel
   @override
   void initState(BuildContext context) {
     nameFieldControllerValidator = _nameFieldControllerValidator;
-    emailFieldControllerValidator = _emailFieldControllerValidator;
+    aliasFieldControllerValidator = _aliasFieldControllerValidator;
     streetFieldControllerValidator = _streetFieldControllerValidator;
     streetNumberFieldControllerValidator =
         _streetNumberFieldControllerValidator;
