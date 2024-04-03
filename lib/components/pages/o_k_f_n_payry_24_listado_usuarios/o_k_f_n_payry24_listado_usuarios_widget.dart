@@ -225,6 +225,7 @@ class _OKFNPayry24ListadoUsuariosWidgetState
                           }
                           return ListView.builder(
                             padding: EdgeInsets.zero,
+                            primary: false,
                             shrinkWrap: true,
                             scrollDirection: Axis.vertical,
                             itemCount: listViewUsersRecordList.length,
