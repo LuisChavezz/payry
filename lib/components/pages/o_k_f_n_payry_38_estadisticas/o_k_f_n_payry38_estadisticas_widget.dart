@@ -72,6 +72,7 @@ class _OKFNPayry38EstadisticasWidgetState
             style: FlutterFlowTheme.of(context).titleSmall.override(
                   fontFamily: 'Lexend',
                   color: FlutterFlowTheme.of(context).primaryText,
+                  letterSpacing: 0.0,
                 ),
           ),
           actions: [],
@@ -129,6 +130,7 @@ class _OKFNPayry38EstadisticasWidgetState
                                       fontFamily: 'Lexend',
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ),
@@ -168,27 +170,32 @@ class _OKFNPayry38EstadisticasWidgetState
                             FlutterFlowTheme.of(context).headlineSmall.override(
                                   fontFamily: 'Lexend',
                                   fontSize: 14.0,
+                                  letterSpacing: 0.0,
                                 ),
                         dayOfWeekStyle:
                             FlutterFlowTheme.of(context).labelLarge.override(
                                   fontFamily: 'Poppins',
                                   fontSize: 12.0,
+                                  letterSpacing: 0.0,
                                 ),
                         dateStyle:
                             FlutterFlowTheme.of(context).bodyMedium.override(
                                   fontFamily: 'Lexend',
                                   fontSize: 12.0,
+                                  letterSpacing: 0.0,
                                 ),
                         selectedDateStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Lexend',
                                   color: FlutterFlowTheme.of(context).secondary,
                                   fontSize: 14.0,
+                                  letterSpacing: 0.0,
                                 ),
                         inactiveDateStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
                                   fontFamily: 'Poppins',
                                   fontSize: 10.0,
+                                  letterSpacing: 0.0,
                                 ),
                         locale: FFLocalizations.of(context).languageCode,
                       ),
@@ -235,6 +242,7 @@ class _OKFNPayry38EstadisticasWidgetState
                                       fontFamily: 'Lexend',
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ),
@@ -274,27 +282,32 @@ class _OKFNPayry38EstadisticasWidgetState
                             FlutterFlowTheme.of(context).headlineSmall.override(
                                   fontFamily: 'Lexend',
                                   fontSize: 14.0,
+                                  letterSpacing: 0.0,
                                 ),
                         dayOfWeekStyle:
                             FlutterFlowTheme.of(context).labelLarge.override(
                                   fontFamily: 'Poppins',
                                   fontSize: 12.0,
+                                  letterSpacing: 0.0,
                                 ),
                         dateStyle:
                             FlutterFlowTheme.of(context).bodyMedium.override(
                                   fontFamily: 'Lexend',
                                   fontSize: 12.0,
+                                  letterSpacing: 0.0,
                                 ),
                         selectedDateStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Lexend',
                                   color: FlutterFlowTheme.of(context).secondary,
                                   fontSize: 14.0,
+                                  letterSpacing: 0.0,
                                 ),
                         inactiveDateStyle:
                             FlutterFlowTheme.of(context).labelMedium.override(
                                   fontFamily: 'Poppins',
                                   fontSize: 10.0,
+                                  letterSpacing: 0.0,
                                 ),
                         locale: FFLocalizations.of(context).languageCode,
                       ),
@@ -417,6 +430,7 @@ class _OKFNPayry38EstadisticasWidgetState
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Lexend',
                                     color: Colors.white,
+                                    letterSpacing: 0.0,
                                   ),
                           elevation: 3.0,
                           borderSide: BorderSide(
@@ -495,6 +509,8 @@ class _OKFNPayry38EstadisticasWidgetState
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
                                                     ),
                                                   ),
@@ -519,6 +535,8 @@ class _OKFNPayry38EstadisticasWidgetState
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .accent3,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
                                                     ),
                                                   ],
@@ -599,6 +617,8 @@ class _OKFNPayry38EstadisticasWidgetState
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
                                                     ),
                                                   ),
@@ -623,6 +643,8 @@ class _OKFNPayry38EstadisticasWidgetState
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .accent3,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
                                                     ),
                                                   ],
@@ -703,6 +725,8 @@ class _OKFNPayry38EstadisticasWidgetState
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
                                                     ),
                                                   ),
@@ -727,6 +751,8 @@ class _OKFNPayry38EstadisticasWidgetState
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .accent3,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
                                                     ),
                                                   ],
@@ -807,6 +833,8 @@ class _OKFNPayry38EstadisticasWidgetState
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
                                                     ),
                                                   ),
@@ -831,6 +859,8 @@ class _OKFNPayry38EstadisticasWidgetState
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .accent3,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
                                                     ),
                                                   ],
@@ -911,6 +941,8 @@ class _OKFNPayry38EstadisticasWidgetState
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
                                                     ),
                                                   ),
@@ -937,6 +969,8 @@ class _OKFNPayry38EstadisticasWidgetState
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .accent3,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
                                                     ),
                                                     Text(
@@ -955,6 +989,8 @@ class _OKFNPayry38EstadisticasWidgetState
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .accent3,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
                                                     ),
                                                   ],
@@ -1035,6 +1071,8 @@ class _OKFNPayry38EstadisticasWidgetState
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
                                                     ),
                                                   ),
@@ -1061,6 +1099,8 @@ class _OKFNPayry38EstadisticasWidgetState
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .accent3,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
                                                     ),
                                                     Text(
@@ -1079,6 +1119,8 @@ class _OKFNPayry38EstadisticasWidgetState
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .accent3,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
                                                     ),
                                                   ],

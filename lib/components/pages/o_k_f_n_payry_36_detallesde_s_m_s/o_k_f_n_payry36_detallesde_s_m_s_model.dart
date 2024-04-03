@@ -31,8 +31,6 @@ class OKFNPayry36DetallesdeSMSModel
   // Stores action output result for [Cloud Function - sendSms] action in IconButton widget.
   SendSmsCloudFunctionCallResponse? smsResp;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -40,8 +38,4 @@ class OKFNPayry36DetallesdeSMSModel
   void dispose() {
     unfocusNode.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

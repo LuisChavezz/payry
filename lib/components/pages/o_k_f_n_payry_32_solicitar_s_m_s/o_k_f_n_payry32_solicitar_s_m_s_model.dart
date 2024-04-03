@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/walkthroughs/como_crear_un_di_mo.dart';
+import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/permissions_util.dart';
@@ -19,6 +20,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -65,7 +67,9 @@ class OKFNPayry32SolicitarSMSModel
     if (val.length > 20) {
       return 'El concepto solo puede contener un máximo de 20 caracteres';
     }
-
+    if (!RegExp('^(?!\\s)(?!.*\\s+\$).*').hasMatch(val)) {
+      return 'Formato de concepto inválido';
+    }
     return null;
   }
 
@@ -80,7 +84,7 @@ class OKFNPayry32SolicitarSMSModel
 
     if (!RegExp('^(?!0*(\\.0{1,2})?\$)([1-9]\\d{0,3}|0)(?:\\.\\d{1,2})?\$')
         .hasMatch(val)) {
-      return 'El formato del importe es inválido.';
+      return 'Formato de importe inválido.';
     }
     return null;
   }
@@ -91,8 +95,6 @@ class OKFNPayry32SolicitarSMSModel
   GenerateDimoCloudFunctionCallResponse? dimoCF;
   // Model for NavBarFloting component.
   late NavBarFlotingModel navBarFlotingModel;
-
-  /// Initialization and disposal methods.
 
   @override
   void initState(BuildContext context) {
@@ -117,8 +119,4 @@ class OKFNPayry32SolicitarSMSModel
 
     navBarFlotingModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

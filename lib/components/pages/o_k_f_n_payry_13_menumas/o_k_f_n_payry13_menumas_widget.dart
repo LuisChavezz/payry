@@ -19,7 +19,12 @@ import 'o_k_f_n_payry13_menumas_model.dart';
 export 'o_k_f_n_payry13_menumas_model.dart';
 
 class OKFNPayry13MenumasWidget extends StatefulWidget {
-  const OKFNPayry13MenumasWidget({super.key});
+  const OKFNPayry13MenumasWidget({
+    super.key,
+    bool? showWT,
+  }) : this.showWT = showWT ?? true;
+
+  final bool showWT;
 
   @override
   State<OKFNPayry13MenumasWidget> createState() =>
@@ -38,6 +43,15 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (currentUserUid == null || currentUserUid == '') {
+        GoRouter.of(context).prepareAuthEvent();
+        await authManager.signOut();
+        GoRouter.of(context).clearRedirectLocation();
+
+        context.goNamedAuth('OK_FN_Payry_08_iniciasesion', context.mounted);
+
+        return;
+      }
       if (FFAppState().walkthroughs == null) {
         FFAppState().walkthroughs = <String, bool?>{
           'menu_mas': true,
@@ -52,23 +66,8 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
         setState(() {
           _model.show = true;
         });
-      }
-      if (getJsonField(
-        FFAppState().walkthroughs,
-        r'''$.menu_mas''',
-      )) {
-        await Future.delayed(const Duration(milliseconds: 300));
-        setState(() {
-          _model.show = true;
-        });
-        safeSetState(() => _model.primerosPasosMenuMasController =
-            createPageWalkthrough(context));
-        _model.primerosPasosMenuMasController?.show(context: context);
         return;
       } else {
-        setState(() {
-          _model.show = true;
-        });
         return;
       }
     });
@@ -156,6 +155,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .accent3,
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),
@@ -265,7 +265,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                           alertDialogContext,
                                                                           false),
                                                                   child: Text(
-                                                                      'Cancel'),
+                                                                      'Cancelar'),
                                                                 ),
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -311,7 +311,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                         alertDialogContext,
                                                                         false),
                                                                 child: Text(
-                                                                    'Cancel'),
+                                                                    'Cancelar'),
                                                               ),
                                                               TextButton(
                                                                 onPressed: () =>
@@ -357,7 +357,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                       alertDialogContext,
                                                                       false),
                                                               child: Text(
-                                                                  'Cancel'),
+                                                                  'Cancelar'),
                                                             ),
                                                             TextButton(
                                                               onPressed: () =>
@@ -521,7 +521,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                             BoxShadow(
                                               blurRadius: 4.0,
                                               color: Color(0x33000000),
-                                              offset: Offset(0.0, 2.0),
+                                              offset: Offset(
+                                                0.0,
+                                                2.0,
+                                              ),
                                             )
                                           ],
                                           borderRadius:
@@ -572,6 +575,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                               .primaryText
                                                           : Color(0xFFA1A1A1),
                                                       fontSize: 14.0,
+                                                      letterSpacing: 0.0,
                                                     ),
                                               ),
                                             ].divide(SizedBox(width: 5.0)),
@@ -651,7 +655,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                           alertDialogContext,
                                                                           false),
                                                                   child: Text(
-                                                                      'Cancel'),
+                                                                      'Cancelar'),
                                                                 ),
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -697,7 +701,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                         alertDialogContext,
                                                                         false),
                                                                 child: Text(
-                                                                    'Cancel'),
+                                                                    'Cancelar'),
                                                               ),
                                                               TextButton(
                                                                 onPressed: () =>
@@ -743,7 +747,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                       alertDialogContext,
                                                                       false),
                                                               child: Text(
-                                                                  'Cancel'),
+                                                                  'Cancelar'),
                                                             ),
                                                             TextButton(
                                                               onPressed: () =>
@@ -907,7 +911,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                             BoxShadow(
                                               blurRadius: 4.0,
                                               color: Color(0x33000000),
-                                              offset: Offset(0.0, 2.0),
+                                              offset: Offset(
+                                                0.0,
+                                                2.0,
+                                              ),
                                             )
                                           ],
                                           borderRadius:
@@ -963,6 +970,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                               375.0
                                                           ? 12.0
                                                           : 14.0,
+                                                      letterSpacing: 0.0,
                                                     ),
                                               ),
                                             ].divide(SizedBox(width: 5.0)),
@@ -1031,7 +1039,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           BoxShadow(
                                             blurRadius: 4.0,
                                             color: Color(0x33000000),
-                                            offset: Offset(0.0, 2.0),
+                                            offset: Offset(
+                                              0.0,
+                                              2.0,
+                                            ),
                                           )
                                         ],
                                         borderRadius:
@@ -1066,6 +1077,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                             ),
                                           ].divide(SizedBox(width: 5.0)),
@@ -1121,7 +1133,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                         alertDialogContext,
                                                                         false),
                                                                 child: Text(
-                                                                    'Cancel'),
+                                                                    'Cancelar'),
                                                               ),
                                                               TextButton(
                                                                 onPressed: () =>
@@ -1167,7 +1179,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                       alertDialogContext,
                                                                       false),
                                                               child: Text(
-                                                                  'Cancel'),
+                                                                  'Cancelar'),
                                                             ),
                                                             TextButton(
                                                               onPressed: () =>
@@ -1331,7 +1343,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                             BoxShadow(
                                               blurRadius: 4.0,
                                               color: Color(0x33000000),
-                                              offset: Offset(0.0, 2.0),
+                                              offset: Offset(
+                                                0.0,
+                                                2.0,
+                                              ),
                                             )
                                           ],
                                           borderRadius:
@@ -1377,6 +1392,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                   context)
                                                               .primaryText
                                                           : Color(0xFFA1A1A1),
+                                                      letterSpacing: 0.0,
                                                     ),
                                               ),
                                             ].divide(SizedBox(width: 5.0)),
@@ -1442,7 +1458,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                           alertDialogContext,
                                                                           false),
                                                                   child: Text(
-                                                                      'Cancel'),
+                                                                      'Cancelar'),
                                                                 ),
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -1488,7 +1504,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                         alertDialogContext,
                                                                         false),
                                                                 child: Text(
-                                                                    'Cancel'),
+                                                                    'Cancelar'),
                                                               ),
                                                               TextButton(
                                                                 onPressed: () =>
@@ -1534,7 +1550,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                       alertDialogContext,
                                                                       false),
                                                               child: Text(
-                                                                  'Cancel'),
+                                                                  'Cancelar'),
                                                             ),
                                                             TextButton(
                                                               onPressed: () =>
@@ -1698,7 +1714,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                             BoxShadow(
                                               blurRadius: 4.0,
                                               color: Color(0x33000000),
-                                              offset: Offset(0.0, 2.0),
+                                              offset: Offset(
+                                                0.0,
+                                                2.0,
+                                              ),
                                             )
                                           ],
                                           borderRadius:
@@ -1748,6 +1767,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                   context)
                                                               .primaryText
                                                           : Color(0xFFA1A1A1),
+                                                      letterSpacing: 0.0,
                                                     ),
                                               ),
                                             ].divide(SizedBox(width: 5.0)),
@@ -1810,7 +1830,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                           alertDialogContext,
                                                                           false),
                                                                   child: Text(
-                                                                      'Cancel'),
+                                                                      'Cancelar'),
                                                                 ),
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -1856,7 +1876,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                         alertDialogContext,
                                                                         false),
                                                                 child: Text(
-                                                                    'Cancel'),
+                                                                    'Cancelar'),
                                                               ),
                                                               TextButton(
                                                                 onPressed: () =>
@@ -1902,7 +1922,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                       alertDialogContext,
                                                                       false),
                                                               child: Text(
-                                                                  'Cancel'),
+                                                                  'Cancelar'),
                                                             ),
                                                             TextButton(
                                                               onPressed: () =>
@@ -2066,7 +2086,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                             BoxShadow(
                                               blurRadius: 4.0,
                                               color: Color(0x33000000),
-                                              offset: Offset(0.0, 2.0),
+                                              offset: Offset(
+                                                0.0,
+                                                2.0,
+                                              ),
                                             )
                                           ],
                                           borderRadius:
@@ -2112,6 +2135,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                   context)
                                                               .primaryText
                                                           : Color(0xFFA1A1A1),
+                                                      letterSpacing: 0.0,
                                                     ),
                                               ),
                                             ].divide(SizedBox(width: 5.0)),
@@ -2174,7 +2198,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                           alertDialogContext,
                                                                           false),
                                                                   child: Text(
-                                                                      'Cancel'),
+                                                                      'Cancelar'),
                                                                 ),
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -2220,7 +2244,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                         alertDialogContext,
                                                                         false),
                                                                 child: Text(
-                                                                    'Cancel'),
+                                                                    'Cancelar'),
                                                               ),
                                                               TextButton(
                                                                 onPressed: () =>
@@ -2266,7 +2290,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                       alertDialogContext,
                                                                       false),
                                                               child: Text(
-                                                                  'Cancel'),
+                                                                  'Cancelar'),
                                                             ),
                                                             TextButton(
                                                               onPressed: () =>
@@ -2430,7 +2454,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                             BoxShadow(
                                               blurRadius: 4.0,
                                               color: Color(0x33000000),
-                                              offset: Offset(0.0, 2.0),
+                                              offset: Offset(
+                                                0.0,
+                                                2.0,
+                                              ),
                                             )
                                           ],
                                           borderRadius:
@@ -2453,7 +2480,8 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                               currentUserDocument
                                                                   ?.isAdmin,
                                                               false) ||
-                                                          true
+                                                          oKFNPayry13MenumasUserPermissionsRecord!
+                                                              .readInvoices
                                                       ? FlutterFlowTheme.of(
                                                               context)
                                                           .primaryText
@@ -2473,11 +2501,13 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                   currentUserDocument
                                                                       ?.isAdmin,
                                                                   false) ||
-                                                              true
+                                                              oKFNPayry13MenumasUserPermissionsRecord!
+                                                                  .readInvoices
                                                           ? FlutterFlowTheme.of(
                                                                   context)
                                                               .primaryText
                                                           : Color(0xFFA1A1A1),
+                                                      letterSpacing: 0.0,
                                                     ),
                                               ),
                                             ].divide(SizedBox(width: 5.0)),
@@ -2540,7 +2570,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                           alertDialogContext,
                                                                           false),
                                                                   child: Text(
-                                                                      'Cancel'),
+                                                                      'Cancelar'),
                                                                 ),
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -2586,7 +2616,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                         alertDialogContext,
                                                                         false),
                                                                 child: Text(
-                                                                    'Cancel'),
+                                                                    'Cancelar'),
                                                               ),
                                                               TextButton(
                                                                 onPressed: () =>
@@ -2632,7 +2662,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                       alertDialogContext,
                                                                       false),
                                                               child: Text(
-                                                                  'Cancel'),
+                                                                  'Cancelar'),
                                                             ),
                                                             TextButton(
                                                               onPressed: () =>
@@ -2796,7 +2826,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                             BoxShadow(
                                               blurRadius: 4.0,
                                               color: Color(0x33000000),
-                                              offset: Offset(0.0, 2.0),
+                                              offset: Offset(
+                                                0.0,
+                                                2.0,
+                                              ),
                                             )
                                           ],
                                           borderRadius:
@@ -2867,6 +2900,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                 : 14.0,
                                                             11.0,
                                                           ),
+                                                          letterSpacing: 0.0,
                                                         ),
                                               ),
                                             ].divide(SizedBox(width: 5.0)),
@@ -2935,7 +2969,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           BoxShadow(
                                             blurRadius: 4.0,
                                             color: Color(0x33000000),
-                                            offset: Offset(0.0, 2.0),
+                                            offset: Offset(
+                                              0.0,
+                                              2.0,
+                                            ),
                                           )
                                         ],
                                         borderRadius:
@@ -2970,6 +3007,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                             ),
                                           ].divide(SizedBox(width: 5.0)),
@@ -3037,7 +3075,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           BoxShadow(
                                             blurRadius: 4.0,
                                             color: Color(0x33000000),
-                                            offset: Offset(0.0, 2.0),
+                                            offset: Offset(
+                                              0.0,
+                                              2.0,
+                                            ),
                                           )
                                         ],
                                         borderRadius:
@@ -3072,6 +3113,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                             ),
                                           ].divide(SizedBox(width: 5.0)),
@@ -3138,7 +3180,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           BoxShadow(
                                             blurRadius: 4.0,
                                             color: Color(0x33000000),
-                                            offset: Offset(0.0, 2.0),
+                                            offset: Offset(
+                                              0.0,
+                                              2.0,
+                                            ),
                                           )
                                         ],
                                         borderRadius:
@@ -3173,6 +3218,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                             ),
                                           ].divide(SizedBox(width: 5.0)),
@@ -3248,7 +3294,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                           BoxShadow(
                                             blurRadius: 4.0,
                                             color: Color(0x33000000),
-                                            offset: Offset(0.0, 2.0),
+                                            offset: Offset(
+                                              0.0,
+                                              2.0,
+                                            ),
                                           )
                                         ],
                                         borderRadius:
@@ -3292,6 +3341,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                 375.0
                                                             ? 12.0
                                                             : 14.0,
+                                                        letterSpacing: 0.0,
                                                       ),
                                             ),
                                           ].divide(SizedBox(width: 5.0)),
@@ -3299,10 +3349,8 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                       ),
                                     ),
                                   ),
-                                  if ((currentUserUid ==
-                                          'eC3f6n6aq1e1Ow99VQ1I41eXPox1') ||
-                                      (currentUserUid ==
-                                          'FfyYoFVn5HVzM5JZcAifMgWgvG23'))
+                                  if (currentUserUid ==
+                                      'cB6nyy2OxSfKjNVhtRyzmmbUhcm2')
                                     AuthUserStreamWidget(
                                       builder: (context) => InkWell(
                                         splashColor: Colors.transparent,
@@ -3397,7 +3445,10 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                               BoxShadow(
                                                 blurRadius: 4.0,
                                                 color: Color(0x33000000),
-                                                offset: Offset(0.0, 2.0),
+                                                offset: Offset(
+                                                  0.0,
+                                                  2.0,
+                                                ),
                                               )
                                             ],
                                             borderRadius:
@@ -3456,6 +3507,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                 : Color(
                                                                     0x808F8F8F))
                                                             : Color(0x808F8F8F),
+                                                        letterSpacing: 0.0,
                                                       ),
                                                 ),
                                               ].divide(SizedBox(width: 5.0)),

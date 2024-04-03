@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/walkthroughs/como_generar_un_co_di.dart';
+import 'dart:async';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'o_k_f_n_payry27_solicitar_q_r_widget.dart'
     show OKFNPayry27SolicitarQRWidget;
@@ -18,6 +19,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -48,7 +50,9 @@ class OKFNPayry27SolicitarQRModel
     if (val.length > 20) {
       return 'El concepto solo puede contener un máximo de 20 caracteres';
     }
-
+    if (!RegExp('^(?!\\s)(?!.*\\s+\$).*').hasMatch(val)) {
+      return 'Formato de concepto inválido';
+    }
     return null;
   }
 
@@ -63,7 +67,7 @@ class OKFNPayry27SolicitarQRModel
 
     if (!RegExp('^(?!0*(\\.0{1,2})?\$)([1-9]\\d{0,3}|0)(?:\\.\\d{1,2})?\$')
         .hasMatch(val)) {
-      return 'El formato del importe es inválido.';
+      return 'Formato de importe inválido.';
     }
     return null;
   }
@@ -74,8 +78,6 @@ class OKFNPayry27SolicitarQRModel
   GenerateCodiCloudFunctionCallResponse? codiCF;
   // Model for NavBarFloting component.
   late NavBarFlotingModel navBarFlotingModel;
-
-  /// Initialization and disposal methods.
 
   @override
   void initState(BuildContext context) {
@@ -96,8 +98,4 @@ class OKFNPayry27SolicitarQRModel
 
     navBarFlotingModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

@@ -28,8 +28,6 @@ class OKFNPayry24ListadoUsuariosModel
   TutorialCoachMark? crearUsuariosController;
   final unfocusNode = FocusNode();
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -38,8 +36,4 @@ class OKFNPayry24ListadoUsuariosModel
     crearUsuariosController?.finish();
     unfocusNode.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

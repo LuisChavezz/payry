@@ -77,7 +77,7 @@ class FirebaseAuthManager extends AuthManager
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
               content: Text(
-                  'Too long since most recent sign in. Sign in again before deleting your account.')),
+                  'Ha pasado mucho tiempo desde que iniciaste sesión. Inicia sesión de nuevo para evitar que tu cuenta sea eliminada por inactividad.')),
         );
       }
     }
@@ -101,7 +101,7 @@ class FirebaseAuthManager extends AuthManager
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
               content: Text(
-                  'Too long since most recent sign in. Sign in again before updating your email.')),
+                  'Ha pasado mucho tiempo desde que iniciaste sesión. Inicia sesión de nuevo antes de actualizar tu correo electrónico.')),
         );
       }
     }
@@ -117,12 +117,15 @@ class FirebaseAuthManager extends AuthManager
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: ${e.message!}')),
+        SnackBar(
+            content: Text('Error: hubo un error con nuestros servidores.')),
       );
       return null;
     }
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Password reset email sent')),
+      SnackBar(
+          content: Text(
+              'Ya se ha enviado el correo para restablecer tu contraseña.')),
     );
   }
 
@@ -188,7 +191,7 @@ class FirebaseAuthManager extends AuthManager
       } else if (phoneAuthManager.phoneAuthError != null) {
         final e = phoneAuthManager.phoneAuthError!;
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Error: ${e.message!}'),
+          content: Text('Error: hubo un error con nuestros servidores.'),
         ));
         phoneAuthManager.update(() => phoneAuthManager.phoneAuthError = null);
       }
@@ -294,11 +297,10 @@ class FirebaseAuthManager extends AuthManager
           : PayryFirebaseUser.fromUserCredential(userCredential);
     } on FirebaseAuthException catch (e) {
       final errorMsg = switch (e.code) {
-        'email-already-in-use' =>
-          'Error: The email is already in use by a different account',
+        'email-already-in-use' => 'El correo electrónico ya está en uso.',
         'INVALID_LOGIN_CREDENTIALS' =>
-          'Error: The supplied auth credential is incorrect, malformed or has expired',
-        _ => 'Error: ${e.message!}',
+          'Las credenciales ingresadas son incorrectas.',
+        _ => 'Error: hubo un error con nuestros servidores.',
       };
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(

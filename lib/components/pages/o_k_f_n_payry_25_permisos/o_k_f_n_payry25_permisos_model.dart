@@ -46,8 +46,6 @@ class OKFNPayry25PermisosModel
   // State field(s) for ReadTransfersSwitch widget.
   bool? readTransfersSwitchValue;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -56,8 +54,4 @@ class OKFNPayry25PermisosModel
     asignarPermisosAUsuariosController?.finish();
     unfocusNode.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

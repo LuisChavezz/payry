@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
+import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -137,6 +138,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .accent3,
+                                                        letterSpacing: 0.0,
                                                       ),
                                             ),
                                           ],
@@ -157,7 +159,11 @@ class _OKFNPayry05RegisterInvWidgetState
                                             labelText: 'Nombre',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyMedium,
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Lexend',
+                                                      letterSpacing: 0.0,
+                                                    ),
                                             hintText: 'Ingresa tu nombre...',
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
@@ -165,10 +171,13 @@ class _OKFNPayry05RegisterInvWidgetState
                                                     .override(
                                                       fontFamily: 'Lexend',
                                                       color: Color(0xFF8788A5),
+                                                      letterSpacing: 0.0,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
-                                                color: Color(0xFF8788A5),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
                                                 width: 1.0,
                                               ),
                                               borderRadius:
@@ -176,7 +185,9 @@ class _OKFNPayry05RegisterInvWidgetState
                                             ),
                                             focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
-                                                color: Colors.white,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
                                                 width: 1.0,
                                               ),
                                               borderRadius:
@@ -208,7 +219,12 @@ class _OKFNPayry05RegisterInvWidgetState
                                                     20.0, 24.0, 20.0, 24.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                letterSpacing: 0.0,
+                                              ),
+                                          minLines: null,
                                           validator: _model
                                               .invNameFieldControllerValidator
                                               .asValidator(context),
@@ -239,7 +255,11 @@ class _OKFNPayry05RegisterInvWidgetState
                                             labelText: 'Correo electrónico',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyMedium,
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Lexend',
+                                                      letterSpacing: 0.0,
+                                                    ),
                                             hintText: 'Ingresa tu email...',
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
@@ -247,6 +267,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                     .override(
                                                       fontFamily: 'Lexend',
                                                       color: Color(0xFF8788A5),
+                                                      letterSpacing: 0.0,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
@@ -286,7 +307,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                   BorderRadius.circular(8.0),
                                             ),
                                             filled: true,
-                                            fillColor: Color(0x83CCCCCC),
+                                            fillColor: Color(0x1ACCCCCC),
                                             contentPadding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     20.0, 24.0, 20.0, 24.0),
@@ -298,8 +319,10 @@ class _OKFNPayry05RegisterInvWidgetState
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
+                                                letterSpacing: 0.0,
                                                 fontWeight: FontWeight.normal,
                                               ),
+                                          minLines: null,
                                           keyboardType:
                                               TextInputType.emailAddress,
                                           validator: _model
@@ -321,17 +344,25 @@ class _OKFNPayry05RegisterInvWidgetState
                                             labelText: 'Contraseña',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyMedium,
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Lexend',
+                                                      letterSpacing: 0.0,
+                                                    ),
                                             hintText:
                                                 'Ingresa tu contraseña...',
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodySmall,
+                                                    .bodySmall
+                                                    .override(
+                                                      fontFamily: 'Lexend',
+                                                      letterSpacing: 0.0,
+                                                    ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondaryText,
+                                                        .primaryText,
                                                 width: 1.0,
                                               ),
                                               borderRadius:
@@ -339,7 +370,9 @@ class _OKFNPayry05RegisterInvWidgetState
                                             ),
                                             focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
-                                                color: Color(0x00000000),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
                                                 width: 1.0,
                                               ),
                                               borderRadius:
@@ -393,7 +426,9 @@ class _OKFNPayry05RegisterInvWidgetState
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
+                                                letterSpacing: 0.0,
                                               ),
+                                          minLines: null,
                                           validator: _model
                                               .invPasswordCreateControllerValidator
                                               .asValidator(context),
@@ -413,7 +448,11 @@ class _OKFNPayry05RegisterInvWidgetState
                                             labelText: 'Confirma Contraseña',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyMedium,
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Lexend',
+                                                      letterSpacing: 0.0,
+                                                    ),
                                             hintText:
                                                 'Confirma tu contraseña...',
                                             hintStyle:
@@ -422,10 +461,13 @@ class _OKFNPayry05RegisterInvWidgetState
                                                     .override(
                                                       fontFamily: 'Lexend',
                                                       color: Color(0xFF8788A5),
+                                                      letterSpacing: 0.0,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
-                                                color: Color(0xFF8788A5),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
                                                 width: 1.0,
                                               ),
                                               borderRadius:
@@ -433,7 +475,9 @@ class _OKFNPayry05RegisterInvWidgetState
                                             ),
                                             focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
-                                                color: Colors.white,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
                                                 width: 1.0,
                                               ),
                                               borderRadius:
@@ -491,7 +535,9 @@ class _OKFNPayry05RegisterInvWidgetState
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
+                                                letterSpacing: 0.0,
                                               ),
+                                          minLines: null,
                                           validator: _model
                                               .invPasswordConfirmControllerValidator
                                               .asValidator(context),
@@ -500,255 +546,341 @@ class _OKFNPayry05RegisterInvWidgetState
                                       Align(
                                         alignment:
                                             AlignmentDirectional(-1.0, 0.0),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 10.0, 0.0, 10.0),
-                                          child: FFButtonWidget(
-                                            onPressed: () async {
-                                              var _shouldSetState = false;
-                                              if (_model.formKey.currentState ==
-                                                      null ||
-                                                  !_model.formKey.currentState!
-                                                      .validate()) {
-                                                return;
-                                              }
-                                              if (_model.acceptCheckValue!) {
-                                                GoRouter.of(context)
-                                                    .prepareAuthEvent();
-                                                if (_model
-                                                        .invPasswordCreateController
-                                                        .text !=
-                                                    _model
-                                                        .invPasswordConfirmController
-                                                        .text) {
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(
-                                                    SnackBar(
-                                                      content: Text(
-                                                        'Passwords don\'t match!',
-                                                      ),
-                                                    ),
-                                                  );
+                                        child: Builder(
+                                          builder: (context) => Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 10.0, 0.0, 10.0),
+                                            child: FFButtonWidget(
+                                              onPressed: () async {
+                                                var _shouldSetState = false;
+                                                if (_model.formKey
+                                                            .currentState ==
+                                                        null ||
+                                                    !_model
+                                                        .formKey.currentState!
+                                                        .validate()) {
                                                   return;
                                                 }
-
-                                                final user = await authManager
-                                                    .createAccountWithEmail(
-                                                  context,
-                                                  _model.invEmailFieldController
-                                                      .text,
-                                                  _model
-                                                      .invPasswordCreateController
-                                                      .text,
-                                                );
-                                                if (user == null) {
-                                                  return;
-                                                }
-
-                                                await currentUserReference!
-                                                    .update({
-                                                  ...createUsersRecordData(
-                                                    adminId: widget.id != null
-                                                        ? oKFNPayry05RegisterInvUserInvitationsRecord
-                                                            .adminId
-                                                        : currentUserUid,
-                                                    isAdmin: false,
-                                                    email: _model
-                                                        .invEmailFieldController
-                                                        .text,
-                                                    displayName: _model
-                                                        .invNameFieldController
-                                                        .text,
-                                                    photoUrl: '',
-                                                    phoneNumber: '',
-                                                    status: true,
-                                                    isValidPhoneNumber: false,
-                                                    isCompanyComplete: false,
-                                                    isValidMail: false,
-                                                  ),
-                                                  ...mapToFirestore(
-                                                    {
-                                                      'created_time': FieldValue
-                                                          .serverTimestamp(),
-                                                    },
-                                                  ),
-                                                });
-
-                                                await UserPermissionsRecord
-                                                    .collection
-                                                    .doc()
-                                                    .set(
-                                                        createUserPermissionsRecordData(
-                                                      uid: currentUserUid,
-                                                      adminId: valueOrDefault(
-                                                          currentUserDocument
-                                                              ?.adminId,
-                                                          ''),
-                                                      createQr: false,
-                                                      readQr: false,
-                                                      createSms: false,
-                                                      readSms: false,
-                                                      readTransfers: false,
-                                                      createRefunds: false,
-                                                      readStatistics: false,
-                                                      readCompanies: false,
-                                                      readUsers: false,
-                                                      readInvoices: false,
-                                                    ));
-                                                try {
-                                                  final result =
-                                                      await FirebaseFunctions
-                                                          .instance
-                                                          .httpsCallable(
-                                                              'verifyEmail')
-                                                          .call({
-                                                    "email": currentUserEmail,
-                                                  });
-                                                  _model.cfve =
-                                                      VerifyEmailCloudFunctionCallResponse(
-                                                    data: result.data,
-                                                    succeeded: true,
-                                                    resultAsString:
-                                                        result.data.toString(),
-                                                    jsonBody: result.data,
-                                                  );
-                                                } on FirebaseFunctionsException catch (error) {
-                                                  _model.cfve =
-                                                      VerifyEmailCloudFunctionCallResponse(
-                                                    errorCode: error.code,
-                                                    succeeded: false,
-                                                  );
-                                                }
-
-                                                _shouldSetState = true;
-                                                try {
-                                                  final result =
-                                                      await FirebaseFunctions
-                                                          .instance
-                                                          .httpsCallable(
-                                                              'generateToken')
-                                                          .call({
-                                                    "uid": currentUserUid,
-                                                    "test": false,
-                                                  });
-                                                  _model.genToken =
-                                                      GenerateTokenCloudFunctionCallResponse(
-                                                    data: result.data,
-                                                    succeeded: true,
-                                                    resultAsString:
-                                                        result.data.toString(),
-                                                    jsonBody: result.data,
-                                                  );
-                                                } on FirebaseFunctionsException catch (error) {
-                                                  _model.genToken =
-                                                      GenerateTokenCloudFunctionCallResponse(
-                                                    errorCode: error.code,
-                                                    succeeded: false,
-                                                  );
-                                                }
-
-                                                _shouldSetState = true;
-                                                FFAppState().serverToken =
-                                                    _model.genToken!.jsonBody!
-                                                        .toString();
-                                                FFAppState().walkthroughs =
-                                                    <String, bool?>{
-                                                  'menu_mas': true,
-                                                  'dashboard': true,
-                                                  'datos_bancarios': true,
-                                                  'add_users': true,
-                                                  'user_permissions': true,
-                                                  'create_codi': true,
-                                                  'create_dimo': true,
-                                                  'edit_profile': true,
-                                                };
-
-                                                context.goNamedAuth(
-                                                    'OK_FN_Payry_06_confirmacionRegistro',
-                                                    context.mounted);
-
-                                                try {
-                                                  final result =
-                                                      await FirebaseFunctions
-                                                          .instance
-                                                          .httpsCallable(
-                                                              'sendWelcomeEmail')
-                                                          .call({
-                                                    "email": _model
-                                                        .invEmailFieldController
-                                                        .text,
-                                                  });
-                                                  _model.cloudFunctionxin =
-                                                      SendWelcomeEmailCloudFunctionCallResponse(
-                                                    succeeded: true,
-                                                  );
-                                                } on FirebaseFunctionsException catch (error) {
-                                                  _model.cloudFunctionxin =
-                                                      SendWelcomeEmailCloudFunctionCallResponse(
-                                                    errorCode: error.code,
-                                                    succeeded: false,
-                                                  );
-                                                }
-
-                                                _shouldSetState = true;
-                                                if (_shouldSetState)
-                                                  setState(() {});
-                                                return;
-                                              } else {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'Terminos y condiciones'),
-                                                      content: Text(
-                                                          'Debes aceptar terminos y condiciones para poder realizar el registro.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Ok'),
+                                                if (_model.acceptCheckValue!) {
+                                                  GoRouter.of(context)
+                                                      .prepareAuthEvent();
+                                                  if (_model
+                                                          .invPasswordCreateController
+                                                          .text !=
+                                                      _model
+                                                          .invPasswordConfirmController
+                                                          .text) {
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(
+                                                      SnackBar(
+                                                        content: Text(
+                                                          'Las contraseñas no coinciden.',
                                                         ),
-                                                      ],
+                                                      ),
                                                     );
-                                                  },
-                                                );
+                                                    return;
+                                                  }
+
+                                                  final user = await authManager
+                                                      .createAccountWithEmail(
+                                                    context,
+                                                    _model
+                                                        .invEmailFieldController
+                                                        .text,
+                                                    _model
+                                                        .invPasswordCreateController
+                                                        .text,
+                                                  );
+                                                  if (user == null) {
+                                                    return;
+                                                  }
+
+                                                  await currentUserReference!
+                                                      .update({
+                                                    ...createUsersRecordData(
+                                                      adminId: widget.id != null
+                                                          ? oKFNPayry05RegisterInvUserInvitationsRecord
+                                                              .adminId
+                                                          : currentUserUid,
+                                                      isAdmin: false,
+                                                      email: _model
+                                                          .invEmailFieldController
+                                                          .text,
+                                                      displayName: _model
+                                                          .invNameFieldController
+                                                          .text,
+                                                      photoUrl: '',
+                                                      phoneNumber: '',
+                                                      status: true,
+                                                      isValidPhoneNumber: false,
+                                                      isCompanyComplete: false,
+                                                      isValidMail: false,
+                                                    ),
+                                                    ...mapToFirestore(
+                                                      {
+                                                        'created_time': FieldValue
+                                                            .serverTimestamp(),
+                                                      },
+                                                    ),
+                                                  });
+
+                                                  await UserPermissionsRecord
+                                                      .collection
+                                                      .doc()
+                                                      .set(
+                                                          createUserPermissionsRecordData(
+                                                        uid: currentUserUid,
+                                                        adminId: valueOrDefault(
+                                                            currentUserDocument
+                                                                ?.adminId,
+                                                            ''),
+                                                        createQr: false,
+                                                        readQr: false,
+                                                        createSms: false,
+                                                        readSms: false,
+                                                        readTransfers: false,
+                                                        createRefunds: false,
+                                                        readStatistics: false,
+                                                        readCompanies: false,
+                                                        readUsers: false,
+                                                        readInvoices: false,
+                                                      ));
+                                                  try {
+                                                    final result =
+                                                        await FirebaseFunctions
+                                                            .instance
+                                                            .httpsCallable(
+                                                                'verifyEmail')
+                                                            .call({
+                                                      "email": currentUserEmail,
+                                                    });
+                                                    _model.cfve =
+                                                        VerifyEmailCloudFunctionCallResponse(
+                                                      data: result.data,
+                                                      succeeded: true,
+                                                      resultAsString: result
+                                                          .data
+                                                          .toString(),
+                                                      jsonBody: result.data,
+                                                    );
+                                                  } on FirebaseFunctionsException catch (error) {
+                                                    _model.cfve =
+                                                        VerifyEmailCloudFunctionCallResponse(
+                                                      errorCode: error.code,
+                                                      succeeded: false,
+                                                    );
+                                                  }
+
+                                                  _shouldSetState = true;
+                                                  try {
+                                                    final result =
+                                                        await FirebaseFunctions
+                                                            .instance
+                                                            .httpsCallable(
+                                                                'generateToken')
+                                                            .call({
+                                                      "uid": currentUserUid,
+                                                      "test": false,
+                                                    });
+                                                    _model.genToken =
+                                                        GenerateTokenCloudFunctionCallResponse(
+                                                      data: result.data,
+                                                      succeeded: true,
+                                                      resultAsString: result
+                                                          .data
+                                                          .toString(),
+                                                      jsonBody: result.data,
+                                                    );
+                                                  } on FirebaseFunctionsException catch (error) {
+                                                    _model.genToken =
+                                                        GenerateTokenCloudFunctionCallResponse(
+                                                      errorCode: error.code,
+                                                      succeeded: false,
+                                                    );
+                                                  }
+
+                                                  _shouldSetState = true;
+                                                  FFAppState().serverToken =
+                                                      _model.genToken!.jsonBody!
+                                                          .toString();
+                                                  FFAppState().walkthroughs =
+                                                      <String, bool?>{
+                                                    'menu_mas': true,
+                                                    'dashboard': true,
+                                                    'datos_bancarios': true,
+                                                    'add_users': true,
+                                                    'user_permissions': true,
+                                                    'create_codi': true,
+                                                    'create_dimo': true,
+                                                    'edit_profile': true,
+                                                  };
+                                                  await showDialog(
+                                                    barrierDismissible: false,
+                                                    context: context,
+                                                    builder: (dialogContext) {
+                                                      return Dialog(
+                                                        elevation: 0,
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        child: GestureDetector(
+                                                          onTap: () => _model
+                                                                  .unfocusNode
+                                                                  .canRequestFocus
+                                                              ? FocusScope.of(
+                                                                      context)
+                                                                  .requestFocus(
+                                                                      _model
+                                                                          .unfocusNode)
+                                                              : FocusScope.of(
+                                                                      context)
+                                                                  .unfocus(),
+                                                          child: Container(
+                                                            height: MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
+                                                                    .height *
+                                                                0.25,
+                                                            width: MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
+                                                                    .width *
+                                                                0.9,
+                                                            child:
+                                                                CustomConfirmDialogWidget(
+                                                              title:
+                                                                  'Cuenta creada',
+                                                              description:
+                                                                  'Hemos enviado un correo para verificar tu cuenta.',
+                                                              buttonText:
+                                                                  'Continuar',
+                                                              showDismissButton:
+                                                                  false,
+                                                              dismissAction:
+                                                                  () async {
+                                                                Navigator.pop(
+                                                                    context);
+                                                              },
+                                                              mainAction:
+                                                                  () async {
+                                                                Navigator.pop(
+                                                                    context);
+                                                              },
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      setState(() {}));
+
+                                                  context.goNamedAuth(
+                                                    'OK_FN_Payry_13_Menumas',
+                                                    context.mounted,
+                                                    queryParameters: {
+                                                      'showWT': serializeParam(
+                                                        false,
+                                                        ParamType.bool,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
+
+                                                  try {
+                                                    final result =
+                                                        await FirebaseFunctions
+                                                            .instance
+                                                            .httpsCallable(
+                                                                'sendWelcomeEmail')
+                                                            .call({
+                                                      "email": _model
+                                                          .invEmailFieldController
+                                                          .text,
+                                                    });
+                                                    _model.cloudFunctionxin =
+                                                        SendWelcomeEmailCloudFunctionCallResponse(
+                                                      succeeded: true,
+                                                    );
+                                                  } on FirebaseFunctionsException catch (error) {
+                                                    _model.cloudFunctionxin =
+                                                        SendWelcomeEmailCloudFunctionCallResponse(
+                                                      errorCode: error.code,
+                                                      succeeded: false,
+                                                    );
+                                                  }
+
+                                                  _shouldSetState = true;
+                                                  if (_shouldSetState)
+                                                    setState(() {});
+                                                  return;
+                                                } else {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            'Terminos y condiciones'),
+                                                        content: Text(
+                                                            'Debes aceptar terminos y condiciones para poder realizar el registro.'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  );
+                                                  if (_shouldSetState)
+                                                    setState(() {});
+                                                  return;
+                                                }
+
                                                 if (_shouldSetState)
                                                   setState(() {});
-                                                return;
-                                              }
-
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                            },
-                                            text: 'Crea tu cuenta',
-                                            options: FFButtonOptions(
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  3.95,
-                                              height: 50.0,
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: Color(0xFF5E4A98),
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color: Colors.white,
-                                                      ),
-                                              elevation: 3.0,
-                                              borderSide: BorderSide(
-                                                color: Colors.transparent,
-                                                width: 1.0,
+                                              },
+                                              text: 'Crea tu cuenta',
+                                              options: FFButtonOptions(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        3.95,
+                                                height: 50.0,
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color: Color(0xFF5E4A98),
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: Colors.white,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                elevation: 3.0,
+                                                borderSide: BorderSide(
+                                                  color: Colors.transparent,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(10.0),
                                               ),
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
                                             ),
                                           ),
                                         ),
@@ -782,6 +914,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
+                                                          letterSpacing: 0.0,
                                                         ),
                                               ),
                                               InkWell(
@@ -803,6 +936,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                         fontFamily: 'Lexend',
                                                         color:
                                                             Color(0xFF0FB978),
+                                                        letterSpacing: 0.0,
                                                       ),
                                                 ),
                                               ),
@@ -867,6 +1001,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                       .override(
                                                         fontFamily: 'Lexend',
                                                         fontSize: 12.0,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                 ),
                                                 InkWell(
@@ -893,6 +1028,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                                   .of(context)
                                                               .accent3,
                                                           fontSize: 12.0,
+                                                          letterSpacing: 0.0,
                                                           decoration:
                                                               TextDecoration
                                                                   .underline,

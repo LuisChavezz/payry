@@ -1,7 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -67,6 +71,7 @@ class _OKFNPayry09OlvidecontrasenaWidgetState
             style: FlutterFlowTheme.of(context).titleSmall.override(
                   fontFamily: 'Lexend',
                   color: FlutterFlowTheme.of(context).primaryText,
+                  letterSpacing: 0.0,
                 ),
           ),
         ),
@@ -112,6 +117,7 @@ class _OKFNPayry09OlvidecontrasenaWidgetState
                                         fontFamily: 'Lexend',
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ),
@@ -127,25 +133,32 @@ class _OKFNPayry09OlvidecontrasenaWidgetState
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: 'Correo electrónico',
-                              labelStyle:
-                                  FlutterFlowTheme.of(context).bodyMedium,
+                              labelStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lexend',
+                                    letterSpacing: 0.0,
+                                  ),
                               hintText: 'Ingresa tu correo...',
                               hintStyle: FlutterFlowTheme.of(context)
                                   .bodySmall
                                   .override(
                                     fontFamily: 'Lexend',
                                     color: Color(0xFF8788A5),
+                                    letterSpacing: 0.0,
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: Color(0xFF8788A5),
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: Colors.white,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(8.0),
@@ -175,59 +188,124 @@ class _OKFNPayry09OlvidecontrasenaWidgetState
                                   fontFamily: 'Lexend',
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
+                                  letterSpacing: 0.0,
                                 ),
                             textAlign: TextAlign.start,
+                            minLines: null,
                             validator: _model.emailAddressControllerValidator
                                 .asValidator(context),
                           ),
                         ),
                         Align(
                           alignment: AlignmentDirectional(0.0, 0.0),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 20.0, 0.0, 10.0),
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                if (_model
-                                    .emailAddressController.text.isEmpty) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'Email required!',
-                                      ),
+                          child: Builder(
+                            builder: (context) => Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 20.0, 0.0, 10.0),
+                              child: FFButtonWidget(
+                                onPressed: () async {
+                                  var _shouldSetState = false;
+                                  _model.userResp = await queryUsersRecordOnce(
+                                    queryBuilder: (usersRecord) =>
+                                        usersRecord.where(
+                                      'email',
+                                      isEqualTo:
+                                          _model.emailAddressController.text,
                                     ),
-                                  );
-                                  return;
-                                }
-                                await authManager.resetPassword(
-                                  email: _model.emailAddressController.text,
-                                  context: context,
-                                );
+                                    singleRecord: true,
+                                  ).then((s) => s.firstOrNull);
+                                  _shouldSetState = true;
+                                  if (_model.userResp?.reference != null) {
+                                    if (_model
+                                        .emailAddressController.text.isEmpty) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'El correo electrónico es requerido.',
+                                          ),
+                                        ),
+                                      );
+                                      return;
+                                    }
+                                    await authManager.resetPassword(
+                                      email: _model.emailAddressController.text,
+                                      context: context,
+                                    );
 
-                                context.pushNamed(
-                                    'OK_FN_Payry_10_confirmacionCorreoEnviadoContrasena');
-                              },
-                              text: 'Enviar Correo',
-                              options: FFButtonOptions(
-                                width: MediaQuery.sizeOf(context).width * 0.854,
-                                height: 50.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: Color(0xFF5E4A98),
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Lexend',
-                                      color: Colors.white,
-                                    ),
-                                elevation: 3.0,
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
+                                    context.pushNamed(
+                                        'OK_FN_Payry_10_confirmacionCorreoEnviadoContrasena');
+
+                                    if (_shouldSetState) setState(() {});
+                                    return;
+                                  } else {
+                                    await showDialog(
+                                      barrierDismissible: false,
+                                      context: context,
+                                      builder: (dialogContext) {
+                                        return Dialog(
+                                          elevation: 0,
+                                          insetPadding: EdgeInsets.zero,
+                                          backgroundColor: Colors.transparent,
+                                          alignment: AlignmentDirectional(
+                                                  0.0, 0.0)
+                                              .resolve(
+                                                  Directionality.of(context)),
+                                          child: Container(
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                0.25,
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.9,
+                                            child: CustomConfirmDialogWidget(
+                                              title: 'Usuario no registrado',
+                                              description:
+                                                  'El correo electrónico que has ingresado no se ha registrado.',
+                                              buttonText: 'Aceptar',
+                                              showDismissButton: false,
+                                              dismissAction: () async {
+                                                Navigator.pop(context);
+                                              },
+                                              mainAction: () async {
+                                                Navigator.pop(context);
+                                              },
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ).then((value) => setState(() {}));
+
+                                    if (_shouldSetState) setState(() {});
+                                    return;
+                                  }
+
+                                  if (_shouldSetState) setState(() {});
+                                },
+                                text: 'Enviar Correo',
+                                options: FFButtonOptions(
+                                  width:
+                                      MediaQuery.sizeOf(context).width * 0.854,
+                                  height: 50.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: Color(0xFF5E4A98),
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Lexend',
+                                        color: Colors.white,
+                                        letterSpacing: 0.0,
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10.0),
                                 ),
-                                borderRadius: BorderRadius.circular(10.0),
                               ),
                             ),
                           ),

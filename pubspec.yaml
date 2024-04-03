@@ -63,6 +63,7 @@ dependencies:
   flutter_app_badger: ^1.5.0
   flutter_cache_manager: 3.3.1
   flutter_downloader: ^1.11.3
+  flutter_keyboard_visibility: 5.2.0
   flutter_plugin_android_lifecycle: 2.0.17
   font_awesome_flutter: 10.6.0
   from_css_color: 2.0.0
@@ -91,7 +92,7 @@ dependencies:
   path_provider_android: 2.0.25
   path_provider_foundation: 2.2.2
   path_provider_platform_interface: 2.0.6
-  permission_handler: 10.0.0
+  permission_handler: 11.3.0
   pin_code_fields: 8.0.1
   plugin_platform_interface: 2.1.8
   provider: 6.0.5

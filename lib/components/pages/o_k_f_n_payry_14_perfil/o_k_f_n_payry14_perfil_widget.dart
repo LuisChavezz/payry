@@ -73,6 +73,7 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                 style: FlutterFlowTheme.of(context).titleSmall.override(
                       fontFamily: 'Lexend',
                       color: FlutterFlowTheme.of(context).primaryText,
+                      letterSpacing: 0.0,
                     ),
               ),
             ),
@@ -153,6 +154,7 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                                           .override(
                                             fontFamily: 'Lexend',
                                             color: Colors.white,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                   ),
@@ -164,6 +166,7 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                                       .override(
                                         fontFamily: 'Poppins',
                                         color: Colors.white,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ],
@@ -181,7 +184,10 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                         BoxShadow(
                           blurRadius: 3.0,
                           color: Color(0x33000000),
-                          offset: Offset(0.0, -1.0),
+                          offset: Offset(
+                            0.0,
+                            -1.0,
+                          ),
                         )
                       ],
                       borderRadius: BorderRadius.only(
@@ -236,6 +242,7 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),
@@ -455,6 +462,7 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
+                                                  letterSpacing: 0.0,
                                                 ),
                                           ),
                                         ),
@@ -616,6 +624,7 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
+                                                  letterSpacing: 0.0,
                                                 ),
                                           ),
                                         ),
@@ -625,58 +634,62 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                                 ),
                               ),
                             ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 8.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 8.0, 16.0, 8.0),
-                                  child: Icon(
-                                    FFIcons.knotificaciones,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 20.0,
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Padding(
+                          if (false)
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 8.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 12.0, 0.0),
-                                    child: Text(
-                                      'Recibir Notificaciones',
-                                      textAlign: TextAlign.start,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Lexend',
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                          ),
+                                        0.0, 8.0, 16.0, 8.0),
+                                    child: Icon(
+                                      FFIcons.knotificaciones,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 20.0,
                                     ),
                                   ),
-                                ),
-                                Switch.adaptive(
-                                  value: _model.switchValue ??= true,
-                                  onChanged: (newValue) async {
-                                    setState(
-                                        () => _model.switchValue = newValue!);
-                                  },
-                                  activeColor:
-                                      FlutterFlowTheme.of(context).success,
-                                  activeTrackColor:
-                                      FlutterFlowTheme.of(context).accent1,
-                                  inactiveTrackColor:
-                                      FlutterFlowTheme.of(context).accent4,
-                                  inactiveThumbColor:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                ),
-                              ],
+                                  Expanded(
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 12.0, 0.0),
+                                      child: Text(
+                                        'Recibir Notificaciones',
+                                        textAlign: TextAlign.start,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Lexend',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                  Switch.adaptive(
+                                    value: _model.switchValue ??= true,
+                                    onChanged: (newValue) async {
+                                      setState(
+                                          () => _model.switchValue = newValue!);
+                                    },
+                                    activeColor:
+                                        FlutterFlowTheme.of(context).success,
+                                    activeTrackColor:
+                                        FlutterFlowTheme.of(context).accent1,
+                                    inactiveTrackColor:
+                                        FlutterFlowTheme.of(context).accent4,
+                                    inactiveThumbColor:
+                                        FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 8.0),
@@ -720,6 +733,7 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                                             .override(
                                               fontFamily: 'Lexend',
                                               color: Color(0xFF0FB978),
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),

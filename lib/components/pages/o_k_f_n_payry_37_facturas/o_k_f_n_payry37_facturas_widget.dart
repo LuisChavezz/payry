@@ -65,6 +65,7 @@ class _OKFNPayry37FacturasWidgetState extends State<OKFNPayry37FacturasWidget> {
           style: FlutterFlowTheme.of(context).titleSmall.override(
                 fontFamily: 'Lexend',
                 color: FlutterFlowTheme.of(context).primaryText,
+                letterSpacing: 0.0,
               ),
         ),
         actions: [],
@@ -193,6 +194,7 @@ class _OKFNPayry37FacturasWidgetState extends State<OKFNPayry37FacturasWidget> {
                                                                   .of(context)
                                                               .primaryText,
                                                           fontSize: 12.0,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                   ),
                                                   Text(
@@ -207,6 +209,7 @@ class _OKFNPayry37FacturasWidgetState extends State<OKFNPayry37FacturasWidget> {
                                                                   .of(context)
                                                               .primaryText,
                                                           fontSize: 14.0,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
@@ -249,6 +252,8 @@ class _OKFNPayry37FacturasWidgetState extends State<OKFNPayry37FacturasWidget> {
                                                                 fontFamily:
                                                                     'Lexend',
                                                                 fontSize: 12.0,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
                                                         ),
                                                         Text(
@@ -261,6 +266,8 @@ class _OKFNPayry37FacturasWidgetState extends State<OKFNPayry37FacturasWidget> {
                                                                 fontFamily:
                                                                     'Lexend',
                                                                 fontSize: 12.0,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
                                                         ),
                                                       ],
@@ -275,21 +282,20 @@ class _OKFNPayry37FacturasWidgetState extends State<OKFNPayry37FacturasWidget> {
                                                         format: '#,###.00##',
                                                         locale: 'es_MX',
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Lexend',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .accent3,
-                                                                fontSize: 12.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w200,
-                                                              ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Lexend',
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .accent3,
+                                                            fontSize: 12.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w200,
+                                                          ),
                                                     ),
                                                   ],
                                                 ),
@@ -341,6 +347,8 @@ class _OKFNPayry37FacturasWidgetState extends State<OKFNPayry37FacturasWidget> {
                                                                       .white,
                                                                   fontSize:
                                                                       14.0,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                 ),
                                                         elevation: 3.0,
                                                         borderSide: BorderSide(
@@ -389,6 +397,8 @@ class _OKFNPayry37FacturasWidgetState extends State<OKFNPayry37FacturasWidget> {
                                                                       .white,
                                                                   fontSize:
                                                                       14.0,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                 ),
                                                         elevation: 3.0,
                                                         borderSide: BorderSide(

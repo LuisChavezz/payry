@@ -40,8 +40,6 @@ class PhoneSubmitDialogModel extends FlutterFlowModel<PhoneSubmitDialogWidget> {
   // Stores action output result for [Cloud Function - sendSms] action in Button widget.
   SendSmsCloudFunctionCallResponse? smsResp;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     phoneFieldControllerValidator = _phoneFieldControllerValidator;
@@ -52,8 +50,4 @@ class PhoneSubmitDialogModel extends FlutterFlowModel<PhoneSubmitDialogWidget> {
     phoneFieldFocusNode?.dispose();
     phoneFieldController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

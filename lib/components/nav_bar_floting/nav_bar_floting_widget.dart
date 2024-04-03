@@ -88,7 +88,10 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                 BoxShadow(
                   blurRadius: 12.0,
                   color: Color(0x33000000),
-                  offset: Offset(0.0, 5.0),
+                  offset: Offset(
+                    0.0,
+                    5.0,
+                  ),
                 )
               ],
               borderRadius: BorderRadius.circular(40.0),
@@ -378,6 +381,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                             : FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                         fontSize: 10.0,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ].divide(SizedBox(height: 4.0)),
@@ -658,6 +662,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                             : FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                         fontSize: 10.0,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ].divide(SizedBox(height: 4.0)),
@@ -938,6 +943,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                             : FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                         fontSize: 10.0,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ].divide(SizedBox(height: 4.0)),
@@ -1016,6 +1022,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                                   }(),
                                                   7.0,
                                                 ),
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                       ].divide(SizedBox(
@@ -1092,6 +1099,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget> {
                                             : FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                         fontSize: 10.0,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ].divide(SizedBox(height: 4.0)),

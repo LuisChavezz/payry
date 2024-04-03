@@ -25,8 +25,6 @@ class OKFNPayry36DetallesdeSMSCodeModel
   // Stores action output result for [Cloud Function - generateDimo] action in IconButton widget.
   GenerateDimoCloudFunctionCallResponse? dimoCF;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -34,8 +32,4 @@ class OKFNPayry36DetallesdeSMSCodeModel
   void dispose() {
     unfocusNode.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

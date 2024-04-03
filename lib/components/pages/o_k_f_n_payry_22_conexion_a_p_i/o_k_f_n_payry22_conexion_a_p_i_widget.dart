@@ -75,6 +75,7 @@ class _OKFNPayry22ConexionAPIWidgetState
                 style: FlutterFlowTheme.of(context).titleSmall.override(
                       fontFamily: 'Lexend',
                       color: FlutterFlowTheme.of(context).primaryText,
+                      letterSpacing: 0.0,
                     ),
               ),
             ),
@@ -114,6 +115,7 @@ class _OKFNPayry22ConexionAPIWidgetState
                                   fontFamily: 'Lexend',
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
                                 ),
                             hintText: 'Ingrese su API...',
@@ -121,10 +123,11 @@ class _OKFNPayry22ConexionAPIWidgetState
                                 FlutterFlowTheme.of(context).bodySmall.override(
                                       fontFamily: 'Lexend',
                                       color: Color(0xFF8788A5),
+                                      letterSpacing: 0.0,
                                     ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Color(0xFF8788A5),
+                                color: FlutterFlowTheme.of(context).primaryText,
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
@@ -157,8 +160,10 @@ class _OKFNPayry22ConexionAPIWidgetState
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Lexend',
                                     color: Color(0xFF8788A5),
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
+                          minLines: null,
                           keyboardType: const TextInputType.numberWithOptions(
                               decimal: true),
                           validator: _model.textController1Validator
@@ -180,6 +185,7 @@ class _OKFNPayry22ConexionAPIWidgetState
                                   fontFamily: 'Lexend',
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
                                 ),
                             hintText: 'Campo automático según la CLABE',
@@ -187,10 +193,11 @@ class _OKFNPayry22ConexionAPIWidgetState
                                 FlutterFlowTheme.of(context).bodySmall.override(
                                       fontFamily: 'Lexend',
                                       color: Color(0xFF8788A5),
+                                      letterSpacing: 0.0,
                                     ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Color(0xFF8788A5),
+                                color: FlutterFlowTheme.of(context).primaryText,
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
@@ -223,8 +230,10 @@ class _OKFNPayry22ConexionAPIWidgetState
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Lexend',
                                     color: Color(0xFF8788A5),
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
+                          minLines: null,
                           keyboardType: const TextInputType.numberWithOptions(
                               decimal: true),
                           validator: _model.textController2Validator
@@ -255,6 +264,7 @@ class _OKFNPayry22ConexionAPIWidgetState
                                   .override(
                                     fontFamily: 'Lexend',
                                     color: FlutterFlowTheme.of(context).primary,
+                                    letterSpacing: 0.0,
                                   ),
                               elevation: 3.0,
                               borderSide: BorderSide(

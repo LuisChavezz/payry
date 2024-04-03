@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
+import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -57,7 +58,7 @@ class OKFNPayry05RegistrateModel
     }
 
     if (val.length < 6) {
-      return 'La contraseña debe ser de almenos 6 carácteres de longitud';
+      return 'Debe contener al menos 6 caracteres';
     }
 
     return null;
@@ -71,26 +72,24 @@ class OKFNPayry05RegistrateModel
   String? _passwordConfirmControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'La confirmación de contraseña es requerida';
+      return 'La confirmación  es requerida';
     }
 
     if (val.length < 6) {
-      return 'La confirmación de contraseña debe ser de almenos 6 carácteres de longitud';
+      return 'Debe contener al menos 6 caracteres';
     }
 
     return null;
   }
 
-  // Stores action output result for [Cloud Function - verifyEmail] action in Button widget.
-  VerifyEmailCloudFunctionCallResponse? cfve;
   // Stores action output result for [Cloud Function - generateToken] action in Button widget.
   GenerateTokenCloudFunctionCallResponse? genToken;
+  // Stores action output result for [Cloud Function - verifyEmail] action in Button widget.
+  VerifyEmailCloudFunctionCallResponse? cfve;
   // Stores action output result for [Cloud Function - sendWelcomeEmail] action in Button widget.
   SendWelcomeEmailCloudFunctionCallResponse? cloudFunctiona55;
   // State field(s) for acceptCheck widget.
   bool? acceptCheckValue;
-
-  /// Initialization and disposal methods.
 
   @override
   void initState(BuildContext context) {
@@ -117,8 +116,4 @@ class OKFNPayry05RegistrateModel
     passwordConfirmFocusNode?.dispose();
     passwordConfirmController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

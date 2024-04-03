@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/walkthroughs/como_crear_un_di_mo.dart';
+import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/permissions_util.dart';
@@ -17,6 +18,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -44,6 +46,8 @@ class _OKFNPayry32SolicitarSMSWidgetState
   late OKFNPayry32SolicitarSMSModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  late StreamSubscription<bool> _keyboardVisibilitySubscription;
+  bool _isKeyboardVisible = false;
 
   @override
   void initState() {
@@ -72,6 +76,15 @@ class _OKFNPayry32SolicitarSMSWidgetState
       }
     });
 
+    if (!isWeb) {
+      _keyboardVisibilitySubscription =
+          KeyboardVisibilityController().onChange.listen((bool visible) {
+        setState(() {
+          _isKeyboardVisible = visible;
+        });
+      });
+    }
+
     _model.phoneFieldController ??= TextEditingController();
     _model.phoneFieldFocusNode ??= FocusNode();
 
@@ -86,6 +99,9 @@ class _OKFNPayry32SolicitarSMSWidgetState
   void dispose() {
     _model.dispose();
 
+    if (!isWeb) {
+      _keyboardVisibilitySubscription.cancel();
+    }
     super.dispose();
   }
 
@@ -163,6 +179,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                       style: FlutterFlowTheme.of(context).titleSmall.override(
                             fontFamily: 'Lexend',
                             color: FlutterFlowTheme.of(context).primaryText,
+                            letterSpacing: 0.0,
                           ),
                     ),
                     FlutterFlowIconButton(
@@ -252,10 +269,14 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                                 0.0, 0.0),
                                                     child: Text(
                                                       '+52',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Lexend',
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                 ],
@@ -276,18 +297,31 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMedium,
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Lexend',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
                                                       hintText:
                                                           'Ingresa el número celular...',
                                                       hintStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodySmall,
+                                                              .bodySmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Lexend',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
                                                         borderSide: BorderSide(
-                                                          color:
-                                                              Color(0xFF8788A5),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           width: 1.0,
                                                         ),
                                                         borderRadius:
@@ -297,7 +331,9 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                       focusedBorder:
                                                           OutlineInputBorder(
                                                         borderSide: BorderSide(
-                                                          color: Colors.white,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           width: 1.0,
                                                         ),
                                                         borderRadius:
@@ -338,7 +374,12 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    minLines: null,
                                                     maxLength: 10,
                                                     keyboardType:
                                                         TextInputType.phone,
@@ -420,6 +461,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
@@ -432,10 +474,13 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                         fontFamily: 'Lexend',
                                                         color:
                                                             Color(0xFF8788A5),
+                                                        letterSpacing: 0.0,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
-                                                  color: Color(0xFF8788A5),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
                                                   width: 1.0,
                                                 ),
                                                 borderRadius:
@@ -482,8 +527,10 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                 .override(
                                                   fontFamily: 'Lexend',
                                                   color: Color(0xFF8788A5),
+                                                  letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
                                                 ),
+                                            minLines: null,
                                             maxLength: 20,
                                             validator: _model
                                                 .conceptFieldControllerValidator
@@ -514,6 +561,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
@@ -526,10 +574,13 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                         fontFamily: 'Lexend',
                                                         color:
                                                             Color(0xFF8788A5),
+                                                        letterSpacing: 0.0,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
-                                                  color: Color(0xFF8788A5),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
                                                   width: 1.0,
                                                 ),
                                                 borderRadius:
@@ -576,8 +627,10 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                 .override(
                                                   fontFamily: 'Lexend',
                                                   color: Color(0xFF8788A5),
+                                                  letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
                                                 ),
+                                            minLines: null,
                                             keyboardType: const TextInputType
                                                 .numberWithOptions(
                                                 decimal: true),
@@ -850,6 +903,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                       .override(
                                                         fontFamily: 'Lexend',
                                                         color: Colors.white,
+                                                        letterSpacing: 0.0,
                                                       ),
                                               elevation: 3.0,
                                               borderSide: BorderSide(
@@ -902,6 +956,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                       .override(
                                         fontFamily: 'Lexend',
                                         color: Color(0xFF5E4A98),
+                                        letterSpacing: 0.0,
                                       ),
                                   elevation: 3.0,
                                   borderSide: BorderSide(
@@ -918,22 +973,25 @@ class _OKFNPayry32SolicitarSMSWidgetState
                           ],
                         ),
                       ),
-                    Align(
-                      alignment: AlignmentDirectional(0.0, 1.0),
-                      child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 18.0),
-                        child: wrapWithModel(
-                          model: _model.navBarFlotingModel,
-                          updateCallback: () => setState(() {}),
-                          child: NavBarFlotingWidget(
-                            userPermissions:
-                                oKFNPayry32SolicitarSMSUserPermissionsRecord!,
-                            pageName: 'dimo',
+                    if (!(isWeb
+                        ? MediaQuery.viewInsetsOf(context).bottom > 0
+                        : _isKeyboardVisible))
+                      Align(
+                        alignment: AlignmentDirectional(0.0, 1.0),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 18.0),
+                          child: wrapWithModel(
+                            model: _model.navBarFlotingModel,
+                            updateCallback: () => setState(() {}),
+                            child: NavBarFlotingWidget(
+                              userPermissions:
+                                  oKFNPayry32SolicitarSMSUserPermissionsRecord!,
+                              pageName: 'dimo',
+                            ),
                           ),
                         ),
                       ),
-                    ),
                   ],
                 ),
               ),

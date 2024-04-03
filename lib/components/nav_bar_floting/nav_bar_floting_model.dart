@@ -20,15 +20,9 @@ class NavBarFlotingModel extends FlutterFlowModel<NavBarFlotingWidget> {
   // Stores action output result for [Cloud Function - verifyEmail] action in Column widget.
   VerifyEmailCloudFunctionCallResponse? verifyEmailRespN3;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
   @override
   void dispose() {}
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

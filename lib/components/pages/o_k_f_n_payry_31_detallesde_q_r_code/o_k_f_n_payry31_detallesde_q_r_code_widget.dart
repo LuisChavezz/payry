@@ -109,6 +109,7 @@ class _OKFNPayry31DetallesdeQRCodeWidgetState
                         fontFamily: 'Lexend',
                         color: FlutterFlowTheme.of(context).primaryText,
                         fontSize: 18.0,
+                        letterSpacing: 0.0,
                       ),
                 ),
               ),
@@ -179,6 +180,7 @@ class _OKFNPayry31DetallesdeQRCodeWidgetState
                                             .override(
                                               fontFamily: 'Poppins',
                                               color: Colors.white,
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),
@@ -201,6 +203,7 @@ class _OKFNPayry31DetallesdeQRCodeWidgetState
                                           .override(
                                             fontFamily: 'Lexend',
                                             color: Colors.white,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                   ],
@@ -257,6 +260,7 @@ class _OKFNPayry31DetallesdeQRCodeWidgetState
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                             ),
                                             Expanded(
@@ -277,6 +281,7 @@ class _OKFNPayry31DetallesdeQRCodeWidgetState
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .accent3,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                 ),
                                               ),
@@ -303,6 +308,7 @@ class _OKFNPayry31DetallesdeQRCodeWidgetState
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                             ),
                                             Expanded(
@@ -318,6 +324,7 @@ class _OKFNPayry31DetallesdeQRCodeWidgetState
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .accent3,
+                                                          letterSpacing: 0.0,
                                                         ),
                                               ),
                                             ),
@@ -412,6 +419,7 @@ class _OKFNPayry31DetallesdeQRCodeWidgetState
                                               .override(
                                                 fontFamily: 'Lexend',
                                                 fontSize: 14.0,
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                       ].divide(SizedBox(height: 5.0)),
@@ -447,6 +455,7 @@ class _OKFNPayry31DetallesdeQRCodeWidgetState
                                               .override(
                                                 fontFamily: 'Lexend',
                                                 fontSize: 14.0,
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                       ].divide(SizedBox(height: 5.0)),
@@ -460,13 +469,12 @@ class _OKFNPayry31DetallesdeQRCodeWidgetState
                                           buttonSize: 50.0,
                                           fillColor:
                                               FlutterFlowTheme.of(context)
-                                                  .accent3,
+                                                  .errorRed,
                                           disabledColor: Color(0x83CCCCCC),
                                           disabledIconColor: Color(0xFFA1A1A1),
                                           icon: Icon(
                                             Icons.cancel_outlined,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondary,
+                                            color: Colors.white,
                                             size: 30.0,
                                           ),
                                           showLoadingIndicator: true,
@@ -516,28 +524,6 @@ class _OKFNPayry31DetallesdeQRCodeWidgetState
                                                           status: PaymentStatus
                                                               .CANCELADO,
                                                         ));
-
-                                                        await QrHistoryRecord
-                                                            .collection
-                                                            .doc()
-                                                            .set({
-                                                          ...createQrHistoryRecordData(
-                                                            qrId:
-                                                                oKFNPayry31DetallesdeQRCodeRegistraCobroRecord
-                                                                    .reference
-                                                                    .id,
-                                                            status: 'CANCELADO',
-                                                            modifiedBy:
-                                                                currentUserUid,
-                                                          ),
-                                                          ...mapToFirestore(
-                                                            {
-                                                              'created_time':
-                                                                  FieldValue
-                                                                      .serverTimestamp(),
-                                                            },
-                                                          ),
-                                                        });
                                                         await showDialog(
                                                           context: context,
                                                           builder:
@@ -572,6 +558,7 @@ class _OKFNPayry31DetallesdeQRCodeWidgetState
                                               .override(
                                                 fontFamily: 'Lexend',
                                                 fontSize: 14.0,
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                       ].divide(SizedBox(height: 5.0)),
@@ -610,6 +597,7 @@ class _OKFNPayry31DetallesdeQRCodeWidgetState
                                                 .override(
                                                   fontFamily: 'Lexend',
                                                   fontSize: 14.0,
+                                                  letterSpacing: 0.0,
                                                 ),
                                           ),
                                         ].divide(SizedBox(height: 5.0)),
@@ -892,6 +880,7 @@ class _OKFNPayry31DetallesdeQRCodeWidgetState
                                               .override(
                                                 fontFamily: 'Lexend',
                                                 fontSize: 14.0,
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                       ].divide(SizedBox(height: 5.0)),

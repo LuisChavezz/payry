@@ -203,6 +203,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                               fontFamily: 'Lexend',
                                               color: Colors.white,
                                               fontSize: 16.0,
+                                              letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
                                             ),
                                       ),
@@ -246,6 +247,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                               fontFamily: 'Lexend',
                                               color: Colors.white,
                                               fontSize: 11.0,
+                                              letterSpacing: 0.0,
                                               fontWeight: FontWeight.w200,
                                             ),
                                       ),
@@ -270,6 +272,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                           fontFamily: 'Lexend',
                                                           color: Colors.white,
                                                           fontSize: 28.0,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w600,
                                                         ),
@@ -332,7 +335,11 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                         .secondaryText,
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
-                                                        .titleSmall,
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                 unselectedLabelStyle:
                                                     TextStyle(),
                                                 indicatorColor:
@@ -447,6 +454,8 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                           .accent3,
                                                                       fontSize:
                                                                           16.0,
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
@@ -496,6 +505,8 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                             'Lexend',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .success,
+                                                                        letterSpacing:
+                                                                            0.0,
                                                                         fontWeight:
                                                                             FontWeight.w600,
                                                                       ),
@@ -686,6 +697,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Lexend',
                                                                                           fontSize: 12.0,
+                                                                                          letterSpacing: 0.0,
                                                                                         ),
                                                                                   ),
                                                                                   Text(
@@ -693,6 +705,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Lexend',
                                                                                           fontSize: 12.0,
+                                                                                          letterSpacing: 0.0,
                                                                                         ),
                                                                                   ),
                                                                                 ],
@@ -707,8 +720,10 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                               format: '#,##0.00##',
                                                                               locale: 'es_MX',
                                                                             ),
-                                                                            style:
-                                                                                FlutterFlowTheme.of(context).bodyMedium,
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Lexend',
+                                                                                  letterSpacing: 0.0,
+                                                                                ),
                                                                           ),
                                                                         ],
                                                                       ),
@@ -759,6 +774,8 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                           .accent3,
                                                                       fontSize:
                                                                           16.0,
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
@@ -808,6 +825,8 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                             'Lexend',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .success,
+                                                                        letterSpacing:
+                                                                            0.0,
                                                                         fontWeight:
                                                                             FontWeight.w600,
                                                                       ),
@@ -998,6 +1017,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Lexend',
                                                                                           fontSize: 12.0,
+                                                                                          letterSpacing: 0.0,
                                                                                         ),
                                                                                   ),
                                                                                   Text(
@@ -1005,6 +1025,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Lexend',
                                                                                           fontSize: 12.0,
+                                                                                          letterSpacing: 0.0,
                                                                                         ),
                                                                                   ),
                                                                                 ],
@@ -1019,8 +1040,10 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                               format: '#,##0.00##',
                                                                               locale: 'es_MX',
                                                                             ),
-                                                                            style:
-                                                                                FlutterFlowTheme.of(context).bodyMedium,
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Lexend',
+                                                                                  letterSpacing: 0.0,
+                                                                                ),
                                                                           ),
                                                                         ],
                                                                       ),

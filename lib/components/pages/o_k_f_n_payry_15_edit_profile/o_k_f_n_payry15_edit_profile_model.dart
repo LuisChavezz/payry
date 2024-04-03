@@ -52,12 +52,8 @@ class OKFNPayry15EditProfileModel
   TextEditingController? phoneFieldController;
   final phoneFieldMask = MaskTextInputFormatter(mask: '##########');
   String? Function(BuildContext, String?)? phoneFieldControllerValidator;
-  // State field(s) for StatusSwitch widget.
-  bool? statusSwitchValue;
   // Stores action output result for [Cloud Function - reportUser] action in Button widget.
   ReportUserCloudFunctionCallResponse? reportUserCF;
-
-  /// Initialization and disposal methods.
 
   @override
   void initState(BuildContext context) {
@@ -74,8 +70,4 @@ class OKFNPayry15EditProfileModel
     phoneFieldFocusNode?.dispose();
     phoneFieldController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

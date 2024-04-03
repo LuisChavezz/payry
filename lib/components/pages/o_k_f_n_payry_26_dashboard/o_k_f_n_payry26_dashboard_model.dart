@@ -41,8 +41,6 @@ class OKFNPayry26DashboardModel
   // Model for NavBarFloting component.
   late NavBarFlotingModel navBarFlotingModel;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     navBarFlotingModel = createModel(context, () => NavBarFlotingModel());
@@ -55,8 +53,4 @@ class OKFNPayry26DashboardModel
     tabBarController?.dispose();
     navBarFlotingModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

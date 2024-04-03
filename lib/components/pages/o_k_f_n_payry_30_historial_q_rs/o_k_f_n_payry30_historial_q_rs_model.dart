@@ -36,8 +36,6 @@ class OKFNPayry30HistorialQRsModel
   String? Function(BuildContext, String?)? searchFieldController2Validator;
   List<RegistraCobroRecord> simpleSearchResults2 = [];
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -51,8 +49,4 @@ class OKFNPayry30HistorialQRsModel
     searchFieldFocusNode2?.dispose();
     searchFieldController2?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

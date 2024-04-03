@@ -53,8 +53,6 @@ class OKFNPayry08IniciasesionModel
   // Stores action output result for [Cloud Function - generateToken] action in Button-Login widget.
   GenerateTokenCloudFunctionCallResponse? genToken;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     emailFieldControllerValidator = _emailFieldControllerValidator;
@@ -71,8 +69,4 @@ class OKFNPayry08IniciasesionModel
     passwordFieldFocusNode?.dispose();
     passwordFieldController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

@@ -1,9 +1,13 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'o_k_f_n_payry09_olvidecontrasena_widget.dart'
     show OKFNPayry09OlvidecontrasenaWidget;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -16,8 +20,8 @@ class OKFNPayry09OlvidecontrasenaModel
   FocusNode? emailAddressFocusNode;
   TextEditingController? emailAddressController;
   String? Function(BuildContext, String?)? emailAddressControllerValidator;
-
-  /// Initialization and disposal methods.
+  // Stores action output result for [Firestore Query - Query a collection] action in Button-Login widget.
+  UsersRecord? userResp;
 
   @override
   void initState(BuildContext context) {}
@@ -27,8 +31,4 @@ class OKFNPayry09OlvidecontrasenaModel
     emailAddressFocusNode?.dispose();
     emailAddressController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

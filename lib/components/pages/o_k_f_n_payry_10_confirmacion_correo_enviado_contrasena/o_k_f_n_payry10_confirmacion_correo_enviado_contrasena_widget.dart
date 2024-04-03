@@ -107,6 +107,7 @@ class _OKFNPayry10ConfirmacionCorreoEnviadoContrasenaWidgetState
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .accent3,
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),
@@ -139,6 +140,7 @@ class _OKFNPayry10ConfirmacionCorreoEnviadoContrasenaWidgetState
                                           .override(
                                             fontFamily: 'Lexend',
                                             color: Colors.white,
+                                            letterSpacing: 0.0,
                                           ),
                                       elevation: 3.0,
                                       borderSide: BorderSide(

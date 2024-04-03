@@ -31,8 +31,6 @@ class OKFNPayry31DetallesdeQRCodeModel
   // Stores action output result for [Cloud Function - generateCodi] action in IconButton widget.
   GenerateCodiCloudFunctionCallResponse? codiCF;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -40,8 +38,4 @@ class OKFNPayry31DetallesdeQRCodeModel
   void dispose() {
     unfocusNode.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

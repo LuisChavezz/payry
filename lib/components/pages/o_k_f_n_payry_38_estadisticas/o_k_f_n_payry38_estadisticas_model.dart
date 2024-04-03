@@ -36,8 +36,6 @@ class OKFNPayry38EstadisticasModel
   // Stores action output result for [Cloud Function - getStatistics] action in Button widget.
   GetStatisticsCloudFunctionCallResponse? statisticsResponse;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     calendarSelectedDay1 = DateTimeRange(
@@ -54,8 +52,4 @@ class OKFNPayry38EstadisticasModel
   void dispose() {
     unfocusNode.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }
