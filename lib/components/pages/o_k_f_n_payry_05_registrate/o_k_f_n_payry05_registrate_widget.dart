@@ -565,32 +565,6 @@ class _OKFNPayry05RegistrateWidgetState
                                                     await FirebaseFunctions
                                                         .instance
                                                         .httpsCallable(
-                                                            'verifyEmail')
-                                                        .call({
-                                                  "email": currentUserEmail,
-                                                });
-                                                _model.cfve =
-                                                    VerifyEmailCloudFunctionCallResponse(
-                                                  data: result.data,
-                                                  succeeded: true,
-                                                  resultAsString:
-                                                      result.data.toString(),
-                                                  jsonBody: result.data,
-                                                );
-                                              } on FirebaseFunctionsException catch (error) {
-                                                _model.cfve =
-                                                    VerifyEmailCloudFunctionCallResponse(
-                                                  errorCode: error.code,
-                                                  succeeded: false,
-                                                );
-                                              }
-
-                                              _shouldSetState = true;
-                                              try {
-                                                final result =
-                                                    await FirebaseFunctions
-                                                        .instance
-                                                        .httpsCallable(
                                                             'generateToken')
                                                         .call({
                                                   "uid": currentUserUid,
@@ -627,6 +601,32 @@ class _OKFNPayry05RegistrateWidgetState
                                                 'create_dimo': true,
                                                 'edit_profile': true,
                                               };
+                                              try {
+                                                final result =
+                                                    await FirebaseFunctions
+                                                        .instance
+                                                        .httpsCallable(
+                                                            'verifyEmail')
+                                                        .call({
+                                                  "email": currentUserEmail,
+                                                });
+                                                _model.cfve =
+                                                    VerifyEmailCloudFunctionCallResponse(
+                                                  data: result.data,
+                                                  succeeded: true,
+                                                  resultAsString:
+                                                      result.data.toString(),
+                                                  jsonBody: result.data,
+                                                );
+                                              } on FirebaseFunctionsException catch (error) {
+                                                _model.cfve =
+                                                    VerifyEmailCloudFunctionCallResponse(
+                                                  errorCode: error.code,
+                                                  succeeded: false,
+                                                );
+                                              }
+
+                                              _shouldSetState = true;
                                               await showDialog(
                                                 barrierDismissible: false,
                                                 context: context,

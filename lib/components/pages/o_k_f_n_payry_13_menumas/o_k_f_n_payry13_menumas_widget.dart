@@ -265,7 +265,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                           alertDialogContext,
                                                                           false),
                                                                   child: Text(
-                                                                      'Cancel'),
+                                                                      'Cancelar'),
                                                                 ),
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -311,7 +311,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                         alertDialogContext,
                                                                         false),
                                                                 child: Text(
-                                                                    'Cancel'),
+                                                                    'Cancelar'),
                                                               ),
                                                               TextButton(
                                                                 onPressed: () =>
@@ -357,7 +357,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                       alertDialogContext,
                                                                       false),
                                                               child: Text(
-                                                                  'Cancel'),
+                                                                  'Cancelar'),
                                                             ),
                                                             TextButton(
                                                               onPressed: () =>
@@ -655,7 +655,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                           alertDialogContext,
                                                                           false),
                                                                   child: Text(
-                                                                      'Cancel'),
+                                                                      'Cancelar'),
                                                                 ),
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -701,7 +701,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                         alertDialogContext,
                                                                         false),
                                                                 child: Text(
-                                                                    'Cancel'),
+                                                                    'Cancelar'),
                                                               ),
                                                               TextButton(
                                                                 onPressed: () =>
@@ -747,7 +747,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                       alertDialogContext,
                                                                       false),
                                                               child: Text(
-                                                                  'Cancel'),
+                                                                  'Cancelar'),
                                                             ),
                                                             TextButton(
                                                               onPressed: () =>
@@ -1133,7 +1133,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                         alertDialogContext,
                                                                         false),
                                                                 child: Text(
-                                                                    'Cancel'),
+                                                                    'Cancelar'),
                                                               ),
                                                               TextButton(
                                                                 onPressed: () =>
@@ -1179,7 +1179,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                       alertDialogContext,
                                                                       false),
                                                               child: Text(
-                                                                  'Cancel'),
+                                                                  'Cancelar'),
                                                             ),
                                                             TextButton(
                                                               onPressed: () =>
@@ -1458,7 +1458,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                           alertDialogContext,
                                                                           false),
                                                                   child: Text(
-                                                                      'Cancel'),
+                                                                      'Cancelar'),
                                                                 ),
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -1504,7 +1504,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                         alertDialogContext,
                                                                         false),
                                                                 child: Text(
-                                                                    'Cancel'),
+                                                                    'Cancelar'),
                                                               ),
                                                               TextButton(
                                                                 onPressed: () =>
@@ -1550,7 +1550,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                       alertDialogContext,
                                                                       false),
                                                               child: Text(
-                                                                  'Cancel'),
+                                                                  'Cancelar'),
                                                             ),
                                                             TextButton(
                                                               onPressed: () =>
@@ -1830,7 +1830,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                           alertDialogContext,
                                                                           false),
                                                                   child: Text(
-                                                                      'Cancel'),
+                                                                      'Cancelar'),
                                                                 ),
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -1876,7 +1876,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                         alertDialogContext,
                                                                         false),
                                                                 child: Text(
-                                                                    'Cancel'),
+                                                                    'Cancelar'),
                                                               ),
                                                               TextButton(
                                                                 onPressed: () =>
@@ -1922,7 +1922,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                       alertDialogContext,
                                                                       false),
                                                               child: Text(
-                                                                  'Cancel'),
+                                                                  'Cancelar'),
                                                             ),
                                                             TextButton(
                                                               onPressed: () =>
@@ -2198,7 +2198,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                           alertDialogContext,
                                                                           false),
                                                                   child: Text(
-                                                                      'Cancel'),
+                                                                      'Cancelar'),
                                                                 ),
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -2244,7 +2244,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                         alertDialogContext,
                                                                         false),
                                                                 child: Text(
-                                                                    'Cancel'),
+                                                                    'Cancelar'),
                                                               ),
                                                               TextButton(
                                                                 onPressed: () =>
@@ -2290,7 +2290,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                       alertDialogContext,
                                                                       false),
                                                               child: Text(
-                                                                  'Cancel'),
+                                                                  'Cancelar'),
                                                             ),
                                                             TextButton(
                                                               onPressed: () =>
@@ -2570,7 +2570,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                           alertDialogContext,
                                                                           false),
                                                                   child: Text(
-                                                                      'Cancel'),
+                                                                      'Cancelar'),
                                                                 ),
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -2616,7 +2616,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                         alertDialogContext,
                                                                         false),
                                                                 child: Text(
-                                                                    'Cancel'),
+                                                                    'Cancelar'),
                                                               ),
                                                               TextButton(
                                                                 onPressed: () =>
@@ -2662,7 +2662,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                                       alertDialogContext,
                                                                       false),
                                                               child: Text(
-                                                                  'Cancel'),
+                                                                  'Cancelar'),
                                                             ),
                                                             TextButton(
                                                               onPressed: () =>
