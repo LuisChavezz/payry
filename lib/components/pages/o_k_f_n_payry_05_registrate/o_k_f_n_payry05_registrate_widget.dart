@@ -884,6 +884,12 @@ class _OKFNPayry05RegistrateWidgetState
                                                       _model.acceptCheckValue =
                                                           newValue!);
                                                 },
+                                                side: BorderSide(
+                                                  width: 2,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                ),
                                                 activeColor:
                                                     FlutterFlowTheme.of(context)
                                                         .primary,

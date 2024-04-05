@@ -33,3 +33,5 @@ const requestVerifyPhone = require("./request_verify_phone.js");
 exports.requestVerifyPhone = requestVerifyPhone.requestVerifyPhone;
 const verifyPhone = require("./verify_phone.js");
 exports.verifyPhone = verifyPhone.verifyPhone;
+const notifyCreationToAdmin = require("./notify_creation_to_admin.js");
+exports.notifyCreationToAdmin = notifyCreationToAdmin.notifyCreationToAdmin;

@@ -916,7 +916,10 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                                       bool>(
                                                                   currentUserDocument
                                                                       ?.isAdmin,
-                                                                  false)))
+                                                                  false)) ||
+                                                          !functions.isSameDate(
+                                                              containerDetallesCobroRecord
+                                                                  .createdTime!))
                                                       ? null
                                                       : () async {
                                                           var _shouldSetState =
@@ -930,9 +933,9 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                                         (alertDialogContext) {
                                                                       return AlertDialog(
                                                                         title: Text(
-                                                                            'Devolver QR'),
+                                                                            'Devolver CoDi'),
                                                                         content:
-                                                                            Text('¿Estás seguro de querer devolver el monto de este QR?'),
+                                                                            Text('¿Estás seguro de querer devolver el monto de este CoDi?'),
                                                                         actions: [
                                                                           TextButton(
                                                                             onPressed: () =>
@@ -1002,7 +1005,7 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                                     (alertDialogContext) {
                                                                   return AlertDialog(
                                                                     title: Text(
-                                                                        'QR Devulto'),
+                                                                        'CoDi® Devuelto'),
                                                                     content: Text(
                                                                         'La devolución del CoDi® se ha efectuado con éxito.'),
                                                                     actions: [
@@ -1030,7 +1033,12 @@ class _OKFNPayry31DetallesdeQRWidgetState
                                                                     title: Text(
                                                                         'Error'),
                                                                     content: Text(
-                                                                        'Ha ocurrido un error en la ejecución de su solicitud.'),
+                                                                        getJsonField(
+                                                                      _model
+                                                                          .refundCF!
+                                                                          .jsonBody,
+                                                                      r'''$.message''',
+                                                                    ).toString()),
                                                                     actions: [
                                                                       TextButton(
                                                                         onPressed:

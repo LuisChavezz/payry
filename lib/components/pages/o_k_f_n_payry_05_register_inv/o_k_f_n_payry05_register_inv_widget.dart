@@ -818,6 +818,33 @@ class _OKFNPayry05RegisterInvWidgetState
                                                   }
 
                                                   _shouldSetState = true;
+                                                  try {
+                                                    final result =
+                                                        await FirebaseFunctions
+                                                            .instance
+                                                            .httpsCallable(
+                                                                'notifyCreationToAdmin')
+                                                            .call({
+                                                      "uid": currentUserUid,
+                                                    });
+                                                    _model.nctaResp =
+                                                        NotifyCreationToAdminCloudFunctionCallResponse(
+                                                      data: result.data,
+                                                      succeeded: true,
+                                                      resultAsString: result
+                                                          .data
+                                                          .toString(),
+                                                      jsonBody: result.data,
+                                                    );
+                                                  } on FirebaseFunctionsException catch (error) {
+                                                    _model.nctaResp =
+                                                        NotifyCreationToAdminCloudFunctionCallResponse(
+                                                      errorCode: error.code,
+                                                      succeeded: false,
+                                                    );
+                                                  }
+
+                                                  _shouldSetState = true;
                                                   if (_shouldSetState)
                                                     setState(() {});
                                                   return;
@@ -986,6 +1013,13 @@ class _OKFNPayry05RegisterInvWidgetState
                                                               .acceptCheckValue =
                                                           newValue!);
                                                     },
+                                                    side: BorderSide(
+                                                      width: 2,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                    ),
                                                     activeColor:
                                                         FlutterFlowTheme.of(
                                                                 context)
