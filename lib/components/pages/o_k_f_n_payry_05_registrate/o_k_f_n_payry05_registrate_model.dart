@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'o_k_f_n_payry05_registrate_widget.dart'
     show OKFNPayry05RegistrateWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -82,12 +81,8 @@ class OKFNPayry05RegistrateModel
     return null;
   }
 
-  // Stores action output result for [Cloud Function - generateToken] action in Button widget.
-  GenerateTokenCloudFunctionCallResponse? genToken;
-  // Stores action output result for [Cloud Function - verifyEmail] action in Button widget.
-  VerifyEmailCloudFunctionCallResponse? cfve;
-  // Stores action output result for [Cloud Function - sendWelcomeEmail] action in Button widget.
-  SendWelcomeEmailCloudFunctionCallResponse? cloudFunctiona55;
+  // Stores action output result for [Backend Call - API (Generate Token)] action in Button widget.
+  ApiCallResponse? tokenAC;
   // State field(s) for acceptCheck widget.
   bool? acceptCheckValue;
 

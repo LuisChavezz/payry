@@ -1,5 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'o_k_f_n_payry38_estadisticas_widget.dart'
     show OKFNPayry38EstadisticasWidget;
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -33,8 +32,8 @@ class OKFNPayry38EstadisticasModel
   DateTimeRange? calendarSelectedDay1;
   // State field(s) for Calendar widget.
   DateTimeRange? calendarSelectedDay2;
-  // Stores action output result for [Cloud Function - getStatistics] action in Button widget.
-  GetStatisticsCloudFunctionCallResponse? statisticsResponse;
+  // Stores action output result for [Backend Call - API (Get Statistics)] action in Button widget.
+  ApiCallResponse? statisticsAC;
 
   @override
   void initState(BuildContext context) {

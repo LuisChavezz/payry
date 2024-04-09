@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -13,7 +13,6 @@ import 'o_k_f_n_payry20_datos_bancarios_widget.dart'
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -65,8 +64,8 @@ class OKFNPayry20DatosBancariosModel
     return null;
   }
 
-  // Stores action output result for [Cloud Function - reportCompany] action in Button widget.
-  ReportCompanyCloudFunctionCallResponse? reportCompFC;
+  // Stores action output result for [Backend Call - API (Report Company)] action in Button widget.
+  ApiCallResponse? rcAC;
 
   @override
   void initState(BuildContext context) {

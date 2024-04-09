@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/backend/schema/enums/enums.dart';
 import '/components/empty_list/empty_list_widget.dart';
 import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
@@ -13,7 +13,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'o_k_f_n_payry26_dashboard_widget.dart' show OKFNPayry26DashboardWidget;
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -31,8 +30,8 @@ class OKFNPayry26DashboardModel
 
   TutorialCoachMark? elementosEnElDashboardController;
   final unfocusNode = FocusNode();
-  // Stores action output result for [Cloud Function - getBalance] action in OK_FN_Payry_26_Dashboard widget.
-  GetBalanceCloudFunctionCallResponse? getBalanceCF;
+  // Stores action output result for [Backend Call - API (Get Balance)] action in OK_FN_Payry_26_Dashboard widget.
+  ApiCallResponse? balanceAC;
   // State field(s) for TabBar widget.
   TabController? tabBarController;
   int get tabBarCurrentIndex =>

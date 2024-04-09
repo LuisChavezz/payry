@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -10,7 +10,6 @@ import 'o_k_f_n_payry17_verificar_o_t_p_widget.dart'
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -45,10 +44,10 @@ class OKFNPayry17VerificarOTPModel
   FlutterFlowTimerController timerController =
       FlutterFlowTimerController(StopWatchTimer(mode: StopWatchMode.countDown));
 
-  // Stores action output result for [Cloud Function - verifyPhone] action in Button widget.
-  VerifyPhoneCloudFunctionCallResponse? cfResp;
-  // Stores action output result for [Cloud Function - requestVerifyPhone] action in Button widget.
-  RequestVerifyPhoneCloudFunctionCallResponse? cfRequestResp;
+  // Stores action output result for [Backend Call - API (Verify phone)] action in Button widget.
+  ApiCallResponse? otpAC;
+  // Stores action output result for [Backend Call - API (Request verify phone)] action in Button widget.
+  ApiCallResponse? rvpAC;
 
   @override
   void initState(BuildContext context) {

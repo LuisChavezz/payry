@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/backend/schema/enums/enums.dart';
 import '/components/phone_submit_dialog/phone_submit_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -9,11 +9,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'o_k_f_n_payry36_detallesde_s_m_s_model.dart';
 export 'o_k_f_n_payry36_detallesde_s_m_s_model.dart';
 
@@ -724,47 +722,22 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                                   ) ??
                                                                   false;
                                                           if (confirmDialogResponse) {
-                                                            try {
-                                                              final result =
-                                                                  await FirebaseFunctions
-                                                                      .instance
-                                                                      .httpsCallable(
-                                                                          'refund')
-                                                                      .call({
-                                                                "token":
-                                                                    FFAppState()
-                                                                        .serverToken,
-                                                                "id": widget
-                                                                    .detallesCobroRef
-                                                                    ?.id,
-                                                                "test": false,
-                                                              });
-                                                              _model.refundCF =
-                                                                  RefundCloudFunctionCallResponse(
-                                                                data:
-                                                                    result.data,
-                                                                succeeded: true,
-                                                                resultAsString:
-                                                                    result.data
-                                                                        .toString(),
-                                                                jsonBody:
-                                                                    result.data,
-                                                              );
-                                                            } on FirebaseFunctionsException catch (error) {
-                                                              _model.refundCF =
-                                                                  RefundCloudFunctionCallResponse(
-                                                                errorCode:
-                                                                    error.code,
-                                                                succeeded:
-                                                                    false,
-                                                              );
-                                                            }
-
+                                                            _model.refundAC =
+                                                                await StpGroup
+                                                                    .refundCall
+                                                                    .call(
+                                                              token: FFAppState()
+                                                                  .serverToken,
+                                                              id: widget
+                                                                  .detallesCobroRef
+                                                                  ?.id,
+                                                            );
                                                             _shouldSetState =
                                                                 true;
                                                             if (getJsonField(
-                                                              _model.refundCF!
-                                                                  .jsonBody,
+                                                              (_model.refundAC
+                                                                      ?.jsonBody ??
+                                                                  ''),
                                                               r'''$.success''',
                                                             )) {
                                                               await showDialog(
@@ -803,9 +776,9 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                                         'Error'),
                                                                     content: Text(
                                                                         getJsonField(
-                                                                      _model
-                                                                          .refundCF!
-                                                                          .jsonBody,
+                                                                      (_model.refundAC
+                                                                              ?.jsonBody ??
+                                                                          ''),
                                                                       r'''$.message''',
                                                                     ).toString()),
                                                                     actions: [
@@ -822,9 +795,9 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                               );
                                                               if (!functions.includeTheString(
                                                                   getJsonField(
-                                                                    _model
-                                                                        .refundCF!
-                                                                        .jsonBody,
+                                                                    (_model.refundAC
+                                                                            ?.jsonBody ??
+                                                                        ''),
                                                                     r'''$.message''',
                                                                   ).toString(),
                                                                   'expirada')!) {
@@ -1016,52 +989,23 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                               }, registraCobroRecordReference);
                                                               _shouldSetState =
                                                                   true;
-                                                              try {
-                                                                final result =
-                                                                    await FirebaseFunctions
-                                                                        .instance
-                                                                        .httpsCallable(
-                                                                            'generateDimo')
-                                                                        .call({
-                                                                  "id": _model
-                                                                      .dimoResp!
-                                                                      .reference
-                                                                      .id,
-                                                                  "test": false,
-                                                                  "token":
-                                                                      FFAppState()
-                                                                          .serverToken,
-                                                                });
-                                                                _model.dimoCF =
-                                                                    GenerateDimoCloudFunctionCallResponse(
-                                                                  data: result
-                                                                      .data,
-                                                                  succeeded:
-                                                                      true,
-                                                                  resultAsString:
-                                                                      result
-                                                                          .data
-                                                                          .toString(),
-                                                                  jsonBody:
-                                                                      result
-                                                                          .data,
-                                                                );
-                                                              } on FirebaseFunctionsException catch (error) {
-                                                                _model.dimoCF =
-                                                                    GenerateDimoCloudFunctionCallResponse(
-                                                                  errorCode:
-                                                                      error
-                                                                          .code,
-                                                                  succeeded:
-                                                                      false,
-                                                                );
-                                                              }
-
+                                                              _model.dimoAC =
+                                                                  await StpGroup
+                                                                      .generateDimoCall
+                                                                      .call(
+                                                                id: _model
+                                                                    .dimoResp
+                                                                    ?.reference
+                                                                    .id,
+                                                                token: FFAppState()
+                                                                    .serverToken,
+                                                              );
                                                               _shouldSetState =
                                                                   true;
                                                               if (getJsonField(
-                                                                _model.dimoCF!
-                                                                    .jsonBody,
+                                                                (_model.dimoAC
+                                                                        ?.jsonBody ??
+                                                                    ''),
                                                                 r'''$.success''',
                                                               )) {
                                                                 await showDialog(
@@ -1133,9 +1077,8 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                                           'Error'),
                                                                       content: Text(
                                                                           getJsonField(
-                                                                        _model
-                                                                            .dimoCF!
-                                                                            .jsonBody,
+                                                                        (_model.dimoAC?.jsonBody ??
+                                                                            ''),
                                                                         r'''$.message''',
                                                                       ).toString()),
                                                                       actions: [
@@ -1151,9 +1094,9 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                                 );
                                                                 if (!functions.includeTheString(
                                                                     getJsonField(
-                                                                      _model
-                                                                          .dimoCF!
-                                                                          .jsonBody,
+                                                                      (_model.dimoAC
+                                                                              ?.jsonBody ??
+                                                                          ''),
                                                                       r'''$.message''',
                                                                     ).toString(),
                                                                     'expirada')!) {
@@ -1294,66 +1237,20 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                                             ) ??
                                                                             false;
                                                                     if (confirmDialogResponse) {
-                                                                      if (isiOS) {
-                                                                        await launchUrl(
-                                                                            Uri.parse("sms:${oKFNPayry36DetallesdeSMSRegistraCobroRecord.phoneNumber}&body=${Uri.encodeComponent('Revisa tu recibo de ${containerCompaniesRecord.alias}: https://www.payry.mx/rdp/?id=${containerDetallesCobroRecord.reference.id}')}"));
-                                                                      } else {
-                                                                        await launchUrl(
-                                                                            Uri(
-                                                                          scheme:
-                                                                              'sms',
-                                                                          path:
-                                                                              oKFNPayry36DetallesdeSMSRegistraCobroRecord.phoneNumber,
-                                                                          queryParameters: <String,
-                                                                              String>{
-                                                                            'body':
-                                                                                'Revisa tu recibo de ${containerCompaniesRecord.alias}: https://www.payry.mx/rdp/?id=${containerDetallesCobroRecord.reference.id}',
-                                                                          },
-                                                                        ));
-                                                                      }
-
-                                                                      try {
-                                                                        final result = await FirebaseFunctions
-                                                                            .instance
-                                                                            .httpsCallable('sendSms')
-                                                                            .call({
-                                                                          "token":
-                                                                              FFAppState().serverToken,
-                                                                          "phoneNumber":
-                                                                              '+52${oKFNPayry36DetallesdeSMSRegistraCobroRecord.phoneNumber}',
-                                                                          "message":
-                                                                              'Revisa tu recibo de ${containerCompaniesRecord.alias}: https://www.payry.mx/rdp/?id=${containerDetallesCobroRecord.reference.id}',
-                                                                          "test":
-                                                                              false,
-                                                                        });
-                                                                        _model.smsResp =
-                                                                            SendSmsCloudFunctionCallResponse(
-                                                                          data:
-                                                                              result.data,
-                                                                          succeeded:
-                                                                              true,
-                                                                          resultAsString: result
-                                                                              .data
-                                                                              .toString(),
-                                                                          jsonBody:
-                                                                              result.data,
-                                                                        );
-                                                                      } on FirebaseFunctionsException catch (error) {
-                                                                        _model.smsResp =
-                                                                            SendSmsCloudFunctionCallResponse(
-                                                                          errorCode:
-                                                                              error.code,
-                                                                          succeeded:
-                                                                              false,
-                                                                        );
-                                                                      }
-
+                                                                      _model.smsAC =
+                                                                          await SendSmsCall
+                                                                              .call(
+                                                                        token: FFAppState()
+                                                                            .serverToken,
+                                                                        to: '+52${oKFNPayry36DetallesdeSMSRegistraCobroRecord.phoneNumber}',
+                                                                        body:
+                                                                            'Revisa tu recibo de ${containerCompaniesRecord.alias}: https://www.payry.mx/rdp/?id=${containerDetallesCobroRecord.reference.id}',
+                                                                      );
                                                                       _shouldSetState =
                                                                           true;
                                                                       if (getJsonField(
-                                                                        _model
-                                                                            .smsResp!
-                                                                            .jsonBody,
+                                                                        (_model.smsAC?.jsonBody ??
+                                                                            ''),
                                                                         r'''$.success''',
                                                                       )) {
                                                                         await showDialog(
@@ -1386,7 +1283,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                                             return AlertDialog(
                                                                               title: Text('Error'),
                                                                               content: Text(getJsonField(
-                                                                                _model.smsResp!.jsonBody,
+                                                                                (_model.smsAC?.jsonBody ?? ''),
                                                                                 r'''$.message''',
                                                                               ).toString()),
                                                                               actions: [
@@ -1400,7 +1297,7 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                                         );
                                                                         if (!functions.includeTheString(
                                                                             getJsonField(
-                                                                              _model.smsResp!.jsonBody,
+                                                                              (_model.smsAC?.jsonBody ?? ''),
                                                                               r'''$.message''',
                                                                             ).toString(),
                                                                             'expirada')!) {

@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/backend/schema/enums/enums.dart';
 import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -17,7 +17,6 @@ import 'o_k_f_n_payry32_solicitar_s_m_s_widget.dart'
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
@@ -91,8 +90,8 @@ class OKFNPayry32SolicitarSMSModel
 
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   RegistraCobroRecord? dimoResp;
-  // Stores action output result for [Cloud Function - generateDimo] action in Button widget.
-  GenerateDimoCloudFunctionCallResponse? dimoCF;
+  // Stores action output result for [Backend Call - API (Generate Dimo)] action in Button widget.
+  ApiCallResponse? dimoAC;
   // Model for NavBarFloting component.
   late NavBarFlotingModel navBarFlotingModel;
 

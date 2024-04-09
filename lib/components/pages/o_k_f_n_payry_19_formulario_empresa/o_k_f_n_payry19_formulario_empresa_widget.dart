@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -10,7 +10,6 @@ import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -2076,37 +2075,18 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                               ),
                                             }, companiesRecordReference);
                                             _shouldSetState = true;
-                                            try {
-                                              final result =
-                                                  await FirebaseFunctions
-                                                      .instance
-                                                      .httpsCallable(
-                                                          'reportCompany')
-                                                      .call({
-                                                "token":
-                                                    FFAppState().serverToken,
-                                                "id": _model.companyCreatedResp!
-                                                    .reference.id,
-                                                "test": false,
-                                              });
-                                              _model.rccdCF =
-                                                  ReportCompanyCloudFunctionCallResponse(
-                                                data: result.data,
-                                                succeeded: true,
-                                                resultAsString:
-                                                    result.data.toString(),
-                                                jsonBody: result.data,
-                                              );
-                                            } on FirebaseFunctionsException catch (error) {
-                                              _model.rccdCF =
-                                                  ReportCompanyCloudFunctionCallResponse(
-                                                errorCode: error.code,
-                                                succeeded: false,
-                                              );
-                                            }
-
+                                            _model.rccAC = await SQLReportGroup
+                                                .reportCompanyCall
+                                                .call(
+                                              token: FFAppState().serverToken,
+                                              id: _model.companyCreatedResp
+                                                  ?.reference.id,
+                                            );
                                             _shouldSetState = true;
-                                            if (_model.rccdCF!.succeeded!) {
+                                            if (getJsonField(
+                                              (_model.rccAC?.jsonBody ?? ''),
+                                              r'''$.success''',
+                                            )) {
                                               await showDialog(
                                                 context: context,
                                                 builder: (alertDialogContext) {
@@ -2132,8 +2112,11 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 builder: (alertDialogContext) {
                                                   return AlertDialog(
                                                     title: Text('Error'),
-                                                    content: Text(
-                                                        'Ha ocurrido un error en nuestros servidores.'),
+                                                    content: Text(getJsonField(
+                                                      (_model.rccAC?.jsonBody ??
+                                                          ''),
+                                                      r'''$.message''',
+                                                    ).toString()),
                                                     actions: [
                                                       TextButton(
                                                         onPressed: () =>
@@ -2167,6 +2150,10 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 ),
                                               }.withoutNulls,
                                             );
+
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
                                           } else {
                                             await oKFNPayry19FormularioEmpresaCompaniesRecord!
                                                 .reference
@@ -2231,38 +2218,18 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                               coupon: _model
                                                   .couponFieldController.text,
                                             ));
-                                            try {
-                                              final result =
-                                                  await FirebaseFunctions
-                                                      .instance
-                                                      .httpsCallable(
-                                                          'reportCompany')
-                                                      .call({
-                                                "token":
-                                                    FFAppState().serverToken,
-                                                "id":
-                                                    oKFNPayry19FormularioEmpresaCompaniesRecord!
-                                                        .reference.id,
-                                                "test": false,
-                                              });
-                                              _model.rcudCF =
-                                                  ReportCompanyCloudFunctionCallResponse(
-                                                data: result.data,
-                                                succeeded: true,
-                                                resultAsString:
-                                                    result.data.toString(),
-                                                jsonBody: result.data,
-                                              );
-                                            } on FirebaseFunctionsException catch (error) {
-                                              _model.rcudCF =
-                                                  ReportCompanyCloudFunctionCallResponse(
-                                                errorCode: error.code,
-                                                succeeded: false,
-                                              );
-                                            }
-
+                                            _model.recAC = await SQLReportGroup
+                                                .reportCompanyCall
+                                                .call(
+                                              token: FFAppState().serverToken,
+                                              id: oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                  ?.reference.id,
+                                            );
                                             _shouldSetState = true;
-                                            if (_model.rcudCF!.succeeded!) {
+                                            if (getJsonField(
+                                              (_model.recAC?.jsonBody ?? ''),
+                                              r'''$.success''',
+                                            )) {
                                               await showDialog(
                                                 context: context,
                                                 builder: (alertDialogContext) {
@@ -2288,8 +2255,11 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 builder: (alertDialogContext) {
                                                   return AlertDialog(
                                                     title: Text('Error'),
-                                                    content: Text(
-                                                        'Ha ocurrido un error en nuestros servidores.'),
+                                                    content: Text(getJsonField(
+                                                      (_model.recAC?.jsonBody ??
+                                                          ''),
+                                                      r'''$.message''',
+                                                    ).toString()),
                                                     actions: [
                                                       TextButton(
                                                         onPressed: () =>
@@ -2330,40 +2300,16 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                   ),
                                                 }.withoutNulls,
                                               );
+
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            } else {
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
                                             }
                                           }
-
-                                          try {
-                                            final result =
-                                                await FirebaseFunctions.instance
-                                                    .httpsCallable(
-                                                        'generateToken')
-                                                    .call({
-                                              "uid": currentUserUid,
-                                              "test": false,
-                                            });
-                                            _model.genToken =
-                                                GenerateTokenCloudFunctionCallResponse(
-                                              data: result.data,
-                                              succeeded: true,
-                                              resultAsString:
-                                                  result.data.toString(),
-                                              jsonBody: result.data,
-                                            );
-                                          } on FirebaseFunctionsException catch (error) {
-                                            _model.genToken =
-                                                GenerateTokenCloudFunctionCallResponse(
-                                              errorCode: error.code,
-                                              succeeded: false,
-                                            );
-                                          }
-
-                                          _shouldSetState = true;
-                                          FFAppState().serverToken = _model
-                                              .genToken!.jsonBody!
-                                              .toString();
-                                          if (_shouldSetState) setState(() {});
-                                          return;
                                         } else {
                                           await showDialog(
                                             context: context,

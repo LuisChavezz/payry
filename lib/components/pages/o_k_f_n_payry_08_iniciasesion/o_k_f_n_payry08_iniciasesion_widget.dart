@@ -1,9 +1,8 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -485,38 +484,20 @@ class _OKFNPayry08IniciasesionWidgetState
                                                       currentUserDocument
                                                           ?.status,
                                                       false)) {
-                                                    try {
-                                                      final result =
-                                                          await FirebaseFunctions
-                                                              .instance
-                                                              .httpsCallable(
-                                                                  'generateToken')
-                                                              .call({
-                                                        "uid": currentUserUid,
-                                                        "test": false,
-                                                      });
-                                                      _model.genToken =
-                                                          GenerateTokenCloudFunctionCallResponse(
-                                                        data: result.data,
-                                                        succeeded: true,
-                                                        resultAsString: result
-                                                            .data
-                                                            .toString(),
-                                                        jsonBody: result.data,
-                                                      );
-                                                    } on FirebaseFunctionsException catch (error) {
-                                                      _model.genToken =
-                                                          GenerateTokenCloudFunctionCallResponse(
-                                                        errorCode: error.code,
-                                                        succeeded: false,
-                                                      );
-                                                    }
-
+                                                    _model.generateTokenResp =
+                                                        await AuthGroup
+                                                            .generateTokenCall
+                                                            .call(
+                                                      uid: currentUserUid,
+                                                    );
                                                     _shouldSetState = true;
                                                     FFAppState().serverToken =
-                                                        _model
-                                                            .genToken!.jsonBody!
-                                                            .toString();
+                                                        getJsonField(
+                                                      (_model.generateTokenResp
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                      r'''$.data.token''',
+                                                    ).toString();
                                                     if (_model
                                                         .rememberMeCheckValue!) {
                                                       setState(() {

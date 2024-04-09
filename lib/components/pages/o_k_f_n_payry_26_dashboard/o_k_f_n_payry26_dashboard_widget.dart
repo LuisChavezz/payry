@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/backend/schema/enums/enums.dart';
 import '/components/empty_list/empty_list_widget.dart';
 import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
@@ -12,7 +12,6 @@ import '/walkthroughs/elementos_en_el_dashboard.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -43,38 +42,23 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      try {
-        final result =
-            await FirebaseFunctions.instance.httpsCallable('getBalance').call({
-          "token": FFAppState().serverToken,
-        });
-        _model.getBalanceCF = GetBalanceCloudFunctionCallResponse(
-          data: result.data,
-          succeeded: true,
-          resultAsString: result.data.toString(),
-          jsonBody: result.data,
-        );
-      } on FirebaseFunctionsException catch (error) {
-        _model.getBalanceCF = GetBalanceCloudFunctionCallResponse(
-          errorCode: error.code,
-          succeeded: false,
-        );
-      }
-
+      _model.balanceAC = await StpGroup.getBalanceCall.call(
+        token: FFAppState().serverToken,
+      );
       if (getJsonField(
-        _model.getBalanceCF!.jsonBody,
+        (_model.balanceAC?.jsonBody ?? ''),
         r'''$.success''',
       )) {
         setState(() {
           _model.balance = getJsonField(
-            _model.getBalanceCF!.jsonBody,
+            (_model.balanceAC?.jsonBody ?? ''),
             r'''$.balance''',
           ).toString().toString();
         });
       } else {
         if (!functions.includeTheString(
             getJsonField(
-              _model.getBalanceCF!.jsonBody,
+              (_model.balanceAC?.jsonBody ?? ''),
               r'''$.message''',
             ).toString().toString(),
             'expirada')!) {
