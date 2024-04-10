@@ -380,6 +380,12 @@ class _OKFNPayry08IniciasesionWidgetState
                                                       });
                                                     }
                                                   },
+                                                  side: BorderSide(
+                                                    width: 2,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                  ),
                                                   activeColor:
                                                       FlutterFlowTheme.of(
                                                               context)

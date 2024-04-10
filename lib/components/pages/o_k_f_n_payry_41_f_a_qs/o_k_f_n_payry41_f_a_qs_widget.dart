@@ -1,10 +1,14 @@
+import '/backend/backend.dart';
+import '/components/empty_list/empty_list_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:text_search/text_search.dart';
 import 'o_k_f_n_payry41_f_a_qs_model.dart';
 export 'o_k_f_n_payry41_f_a_qs_model.dart';
 
@@ -25,37 +29,8 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
     super.initState();
     _model = createModel(context, () => OKFNPayry41FAQsModel());
 
-    _model.expandableController1 = ExpandableController(initialExpanded: false);
-    _model.expandableController2 = ExpandableController(initialExpanded: false);
-    _model.expandableController3 = ExpandableController(initialExpanded: false);
-    _model.expandableController4 = ExpandableController(initialExpanded: false);
-    _model.expandableController5 = ExpandableController(initialExpanded: false);
-    _model.expandableController6 = ExpandableController(initialExpanded: false);
-    _model.expandableController7 = ExpandableController(initialExpanded: false);
-    _model.expandableController8 = ExpandableController(initialExpanded: false);
-    _model.expandableController9 = ExpandableController(initialExpanded: false);
-    _model.expandableController10 =
-        ExpandableController(initialExpanded: false);
-    _model.expandableController11 =
-        ExpandableController(initialExpanded: false);
-    _model.expandableController12 =
-        ExpandableController(initialExpanded: false);
-    _model.expandableController13 =
-        ExpandableController(initialExpanded: false);
-    _model.expandableController14 =
-        ExpandableController(initialExpanded: false);
-    _model.expandableController15 =
-        ExpandableController(initialExpanded: false);
-    _model.expandableController16 =
-        ExpandableController(initialExpanded: false);
-    _model.expandableController17 =
-        ExpandableController(initialExpanded: false);
-    _model.expandableController18 =
-        ExpandableController(initialExpanded: false);
-    _model.expandableController19 =
-        ExpandableController(initialExpanded: false);
-    _model.expandableController20 =
-        ExpandableController(initialExpanded: false);
+    _model.searchFieldController ??= TextEditingController();
+    _model.searchFieldFocusNode ??= FocusNode();
   }
 
   @override
@@ -67,1395 +42,515 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          automaticallyImplyLeading: false,
-          leading: InkWell(
-            splashColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () async {
-              context.pop();
-            },
-            child: Icon(
-              Icons.chevron_left,
-              color: FlutterFlowTheme.of(context).primaryText,
-              size: 24.0,
-            ),
-          ),
-          title: Text(
-            'FAQ\'s',
-            style: FlutterFlowTheme.of(context).titleSmall.override(
-                  fontFamily: 'Lexend',
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  letterSpacing: 0.0,
-                ),
-          ),
-          actions: [],
-          centerTitle: true,
-          elevation: 0.0,
-        ),
-        body: SafeArea(
-          top: true,
-          child: Padding(
-            padding: EdgeInsets.all(18.0),
-            child: ListView(
-              padding: EdgeInsets.zero,
-              scrollDirection: Axis.vertical,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondary,
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(18.0),
-                      child: Container(
-                        width: double.infinity,
-                        color: Color(0x00000000),
-                        child: ExpandableNotifier(
-                          controller: _model.expandableController1,
-                          child: ExpandablePanel(
-                            header: Text(
-                              '¿Cómo genero un CoDi® para cobro?',
-                              style: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .override(
-                                    fontFamily: 'Lexend',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                            collapsed: Container(),
-                            expanded: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'En la sección de pagos de la app, elige la opción \"Generar QR\" e ingresa el monto. El código QR se creará automáticamente.',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 12.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            theme: ExpandableThemeData(
-                              tapHeaderToExpand: true,
-                              tapBodyToExpand: false,
-                              tapBodyToCollapse: false,
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              hasIcon: true,
-                              iconColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondary,
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(18.0),
-                      child: Container(
-                        width: double.infinity,
-                        color: Color(0x00000000),
-                        child: ExpandableNotifier(
-                          controller: _model.expandableController2,
-                          child: ExpandablePanel(
-                            header: Text(
-                              '¿Qué información contiene el CoDi®? ',
-                              style: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .override(
-                                    fontFamily: 'Lexend',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                            collapsed: Container(),
-                            expanded: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'El código QR incluye detalles como el monto a pagar y el concepto.',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 12.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            theme: ExpandableThemeData(
-                              tapHeaderToExpand: true,
-                              tapBodyToExpand: false,
-                              tapBodyToCollapse: false,
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              hasIcon: true,
-                              iconColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondary,
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(18.0),
-                      child: Container(
-                        width: double.infinity,
-                        color: Color(0x00000000),
-                        child: ExpandableNotifier(
-                          controller: _model.expandableController3,
-                          child: ExpandablePanel(
-                            header: Text(
-                              '¿Cómo puedo verificar mis transacciones diarias? ',
-                              style: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .override(
-                                    fontFamily: 'Lexend',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                            collapsed: Container(),
-                            expanded: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'Accede a la sección de historial de transacciones en la app para revisar todas las operaciones realizadas durante el día.',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 12.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            theme: ExpandableThemeData(
-                              tapHeaderToExpand: true,
-                              tapBodyToExpand: false,
-                              tapBodyToCollapse: false,
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              hasIcon: true,
-                              iconColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondary,
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(18.0),
-                      child: Container(
-                        width: double.infinity,
-                        color: Color(0x00000000),
-                        child: ExpandableNotifier(
-                          controller: _model.expandableController4,
-                          child: ExpandablePanel(
-                            header: Text(
-                              '¿Cuándo se envían las transacciones a mi banco?',
-                              style: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .override(
-                                    fontFamily: 'Lexend',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                            collapsed: Container(),
-                            expanded: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'Todas las transacciones se revisan al final del día y se envían al banco al siguiente día hábil para su procesamiento.',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 12.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            theme: ExpandableThemeData(
-                              tapHeaderToExpand: true,
-                              tapBodyToExpand: false,
-                              tapBodyToCollapse: false,
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              hasIcon: true,
-                              iconColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondary,
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(18.0),
-                      child: Container(
-                        width: double.infinity,
-                        color: Color(0x00000000),
-                        child: ExpandableNotifier(
-                          controller: _model.expandableController5,
-                          child: ExpandablePanel(
-                            header: Text(
-                              '¿Puedo cancelar un cobro realizado por error? ',
-                              style: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .override(
-                                    fontFamily: 'Lexend',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                            collapsed: Container(),
-                            expanded: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'Claro, sin embargo, para poder cancelarlo, es estrictamente necesario que la transacción aún no haya sido autorizada por el usuario final, de otro modo no será posible cancelar la solicitud. Te recomendamos verificar los detalles antes de confirmar la transacción.',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 12.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            theme: ExpandableThemeData(
-                              tapHeaderToExpand: true,
-                              tapBodyToExpand: false,
-                              tapBodyToCollapse: false,
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              hasIcon: true,
-                              iconColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondary,
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(18.0),
-                      child: Container(
-                        width: double.infinity,
-                        color: Color(0x00000000),
-                        child: ExpandableNotifier(
-                          controller: _model.expandableController6,
-                          child: ExpandablePanel(
-                            header: Text(
-                              '¿Cómo sé si mi solicitud de cobro fue exitosa?',
-                              style: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .override(
-                                    fontFamily: 'Lexend',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                            collapsed: Container(),
-                            expanded: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'Recibirás una notificación inmediata en la app confirmando que la transacción se completó con éxito.',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 12.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            theme: ExpandableThemeData(
-                              tapHeaderToExpand: true,
-                              tapBodyToExpand: false,
-                              tapBodyToCollapse: false,
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              hasIcon: true,
-                              iconColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondary,
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(18.0),
-                      child: Container(
-                        width: double.infinity,
-                        color: Color(0x00000000),
-                        child: ExpandableNotifier(
-                          controller: _model.expandableController7,
-                          child: ExpandablePanel(
-                            header: Text(
-                              '¿Es seguro realizar pagos con Payry? ',
-                              style: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .override(
-                                    fontFamily: 'Lexend',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                            collapsed: Container(),
-                            expanded: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'Sí, utilizamos medidas de seguridad avanzadas para proteger tus datos y garantizar transacciones seguras.',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 12.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            theme: ExpandableThemeData(
-                              tapHeaderToExpand: true,
-                              tapBodyToExpand: false,
-                              tapBodyToCollapse: false,
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              hasIcon: true,
-                              iconColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondary,
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(18.0),
-                      child: Container(
-                        width: double.infinity,
-                        color: Color(0x00000000),
-                        child: ExpandableNotifier(
-                          controller: _model.expandableController8,
-                          child: ExpandablePanel(
-                            header: Text(
-                              '¿Puedo revisar mis saldos y movimientos en tiempo real?',
-                              style: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .override(
-                                    fontFamily: 'Lexend',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                            collapsed: Container(),
-                            expanded: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'Sí, la app te permite consultar tus saldos y movimientos en tiempo real para mantener un control preciso de tus transacciones.',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 12.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            theme: ExpandableThemeData(
-                              tapHeaderToExpand: true,
-                              tapBodyToExpand: false,
-                              tapBodyToCollapse: false,
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              hasIcon: true,
-                              iconColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondary,
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(18.0),
-                      child: Container(
-                        width: double.infinity,
-                        color: Color(0x00000000),
-                        child: ExpandableNotifier(
-                          controller: _model.expandableController9,
-                          child: ExpandablePanel(
-                            header: Text(
-                              '¿Qué debo hacer si no recibo la confirmación de mi pago? ',
-                              style: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .override(
-                                    fontFamily: 'Lexend',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                            collapsed: Container(),
-                            expanded: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'Verifica tu historial de transacciones y, si no encuentras la confirmación, ponte en contacto con nuestro servicio de atención al cliente para obtener asistencia.',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 12.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            theme: ExpandableThemeData(
-                              tapHeaderToExpand: true,
-                              tapBodyToExpand: false,
-                              tapBodyToCollapse: false,
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              hasIcon: true,
-                              iconColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondary,
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(18.0),
-                      child: Container(
-                        width: double.infinity,
-                        color: Color(0x00000000),
-                        child: ExpandableNotifier(
-                          controller: _model.expandableController10,
-                          child: ExpandablePanel(
-                            header: Text(
-                              '¿Hay alguna tarifa por el uso de la app? ',
-                              style: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .override(
-                                    fontFamily: 'Lexend',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                            collapsed: Container(),
-                            expanded: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'Las funciones dentro de la app son gratuitas, sin embargo, PAYRY cobra una pequeña comisión de \$5.00 por transacción.',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 12.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            theme: ExpandableThemeData(
-                              tapHeaderToExpand: true,
-                              tapBodyToExpand: false,
-                              tapBodyToCollapse: false,
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              hasIcon: true,
-                              iconColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondary,
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(18.0),
-                      child: Container(
-                        width: double.infinity,
-                        color: Color(0x00000000),
-                        child: ExpandableNotifier(
-                          controller: _model.expandableController11,
-                          child: ExpandablePanel(
-                            header: Text(
-                              '¿Existe un límite para el monto de pago con la app? ',
-                              style: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .override(
-                                    fontFamily: 'Lexend',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                            collapsed: Container(),
-                            expanded: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'Sí, el límite es de \$8,000.00 por transacción.',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 12.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            theme: ExpandableThemeData(
-                              tapHeaderToExpand: true,
-                              tapBodyToExpand: false,
-                              tapBodyToCollapse: false,
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              hasIcon: true,
-                              iconColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondary,
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(18.0),
-                      child: Container(
-                        width: double.infinity,
-                        color: Color(0x00000000),
-                        child: ExpandableNotifier(
-                          controller: _model.expandableController12,
-                          child: ExpandablePanel(
-                            header: Text(
-                              '¿Cómo puedo actualizar la información de mi cuenta bancaria vinculada? ',
-                              style: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .override(
-                                    fontFamily: 'Lexend',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                            collapsed: Container(),
-                            expanded: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'Desde su aplicación en el apartado de cuenta bancaria, podría editar la información y solicitar nuevamente la verificación. ',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 12.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            theme: ExpandableThemeData(
-                              tapHeaderToExpand: true,
-                              tapBodyToExpand: false,
-                              tapBodyToCollapse: false,
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              hasIcon: true,
-                              iconColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondary,
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(18.0),
-                      child: Container(
-                        width: double.infinity,
-                        color: Color(0x00000000),
-                        child: ExpandableNotifier(
-                          controller: _model.expandableController13,
-                          child: ExpandablePanel(
-                            header: Text(
-                              '¿Qué debo hacer si pierdo mi teléfono? ',
-                              style: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .override(
-                                    fontFamily: 'Lexend',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                            collapsed: Container(),
-                            expanded: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'Debes informar de inmediato a nuestro servicio de atención al cliente para desactivar tu cuenta temporalmente y evitar transacciones no autorizadas.',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 12.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            theme: ExpandableThemeData(
-                              tapHeaderToExpand: true,
-                              tapBodyToExpand: false,
-                              tapBodyToCollapse: false,
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              hasIcon: true,
-                              iconColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondary,
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(18.0),
-                      child: Container(
-                        width: double.infinity,
-                        color: Color(0x00000000),
-                        child: ExpandableNotifier(
-                          controller: _model.expandableController14,
-                          child: ExpandablePanel(
-                            header: Text(
-                              '¿Puedo recibir notificaciones por cada transacción realizada? ',
-                              style: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .override(
-                                    fontFamily: 'Lexend',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                            collapsed: Container(),
-                            expanded: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'Sí, actualmente recibirás notificaciones por cada transacción realizada.',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 12.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            theme: ExpandableThemeData(
-                              tapHeaderToExpand: true,
-                              tapBodyToExpand: false,
-                              tapBodyToCollapse: false,
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              hasIcon: true,
-                              iconColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondary,
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(18.0),
-                      child: Container(
-                        width: double.infinity,
-                        color: Color(0x00000000),
-                        child: ExpandableNotifier(
-                          controller: _model.expandableController15,
-                          child: ExpandablePanel(
-                            header: Text(
-                              '¿Cómo puedo realizar devoluciones de productos pagados con la app?  ',
-                              style: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .override(
-                                    fontFamily: 'Lexend',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                            collapsed: Container(),
-                            expanded: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'Para devoluciones, sigue el procedimiento establecido por el comercio. En caso de problemas, comunícate con el servicio de atención al cliente.',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 12.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            theme: ExpandableThemeData(
-                              tapHeaderToExpand: true,
-                              tapBodyToExpand: false,
-                              tapBodyToCollapse: false,
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              hasIcon: true,
-                              iconColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondary,
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(18.0),
-                      child: Container(
-                        width: double.infinity,
-                        color: Color(0x00000000),
-                        child: ExpandableNotifier(
-                          controller: _model.expandableController16,
-                          child: ExpandablePanel(
-                            header: Text(
-                              '¿Cómo añado usuarios invitados para realizar cobros desde la app',
-                              style: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .override(
-                                    fontFamily: 'Lexend',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                            collapsed: Container(),
-                            expanded: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'Dirígete a la sección de configuración de usuarios en la app y sigue las instrucciones para añadir empleados como usuarios invitados.',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 12.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            theme: ExpandableThemeData(
-                              tapHeaderToExpand: true,
-                              tapBodyToExpand: false,
-                              tapBodyToCollapse: false,
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              hasIcon: true,
-                              iconColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondary,
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(18.0),
-                      child: Container(
-                        width: double.infinity,
-                        color: Color(0x00000000),
-                        child: ExpandableNotifier(
-                          controller: _model.expandableController17,
-                          child: ExpandablePanel(
-                            header: Text(
-                              '¿Puedo limitar las funciones que un usuario invitado puede realizar? ',
-                              style: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .override(
-                                    fontFamily: 'Lexend',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                            collapsed: Container(),
-                            expanded: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'Sí, puedes establecer permisos específicos para los empleados invitados.',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 12.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            theme: ExpandableThemeData(
-                              tapHeaderToExpand: true,
-                              tapBodyToExpand: false,
-                              tapBodyToCollapse: false,
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              hasIcon: true,
-                              iconColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondary,
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(18.0),
-                      child: Container(
-                        width: double.infinity,
-                        color: Color(0x00000000),
-                        child: ExpandableNotifier(
-                          controller: _model.expandableController18,
-                          child: ExpandablePanel(
-                            header: Text(
-                              '¿Puedo cambiar los permisos de un empleado invitado en cualquier momento? ',
-                              style: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .override(
-                                    fontFamily: 'Lexend',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                            collapsed: Container(),
-                            expanded: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'Sí, como propietario del comercio, puedes ajustar los permisos de los empleados invitados en cualquier momento desde la sección de configuración.',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 12.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            theme: ExpandableThemeData(
-                              tapHeaderToExpand: true,
-                              tapBodyToExpand: false,
-                              tapBodyToCollapse: false,
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              hasIcon: true,
-                              iconColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondary,
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(18.0),
-                      child: Container(
-                        width: double.infinity,
-                        color: Color(0x00000000),
-                        child: ExpandableNotifier(
-                          controller: _model.expandableController19,
-                          child: ExpandablePanel(
-                            header: Text(
-                              '¿Hay un límite en la cantidad de empleados invitados que puedo añadir?  ',
-                              style: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .override(
-                                    fontFamily: 'Lexend',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                            collapsed: Container(),
-                            expanded: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'No, puedes dar de alta a todos los usuarios invitados que necesites',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 12.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            theme: ExpandableThemeData(
-                              tapHeaderToExpand: true,
-                              tapBodyToExpand: false,
-                              tapBodyToCollapse: false,
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              hasIcon: true,
-                              iconColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondary,
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(18.0),
-                      child: Container(
-                        width: double.infinity,
-                        color: Color(0x00000000),
-                        child: ExpandableNotifier(
-                          controller: _model.expandableController20,
-                          child: ExpandablePanel(
-                            header: Text(
-                              '¿Cómo desactivo el acceso de un empleado invitado que ya no trabaja en el comercio',
-                              style: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .override(
-                                    fontFamily: 'Lexend',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                            collapsed: Container(),
-                            expanded: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'Ve a la sección de configuración de usuarios, selecciona al empleado y utiliza la opción para desactivar.',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Lexend',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 12.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            theme: ExpandableThemeData(
-                              tapHeaderToExpand: true,
-                              tapBodyToExpand: false,
-                              tapBodyToCollapse: false,
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              hasIcon: true,
-                              iconColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
+    return StreamBuilder<List<FaqsRecord>>(
+      stream: queryFaqsRecord(
+        queryBuilder: (faqsRecord) => faqsRecord.orderBy('title'),
       ),
+      builder: (context, snapshot) {
+        // Customize what your widget looks like when it's loading.
+        if (!snapshot.hasData) {
+          return Scaffold(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            body: Center(
+              child: SizedBox(
+                width: 40.0,
+                height: 40.0,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    FlutterFlowTheme.of(context).accent3,
+                  ),
+                ),
+              ),
+            ),
+          );
+        }
+        List<FaqsRecord> oKFNPayry41FAQsFaqsRecordList = snapshot.data!;
+        return GestureDetector(
+          onTap: () => _model.unfocusNode.canRequestFocus
+              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+              : FocusScope.of(context).unfocus(),
+          child: Scaffold(
+            key: scaffoldKey,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            appBar: AppBar(
+              backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+              automaticallyImplyLeading: false,
+              leading: InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.pop();
+                },
+                child: Icon(
+                  Icons.chevron_left,
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  size: 24.0,
+                ),
+              ),
+              title: Text(
+                'FAQ\'s',
+                style: FlutterFlowTheme.of(context).titleSmall.override(
+                      fontFamily: 'Lexend',
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      letterSpacing: 0.0,
+                    ),
+              ),
+              actions: [],
+              centerTitle: true,
+              elevation: 0.0,
+            ),
+            body: SafeArea(
+              top: true,
+              child: Padding(
+                padding: EdgeInsets.all(18.0),
+                child: Container(
+                  decoration: BoxDecoration(),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Busca por titulo de FAQ',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lexend',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    fontSize: 14.0,
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                            Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Expanded(
+                                    child: TextFormField(
+                                      controller: _model.searchFieldController,
+                                      focusNode: _model.searchFieldFocusNode,
+                                      onChanged: (_) => EasyDebounce.debounce(
+                                        '_model.searchFieldController',
+                                        Duration(milliseconds: 2000),
+                                        () async {
+                                          if (_model.searchFieldController
+                                                      .text ==
+                                                  null ||
+                                              _model.searchFieldController
+                                                      .text ==
+                                                  '') {
+                                            setState(() {
+                                              _model.isSearch = true;
+                                            });
+                                            return;
+                                          } else {
+                                            return;
+                                          }
+                                        },
+                                      ),
+                                      autofocus: false,
+                                      obscureText: false,
+                                      decoration: InputDecoration(
+                                        labelText: 'Buscar...',
+                                        labelStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color: Color(0xFF8788A5),
+                                              letterSpacing: 0.0,
+                                            ),
+                                        hintStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color: Colors.white,
+                                              letterSpacing: 0.0,
+                                            ),
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0xFF8788A5),
+                                            width: 1.0,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
+                                        focusedBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Colors.white,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
+                                        errorBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
+                                        focusedErrorBorder:
+                                            UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            color: Color(0xFF8788A5),
+                                            letterSpacing: 0.0,
+                                          ),
+                                      minLines: null,
+                                      validator: _model
+                                          .searchFieldControllerValidator
+                                          .asValidator(context),
+                                    ),
+                                  ),
+                                  InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      safeSetState(() {
+                                        _model.simpleSearchResults = TextSearch(
+                                          oKFNPayry41FAQsFaqsRecordList
+                                              .map(
+                                                (record) =>
+                                                    TextSearchItem.fromTerms(
+                                                        record,
+                                                        [record.title!]),
+                                              )
+                                              .toList(),
+                                        )
+                                            .search(_model
+                                                .searchFieldController.text)
+                                            .map((r) => r.object)
+                                            .toList();
+                                        ;
+                                      });
+                                      if (_model.searchFieldController.text !=
+                                              null &&
+                                          _model.searchFieldController.text !=
+                                              '') {
+                                        setState(() {
+                                          _model.isSearch = true;
+                                        });
+                                        return;
+                                      } else {
+                                        setState(() {
+                                          _model.isSearch = false;
+                                        });
+                                        return;
+                                      }
+                                    },
+                                    child: Icon(
+                                      Icons.search_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 28.0,
+                                    ),
+                                  ),
+                                  if (_model.isSearch)
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          6.0, 0.0, 0.0, 0.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          setState(() {
+                                            _model.searchFieldController?.text =
+                                                '';
+                                          });
+                                          setState(() {
+                                            _model.isSearch = false;
+                                          });
+                                        },
+                                        child: Icon(
+                                          Icons.close,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          size: 28.0,
+                                        ),
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            if (!_model.isSearch)
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 24.0, 0.0, 0.0),
+                                child: Builder(
+                                  builder: (context) {
+                                    final faqItem =
+                                        oKFNPayry41FAQsFaqsRecordList.toList();
+                                    if (faqItem.isEmpty) {
+                                      return Container(
+                                        height: 100.0,
+                                        child: EmptyListWidget(
+                                          title: 'No hay CoDis',
+                                          message:
+                                              'Aun no hay transferencias por CoDi®',
+                                        ),
+                                      );
+                                    }
+                                    return ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      primary: false,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: faqItem.length,
+                                      itemBuilder: (context, faqItemIndex) {
+                                        final faqItemItem =
+                                            faqItem[faqItemIndex];
+                                        return Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 8.0, 0.0, 8.0),
+                                          child: Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                1.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              borderRadius:
+                                                  BorderRadius.circular(15.0),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsets.all(16.0),
+                                              child: Container(
+                                                width: double.infinity,
+                                                color: Color(0x00000000),
+                                                child: ExpandableNotifier(
+                                                  initialExpanded: false,
+                                                  child: ExpandablePanel(
+                                                    header: Text(
+                                                      faqItemItem.title,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .displaySmall
+                                                          .override(
+                                                            fontFamily:
+                                                                'Lexend',
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText,
+                                                            fontSize: 14.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                          ),
+                                                    ),
+                                                    collapsed: Container(),
+                                                    expanded: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  8.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        faqItemItem.description,
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Lexend',
+                                                              fontSize: 12.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                    theme: ExpandableThemeData(
+                                                      tapHeaderToExpand: true,
+                                                      tapBodyToExpand: false,
+                                                      tapBodyToCollapse: false,
+                                                      headerAlignment:
+                                                          ExpandablePanelHeaderAlignment
+                                                              .center,
+                                                      hasIcon: true,
+                                                      iconColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
+                              ),
+                            if (_model.isSearch)
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 24.0, 0.0, 0.0),
+                                child: Builder(
+                                  builder: (context) {
+                                    final faqSearchItem =
+                                        _model.simpleSearchResults.toList();
+                                    if (faqSearchItem.isEmpty) {
+                                      return Container(
+                                        height: 100.0,
+                                        child: EmptyListWidget(
+                                          title: 'No hay CoDis',
+                                          message:
+                                              'No hubo resultados de tu búsqueda',
+                                        ),
+                                      );
+                                    }
+                                    return ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      primary: false,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: faqSearchItem.length,
+                                      itemBuilder:
+                                          (context, faqSearchItemIndex) {
+                                        final faqSearchItemItem =
+                                            faqSearchItem[faqSearchItemIndex];
+                                        return Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 8.0, 0.0, 8.0),
+                                          child: Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                1.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              borderRadius:
+                                                  BorderRadius.circular(15.0),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsets.all(16.0),
+                                              child: Container(
+                                                width: double.infinity,
+                                                color: Color(0x00000000),
+                                                child: ExpandableNotifier(
+                                                  initialExpanded: false,
+                                                  child: ExpandablePanel(
+                                                    header: Text(
+                                                      faqSearchItemItem.title,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .displaySmall
+                                                          .override(
+                                                            fontFamily:
+                                                                'Lexend',
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText,
+                                                            fontSize: 14.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                          ),
+                                                    ),
+                                                    collapsed: Container(),
+                                                    expanded: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  8.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        faqSearchItemItem
+                                                            .description,
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Lexend',
+                                                              fontSize: 12.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                    theme: ExpandableThemeData(
+                                                      tapHeaderToExpand: true,
+                                                      tapBodyToExpand: false,
+                                                      tapBodyToCollapse: false,
+                                                      headerAlignment:
+                                                          ExpandablePanelHeaderAlignment
+                                                              .center,
+                                                      hasIcon: true,
+                                                      iconColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
+                              ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }

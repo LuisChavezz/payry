@@ -187,3 +187,16 @@ DocumentReference? jsonPathToCompanyRef(String? id) {
     throw e;
   }
 }
+
+bool isSameDate(DateTime dateToCompare) {
+  DateTime now = DateTime.now();
+  DateTime today = DateTime(now.year, now.month, now.day);
+  DateTime compareDate =
+      DateTime(dateToCompare.year, dateToCompare.month, dateToCompare.day);
+
+  print(today);
+  print(dateToCompare);
+  print(today.isAtSameMomentAs(compareDate));
+
+  return today.isAtSameMomentAs(compareDate);
+}

@@ -685,7 +685,10 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                                       bool>(
                                                                   currentUserDocument
                                                                       ?.isAdmin,
-                                                                  false)))
+                                                                  false)) ||
+                                                          !functions.isSameDate(
+                                                              containerDetallesCobroRecord
+                                                                  .createdTime!))
                                                       ? null
                                                       : () async {
                                                           var _shouldSetState =
@@ -799,7 +802,12 @@ class _OKFNPayry36DetallesdeSMSWidgetState
                                                                     title: Text(
                                                                         'Error'),
                                                                     content: Text(
-                                                                        'Ha ocurrido un error en ejecución de su solicitud.'),
+                                                                        getJsonField(
+                                                                      _model
+                                                                          .refundCF!
+                                                                          .jsonBody,
+                                                                      r'''$.message''',
+                                                                    ).toString()),
                                                                     actions: [
                                                                       TextButton(
                                                                         onPressed:
