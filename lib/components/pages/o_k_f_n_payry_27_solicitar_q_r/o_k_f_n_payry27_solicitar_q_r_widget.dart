@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
+import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -321,7 +322,6 @@ class _OKFNPayry27SolicitarQRWidgetState
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
                                                 ),
-                                            minLines: null,
                                             maxLength: 20,
                                             maxLengthEnforcement:
                                                 MaxLengthEnforcement.enforced,
@@ -423,7 +423,6 @@ class _OKFNPayry27SolicitarQRWidgetState
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
                                                 ),
-                                            minLines: null,
                                             keyboardType: const TextInputType
                                                 .numberWithOptions(
                                                 decimal: true),
@@ -435,244 +434,347 @@ class _OKFNPayry27SolicitarQRWidgetState
                                             _model.comoGenerarUnCoDiController,
                                           ),
                                         ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 10.0, 0.0, 10.0),
-                                          child: FFButtonWidget(
-                                            onPressed: () async {
-                                              var _shouldSetState = false;
-                                              if (_model.formKey.currentState ==
-                                                      null ||
-                                                  !_model.formKey.currentState!
-                                                      .validate()) {
-                                                return;
-                                              }
-                                              if (functions.amountLimit(_model
-                                                  .amountFieldController
-                                                  .text)!) {
-                                                var registraCobroRecordReference =
-                                                    RegistraCobroRecord
-                                                        .collection
-                                                        .doc();
-                                                await registraCobroRecordReference
-                                                    .set({
-                                                  ...createRegistraCobroRecordData(
-                                                    adminId: valueOrDefault(
-                                                        currentUserDocument
-                                                            ?.adminId,
-                                                        ''),
-                                                    amount: double.tryParse(_model
-                                                        .amountFieldController
-                                                        .text),
-                                                    concept: _model
-                                                        .conceptFieldController
-                                                        .text,
-                                                    uid: currentUserUid,
-                                                    qrUrl: '',
-                                                    shareableQrUrl: '',
-                                                    companyId: '',
-                                                    errorMessage: '',
-                                                    errorOcurs: false,
-                                                    numeroReferenciaComercio:
-                                                        null,
-                                                    type: PaymentType.QR,
-                                                    status:
-                                                        PaymentStatus.PENDIENTE,
-                                                  ),
-                                                  ...mapToFirestore(
-                                                    {
-                                                      'created_time': FieldValue
-                                                          .serverTimestamp(),
-                                                    },
-                                                  ),
-                                                });
-                                                _model.codiResp =
-                                                    RegistraCobroRecord
-                                                        .getDocumentFromData({
-                                                  ...createRegistraCobroRecordData(
-                                                    adminId: valueOrDefault(
-                                                        currentUserDocument
-                                                            ?.adminId,
-                                                        ''),
-                                                    amount: double.tryParse(_model
-                                                        .amountFieldController
-                                                        .text),
-                                                    concept: _model
-                                                        .conceptFieldController
-                                                        .text,
-                                                    uid: currentUserUid,
-                                                    qrUrl: '',
-                                                    shareableQrUrl: '',
-                                                    companyId: '',
-                                                    errorMessage: '',
-                                                    errorOcurs: false,
-                                                    numeroReferenciaComercio:
-                                                        null,
-                                                    type: PaymentType.QR,
-                                                    status:
-                                                        PaymentStatus.PENDIENTE,
-                                                  ),
-                                                  ...mapToFirestore(
-                                                    {
-                                                      'created_time':
-                                                          DateTime.now(),
-                                                    },
-                                                  ),
-                                                }, registraCobroRecordReference);
-                                                _shouldSetState = true;
-                                                _model.codiAC = await StpGroup
-                                                    .generateCodiCall
-                                                    .call(
-                                                  id: _model
-                                                      .codiResp?.reference.id,
-                                                  token:
-                                                      FFAppState().serverToken,
-                                                );
-                                                _shouldSetState = true;
-                                                if (getJsonField(
-                                                  (_model.codiAC?.jsonBody ??
-                                                      ''),
-                                                  r'''$.success''',
-                                                )) {
-                                                  if (Navigator.of(context)
-                                                      .canPop()) {
-                                                    context.pop();
-                                                  }
-                                                  context.pushNamedAuth(
-                                                    'OK_FN_Payry_31_detallesdeQRCode',
-                                                    context.mounted,
-                                                    queryParameters: {
-                                                      'registraCobroRef':
-                                                          serializeParam(
-                                                        _model.codiResp
-                                                            ?.reference,
-                                                        ParamType
-                                                            .DocumentReference,
-                                                      ),
-                                                      'createRefund':
-                                                          serializeParam(
-                                                        false,
-                                                        ParamType.bool,
-                                                      ),
-                                                    }.withoutNulls,
-                                                  );
-
-                                                  if (_shouldSetState)
-                                                    setState(() {});
+                                        Builder(
+                                          builder: (context) => Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 10.0, 0.0, 10.0),
+                                            child: FFButtonWidget(
+                                              onPressed: () async {
+                                                var _shouldSetState = false;
+                                                if (_model.formKey
+                                                            .currentState ==
+                                                        null ||
+                                                    !_model
+                                                        .formKey.currentState!
+                                                        .validate()) {
                                                   return;
-                                                } else {
-                                                  await _model
-                                                      .codiResp!.reference
-                                                      .delete();
-                                                  await showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        title: Text('Error'),
-                                                        content:
-                                                            Text(getJsonField(
-                                                          (_model.codiAC
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                          r'''$.message''',
-                                                        ).toString()),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: Text('Ok'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
+                                                }
+                                                if (functions.amountLimit(_model
+                                                    .amountFieldController
+                                                    .text)!) {
+                                                  var registraCobroRecordReference =
+                                                      RegistraCobroRecord
+                                                          .collection
+                                                          .doc();
+                                                  await registraCobroRecordReference
+                                                      .set({
+                                                    ...createRegistraCobroRecordData(
+                                                      adminId: valueOrDefault(
+                                                          currentUserDocument
+                                                              ?.adminId,
+                                                          ''),
+                                                      amount: double.tryParse(_model
+                                                          .amountFieldController
+                                                          .text),
+                                                      concept: _model
+                                                          .conceptFieldController
+                                                          .text,
+                                                      uid: currentUserUid,
+                                                      qrUrl: '',
+                                                      shareableQrUrl: '',
+                                                      companyId: '',
+                                                      errorMessage: '',
+                                                      errorOcurs: false,
+                                                      numeroReferenciaComercio:
+                                                          null,
+                                                      type: PaymentType.QR,
+                                                      status: PaymentStatus
+                                                          .PENDIENTE,
+                                                    ),
+                                                    ...mapToFirestore(
+                                                      {
+                                                        'created_time': FieldValue
+                                                            .serverTimestamp(),
+                                                      },
+                                                    ),
+                                                  });
+                                                  _model.codiResp =
+                                                      RegistraCobroRecord
+                                                          .getDocumentFromData({
+                                                    ...createRegistraCobroRecordData(
+                                                      adminId: valueOrDefault(
+                                                          currentUserDocument
+                                                              ?.adminId,
+                                                          ''),
+                                                      amount: double.tryParse(_model
+                                                          .amountFieldController
+                                                          .text),
+                                                      concept: _model
+                                                          .conceptFieldController
+                                                          .text,
+                                                      uid: currentUserUid,
+                                                      qrUrl: '',
+                                                      shareableQrUrl: '',
+                                                      companyId: '',
+                                                      errorMessage: '',
+                                                      errorOcurs: false,
+                                                      numeroReferenciaComercio:
+                                                          null,
+                                                      type: PaymentType.QR,
+                                                      status: PaymentStatus
+                                                          .PENDIENTE,
+                                                    ),
+                                                    ...mapToFirestore(
+                                                      {
+                                                        'created_time':
+                                                            DateTime.now(),
+                                                      },
+                                                    ),
+                                                  }, registraCobroRecordReference);
+                                                  _shouldSetState = true;
+                                                  _model.codiAC = await StpGroup
+                                                      .generateCodiCall
+                                                      .call(
+                                                    id: _model
+                                                        .codiResp?.reference.id,
+                                                    token: FFAppState()
+                                                        .serverToken,
                                                   );
-                                                  if (!functions
-                                                      .includeTheString(
-                                                          getJsonField(
-                                                            (_model.codiAC
-                                                                    ?.jsonBody ??
-                                                                ''),
-                                                            r'''$.message''',
-                                                          ).toString(),
-                                                          'expirada')!) {
+                                                  _shouldSetState = true;
+                                                  if (getJsonField(
+                                                    (_model.codiAC?.jsonBody ??
+                                                        ''),
+                                                    r'''$.success''',
+                                                  )) {
+                                                    if (Navigator.of(context)
+                                                        .canPop()) {
+                                                      context.pop();
+                                                    }
+                                                    context.pushNamedAuth(
+                                                      'OK_FN_Payry_31_detallesdeQRCode',
+                                                      context.mounted,
+                                                      queryParameters: {
+                                                        'registraCobroRef':
+                                                            serializeParam(
+                                                          _model.codiResp
+                                                              ?.reference,
+                                                          ParamType
+                                                              .DocumentReference,
+                                                        ),
+                                                        'createRefund':
+                                                            serializeParam(
+                                                          false,
+                                                          ParamType.bool,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+
+                                                    if (_shouldSetState)
+                                                      setState(() {});
+                                                    return;
+                                                  } else {
+                                                    await _model
+                                                        .codiResp!.reference
+                                                        .delete();
+                                                    await showDialog(
+                                                      barrierDismissible: false,
+                                                      context: context,
+                                                      builder: (dialogContext) {
+                                                        return Dialog(
+                                                          elevation: 0,
+                                                          insetPadding:
+                                                              EdgeInsets.zero,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          alignment: AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                          child:
+                                                              GestureDetector(
+                                                            onTap: () => _model
+                                                                    .unfocusNode
+                                                                    .canRequestFocus
+                                                                ? FocusScope.of(
+                                                                        context)
+                                                                    .requestFocus(
+                                                                        _model
+                                                                            .unfocusNode)
+                                                                : FocusScope.of(
+                                                                        context)
+                                                                    .unfocus(),
+                                                            child: Container(
+                                                              height: MediaQuery
+                                                                          .sizeOf(
+                                                                              context)
+                                                                      .height *
+                                                                  0.25,
+                                                              width: MediaQuery
+                                                                          .sizeOf(
+                                                                              context)
+                                                                      .width *
+                                                                  0.9,
+                                                              child:
+                                                                  CustomConfirmDialogWidget(
+                                                                title: 'Error',
+                                                                description:
+                                                                    getJsonField(
+                                                                  (_model.codiAC
+                                                                          ?.jsonBody ??
+                                                                      ''),
+                                                                  r'''$.message''',
+                                                                ).toString(),
+                                                                buttonText:
+                                                                    'Aceptar',
+                                                                showDismissButton:
+                                                                    false,
+                                                                dismissAction:
+                                                                    () async {
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                },
+                                                                mainAction:
+                                                                    () async {
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                },
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    ).then((value) =>
+                                                        setState(() {}));
+
+                                                    if (!functions
+                                                        .includeTheString(
+                                                            getJsonField(
+                                                              (_model.codiAC
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                              r'''$.message''',
+                                                            ).toString(),
+                                                            'expirada')!) {
+                                                      if (_shouldSetState)
+                                                        setState(() {});
+                                                      return;
+                                                    }
+
+                                                    GoRouter.of(context)
+                                                        .prepareAuthEvent();
+                                                    await authManager.signOut();
+                                                    GoRouter.of(context)
+                                                        .clearRedirectLocation();
+
+                                                    context.goNamedAuth(
+                                                        'OK_FN_Payry_08_iniciasesion',
+                                                        context.mounted);
+
                                                     if (_shouldSetState)
                                                       setState(() {});
                                                     return;
                                                   }
-
-                                                  GoRouter.of(context)
-                                                      .prepareAuthEvent();
-                                                  await authManager.signOut();
-                                                  GoRouter.of(context)
-                                                      .clearRedirectLocation();
-
-                                                  context.goNamedAuth(
-                                                      'OK_FN_Payry_08_iniciasesion',
-                                                      context.mounted);
+                                                } else {
+                                                  await showDialog(
+                                                    barrierDismissible: false,
+                                                    context: context,
+                                                    builder: (dialogContext) {
+                                                      return Dialog(
+                                                        elevation: 0,
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        child: GestureDetector(
+                                                          onTap: () => _model
+                                                                  .unfocusNode
+                                                                  .canRequestFocus
+                                                              ? FocusScope.of(
+                                                                      context)
+                                                                  .requestFocus(
+                                                                      _model
+                                                                          .unfocusNode)
+                                                              : FocusScope.of(
+                                                                      context)
+                                                                  .unfocus(),
+                                                          child: Container(
+                                                            height: MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
+                                                                    .height *
+                                                                0.25,
+                                                            width: MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
+                                                                    .width *
+                                                                0.9,
+                                                            child:
+                                                                CustomConfirmDialogWidget(
+                                                              title: 'Error',
+                                                              description:
+                                                                  'El límite del monto es de \$8,000. Por favor ingresa una cantidad menor a esta.',
+                                                              buttonText:
+                                                                  'Aceptar',
+                                                              showDismissButton:
+                                                                  false,
+                                                              dismissAction:
+                                                                  () async {
+                                                                Navigator.pop(
+                                                                    context);
+                                                              },
+                                                              mainAction:
+                                                                  () async {
+                                                                Navigator.pop(
+                                                                    context);
+                                                              },
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      setState(() {}));
 
                                                   if (_shouldSetState)
                                                     setState(() {});
                                                   return;
                                                 }
-                                              } else {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text('Error'),
-                                                      content: Text(
-                                                          'El límite del monto es de \$8,000. Por favor ingresa una cantidad menor a esta.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Ok'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
+
                                                 if (_shouldSetState)
                                                   setState(() {});
-                                                return;
-                                              }
-
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                            },
-                                            text: 'Generar CoDi®',
-                                            options: FFButtonOptions(
-                                              width: double.infinity,
-                                              height: 50.0,
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: Color(0xFF5E4A98),
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color: Colors.white,
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                              elevation: 3.0,
-                                              borderSide: BorderSide(
-                                                color: Colors.transparent,
-                                                width: 1.0,
+                                              },
+                                              text: 'Generar CoDi®',
+                                              options: FFButtonOptions(
+                                                width: double.infinity,
+                                                height: 50.0,
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color: Color(0xFF5E4A98),
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: Colors.white,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                elevation: 3.0,
+                                                borderSide: BorderSide(
+                                                  color: Colors.transparent,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(10.0),
                                               ),
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
+                                            ).addWalkthrough(
+                                              buttonEpcgn4br,
+                                              _model
+                                                  .comoGenerarUnCoDiController,
                                             ),
-                                          ).addWalkthrough(
-                                            buttonEpcgn4br,
-                                            _model.comoGenerarUnCoDiController,
                                           ),
                                         ),
                                       ],

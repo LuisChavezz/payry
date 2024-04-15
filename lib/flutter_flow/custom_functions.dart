@@ -200,3 +200,42 @@ bool isSameDate(DateTime dateToCompare) {
 
   return today.isAtSameMomentAs(compareDate);
 }
+
+dynamic calendarFilter(String filter) {
+  DateTime now = DateTime.now();
+  DateTime monday = now.subtract(Duration(days: now.weekday - 1));
+  DateTime sunday = monday.add(Duration(days: 6));
+  DateTime firstDayOfMonth = DateTime(now.year, now.month, 1);
+  DateTime lastDayOfMonth = DateTime(now.year, now.month + 1, 0);
+  String startDate;
+  String endDate;
+
+  switch (filter) {
+    case 'today':
+      startDate = DateFormat("yyyy-MM-dd").format(now) + "T00:00:00.000Z";
+      endDate = DateFormat("yyyy-MM-dd").format(now) + "T23:59:59.999Z";
+      break;
+
+    case 'week':
+      startDate = DateFormat("yyyy-MM-dd").format(monday) + "T00:00:00.000Z";
+      endDate = DateFormat("yyyy-MM-dd").format(sunday) + "T23:59:59.999Z";
+      break;
+
+    case 'month':
+      startDate =
+          DateFormat("yyyy-MM-dd").format(firstDayOfMonth) + "T00:00:00.000Z";
+      endDate =
+          DateFormat("yyyy-MM-dd").format(lastDayOfMonth) + "T23:59:59.999Z";
+      break;
+
+    default:
+      // Default to today's date range if filter is not recognized
+      startDate = DateFormat("yyyy-MM-dd").format(now) + "T00:00:00.000Z";
+      endDate = DateFormat("yyyy-MM-dd").format(now) + "T23:59:59.999Z";
+  }
+
+  return {
+    "startDate": startDate,
+    "endDate": endDate,
+  };
+}

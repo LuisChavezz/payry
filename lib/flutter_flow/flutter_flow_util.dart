@@ -354,14 +354,19 @@ extension StatefulWidgetExtensions on State<StatefulWidget> {
 extension WalkthroughWrapperExtension on Widget {
   Widget addWalkthrough(
     GlobalKey walkthroughKey,
-    TutorialCoachMark? controller,
-  ) =>
-      controller != null
-          ? KeyedSubtree(
-              key: walkthroughKey,
-              child: this,
-            )
-          : this;
+    TutorialCoachMark? controller, {
+    int? listIndex,
+  }) {
+    if (listIndex != null && listIndex != 0) {
+      return this;
+    }
+    return controller != null
+        ? KeyedSubtree(
+            key: walkthroughKey,
+            child: this,
+          )
+        : this;
+  }
 }
 
 // For iOS 16 and below, set the status bar color to match the app's theme.

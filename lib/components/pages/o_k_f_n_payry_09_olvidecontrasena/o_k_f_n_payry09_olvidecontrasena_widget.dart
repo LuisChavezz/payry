@@ -191,7 +191,6 @@ class _OKFNPayry09OlvidecontrasenaWidgetState
                                   letterSpacing: 0.0,
                                 ),
                             textAlign: TextAlign.start,
-                            minLines: null,
                             validator: _model.emailAddressControllerValidator
                                 .asValidator(context),
                           ),

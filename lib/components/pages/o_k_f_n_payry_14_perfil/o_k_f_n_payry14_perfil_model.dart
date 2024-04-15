@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
+import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -14,9 +15,9 @@ class OKFNPayry14PerfilModel extends FlutterFlowModel<OKFNPayry14PerfilWidget> {
 
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (Verify Email)] action in Row widget.
-  ApiCallResponse? verifyAlertAC;
+  ApiCallResponse? verifyACCompnayProfile;
   // Stores action output result for [Backend Call - API (Verify Email)] action in Row widget.
-  ApiCallResponse? verifyAC;
+  ApiCallResponse? verifyACEmailProfile;
   // State field(s) for Switch widget.
   bool? switchValue;
 

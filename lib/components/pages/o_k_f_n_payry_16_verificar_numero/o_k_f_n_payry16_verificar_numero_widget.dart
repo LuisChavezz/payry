@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -271,7 +272,6 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                                   fontFamily: 'Lexend',
                                                   letterSpacing: 0.0,
                                                 ),
-                                            minLines: null,
                                             keyboardType: TextInputType.phone,
                                             validator: _model
                                                 .phoneFieldControllerValidator
@@ -285,112 +285,191 @@ class _OKFNPayry16VerificarNumeroWidgetState
                               ),
                               Align(
                                 alignment: AlignmentDirectional(0.0, 0.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 30.0, 0.0, 10.0),
-                                  child: FFButtonWidget(
-                                    onPressed: () async {
-                                      var _shouldSetState = false;
-                                      if (!((oKFNPayry16VerificarNumeroUsersRecord !=
-                                              null) &&
-                                          (widget.phoneNumber ==
-                                              oKFNPayry16VerificarNumeroUsersRecord
-                                                  ?.phoneNumber))) {
-                                        _model.rvpAC =
-                                            await RequestVerifyPhoneCall.call(
-                                          token: FFAppState().serverToken,
-                                          phone: widget.phoneNumber,
-                                        );
-                                        _shouldSetState = true;
-                                        if (getJsonField(
-                                          (_model.rvpAC?.jsonBody ?? ''),
-                                          r'''$.success''',
-                                        )) {
-                                          context.pushNamed(
-                                            'OK_FN_Payry_17_verificarOTP',
-                                            queryParameters: {
-                                              'phoneNumber': serializeParam(
-                                                widget.phoneNumber,
-                                                ParamType.String,
-                                              ),
-                                            }.withoutNulls,
+                                child: Builder(
+                                  builder: (context) => Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 30.0, 0.0, 10.0),
+                                    child: FFButtonWidget(
+                                      onPressed: () async {
+                                        var _shouldSetState = false;
+                                        if (!((oKFNPayry16VerificarNumeroUsersRecord !=
+                                                null) &&
+                                            (widget.phoneNumber ==
+                                                oKFNPayry16VerificarNumeroUsersRecord
+                                                    ?.phoneNumber))) {
+                                          _model.rvpAC =
+                                              await RequestVerifyPhoneCall.call(
+                                            token: FFAppState().serverToken,
+                                            phone: widget.phoneNumber,
                                           );
+                                          _shouldSetState = true;
+                                          if (getJsonField(
+                                            (_model.rvpAC?.jsonBody ?? ''),
+                                            r'''$.success''',
+                                          )) {
+                                            context.pushNamed(
+                                              'OK_FN_Payry_17_verificarOTP',
+                                              queryParameters: {
+                                                'phoneNumber': serializeParam(
+                                                  widget.phoneNumber,
+                                                  ParamType.String,
+                                                ),
+                                              }.withoutNulls,
+                                            );
 
-                                          if (_shouldSetState) setState(() {});
-                                          return;
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          } else {
+                                            await showDialog(
+                                              barrierDismissible: false,
+                                              context: context,
+                                              builder: (dialogContext) {
+                                                return Dialog(
+                                                  elevation: 0,
+                                                  insetPadding: EdgeInsets.zero,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                              0.0, 0.0)
+                                                          .resolve(
+                                                              Directionality.of(
+                                                                  context)),
+                                                  child: GestureDetector(
+                                                    onTap: () => _model
+                                                            .unfocusNode
+                                                            .canRequestFocus
+                                                        ? FocusScope.of(context)
+                                                            .requestFocus(_model
+                                                                .unfocusNode)
+                                                        : FocusScope.of(context)
+                                                            .unfocus(),
+                                                    child: Container(
+                                                      height: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .height *
+                                                          0.25,
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          0.9,
+                                                      child:
+                                                          CustomConfirmDialogWidget(
+                                                        title: 'Error',
+                                                        description:
+                                                            getJsonField(
+                                                          (_model.rvpAC
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                          r'''$.message''',
+                                                        ).toString(),
+                                                        buttonText: 'Aceptar',
+                                                        showDismissButton:
+                                                            false,
+                                                        dismissAction:
+                                                            () async {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        mainAction: () async {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                      ),
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            ).then((value) => setState(() {}));
+
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          }
                                         } else {
                                           await showDialog(
+                                            barrierDismissible: false,
                                             context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: Text('Error'),
-                                                content: Text(getJsonField(
-                                                  (_model.rvpAC?.jsonBody ??
-                                                      ''),
-                                                  r'''$.message''',
-                                                ).toString()),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
+                                            builder: (dialogContext) {
+                                              return Dialog(
+                                                elevation: 0,
+                                                insetPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                alignment: AlignmentDirectional(
+                                                        0.0, 0.0)
+                                                    .resolve(Directionality.of(
+                                                        context)),
+                                                child: GestureDetector(
+                                                  onTap: () => _model
+                                                          .unfocusNode
+                                                          .canRequestFocus
+                                                      ? FocusScope.of(context)
+                                                          .requestFocus(_model
+                                                              .unfocusNode)
+                                                      : FocusScope.of(context)
+                                                          .unfocus(),
+                                                  child: Container(
+                                                    height: MediaQuery.sizeOf(
+                                                                context)
+                                                            .height *
+                                                        0.25,
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        0.9,
+                                                    child:
+                                                        CustomConfirmDialogWidget(
+                                                      title: 'Error',
+                                                      description:
+                                                          'Este número de teléfono ya fue verificado por otro usuario.',
+                                                      buttonText: 'Aceptar',
+                                                      showDismissButton: false,
+                                                      dismissAction: () async {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      mainAction: () async {
+                                                        Navigator.pop(context);
+                                                      },
+                                                    ),
                                                   ),
-                                                ],
+                                                ),
                                               );
                                             },
-                                          );
+                                          ).then((value) => setState(() {}));
+
                                           if (_shouldSetState) setState(() {});
                                           return;
                                         }
-                                      } else {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text('Error'),
-                                              content: Text(
-                                                  'Este número de teléfono ya fue verificado por otro usuario.'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
-                                        if (_shouldSetState) setState(() {});
-                                        return;
-                                      }
 
-                                      if (_shouldSetState) setState(() {});
-                                    },
-                                    text: 'Enviar código de verificación',
-                                    options: FFButtonOptions(
-                                      width: 300.0,
-                                      height: 50.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 0.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color: Color(0xFF5E4A98),
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily: 'Lexend',
-                                            color: Colors.white,
-                                            letterSpacing: 0.0,
-                                          ),
-                                      elevation: 3.0,
-                                      borderSide: BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1.0,
+                                        if (_shouldSetState) setState(() {});
+                                      },
+                                      text: 'Enviar código de verificación',
+                                      options: FFButtonOptions(
+                                        width: 300.0,
+                                        height: 50.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: Color(0xFF5E4A98),
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Lexend',
+                                              color: Colors.white,
+                                              letterSpacing: 0.0,
+                                            ),
+                                        elevation: 3.0,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
                                       ),
-                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
                                   ),
                                 ),

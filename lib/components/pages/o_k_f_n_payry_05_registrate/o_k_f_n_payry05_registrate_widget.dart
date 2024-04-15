@@ -189,7 +189,6 @@ class _OKFNPayry05RegistrateWidgetState
                                             fontFamily: 'Lexend',
                                             letterSpacing: 0.0,
                                           ),
-                                      minLines: null,
                                       validator: _model
                                           .nameFieldControllerValidator
                                           .asValidator(context),
@@ -267,7 +266,6 @@ class _OKFNPayry05RegistrateWidgetState
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
                                           ),
-                                      minLines: null,
                                       keyboardType: TextInputType.emailAddress,
                                       validator: _model
                                           .emailFieldControllerValidator
@@ -364,7 +362,6 @@ class _OKFNPayry05RegistrateWidgetState
                                                 .primaryText,
                                             letterSpacing: 0.0,
                                           ),
-                                      minLines: null,
                                       validator: _model
                                           .passwordCreateControllerValidator
                                           .asValidator(context),
@@ -462,7 +459,6 @@ class _OKFNPayry05RegistrateWidgetState
                                                 .primaryText,
                                             letterSpacing: 0.0,
                                           ),
-                                      minLines: null,
                                       validator: _model
                                           .passwordConfirmControllerValidator
                                           .asValidator(context),
@@ -676,24 +672,69 @@ class _OKFNPayry05RegistrateWidgetState
                                               return;
                                             } else {
                                               await showDialog(
+                                                barrierDismissible: false,
                                                 context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title: Text(
-                                                        'Terminos y condiciones'),
-                                                    content: Text(
-                                                        'Debes aceptar terminos y condiciones para poder realizar el registro.'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: GestureDetector(
+                                                      onTap: () => _model
+                                                              .unfocusNode
+                                                              .canRequestFocus
+                                                          ? FocusScope.of(
+                                                                  context)
+                                                              .requestFocus(_model
+                                                                  .unfocusNode)
+                                                          : FocusScope.of(
+                                                                  context)
+                                                              .unfocus(),
+                                                      child: Container(
+                                                        height:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .height *
+                                                                0.25,
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.9,
+                                                        child:
+                                                            CustomConfirmDialogWidget(
+                                                          title:
+                                                              'Terminos y condiciones',
+                                                          description:
+                                                              'Debes aceptar terminos y condiciones para poder realizar el registro.',
+                                                          buttonText: 'Aceptar',
+                                                          showDismissButton:
+                                                              false,
+                                                          dismissAction:
+                                                              () async {
                                                             Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: Text('Ok'),
+                                                                context);
+                                                          },
+                                                          mainAction: () async {
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                        ),
                                                       ),
-                                                    ],
+                                                    ),
                                                   );
                                                 },
-                                              );
+                                              ).then(
+                                                  (value) => setState(() {}));
+
                                               if (_shouldSetState)
                                                 setState(() {});
                                               return;

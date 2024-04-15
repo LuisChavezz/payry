@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
+import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -205,7 +206,6 @@ class _OKFNPayry08IniciasesionWidgetState
                                                 fontFamily: 'Lexend',
                                                 letterSpacing: 0.0,
                                               ),
-                                          minLines: null,
                                           keyboardType:
                                               TextInputType.emailAddress,
                                           validator: _model
@@ -313,7 +313,6 @@ class _OKFNPayry08IniciasesionWidgetState
                                                 fontFamily: 'Lexend',
                                                 letterSpacing: 0.0,
                                               ),
-                                          minLines: null,
                                           validator: _model
                                               .passwordFieldControllerValidator
                                               .asValidator(context),
@@ -449,158 +448,212 @@ class _OKFNPayry08IniciasesionWidgetState
                                           child: Align(
                                             alignment:
                                                 AlignmentDirectional(-1.0, 0.0),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 10.0, 0.0, 10.0),
-                                              child: FFButtonWidget(
-                                                onPressed: () async {
-                                                  var _shouldSetState = false;
-                                                  if (_model.formKey
-                                                              .currentState ==
-                                                          null ||
-                                                      !_model
-                                                          .formKey.currentState!
-                                                          .validate()) {
-                                                    return;
-                                                  }
-                                                  GoRouter.of(context)
-                                                      .prepareAuthEvent();
-
-                                                  final user = await authManager
-                                                      .signInWithEmail(
-                                                    context,
-                                                    _model.emailFieldController
-                                                        .text,
-                                                    _model
-                                                        .passwordFieldController
-                                                        .text,
-                                                  );
-                                                  if (user == null) {
-                                                    return;
-                                                  }
-
-                                                  if (valueOrDefault<bool>(
-                                                      currentUserDocument
-                                                          ?.status,
-                                                      false)) {
-                                                    _model.generateTokenResp =
-                                                        await AuthGroup
-                                                            .generateTokenCall
-                                                            .call(
-                                                      uid: currentUserUid,
-                                                    );
-                                                    _shouldSetState = true;
-                                                    FFAppState().serverToken =
-                                                        getJsonField(
-                                                      (_model.generateTokenResp
-                                                              ?.jsonBody ??
-                                                          ''),
-                                                      r'''$.data.token''',
-                                                    ).toString();
-                                                    if (_model
-                                                        .rememberMeCheckValue!) {
-                                                      setState(() {
-                                                        FFAppState()
-                                                                .userCredentials =
-                                                            <String, String>{
-                                                          'email': _model
-                                                              .emailFieldController
-                                                              .text,
-                                                          'password': _model
-                                                              .passwordFieldController
-                                                              .text,
-                                                        };
-                                                      });
-                                                    } else {
-                                                      setState(() {
-                                                        FFAppState()
-                                                                .userCredentials =
-                                                            null;
-                                                      });
+                                            child: Builder(
+                                              builder: (context) => Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 10.0, 0.0, 10.0),
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    var _shouldSetState = false;
+                                                    if (_model.formKey
+                                                                .currentState ==
+                                                            null ||
+                                                        !_model.formKey
+                                                            .currentState!
+                                                            .validate()) {
+                                                      return;
                                                     }
-
-                                                    context.pushNamedAuth(
-                                                      'OK_FN_Payry_13_Menumas',
-                                                      context.mounted,
-                                                      queryParameters: {
-                                                        'showWT':
-                                                            serializeParam(
-                                                          false,
-                                                          ParamType.bool,
-                                                        ),
-                                                      }.withoutNulls,
-                                                    );
-
-                                                    if (_shouldSetState)
-                                                      setState(() {});
-                                                    return;
-                                                  } else {
-                                                    await showDialog(
-                                                      context: context,
-                                                      builder:
-                                                          (alertDialogContext) {
-                                                        return AlertDialog(
-                                                          title: Text(
-                                                              'Usuario Baja'),
-                                                          content: Text(
-                                                              'Este usuario se encuentra dado de baja'),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext),
-                                                              child: Text('Ok'),
-                                                            ),
-                                                          ],
-                                                        );
-                                                      },
-                                                    );
                                                     GoRouter.of(context)
                                                         .prepareAuthEvent();
-                                                    await authManager.signOut();
-                                                    GoRouter.of(context)
-                                                        .clearRedirectLocation();
+
+                                                    final user =
+                                                        await authManager
+                                                            .signInWithEmail(
+                                                      context,
+                                                      _model
+                                                          .emailFieldController
+                                                          .text,
+                                                      _model
+                                                          .passwordFieldController
+                                                          .text,
+                                                    );
+                                                    if (user == null) {
+                                                      return;
+                                                    }
+
+                                                    if (valueOrDefault<bool>(
+                                                        currentUserDocument
+                                                            ?.status,
+                                                        false)) {
+                                                      _model.generateTokenResp =
+                                                          await AuthGroup
+                                                              .generateTokenCall
+                                                              .call(
+                                                        uid: currentUserUid,
+                                                      );
+                                                      _shouldSetState = true;
+                                                      FFAppState().serverToken =
+                                                          getJsonField(
+                                                        (_model.generateTokenResp
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                        r'''$.data.token''',
+                                                      ).toString();
+                                                      if (_model
+                                                          .rememberMeCheckValue!) {
+                                                        setState(() {
+                                                          FFAppState()
+                                                                  .userCredentials =
+                                                              <String, String>{
+                                                            'email': _model
+                                                                .emailFieldController
+                                                                .text,
+                                                            'password': _model
+                                                                .passwordFieldController
+                                                                .text,
+                                                          };
+                                                        });
+                                                      } else {
+                                                        setState(() {
+                                                          FFAppState()
+                                                                  .userCredentials =
+                                                              null;
+                                                        });
+                                                      }
+
+                                                      context.pushNamedAuth(
+                                                        'OK_FN_Payry_13_Menumas',
+                                                        context.mounted,
+                                                        queryParameters: {
+                                                          'showWT':
+                                                              serializeParam(
+                                                            false,
+                                                            ParamType.bool,
+                                                          ),
+                                                        }.withoutNulls,
+                                                      );
+
+                                                      if (_shouldSetState)
+                                                        setState(() {});
+                                                      return;
+                                                    } else {
+                                                      await showDialog(
+                                                        barrierDismissible:
+                                                            false,
+                                                        context: context,
+                                                        builder:
+                                                            (dialogContext) {
+                                                          return Dialog(
+                                                            elevation: 0,
+                                                            insetPadding:
+                                                                EdgeInsets.zero,
+                                                            backgroundColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            alignment: AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () => _model
+                                                                      .unfocusNode
+                                                                      .canRequestFocus
+                                                                  ? FocusScope.of(
+                                                                          context)
+                                                                      .requestFocus(
+                                                                          _model
+                                                                              .unfocusNode)
+                                                                  : FocusScope.of(
+                                                                          context)
+                                                                      .unfocus(),
+                                                              child: Container(
+                                                                height: MediaQuery.sizeOf(
+                                                                            context)
+                                                                        .height *
+                                                                    0.25,
+                                                                width: MediaQuery.sizeOf(
+                                                                            context)
+                                                                        .width *
+                                                                    0.9,
+                                                                child:
+                                                                    CustomConfirmDialogWidget(
+                                                                  title:
+                                                                      'Usuario Baja',
+                                                                  description:
+                                                                      'Este usuario se encuentra dado de baja.',
+                                                                  buttonText:
+                                                                      'Aceptar',
+                                                                  showDismissButton:
+                                                                      false,
+                                                                  dismissAction:
+                                                                      () async {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  },
+                                                                  mainAction:
+                                                                      () async {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  },
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                      ).then((value) =>
+                                                          setState(() {}));
+
+                                                      GoRouter.of(context)
+                                                          .prepareAuthEvent();
+                                                      await authManager
+                                                          .signOut();
+                                                      GoRouter.of(context)
+                                                          .clearRedirectLocation();
+
+                                                      if (_shouldSetState)
+                                                        setState(() {});
+                                                      return;
+                                                    }
 
                                                     if (_shouldSetState)
                                                       setState(() {});
-                                                    return;
-                                                  }
-
-                                                  if (_shouldSetState)
-                                                    setState(() {});
-                                                },
-                                                text: 'Iniciar sesión',
-                                                options: FFButtonOptions(
-                                                  width:
-                                                      MediaQuery.sizeOf(context)
-                                                              .width *
-                                                          1.0,
-                                                  height: 50.0,
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 0.0),
-                                                  iconPadding:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(0.0, 0.0,
-                                                              0.0, 0.0),
-                                                  color: Color(0xFF5E4A98),
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color: Colors.white,
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                  elevation: 3.0,
-                                                  borderSide: BorderSide(
-                                                    color: Colors.transparent,
-                                                    width: 1.0,
+                                                  },
+                                                  text: 'Iniciar sesión',
+                                                  options: FFButtonOptions(
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        1.0,
+                                                    height: 50.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: Color(0xFF5E4A98),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: Colors.white,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.0),
                                                   ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10.0),
                                                 ),
                                               ),
                                             ),
