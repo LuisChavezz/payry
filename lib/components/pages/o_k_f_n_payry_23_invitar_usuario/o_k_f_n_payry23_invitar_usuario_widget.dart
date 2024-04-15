@@ -1,11 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -306,31 +305,16 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                     _shouldSetState = true;
                                   }
 
-                                  try {
-                                    final result = await FirebaseFunctions
-                                        .instance
-                                        .httpsCallable('sendInvitation')
-                                        .call({
-                                      "token": FFAppState().serverToken,
-                                      "email": _model.emailFieldController.text,
-                                    });
-                                    _model.sendInvCF =
-                                        SendInvitationCloudFunctionCallResponse(
-                                      data: result.data,
-                                      succeeded: true,
-                                      resultAsString: result.data.toString(),
-                                      jsonBody: result.data,
-                                    );
-                                  } on FirebaseFunctionsException catch (error) {
-                                    _model.sendInvCF =
-                                        SendInvitationCloudFunctionCallResponse(
-                                      errorCode: error.code,
-                                      succeeded: false,
-                                    );
-                                  }
-
+                                  _model.invitationAC =
+                                      await AuthGroup.sendInvitationCall.call(
+                                    token: FFAppState().serverToken,
+                                    email: _model.emailFieldController.text,
+                                  );
                                   _shouldSetState = true;
-                                  if (_model.sendInvCF!.succeeded!) {
+                                  if (getJsonField(
+                                    (_model.invitationAC?.jsonBody ?? ''),
+                                    r'''$.success''',
+                                  )) {
                                     await showDialog(
                                       context: context,
                                       builder: (alertDialogContext) {
@@ -354,8 +338,11 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                       builder: (alertDialogContext) {
                                         return AlertDialog(
                                           title: Text('Error'),
-                                          content: Text(
-                                              'Hubo un error al intentar enviar la invitación.'),
+                                          content: Text(getJsonField(
+                                            (_model.invitationAC?.jsonBody ??
+                                                ''),
+                                            r'''$.message''',
+                                          ).toString()),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(

@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -569,44 +568,20 @@ class _OKFNPayry36DetallesdeSMSCodeWidgetState
                                                           ),
                                                         }, registraCobroRecordReference);
                                                         _shouldSetState = true;
-                                                        try {
-                                                          final result =
-                                                              await FirebaseFunctions
-                                                                  .instance
-                                                                  .httpsCallable(
-                                                                      'generateDimo')
-                                                                  .call({
-                                                            "id": _model
-                                                                .dimoResp!
-                                                                .reference
-                                                                .id,
-                                                            "test": false,
-                                                            "token": FFAppState()
-                                                                .serverToken,
-                                                          });
-                                                          _model.dimoCF =
-                                                              GenerateDimoCloudFunctionCallResponse(
-                                                            data: result.data,
-                                                            succeeded: true,
-                                                            resultAsString:
-                                                                result.data
-                                                                    .toString(),
-                                                            jsonBody:
-                                                                result.data,
-                                                          );
-                                                        } on FirebaseFunctionsException catch (error) {
-                                                          _model.dimoCF =
-                                                              GenerateDimoCloudFunctionCallResponse(
-                                                            errorCode:
-                                                                error.code,
-                                                            succeeded: false,
-                                                          );
-                                                        }
-
+                                                        _model.dimoAC =
+                                                            await StpGroup
+                                                                .generateDimoCall
+                                                                .call(
+                                                          id: _model.dimoResp
+                                                              ?.reference.id,
+                                                          token: FFAppState()
+                                                              .serverToken,
+                                                        );
                                                         _shouldSetState = true;
                                                         if (getJsonField(
-                                                          _model
-                                                              .dimoCF!.jsonBody,
+                                                          (_model.dimoAC
+                                                                  ?.jsonBody ??
+                                                              ''),
                                                           r'''$.success''',
                                                         )) {
                                                           await showDialog(
@@ -670,8 +645,9 @@ class _OKFNPayry36DetallesdeSMSCodeWidgetState
                                                                     'Error'),
                                                                 content: Text(
                                                                     getJsonField(
-                                                                  _model.dimoCF!
-                                                                      .jsonBody,
+                                                                  (_model.dimoAC
+                                                                          ?.jsonBody ??
+                                                                      ''),
                                                                   r'''$.message''',
                                                                 ).toString()),
                                                                 actions: [
@@ -689,9 +665,9 @@ class _OKFNPayry36DetallesdeSMSCodeWidgetState
                                                           if (!functions
                                                               .includeTheString(
                                                                   getJsonField(
-                                                                    _model
-                                                                        .dimoCF!
-                                                                        .jsonBody,
+                                                                    (_model.dimoAC
+                                                                            ?.jsonBody ??
+                                                                        ''),
                                                                     r'''$.message''',
                                                                   ).toString(),
                                                                   'expirada')!) {

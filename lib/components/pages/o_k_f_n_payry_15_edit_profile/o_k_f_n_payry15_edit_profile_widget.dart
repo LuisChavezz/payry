@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -10,7 +10,6 @@ import '/walkthroughs/verificar_telefono.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -683,32 +682,16 @@ class _OKFNPayry15EditProfileWidgetState
                                               }
                                             }(),
                                           ));
-                                          try {
-                                            final result =
-                                                await FirebaseFunctions.instance
-                                                    .httpsCallable('reportUser')
-                                                    .call({
-                                              "token": FFAppState().serverToken,
-                                              "id": currentUserUid,
-                                              "test": false,
-                                            });
-                                            _model.reportUserCF =
-                                                ReportUserCloudFunctionCallResponse(
-                                              data: result.data,
-                                              succeeded: true,
-                                              resultAsString:
-                                                  result.data.toString(),
-                                              jsonBody: result.data,
-                                            );
-                                          } on FirebaseFunctionsException catch (error) {
-                                            _model.reportUserCF =
-                                                ReportUserCloudFunctionCallResponse(
-                                              errorCode: error.code,
-                                              succeeded: false,
-                                            );
-                                          }
-
-                                          if (_model.reportUserCF!.succeeded!) {
+                                          _model.ruAC = await SQLReportGroup
+                                              .reportUserCall
+                                              .call(
+                                            token: FFAppState().serverToken,
+                                            id: currentUserUid,
+                                          );
+                                          if (getJsonField(
+                                            (_model.ruAC?.jsonBody ?? ''),
+                                            r'''$.success''',
+                                          )) {
                                             await showDialog(
                                               context: context,
                                               builder: (alertDialogContext) {
@@ -734,8 +717,11 @@ class _OKFNPayry15EditProfileWidgetState
                                               builder: (alertDialogContext) {
                                                 return AlertDialog(
                                                   title: Text('Error'),
-                                                  content: Text(
-                                                      'Ha ocurrido un error en nuestros servidores.'),
+                                                  content: Text(getJsonField(
+                                                    (_model.ruAC?.jsonBody ??
+                                                        ''),
+                                                    r'''$.message''',
+                                                  ).toString()),
                                                   actions: [
                                                     TextButton(
                                                       onPressed: () =>

@@ -1,11 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -324,48 +323,27 @@ class _OKFNPayry38EstadisticasWidgetState
                             _model.isOpenCalendar1 = false;
                             _model.isOpenCalendar2 = false;
                           });
-                          try {
-                            final result = await FirebaseFunctions.instance
-                                .httpsCallable('getStatistics')
-                                .call({
-                              "startDate": '${dateTimeFormat(
-                                'y-MM-dd',
-                                _model.statisticsStartDate,
-                                locale:
-                                    FFLocalizations.of(context).languageCode,
-                              )}T00:00:00.000Z',
-                              "endDate": '${dateTimeFormat(
-                                'y-MM-dd',
-                                _model.statisticsEndDate,
-                                locale:
-                                    FFLocalizations.of(context).languageCode,
-                              )}T23:59:59.000Z',
-                              "token": FFAppState().serverToken,
-                              "test": false,
-                            });
-                            _model.statisticsResponse =
-                                GetStatisticsCloudFunctionCallResponse(
-                              data: result.data,
-                              succeeded: true,
-                              resultAsString: result.data.toString(),
-                              jsonBody: result.data,
-                            );
-                          } on FirebaseFunctionsException catch (error) {
-                            _model.statisticsResponse =
-                                GetStatisticsCloudFunctionCallResponse(
-                              errorCode: error.code,
-                              succeeded: false,
-                            );
-                          }
-
+                          _model.statisticsAC = await GetStatisticsCall.call(
+                            token: FFAppState().serverToken,
+                            startDate: '${dateTimeFormat(
+                              'y-MM-dd',
+                              _model.statisticsStartDate,
+                              locale: FFLocalizations.of(context).languageCode,
+                            )}T00:00:00.000Z',
+                            endDate: '${dateTimeFormat(
+                              'y-MM-dd',
+                              _model.statisticsEndDate,
+                              locale: FFLocalizations.of(context).languageCode,
+                            )}T23:59:59.000Z',
+                          );
                           _shouldSetState = true;
                           if (getJsonField(
-                            _model.statisticsResponse!.jsonBody,
+                            (_model.statisticsAC?.jsonBody ?? ''),
                             r'''$.success''',
                           )) {
                             setState(() {
                               _model.statisticsCFResp = getJsonField(
-                                _model.statisticsResponse?.jsonBody,
+                                (_model.statisticsAC?.jsonBody ?? ''),
                                 r'''$.data''',
                               );
                             });
@@ -377,13 +355,10 @@ class _OKFNPayry38EstadisticasWidgetState
                               builder: (alertDialogContext) {
                                 return AlertDialog(
                                   title: Text('Error'),
-                                  content: Text(valueOrDefault<String>(
-                                    getJsonField(
-                                      _model.statisticsResponse?.jsonBody,
-                                      r'''$.message''',
-                                    )?.toString(),
-                                    'Error en el servidor',
-                                  )),
+                                  content: Text(getJsonField(
+                                    (_model.statisticsAC?.jsonBody ?? ''),
+                                    r'''$.message''',
+                                  ).toString()),
                                   actions: [
                                     TextButton(
                                       onPressed: () =>
@@ -396,7 +371,7 @@ class _OKFNPayry38EstadisticasWidgetState
                             );
                             if (!functions.includeTheString(
                                 getJsonField(
-                                  _model.statisticsResponse!.jsonBody,
+                                  (_model.statisticsAC?.jsonBody ?? ''),
                                   r'''$.message''',
                                 ).toString(),
                                 'expirada')!) {

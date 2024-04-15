@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -9,7 +9,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -738,44 +737,20 @@ class _OKFNPayry31DetallesdeQRCodeWidgetState
                                                           ),
                                                         }, registraCobroRecordReference);
                                                         _shouldSetState = true;
-                                                        try {
-                                                          final result =
-                                                              await FirebaseFunctions
-                                                                  .instance
-                                                                  .httpsCallable(
-                                                                      'generateCodi')
-                                                                  .call({
-                                                            "id": _model
-                                                                .codiResp!
-                                                                .reference
-                                                                .id,
-                                                            "test": false,
-                                                            "token": FFAppState()
-                                                                .serverToken,
-                                                          });
-                                                          _model.codiCF =
-                                                              GenerateCodiCloudFunctionCallResponse(
-                                                            data: result.data,
-                                                            succeeded: true,
-                                                            resultAsString:
-                                                                result.data
-                                                                    .toString(),
-                                                            jsonBody:
-                                                                result.data,
-                                                          );
-                                                        } on FirebaseFunctionsException catch (error) {
-                                                          _model.codiCF =
-                                                              GenerateCodiCloudFunctionCallResponse(
-                                                            errorCode:
-                                                                error.code,
-                                                            succeeded: false,
-                                                          );
-                                                        }
-
+                                                        _model.codiAC =
+                                                            await StpGroup
+                                                                .generateCodiCall
+                                                                .call(
+                                                          id: _model.codiResp
+                                                              ?.reference.id,
+                                                          token: FFAppState()
+                                                              .serverToken,
+                                                        );
                                                         _shouldSetState = true;
                                                         if (getJsonField(
-                                                          _model
-                                                              .codiCF!.jsonBody,
+                                                          (_model.codiAC
+                                                                  ?.jsonBody ??
+                                                              ''),
                                                           r'''$.success''',
                                                         )) {
                                                           if (Navigator.of(
@@ -818,8 +793,9 @@ class _OKFNPayry31DetallesdeQRCodeWidgetState
                                                                     'Error'),
                                                                 content: Text(
                                                                     getJsonField(
-                                                                  _model.codiCF!
-                                                                      .jsonBody,
+                                                                  (_model.codiAC
+                                                                          ?.jsonBody ??
+                                                                      ''),
                                                                   r'''$.message''',
                                                                 ).toString()),
                                                                 actions: [
@@ -837,9 +813,9 @@ class _OKFNPayry31DetallesdeQRCodeWidgetState
                                                           if (!functions
                                                               .includeTheString(
                                                                   getJsonField(
-                                                                    _model
-                                                                        .codiCF!
-                                                                        .jsonBody,
+                                                                    (_model.codiAC
+                                                                            ?.jsonBody ??
+                                                                        ''),
                                                                     r'''$.message''',
                                                                   ).toString(),
                                                                   'expirada')!) {

@@ -385,6 +385,8 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                       ),
                                                                     }.withoutNulls,
                                                                   );
+
+                                                                  return;
                                                                 } else {
                                                                   if (functions.includeTheString(
                                                                       unreadNotiItemsItem
@@ -410,32 +412,61 @@ class _OKFNPayry40NotificacionesWidgetState
 
                                                                     context.pushNamed(
                                                                         'OK_FN_Payry_44_historialTransactions');
+
+                                                                    return;
                                                                   } else {
-                                                                    await showDialog(
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (alertDialogContext) {
-                                                                        return AlertDialog(
-                                                                          title:
-                                                                              Text('Error'),
-                                                                          content:
-                                                                              Text('Hubo un error en la navegación.'),
-                                                                          actions: [
-                                                                            TextButton(
-                                                                              onPressed: () => Navigator.pop(alertDialogContext),
-                                                                              child: Text('Ok'),
-                                                                            ),
-                                                                          ],
-                                                                        );
-                                                                      },
-                                                                    );
+                                                                    if (functions.includeTheString(
+                                                                        unreadNotiItemsItem
+                                                                            .subject,
+                                                                        'usuario invitado')!) {
+                                                                      context
+                                                                          .pushNamed(
+                                                                        'OK_FN_Payry_25_permisos',
+                                                                        queryParameters:
+                                                                            {
+                                                                          'uid':
+                                                                              serializeParam(
+                                                                            unreadNotiItemsItem.userId,
+                                                                            ParamType.String,
+                                                                          ),
+                                                                          'userName':
+                                                                              serializeParam(
+                                                                            unreadNotiItemsItem.userName,
+                                                                            ParamType.String,
+                                                                          ),
+                                                                          'userEmail':
+                                                                              serializeParam(
+                                                                            unreadNotiItemsItem.userEmail,
+                                                                            ParamType.String,
+                                                                          ),
+                                                                        }.withoutNulls,
+                                                                      );
+
+                                                                      return;
+                                                                    } else {
+                                                                      await showDialog(
+                                                                        context:
+                                                                            context,
+                                                                        builder:
+                                                                            (alertDialogContext) {
+                                                                          return AlertDialog(
+                                                                            title:
+                                                                                Text('Error'),
+                                                                            content:
+                                                                                Text('Hubo un error en la navegación.'),
+                                                                            actions: [
+                                                                              TextButton(
+                                                                                onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                child: Text('Ok'),
+                                                                              ),
+                                                                            ],
+                                                                          );
+                                                                        },
+                                                                      );
+                                                                      return;
+                                                                    }
                                                                   }
-
-                                                                  return;
                                                                 }
-
-                                                                return;
                                                               }
                                                             } else {
                                                               return;
@@ -680,10 +711,10 @@ class _OKFNPayry40NotificacionesWidgetState
                                                       0.0, 16.0, 0.0, 0.0),
                                               child: Builder(
                                                 builder: (context) {
-                                                  final unreadNotiItems =
+                                                  final readNotiItems =
                                                       containerNotificationRecordList
                                                           .toList();
-                                                  if (unreadNotiItems.isEmpty) {
+                                                  if (readNotiItems.isEmpty) {
                                                     return Container(
                                                       height: 300.0,
                                                       child: EmptyListWidget(
@@ -701,14 +732,14 @@ class _OKFNPayry40NotificacionesWidgetState
                                                     scrollDirection:
                                                         Axis.vertical,
                                                     itemCount:
-                                                        unreadNotiItems.length,
+                                                        readNotiItems.length,
                                                     separatorBuilder: (_, __) =>
                                                         SizedBox(height: 20.0),
                                                     itemBuilder: (context,
-                                                        unreadNotiItemsIndex) {
-                                                      final unreadNotiItemsItem =
-                                                          unreadNotiItems[
-                                                              unreadNotiItemsIndex];
+                                                        readNotiItemsIndex) {
+                                                      final readNotiItemsItem =
+                                                          readNotiItems[
+                                                              readNotiItemsIndex];
                                                       return Align(
                                                         alignment:
                                                             AlignmentDirectional(
@@ -723,11 +754,11 @@ class _OKFNPayry40NotificacionesWidgetState
                                                           highlightColor: Colors
                                                               .transparent,
                                                           onTap: () async {
-                                                            if (unreadNotiItemsItem
+                                                            if (readNotiItemsItem
                                                                 .redirect) {
                                                               if (functions
                                                                   .includeTheString(
-                                                                      unreadNotiItemsItem
+                                                                      readNotiItemsItem
                                                                           .subject,
                                                                       'CoDi')!) {
                                                                 context
@@ -738,7 +769,7 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                     'registraCobroRef':
                                                                         serializeParam(
                                                                       functions.jsonPathToRegistraCobroDocRef(
-                                                                          unreadNotiItemsItem
+                                                                          readNotiItemsItem
                                                                               .registraCobroRef),
                                                                       ParamType
                                                                           .DocumentReference,
@@ -753,7 +784,7 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                     'detallesCobroRef':
                                                                         serializeParam(
                                                                       functions.jsonPathToDetallesCobroRef(
-                                                                          unreadNotiItemsItem
+                                                                          readNotiItemsItem
                                                                               .detallesCobroRef),
                                                                       ParamType
                                                                           .DocumentReference,
@@ -764,7 +795,7 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                 return;
                                                               } else {
                                                                 if (functions.includeTheString(
-                                                                    unreadNotiItemsItem
+                                                                    readNotiItemsItem
                                                                         .subject,
                                                                     'DiMo')!) {
                                                                   context
@@ -775,7 +806,7 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                       'registraCobroRef':
                                                                           serializeParam(
                                                                         functions.jsonPathToRegistraCobroDocRef(functions
-                                                                            .jsonPathToRegistraCobroDocRef(unreadNotiItemsItem.registraCobroRef)
+                                                                            .jsonPathToRegistraCobroDocRef(readNotiItemsItem.registraCobroRef)
                                                                             ?.id),
                                                                         ParamType
                                                                             .DocumentReference,
@@ -790,45 +821,76 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                       'detallesCobroRef':
                                                                           serializeParam(
                                                                         functions
-                                                                            .jsonPathToDetallesCobroRef(unreadNotiItemsItem.detallesCobroRef),
+                                                                            .jsonPathToDetallesCobroRef(readNotiItemsItem.detallesCobroRef),
                                                                         ParamType
                                                                             .DocumentReference,
                                                                       ),
                                                                     }.withoutNulls,
                                                                   );
+
+                                                                  return;
                                                                 } else {
                                                                   if (functions.includeTheString(
-                                                                      unreadNotiItemsItem
+                                                                      readNotiItemsItem
                                                                           .subject,
                                                                       'Transferencia')!) {
                                                                     context.pushNamed(
                                                                         'OK_FN_Payry_44_historialTransactions');
+
+                                                                    return;
                                                                   } else {
-                                                                    await showDialog(
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (alertDialogContext) {
-                                                                        return AlertDialog(
-                                                                          title:
-                                                                              Text('Error'),
-                                                                          content:
-                                                                              Text('Hubo un error en la navegación.'),
-                                                                          actions: [
-                                                                            TextButton(
-                                                                              onPressed: () => Navigator.pop(alertDialogContext),
-                                                                              child: Text('Ok'),
-                                                                            ),
-                                                                          ],
-                                                                        );
-                                                                      },
-                                                                    );
+                                                                    if (functions.includeTheString(
+                                                                        readNotiItemsItem
+                                                                            .subject,
+                                                                        'usuario invitado')!) {
+                                                                      context
+                                                                          .pushNamed(
+                                                                        'OK_FN_Payry_25_permisos',
+                                                                        queryParameters:
+                                                                            {
+                                                                          'uid':
+                                                                              serializeParam(
+                                                                            readNotiItemsItem.userId,
+                                                                            ParamType.String,
+                                                                          ),
+                                                                          'userName':
+                                                                              serializeParam(
+                                                                            readNotiItemsItem.userName,
+                                                                            ParamType.String,
+                                                                          ),
+                                                                          'userEmail':
+                                                                              serializeParam(
+                                                                            readNotiItemsItem.userEmail,
+                                                                            ParamType.String,
+                                                                          ),
+                                                                        }.withoutNulls,
+                                                                      );
+
+                                                                      return;
+                                                                    } else {
+                                                                      await showDialog(
+                                                                        context:
+                                                                            context,
+                                                                        builder:
+                                                                            (alertDialogContext) {
+                                                                          return AlertDialog(
+                                                                            title:
+                                                                                Text('Error'),
+                                                                            content:
+                                                                                Text('Hubo un error en la navegación.'),
+                                                                            actions: [
+                                                                              TextButton(
+                                                                                onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                child: Text('Ok'),
+                                                                              ),
+                                                                            ],
+                                                                          );
+                                                                        },
+                                                                      );
+                                                                      return;
+                                                                    }
                                                                   }
-
-                                                                  return;
                                                                 }
-
-                                                                return;
                                                               }
                                                             } else {
                                                               return;
@@ -891,7 +953,7 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                         ),
                                                                       ),
                                                                       Text(
-                                                                        unreadNotiItemsItem
+                                                                        readNotiItemsItem
                                                                             .subject,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
@@ -918,7 +980,7 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                         Expanded(
                                                                           child:
                                                                               Text(
-                                                                            unreadNotiItemsItem.content,
+                                                                            readNotiItemsItem.content,
                                                                             style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                   fontFamily: 'Lexend',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
@@ -942,12 +1004,12 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                             Text(
                                                                           '${dateTimeFormat(
                                                                             'dd MMM, y',
-                                                                            unreadNotiItemsItem.createdTime,
+                                                                            readNotiItemsItem.createdTime,
                                                                             locale:
                                                                                 FFLocalizations.of(context).languageCode,
                                                                           )} a las ${dateTimeFormat(
                                                                             'jm',
-                                                                            unreadNotiItemsItem.createdTime,
+                                                                            readNotiItemsItem.createdTime,
                                                                             locale:
                                                                                 FFLocalizations.of(context).languageCode,
                                                                           )}',

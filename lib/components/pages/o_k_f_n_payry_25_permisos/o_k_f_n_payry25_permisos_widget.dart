@@ -247,6 +247,7 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                             .bodyLarge
                                             .override(
                                               fontFamily: 'Poppins',
+                                              fontSize: 14.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
@@ -268,6 +269,7 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                       .bodyLarge
                                       .override(
                                         fontFamily: 'Poppins',
+                                        fontSize: 12.0,
                                         letterSpacing: 0.0,
                                       ),
                                 ),

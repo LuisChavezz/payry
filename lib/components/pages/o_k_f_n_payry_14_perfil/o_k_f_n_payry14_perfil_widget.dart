@@ -1,10 +1,9 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -357,32 +356,17 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                                               ) ??
                                               false;
                                       if (confirmDialogResponse) {
-                                        try {
-                                          final result = await FirebaseFunctions
-                                              .instance
-                                              .httpsCallable('verifyEmail')
-                                              .call({
-                                            "email": currentUserEmail,
-                                          });
-                                          _model.verifyEmailResp =
-                                              VerifyEmailCloudFunctionCallResponse(
-                                            data: result.data,
-                                            succeeded: true,
-                                            resultAsString:
-                                                result.data.toString(),
-                                            jsonBody: result.data,
-                                          );
-                                        } on FirebaseFunctionsException catch (error) {
-                                          _model.verifyEmailResp =
-                                              VerifyEmailCloudFunctionCallResponse(
-                                            errorCode: error.code,
-                                            succeeded: false,
-                                          );
-                                        }
-
+                                        _model.verifyAlertAC = await AuthGroup
+                                            .verifyEmailCall
+                                            .call(
+                                          email: currentUserEmail,
+                                        );
                                         _shouldSetState = true;
-                                        if (_model
-                                            .verifyEmailResp!.succeeded!) {
+                                        if (getJsonField(
+                                          (_model.verifyAlertAC?.jsonBody ??
+                                              ''),
+                                          r'''$.success''',
+                                        )) {
                                           await showDialog(
                                             context: context,
                                             builder: (alertDialogContext) {
@@ -408,8 +392,12 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                                             builder: (alertDialogContext) {
                                               return AlertDialog(
                                                 title: Text('Error'),
-                                                content: Text(
-                                                    'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                                content: Text(getJsonField(
+                                                  (_model.verifyAlertAC
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                  r'''$.message''',
+                                                ).toString()),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
@@ -521,31 +509,15 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                                             ) ??
                                             false;
                                     if (confirmDialogResponse) {
-                                      try {
-                                        final result = await FirebaseFunctions
-                                            .instance
-                                            .httpsCallable('verifyEmail')
-                                            .call({
-                                          "email": currentUserEmail,
-                                        });
-                                        _model.verifyEmailResp1 =
-                                            VerifyEmailCloudFunctionCallResponse(
-                                          data: result.data,
-                                          succeeded: true,
-                                          resultAsString:
-                                              result.data.toString(),
-                                          jsonBody: result.data,
-                                        );
-                                      } on FirebaseFunctionsException catch (error) {
-                                        _model.verifyEmailResp1 =
-                                            VerifyEmailCloudFunctionCallResponse(
-                                          errorCode: error.code,
-                                          succeeded: false,
-                                        );
-                                      }
-
+                                      _model.verifyAC =
+                                          await AuthGroup.verifyEmailCall.call(
+                                        email: currentUserEmail,
+                                      );
                                       _shouldSetState = true;
-                                      if (_model.verifyEmailResp1!.succeeded!) {
+                                      if (getJsonField(
+                                        (_model.verifyAC?.jsonBody ?? ''),
+                                        r'''$.success''',
+                                      )) {
                                         await showDialog(
                                           context: context,
                                           builder: (alertDialogContext) {
@@ -571,8 +543,11 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                                           builder: (alertDialogContext) {
                                             return AlertDialog(
                                               title: Text('Error'),
-                                              content: Text(
-                                                  'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                              content: Text(getJsonField(
+                                                (_model.verifyAC?.jsonBody ??
+                                                    ''),
+                                                r'''$.message''',
+                                              ).toString()),
                                               actions: [
                                                 TextButton(
                                                   onPressed: () =>

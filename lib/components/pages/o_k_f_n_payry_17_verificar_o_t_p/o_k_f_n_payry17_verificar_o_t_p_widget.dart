@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -265,37 +264,15 @@ class _OKFNPayry17VerificarOTPWidgetState
                                                     .validate()) {
                                               return;
                                             }
-                                            try {
-                                              final result =
-                                                  await FirebaseFunctions
-                                                      .instance
-                                                      .httpsCallable(
-                                                          'verifyPhone')
-                                                      .call({
-                                                "token":
-                                                    FFAppState().serverToken,
-                                                "otp": _model
-                                                    .pinCodeController!.text,
-                                              });
-                                              _model.cfResp =
-                                                  VerifyPhoneCloudFunctionCallResponse(
-                                                data: result.data,
-                                                succeeded: true,
-                                                resultAsString:
-                                                    result.data.toString(),
-                                                jsonBody: result.data,
-                                              );
-                                            } on FirebaseFunctionsException catch (error) {
-                                              _model.cfResp =
-                                                  VerifyPhoneCloudFunctionCallResponse(
-                                                errorCode: error.code,
-                                                succeeded: false,
-                                              );
-                                            }
-
+                                            _model.otpAC =
+                                                await VerifyPhoneCall.call(
+                                              token: FFAppState().serverToken,
+                                              otp: _model
+                                                  .pinCodeController!.text,
+                                            );
                                             _shouldSetState = true;
                                             if (getJsonField(
-                                              _model.cfResp!.jsonBody,
+                                              (_model.otpAC?.jsonBody ?? ''),
                                               r'''$.success''',
                                             )) {
                                               await currentUserReference!
@@ -307,7 +284,8 @@ class _OKFNPayry17VerificarOTPWidgetState
                                                 builder: (alertDialogContext) {
                                                   return AlertDialog(
                                                     title: Text(getJsonField(
-                                                      _model.cfResp!.jsonBody,
+                                                      (_model.otpAC?.jsonBody ??
+                                                          ''),
                                                       r'''$.data.message''',
                                                     ).toString()),
                                                     content: Text(
@@ -337,7 +315,8 @@ class _OKFNPayry17VerificarOTPWidgetState
                                                   return AlertDialog(
                                                     title: Text('Error'),
                                                     content: Text(getJsonField(
-                                                      _model.cfResp!.jsonBody,
+                                                      (_model.otpAC?.jsonBody ??
+                                                          ''),
                                                       r'''$.message''',
                                                     ).toString()),
                                                     actions: [
@@ -398,33 +377,14 @@ class _OKFNPayry17VerificarOTPWidgetState
                                   child: FFButtonWidget(
                                     onPressed: () async {
                                       var _shouldSetState = false;
-                                      try {
-                                        final result = await FirebaseFunctions
-                                            .instance
-                                            .httpsCallable('requestVerifyPhone')
-                                            .call({
-                                          "token": FFAppState().serverToken,
-                                          "phone": widget.phoneNumber,
-                                        });
-                                        _model.cfRequestResp =
-                                            RequestVerifyPhoneCloudFunctionCallResponse(
-                                          data: result.data,
-                                          succeeded: true,
-                                          resultAsString:
-                                              result.data.toString(),
-                                          jsonBody: result.data,
-                                        );
-                                      } on FirebaseFunctionsException catch (error) {
-                                        _model.cfRequestResp =
-                                            RequestVerifyPhoneCloudFunctionCallResponse(
-                                          errorCode: error.code,
-                                          succeeded: false,
-                                        );
-                                      }
-
+                                      _model.rvpAC =
+                                          await RequestVerifyPhoneCall.call(
+                                        token: FFAppState().serverToken,
+                                        phone: widget.phoneNumber,
+                                      );
                                       _shouldSetState = true;
                                       if (getJsonField(
-                                        _model.cfRequestResp!.jsonBody,
+                                        (_model.rvpAC?.jsonBody ?? ''),
                                         r'''$.success''',
                                       )) {
                                         _model.timerController.onResetTimer();
@@ -439,7 +399,7 @@ class _OKFNPayry17VerificarOTPWidgetState
                                             return AlertDialog(
                                               title: Text('Error'),
                                               content: Text(getJsonField(
-                                                _model.cfRequestResp!.jsonBody,
+                                                (_model.rvpAC?.jsonBody ?? ''),
                                                 r'''$.message''',
                                               ).toString()),
                                               actions: [

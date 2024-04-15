@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -11,7 +11,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -447,37 +446,16 @@ class _OKFNPayry20DatosBancariosWidgetState
                                                   .update(createUsersRecordData(
                                                 isCompanyComplete: true,
                                               ));
-                                              try {
-                                                final result =
-                                                    await FirebaseFunctions
-                                                        .instance
-                                                        .httpsCallable(
-                                                            'reportCompany')
-                                                        .call({
-                                                  "token":
-                                                      FFAppState().serverToken,
-                                                  "id":
-                                                      widget.companyDocRef!.id,
-                                                  "test": false,
-                                                });
-                                                _model.reportCompFC =
-                                                    ReportCompanyCloudFunctionCallResponse(
-                                                  data: result.data,
-                                                  succeeded: true,
-                                                  resultAsString:
-                                                      result.data.toString(),
-                                                  jsonBody: result.data,
-                                                );
-                                              } on FirebaseFunctionsException catch (error) {
-                                                _model.reportCompFC =
-                                                    ReportCompanyCloudFunctionCallResponse(
-                                                  errorCode: error.code,
-                                                  succeeded: false,
-                                                );
-                                              }
-
-                                              if (_model
-                                                  .reportCompFC!.succeeded!) {
+                                              _model.rcAC = await SQLReportGroup
+                                                  .reportCompanyCall
+                                                  .call(
+                                                token: FFAppState().serverToken,
+                                                id: widget.companyDocRef?.id,
+                                              );
+                                              if (getJsonField(
+                                                (_model.rcAC?.jsonBody ?? ''),
+                                                r'''$.success''',
+                                              )) {
                                                 context.safePop();
                                               } else {
                                                 context.safePop();

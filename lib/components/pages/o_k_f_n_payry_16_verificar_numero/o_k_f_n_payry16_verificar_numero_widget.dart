@@ -1,10 +1,9 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -297,34 +296,14 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                           (widget.phoneNumber ==
                                               oKFNPayry16VerificarNumeroUsersRecord
                                                   ?.phoneNumber))) {
-                                        try {
-                                          final result = await FirebaseFunctions
-                                              .instance
-                                              .httpsCallable(
-                                                  'requestVerifyPhone')
-                                              .call({
-                                            "token": FFAppState().serverToken,
-                                            "phone": widget.phoneNumber,
-                                          });
-                                          _model.cfResp =
-                                              RequestVerifyPhoneCloudFunctionCallResponse(
-                                            data: result.data,
-                                            succeeded: true,
-                                            resultAsString:
-                                                result.data.toString(),
-                                            jsonBody: result.data,
-                                          );
-                                        } on FirebaseFunctionsException catch (error) {
-                                          _model.cfResp =
-                                              RequestVerifyPhoneCloudFunctionCallResponse(
-                                            errorCode: error.code,
-                                            succeeded: false,
-                                          );
-                                        }
-
+                                        _model.rvpAC =
+                                            await RequestVerifyPhoneCall.call(
+                                          token: FFAppState().serverToken,
+                                          phone: widget.phoneNumber,
+                                        );
                                         _shouldSetState = true;
                                         if (getJsonField(
-                                          _model.cfResp!.jsonBody,
+                                          (_model.rvpAC?.jsonBody ?? ''),
                                           r'''$.success''',
                                         )) {
                                           context.pushNamed(
@@ -346,7 +325,8 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                               return AlertDialog(
                                                 title: Text('Error'),
                                                 content: Text(getJsonField(
-                                                  _model.cfResp!.jsonBody,
+                                                  (_model.rvpAC?.jsonBody ??
+                                                      ''),
                                                   r'''$.message''',
                                                 ).toString()),
                                                 actions: [

@@ -1,12 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -54,6 +53,8 @@ class _OKFNPayry05RegistrateWidgetState
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -560,36 +561,18 @@ class _OKFNPayry05RegistrateWidgetState
                                                     readUsers: false,
                                                     readInvoices: false,
                                                   ));
-                                              try {
-                                                final result =
-                                                    await FirebaseFunctions
-                                                        .instance
-                                                        .httpsCallable(
-                                                            'generateToken')
-                                                        .call({
-                                                  "uid": currentUserUid,
-                                                  "test": false,
-                                                });
-                                                _model.genToken =
-                                                    GenerateTokenCloudFunctionCallResponse(
-                                                  data: result.data,
-                                                  succeeded: true,
-                                                  resultAsString:
-                                                      result.data.toString(),
-                                                  jsonBody: result.data,
-                                                );
-                                              } on FirebaseFunctionsException catch (error) {
-                                                _model.genToken =
-                                                    GenerateTokenCloudFunctionCallResponse(
-                                                  errorCode: error.code,
-                                                  succeeded: false,
-                                                );
-                                              }
-
+                                              _model.tokenAC = await AuthGroup
+                                                  .generateTokenCall
+                                                  .call(
+                                                uid: currentUserUid,
+                                              );
                                               _shouldSetState = true;
-                                              FFAppState().serverToken = _model
-                                                  .genToken!.jsonBody!
-                                                  .toString();
+                                              FFAppState().serverToken =
+                                                  getJsonField(
+                                                (_model.tokenAC?.jsonBody ??
+                                                    ''),
+                                                r'''$.data.token''',
+                                              ).toString();
                                               FFAppState().walkthroughs =
                                                   <String, bool?>{
                                                 'menu_mas': true,
@@ -601,32 +584,10 @@ class _OKFNPayry05RegistrateWidgetState
                                                 'create_dimo': true,
                                                 'edit_profile': true,
                                               };
-                                              try {
-                                                final result =
-                                                    await FirebaseFunctions
-                                                        .instance
-                                                        .httpsCallable(
-                                                            'verifyEmail')
-                                                        .call({
-                                                  "email": currentUserEmail,
-                                                });
-                                                _model.cfve =
-                                                    VerifyEmailCloudFunctionCallResponse(
-                                                  data: result.data,
-                                                  succeeded: true,
-                                                  resultAsString:
-                                                      result.data.toString(),
-                                                  jsonBody: result.data,
-                                                );
-                                              } on FirebaseFunctionsException catch (error) {
-                                                _model.cfve =
-                                                    VerifyEmailCloudFunctionCallResponse(
-                                                  errorCode: error.code,
-                                                  succeeded: false,
-                                                );
-                                              }
-
-                                              _shouldSetState = true;
+                                              await AuthGroup.verifyEmailCall
+                                                  .call(
+                                                email: currentUserEmail,
+                                              );
                                               await showDialog(
                                                 barrierDismissible: false,
                                                 context: context,
@@ -703,30 +664,13 @@ class _OKFNPayry05RegistrateWidgetState
                                                 }.withoutNulls,
                                               );
 
-                                              try {
-                                                final result =
-                                                    await FirebaseFunctions
-                                                        .instance
-                                                        .httpsCallable(
-                                                            'sendWelcomeEmail')
-                                                        .call({
-                                                  "email": _model
-                                                      .emailFieldController
-                                                      .text,
-                                                });
-                                                _model.cloudFunctiona55 =
-                                                    SendWelcomeEmailCloudFunctionCallResponse(
-                                                  succeeded: true,
-                                                );
-                                              } on FirebaseFunctionsException catch (error) {
-                                                _model.cloudFunctiona55 =
-                                                    SendWelcomeEmailCloudFunctionCallResponse(
-                                                  errorCode: error.code,
-                                                  succeeded: false,
-                                                );
-                                              }
-
-                                              _shouldSetState = true;
+                                              await AuthGroup
+                                                  .sendWelcomeEmailCall
+                                                  .call(
+                                                token: FFAppState().serverToken,
+                                                email: _model
+                                                    .emailFieldController.text,
+                                              );
                                               if (_shouldSetState)
                                                 setState(() {});
                                               return;

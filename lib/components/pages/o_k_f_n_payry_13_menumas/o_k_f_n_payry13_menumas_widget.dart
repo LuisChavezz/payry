@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -9,7 +9,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/walkthroughs/primeros_pasos_menu_mas.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -373,34 +372,19 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     ) ??
                                                     false;
                                             if (confirmDialogResponse) {
-                                              try {
-                                                final result =
-                                                    await FirebaseFunctions
-                                                        .instance
-                                                        .httpsCallable(
-                                                            'verifyEmail')
-                                                        .call({
-                                                  "email": currentUserEmail,
-                                                });
-                                                _model.verifyEmailResp1 =
-                                                    VerifyEmailCloudFunctionCallResponse(
-                                                  data: result.data,
-                                                  succeeded: true,
-                                                  resultAsString:
-                                                      result.data.toString(),
-                                                  jsonBody: result.data,
-                                                );
-                                              } on FirebaseFunctionsException catch (error) {
-                                                _model.verifyEmailResp1 =
-                                                    VerifyEmailCloudFunctionCallResponse(
-                                                  errorCode: error.code,
-                                                  succeeded: false,
-                                                );
-                                              }
-
+                                              _model.verifyACCodiMenu =
+                                                  await AuthGroup
+                                                      .generateTokenCall
+                                                      .call(
+                                                uid: currentUserEmail,
+                                              );
                                               _shouldSetState = true;
-                                              if (_model.verifyEmailResp1!
-                                                  .succeeded!) {
+                                              if (getJsonField(
+                                                (_model.verifyACCodiMenu
+                                                        ?.jsonBody ??
+                                                    ''),
+                                                r'''$.success''',
+                                              )) {
                                                 await showDialog(
                                                   context: context,
                                                   builder:
@@ -428,8 +412,13 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                       (alertDialogContext) {
                                                     return AlertDialog(
                                                       title: Text('Error'),
-                                                      content: Text(
-                                                          'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                                      content:
+                                                          Text(getJsonField(
+                                                        (_model.verifyACCodiMenu
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                        r'''$.message''',
+                                                      ).toString()),
                                                       actions: [
                                                         TextButton(
                                                           onPressed: () =>
@@ -763,34 +752,19 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     ) ??
                                                     false;
                                             if (confirmDialogResponse) {
-                                              try {
-                                                final result =
-                                                    await FirebaseFunctions
-                                                        .instance
-                                                        .httpsCallable(
-                                                            'verifyEmail')
-                                                        .call({
-                                                  "email": currentUserEmail,
-                                                });
-                                                _model.verifyEmailResp2 =
-                                                    VerifyEmailCloudFunctionCallResponse(
-                                                  data: result.data,
-                                                  succeeded: true,
-                                                  resultAsString:
-                                                      result.data.toString(),
-                                                  jsonBody: result.data,
-                                                );
-                                              } on FirebaseFunctionsException catch (error) {
-                                                _model.verifyEmailResp2 =
-                                                    VerifyEmailCloudFunctionCallResponse(
-                                                  errorCode: error.code,
-                                                  succeeded: false,
-                                                );
-                                              }
-
+                                              _model.verifyACDimoMenu =
+                                                  await AuthGroup
+                                                      .verifyEmailCall
+                                                      .call(
+                                                email: currentUserEmail,
+                                              );
                                               _shouldSetState = true;
-                                              if (_model.verifyEmailResp2!
-                                                  .succeeded!) {
+                                              if (getJsonField(
+                                                (_model.verifyACDimoMenu
+                                                        ?.jsonBody ??
+                                                    ''),
+                                                r'''$.success''',
+                                              )) {
                                                 await showDialog(
                                                   context: context,
                                                   builder:
@@ -818,8 +792,13 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                       (alertDialogContext) {
                                                     return AlertDialog(
                                                       title: Text('Error'),
-                                                      content: Text(
-                                                          'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                                      content:
+                                                          Text(getJsonField(
+                                                        (_model.verifyACDimoMenu
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                        r'''$.message''',
+                                                      ).toString()),
                                                       actions: [
                                                         TextButton(
                                                           onPressed: () =>
@@ -1195,34 +1174,19 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     ) ??
                                                     false;
                                             if (confirmDialogResponse) {
-                                              try {
-                                                final result =
-                                                    await FirebaseFunctions
-                                                        .instance
-                                                        .httpsCallable(
-                                                            'verifyEmail')
-                                                        .call({
-                                                  "email": currentUserEmail,
-                                                });
-                                                _model.verifyEmailResp3 =
-                                                    VerifyEmailCloudFunctionCallResponse(
-                                                  data: result.data,
-                                                  succeeded: true,
-                                                  resultAsString:
-                                                      result.data.toString(),
-                                                  jsonBody: result.data,
-                                                );
-                                              } on FirebaseFunctionsException catch (error) {
-                                                _model.verifyEmailResp3 =
-                                                    VerifyEmailCloudFunctionCallResponse(
-                                                  errorCode: error.code,
-                                                  succeeded: false,
-                                                );
-                                              }
-
+                                              _model.verifyACCompanyMenu =
+                                                  await AuthGroup
+                                                      .verifyEmailCall
+                                                      .call(
+                                                email: currentUserEmail,
+                                              );
                                               _shouldSetState = true;
-                                              if (_model.verifyEmailResp3!
-                                                  .succeeded!) {
+                                              if (getJsonField(
+                                                (_model.verifyACCompanyMenu
+                                                        ?.jsonBody ??
+                                                    ''),
+                                                r'''$.success''',
+                                              )) {
                                                 await showDialog(
                                                   context: context,
                                                   builder:
@@ -1250,8 +1214,13 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                       (alertDialogContext) {
                                                     return AlertDialog(
                                                       title: Text('Error'),
-                                                      content: Text(
-                                                          'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                                      content:
+                                                          Text(getJsonField(
+                                                        (_model.verifyACCompanyMenu
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                        r'''$.message''',
+                                                      ).toString()),
                                                       actions: [
                                                         TextButton(
                                                           onPressed: () =>
@@ -1566,34 +1535,19 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     ) ??
                                                     false;
                                             if (confirmDialogResponse) {
-                                              try {
-                                                final result =
-                                                    await FirebaseFunctions
-                                                        .instance
-                                                        .httpsCallable(
-                                                            'verifyEmail')
-                                                        .call({
-                                                  "email": currentUserEmail,
-                                                });
-                                                _model.verifyEmailResp4 =
-                                                    VerifyEmailCloudFunctionCallResponse(
-                                                  data: result.data,
-                                                  succeeded: true,
-                                                  resultAsString:
-                                                      result.data.toString(),
-                                                  jsonBody: result.data,
-                                                );
-                                              } on FirebaseFunctionsException catch (error) {
-                                                _model.verifyEmailResp4 =
-                                                    VerifyEmailCloudFunctionCallResponse(
-                                                  errorCode: error.code,
-                                                  succeeded: false,
-                                                );
-                                              }
-
+                                              _model.verifyACStatisticsMenu =
+                                                  await AuthGroup
+                                                      .verifyEmailCall
+                                                      .call(
+                                                email: currentUserEmail,
+                                              );
                                               _shouldSetState = true;
-                                              if (_model.verifyEmailResp4!
-                                                  .succeeded!) {
+                                              if (getJsonField(
+                                                (_model.verifyACStatisticsMenu
+                                                        ?.jsonBody ??
+                                                    ''),
+                                                r'''$.success''',
+                                              )) {
                                                 await showDialog(
                                                   context: context,
                                                   builder:
@@ -1621,8 +1575,13 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                       (alertDialogContext) {
                                                     return AlertDialog(
                                                       title: Text('Error'),
-                                                      content: Text(
-                                                          'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                                      content:
+                                                          Text(getJsonField(
+                                                        (_model.verifyACStatisticsMenu
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                        r'''$.message''',
+                                                      ).toString()),
                                                       actions: [
                                                         TextButton(
                                                           onPressed: () =>
@@ -1938,34 +1897,19 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     ) ??
                                                     false;
                                             if (confirmDialogResponse) {
-                                              try {
-                                                final result =
-                                                    await FirebaseFunctions
-                                                        .instance
-                                                        .httpsCallable(
-                                                            'verifyEmail')
-                                                        .call({
-                                                  "email": currentUserEmail,
-                                                });
-                                                _model.verifyEmailResp5 =
-                                                    VerifyEmailCloudFunctionCallResponse(
-                                                  data: result.data,
-                                                  succeeded: true,
-                                                  resultAsString:
-                                                      result.data.toString(),
-                                                  jsonBody: result.data,
-                                                );
-                                              } on FirebaseFunctionsException catch (error) {
-                                                _model.verifyEmailResp5 =
-                                                    VerifyEmailCloudFunctionCallResponse(
-                                                  errorCode: error.code,
-                                                  succeeded: false,
-                                                );
-                                              }
-
+                                              _model.verifyACUsersMenu =
+                                                  await AuthGroup
+                                                      .verifyEmailCall
+                                                      .call(
+                                                email: currentUserEmail,
+                                              );
                                               _shouldSetState = true;
-                                              if (_model.verifyEmailResp5!
-                                                  .succeeded!) {
+                                              if (getJsonField(
+                                                (_model.verifyACUsersMenu
+                                                        ?.jsonBody ??
+                                                    ''),
+                                                r'''$.success''',
+                                              )) {
                                                 await showDialog(
                                                   context: context,
                                                   builder:
@@ -1993,8 +1937,13 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                       (alertDialogContext) {
                                                     return AlertDialog(
                                                       title: Text('Error'),
-                                                      content: Text(
-                                                          'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                                      content:
+                                                          Text(getJsonField(
+                                                        (_model.verifyACUsersMenu
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                        r'''$.message''',
+                                                      ).toString()),
                                                       actions: [
                                                         TextButton(
                                                           onPressed: () =>
@@ -2306,34 +2255,19 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     ) ??
                                                     false;
                                             if (confirmDialogResponse) {
-                                              try {
-                                                final result =
-                                                    await FirebaseFunctions
-                                                        .instance
-                                                        .httpsCallable(
-                                                            'verifyEmail')
-                                                        .call({
-                                                  "email": currentUserEmail,
-                                                });
-                                                _model.verifyEmailResp6 =
-                                                    VerifyEmailCloudFunctionCallResponse(
-                                                  data: result.data,
-                                                  succeeded: true,
-                                                  resultAsString:
-                                                      result.data.toString(),
-                                                  jsonBody: result.data,
-                                                );
-                                              } on FirebaseFunctionsException catch (error) {
-                                                _model.verifyEmailResp6 =
-                                                    VerifyEmailCloudFunctionCallResponse(
-                                                  errorCode: error.code,
-                                                  succeeded: false,
-                                                );
-                                              }
-
+                                              _model.verifyACFactsMenu =
+                                                  await AuthGroup
+                                                      .verifyEmailCall
+                                                      .call(
+                                                email: currentUserEmail,
+                                              );
                                               _shouldSetState = true;
-                                              if (_model.verifyEmailResp6!
-                                                  .succeeded!) {
+                                              if (getJsonField(
+                                                (_model.verifyACFactsMenu
+                                                        ?.jsonBody ??
+                                                    ''),
+                                                r'''$.success''',
+                                              )) {
                                                 await showDialog(
                                                   context: context,
                                                   builder:
@@ -2361,8 +2295,13 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                       (alertDialogContext) {
                                                     return AlertDialog(
                                                       title: Text('Error'),
-                                                      content: Text(
-                                                          'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                                      content:
+                                                          Text(getJsonField(
+                                                        (_model.verifyACFactsMenu
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                        r'''$.message''',
+                                                      ).toString()),
                                                       actions: [
                                                         TextButton(
                                                           onPressed: () =>
@@ -2678,34 +2617,19 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                     ) ??
                                                     false;
                                             if (confirmDialogResponse) {
-                                              try {
-                                                final result =
-                                                    await FirebaseFunctions
-                                                        .instance
-                                                        .httpsCallable(
-                                                            'verifyEmail')
-                                                        .call({
-                                                  "email": currentUserEmail,
-                                                });
-                                                _model.verifyEmailResp7 =
-                                                    VerifyEmailCloudFunctionCallResponse(
-                                                  data: result.data,
-                                                  succeeded: true,
-                                                  resultAsString:
-                                                      result.data.toString(),
-                                                  jsonBody: result.data,
-                                                );
-                                              } on FirebaseFunctionsException catch (error) {
-                                                _model.verifyEmailResp7 =
-                                                    VerifyEmailCloudFunctionCallResponse(
-                                                  errorCode: error.code,
-                                                  succeeded: false,
-                                                );
-                                              }
-
+                                              _model.verifyACTransferMenu =
+                                                  await AuthGroup
+                                                      .verifyEmailCall
+                                                      .call(
+                                                email: currentUserEmail,
+                                              );
                                               _shouldSetState = true;
-                                              if (_model.verifyEmailResp7!
-                                                  .succeeded!) {
+                                              if (getJsonField(
+                                                (_model.verifyACTransferMenu
+                                                        ?.jsonBody ??
+                                                    ''),
+                                                r'''$.success''',
+                                              )) {
                                                 await showDialog(
                                                   context: context,
                                                   builder:
@@ -2733,8 +2657,13 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                                       (alertDialogContext) {
                                                     return AlertDialog(
                                                       title: Text('Error'),
-                                                      content: Text(
-                                                          'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
+                                                      content:
+                                                          Text(getJsonField(
+                                                        (_model.verifyACTransferMenu
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                        r'''$.message''',
+                                                      ).toString()),
                                                       actions: [
                                                         TextButton(
                                                           onPressed: () =>
