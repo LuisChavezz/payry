@@ -28,10 +28,10 @@ class _OKFNPayry11OlvidecontrasenanuevaWidgetState
     _model =
         createModel(context, () => OKFNPayry11OlvidecontrasenanuevaModel());
 
-    _model.newPasswordController1 ??= TextEditingController();
+    _model.newPasswordTextController1 ??= TextEditingController();
     _model.newPasswordFocusNode1 ??= FocusNode();
 
-    _model.newPasswordController2 ??= TextEditingController();
+    _model.newPasswordTextController2 ??= TextEditingController();
     _model.newPasswordFocusNode2 ??= FocusNode();
   }
 
@@ -123,7 +123,7 @@ class _OKFNPayry11OlvidecontrasenanuevaWidgetState
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
                   child: TextFormField(
-                    controller: _model.newPasswordController1,
+                    controller: _model.newPasswordTextController1,
                     focusNode: _model.newPasswordFocusNode1,
                     obscureText: !_model.newPasswordVisibility1,
                     decoration: InputDecoration(
@@ -193,14 +193,14 @@ class _OKFNPayry11OlvidecontrasenanuevaWidgetState
                           color: FlutterFlowTheme.of(context).primaryText,
                           letterSpacing: 0.0,
                         ),
-                    validator: _model.newPasswordController1Validator
+                    validator: _model.newPasswordTextController1Validator
                         .asValidator(context),
                   ),
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                   child: TextFormField(
-                    controller: _model.newPasswordController2,
+                    controller: _model.newPasswordTextController2,
                     focusNode: _model.newPasswordFocusNode2,
                     obscureText: !_model.newPasswordVisibility2,
                     decoration: InputDecoration(
@@ -268,7 +268,7 @@ class _OKFNPayry11OlvidecontrasenanuevaWidgetState
                           fontFamily: 'Lexend',
                           letterSpacing: 0.0,
                         ),
-                    validator: _model.newPasswordController2Validator
+                    validator: _model.newPasswordTextController2Validator
                         .asValidator(context),
                   ),
                 ),

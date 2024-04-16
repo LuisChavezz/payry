@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/walkthroughs/primeros_pasos_menu_mas.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'o_k_f_n_payry13_menumas_widget.dart' show OKFNPayry13MenumasWidget;
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
@@ -41,6 +42,8 @@ class OKFNPayry13MenumasModel
   ApiCallResponse? verifyACBillMenu;
   // Stores action output result for [Backend Call - API (Verify Email)] action in Container widget.
   ApiCallResponse? verifyACTransferMenu;
+  // Stores action output result for [Custom Action - checkForUpdate] action in Container widget.
+  dynamic? storeVersionInfo;
   // Model for NavBarFloting component.
   late NavBarFlotingModel navBarFlotingModel;
 

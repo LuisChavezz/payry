@@ -45,7 +45,7 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
     super.initState();
     _model = createModel(context, () => PhoneSubmitDialogModel());
 
-    _model.phoneFieldController ??= TextEditingController();
+    _model.phoneFieldTextController ??= TextEditingController();
     _model.phoneFieldFocusNode ??= FocusNode();
   }
 
@@ -131,7 +131,7 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 12.0),
                           child: TextFormField(
-                            controller: _model.phoneFieldController,
+                            controller: _model.phoneFieldTextController,
                             focusNode: _model.phoneFieldFocusNode,
                             obscureText: false,
                             decoration: InputDecoration(
@@ -190,7 +190,7 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
                                 ),
                             maxLength: 10,
                             keyboardType: TextInputType.phone,
-                            validator: _model.phoneFieldControllerValidator
+                            validator: _model.phoneFieldTextControllerValidator
                                 .asValidator(context),
                             inputFormatters: [_model.phoneFieldMask],
                           ),
@@ -214,7 +214,7 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
                             _model.contact =
                                 await actions.pickContactFromPhoneBook();
                             setState(() {
-                              _model.phoneFieldController?.text =
+                              _model.phoneFieldTextController?.text =
                                   functions.formatPhoneNumber(getJsonField(
                                 _model.contact,
                                 r'''$.phone''',
@@ -237,7 +237,7 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
                     }
                     _model.smsAC = await SendSmsCall.call(
                       token: FFAppState().serverToken,
-                      to: '+52${_model.phoneFieldController.text}',
+                      to: '+52${_model.phoneFieldTextController.text}',
                       body:
                           'Revisa tu recibo de ${widget.companyAlias}: https://www.payry.mx/rdp/?id=${widget.paymentId}',
                     );

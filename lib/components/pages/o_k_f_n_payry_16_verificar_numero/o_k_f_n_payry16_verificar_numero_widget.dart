@@ -35,7 +35,7 @@ class _OKFNPayry16VerificarNumeroWidgetState
     super.initState();
     _model = createModel(context, () => OKFNPayry16VerificarNumeroModel());
 
-    _model.phoneFieldController ??=
+    _model.phoneFieldTextController ??=
         TextEditingController(text: '+52${widget.phoneNumber}');
     _model.phoneFieldFocusNode ??= FocusNode();
   }
@@ -195,7 +195,7 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                                   0.0, 12.0, 0.0, 12.0),
                                           child: TextFormField(
                                             controller:
-                                                _model.phoneFieldController,
+                                                _model.phoneFieldTextController,
                                             focusNode:
                                                 _model.phoneFieldFocusNode,
                                             readOnly: true,
@@ -274,7 +274,7 @@ class _OKFNPayry16VerificarNumeroWidgetState
                                                 ),
                                             keyboardType: TextInputType.phone,
                                             validator: _model
-                                                .phoneFieldControllerValidator
+                                                .phoneFieldTextControllerValidator
                                                 .asValidator(context),
                                           ),
                                         ),

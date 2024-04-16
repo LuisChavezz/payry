@@ -19,10 +19,11 @@ class PhoneSubmitDialogModel extends FlutterFlowModel<PhoneSubmitDialogWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for PhoneField widget.
   FocusNode? phoneFieldFocusNode;
-  TextEditingController? phoneFieldController;
+  TextEditingController? phoneFieldTextController;
   final phoneFieldMask = MaskTextInputFormatter(mask: '##########');
-  String? Function(BuildContext, String?)? phoneFieldControllerValidator;
-  String? _phoneFieldControllerValidator(BuildContext context, String? val) {
+  String? Function(BuildContext, String?)? phoneFieldTextControllerValidator;
+  String? _phoneFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'El número de teléfono es requerido';
     }
@@ -41,12 +42,12 @@ class PhoneSubmitDialogModel extends FlutterFlowModel<PhoneSubmitDialogWidget> {
 
   @override
   void initState(BuildContext context) {
-    phoneFieldControllerValidator = _phoneFieldControllerValidator;
+    phoneFieldTextControllerValidator = _phoneFieldTextControllerValidator;
   }
 
   @override
   void dispose() {
     phoneFieldFocusNode?.dispose();
-    phoneFieldController?.dispose();
+    phoneFieldTextController?.dispose();
   }
 }

@@ -18,8 +18,8 @@ class OKFNPayry16VerificarNumeroModel
   final unfocusNode = FocusNode();
   // State field(s) for PhoneField widget.
   FocusNode? phoneFieldFocusNode;
-  TextEditingController? phoneFieldController;
-  String? Function(BuildContext, String?)? phoneFieldControllerValidator;
+  TextEditingController? phoneFieldTextController;
+  String? Function(BuildContext, String?)? phoneFieldTextControllerValidator;
   // Stores action output result for [Backend Call - API (Request verify phone)] action in Button widget.
   ApiCallResponse? rvpAC;
 
@@ -30,6 +30,6 @@ class OKFNPayry16VerificarNumeroModel
   void dispose() {
     unfocusNode.dispose();
     phoneFieldFocusNode?.dispose();
-    phoneFieldController?.dispose();
+    phoneFieldTextController?.dispose();
   }
 }

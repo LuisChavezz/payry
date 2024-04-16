@@ -83,10 +83,10 @@ class _OKFNPayry27SolicitarQRWidgetState
       });
     }
 
-    _model.conceptFieldController ??= TextEditingController();
+    _model.conceptFieldTextController ??= TextEditingController();
     _model.conceptFieldFocusNode ??= FocusNode();
 
-    _model.amountFieldController ??= TextEditingController();
+    _model.amountFieldTextController ??= TextEditingController();
     _model.amountFieldFocusNode ??= FocusNode();
   }
 
@@ -235,8 +235,8 @@ class _OKFNPayry27SolicitarQRWidgetState
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 12.0, 0.0, 12.0),
                                           child: TextFormField(
-                                            controller:
-                                                _model.conceptFieldController,
+                                            controller: _model
+                                                .conceptFieldTextController,
                                             focusNode:
                                                 _model.conceptFieldFocusNode,
                                             textCapitalization:
@@ -326,7 +326,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                                             maxLengthEnforcement:
                                                 MaxLengthEnforcement.enforced,
                                             validator: _model
-                                                .conceptFieldControllerValidator
+                                                .conceptFieldTextControllerValidator
                                                 .asValidator(context),
                                           ).addWalkthrough(
                                             textFieldY48usnf1,
@@ -338,8 +338,8 @@ class _OKFNPayry27SolicitarQRWidgetState
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 12.0, 0.0, 12.0),
                                           child: TextFormField(
-                                            controller:
-                                                _model.amountFieldController,
+                                            controller: _model
+                                                .amountFieldTextController,
                                             focusNode:
                                                 _model.amountFieldFocusNode,
                                             obscureText: false,
@@ -427,7 +427,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                                                 .numberWithOptions(
                                                 decimal: true),
                                             validator: _model
-                                                .amountFieldControllerValidator
+                                                .amountFieldTextControllerValidator
                                                 .asValidator(context),
                                           ).addWalkthrough(
                                             textFieldHb4avouw,
@@ -451,7 +451,7 @@ class _OKFNPayry27SolicitarQRWidgetState
                                                   return;
                                                 }
                                                 if (functions.amountLimit(_model
-                                                    .amountFieldController
+                                                    .amountFieldTextController
                                                     .text)!) {
                                                   var registraCobroRecordReference =
                                                       RegistraCobroRecord
@@ -465,10 +465,10 @@ class _OKFNPayry27SolicitarQRWidgetState
                                                               ?.adminId,
                                                           ''),
                                                       amount: double.tryParse(_model
-                                                          .amountFieldController
+                                                          .amountFieldTextController
                                                           .text),
                                                       concept: _model
-                                                          .conceptFieldController
+                                                          .conceptFieldTextController
                                                           .text,
                                                       uid: currentUserUid,
                                                       qrUrl: '',
@@ -498,10 +498,10 @@ class _OKFNPayry27SolicitarQRWidgetState
                                                               ?.adminId,
                                                           ''),
                                                       amount: double.tryParse(_model
-                                                          .amountFieldController
+                                                          .amountFieldTextController
                                                           .text),
                                                       concept: _model
-                                                          .conceptFieldController
+                                                          .conceptFieldTextController
                                                           .text,
                                                       uid: currentUserUid,
                                                       qrUrl: '',
@@ -537,10 +537,14 @@ class _OKFNPayry27SolicitarQRWidgetState
                                                         ''),
                                                     r'''$.success''',
                                                   )) {
-                                                    if (Navigator.of(context)
-                                                        .canPop()) {
-                                                      context.pop();
-                                                    }
+                                                    setState(() {
+                                                      FFAppState()
+                                                              .transactionsCount =
+                                                          FFAppState()
+                                                                  .transactionsCount +
+                                                              1.0;
+                                                    });
+
                                                     context.pushNamedAuth(
                                                       'OK_FN_Payry_31_detallesdeQRCode',
                                                       context.mounted,

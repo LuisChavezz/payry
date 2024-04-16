@@ -18,9 +18,10 @@ class OKFNPayry08IniciasesionModel
   final formKey = GlobalKey<FormState>();
   // State field(s) for emailField widget.
   FocusNode? emailFieldFocusNode;
-  TextEditingController? emailFieldController;
-  String? Function(BuildContext, String?)? emailFieldControllerValidator;
-  String? _emailFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? emailFieldTextController;
+  String? Function(BuildContext, String?)? emailFieldTextControllerValidator;
+  String? _emailFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'El correo electrónico es requerido...';
     }
@@ -33,10 +34,11 @@ class OKFNPayry08IniciasesionModel
 
   // State field(s) for passwordField widget.
   FocusNode? passwordFieldFocusNode;
-  TextEditingController? passwordFieldController;
+  TextEditingController? passwordFieldTextController;
   late bool passwordFieldVisibility;
-  String? Function(BuildContext, String?)? passwordFieldControllerValidator;
-  String? _passwordFieldControllerValidator(BuildContext context, String? val) {
+  String? Function(BuildContext, String?)? passwordFieldTextControllerValidator;
+  String? _passwordFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'La contraseña es requerida';
     }
@@ -55,18 +57,19 @@ class OKFNPayry08IniciasesionModel
 
   @override
   void initState(BuildContext context) {
-    emailFieldControllerValidator = _emailFieldControllerValidator;
+    emailFieldTextControllerValidator = _emailFieldTextControllerValidator;
     passwordFieldVisibility = false;
-    passwordFieldControllerValidator = _passwordFieldControllerValidator;
+    passwordFieldTextControllerValidator =
+        _passwordFieldTextControllerValidator;
   }
 
   @override
   void dispose() {
     unfocusNode.dispose();
     emailFieldFocusNode?.dispose();
-    emailFieldController?.dispose();
+    emailFieldTextController?.dispose();
 
     passwordFieldFocusNode?.dispose();
-    passwordFieldController?.dispose();
+    passwordFieldTextController?.dispose();
   }
 }

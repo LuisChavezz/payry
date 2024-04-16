@@ -31,16 +31,16 @@ class _OKFNPayry05RegistrateWidgetState
     super.initState();
     _model = createModel(context, () => OKFNPayry05RegistrateModel());
 
-    _model.nameFieldController ??= TextEditingController();
+    _model.nameFieldTextController ??= TextEditingController();
     _model.nameFieldFocusNode ??= FocusNode();
 
-    _model.emailFieldController ??= TextEditingController();
+    _model.emailFieldTextController ??= TextEditingController();
     _model.emailFieldFocusNode ??= FocusNode();
 
-    _model.passwordCreateController ??= TextEditingController();
+    _model.passwordCreateTextController ??= TextEditingController();
     _model.passwordCreateFocusNode ??= FocusNode();
 
-    _model.passwordConfirmController ??= TextEditingController();
+    _model.passwordConfirmTextController ??= TextEditingController();
     _model.passwordConfirmFocusNode ??= FocusNode();
   }
 
@@ -122,7 +122,8 @@ class _OKFNPayry05RegistrateWidgetState
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 12.0),
                                     child: TextFormField(
-                                      controller: _model.nameFieldController,
+                                      controller:
+                                          _model.nameFieldTextController,
                                       focusNode: _model.nameFieldFocusNode,
                                       textCapitalization:
                                           TextCapitalization.words,
@@ -190,7 +191,7 @@ class _OKFNPayry05RegistrateWidgetState
                                             letterSpacing: 0.0,
                                           ),
                                       validator: _model
-                                          .nameFieldControllerValidator
+                                          .nameFieldTextControllerValidator
                                           .asValidator(context),
                                     ),
                                   ),
@@ -198,7 +199,8 @@ class _OKFNPayry05RegistrateWidgetState
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 12.0),
                                     child: TextFormField(
-                                      controller: _model.emailFieldController,
+                                      controller:
+                                          _model.emailFieldTextController,
                                       focusNode: _model.emailFieldFocusNode,
                                       obscureText: false,
                                       decoration: InputDecoration(
@@ -268,7 +270,7 @@ class _OKFNPayry05RegistrateWidgetState
                                           ),
                                       keyboardType: TextInputType.emailAddress,
                                       validator: _model
-                                          .emailFieldControllerValidator
+                                          .emailFieldTextControllerValidator
                                           .asValidator(context),
                                     ),
                                   ),
@@ -277,7 +279,7 @@ class _OKFNPayry05RegistrateWidgetState
                                         0.0, 12.0, 0.0, 12.0),
                                     child: TextFormField(
                                       controller:
-                                          _model.passwordCreateController,
+                                          _model.passwordCreateTextController,
                                       focusNode: _model.passwordCreateFocusNode,
                                       obscureText:
                                           !_model.passwordCreateVisibility,
@@ -363,7 +365,7 @@ class _OKFNPayry05RegistrateWidgetState
                                             letterSpacing: 0.0,
                                           ),
                                       validator: _model
-                                          .passwordCreateControllerValidator
+                                          .passwordCreateTextControllerValidator
                                           .asValidator(context),
                                     ),
                                   ),
@@ -372,7 +374,7 @@ class _OKFNPayry05RegistrateWidgetState
                                         0.0, 12.0, 0.0, 12.0),
                                     child: TextFormField(
                                       controller:
-                                          _model.passwordConfirmController,
+                                          _model.passwordConfirmTextController,
                                       focusNode:
                                           _model.passwordConfirmFocusNode,
                                       obscureText:
@@ -460,7 +462,7 @@ class _OKFNPayry05RegistrateWidgetState
                                             letterSpacing: 0.0,
                                           ),
                                       validator: _model
-                                          .passwordConfirmControllerValidator
+                                          .passwordConfirmTextControllerValidator
                                           .asValidator(context),
                                     ),
                                   ),
@@ -483,10 +485,10 @@ class _OKFNPayry05RegistrateWidgetState
                                               GoRouter.of(context)
                                                   .prepareAuthEvent();
                                               if (_model
-                                                      .passwordCreateController
+                                                      .passwordCreateTextController
                                                       .text !=
                                                   _model
-                                                      .passwordConfirmController
+                                                      .passwordConfirmTextController
                                                       .text) {
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(
@@ -502,9 +504,10 @@ class _OKFNPayry05RegistrateWidgetState
                                               final user = await authManager
                                                   .createAccountWithEmail(
                                                 context,
+                                                _model.emailFieldTextController
+                                                    .text,
                                                 _model
-                                                    .emailFieldController.text,
-                                                _model.passwordCreateController
+                                                    .passwordCreateTextController
                                                     .text,
                                               );
                                               if (user == null) {
@@ -516,10 +519,11 @@ class _OKFNPayry05RegistrateWidgetState
                                                 ...createUsersRecordData(
                                                   adminId: currentUserUid,
                                                   email: _model
-                                                      .emailFieldController
+                                                      .emailFieldTextController
                                                       .text,
                                                   displayName: _model
-                                                      .nameFieldController.text,
+                                                      .nameFieldTextController
+                                                      .text,
                                                   photoUrl: '',
                                                   phoneNumber: '',
                                                   status: true,
@@ -665,7 +669,8 @@ class _OKFNPayry05RegistrateWidgetState
                                                   .call(
                                                 token: FFAppState().serverToken,
                                                 email: _model
-                                                    .emailFieldController.text,
+                                                    .emailFieldTextController
+                                                    .text,
                                               );
                                               if (_shouldSetState)
                                                 setState(() {});

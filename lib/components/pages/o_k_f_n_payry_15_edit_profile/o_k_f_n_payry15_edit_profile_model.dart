@@ -37,9 +37,9 @@ class OKFNPayry15EditProfileModel
 
   // State field(s) for NameField widget.
   FocusNode? nameFieldFocusNode;
-  TextEditingController? nameFieldController;
-  String? Function(BuildContext, String?)? nameFieldControllerValidator;
-  String? _nameFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? nameFieldTextController;
+  String? Function(BuildContext, String?)? nameFieldTextControllerValidator;
+  String? _nameFieldTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'El nombre es requerido';
     }
@@ -49,15 +49,15 @@ class OKFNPayry15EditProfileModel
 
   // State field(s) for PhoneField widget.
   FocusNode? phoneFieldFocusNode;
-  TextEditingController? phoneFieldController;
+  TextEditingController? phoneFieldTextController;
   final phoneFieldMask = MaskTextInputFormatter(mask: '##########');
-  String? Function(BuildContext, String?)? phoneFieldControllerValidator;
+  String? Function(BuildContext, String?)? phoneFieldTextControllerValidator;
   // Stores action output result for [Backend Call - API (Report User)] action in Button widget.
   ApiCallResponse? ruAC;
 
   @override
   void initState(BuildContext context) {
-    nameFieldControllerValidator = _nameFieldControllerValidator;
+    nameFieldTextControllerValidator = _nameFieldTextControllerValidator;
   }
 
   @override
@@ -65,9 +65,9 @@ class OKFNPayry15EditProfileModel
     verificarTelefonoController?.finish();
     unfocusNode.dispose();
     nameFieldFocusNode?.dispose();
-    nameFieldController?.dispose();
+    nameFieldTextController?.dispose();
 
     phoneFieldFocusNode?.dispose();
-    phoneFieldController?.dispose();
+    phoneFieldTextController?.dispose();
   }
 }
