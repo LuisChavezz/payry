@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
+import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -8,7 +9,9 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'o_k_f_n_payry38_estadisticas_widget.dart'
     show OKFNPayry38EstadisticasWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 class OKFNPayry38EstadisticasModel
@@ -25,9 +28,21 @@ class OKFNPayry38EstadisticasModel
 
   dynamic statisticsCFResp;
 
+  String dateFilter = 'today';
+
+  bool isLoading = false;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Stores action output result for [Backend Call - API (Get Statistics)] action in OK_FN_Payry_38_Estadisticas widget.
+  ApiCallResponse? statisticsDefaultAC;
+  // Stores action output result for [Backend Call - API (Get Statistics)] action in Container widget.
+  ApiCallResponse? statisticsTodayAC;
+  // Stores action output result for [Backend Call - API (Get Statistics)] action in Container widget.
+  ApiCallResponse? statisticsWeekAC;
+  // Stores action output result for [Backend Call - API (Get Statistics)] action in Container widget.
+  ApiCallResponse? statisticsMonthAC;
   // State field(s) for Calendar widget.
   DateTimeRange? calendarSelectedDay1;
   // State field(s) for Calendar widget.

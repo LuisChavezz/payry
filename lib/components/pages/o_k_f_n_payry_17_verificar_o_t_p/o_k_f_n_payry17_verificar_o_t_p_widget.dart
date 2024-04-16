@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -250,120 +251,222 @@ class _OKFNPayry17VerificarOTPWidgetState
                             if (_model.timerMilliseconds > 0)
                               Align(
                                 alignment: AlignmentDirectional(0.0, 0.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 10.0),
-                                  child: FFButtonWidget(
-                                    onPressed: (_model.timerMilliseconds <= 0)
-                                        ? null
-                                        : () async {
-                                            var _shouldSetState = false;
-                                            if (_model.formKey.currentState ==
-                                                    null ||
-                                                !_model.formKey.currentState!
-                                                    .validate()) {
-                                              return;
-                                            }
-                                            _model.otpAC =
-                                                await VerifyPhoneCall.call(
-                                              token: FFAppState().serverToken,
-                                              otp: _model
-                                                  .pinCodeController!.text,
-                                            );
-                                            _shouldSetState = true;
-                                            if (getJsonField(
-                                              (_model.otpAC?.jsonBody ?? ''),
-                                              r'''$.success''',
-                                            )) {
-                                              await currentUserReference!
-                                                  .update(createUsersRecordData(
-                                                phoneNumber: widget.phoneNumber,
-                                              ));
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title: Text(getJsonField(
-                                                      (_model.otpAC?.jsonBody ??
-                                                          ''),
-                                                      r'''$.data.message''',
-                                                    ).toString()),
-                                                    content: Text(
-                                                        'El número de teléfono ha sido verificado con éxito.'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
+                                child: Builder(
+                                  builder: (context) => Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 10.0, 0.0, 10.0),
+                                    child: FFButtonWidget(
+                                      onPressed: (_model.timerMilliseconds <= 0)
+                                          ? null
+                                          : () async {
+                                              var _shouldSetState = false;
+                                              if (_model.formKey.currentState ==
+                                                      null ||
+                                                  !_model.formKey.currentState!
+                                                      .validate()) {
+                                                return;
+                                              }
+                                              _model.otpAC =
+                                                  await VerifyPhoneCall.call(
+                                                token: FFAppState().serverToken,
+                                                otp: _model
+                                                    .pinCodeController!.text,
                                               );
+                                              _shouldSetState = true;
+                                              if (getJsonField(
+                                                (_model.otpAC?.jsonBody ?? ''),
+                                                r'''$.success''',
+                                              )) {
+                                                await currentUserReference!
+                                                    .update(
+                                                        createUsersRecordData(
+                                                  phoneNumber:
+                                                      widget.phoneNumber,
+                                                ));
+                                                await showDialog(
+                                                  barrierDismissible: false,
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: GestureDetector(
+                                                        onTap: () => _model
+                                                                .unfocusNode
+                                                                .canRequestFocus
+                                                            ? FocusScope.of(
+                                                                    context)
+                                                                .requestFocus(_model
+                                                                    .unfocusNode)
+                                                            : FocusScope.of(
+                                                                    context)
+                                                                .unfocus(),
+                                                        child: Container(
+                                                          height:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .height *
+                                                                  0.25,
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  0.9,
+                                                          child:
+                                                              CustomConfirmDialogWidget(
+                                                            title: getJsonField(
+                                                              (_model.otpAC
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                              r'''$.data.message''',
+                                                            ).toString(),
+                                                            description:
+                                                                'El número de teléfono ha sido verificado con éxito.',
+                                                            buttonText:
+                                                                'Aceptar',
+                                                            showDismissButton:
+                                                                false,
+                                                            dismissAction:
+                                                                () async {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            mainAction:
+                                                                () async {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                ).then(
+                                                    (value) => setState(() {}));
 
-                                              context.goNamed(
-                                                  'OK_FN_Payry_15_EditProfile');
+                                                context.goNamed(
+                                                    'OK_FN_Payry_15_EditProfile');
+
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              } else {
+                                                await showDialog(
+                                                  barrierDismissible: false,
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: GestureDetector(
+                                                        onTap: () => _model
+                                                                .unfocusNode
+                                                                .canRequestFocus
+                                                            ? FocusScope.of(
+                                                                    context)
+                                                                .requestFocus(_model
+                                                                    .unfocusNode)
+                                                            : FocusScope.of(
+                                                                    context)
+                                                                .unfocus(),
+                                                        child: Container(
+                                                          height:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .height *
+                                                                  0.25,
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  0.9,
+                                                          child:
+                                                              CustomConfirmDialogWidget(
+                                                            title: 'Error',
+                                                            description:
+                                                                getJsonField(
+                                                              (_model.otpAC
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                              r'''$.message''',
+                                                            ).toString(),
+                                                            buttonText:
+                                                                'Aceptar',
+                                                            showDismissButton:
+                                                                false,
+                                                            dismissAction:
+                                                                () async {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            mainAction:
+                                                                () async {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                ).then(
+                                                    (value) => setState(() {}));
+
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              }
 
                                               if (_shouldSetState)
                                                 setState(() {});
-                                              return;
-                                            } else {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title: Text('Error'),
-                                                    content: Text(getJsonField(
-                                                      (_model.otpAC?.jsonBody ??
-                                                          ''),
-                                                      r'''$.message''',
-                                                    ).toString()),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                              return;
-                                            }
-
-                                            if (_shouldSetState)
-                                              setState(() {});
-                                          },
-                                    text: 'Verificar',
-                                    options: FFButtonOptions(
-                                      width: MediaQuery.sizeOf(context).width *
-                                          1.0,
-                                      height: 50.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 0.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color: Color(0xFF5E4A98),
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily: 'Lexend',
-                                            color: Color(0xFFFAF9FE),
-                                            letterSpacing: 0.0,
-                                          ),
-                                      elevation: 3.0,
-                                      borderSide: BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1.0,
+                                            },
+                                      text: 'Verificar',
+                                      options: FFButtonOptions(
+                                        width:
+                                            MediaQuery.sizeOf(context).width *
+                                                1.0,
+                                        height: 50.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: Color(0xFF5E4A98),
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Lexend',
+                                              color: Color(0xFFFAF9FE),
+                                              letterSpacing: 0.0,
+                                            ),
+                                        elevation: 3.0,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                        disabledColor: Color(0x83CCCCCC),
+                                        disabledTextColor: Color(0xFFA1A1A1),
                                       ),
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      disabledColor: Color(0x83CCCCCC),
-                                      disabledTextColor: Color(0xFFA1A1A1),
                                     ),
                                   ),
                                 ),
@@ -371,78 +474,117 @@ class _OKFNPayry17VerificarOTPWidgetState
                             if (_model.timerMilliseconds <= 0)
                               Align(
                                 alignment: AlignmentDirectional(0.0, 0.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 10.0),
-                                  child: FFButtonWidget(
-                                    onPressed: () async {
-                                      var _shouldSetState = false;
-                                      _model.rvpAC =
-                                          await RequestVerifyPhoneCall.call(
-                                        token: FFAppState().serverToken,
-                                        phone: widget.phoneNumber,
-                                      );
-                                      _shouldSetState = true;
-                                      if (getJsonField(
-                                        (_model.rvpAC?.jsonBody ?? ''),
-                                        r'''$.success''',
-                                      )) {
-                                        _model.timerController.onResetTimer();
-
-                                        _model.timerController.onStartTimer();
-                                        if (_shouldSetState) setState(() {});
-                                        return;
-                                      } else {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text('Error'),
-                                              content: Text(getJsonField(
-                                                (_model.rvpAC?.jsonBody ?? ''),
-                                                r'''$.message''',
-                                              ).toString()),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
+                                child: Builder(
+                                  builder: (context) => Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 10.0, 0.0, 10.0),
+                                    child: FFButtonWidget(
+                                      onPressed: () async {
+                                        var _shouldSetState = false;
+                                        _model.rvpAC =
+                                            await RequestVerifyPhoneCall.call(
+                                          token: FFAppState().serverToken,
+                                          phone: widget.phoneNumber,
                                         );
-                                        if (_shouldSetState) setState(() {});
-                                        return;
-                                      }
+                                        _shouldSetState = true;
+                                        if (getJsonField(
+                                          (_model.rvpAC?.jsonBody ?? ''),
+                                          r'''$.success''',
+                                        )) {
+                                          _model.timerController.onResetTimer();
 
-                                      if (_shouldSetState) setState(() {});
-                                    },
-                                    text: 'Reenviar código',
-                                    options: FFButtonOptions(
-                                      width: MediaQuery.sizeOf(context).width *
-                                          1.0,
-                                      height: 50.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 0.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color: Color(0xFF5E4A98),
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily: 'Lexend',
-                                            color: Color(0xFFFAF9FE),
-                                            letterSpacing: 0.0,
-                                          ),
-                                      elevation: 3.0,
-                                      borderSide: BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1.0,
+                                          _model.timerController.onStartTimer();
+                                          if (_shouldSetState) setState(() {});
+                                          return;
+                                        } else {
+                                          await showDialog(
+                                            barrierDismissible: false,
+                                            context: context,
+                                            builder: (dialogContext) {
+                                              return Dialog(
+                                                elevation: 0,
+                                                insetPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                alignment: AlignmentDirectional(
+                                                        0.0, 0.0)
+                                                    .resolve(Directionality.of(
+                                                        context)),
+                                                child: GestureDetector(
+                                                  onTap: () => _model
+                                                          .unfocusNode
+                                                          .canRequestFocus
+                                                      ? FocusScope.of(context)
+                                                          .requestFocus(_model
+                                                              .unfocusNode)
+                                                      : FocusScope.of(context)
+                                                          .unfocus(),
+                                                  child: Container(
+                                                    height: MediaQuery.sizeOf(
+                                                                context)
+                                                            .height *
+                                                        0.25,
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        0.9,
+                                                    child:
+                                                        CustomConfirmDialogWidget(
+                                                      title: 'Error',
+                                                      description: getJsonField(
+                                                        (_model.rvpAC
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                        r'''$.message''',
+                                                      ).toString(),
+                                                      buttonText: 'Aceptar',
+                                                      showDismissButton: false,
+                                                      dismissAction: () async {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      mainAction: () async {
+                                                        Navigator.pop(context);
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          ).then((value) => setState(() {}));
+
+                                          if (_shouldSetState) setState(() {});
+                                          return;
+                                        }
+
+                                        if (_shouldSetState) setState(() {});
+                                      },
+                                      text: 'Reenviar código',
+                                      options: FFButtonOptions(
+                                        width:
+                                            MediaQuery.sizeOf(context).width *
+                                                1.0,
+                                        height: 50.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: Color(0xFF5E4A98),
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Lexend',
+                                              color: Color(0xFFFAF9FE),
+                                              letterSpacing: 0.0,
+                                            ),
+                                        elevation: 3.0,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
                                       ),
-                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
                                   ),
                                 ),

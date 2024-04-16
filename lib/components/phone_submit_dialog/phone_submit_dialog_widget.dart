@@ -188,7 +188,6 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
                                   fontFamily: 'Lexend',
                                   letterSpacing: 0.0,
                                 ),
-                            minLines: null,
                             maxLength: 10,
                             keyboardType: TextInputType.phone,
                             validator: _model.phoneFieldControllerValidator

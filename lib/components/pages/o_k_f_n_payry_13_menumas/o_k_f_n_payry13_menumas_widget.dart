@@ -1,12 +1,14 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/walkthroughs/primeros_pasos_menu_mas.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:flutter/material.dart';
@@ -196,763 +198,1013 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                 verticalDirection: VerticalDirection.down,
                                 clipBehavior: Clip.none,
                                 children: [
-                                  AuthUserStreamWidget(
-                                    builder: (context) => InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        var _shouldSetState = false;
-                                        if (valueOrDefault<bool>(
-                                                currentUserDocument?.isAdmin,
-                                                false) ||
-                                            oKFNPayry13MenumasUserPermissionsRecord!
-                                                .createQr) {
+                                  Builder(
+                                    builder: (context) => AuthUserStreamWidget(
+                                      builder: (context) => InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          var _shouldSetState = false;
                                           if (valueOrDefault<bool>(
-                                              currentUserDocument?.isValidMail,
-                                              false)) {
+                                                  currentUserDocument?.isAdmin,
+                                                  false) ||
+                                              oKFNPayry13MenumasUserPermissionsRecord!
+                                                  .createQr) {
                                             if (valueOrDefault<bool>(
-                                                    currentUserDocument
-                                                        ?.isValidPhoneNumber,
-                                                    false) ==
-                                                true) {
+                                                currentUserDocument
+                                                    ?.isValidMail,
+                                                false)) {
                                               if (valueOrDefault<bool>(
                                                       currentUserDocument
-                                                          ?.isAdmin,
-                                                      false)
-                                                  ? valueOrDefault<bool>(
-                                                      currentUserDocument
-                                                          ?.isCompanyComplete,
-                                                      false)
-                                                  : true) {
-                                                context.pushNamed(
-                                                  'OK_FN_Payry_27_solicitarQR',
-                                                  queryParameters: {
-                                                    'readQr': serializeParam(
-                                                      oKFNPayry13MenumasUserPermissionsRecord
-                                                          ?.readQr,
-                                                      ParamType.bool,
-                                                    ),
-                                                    'createRefund':
-                                                        serializeParam(
-                                                      oKFNPayry13MenumasUserPermissionsRecord
-                                                          ?.createRefunds,
-                                                      ParamType.bool,
-                                                    ),
-                                                  }.withoutNulls,
-                                                );
-
-                                                if (_shouldSetState)
-                                                  setState(() {});
-                                                return;
-                                              } else {
-                                                var confirmDialogResponse =
-                                                    await showDialog<bool>(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Acceso denegado'),
-                                                              content: Text(
-                                                                  'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          false),
-                                                                  child: Text(
-                                                                      'Cancelar'),
-                                                                ),
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          true),
-                                                                  child: Text(
-                                                                      'Registrar empresa'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        ) ??
-                                                        false;
-                                                if (confirmDialogResponse) {
+                                                          ?.isValidPhoneNumber,
+                                                      false) ==
+                                                  true) {
+                                                if (valueOrDefault<bool>(
+                                                        currentUserDocument
+                                                            ?.isAdmin,
+                                                        false)
+                                                    ? valueOrDefault<bool>(
+                                                        currentUserDocument
+                                                            ?.isCompanyComplete,
+                                                        false)
+                                                    : true) {
                                                   context.pushNamed(
-                                                      'OK_FN_Payry_19_formularioEmpresa');
+                                                    'OK_FN_Payry_27_solicitarQR',
+                                                    queryParameters: {
+                                                      'readQr': serializeParam(
+                                                        oKFNPayry13MenumasUserPermissionsRecord
+                                                            ?.readQr,
+                                                        ParamType.bool,
+                                                      ),
+                                                      'createRefund':
+                                                          serializeParam(
+                                                        oKFNPayry13MenumasUserPermissionsRecord
+                                                            ?.createRefunds,
+                                                        ParamType.bool,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
 
                                                   if (_shouldSetState)
                                                     setState(() {});
                                                   return;
                                                 } else {
+                                                  await showDialog(
+                                                    barrierDismissible: false,
+                                                    context: context,
+                                                    builder: (dialogContext) {
+                                                      return Dialog(
+                                                        elevation: 0,
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        child: Container(
+                                                          height:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .height *
+                                                                  0.3,
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  0.9,
+                                                          child:
+                                                              CustomConfirmDialogWidget(
+                                                            title:
+                                                                'Acceso denegado',
+                                                            description:
+                                                                'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.',
+                                                            buttonText:
+                                                                'Registrar empresa',
+                                                            showDismissButton:
+                                                                true,
+                                                            dismissAction:
+                                                                () async {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            mainAction:
+                                                                () async {
+                                                              context.pushNamed(
+                                                                  'OK_FN_Payry_19_formularioEmpresa');
+                                                            },
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      setState(() {}));
+
                                                   if (_shouldSetState)
                                                     setState(() {});
                                                   return;
                                                 }
-                                              }
-                                            } else {
-                                              var confirmDialogResponse =
-                                                  await showDialog<bool>(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title: Text(
-                                                                'Acceso denegado'),
-                                                            content: Text(
-                                                                'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        false),
-                                                                child: Text(
-                                                                    'Cancelar'),
-                                                              ),
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        true),
-                                                                child: Text(
-                                                                    'Verificar número'),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      ) ??
-                                                      false;
-                                              if (confirmDialogResponse) {
-                                                context.pushNamed(
-                                                    'OK_FN_Payry_15_EditProfile');
+                                              } else {
+                                                await showDialog(
+                                                  barrierDismissible: false,
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: Container(
+                                                        height:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .height *
+                                                                0.3,
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.9,
+                                                        child:
+                                                            CustomConfirmDialogWidget(
+                                                          title:
+                                                              'Acceso denegado',
+                                                          description:
+                                                              'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.',
+                                                          buttonText:
+                                                              'Verificar número',
+                                                          showDismissButton:
+                                                              true,
+                                                          dismissAction:
+                                                              () async {
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          mainAction: () async {
+                                                            context.pushNamed(
+                                                                'OK_FN_Payry_15_EditProfile');
+                                                          },
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                ).then(
+                                                    (value) => setState(() {}));
 
                                                 if (_shouldSetState)
                                                   setState(() {});
                                                 return;
-                                              } else {
-                                                if (_shouldSetState)
-                                                  setState(() {});
-                                                return;
                                               }
-                                            }
-                                          } else {
-                                            var confirmDialogResponse =
-                                                await showDialog<bool>(
-                                                      context: context,
-                                                      builder:
-                                                          (alertDialogContext) {
-                                                        return AlertDialog(
-                                                          title: Text(
-                                                              'Acceso denegado'),
-                                                          content: Text(
-                                                              'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext,
-                                                                      false),
-                                                              child: Text(
-                                                                  'Cancelar'),
-                                                            ),
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext,
-                                                                      true),
-                                                              child: Text(
-                                                                  'Reenviar'),
-                                                            ),
-                                                          ],
-                                                        );
-                                                      },
-                                                    ) ??
-                                                    false;
-                                            if (confirmDialogResponse) {
-                                              _model.verifyACCodiMenu =
-                                                  await AuthGroup
-                                                      .generateTokenCall
-                                                      .call(
-                                                uid: currentUserEmail,
-                                              );
-                                              _shouldSetState = true;
-                                              if (getJsonField(
-                                                (_model.verifyACCodiMenu
-                                                        ?.jsonBody ??
-                                                    ''),
-                                                r'''$.success''',
-                                              )) {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'Verificación enviada'),
-                                                      content: Text(
-                                                          'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Ok'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
-                                              } else {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text('Error'),
-                                                      content:
-                                                          Text(getJsonField(
-                                                        (_model.verifyACCodiMenu
-                                                                ?.jsonBody ??
-                                                            ''),
-                                                        r'''$.message''',
-                                                      ).toString()),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Ok'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
-                                              }
-
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                              return;
                                             } else {
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                              return;
-                                            }
-                                          }
-                                        } else {
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        }
-
-                                        if (_shouldSetState) setState(() {});
-                                      },
-                                      child: Container(
-                                        width: () {
-                                          if (MediaQuery.sizeOf(context).width <
-                                              390.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.42);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              480.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.44);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              900.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.3);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1025.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.23);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1300.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.18);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1600.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.14);
-                                          } else {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.1);
-                                          }
-                                        }(),
-                                        height: 75.0,
-                                        decoration: BoxDecoration(
-                                          color: valueOrDefault<Color>(
-                                            valueOrDefault<bool>(
-                                                        currentUserDocument
-                                                            ?.isAdmin,
-                                                        false) ||
-                                                    oKFNPayry13MenumasUserPermissionsRecord!
-                                                        .createQr
-                                                ? FlutterFlowTheme.of(context)
-                                                    .secondaryBackground
-                                                : Color(0x83CCCCCC),
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              blurRadius: 4.0,
-                                              color: Color(0x33000000),
-                                              offset: Offset(
-                                                0.0,
-                                                2.0,
-                                              ),
-                                            )
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 16.0, 0.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 10.0, 0.0),
-                                                child: Icon(
-                                                  FFIcons.kqr,
-                                                  color: valueOrDefault<bool>(
-                                                              currentUserDocument
-                                                                  ?.isAdmin,
-                                                              false) ||
-                                                          oKFNPayry13MenumasUserPermissionsRecord!
-                                                              .createQr
-                                                      ? FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryText
-                                                      : Color(0xFFA1A1A1),
-                                                  size: 20.0,
-                                                ),
-                                              ),
-                                              Text(
-                                                'CoDi®',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Lexend',
-                                                      color: valueOrDefault<
-                                                                      bool>(
-                                                                  currentUserDocument
-                                                                      ?.isAdmin,
-                                                                  false) ||
-                                                              oKFNPayry13MenumasUserPermissionsRecord!
-                                                                  .createQr
-                                                          ? FlutterFlowTheme.of(
+                                              await showDialog(
+                                                barrierDismissible: false,
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: Container(
+                                                      height: MediaQuery.sizeOf(
                                                                   context)
-                                                              .primaryText
-                                                          : Color(0xFFA1A1A1),
-                                                      fontSize: 14.0,
-                                                      letterSpacing: 0.0,
+                                                              .height *
+                                                          0.3,
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          0.9,
+                                                      child:
+                                                          CustomConfirmDialogWidget(
+                                                        title:
+                                                            'Acceso denegado',
+                                                        description:
+                                                            'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.',
+                                                        buttonText: 'Reenviar',
+                                                        showDismissButton: true,
+                                                        dismissAction:
+                                                            () async {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        mainAction: () async {
+                                                          var _shouldSetState =
+                                                              false;
+                                                          _model.verifyACCodiMenu =
+                                                              await AuthGroup
+                                                                  .verifyEmailCall
+                                                                  .call(
+                                                            email:
+                                                                currentUserEmail,
+                                                          );
+                                                          _shouldSetState =
+                                                              true;
+                                                          if (getJsonField(
+                                                            (_model.verifyACCodiMenu
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                            r'''$.success''',
+                                                          )) {
+                                                            Navigator.pop(
+                                                                context);
+                                                            await showDialog(
+                                                              barrierDismissible:
+                                                                  false,
+                                                              context: context,
+                                                              builder:
+                                                                  (dialogContext) {
+                                                                return Dialog(
+                                                                  elevation: 0,
+                                                                  insetPadding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  alignment: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  child:
+                                                                      Container(
+                                                                    height: MediaQuery.sizeOf(context)
+                                                                            .height *
+                                                                        0.25,
+                                                                    width: MediaQuery.sizeOf(context)
+                                                                            .width *
+                                                                        0.9,
+                                                                    child:
+                                                                        CustomConfirmDialogWidget(
+                                                                      title:
+                                                                          'Verificación enviada',
+                                                                      description:
+                                                                          'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.',
+                                                                      buttonText:
+                                                                          'Aceptar',
+                                                                      showDismissButton:
+                                                                          false,
+                                                                      dismissAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                      mainAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                setState(
+                                                                    () {}));
+
+                                                            return;
+                                                          } else {
+                                                            Navigator.pop(
+                                                                context);
+                                                            await showDialog(
+                                                              barrierDismissible:
+                                                                  false,
+                                                              context: context,
+                                                              builder:
+                                                                  (dialogContext) {
+                                                                return Dialog(
+                                                                  elevation: 0,
+                                                                  insetPadding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  alignment: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  child:
+                                                                      Container(
+                                                                    height: MediaQuery.sizeOf(context)
+                                                                            .height *
+                                                                        0.25,
+                                                                    width: MediaQuery.sizeOf(context)
+                                                                            .width *
+                                                                        0.9,
+                                                                    child:
+                                                                        CustomConfirmDialogWidget(
+                                                                      title:
+                                                                          'Error',
+                                                                      description:
+                                                                          getJsonField(
+                                                                        (_model.verifyACCodiMenu?.jsonBody ??
+                                                                            ''),
+                                                                        r'''$.message''',
+                                                                      ).toString(),
+                                                                      buttonText:
+                                                                          'Aceptar',
+                                                                      showDismissButton:
+                                                                          false,
+                                                                      dismissAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                      mainAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                setState(
+                                                                    () {}));
+
+                                                            return;
+                                                          }
+                                                        },
+                                                      ),
                                                     ),
-                                              ),
-                                            ].divide(SizedBox(width: 5.0)),
+                                                  );
+                                                },
+                                              ).then(
+                                                  (value) => setState(() {}));
+
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            }
+                                          } else {
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          }
+
+                                          if (_shouldSetState) setState(() {});
+                                        },
+                                        child: Container(
+                                          width: () {
+                                            if (MediaQuery.sizeOf(context)
+                                                    .width <
+                                                390.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.42);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                480.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.44);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                900.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.3);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1025.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.23);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1300.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.18);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1600.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.14);
+                                            } else {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.1);
+                                            }
+                                          }(),
+                                          height: 75.0,
+                                          decoration: BoxDecoration(
+                                            color: valueOrDefault<Color>(
+                                              valueOrDefault<bool>(
+                                                          currentUserDocument
+                                                              ?.isAdmin,
+                                                          false) ||
+                                                      oKFNPayry13MenumasUserPermissionsRecord!
+                                                          .createQr
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .secondaryBackground
+                                                  : Color(0x83CCCCCC),
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                            ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                blurRadius: 4.0,
+                                                color: Color(0x33000000),
+                                                offset: Offset(
+                                                  0.0,
+                                                  2.0,
+                                                ),
+                                              )
+                                            ],
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 0.0, 16.0, 0.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 10.0, 0.0),
+                                                  child: Icon(
+                                                    FFIcons.kqr,
+                                                    color: valueOrDefault<bool>(
+                                                                currentUserDocument
+                                                                    ?.isAdmin,
+                                                                false) ||
+                                                            oKFNPayry13MenumasUserPermissionsRecord!
+                                                                .createQr
+                                                        ? FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText
+                                                        : Color(0xFFA1A1A1),
+                                                    size: 20.0,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  'CoDi®',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color: valueOrDefault<
+                                                                        bool>(
+                                                                    currentUserDocument
+                                                                        ?.isAdmin,
+                                                                    false) ||
+                                                                oKFNPayry13MenumasUserPermissionsRecord!
+                                                                    .createQr
+                                                            ? FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText
+                                                            : Color(0xFFA1A1A1),
+                                                        fontSize: 14.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ].divide(SizedBox(width: 5.0)),
+                                            ),
                                           ),
                                         ),
+                                      ).addWalkthrough(
+                                        container4zzotb73,
+                                        _model.primerosPasosMenuMasController,
                                       ),
-                                    ).addWalkthrough(
-                                      container4zzotb73,
-                                      _model.primerosPasosMenuMasController,
                                     ),
                                   ),
-                                  AuthUserStreamWidget(
-                                    builder: (context) => InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        var _shouldSetState = false;
-                                        if (valueOrDefault<bool>(
-                                                currentUserDocument?.isAdmin,
-                                                false) ||
-                                            oKFNPayry13MenumasUserPermissionsRecord!
-                                                .createSms) {
+                                  Builder(
+                                    builder: (context) => AuthUserStreamWidget(
+                                      builder: (context) => InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          var _shouldSetState = false;
                                           if (valueOrDefault<bool>(
-                                              currentUserDocument?.isValidMail,
-                                              false)) {
+                                                  currentUserDocument?.isAdmin,
+                                                  false) ||
+                                              oKFNPayry13MenumasUserPermissionsRecord!
+                                                  .createSms) {
                                             if (valueOrDefault<bool>(
-                                                    currentUserDocument
-                                                        ?.isValidPhoneNumber,
-                                                    false) ==
-                                                true) {
+                                                currentUserDocument
+                                                    ?.isValidMail,
+                                                false)) {
                                               if (valueOrDefault<bool>(
                                                       currentUserDocument
-                                                          ?.isAdmin,
-                                                      false)
-                                                  ? valueOrDefault<bool>(
-                                                      currentUserDocument
-                                                          ?.isCompanyComplete,
-                                                      false)
-                                                  : true) {
-                                                context.pushNamed(
-                                                  'OK_FN_Payry_32_solicitarSMS',
-                                                  queryParameters: {
-                                                    'readSms': serializeParam(
-                                                      oKFNPayry13MenumasUserPermissionsRecord
-                                                          ?.readSms,
-                                                      ParamType.bool,
-                                                    ),
-                                                    'createRefund':
-                                                        serializeParam(
-                                                      oKFNPayry13MenumasUserPermissionsRecord
-                                                          ?.createRefunds,
-                                                      ParamType.bool,
-                                                    ),
-                                                  }.withoutNulls,
-                                                );
-
-                                                if (_shouldSetState)
-                                                  setState(() {});
-                                                return;
-                                              } else {
-                                                var confirmDialogResponse =
-                                                    await showDialog<bool>(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Acceso denegado'),
-                                                              content: Text(
-                                                                  'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          false),
-                                                                  child: Text(
-                                                                      'Cancelar'),
-                                                                ),
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          true),
-                                                                  child: Text(
-                                                                      'Registrar empresa'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        ) ??
-                                                        false;
-                                                if (confirmDialogResponse) {
+                                                          ?.isValidPhoneNumber,
+                                                      false) ==
+                                                  true) {
+                                                if (valueOrDefault<bool>(
+                                                        currentUserDocument
+                                                            ?.isAdmin,
+                                                        false)
+                                                    ? valueOrDefault<bool>(
+                                                        currentUserDocument
+                                                            ?.isCompanyComplete,
+                                                        false)
+                                                    : true) {
                                                   context.pushNamed(
-                                                      'OK_FN_Payry_19_formularioEmpresa');
+                                                    'OK_FN_Payry_32_solicitarSMS',
+                                                    queryParameters: {
+                                                      'readSms': serializeParam(
+                                                        oKFNPayry13MenumasUserPermissionsRecord
+                                                            ?.readSms,
+                                                        ParamType.bool,
+                                                      ),
+                                                      'createRefund':
+                                                          serializeParam(
+                                                        oKFNPayry13MenumasUserPermissionsRecord
+                                                            ?.createRefunds,
+                                                        ParamType.bool,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
 
                                                   if (_shouldSetState)
                                                     setState(() {});
                                                   return;
                                                 } else {
+                                                  await showDialog(
+                                                    barrierDismissible: false,
+                                                    context: context,
+                                                    builder: (dialogContext) {
+                                                      return Dialog(
+                                                        elevation: 0,
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        child: Container(
+                                                          height:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .height *
+                                                                  0.3,
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  0.9,
+                                                          child:
+                                                              CustomConfirmDialogWidget(
+                                                            title:
+                                                                'Acceso denegado',
+                                                            description:
+                                                                'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.',
+                                                            buttonText:
+                                                                'Registrar empresa',
+                                                            showDismissButton:
+                                                                true,
+                                                            dismissAction:
+                                                                () async {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            mainAction:
+                                                                () async {
+                                                              context.pushNamed(
+                                                                  'OK_FN_Payry_19_formularioEmpresa');
+                                                            },
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      setState(() {}));
+
                                                   if (_shouldSetState)
                                                     setState(() {});
                                                   return;
                                                 }
-                                              }
-                                            } else {
-                                              var confirmDialogResponse =
-                                                  await showDialog<bool>(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title: Text(
-                                                                'Acceso denegado'),
-                                                            content: Text(
-                                                                'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        false),
-                                                                child: Text(
-                                                                    'Cancelar'),
-                                                              ),
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        true),
-                                                                child: Text(
-                                                                    'Verificar número'),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      ) ??
-                                                      false;
-                                              if (confirmDialogResponse) {
-                                                context.pushNamed(
-                                                    'OK_FN_Payry_15_EditProfile');
+                                              } else {
+                                                await showDialog(
+                                                  barrierDismissible: false,
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: Container(
+                                                        height:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .height *
+                                                                0.3,
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.9,
+                                                        child:
+                                                            CustomConfirmDialogWidget(
+                                                          title:
+                                                              'Acceso denegado',
+                                                          description:
+                                                              'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.',
+                                                          buttonText:
+                                                              'Verificar número',
+                                                          showDismissButton:
+                                                              true,
+                                                          dismissAction:
+                                                              () async {
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          mainAction: () async {
+                                                            context.pushNamed(
+                                                                'OK_FN_Payry_15_EditProfile');
+                                                          },
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                ).then(
+                                                    (value) => setState(() {}));
 
                                                 if (_shouldSetState)
                                                   setState(() {});
                                                 return;
-                                              } else {
-                                                if (_shouldSetState)
-                                                  setState(() {});
-                                                return;
                                               }
-                                            }
-                                          } else {
-                                            var confirmDialogResponse =
-                                                await showDialog<bool>(
-                                                      context: context,
-                                                      builder:
-                                                          (alertDialogContext) {
-                                                        return AlertDialog(
-                                                          title: Text(
-                                                              'Acceso denegado'),
-                                                          content: Text(
-                                                              'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext,
-                                                                      false),
-                                                              child: Text(
-                                                                  'Cancelar'),
-                                                            ),
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext,
-                                                                      true),
-                                                              child: Text(
-                                                                  'Reenviar'),
-                                                            ),
-                                                          ],
-                                                        );
-                                                      },
-                                                    ) ??
-                                                    false;
-                                            if (confirmDialogResponse) {
-                                              _model.verifyACDimoMenu =
-                                                  await AuthGroup
-                                                      .verifyEmailCall
-                                                      .call(
-                                                email: currentUserEmail,
-                                              );
-                                              _shouldSetState = true;
-                                              if (getJsonField(
-                                                (_model.verifyACDimoMenu
-                                                        ?.jsonBody ??
-                                                    ''),
-                                                r'''$.success''',
-                                              )) {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'Verificación enviada'),
-                                                      content: Text(
-                                                          'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Ok'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
-                                              } else {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text('Error'),
-                                                      content:
-                                                          Text(getJsonField(
-                                                        (_model.verifyACDimoMenu
-                                                                ?.jsonBody ??
-                                                            ''),
-                                                        r'''$.message''',
-                                                      ).toString()),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Ok'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
-                                              }
-
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                              return;
                                             } else {
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                              return;
-                                            }
-                                          }
-                                        } else {
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        }
-
-                                        if (_shouldSetState) setState(() {});
-                                      },
-                                      child: Container(
-                                        width: () {
-                                          if (MediaQuery.sizeOf(context).width <
-                                              390.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.42);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              480.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.44);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              900.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.3);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1025.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.23);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1300.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.18);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1600.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.14);
-                                          } else {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.1);
-                                          }
-                                        }(),
-                                        height: 75.0,
-                                        decoration: BoxDecoration(
-                                          color: valueOrDefault<Color>(
-                                            valueOrDefault<bool>(
-                                                        currentUserDocument
-                                                            ?.isAdmin,
-                                                        false) ||
-                                                    oKFNPayry13MenumasUserPermissionsRecord!
-                                                        .createSms
-                                                ? FlutterFlowTheme.of(context)
-                                                    .secondaryBackground
-                                                : Color(0x83CCCCCC),
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              blurRadius: 4.0,
-                                              color: Color(0x33000000),
-                                              offset: Offset(
-                                                0.0,
-                                                2.0,
-                                              ),
-                                            )
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 16.0, 0.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 10.0, 0.0),
-                                                child: Icon(
-                                                  FFIcons.ksms,
-                                                  color: valueOrDefault<bool>(
-                                                              currentUserDocument
-                                                                  ?.isAdmin,
-                                                              false) ||
-                                                          oKFNPayry13MenumasUserPermissionsRecord!
-                                                              .createSms
-                                                      ? FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryText
-                                                      : Color(0xFFA1A1A1),
-                                                  size: 20.0,
-                                                ),
-                                              ),
-                                              Text(
-                                                'DiMo®',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Lexend',
-                                                      color: valueOrDefault<
-                                                                      bool>(
-                                                                  currentUserDocument
-                                                                      ?.isAdmin,
-                                                                  false) ||
-                                                              oKFNPayry13MenumasUserPermissionsRecord!
-                                                                  .createSms
-                                                          ? FlutterFlowTheme.of(
+                                              await showDialog(
+                                                barrierDismissible: false,
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: Container(
+                                                      height: MediaQuery.sizeOf(
                                                                   context)
-                                                              .primaryText
-                                                          : Color(0xFFA1A1A1),
-                                                      fontSize: MediaQuery.sizeOf(
-                                                                      context)
-                                                                  .width <
-                                                              375.0
-                                                          ? 12.0
-                                                          : 14.0,
-                                                      letterSpacing: 0.0,
+                                                              .height *
+                                                          0.3,
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          0.9,
+                                                      child:
+                                                          CustomConfirmDialogWidget(
+                                                        title:
+                                                            'Acceso denegado',
+                                                        description:
+                                                            'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.',
+                                                        buttonText: 'Reenviar',
+                                                        showDismissButton: true,
+                                                        dismissAction:
+                                                            () async {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        mainAction: () async {
+                                                          var _shouldSetState =
+                                                              false;
+                                                          _model.verifyACDimoMenu =
+                                                              await AuthGroup
+                                                                  .verifyEmailCall
+                                                                  .call(
+                                                            email:
+                                                                currentUserEmail,
+                                                          );
+                                                          _shouldSetState =
+                                                              true;
+                                                          if (getJsonField(
+                                                            (_model.verifyACDimoMenu
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                            r'''$.success''',
+                                                          )) {
+                                                            Navigator.pop(
+                                                                context);
+                                                            await showDialog(
+                                                              barrierDismissible:
+                                                                  false,
+                                                              context: context,
+                                                              builder:
+                                                                  (dialogContext) {
+                                                                return Dialog(
+                                                                  elevation: 0,
+                                                                  insetPadding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  alignment: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  child:
+                                                                      Container(
+                                                                    height: MediaQuery.sizeOf(context)
+                                                                            .height *
+                                                                        0.25,
+                                                                    width: MediaQuery.sizeOf(context)
+                                                                            .width *
+                                                                        0.9,
+                                                                    child:
+                                                                        CustomConfirmDialogWidget(
+                                                                      title:
+                                                                          'Verificación enviada',
+                                                                      description:
+                                                                          'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.',
+                                                                      buttonText:
+                                                                          'Aceptar',
+                                                                      showDismissButton:
+                                                                          false,
+                                                                      dismissAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                      mainAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                setState(
+                                                                    () {}));
+
+                                                            return;
+                                                          } else {
+                                                            Navigator.pop(
+                                                                context);
+                                                            await showDialog(
+                                                              barrierDismissible:
+                                                                  false,
+                                                              context: context,
+                                                              builder:
+                                                                  (dialogContext) {
+                                                                return Dialog(
+                                                                  elevation: 0,
+                                                                  insetPadding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  alignment: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  child:
+                                                                      Container(
+                                                                    height: MediaQuery.sizeOf(context)
+                                                                            .height *
+                                                                        0.25,
+                                                                    width: MediaQuery.sizeOf(context)
+                                                                            .width *
+                                                                        0.9,
+                                                                    child:
+                                                                        CustomConfirmDialogWidget(
+                                                                      title:
+                                                                          'Error',
+                                                                      description:
+                                                                          getJsonField(
+                                                                        (_model.verifyACDimoMenu?.jsonBody ??
+                                                                            ''),
+                                                                        r'''$.message''',
+                                                                      ).toString(),
+                                                                      buttonText:
+                                                                          'Aceptar',
+                                                                      showDismissButton:
+                                                                          false,
+                                                                      dismissAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                      mainAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                setState(
+                                                                    () {}));
+
+                                                            return;
+                                                          }
+                                                        },
+                                                      ),
                                                     ),
-                                              ),
-                                            ].divide(SizedBox(width: 5.0)),
+                                                  );
+                                                },
+                                              ).then(
+                                                  (value) => setState(() {}));
+
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            }
+                                          } else {
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          }
+
+                                          if (_shouldSetState) setState(() {});
+                                        },
+                                        child: Container(
+                                          width: () {
+                                            if (MediaQuery.sizeOf(context)
+                                                    .width <
+                                                390.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.42);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                480.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.44);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                900.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.3);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1025.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.23);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1300.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.18);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1600.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.14);
+                                            } else {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.1);
+                                            }
+                                          }(),
+                                          height: 75.0,
+                                          decoration: BoxDecoration(
+                                            color: valueOrDefault<Color>(
+                                              valueOrDefault<bool>(
+                                                          currentUserDocument
+                                                              ?.isAdmin,
+                                                          false) ||
+                                                      oKFNPayry13MenumasUserPermissionsRecord!
+                                                          .createSms
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .secondaryBackground
+                                                  : Color(0x83CCCCCC),
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                            ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                blurRadius: 4.0,
+                                                color: Color(0x33000000),
+                                                offset: Offset(
+                                                  0.0,
+                                                  2.0,
+                                                ),
+                                              )
+                                            ],
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 0.0, 16.0, 0.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 10.0, 0.0),
+                                                  child: Icon(
+                                                    FFIcons.ksms,
+                                                    color: valueOrDefault<bool>(
+                                                                currentUserDocument
+                                                                    ?.isAdmin,
+                                                                false) ||
+                                                            oKFNPayry13MenumasUserPermissionsRecord!
+                                                                .createSms
+                                                        ? FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText
+                                                        : Color(0xFFA1A1A1),
+                                                    size: 20.0,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  'DiMo®',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color: valueOrDefault<
+                                                                        bool>(
+                                                                    currentUserDocument
+                                                                        ?.isAdmin,
+                                                                    false) ||
+                                                                oKFNPayry13MenumasUserPermissionsRecord!
+                                                                    .createSms
+                                                            ? FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText
+                                                            : Color(0xFFA1A1A1),
+                                                        fontSize: MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width <
+                                                                375.0
+                                                            ? 12.0
+                                                            : 14.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ].divide(SizedBox(width: 5.0)),
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -1067,1772 +1319,2383 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     containerBkgp3rtd,
                                     _model.primerosPasosMenuMasController,
                                   ),
-                                  AuthUserStreamWidget(
-                                    builder: (context) => InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        var _shouldSetState = false;
-                                        if (valueOrDefault<bool>(
-                                                currentUserDocument?.isAdmin,
-                                                false) ||
-                                            oKFNPayry13MenumasUserPermissionsRecord!
-                                                .readCompanies) {
+                                  Builder(
+                                    builder: (context) => AuthUserStreamWidget(
+                                      builder: (context) => InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          var _shouldSetState = false;
                                           if (valueOrDefault<bool>(
-                                              currentUserDocument?.isValidMail,
-                                              false)) {
+                                                  currentUserDocument?.isAdmin,
+                                                  false) ||
+                                              oKFNPayry13MenumasUserPermissionsRecord!
+                                                  .readCompanies) {
                                             if (valueOrDefault<bool>(
-                                                    currentUserDocument
-                                                        ?.isValidPhoneNumber,
-                                                    false) ==
-                                                true) {
-                                              context.pushNamed(
-                                                  'OK_FN_Payry_19_formularioEmpresa');
-
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                              return;
-                                            } else {
-                                              var confirmDialogResponse =
-                                                  await showDialog<bool>(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title: Text(
-                                                                'Acceso denegado'),
-                                                            content: Text(
-                                                                'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        false),
-                                                                child: Text(
-                                                                    'Cancelar'),
-                                                              ),
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        true),
-                                                                child: Text(
-                                                                    'Verificar número'),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      ) ??
-                                                      false;
-                                              if (confirmDialogResponse) {
-                                                context.pushNamed(
-                                                    'OK_FN_Payry_15_EditProfile');
-
-                                                if (_shouldSetState)
-                                                  setState(() {});
-                                                return;
-                                              } else {
-                                                if (_shouldSetState)
-                                                  setState(() {});
-                                                return;
-                                              }
-                                            }
-                                          } else {
-                                            var confirmDialogResponse =
-                                                await showDialog<bool>(
-                                                      context: context,
-                                                      builder:
-                                                          (alertDialogContext) {
-                                                        return AlertDialog(
-                                                          title: Text(
-                                                              'Acceso denegado'),
-                                                          content: Text(
-                                                              'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext,
-                                                                      false),
-                                                              child: Text(
-                                                                  'Cancelar'),
-                                                            ),
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext,
-                                                                      true),
-                                                              child: Text(
-                                                                  'Reenviar'),
-                                                            ),
-                                                          ],
-                                                        );
-                                                      },
-                                                    ) ??
-                                                    false;
-                                            if (confirmDialogResponse) {
-                                              _model.verifyACCompanyMenu =
-                                                  await AuthGroup
-                                                      .verifyEmailCall
-                                                      .call(
-                                                email: currentUserEmail,
-                                              );
-                                              _shouldSetState = true;
-                                              if (getJsonField(
-                                                (_model.verifyACCompanyMenu
-                                                        ?.jsonBody ??
-                                                    ''),
-                                                r'''$.success''',
-                                              )) {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'Verificación enviada'),
-                                                      content: Text(
-                                                          'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Ok'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
-                                              } else {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text('Error'),
-                                                      content:
-                                                          Text(getJsonField(
-                                                        (_model.verifyACCompanyMenu
-                                                                ?.jsonBody ??
-                                                            ''),
-                                                        r'''$.message''',
-                                                      ).toString()),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Ok'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
-                                              }
-
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                              return;
-                                            } else {
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                              return;
-                                            }
-                                          }
-                                        } else {
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        }
-
-                                        if (_shouldSetState) setState(() {});
-                                      },
-                                      child: Container(
-                                        width: () {
-                                          if (MediaQuery.sizeOf(context).width <
-                                              390.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.42);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              480.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.44);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              900.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.3);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1025.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.23);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1300.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.18);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1600.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.14);
-                                          } else {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.1);
-                                          }
-                                        }(),
-                                        height: 75.0,
-                                        decoration: BoxDecoration(
-                                          color: valueOrDefault<Color>(
-                                            valueOrDefault<bool>(
-                                                        currentUserDocument
-                                                            ?.isAdmin,
-                                                        false) ||
-                                                    oKFNPayry13MenumasUserPermissionsRecord!
-                                                        .readCompanies
-                                                ? FlutterFlowTheme.of(context)
-                                                    .secondaryBackground
-                                                : Color(0x83CCCCCC),
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              blurRadius: 4.0,
-                                              color: Color(0x33000000),
-                                              offset: Offset(
-                                                0.0,
-                                                2.0,
-                                              ),
-                                            )
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 16.0, 0.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 10.0, 0.0),
-                                                child: Icon(
-                                                  FFIcons.kempresa,
-                                                  color: valueOrDefault<bool>(
-                                                          currentUserDocument
-                                                              ?.isAdmin,
-                                                          false)
-                                                      ? FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryText
-                                                      : Color(0xFFA1A1A1),
-                                                  size: 20.0,
-                                                ),
-                                              ),
-                                              Text(
-                                                'Empresa',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Lexend',
-                                                      color: valueOrDefault<
-                                                                  bool>(
-                                                              currentUserDocument
-                                                                  ?.isAdmin,
-                                                              false)
-                                                          ? FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText
-                                                          : Color(0xFFA1A1A1),
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                              ),
-                                            ].divide(SizedBox(width: 5.0)),
-                                          ),
-                                        ),
-                                      ),
-                                    ).addWalkthrough(
-                                      containerUroenb4x,
-                                      _model.primerosPasosMenuMasController,
-                                    ),
-                                  ),
-                                  AuthUserStreamWidget(
-                                    builder: (context) => InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        var _shouldSetState = false;
-                                        if (valueOrDefault<bool>(
-                                                currentUserDocument?.isAdmin,
-                                                false) ||
-                                            oKFNPayry13MenumasUserPermissionsRecord!
-                                                .readStatistics) {
-                                          if (valueOrDefault<bool>(
-                                              currentUserDocument?.isValidMail,
-                                              false)) {
-                                            if (valueOrDefault<bool>(
-                                                    currentUserDocument
-                                                        ?.isValidPhoneNumber,
-                                                    false) ==
-                                                true) {
+                                                currentUserDocument
+                                                    ?.isValidMail,
+                                                false)) {
                                               if (valueOrDefault<bool>(
                                                       currentUserDocument
-                                                          ?.isAdmin,
-                                                      false)
-                                                  ? valueOrDefault<bool>(
-                                                      currentUserDocument
-                                                          ?.isCompanyComplete,
-                                                      false)
-                                                  : true) {
+                                                          ?.isValidPhoneNumber,
+                                                      false) ==
+                                                  true) {
                                                 context.pushNamed(
-                                                    'OK_FN_Payry_38_Estadisticas');
+                                                    'OK_FN_Payry_19_formularioEmpresa');
 
                                                 if (_shouldSetState)
                                                   setState(() {});
                                                 return;
-                                              } else {
-                                                var confirmDialogResponse =
-                                                    await showDialog<bool>(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Acceso denegado'),
-                                                              content: Text(
-                                                                  'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          false),
-                                                                  child: Text(
-                                                                      'Cancelar'),
-                                                                ),
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          true),
-                                                                  child: Text(
-                                                                      'Registrar empresa'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        ) ??
-                                                        false;
-                                                if (confirmDialogResponse) {
-                                                  context.pushNamed(
-                                                      'OK_FN_Payry_19_formularioEmpresa');
-
-                                                  if (_shouldSetState)
-                                                    setState(() {});
-                                                  return;
-                                                } else {
-                                                  if (_shouldSetState)
-                                                    setState(() {});
-                                                  return;
-                                                }
-                                              }
-                                            } else {
-                                              var confirmDialogResponse =
-                                                  await showDialog<bool>(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title: Text(
-                                                                'Acceso denegado'),
-                                                            content: Text(
-                                                                'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        false),
-                                                                child: Text(
-                                                                    'Cancelar'),
-                                                              ),
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        true),
-                                                                child: Text(
-                                                                    'Verificar número'),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      ) ??
-                                                      false;
-                                              if (confirmDialogResponse) {
-                                                context.pushNamed(
-                                                    'OK_FN_Payry_15_EditProfile');
-
-                                                if (_shouldSetState)
-                                                  setState(() {});
-                                                return;
-                                              } else {
-                                                if (_shouldSetState)
-                                                  setState(() {});
-                                                return;
-                                              }
-                                            }
-                                          } else {
-                                            var confirmDialogResponse =
-                                                await showDialog<bool>(
-                                                      context: context,
-                                                      builder:
-                                                          (alertDialogContext) {
-                                                        return AlertDialog(
-                                                          title: Text(
-                                                              'Acceso denegado'),
-                                                          content: Text(
-                                                              'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext,
-                                                                      false),
-                                                              child: Text(
-                                                                  'Cancelar'),
-                                                            ),
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext,
-                                                                      true),
-                                                              child: Text(
-                                                                  'Reenviar'),
-                                                            ),
-                                                          ],
-                                                        );
-                                                      },
-                                                    ) ??
-                                                    false;
-                                            if (confirmDialogResponse) {
-                                              _model.verifyACStatisticsMenu =
-                                                  await AuthGroup
-                                                      .verifyEmailCall
-                                                      .call(
-                                                email: currentUserEmail,
-                                              );
-                                              _shouldSetState = true;
-                                              if (getJsonField(
-                                                (_model.verifyACStatisticsMenu
-                                                        ?.jsonBody ??
-                                                    ''),
-                                                r'''$.success''',
-                                              )) {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'Verificación enviada'),
-                                                      content: Text(
-                                                          'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Ok'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
                                               } else {
                                                 await showDialog(
+                                                  barrierDismissible: false,
                                                   context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text('Error'),
-                                                      content:
-                                                          Text(getJsonField(
-                                                        (_model.verifyACStatisticsMenu
-                                                                ?.jsonBody ??
-                                                            ''),
-                                                        r'''$.message''',
-                                                      ).toString()),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Ok'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
-                                              }
-
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                              return;
-                                            } else {
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                              return;
-                                            }
-                                          }
-                                        } else {
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        }
-
-                                        if (_shouldSetState) setState(() {});
-                                      },
-                                      child: Container(
-                                        width: () {
-                                          if (MediaQuery.sizeOf(context).width <
-                                              390.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.42);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              480.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.44);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              900.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.3);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1025.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.23);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1300.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.18);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1600.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.14);
-                                          } else {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.1);
-                                          }
-                                        }(),
-                                        height: 75.0,
-                                        decoration: BoxDecoration(
-                                          color: valueOrDefault<Color>(
-                                            valueOrDefault<bool>(
-                                                        currentUserDocument
-                                                            ?.isAdmin,
-                                                        false) ||
-                                                    oKFNPayry13MenumasUserPermissionsRecord!
-                                                        .readStatistics
-                                                ? FlutterFlowTheme.of(context)
-                                                    .secondaryBackground
-                                                : Color(0x83CCCCCC),
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              blurRadius: 4.0,
-                                              color: Color(0x33000000),
-                                              offset: Offset(
-                                                0.0,
-                                                2.0,
-                                              ),
-                                            )
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 16.0, 0.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 10.0, 0.0),
-                                                child: Icon(
-                                                  FFIcons.kestadisticas,
-                                                  color: valueOrDefault<bool>(
-                                                              currentUserDocument
-                                                                  ?.isAdmin,
-                                                              false) ||
-                                                          oKFNPayry13MenumasUserPermissionsRecord!
-                                                              .readStatistics
-                                                      ? FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryText
-                                                      : Color(0xFFA1A1A1),
-                                                  size: 20.0,
-                                                ),
-                                              ),
-                                              Text(
-                                                'Estadísticas',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Lexend',
-                                                      color: valueOrDefault<
-                                                                      bool>(
-                                                                  currentUserDocument
-                                                                      ?.isAdmin,
-                                                                  false) ||
-                                                              oKFNPayry13MenumasUserPermissionsRecord!
-                                                                  .readStatistics
-                                                          ? FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText
-                                                          : Color(0xFFA1A1A1),
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                              ),
-                                            ].divide(SizedBox(width: 5.0)),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  AuthUserStreamWidget(
-                                    builder: (context) => InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        var _shouldSetState = false;
-                                        if (valueOrDefault<bool>(
-                                                currentUserDocument?.isAdmin,
-                                                false) ||
-                                            oKFNPayry13MenumasUserPermissionsRecord!
-                                                .readUsers) {
-                                          if (valueOrDefault<bool>(
-                                              currentUserDocument?.isValidMail,
-                                              false)) {
-                                            if (valueOrDefault<bool>(
-                                                    currentUserDocument
-                                                        ?.isValidPhoneNumber,
-                                                    false) ==
-                                                true) {
-                                              if (valueOrDefault<bool>(
-                                                      currentUserDocument
-                                                          ?.isAdmin,
-                                                      false)
-                                                  ? valueOrDefault<bool>(
-                                                      currentUserDocument
-                                                          ?.isCompanyComplete,
-                                                      false)
-                                                  : true) {
-                                                context.pushNamed(
-                                                    'OK_FN_Payry_24_listadoUsuarios');
-
-                                                if (_shouldSetState)
-                                                  setState(() {});
-                                                return;
-                                              } else {
-                                                var confirmDialogResponse =
-                                                    await showDialog<bool>(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Acceso denegado'),
-                                                              content: Text(
-                                                                  'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          false),
-                                                                  child: Text(
-                                                                      'Cancelar'),
-                                                                ),
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          true),
-                                                                  child: Text(
-                                                                      'Registrar empresa'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        ) ??
-                                                        false;
-                                                if (confirmDialogResponse) {
-                                                  context.pushNamed(
-                                                      'OK_FN_Payry_19_formularioEmpresa');
-
-                                                  if (_shouldSetState)
-                                                    setState(() {});
-                                                  return;
-                                                } else {
-                                                  if (_shouldSetState)
-                                                    setState(() {});
-                                                  return;
-                                                }
-                                              }
-                                            } else {
-                                              var confirmDialogResponse =
-                                                  await showDialog<bool>(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title: Text(
-                                                                'Acceso denegado'),
-                                                            content: Text(
-                                                                'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        false),
-                                                                child: Text(
-                                                                    'Cancelar'),
-                                                              ),
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        true),
-                                                                child: Text(
-                                                                    'Verificar número'),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      ) ??
-                                                      false;
-                                              if (confirmDialogResponse) {
-                                                context.pushNamed(
-                                                    'OK_FN_Payry_15_EditProfile');
-
-                                                if (_shouldSetState)
-                                                  setState(() {});
-                                                return;
-                                              } else {
-                                                if (_shouldSetState)
-                                                  setState(() {});
-                                                return;
-                                              }
-                                            }
-                                          } else {
-                                            var confirmDialogResponse =
-                                                await showDialog<bool>(
-                                                      context: context,
-                                                      builder:
-                                                          (alertDialogContext) {
-                                                        return AlertDialog(
-                                                          title: Text(
-                                                              'Acceso denegado'),
-                                                          content: Text(
-                                                              'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext,
-                                                                      false),
-                                                              child: Text(
-                                                                  'Cancelar'),
-                                                            ),
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext,
-                                                                      true),
-                                                              child: Text(
-                                                                  'Reenviar'),
-                                                            ),
-                                                          ],
-                                                        );
-                                                      },
-                                                    ) ??
-                                                    false;
-                                            if (confirmDialogResponse) {
-                                              _model.verifyACUsersMenu =
-                                                  await AuthGroup
-                                                      .verifyEmailCall
-                                                      .call(
-                                                email: currentUserEmail,
-                                              );
-                                              _shouldSetState = true;
-                                              if (getJsonField(
-                                                (_model.verifyACUsersMenu
-                                                        ?.jsonBody ??
-                                                    ''),
-                                                r'''$.success''',
-                                              )) {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'Verificación enviada'),
-                                                      content: Text(
-                                                          'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Ok'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
-                                              } else {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text('Error'),
-                                                      content:
-                                                          Text(getJsonField(
-                                                        (_model.verifyACUsersMenu
-                                                                ?.jsonBody ??
-                                                            ''),
-                                                        r'''$.message''',
-                                                      ).toString()),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Ok'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
-                                              }
-
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                              return;
-                                            } else {
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                              return;
-                                            }
-                                          }
-                                        } else {
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        }
-
-                                        if (_shouldSetState) setState(() {});
-                                      },
-                                      child: Container(
-                                        width: () {
-                                          if (MediaQuery.sizeOf(context).width <
-                                              390.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.42);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              480.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.44);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              900.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.3);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1025.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.23);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1300.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.18);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1600.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.14);
-                                          } else {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.1);
-                                          }
-                                        }(),
-                                        height: 75.0,
-                                        decoration: BoxDecoration(
-                                          color: valueOrDefault<Color>(
-                                            valueOrDefault<bool>(
-                                                        currentUserDocument
-                                                            ?.isAdmin,
-                                                        false) ||
-                                                    oKFNPayry13MenumasUserPermissionsRecord!
-                                                        .readUsers
-                                                ? FlutterFlowTheme.of(context)
-                                                    .secondaryBackground
-                                                : Color(0x83CCCCCC),
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              blurRadius: 4.0,
-                                              color: Color(0x33000000),
-                                              offset: Offset(
-                                                0.0,
-                                                2.0,
-                                              ),
-                                            )
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 16.0, 0.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 10.0, 0.0),
-                                                child: Icon(
-                                                  FFIcons.kvariosUsuarios,
-                                                  color: valueOrDefault<bool>(
-                                                          currentUserDocument
-                                                              ?.isAdmin,
-                                                          false)
-                                                      ? FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryText
-                                                      : Color(0xFFA1A1A1),
-                                                  size: 20.0,
-                                                ),
-                                              ),
-                                              Text(
-                                                'Usuarios',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Lexend',
-                                                      color: valueOrDefault<
-                                                                  bool>(
-                                                              currentUserDocument
-                                                                  ?.isAdmin,
-                                                              false)
-                                                          ? FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText
-                                                          : Color(0xFFA1A1A1),
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                              ),
-                                            ].divide(SizedBox(width: 5.0)),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  AuthUserStreamWidget(
-                                    builder: (context) => InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        var _shouldSetState = false;
-                                        if (valueOrDefault<bool>(
-                                                currentUserDocument?.isAdmin,
-                                                false) ||
-                                            oKFNPayry13MenumasUserPermissionsRecord!
-                                                .readInvoices) {
-                                          if (valueOrDefault<bool>(
-                                              currentUserDocument?.isValidMail,
-                                              false)) {
-                                            if (valueOrDefault<bool>(
-                                                    currentUserDocument
-                                                        ?.isValidPhoneNumber,
-                                                    false) ==
-                                                true) {
-                                              if (valueOrDefault<bool>(
-                                                      currentUserDocument
-                                                          ?.isAdmin,
-                                                      false)
-                                                  ? valueOrDefault<bool>(
-                                                      currentUserDocument
-                                                          ?.isCompanyComplete,
-                                                      false)
-                                                  : true) {
-                                                context.pushNamed(
-                                                    'OK_FN_Payry_37_facturas');
-
-                                                if (_shouldSetState)
-                                                  setState(() {});
-                                                return;
-                                              } else {
-                                                var confirmDialogResponse =
-                                                    await showDialog<bool>(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Acceso denegado'),
-                                                              content: Text(
-                                                                  'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          false),
-                                                                  child: Text(
-                                                                      'Cancelar'),
-                                                                ),
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          true),
-                                                                  child: Text(
-                                                                      'Registrar empresa'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        ) ??
-                                                        false;
-                                                if (confirmDialogResponse) {
-                                                  context.pushNamed(
-                                                      'OK_FN_Payry_19_formularioEmpresa');
-
-                                                  if (_shouldSetState)
-                                                    setState(() {});
-                                                  return;
-                                                } else {
-                                                  if (_shouldSetState)
-                                                    setState(() {});
-                                                  return;
-                                                }
-                                              }
-                                            } else {
-                                              var confirmDialogResponse =
-                                                  await showDialog<bool>(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title: Text(
-                                                                'Acceso denegado'),
-                                                            content: Text(
-                                                                'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        false),
-                                                                child: Text(
-                                                                    'Cancelar'),
-                                                              ),
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        true),
-                                                                child: Text(
-                                                                    'Verificar número'),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      ) ??
-                                                      false;
-                                              if (confirmDialogResponse) {
-                                                context.pushNamed(
-                                                    'OK_FN_Payry_15_EditProfile');
-
-                                                if (_shouldSetState)
-                                                  setState(() {});
-                                                return;
-                                              } else {
-                                                if (_shouldSetState)
-                                                  setState(() {});
-                                                return;
-                                              }
-                                            }
-                                          } else {
-                                            var confirmDialogResponse =
-                                                await showDialog<bool>(
-                                                      context: context,
-                                                      builder:
-                                                          (alertDialogContext) {
-                                                        return AlertDialog(
-                                                          title: Text(
-                                                              'Acceso denegado'),
-                                                          content: Text(
-                                                              'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext,
-                                                                      false),
-                                                              child: Text(
-                                                                  'Cancelar'),
-                                                            ),
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext,
-                                                                      true),
-                                                              child: Text(
-                                                                  'Reenviar'),
-                                                            ),
-                                                          ],
-                                                        );
-                                                      },
-                                                    ) ??
-                                                    false;
-                                            if (confirmDialogResponse) {
-                                              _model.verifyACFactsMenu =
-                                                  await AuthGroup
-                                                      .verifyEmailCall
-                                                      .call(
-                                                email: currentUserEmail,
-                                              );
-                                              _shouldSetState = true;
-                                              if (getJsonField(
-                                                (_model.verifyACFactsMenu
-                                                        ?.jsonBody ??
-                                                    ''),
-                                                r'''$.success''',
-                                              )) {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'Verificación enviada'),
-                                                      content: Text(
-                                                          'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Ok'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
-                                              } else {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text('Error'),
-                                                      content:
-                                                          Text(getJsonField(
-                                                        (_model.verifyACFactsMenu
-                                                                ?.jsonBody ??
-                                                            ''),
-                                                        r'''$.message''',
-                                                      ).toString()),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Ok'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
-                                              }
-
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                              return;
-                                            } else {
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                              return;
-                                            }
-                                          }
-                                        } else {
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        }
-
-                                        if (_shouldSetState) setState(() {});
-                                      },
-                                      child: Container(
-                                        width: () {
-                                          if (MediaQuery.sizeOf(context).width <
-                                              390.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.42);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              480.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.44);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              900.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.3);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1025.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.23);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1300.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.18);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1600.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.14);
-                                          } else {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.1);
-                                          }
-                                        }(),
-                                        height: 75.0,
-                                        decoration: BoxDecoration(
-                                          color: valueOrDefault<Color>(
-                                            valueOrDefault<bool>(
-                                                        currentUserDocument
-                                                            ?.isAdmin,
-                                                        false) ||
-                                                    oKFNPayry13MenumasUserPermissionsRecord!
-                                                        .readInvoices
-                                                ? FlutterFlowTheme.of(context)
-                                                    .secondaryBackground
-                                                : Color(0x83CCCCCC),
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              blurRadius: 4.0,
-                                              color: Color(0x33000000),
-                                              offset: Offset(
-                                                0.0,
-                                                2.0,
-                                              ),
-                                            )
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 16.0, 0.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 10.0, 0.0),
-                                                child: Icon(
-                                                  FFIcons.kfactura,
-                                                  color: valueOrDefault<bool>(
-                                                              currentUserDocument
-                                                                  ?.isAdmin,
-                                                              false) ||
-                                                          oKFNPayry13MenumasUserPermissionsRecord!
-                                                              .readInvoices
-                                                      ? FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryText
-                                                      : Color(0xFFA1A1A1),
-                                                  size: 20.0,
-                                                ),
-                                              ),
-                                              Text(
-                                                'Facturas',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Lexend',
-                                                      color: valueOrDefault<
-                                                                      bool>(
-                                                                  currentUserDocument
-                                                                      ?.isAdmin,
-                                                                  false) ||
-                                                              oKFNPayry13MenumasUserPermissionsRecord!
-                                                                  .readInvoices
-                                                          ? FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText
-                                                          : Color(0xFFA1A1A1),
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                              ),
-                                            ].divide(SizedBox(width: 5.0)),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  AuthUserStreamWidget(
-                                    builder: (context) => InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        var _shouldSetState = false;
-                                        if (valueOrDefault<bool>(
-                                                currentUserDocument?.isAdmin,
-                                                false) ||
-                                            oKFNPayry13MenumasUserPermissionsRecord!
-                                                .readTransfers) {
-                                          if (valueOrDefault<bool>(
-                                              currentUserDocument?.isValidMail,
-                                              false)) {
-                                            if (valueOrDefault<bool>(
-                                                    currentUserDocument
-                                                        ?.isValidPhoneNumber,
-                                                    false) ==
-                                                true) {
-                                              if (valueOrDefault<bool>(
-                                                      currentUserDocument
-                                                          ?.isAdmin,
-                                                      false)
-                                                  ? valueOrDefault<bool>(
-                                                      currentUserDocument
-                                                          ?.isCompanyComplete,
-                                                      false)
-                                                  : true) {
-                                                context.pushNamed(
-                                                    'OK_FN_Payry_44_historialTransactions');
-
-                                                if (_shouldSetState)
-                                                  setState(() {});
-                                                return;
-                                              } else {
-                                                var confirmDialogResponse =
-                                                    await showDialog<bool>(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Acceso denegado'),
-                                                              content: Text(
-                                                                  'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          false),
-                                                                  child: Text(
-                                                                      'Cancelar'),
-                                                                ),
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          true),
-                                                                  child: Text(
-                                                                      'Registrar empresa'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        ) ??
-                                                        false;
-                                                if (confirmDialogResponse) {
-                                                  context.pushNamed(
-                                                      'OK_FN_Payry_19_formularioEmpresa');
-
-                                                  if (_shouldSetState)
-                                                    setState(() {});
-                                                  return;
-                                                } else {
-                                                  if (_shouldSetState)
-                                                    setState(() {});
-                                                  return;
-                                                }
-                                              }
-                                            } else {
-                                              var confirmDialogResponse =
-                                                  await showDialog<bool>(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title: Text(
-                                                                'Acceso denegado'),
-                                                            content: Text(
-                                                                'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        false),
-                                                                child: Text(
-                                                                    'Cancelar'),
-                                                              ),
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        true),
-                                                                child: Text(
-                                                                    'Verificar número'),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      ) ??
-                                                      false;
-                                              if (confirmDialogResponse) {
-                                                context.pushNamed(
-                                                    'OK_FN_Payry_15_EditProfile');
-
-                                                if (_shouldSetState)
-                                                  setState(() {});
-                                                return;
-                                              } else {
-                                                if (_shouldSetState)
-                                                  setState(() {});
-                                                return;
-                                              }
-                                            }
-                                          } else {
-                                            var confirmDialogResponse =
-                                                await showDialog<bool>(
-                                                      context: context,
-                                                      builder:
-                                                          (alertDialogContext) {
-                                                        return AlertDialog(
-                                                          title: Text(
-                                                              'Acceso denegado'),
-                                                          content: Text(
-                                                              'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext,
-                                                                      false),
-                                                              child: Text(
-                                                                  'Cancelar'),
-                                                            ),
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext,
-                                                                      true),
-                                                              child: Text(
-                                                                  'Reenviar'),
-                                                            ),
-                                                          ],
-                                                        );
-                                                      },
-                                                    ) ??
-                                                    false;
-                                            if (confirmDialogResponse) {
-                                              _model.verifyACTransferMenu =
-                                                  await AuthGroup
-                                                      .verifyEmailCall
-                                                      .call(
-                                                email: currentUserEmail,
-                                              );
-                                              _shouldSetState = true;
-                                              if (getJsonField(
-                                                (_model.verifyACTransferMenu
-                                                        ?.jsonBody ??
-                                                    ''),
-                                                r'''$.success''',
-                                              )) {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'Verificación enviada'),
-                                                      content: Text(
-                                                          'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Ok'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
-                                              } else {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text('Error'),
-                                                      content:
-                                                          Text(getJsonField(
-                                                        (_model.verifyACTransferMenu
-                                                                ?.jsonBody ??
-                                                            ''),
-                                                        r'''$.message''',
-                                                      ).toString()),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Ok'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
-                                              }
-
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                              return;
-                                            } else {
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                              return;
-                                            }
-                                          }
-                                        } else {
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        }
-
-                                        if (_shouldSetState) setState(() {});
-                                      },
-                                      child: Container(
-                                        width: () {
-                                          if (MediaQuery.sizeOf(context).width <
-                                              390.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.42);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              480.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.44);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              900.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.3);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1025.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.23);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1300.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.18);
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1600.0) {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.14);
-                                          } else {
-                                            return (MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.1);
-                                          }
-                                        }(),
-                                        height: 75.0,
-                                        decoration: BoxDecoration(
-                                          color: valueOrDefault<Color>(
-                                            valueOrDefault<bool>(
-                                                        currentUserDocument
-                                                            ?.isAdmin,
-                                                        false) ||
-                                                    oKFNPayry13MenumasUserPermissionsRecord!
-                                                        .readTransfers
-                                                ? FlutterFlowTheme.of(context)
-                                                    .secondaryBackground
-                                                : Color(0x83CCCCCC),
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              blurRadius: 4.0,
-                                              color: Color(0x33000000),
-                                              offset: Offset(
-                                                0.0,
-                                                2.0,
-                                              ),
-                                            )
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 16.0, 0.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 10.0, 0.0),
-                                                child: Icon(
-                                                  FFIcons.kcompartir,
-                                                  color: valueOrDefault<bool>(
-                                                              currentUserDocument
-                                                                  ?.isAdmin,
-                                                              false) ||
-                                                          oKFNPayry13MenumasUserPermissionsRecord!
-                                                              .readTransfers
-                                                      ? FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryText
-                                                      : Color(0xFFA1A1A1),
-                                                  size: 20.0,
-                                                ),
-                                              ),
-                                              Text(
-                                                'Transferencias',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Lexend',
-                                                          color: valueOrDefault<
-                                                                          bool>(
-                                                                      currentUserDocument
-                                                                          ?.isAdmin,
-                                                                      false) ||
-                                                                  oKFNPayry13MenumasUserPermissionsRecord!
-                                                                      .readTransfers
-                                                              ? (valueOrDefault<
-                                                                              bool>(
-                                                                          currentUserDocument
-                                                                              ?.isAdmin,
-                                                                          false) ||
-                                                                      oKFNPayry13MenumasUserPermissionsRecord!
-                                                                          .readTransfers
-                                                                  ? FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText
-                                                                  : Color(
-                                                                      0x808F8F8F))
-                                                              : Color(
-                                                                  0xFFA1A1A1),
-                                                          fontSize:
-                                                              valueOrDefault<
-                                                                  double>(
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: Container(
+                                                        height:
                                                             MediaQuery.sizeOf(
-                                                                            context)
-                                                                        .width <
-                                                                    390.0
-                                                                ? 11.0
-                                                                : 14.0,
-                                                            11.0,
-                                                          ),
-                                                          letterSpacing: 0.0,
+                                                                        context)
+                                                                    .height *
+                                                                0.3,
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.9,
+                                                        child:
+                                                            CustomConfirmDialogWidget(
+                                                          title:
+                                                              'Acceso denegado',
+                                                          description:
+                                                              'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.',
+                                                          buttonText:
+                                                              'Verificar número',
+                                                          showDismissButton:
+                                                              true,
+                                                          dismissAction:
+                                                              () async {
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          mainAction: () async {
+                                                            context.pushNamed(
+                                                                'OK_FN_Payry_15_EditProfile');
+                                                          },
                                                         ),
-                                              ),
-                                            ].divide(SizedBox(width: 5.0)),
+                                                      ),
+                                                    );
+                                                  },
+                                                ).then(
+                                                    (value) => setState(() {}));
+
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              }
+                                            } else {
+                                              await showDialog(
+                                                barrierDismissible: false,
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: Container(
+                                                      height: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .height *
+                                                          0.3,
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          0.9,
+                                                      child:
+                                                          CustomConfirmDialogWidget(
+                                                        title:
+                                                            'Acceso denegado',
+                                                        description:
+                                                            'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.',
+                                                        buttonText: 'Reenviar',
+                                                        showDismissButton: true,
+                                                        dismissAction:
+                                                            () async {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        mainAction: () async {
+                                                          var _shouldSetState =
+                                                              false;
+                                                          _model.verifyACCompayMenu =
+                                                              await AuthGroup
+                                                                  .verifyEmailCall
+                                                                  .call(
+                                                            email:
+                                                                currentUserEmail,
+                                                          );
+                                                          _shouldSetState =
+                                                              true;
+                                                          if (getJsonField(
+                                                            (_model.verifyACCompayMenu
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                            r'''$.success''',
+                                                          )) {
+                                                            Navigator.pop(
+                                                                context);
+                                                            await showDialog(
+                                                              barrierDismissible:
+                                                                  false,
+                                                              context: context,
+                                                              builder:
+                                                                  (dialogContext) {
+                                                                return Dialog(
+                                                                  elevation: 0,
+                                                                  insetPadding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  alignment: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  child:
+                                                                      Container(
+                                                                    height: MediaQuery.sizeOf(context)
+                                                                            .height *
+                                                                        0.25,
+                                                                    width: MediaQuery.sizeOf(context)
+                                                                            .width *
+                                                                        0.9,
+                                                                    child:
+                                                                        CustomConfirmDialogWidget(
+                                                                      title:
+                                                                          'Verificación enviada',
+                                                                      description:
+                                                                          'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.',
+                                                                      buttonText:
+                                                                          'Aceptar',
+                                                                      showDismissButton:
+                                                                          false,
+                                                                      dismissAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                      mainAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                setState(
+                                                                    () {}));
+
+                                                            return;
+                                                          } else {
+                                                            Navigator.pop(
+                                                                context);
+                                                            await showDialog(
+                                                              barrierDismissible:
+                                                                  false,
+                                                              context: context,
+                                                              builder:
+                                                                  (dialogContext) {
+                                                                return Dialog(
+                                                                  elevation: 0,
+                                                                  insetPadding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  alignment: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  child:
+                                                                      Container(
+                                                                    height: MediaQuery.sizeOf(context)
+                                                                            .height *
+                                                                        0.25,
+                                                                    width: MediaQuery.sizeOf(context)
+                                                                            .width *
+                                                                        0.9,
+                                                                    child:
+                                                                        CustomConfirmDialogWidget(
+                                                                      title:
+                                                                          'Error',
+                                                                      description:
+                                                                          getJsonField(
+                                                                        (_model.verifyACCompayMenu?.jsonBody ??
+                                                                            ''),
+                                                                        r'''$.message''',
+                                                                      ).toString(),
+                                                                      buttonText:
+                                                                          'Aceptar',
+                                                                      showDismissButton:
+                                                                          false,
+                                                                      dismissAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                      mainAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                setState(
+                                                                    () {}));
+
+                                                            return;
+                                                          }
+                                                        },
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ).then(
+                                                  (value) => setState(() {}));
+
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            }
+                                          } else {
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          }
+
+                                          if (_shouldSetState) setState(() {});
+                                        },
+                                        child: Container(
+                                          width: () {
+                                            if (MediaQuery.sizeOf(context)
+                                                    .width <
+                                                390.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.42);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                480.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.44);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                900.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.3);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1025.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.23);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1300.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.18);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1600.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.14);
+                                            } else {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.1);
+                                            }
+                                          }(),
+                                          height: 75.0,
+                                          decoration: BoxDecoration(
+                                            color: valueOrDefault<Color>(
+                                              valueOrDefault<bool>(
+                                                          currentUserDocument
+                                                              ?.isAdmin,
+                                                          false) ||
+                                                      oKFNPayry13MenumasUserPermissionsRecord!
+                                                          .readCompanies
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .secondaryBackground
+                                                  : Color(0x83CCCCCC),
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                            ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                blurRadius: 4.0,
+                                                color: Color(0x33000000),
+                                                offset: Offset(
+                                                  0.0,
+                                                  2.0,
+                                                ),
+                                              )
+                                            ],
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 0.0, 16.0, 0.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 10.0, 0.0),
+                                                  child: Icon(
+                                                    FFIcons.kempresa,
+                                                    color: valueOrDefault<bool>(
+                                                            currentUserDocument
+                                                                ?.isAdmin,
+                                                            false)
+                                                        ? FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText
+                                                        : Color(0xFFA1A1A1),
+                                                    size: 20.0,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  'Empresa',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color: valueOrDefault<
+                                                                    bool>(
+                                                                currentUserDocument
+                                                                    ?.isAdmin,
+                                                                false)
+                                                            ? FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText
+                                                            : Color(0xFFA1A1A1),
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ].divide(SizedBox(width: 5.0)),
+                                            ),
+                                          ),
+                                        ),
+                                      ).addWalkthrough(
+                                        containerUroenb4x,
+                                        _model.primerosPasosMenuMasController,
+                                      ),
+                                    ),
+                                  ),
+                                  Builder(
+                                    builder: (context) => AuthUserStreamWidget(
+                                      builder: (context) => InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          var _shouldSetState = false;
+                                          if (valueOrDefault<bool>(
+                                                  currentUserDocument?.isAdmin,
+                                                  false) ||
+                                              oKFNPayry13MenumasUserPermissionsRecord!
+                                                  .readStatistics) {
+                                            if (valueOrDefault<bool>(
+                                                currentUserDocument
+                                                    ?.isValidMail,
+                                                false)) {
+                                              if (valueOrDefault<bool>(
+                                                      currentUserDocument
+                                                          ?.isValidPhoneNumber,
+                                                      false) ==
+                                                  true) {
+                                                if (valueOrDefault<bool>(
+                                                        currentUserDocument
+                                                            ?.isAdmin,
+                                                        false)
+                                                    ? valueOrDefault<bool>(
+                                                        currentUserDocument
+                                                            ?.isCompanyComplete,
+                                                        false)
+                                                    : true) {
+                                                  context.pushNamed(
+                                                      'OK_FN_Payry_38_Estadisticas');
+
+                                                  if (_shouldSetState)
+                                                    setState(() {});
+                                                  return;
+                                                } else {
+                                                  await showDialog(
+                                                    barrierDismissible: false,
+                                                    context: context,
+                                                    builder: (dialogContext) {
+                                                      return Dialog(
+                                                        elevation: 0,
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        child: Container(
+                                                          height:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .height *
+                                                                  0.3,
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  0.9,
+                                                          child:
+                                                              CustomConfirmDialogWidget(
+                                                            title:
+                                                                'Acceso denegado',
+                                                            description:
+                                                                'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.',
+                                                            buttonText:
+                                                                'Registrar empresa',
+                                                            showDismissButton:
+                                                                true,
+                                                            dismissAction:
+                                                                () async {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            mainAction:
+                                                                () async {
+                                                              context.pushNamed(
+                                                                  'OK_FN_Payry_19_formularioEmpresa');
+                                                            },
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      setState(() {}));
+
+                                                  if (_shouldSetState)
+                                                    setState(() {});
+                                                  return;
+                                                }
+                                              } else {
+                                                await showDialog(
+                                                  barrierDismissible: false,
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: Container(
+                                                        height:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .height *
+                                                                0.3,
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.9,
+                                                        child:
+                                                            CustomConfirmDialogWidget(
+                                                          title:
+                                                              'Acceso denegado',
+                                                          description:
+                                                              'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.',
+                                                          buttonText:
+                                                              'Verificar número',
+                                                          showDismissButton:
+                                                              true,
+                                                          dismissAction:
+                                                              () async {
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          mainAction: () async {
+                                                            context.pushNamed(
+                                                                'OK_FN_Payry_15_EditProfile');
+                                                          },
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                ).then(
+                                                    (value) => setState(() {}));
+
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              }
+                                            } else {
+                                              await showDialog(
+                                                barrierDismissible: false,
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: Container(
+                                                      height: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .height *
+                                                          0.3,
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          0.9,
+                                                      child:
+                                                          CustomConfirmDialogWidget(
+                                                        title:
+                                                            'Acceso denegado',
+                                                        description:
+                                                            'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.',
+                                                        buttonText: 'Reenviar',
+                                                        showDismissButton: true,
+                                                        dismissAction:
+                                                            () async {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        mainAction: () async {
+                                                          var _shouldSetState =
+                                                              false;
+                                                          _model.verifyACStatisticsMenu =
+                                                              await AuthGroup
+                                                                  .verifyEmailCall
+                                                                  .call(
+                                                            email:
+                                                                currentUserEmail,
+                                                          );
+                                                          _shouldSetState =
+                                                              true;
+                                                          if (getJsonField(
+                                                            (_model.verifyACStatisticsMenu
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                            r'''$.success''',
+                                                          )) {
+                                                            Navigator.pop(
+                                                                context);
+                                                            await showDialog(
+                                                              barrierDismissible:
+                                                                  false,
+                                                              context: context,
+                                                              builder:
+                                                                  (dialogContext) {
+                                                                return Dialog(
+                                                                  elevation: 0,
+                                                                  insetPadding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  alignment: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  child:
+                                                                      Container(
+                                                                    height: MediaQuery.sizeOf(context)
+                                                                            .height *
+                                                                        0.25,
+                                                                    width: MediaQuery.sizeOf(context)
+                                                                            .width *
+                                                                        0.9,
+                                                                    child:
+                                                                        CustomConfirmDialogWidget(
+                                                                      title:
+                                                                          'Verificación enviada',
+                                                                      description:
+                                                                          'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.',
+                                                                      buttonText:
+                                                                          'Aceptar',
+                                                                      showDismissButton:
+                                                                          false,
+                                                                      dismissAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                      mainAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                setState(
+                                                                    () {}));
+
+                                                            return;
+                                                          } else {
+                                                            Navigator.pop(
+                                                                context);
+                                                            await showDialog(
+                                                              barrierDismissible:
+                                                                  false,
+                                                              context: context,
+                                                              builder:
+                                                                  (dialogContext) {
+                                                                return Dialog(
+                                                                  elevation: 0,
+                                                                  insetPadding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  alignment: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  child:
+                                                                      Container(
+                                                                    height: MediaQuery.sizeOf(context)
+                                                                            .height *
+                                                                        0.25,
+                                                                    width: MediaQuery.sizeOf(context)
+                                                                            .width *
+                                                                        0.9,
+                                                                    child:
+                                                                        CustomConfirmDialogWidget(
+                                                                      title:
+                                                                          'Error',
+                                                                      description:
+                                                                          getJsonField(
+                                                                        (_model.verifyACStatisticsMenu?.jsonBody ??
+                                                                            ''),
+                                                                        r'''$.message''',
+                                                                      ).toString(),
+                                                                      buttonText:
+                                                                          'Aceptar',
+                                                                      showDismissButton:
+                                                                          false,
+                                                                      dismissAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                      mainAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                setState(
+                                                                    () {}));
+
+                                                            return;
+                                                          }
+                                                        },
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ).then(
+                                                  (value) => setState(() {}));
+
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            }
+                                          } else {
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          }
+
+                                          if (_shouldSetState) setState(() {});
+                                        },
+                                        child: Container(
+                                          width: () {
+                                            if (MediaQuery.sizeOf(context)
+                                                    .width <
+                                                390.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.42);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                480.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.44);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                900.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.3);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1025.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.23);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1300.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.18);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1600.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.14);
+                                            } else {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.1);
+                                            }
+                                          }(),
+                                          height: 75.0,
+                                          decoration: BoxDecoration(
+                                            color: valueOrDefault<Color>(
+                                              valueOrDefault<bool>(
+                                                          currentUserDocument
+                                                              ?.isAdmin,
+                                                          false) ||
+                                                      oKFNPayry13MenumasUserPermissionsRecord!
+                                                          .readStatistics
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .secondaryBackground
+                                                  : Color(0x83CCCCCC),
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                            ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                blurRadius: 4.0,
+                                                color: Color(0x33000000),
+                                                offset: Offset(
+                                                  0.0,
+                                                  2.0,
+                                                ),
+                                              )
+                                            ],
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 0.0, 16.0, 0.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 10.0, 0.0),
+                                                  child: Icon(
+                                                    FFIcons.kestadisticas,
+                                                    color: valueOrDefault<bool>(
+                                                                currentUserDocument
+                                                                    ?.isAdmin,
+                                                                false) ||
+                                                            oKFNPayry13MenumasUserPermissionsRecord!
+                                                                .readStatistics
+                                                        ? FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText
+                                                        : Color(0xFFA1A1A1),
+                                                    size: 20.0,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  'Estadísticas',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color: valueOrDefault<
+                                                                        bool>(
+                                                                    currentUserDocument
+                                                                        ?.isAdmin,
+                                                                    false) ||
+                                                                oKFNPayry13MenumasUserPermissionsRecord!
+                                                                    .readStatistics
+                                                            ? FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText
+                                                            : Color(0xFFA1A1A1),
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ].divide(SizedBox(width: 5.0)),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Builder(
+                                    builder: (context) => AuthUserStreamWidget(
+                                      builder: (context) => InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          var _shouldSetState = false;
+                                          if (valueOrDefault<bool>(
+                                                  currentUserDocument?.isAdmin,
+                                                  false) ||
+                                              oKFNPayry13MenumasUserPermissionsRecord!
+                                                  .readUsers) {
+                                            if (valueOrDefault<bool>(
+                                                currentUserDocument
+                                                    ?.isValidMail,
+                                                false)) {
+                                              if (valueOrDefault<bool>(
+                                                      currentUserDocument
+                                                          ?.isValidPhoneNumber,
+                                                      false) ==
+                                                  true) {
+                                                if (valueOrDefault<bool>(
+                                                        currentUserDocument
+                                                            ?.isAdmin,
+                                                        false)
+                                                    ? valueOrDefault<bool>(
+                                                        currentUserDocument
+                                                            ?.isCompanyComplete,
+                                                        false)
+                                                    : true) {
+                                                  context.pushNamed(
+                                                      'OK_FN_Payry_24_listadoUsuarios');
+
+                                                  if (_shouldSetState)
+                                                    setState(() {});
+                                                  return;
+                                                } else {
+                                                  await showDialog(
+                                                    barrierDismissible: false,
+                                                    context: context,
+                                                    builder: (dialogContext) {
+                                                      return Dialog(
+                                                        elevation: 0,
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        child: Container(
+                                                          height:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .height *
+                                                                  0.3,
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  0.9,
+                                                          child:
+                                                              CustomConfirmDialogWidget(
+                                                            title:
+                                                                'Acceso denegado',
+                                                            description:
+                                                                'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.',
+                                                            buttonText:
+                                                                'Registrar empresa',
+                                                            showDismissButton:
+                                                                true,
+                                                            dismissAction:
+                                                                () async {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            mainAction:
+                                                                () async {
+                                                              context.pushNamed(
+                                                                  'OK_FN_Payry_19_formularioEmpresa');
+                                                            },
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      setState(() {}));
+
+                                                  if (_shouldSetState)
+                                                    setState(() {});
+                                                  return;
+                                                }
+                                              } else {
+                                                await showDialog(
+                                                  barrierDismissible: false,
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: Container(
+                                                        height:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .height *
+                                                                0.3,
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.9,
+                                                        child:
+                                                            CustomConfirmDialogWidget(
+                                                          title:
+                                                              'Acceso denegado',
+                                                          description:
+                                                              'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.',
+                                                          buttonText:
+                                                              'Verificar número',
+                                                          showDismissButton:
+                                                              true,
+                                                          dismissAction:
+                                                              () async {
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          mainAction: () async {
+                                                            context.pushNamed(
+                                                                'OK_FN_Payry_15_EditProfile');
+                                                          },
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                ).then(
+                                                    (value) => setState(() {}));
+
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              }
+                                            } else {
+                                              await showDialog(
+                                                barrierDismissible: false,
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: Container(
+                                                      height: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .height *
+                                                          0.3,
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          0.9,
+                                                      child:
+                                                          CustomConfirmDialogWidget(
+                                                        title:
+                                                            'Acceso denegado',
+                                                        description:
+                                                            'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.',
+                                                        buttonText: 'Reenviar',
+                                                        showDismissButton: true,
+                                                        dismissAction:
+                                                            () async {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        mainAction: () async {
+                                                          var _shouldSetState =
+                                                              false;
+                                                          _model.verifyACUserMenu =
+                                                              await AuthGroup
+                                                                  .verifyEmailCall
+                                                                  .call(
+                                                            email:
+                                                                currentUserEmail,
+                                                          );
+                                                          _shouldSetState =
+                                                              true;
+                                                          if (getJsonField(
+                                                            (_model.verifyACUserMenu
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                            r'''$.message''',
+                                                          )) {
+                                                            Navigator.pop(
+                                                                context);
+                                                            await showDialog(
+                                                              barrierDismissible:
+                                                                  false,
+                                                              context: context,
+                                                              builder:
+                                                                  (dialogContext) {
+                                                                return Dialog(
+                                                                  elevation: 0,
+                                                                  insetPadding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  alignment: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  child:
+                                                                      Container(
+                                                                    height: MediaQuery.sizeOf(context)
+                                                                            .height *
+                                                                        0.25,
+                                                                    width: MediaQuery.sizeOf(context)
+                                                                            .width *
+                                                                        0.9,
+                                                                    child:
+                                                                        CustomConfirmDialogWidget(
+                                                                      title:
+                                                                          'Verificación enviada',
+                                                                      description:
+                                                                          'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.',
+                                                                      buttonText:
+                                                                          'Aceptar',
+                                                                      showDismissButton:
+                                                                          false,
+                                                                      dismissAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                      mainAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                setState(
+                                                                    () {}));
+
+                                                            return;
+                                                          } else {
+                                                            Navigator.pop(
+                                                                context);
+                                                            await showDialog(
+                                                              barrierDismissible:
+                                                                  false,
+                                                              context: context,
+                                                              builder:
+                                                                  (dialogContext) {
+                                                                return Dialog(
+                                                                  elevation: 0,
+                                                                  insetPadding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  alignment: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  child:
+                                                                      Container(
+                                                                    height: MediaQuery.sizeOf(context)
+                                                                            .height *
+                                                                        0.25,
+                                                                    width: MediaQuery.sizeOf(context)
+                                                                            .width *
+                                                                        0.9,
+                                                                    child:
+                                                                        CustomConfirmDialogWidget(
+                                                                      title:
+                                                                          'Error',
+                                                                      description:
+                                                                          getJsonField(
+                                                                        (_model.verifyACUserMenu?.jsonBody ??
+                                                                            ''),
+                                                                        r'''$.message''',
+                                                                      ).toString(),
+                                                                      buttonText:
+                                                                          'Aceptar',
+                                                                      showDismissButton:
+                                                                          false,
+                                                                      dismissAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                      mainAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                setState(
+                                                                    () {}));
+
+                                                            return;
+                                                          }
+                                                        },
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ).then(
+                                                  (value) => setState(() {}));
+
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            }
+                                          } else {
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          }
+
+                                          if (_shouldSetState) setState(() {});
+                                        },
+                                        child: Container(
+                                          width: () {
+                                            if (MediaQuery.sizeOf(context)
+                                                    .width <
+                                                390.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.42);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                480.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.44);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                900.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.3);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1025.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.23);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1300.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.18);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1600.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.14);
+                                            } else {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.1);
+                                            }
+                                          }(),
+                                          height: 75.0,
+                                          decoration: BoxDecoration(
+                                            color: valueOrDefault<Color>(
+                                              valueOrDefault<bool>(
+                                                          currentUserDocument
+                                                              ?.isAdmin,
+                                                          false) ||
+                                                      oKFNPayry13MenumasUserPermissionsRecord!
+                                                          .readUsers
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .secondaryBackground
+                                                  : Color(0x83CCCCCC),
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                            ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                blurRadius: 4.0,
+                                                color: Color(0x33000000),
+                                                offset: Offset(
+                                                  0.0,
+                                                  2.0,
+                                                ),
+                                              )
+                                            ],
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 0.0, 16.0, 0.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 10.0, 0.0),
+                                                  child: Icon(
+                                                    FFIcons.kvariosUsuarios,
+                                                    color: valueOrDefault<bool>(
+                                                            currentUserDocument
+                                                                ?.isAdmin,
+                                                            false)
+                                                        ? FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText
+                                                        : Color(0xFFA1A1A1),
+                                                    size: 20.0,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  'Usuarios',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color: valueOrDefault<
+                                                                    bool>(
+                                                                currentUserDocument
+                                                                    ?.isAdmin,
+                                                                false)
+                                                            ? FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText
+                                                            : Color(0xFFA1A1A1),
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ].divide(SizedBox(width: 5.0)),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Builder(
+                                    builder: (context) => AuthUserStreamWidget(
+                                      builder: (context) => InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          var _shouldSetState = false;
+                                          if (valueOrDefault<bool>(
+                                                  currentUserDocument?.isAdmin,
+                                                  false) ||
+                                              oKFNPayry13MenumasUserPermissionsRecord!
+                                                  .readInvoices) {
+                                            if (valueOrDefault<bool>(
+                                                currentUserDocument
+                                                    ?.isValidMail,
+                                                false)) {
+                                              if (valueOrDefault<bool>(
+                                                      currentUserDocument
+                                                          ?.isValidPhoneNumber,
+                                                      false) ==
+                                                  true) {
+                                                if (valueOrDefault<bool>(
+                                                        currentUserDocument
+                                                            ?.isAdmin,
+                                                        false)
+                                                    ? valueOrDefault<bool>(
+                                                        currentUserDocument
+                                                            ?.isCompanyComplete,
+                                                        false)
+                                                    : true) {
+                                                  context.pushNamed(
+                                                      'OK_FN_Payry_37_facturas');
+
+                                                  if (_shouldSetState)
+                                                    setState(() {});
+                                                  return;
+                                                } else {
+                                                  await showDialog(
+                                                    barrierDismissible: false,
+                                                    context: context,
+                                                    builder: (dialogContext) {
+                                                      return Dialog(
+                                                        elevation: 0,
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        child: Container(
+                                                          height:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .height *
+                                                                  0.3,
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  0.9,
+                                                          child:
+                                                              CustomConfirmDialogWidget(
+                                                            title:
+                                                                'Acceso denegado',
+                                                            description:
+                                                                'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.',
+                                                            buttonText:
+                                                                'Registrar empresa',
+                                                            showDismissButton:
+                                                                true,
+                                                            dismissAction:
+                                                                () async {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            mainAction:
+                                                                () async {
+                                                              context.pushNamed(
+                                                                  'OK_FN_Payry_19_formularioEmpresa');
+                                                            },
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      setState(() {}));
+
+                                                  if (_shouldSetState)
+                                                    setState(() {});
+                                                  return;
+                                                }
+                                              } else {
+                                                await showDialog(
+                                                  barrierDismissible: false,
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: Container(
+                                                        height:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .height *
+                                                                0.3,
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.9,
+                                                        child:
+                                                            CustomConfirmDialogWidget(
+                                                          title:
+                                                              'Acceso denegado',
+                                                          description:
+                                                              'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.',
+                                                          buttonText:
+                                                              'Verificar número',
+                                                          showDismissButton:
+                                                              true,
+                                                          dismissAction:
+                                                              () async {
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          mainAction: () async {
+                                                            context.pushNamed(
+                                                                'OK_FN_Payry_15_EditProfile');
+                                                          },
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                ).then(
+                                                    (value) => setState(() {}));
+
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              }
+                                            } else {
+                                              await showDialog(
+                                                barrierDismissible: false,
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: Container(
+                                                      height: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .height *
+                                                          0.3,
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          0.9,
+                                                      child:
+                                                          CustomConfirmDialogWidget(
+                                                        title:
+                                                            'Acceso denegado',
+                                                        description:
+                                                            'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.',
+                                                        buttonText: 'Reenviar',
+                                                        showDismissButton: true,
+                                                        dismissAction:
+                                                            () async {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        mainAction: () async {
+                                                          var _shouldSetState =
+                                                              false;
+                                                          _model.verifyACBillMenu =
+                                                              await AuthGroup
+                                                                  .verifyEmailCall
+                                                                  .call(
+                                                            email:
+                                                                currentUserEmail,
+                                                          );
+                                                          _shouldSetState =
+                                                              true;
+                                                          if (getJsonField(
+                                                            (_model.verifyACBillMenu
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                            r'''$.success''',
+                                                          )) {
+                                                            Navigator.pop(
+                                                                context);
+                                                            await showDialog(
+                                                              barrierDismissible:
+                                                                  false,
+                                                              context: context,
+                                                              builder:
+                                                                  (dialogContext) {
+                                                                return Dialog(
+                                                                  elevation: 0,
+                                                                  insetPadding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  alignment: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  child:
+                                                                      Container(
+                                                                    height: MediaQuery.sizeOf(context)
+                                                                            .height *
+                                                                        0.25,
+                                                                    width: MediaQuery.sizeOf(context)
+                                                                            .width *
+                                                                        0.9,
+                                                                    child:
+                                                                        CustomConfirmDialogWidget(
+                                                                      title:
+                                                                          'Verificación enviada',
+                                                                      description:
+                                                                          'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.',
+                                                                      buttonText:
+                                                                          'Aceptar',
+                                                                      showDismissButton:
+                                                                          false,
+                                                                      dismissAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                      mainAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                setState(
+                                                                    () {}));
+
+                                                            return;
+                                                          } else {
+                                                            Navigator.pop(
+                                                                context);
+                                                            await showDialog(
+                                                              barrierDismissible:
+                                                                  false,
+                                                              context: context,
+                                                              builder:
+                                                                  (dialogContext) {
+                                                                return Dialog(
+                                                                  elevation: 0,
+                                                                  insetPadding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  alignment: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  child:
+                                                                      Container(
+                                                                    height: MediaQuery.sizeOf(context)
+                                                                            .height *
+                                                                        0.25,
+                                                                    width: MediaQuery.sizeOf(context)
+                                                                            .width *
+                                                                        0.9,
+                                                                    child:
+                                                                        CustomConfirmDialogWidget(
+                                                                      title:
+                                                                          'Error',
+                                                                      description:
+                                                                          getJsonField(
+                                                                        (_model.verifyACBillMenu?.jsonBody ??
+                                                                            ''),
+                                                                        r'''$.message''',
+                                                                      ).toString(),
+                                                                      buttonText:
+                                                                          'Aceptar',
+                                                                      showDismissButton:
+                                                                          false,
+                                                                      dismissAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                      mainAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                setState(
+                                                                    () {}));
+
+                                                            return;
+                                                          }
+                                                        },
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ).then(
+                                                  (value) => setState(() {}));
+
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            }
+                                          } else {
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          }
+
+                                          if (_shouldSetState) setState(() {});
+                                        },
+                                        child: Container(
+                                          width: () {
+                                            if (MediaQuery.sizeOf(context)
+                                                    .width <
+                                                390.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.42);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                480.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.44);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                900.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.3);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1025.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.23);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1300.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.18);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1600.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.14);
+                                            } else {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.1);
+                                            }
+                                          }(),
+                                          height: 75.0,
+                                          decoration: BoxDecoration(
+                                            color: valueOrDefault<Color>(
+                                              valueOrDefault<bool>(
+                                                          currentUserDocument
+                                                              ?.isAdmin,
+                                                          false) ||
+                                                      oKFNPayry13MenumasUserPermissionsRecord!
+                                                          .readInvoices
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .secondaryBackground
+                                                  : Color(0x83CCCCCC),
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                            ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                blurRadius: 4.0,
+                                                color: Color(0x33000000),
+                                                offset: Offset(
+                                                  0.0,
+                                                  2.0,
+                                                ),
+                                              )
+                                            ],
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 0.0, 16.0, 0.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 10.0, 0.0),
+                                                  child: Icon(
+                                                    FFIcons.kfactura,
+                                                    color: valueOrDefault<bool>(
+                                                                currentUserDocument
+                                                                    ?.isAdmin,
+                                                                false) ||
+                                                            oKFNPayry13MenumasUserPermissionsRecord!
+                                                                .readInvoices
+                                                        ? FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText
+                                                        : Color(0xFFA1A1A1),
+                                                    size: 20.0,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  'Facturas',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color: valueOrDefault<
+                                                                        bool>(
+                                                                    currentUserDocument
+                                                                        ?.isAdmin,
+                                                                    false) ||
+                                                                oKFNPayry13MenumasUserPermissionsRecord!
+                                                                    .readInvoices
+                                                            ? FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText
+                                                            : Color(0xFFA1A1A1),
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ].divide(SizedBox(width: 5.0)),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Builder(
+                                    builder: (context) => AuthUserStreamWidget(
+                                      builder: (context) => InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          var _shouldSetState = false;
+                                          if (valueOrDefault<bool>(
+                                                  currentUserDocument?.isAdmin,
+                                                  false) ||
+                                              oKFNPayry13MenumasUserPermissionsRecord!
+                                                  .readTransfers) {
+                                            if (valueOrDefault<bool>(
+                                                currentUserDocument
+                                                    ?.isValidMail,
+                                                false)) {
+                                              if (valueOrDefault<bool>(
+                                                      currentUserDocument
+                                                          ?.isValidPhoneNumber,
+                                                      false) ==
+                                                  true) {
+                                                if (valueOrDefault<bool>(
+                                                        currentUserDocument
+                                                            ?.isAdmin,
+                                                        false)
+                                                    ? valueOrDefault<bool>(
+                                                        currentUserDocument
+                                                            ?.isCompanyComplete,
+                                                        false)
+                                                    : true) {
+                                                  context.pushNamed(
+                                                      'OK_FN_Payry_44_historialTransactions');
+
+                                                  if (_shouldSetState)
+                                                    setState(() {});
+                                                  return;
+                                                } else {
+                                                  await showDialog(
+                                                    barrierDismissible: false,
+                                                    context: context,
+                                                    builder: (dialogContext) {
+                                                      return Dialog(
+                                                        elevation: 0,
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        child: Container(
+                                                          height:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .height *
+                                                                  0.3,
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  0.9,
+                                                          child:
+                                                              CustomConfirmDialogWidget(
+                                                            title:
+                                                                'Acceso denegado',
+                                                            description:
+                                                                'No es posible acceder a esta sección hasta que registres tu empresa y datos bancarios.',
+                                                            buttonText:
+                                                                'Registrar empresa',
+                                                            showDismissButton:
+                                                                true,
+                                                            dismissAction:
+                                                                () async {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            mainAction:
+                                                                () async {
+                                                              context.pushNamed(
+                                                                  'OK_FN_Payry_19_formularioEmpresa');
+                                                            },
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      setState(() {}));
+
+                                                  if (_shouldSetState)
+                                                    setState(() {});
+                                                  return;
+                                                }
+                                              } else {
+                                                await showDialog(
+                                                  barrierDismissible: false,
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: Container(
+                                                        height:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .height *
+                                                                0.3,
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.9,
+                                                        child:
+                                                            CustomConfirmDialogWidget(
+                                                          title:
+                                                              'Acceso denegado',
+                                                          description:
+                                                              'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.',
+                                                          buttonText:
+                                                              'Verificar número',
+                                                          showDismissButton:
+                                                              true,
+                                                          dismissAction:
+                                                              () async {
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          mainAction: () async {
+                                                            context.pushNamed(
+                                                                'OK_FN_Payry_15_EditProfile');
+                                                          },
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                ).then(
+                                                    (value) => setState(() {}));
+
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              }
+                                            } else {
+                                              await showDialog(
+                                                barrierDismissible: false,
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: Container(
+                                                      height: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .height *
+                                                          0.3,
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          0.9,
+                                                      child:
+                                                          CustomConfirmDialogWidget(
+                                                        title:
+                                                            'Acceso denegado',
+                                                        description:
+                                                            'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.',
+                                                        buttonText: 'Reenviar',
+                                                        showDismissButton: true,
+                                                        dismissAction:
+                                                            () async {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        mainAction: () async {
+                                                          var _shouldSetState =
+                                                              false;
+                                                          _model.verifyACTransferMenu =
+                                                              await AuthGroup
+                                                                  .verifyEmailCall
+                                                                  .call(
+                                                            email:
+                                                                currentUserEmail,
+                                                          );
+                                                          _shouldSetState =
+                                                              true;
+                                                          if (getJsonField(
+                                                            (_model.verifyACTransferMenu
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                            r'''$.success''',
+                                                          )) {
+                                                            Navigator.pop(
+                                                                context);
+                                                            await showDialog(
+                                                              barrierDismissible:
+                                                                  false,
+                                                              context: context,
+                                                              builder:
+                                                                  (dialogContext) {
+                                                                return Dialog(
+                                                                  elevation: 0,
+                                                                  insetPadding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  alignment: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  child:
+                                                                      Container(
+                                                                    height: MediaQuery.sizeOf(context)
+                                                                            .height *
+                                                                        0.25,
+                                                                    width: MediaQuery.sizeOf(context)
+                                                                            .width *
+                                                                        0.9,
+                                                                    child:
+                                                                        CustomConfirmDialogWidget(
+                                                                      title:
+                                                                          'Verificación enviada',
+                                                                      description:
+                                                                          'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.',
+                                                                      buttonText:
+                                                                          'Aceptar',
+                                                                      showDismissButton:
+                                                                          false,
+                                                                      dismissAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                      mainAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                setState(
+                                                                    () {}));
+
+                                                            return;
+                                                          } else {
+                                                            Navigator.pop(
+                                                                context);
+                                                            await showDialog(
+                                                              barrierDismissible:
+                                                                  false,
+                                                              context: context,
+                                                              builder:
+                                                                  (dialogContext) {
+                                                                return Dialog(
+                                                                  elevation: 0,
+                                                                  insetPadding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  alignment: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  child:
+                                                                      Container(
+                                                                    height: MediaQuery.sizeOf(context)
+                                                                            .height *
+                                                                        0.25,
+                                                                    width: MediaQuery.sizeOf(context)
+                                                                            .width *
+                                                                        0.9,
+                                                                    child:
+                                                                        CustomConfirmDialogWidget(
+                                                                      title:
+                                                                          'Error',
+                                                                      description:
+                                                                          getJsonField(
+                                                                        (_model.verifyACTransferMenu?.jsonBody ??
+                                                                            ''),
+                                                                        r'''$.message''',
+                                                                      ).toString(),
+                                                                      buttonText:
+                                                                          'Aceptar',
+                                                                      showDismissButton:
+                                                                          false,
+                                                                      dismissAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                      mainAction:
+                                                                          () async {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                setState(
+                                                                    () {}));
+
+                                                            return;
+                                                          }
+                                                        },
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ).then(
+                                                  (value) => setState(() {}));
+
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            }
+                                          } else {
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          }
+
+                                          if (_shouldSetState) setState(() {});
+                                        },
+                                        child: Container(
+                                          width: () {
+                                            if (MediaQuery.sizeOf(context)
+                                                    .width <
+                                                390.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.42);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                480.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.44);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                900.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.3);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1025.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.23);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1300.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.18);
+                                            } else if (MediaQuery.sizeOf(
+                                                        context)
+                                                    .width <
+                                                1600.0) {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.14);
+                                            } else {
+                                              return (MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.1);
+                                            }
+                                          }(),
+                                          height: 75.0,
+                                          decoration: BoxDecoration(
+                                            color: valueOrDefault<Color>(
+                                              valueOrDefault<bool>(
+                                                          currentUserDocument
+                                                              ?.isAdmin,
+                                                          false) ||
+                                                      oKFNPayry13MenumasUserPermissionsRecord!
+                                                          .readTransfers
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .secondaryBackground
+                                                  : Color(0x83CCCCCC),
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                            ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                blurRadius: 4.0,
+                                                color: Color(0x33000000),
+                                                offset: Offset(
+                                                  0.0,
+                                                  2.0,
+                                                ),
+                                              )
+                                            ],
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 0.0, 16.0, 0.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 10.0, 0.0),
+                                                  child: Icon(
+                                                    FFIcons.kcompartir,
+                                                    color: valueOrDefault<bool>(
+                                                                currentUserDocument
+                                                                    ?.isAdmin,
+                                                                false) ||
+                                                            oKFNPayry13MenumasUserPermissionsRecord!
+                                                                .readTransfers
+                                                        ? FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText
+                                                        : Color(0xFFA1A1A1),
+                                                    size: 20.0,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  'Transferencias',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color: valueOrDefault<
+                                                                        bool>(
+                                                                    currentUserDocument
+                                                                        ?.isAdmin,
+                                                                    false) ||
+                                                                oKFNPayry13MenumasUserPermissionsRecord!
+                                                                    .readTransfers
+                                                            ? (valueOrDefault<
+                                                                            bool>(
+                                                                        currentUserDocument
+                                                                            ?.isAdmin,
+                                                                        false) ||
+                                                                    oKFNPayry13MenumasUserPermissionsRecord!
+                                                                        .readTransfers
+                                                                ? FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText
+                                                                : Color(
+                                                                    0x808F8F8F))
+                                                            : Color(0xFFA1A1A1),
+                                                        fontSize:
+                                                            valueOrDefault<
+                                                                double>(
+                                                          MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width <
+                                                                  390.0
+                                                              ? 11.0
+                                                              : 14.0,
+                                                          11.0,
+                                                        ),
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ].divide(SizedBox(width: 5.0)),
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -3279,7 +4142,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                     ),
                                   ),
                                   if (currentUserUid ==
-                                      'cB6nyy2OxSfKjNVhtRyzmmbUhcm2')
+                                      'cyG5Cl4EbQWZorqiCXuWGdnViJh1')
                                     AuthUserStreamWidget(
                                       builder: (context) => InkWell(
                                         splashColor: Colors.transparent,
@@ -3287,24 +4150,7 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: Text('No test'),
-                                                content: Text(
-                                                    'No hay nada que probar joven 🤓'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
+                                          await actions.requestReview();
                                         },
                                         child: Container(
                                           width: () {

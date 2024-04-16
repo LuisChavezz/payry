@@ -66,7 +66,7 @@ class _CustomConfirmDialogWidgetState extends State<CustomConfirmDialogWidget> {
           padding: EdgeInsets.all(20.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(

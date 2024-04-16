@@ -225,7 +225,6 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                             color: Color(0xFF8788A5),
                                             letterSpacing: 0.0,
                                           ),
-                                      minLines: null,
                                       validator: _model
                                           .searchFieldControllerValidator
                                           .asValidator(context),

@@ -193,7 +193,6 @@ class _OKFNPayry11OlvidecontrasenanuevaWidgetState
                           color: FlutterFlowTheme.of(context).primaryText,
                           letterSpacing: 0.0,
                         ),
-                    minLines: null,
                     validator: _model.newPasswordController1Validator
                         .asValidator(context),
                   ),
@@ -269,7 +268,6 @@ class _OKFNPayry11OlvidecontrasenanuevaWidgetState
                           fontFamily: 'Lexend',
                           letterSpacing: 0.0,
                         ),
-                    minLines: null,
                     validator: _model.newPasswordController2Validator
                         .asValidator(context),
                   ),

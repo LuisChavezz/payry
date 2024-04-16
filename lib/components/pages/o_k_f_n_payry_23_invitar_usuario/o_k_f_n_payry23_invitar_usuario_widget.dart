@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -188,223 +189,440 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
                                 ),
-                            minLines: null,
                             validator: _model.emailFieldControllerValidator
                                 .asValidator(context),
                           ),
                         ),
                         Align(
                           alignment: AlignmentDirectional(-1.0, 0.0),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 10.0, 0.0, 10.0),
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                var _shouldSetState = false;
-                                if (_model.formKey.currentState == null ||
-                                    !_model.formKey.currentState!.validate()) {
-                                  return;
-                                }
-                                _model.existEmail = await queryUsersRecordOnce(
-                                  queryBuilder: (usersRecord) =>
-                                      usersRecord.where(
-                                    'email',
-                                    isEqualTo: _model.emailFieldController.text,
-                                  ),
-                                  singleRecord: true,
-                                ).then((s) => s.firstOrNull);
-                                _shouldSetState = true;
-                                if ((_model.existEmail?.uid == null ||
-                                        _model.existEmail?.uid == '') ||
-                                    true) {
-                                  _model.existUserInvitation =
-                                      await queryUserInvitationsRecordOnce(
-                                    queryBuilder: (userInvitationsRecord) =>
-                                        userInvitationsRecord
-                                            .where(
-                                              'admin_id',
-                                              isEqualTo: currentUserUid,
-                                            )
-                                            .where(
-                                              'invited_user_email',
-                                              isEqualTo: _model
-                                                  .emailFieldController.text,
-                                            ),
+                          child: Builder(
+                            builder: (context) => Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 10.0, 0.0, 10.0),
+                              child: FFButtonWidget(
+                                onPressed: () async {
+                                  var _shouldSetState = false;
+                                  if (_model.formKey.currentState == null ||
+                                      !_model.formKey.currentState!
+                                          .validate()) {
+                                    return;
+                                  }
+                                  _model.existEmail =
+                                      await queryUsersRecordOnce(
+                                    queryBuilder: (usersRecord) =>
+                                        usersRecord.where(
+                                      'email',
+                                      isEqualTo:
+                                          _model.emailFieldController.text,
+                                    ),
                                     singleRecord: true,
                                   ).then((s) => s.firstOrNull);
                                   _shouldSetState = true;
-                                  if (_model.existUserInvitation?.reference !=
-                                      null) {
-                                    var confirmDialogResponse =
-                                        await showDialog<bool>(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text(
-                                                      'Ya se ha enviado una invitación a este correo'),
-                                                  content: Text(
-                                                      '¿Deseas reenviar invitación?'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext,
-                                                              false),
-                                                      child: Text('No'),
-                                                    ),
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext,
-                                                              true),
-                                                      child: Text('Si'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            ) ??
-                                            false;
-                                    if (!confirmDialogResponse) {
+                                  if ((_model.existEmail?.uid == null ||
+                                          _model.existEmail?.uid == '') ||
+                                      true) {
+                                    _model.existUserInvitation =
+                                        await queryUserInvitationsRecordOnce(
+                                      queryBuilder: (userInvitationsRecord) =>
+                                          userInvitationsRecord
+                                              .where(
+                                                'admin_id',
+                                                isEqualTo: currentUserUid,
+                                              )
+                                              .where(
+                                                'invited_user_email',
+                                                isEqualTo: _model
+                                                    .emailFieldController.text,
+                                              ),
+                                      singleRecord: true,
+                                    ).then((s) => s.firstOrNull);
+                                    _shouldSetState = true;
+                                    if (_model.existUserInvitation?.reference !=
+                                        null) {
+                                      await showDialog(
+                                        barrierDismissible: false,
+                                        context: context,
+                                        builder: (dialogContext) {
+                                          return Dialog(
+                                            elevation: 0,
+                                            insetPadding: EdgeInsets.zero,
+                                            backgroundColor: Colors.transparent,
+                                            alignment: AlignmentDirectional(
+                                                    0.0, 0.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                            child: GestureDetector(
+                                              onTap: () => _model.unfocusNode
+                                                      .canRequestFocus
+                                                  ? FocusScope.of(context)
+                                                      .requestFocus(
+                                                          _model.unfocusNode)
+                                                  : FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: Container(
+                                                height:
+                                                    MediaQuery.sizeOf(context)
+                                                            .height *
+                                                        0.3,
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        0.9,
+                                                child:
+                                                    CustomConfirmDialogWidget(
+                                                  title:
+                                                      'Ya se ha enviado una invitación a este correo',
+                                                  description:
+                                                      '¿Deseas reenviar invitación?',
+                                                  buttonText: 'Confirmar',
+                                                  showDismissButton: true,
+                                                  dismissAction: () async {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  mainAction: () async {
+                                                    _model.invitationACNoCreateDoc =
+                                                        await AuthGroup
+                                                            .sendInvitationCall
+                                                            .call(
+                                                      token: FFAppState()
+                                                          .serverToken,
+                                                      email: _model
+                                                          .emailFieldController
+                                                          .text,
+                                                    );
+                                                    if (getJsonField(
+                                                      (_model.invitationACNoCreateDoc
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                      r'''$.success''',
+                                                    )) {
+                                                      Navigator.pop(context);
+                                                      await showDialog(
+                                                        barrierDismissible:
+                                                            false,
+                                                        context: context,
+                                                        builder:
+                                                            (dialogContext) {
+                                                          return Dialog(
+                                                            elevation: 0,
+                                                            insetPadding:
+                                                                EdgeInsets.zero,
+                                                            backgroundColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            alignment: AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () => _model
+                                                                      .unfocusNode
+                                                                      .canRequestFocus
+                                                                  ? FocusScope.of(
+                                                                          context)
+                                                                      .requestFocus(
+                                                                          _model
+                                                                              .unfocusNode)
+                                                                  : FocusScope.of(
+                                                                          context)
+                                                                      .unfocus(),
+                                                              child: Container(
+                                                                height: MediaQuery.sizeOf(
+                                                                            context)
+                                                                        .height *
+                                                                    0.25,
+                                                                width: MediaQuery.sizeOf(
+                                                                            context)
+                                                                        .width *
+                                                                    0.9,
+                                                                child:
+                                                                    CustomConfirmDialogWidget(
+                                                                  title:
+                                                                      'Invitación enviada',
+                                                                  description:
+                                                                      'Se ha enviado la invitación a: ${_model.emailFieldController.text} con éxito.',
+                                                                  buttonText:
+                                                                      'Aceptar',
+                                                                  showDismissButton:
+                                                                      false,
+                                                                  dismissAction:
+                                                                      () async {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  },
+                                                                  mainAction:
+                                                                      () async {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  },
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                      ).then((value) =>
+                                                          setState(() {}));
+                                                    } else {
+                                                      Navigator.pop(context);
+                                                      await showDialog(
+                                                        barrierDismissible:
+                                                            false,
+                                                        context: context,
+                                                        builder:
+                                                            (dialogContext) {
+                                                          return Dialog(
+                                                            elevation: 0,
+                                                            insetPadding:
+                                                                EdgeInsets.zero,
+                                                            backgroundColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            alignment: AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () => _model
+                                                                      .unfocusNode
+                                                                      .canRequestFocus
+                                                                  ? FocusScope.of(
+                                                                          context)
+                                                                      .requestFocus(
+                                                                          _model
+                                                                              .unfocusNode)
+                                                                  : FocusScope.of(
+                                                                          context)
+                                                                      .unfocus(),
+                                                              child: Container(
+                                                                height: MediaQuery.sizeOf(
+                                                                            context)
+                                                                        .height *
+                                                                    0.25,
+                                                                width: MediaQuery.sizeOf(
+                                                                            context)
+                                                                        .width *
+                                                                    0.9,
+                                                                child:
+                                                                    CustomConfirmDialogWidget(
+                                                                  title:
+                                                                      'Error',
+                                                                  description:
+                                                                      getJsonField(
+                                                                    (_model.invitationACNoCreateDoc
+                                                                            ?.jsonBody ??
+                                                                        ''),
+                                                                    r'''$.message''',
+                                                                  ).toString(),
+                                                                  buttonText:
+                                                                      'Aceptar',
+                                                                  showDismissButton:
+                                                                      false,
+                                                                  dismissAction:
+                                                                      () async {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  },
+                                                                  mainAction:
+                                                                      () async {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  },
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                      ).then((value) =>
+                                                          setState(() {}));
+                                                    }
+
+                                                    context.safePop();
+                                                    context.safePop();
+                                                  },
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ).then((value) => setState(() {}));
+
+                                      if (_shouldSetState) setState(() {});
+                                      return;
+                                    } else {
+                                      var userInvitationsRecordReference =
+                                          UserInvitationsRecord.collection
+                                              .doc();
+                                      await userInvitationsRecordReference.set({
+                                        ...createUserInvitationsRecordData(
+                                          adminId: valueOrDefault(
+                                              currentUserDocument?.adminId, ''),
+                                          invitedUserEmail:
+                                              _model.emailFieldController.text,
+                                          accepted: false,
+                                        ),
+                                        ...mapToFirestore(
+                                          {
+                                            'created_time':
+                                                FieldValue.serverTimestamp(),
+                                          },
+                                        ),
+                                      });
+                                      _model.createdUserInvitation =
+                                          UserInvitationsRecord
+                                              .getDocumentFromData({
+                                        ...createUserInvitationsRecordData(
+                                          adminId: valueOrDefault(
+                                              currentUserDocument?.adminId, ''),
+                                          invitedUserEmail:
+                                              _model.emailFieldController.text,
+                                          accepted: false,
+                                        ),
+                                        ...mapToFirestore(
+                                          {
+                                            'created_time': DateTime.now(),
+                                          },
+                                        ),
+                                      }, userInvitationsRecordReference);
+                                      _shouldSetState = true;
+                                      _model.invitationAC = await AuthGroup
+                                          .sendInvitationCall
+                                          .call(
+                                        token: FFAppState().serverToken,
+                                        email: _model.emailFieldController.text,
+                                      );
+                                      _shouldSetState = true;
+                                      if (getJsonField(
+                                        (_model.invitationAC?.jsonBody ?? ''),
+                                        r'''$.success''',
+                                      )) {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text('Invitación enviada'),
+                                              content: Text(
+                                                  'Se ha enviado la invitación a: ${_model.emailFieldController.text} con éxito.'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      } else {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text('Error'),
+                                              content: Text(getJsonField(
+                                                (_model.invitationAC
+                                                        ?.jsonBody ??
+                                                    ''),
+                                                r'''$.message''',
+                                              ).toString()),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      }
+
+                                      context.safePop();
+                                      context.safePop();
                                       if (_shouldSetState) setState(() {});
                                       return;
                                     }
                                   } else {
-                                    var userInvitationsRecordReference =
-                                        UserInvitationsRecord.collection.doc();
-                                    await userInvitationsRecordReference.set({
-                                      ...createUserInvitationsRecordData(
-                                        adminId: valueOrDefault(
-                                            currentUserDocument?.adminId, ''),
-                                        invitedUserEmail:
-                                            _model.emailFieldController.text,
-                                        accepted: false,
-                                      ),
-                                      ...mapToFirestore(
-                                        {
-                                          'created_time':
-                                              FieldValue.serverTimestamp(),
-                                        },
-                                      ),
-                                    });
-                                    _model.createdUserInvitation =
-                                        UserInvitationsRecord
-                                            .getDocumentFromData({
-                                      ...createUserInvitationsRecordData(
-                                        adminId: valueOrDefault(
-                                            currentUserDocument?.adminId, ''),
-                                        invitedUserEmail:
-                                            _model.emailFieldController.text,
-                                        accepted: false,
-                                      ),
-                                      ...mapToFirestore(
-                                        {
-                                          'created_time': DateTime.now(),
-                                        },
-                                      ),
-                                    }, userInvitationsRecordReference);
-                                    _shouldSetState = true;
-                                  }
-
-                                  _model.invitationAC =
-                                      await AuthGroup.sendInvitationCall.call(
-                                    token: FFAppState().serverToken,
-                                    email: _model.emailFieldController.text,
-                                  );
-                                  _shouldSetState = true;
-                                  if (getJsonField(
-                                    (_model.invitationAC?.jsonBody ?? ''),
-                                    r'''$.success''',
-                                  )) {
                                     await showDialog(
+                                      barrierDismissible: false,
                                       context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title: Text('Invitación enviada'),
-                                          content: Text(
-                                              'Se ha enviado la invitación a: ${_model.emailFieldController.text} con éxito.'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: Text('Ok'),
+                                      builder: (dialogContext) {
+                                        return Dialog(
+                                          elevation: 0,
+                                          insetPadding: EdgeInsets.zero,
+                                          backgroundColor: Colors.transparent,
+                                          alignment: AlignmentDirectional(
+                                                  0.0, 0.0)
+                                              .resolve(
+                                                  Directionality.of(context)),
+                                          child: GestureDetector(
+                                            onTap: () => _model
+                                                    .unfocusNode.canRequestFocus
+                                                ? FocusScope.of(context)
+                                                    .requestFocus(
+                                                        _model.unfocusNode)
+                                                : FocusScope.of(context)
+                                                    .unfocus(),
+                                            child: Container(
+                                              height: MediaQuery.sizeOf(context)
+                                                      .height *
+                                                  0.25,
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.9,
+                                              child: CustomConfirmDialogWidget(
+                                                title: 'Usuario ya  registrado',
+                                                description:
+                                                    'Este correo electrónico ya fue registrado.',
+                                                buttonText: 'Aceptar',
+                                                showDismissButton: false,
+                                                dismissAction: () async {
+                                                  Navigator.pop(context);
+                                                },
+                                                mainAction: () async {
+                                                  Navigator.pop(context);
+                                                },
+                                              ),
                                             ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                  } else {
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title: Text('Error'),
-                                          content: Text(getJsonField(
-                                            (_model.invitationAC?.jsonBody ??
-                                                ''),
-                                            r'''$.message''',
-                                          ).toString()),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: Text('Ok'),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                  }
-
-                                  context.safePop();
-                                  context.safePop();
-                                  if (_shouldSetState) setState(() {});
-                                  return;
-                                } else {
-                                  await showDialog(
-                                    context: context,
-                                    builder: (alertDialogContext) {
-                                      return AlertDialog(
-                                        title: Text('Usuario ya  registrado'),
-                                        content: Text(
-                                            'Este correo electrónico ya fue registrado.'),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () => Navigator.pop(
-                                                alertDialogContext),
-                                            child: Text('Ok'),
                                           ),
-                                        ],
-                                      );
-                                    },
-                                  );
-                                  if (_shouldSetState) setState(() {});
-                                  return;
-                                }
+                                        );
+                                      },
+                                    ).then((value) => setState(() {}));
 
-                                if (_shouldSetState) setState(() {});
-                              },
-                              text: 'Enviar invitación',
-                              options: FFButtonOptions(
-                                width: MediaQuery.sizeOf(context).width * 1.0,
-                                height: 50.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: Color(0xFF5E4A98),
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Lexend',
-                                      color: Colors.white,
-                                      letterSpacing: 0.0,
-                                    ),
-                                elevation: 3.0,
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
+                                    if (_shouldSetState) setState(() {});
+                                    return;
+                                  }
+
+                                  if (_shouldSetState) setState(() {});
+                                },
+                                text: 'Enviar invitación',
+                                options: FFButtonOptions(
+                                  width: MediaQuery.sizeOf(context).width * 1.0,
+                                  height: 50.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: Color(0xFF5E4A98),
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Lexend',
+                                        color: Colors.white,
+                                        letterSpacing: 0.0,
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10.0),
                                 ),
-                                borderRadius: BorderRadius.circular(10.0),
                               ),
                             ),
                           ),

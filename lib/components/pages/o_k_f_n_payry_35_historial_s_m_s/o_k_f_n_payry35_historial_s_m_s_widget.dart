@@ -408,7 +408,6 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
-                                                        minLines: null,
                                                         validator: _model
                                                             .searchFieldController1Validator
                                                             .asValidator(
@@ -699,6 +698,14 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                                         letterSpacing: 0.0,
                                                                                       ),
                                                                                 ),
+                                                                                Text(
+                                                                                  qrItemItem.nombreBeneficiarioDevolucion,
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: 'Lexend',
+                                                                                        fontSize: 12.0,
+                                                                                        letterSpacing: 0.0,
+                                                                                      ),
+                                                                                ),
                                                                               ],
                                                                             ),
                                                                           ),
@@ -914,6 +921,14 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Lexend',
                                                                                         color: FlutterFlowTheme.of(context).accent3,
+                                                                                        letterSpacing: 0.0,
+                                                                                      ),
+                                                                                ),
+                                                                                Text(
+                                                                                  qrItemItem.nombreBeneficiarioDevolucion,
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: 'Lexend',
+                                                                                        fontSize: 12.0,
                                                                                         letterSpacing: 0.0,
                                                                                       ),
                                                                                 ),
@@ -1206,7 +1221,6 @@ class _OKFNPayry35HistorialSMSWidgetState
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
-                                                        minLines: null,
                                                         validator: _model
                                                             .searchFieldController2Validator
                                                             .asValidator(

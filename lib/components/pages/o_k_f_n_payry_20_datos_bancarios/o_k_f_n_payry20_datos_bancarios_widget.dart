@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -309,7 +310,6 @@ class _OKFNPayry20DatosBancariosWidgetState
                                               .primaryText,
                                           letterSpacing: 0.0,
                                         ),
-                                    minLines: null,
                                     maxLength: 18,
                                     keyboardType: TextInputType.number,
                                     validator: _model
@@ -396,7 +396,6 @@ class _OKFNPayry20DatosBancariosWidgetState
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
                                         ),
-                                    minLines: null,
                                     validator: _model
                                         .bankFieldControllerValidator
                                         .asValidator(context),
@@ -407,112 +406,168 @@ class _OKFNPayry20DatosBancariosWidgetState
                                 ),
                                 Align(
                                   alignment: AlignmentDirectional(0.0, 0.0),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 30.0, 0.0, 10.0),
-                                    child: FFButtonWidget(
-                                      onPressed: (_model.bankCatalogueDocument
-                                                  ?.reference ==
-                                              null)
-                                          ? null
-                                          : () async {
-                                              if (_model.formKey.currentState ==
-                                                      null ||
-                                                  !_model.formKey.currentState!
-                                                      .validate()) {
-                                                return;
-                                              }
+                                  child: Builder(
+                                    builder: (context) => Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 30.0, 0.0, 10.0),
+                                      child: FFButtonWidget(
+                                        onPressed: (_model.bankCatalogueDocument
+                                                    ?.reference ==
+                                                null)
+                                            ? null
+                                            : () async {
+                                                if (_model.formKey
+                                                            .currentState ==
+                                                        null ||
+                                                    !_model
+                                                        .formKey.currentState!
+                                                        .validate()) {
+                                                  return;
+                                                }
 
-                                              await widget.companyDocRef!
-                                                  .update(
-                                                      createCompaniesRecordData(
-                                                clabe: _model
-                                                    .clabeFieldController.text,
-                                                bank: _model
-                                                    .bankFieldController.text,
-                                                bankid: _model.bankCatalogueDocument
-                                                                ?.bankid !=
-                                                            null &&
-                                                        _model.bankCatalogueDocument
-                                                                ?.bankid !=
-                                                            ''
-                                                    ? _model
-                                                        .bankCatalogueDocument
-                                                        ?.bankid
-                                                    : '',
-                                              ));
+                                                await widget.companyDocRef!
+                                                    .update(
+                                                        createCompaniesRecordData(
+                                                  clabe: _model
+                                                      .clabeFieldController
+                                                      .text,
+                                                  bank: _model
+                                                      .bankFieldController.text,
+                                                  bankid: _model.bankCatalogueDocument
+                                                                  ?.bankid !=
+                                                              null &&
+                                                          _model.bankCatalogueDocument
+                                                                  ?.bankid !=
+                                                              ''
+                                                      ? _model
+                                                          .bankCatalogueDocument
+                                                          ?.bankid
+                                                      : '',
+                                                ));
 
-                                              await currentUserReference!
-                                                  .update(createUsersRecordData(
-                                                isCompanyComplete: true,
-                                              ));
-                                              _model.rcAC = await SQLReportGroup
-                                                  .reportCompanyCall
-                                                  .call(
-                                                token: FFAppState().serverToken,
-                                                id: widget.companyDocRef?.id,
-                                              );
-                                              if (getJsonField(
-                                                (_model.rcAC?.jsonBody ?? ''),
-                                                r'''$.success''',
-                                              )) {
-                                                context.safePop();
-                                              } else {
-                                                context.safePop();
-                                              }
+                                                await currentUserReference!
+                                                    .update(
+                                                        createUsersRecordData(
+                                                  isCompanyComplete: true,
+                                                ));
+                                                _model.rcAC =
+                                                    await SQLReportGroup
+                                                        .reportCompanyCall
+                                                        .call(
+                                                  token:
+                                                      FFAppState().serverToken,
+                                                  id: widget.companyDocRef?.id,
+                                                );
+                                                if (getJsonField(
+                                                  (_model.rcAC?.jsonBody ?? ''),
+                                                  r'''$.success''',
+                                                )) {
+                                                  context.safePop();
+                                                } else {
+                                                  context.safePop();
+                                                }
 
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title: Text(
-                                                        'Datos actualizados'),
-                                                    content: Text(
-                                                        'Los datos bancarios de tu empresa han sido actualizados con éxito.'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: Text('Ok'),
+                                                await showDialog(
+                                                  barrierDismissible: false,
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: GestureDetector(
+                                                        onTap: () => _model
+                                                                .unfocusNode
+                                                                .canRequestFocus
+                                                            ? FocusScope.of(
+                                                                    context)
+                                                                .requestFocus(_model
+                                                                    .unfocusNode)
+                                                            : FocusScope.of(
+                                                                    context)
+                                                                .unfocus(),
+                                                        child: Container(
+                                                          height:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .height *
+                                                                  0.25,
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  0.9,
+                                                          child:
+                                                              CustomConfirmDialogWidget(
+                                                            title:
+                                                                'Datos actualizados',
+                                                            description:
+                                                                'Los datos bancarios de tu empresa han sido actualizados con éxito.',
+                                                            buttonText:
+                                                                'Aceptar',
+                                                            showDismissButton:
+                                                                false,
+                                                            dismissAction:
+                                                                () async {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            mainAction:
+                                                                () async {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                          ),
+                                                        ),
                                                       ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
+                                                    );
+                                                  },
+                                                ).then(
+                                                    (value) => setState(() {}));
 
-                                              setState(() {});
-                                            },
-                                      text: 'Guardar',
-                                      options: FFButtonOptions(
-                                        width: 300.0,
-                                        height: 50.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 0.0),
-                                        iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: Color(0xFF5E4A98),
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color: Colors.white,
-                                              letterSpacing: 0.0,
-                                            ),
-                                        elevation: 3.0,
-                                        borderSide: BorderSide(
-                                          color: Colors.transparent,
-                                          width: 1.0,
+                                                setState(() {});
+                                              },
+                                        text: 'Guardar',
+                                        options: FFButtonOptions(
+                                          width: 300.0,
+                                          height: 50.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: Color(0xFF5E4A98),
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Lexend',
+                                                    color: Colors.white,
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          elevation: 3.0,
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
+                                          disabledColor: Color(0x83CCCCCC),
+                                          disabledTextColor: Color(0xFFA1A1A1),
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                        disabledColor: Color(0x83CCCCCC),
-                                        disabledTextColor: Color(0xFFA1A1A1),
+                                      ).addWalkthrough(
+                                        buttonK3vkl7p3,
+                                        _model.agregarDatosBancariosController,
                                       ),
-                                    ).addWalkthrough(
-                                      buttonK3vkl7p3,
-                                      _model.agregarDatosBancariosController,
                                     ),
                                   ),
                                 ),

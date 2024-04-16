@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -37,6 +38,8 @@ class OKFNPayry23InvitarUsuarioModel
   UsersRecord? existEmail;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   UserInvitationsRecord? existUserInvitation;
+  // Stores action output result for [Backend Call - API (Send Invitation)] action in Button widget.
+  ApiCallResponse? invitationACNoCreateDoc;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   UserInvitationsRecord? createdUserInvitation;
   // Stores action output result for [Backend Call - API (Send Invitation)] action in Button widget.
