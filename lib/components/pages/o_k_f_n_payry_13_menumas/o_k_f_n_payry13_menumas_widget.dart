@@ -45,6 +45,45 @@ class _OKFNPayry13MenumasWidgetState extends State<OKFNPayry13MenumasWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.checkedForUpdate = await actions.checkForUpdate();
+      if (getJsonField(
+        _model.checkedForUpdate,
+        r'''$.hasUpdate''',
+      )) {
+        await showDialog(
+          barrierDismissible: false,
+          context: context,
+          builder: (dialogContext) {
+            return Dialog(
+              elevation: 0,
+              insetPadding: EdgeInsets.zero,
+              backgroundColor: Colors.transparent,
+              alignment: AlignmentDirectional(0.0, 0.0)
+                  .resolve(Directionality.of(context)),
+              child: Container(
+                height: MediaQuery.sizeOf(context).height * 0.25,
+                width: MediaQuery.sizeOf(context).width * 0.9,
+                child: CustomConfirmDialogWidget(
+                  title: 'Actualización disponible',
+                  description:
+                      'Hay una nueva versión disponible en la tienda. Es necesario actualizar la aplicación para seguir utilizandola. Favor de descargar.',
+                  buttonText: 'Actualizar',
+                  showDismissButton: false,
+                  dismissAction: () async {
+                    Navigator.pop(context);
+                  },
+                  mainAction: () async {
+                    await launchURL(getJsonField(
+                      _model.checkedForUpdate,
+                      r'''$.storeLink''',
+                    ).toString().toString());
+                  },
+                ),
+              ),
+            );
+          },
+        ).then((value) => setState(() {}));
+      }
       if ((FFAppState().transactionsCount >= 20.0) &&
           !functions.isSameDate(FFAppState().rateAppSkipDay!) &&
           !FFAppState().isRatedApp) {
