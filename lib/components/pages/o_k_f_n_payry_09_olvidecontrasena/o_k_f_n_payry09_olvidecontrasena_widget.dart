@@ -31,7 +31,7 @@ class _OKFNPayry09OlvidecontrasenaWidgetState
     super.initState();
     _model = createModel(context, () => OKFNPayry09OlvidecontrasenaModel());
 
-    _model.emailAddressController ??= TextEditingController();
+    _model.emailAddressTextController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
   }
 
@@ -128,7 +128,7 @@ class _OKFNPayry09OlvidecontrasenaWidgetState
                           padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 34.0, 20.0, 0.0),
                           child: TextFormField(
-                            controller: _model.emailAddressController,
+                            controller: _model.emailAddressTextController,
                             focusNode: _model.emailAddressFocusNode,
                             obscureText: false,
                             decoration: InputDecoration(
@@ -191,7 +191,8 @@ class _OKFNPayry09OlvidecontrasenaWidgetState
                                   letterSpacing: 0.0,
                                 ),
                             textAlign: TextAlign.start,
-                            validator: _model.emailAddressControllerValidator
+                            validator: _model
+                                .emailAddressTextControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -208,15 +209,15 @@ class _OKFNPayry09OlvidecontrasenaWidgetState
                                     queryBuilder: (usersRecord) =>
                                         usersRecord.where(
                                       'email',
-                                      isEqualTo:
-                                          _model.emailAddressController.text,
+                                      isEqualTo: _model
+                                          .emailAddressTextController.text,
                                     ),
                                     singleRecord: true,
                                   ).then((s) => s.firstOrNull);
                                   _shouldSetState = true;
                                   if (_model.userResp?.reference != null) {
-                                    if (_model
-                                        .emailAddressController.text.isEmpty) {
+                                    if (_model.emailAddressTextController.text
+                                        .isEmpty) {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
@@ -228,7 +229,8 @@ class _OKFNPayry09OlvidecontrasenaWidgetState
                                       return;
                                     }
                                     await authManager.resetPassword(
-                                      email: _model.emailAddressController.text,
+                                      email: _model
+                                          .emailAddressTextController.text,
                                       context: context,
                                     );
 

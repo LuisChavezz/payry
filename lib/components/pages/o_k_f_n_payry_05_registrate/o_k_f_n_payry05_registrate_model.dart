@@ -20,9 +20,9 @@ class OKFNPayry05RegistrateModel
   final formKey = GlobalKey<FormState>();
   // State field(s) for NameField widget.
   FocusNode? nameFieldFocusNode;
-  TextEditingController? nameFieldController;
-  String? Function(BuildContext, String?)? nameFieldControllerValidator;
-  String? _nameFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? nameFieldTextController;
+  String? Function(BuildContext, String?)? nameFieldTextControllerValidator;
+  String? _nameFieldTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'El nombre es requerido';
     }
@@ -32,9 +32,10 @@ class OKFNPayry05RegistrateModel
 
   // State field(s) for EmailField widget.
   FocusNode? emailFieldFocusNode;
-  TextEditingController? emailFieldController;
-  String? Function(BuildContext, String?)? emailFieldControllerValidator;
-  String? _emailFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? emailFieldTextController;
+  String? Function(BuildContext, String?)? emailFieldTextControllerValidator;
+  String? _emailFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'El correo electrónico es requerido';
     }
@@ -47,10 +48,11 @@ class OKFNPayry05RegistrateModel
 
   // State field(s) for password-Create widget.
   FocusNode? passwordCreateFocusNode;
-  TextEditingController? passwordCreateController;
+  TextEditingController? passwordCreateTextController;
   late bool passwordCreateVisibility;
-  String? Function(BuildContext, String?)? passwordCreateControllerValidator;
-  String? _passwordCreateControllerValidator(
+  String? Function(BuildContext, String?)?
+      passwordCreateTextControllerValidator;
+  String? _passwordCreateTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'La contraseña es requerida';
@@ -65,10 +67,11 @@ class OKFNPayry05RegistrateModel
 
   // State field(s) for passwordConfirm widget.
   FocusNode? passwordConfirmFocusNode;
-  TextEditingController? passwordConfirmController;
+  TextEditingController? passwordConfirmTextController;
   late bool passwordConfirmVisibility;
-  String? Function(BuildContext, String?)? passwordConfirmControllerValidator;
-  String? _passwordConfirmControllerValidator(
+  String? Function(BuildContext, String?)?
+      passwordConfirmTextControllerValidator;
+  String? _passwordConfirmTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'La confirmación  es requerida';
@@ -88,27 +91,29 @@ class OKFNPayry05RegistrateModel
 
   @override
   void initState(BuildContext context) {
-    nameFieldControllerValidator = _nameFieldControllerValidator;
-    emailFieldControllerValidator = _emailFieldControllerValidator;
+    nameFieldTextControllerValidator = _nameFieldTextControllerValidator;
+    emailFieldTextControllerValidator = _emailFieldTextControllerValidator;
     passwordCreateVisibility = false;
-    passwordCreateControllerValidator = _passwordCreateControllerValidator;
+    passwordCreateTextControllerValidator =
+        _passwordCreateTextControllerValidator;
     passwordConfirmVisibility = false;
-    passwordConfirmControllerValidator = _passwordConfirmControllerValidator;
+    passwordConfirmTextControllerValidator =
+        _passwordConfirmTextControllerValidator;
   }
 
   @override
   void dispose() {
     unfocusNode.dispose();
     nameFieldFocusNode?.dispose();
-    nameFieldController?.dispose();
+    nameFieldTextController?.dispose();
 
     emailFieldFocusNode?.dispose();
-    emailFieldController?.dispose();
+    emailFieldTextController?.dispose();
 
     passwordCreateFocusNode?.dispose();
-    passwordCreateController?.dispose();
+    passwordCreateTextController?.dispose();
 
     passwordConfirmFocusNode?.dispose();
-    passwordConfirmController?.dispose();
+    passwordConfirmTextController?.dispose();
   }
 }

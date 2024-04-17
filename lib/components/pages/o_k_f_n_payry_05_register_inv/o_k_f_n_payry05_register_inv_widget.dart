@@ -36,15 +36,15 @@ class _OKFNPayry05RegisterInvWidgetState
     super.initState();
     _model = createModel(context, () => OKFNPayry05RegisterInvModel());
 
-    _model.invNameFieldController ??= TextEditingController();
+    _model.invNameFieldTextController ??= TextEditingController();
     _model.invNameFieldFocusNode ??= FocusNode();
 
     _model.invEmailFieldFocusNode ??= FocusNode();
 
-    _model.invPasswordCreateController ??= TextEditingController();
+    _model.invPasswordCreateTextController ??= TextEditingController();
     _model.invPasswordCreateFocusNode ??= FocusNode();
 
-    _model.invPasswordConfirmController ??= TextEditingController();
+    _model.invPasswordConfirmTextController ??= TextEditingController();
     _model.invPasswordConfirmFocusNode ??= FocusNode();
   }
 
@@ -150,7 +150,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                             0.0, 12.0, 0.0, 12.0),
                                         child: TextFormField(
                                           controller:
-                                              _model.invNameFieldController,
+                                              _model.invNameFieldTextController,
                                           focusNode:
                                               _model.invNameFieldFocusNode,
                                           textCapitalization:
@@ -226,7 +226,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                 letterSpacing: 0.0,
                                               ),
                                           validator: _model
-                                              .invNameFieldControllerValidator
+                                              .invNameFieldTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -234,9 +234,9 @@ class _OKFNPayry05RegisterInvWidgetState
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 12.0, 0.0, 12.0),
                                         child: TextFormField(
-                                          controller:
-                                              _model.invEmailFieldController ??=
-                                                  TextEditingController(
+                                          controller: _model
+                                                  .invEmailFieldTextController ??=
+                                              TextEditingController(
                                             text: oKFNPayry05RegisterInvUserInvitationsRecord
                                                             .invitedUserEmail !=
                                                         null &&
@@ -325,7 +325,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                           keyboardType:
                                               TextInputType.emailAddress,
                                           validator: _model
-                                              .invEmailFieldControllerValidator
+                                              .invEmailFieldTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -334,7 +334,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                             0.0, 12.0, 0.0, 12.0),
                                         child: TextFormField(
                                           controller: _model
-                                              .invPasswordCreateController,
+                                              .invPasswordCreateTextController,
                                           focusNode:
                                               _model.invPasswordCreateFocusNode,
                                           obscureText: !_model
@@ -428,7 +428,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                 letterSpacing: 0.0,
                                               ),
                                           validator: _model
-                                              .invPasswordCreateControllerValidator
+                                              .invPasswordCreateTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -437,7 +437,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                             0.0, 12.0, 0.0, 12.0),
                                         child: TextFormField(
                                           controller: _model
-                                              .invPasswordConfirmController,
+                                              .invPasswordConfirmTextController,
                                           focusNode: _model
                                               .invPasswordConfirmFocusNode,
                                           obscureText: !_model
@@ -536,7 +536,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                 letterSpacing: 0.0,
                                               ),
                                           validator: _model
-                                              .invPasswordConfirmControllerValidator
+                                              .invPasswordConfirmTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -563,10 +563,10 @@ class _OKFNPayry05RegisterInvWidgetState
                                                   GoRouter.of(context)
                                                       .prepareAuthEvent();
                                                   if (_model
-                                                          .invPasswordCreateController
+                                                          .invPasswordCreateTextController
                                                           .text !=
                                                       _model
-                                                          .invPasswordConfirmController
+                                                          .invPasswordConfirmTextController
                                                           .text) {
                                                     ScaffoldMessenger.of(
                                                             context)
@@ -584,10 +584,10 @@ class _OKFNPayry05RegisterInvWidgetState
                                                       .createAccountWithEmail(
                                                     context,
                                                     _model
-                                                        .invEmailFieldController
+                                                        .invEmailFieldTextController
                                                         .text,
                                                     _model
-                                                        .invPasswordCreateController
+                                                        .invPasswordCreateTextController
                                                         .text,
                                                   );
                                                   if (user == null) {
@@ -603,10 +603,10 @@ class _OKFNPayry05RegisterInvWidgetState
                                                           : currentUserUid,
                                                       isAdmin: false,
                                                       email: _model
-                                                          .invEmailFieldController
+                                                          .invEmailFieldTextController
                                                           .text,
                                                       displayName: _model
-                                                          .invNameFieldController
+                                                          .invNameFieldTextController
                                                           .text,
                                                       photoUrl: '',
                                                       phoneNumber: '',
@@ -757,7 +757,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                     token: FFAppState()
                                                         .serverToken,
                                                     email: _model
-                                                        .invEmailFieldController
+                                                        .invEmailFieldTextController
                                                         .text,
                                                   );
                                                   await UsersGroup

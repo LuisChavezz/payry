@@ -21,8 +21,8 @@ class OKFNPayry41FAQsModel extends FlutterFlowModel<OKFNPayry41FAQsWidget> {
   final unfocusNode = FocusNode();
   // State field(s) for SearchField widget.
   FocusNode? searchFieldFocusNode;
-  TextEditingController? searchFieldController;
-  String? Function(BuildContext, String?)? searchFieldControllerValidator;
+  TextEditingController? searchFieldTextController;
+  String? Function(BuildContext, String?)? searchFieldTextControllerValidator;
   List<FaqsRecord> simpleSearchResults = [];
 
   @override
@@ -32,6 +32,6 @@ class OKFNPayry41FAQsModel extends FlutterFlowModel<OKFNPayry41FAQsWidget> {
   void dispose() {
     unfocusNode.dispose();
     searchFieldFocusNode?.dispose();
-    searchFieldController?.dispose();
+    searchFieldTextController?.dispose();
   }
 }

@@ -32,7 +32,7 @@ class _OKFNPayry23InvitarUsuarioWidgetState
     super.initState();
     _model = createModel(context, () => OKFNPayry23InvitarUsuarioModel());
 
-    _model.emailFieldController ??= TextEditingController();
+    _model.emailFieldTextController ??= TextEditingController();
     _model.emailFieldFocusNode ??= FocusNode();
   }
 
@@ -125,7 +125,7 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 12.0),
                           child: TextFormField(
-                            controller: _model.emailFieldController,
+                            controller: _model.emailFieldTextController,
                             focusNode: _model.emailFieldFocusNode,
                             obscureText: false,
                             decoration: InputDecoration(
@@ -189,7 +189,7 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
                                 ),
-                            validator: _model.emailFieldControllerValidator
+                            validator: _model.emailFieldTextControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -213,7 +213,7 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                         usersRecord.where(
                                       'email',
                                       isEqualTo:
-                                          _model.emailFieldController.text,
+                                          _model.emailFieldTextController.text,
                                     ),
                                     singleRecord: true,
                                   ).then((s) => s.firstOrNull);
@@ -232,7 +232,8 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                               .where(
                                                 'invited_user_email',
                                                 isEqualTo: _model
-                                                    .emailFieldController.text,
+                                                    .emailFieldTextController
+                                                    .text,
                                               ),
                                       singleRecord: true,
                                     ).then((s) => s.firstOrNull);
@@ -287,7 +288,7 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                                       token: FFAppState()
                                                           .serverToken,
                                                       email: _model
-                                                          .emailFieldController
+                                                          .emailFieldTextController
                                                           .text,
                                                     );
                                                     if (getJsonField(
@@ -342,7 +343,7 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                                                   title:
                                                                       'Invitación enviada',
                                                                   description:
-                                                                      'Se ha enviado la invitación a: ${_model.emailFieldController.text} con éxito.',
+                                                                      'Se ha enviado la invitación a: ${_model.emailFieldTextController.text} con éxito.',
                                                                   buttonText:
                                                                       'Aceptar',
                                                                   showDismissButton:
@@ -460,8 +461,8 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                         ...createUserInvitationsRecordData(
                                           adminId: valueOrDefault(
                                               currentUserDocument?.adminId, ''),
-                                          invitedUserEmail:
-                                              _model.emailFieldController.text,
+                                          invitedUserEmail: _model
+                                              .emailFieldTextController.text,
                                           accepted: false,
                                         ),
                                         ...mapToFirestore(
@@ -477,8 +478,8 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                         ...createUserInvitationsRecordData(
                                           adminId: valueOrDefault(
                                               currentUserDocument?.adminId, ''),
-                                          invitedUserEmail:
-                                              _model.emailFieldController.text,
+                                          invitedUserEmail: _model
+                                              .emailFieldTextController.text,
                                           accepted: false,
                                         ),
                                         ...mapToFirestore(
@@ -492,7 +493,8 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                           .sendInvitationCall
                                           .call(
                                         token: FFAppState().serverToken,
-                                        email: _model.emailFieldController.text,
+                                        email: _model
+                                            .emailFieldTextController.text,
                                       );
                                       _shouldSetState = true;
                                       if (getJsonField(
@@ -505,7 +507,7 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                             return AlertDialog(
                                               title: Text('Invitación enviada'),
                                               content: Text(
-                                                  'Se ha enviado la invitación a: ${_model.emailFieldController.text} con éxito.'),
+                                                  'Se ha enviado la invitación a: ${_model.emailFieldTextController.text} con éxito.'),
                                               actions: [
                                                 TextButton(
                                                   onPressed: () =>

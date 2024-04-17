@@ -37,9 +37,10 @@ class OKFNPayry27SolicitarQRModel
   final formKey = GlobalKey<FormState>();
   // State field(s) for ConceptField widget.
   FocusNode? conceptFieldFocusNode;
-  TextEditingController? conceptFieldController;
-  String? Function(BuildContext, String?)? conceptFieldControllerValidator;
-  String? _conceptFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? conceptFieldTextController;
+  String? Function(BuildContext, String?)? conceptFieldTextControllerValidator;
+  String? _conceptFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'El concepto es requerido';
     }
@@ -58,9 +59,10 @@ class OKFNPayry27SolicitarQRModel
 
   // State field(s) for AmountField widget.
   FocusNode? amountFieldFocusNode;
-  TextEditingController? amountFieldController;
-  String? Function(BuildContext, String?)? amountFieldControllerValidator;
-  String? _amountFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? amountFieldTextController;
+  String? Function(BuildContext, String?)? amountFieldTextControllerValidator;
+  String? _amountFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'El importe es requerido';
     }
@@ -81,8 +83,8 @@ class OKFNPayry27SolicitarQRModel
 
   @override
   void initState(BuildContext context) {
-    conceptFieldControllerValidator = _conceptFieldControllerValidator;
-    amountFieldControllerValidator = _amountFieldControllerValidator;
+    conceptFieldTextControllerValidator = _conceptFieldTextControllerValidator;
+    amountFieldTextControllerValidator = _amountFieldTextControllerValidator;
     navBarFlotingModel = createModel(context, () => NavBarFlotingModel());
   }
 
@@ -91,10 +93,10 @@ class OKFNPayry27SolicitarQRModel
     comoGenerarUnCoDiController?.finish();
     unfocusNode.dispose();
     conceptFieldFocusNode?.dispose();
-    conceptFieldController?.dispose();
+    conceptFieldTextController?.dispose();
 
     amountFieldFocusNode?.dispose();
-    amountFieldController?.dispose();
+    amountFieldTextController?.dispose();
 
     navBarFlotingModel.dispose();
   }

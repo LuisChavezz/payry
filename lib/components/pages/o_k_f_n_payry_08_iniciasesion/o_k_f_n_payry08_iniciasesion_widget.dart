@@ -29,7 +29,7 @@ class _OKFNPayry08IniciasesionWidgetState
     super.initState();
     _model = createModel(context, () => OKFNPayry08IniciasesionModel());
 
-    _model.emailFieldController ??= TextEditingController(
+    _model.emailFieldTextController ??= TextEditingController(
         text: FFAppState().userCredentials != null
             ? getJsonField(
                 FFAppState().userCredentials,
@@ -38,7 +38,7 @@ class _OKFNPayry08IniciasesionWidgetState
             : '');
     _model.emailFieldFocusNode ??= FocusNode();
 
-    _model.passwordFieldController ??= TextEditingController(
+    _model.passwordFieldTextController ??= TextEditingController(
         text: FFAppState().userCredentials != null
             ? getJsonField(
                 FFAppState().userCredentials,
@@ -131,7 +131,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                             0.0, 20.0, 0.0, 10.0),
                                         child: TextFormField(
                                           controller:
-                                              _model.emailFieldController,
+                                              _model.emailFieldTextController,
                                           focusNode: _model.emailFieldFocusNode,
                                           autofocus: false,
                                           textCapitalization:
@@ -209,7 +209,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                           keyboardType:
                                               TextInputType.emailAddress,
                                           validator: _model
-                                              .emailFieldControllerValidator
+                                              .emailFieldTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -217,8 +217,8 @@ class _OKFNPayry08IniciasesionWidgetState
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 12.0, 0.0, 12.0),
                                         child: TextFormField(
-                                          controller:
-                                              _model.passwordFieldController,
+                                          controller: _model
+                                              .passwordFieldTextController,
                                           focusNode:
                                               _model.passwordFieldFocusNode,
                                           obscureText:
@@ -314,7 +314,7 @@ class _OKFNPayry08IniciasesionWidgetState
                                                 letterSpacing: 0.0,
                                               ),
                                           validator: _model
-                                              .passwordFieldControllerValidator
+                                              .passwordFieldTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -472,10 +472,10 @@ class _OKFNPayry08IniciasesionWidgetState
                                                             .signInWithEmail(
                                                       context,
                                                       _model
-                                                          .emailFieldController
+                                                          .emailFieldTextController
                                                           .text,
                                                       _model
-                                                          .passwordFieldController
+                                                          .passwordFieldTextController
                                                           .text,
                                                     );
                                                     if (user == null) {
@@ -507,10 +507,10 @@ class _OKFNPayry08IniciasesionWidgetState
                                                                   .userCredentials =
                                                               <String, String>{
                                                             'email': _model
-                                                                .emailFieldController
+                                                                .emailFieldTextController
                                                                 .text,
                                                             'password': _model
-                                                                .passwordFieldController
+                                                                .passwordFieldTextController
                                                                 .text,
                                                           };
                                                         });

@@ -269,8 +269,9 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 12.0),
                                   child: TextFormField(
-                                    controller: _model.nameFieldController ??=
-                                        TextEditingController(
+                                    controller:
+                                        _model.nameFieldTextController ??=
+                                            TextEditingController(
                                       text:
                                           oKFNPayry19FormularioEmpresaCompaniesRecord
                                               ?.name,
@@ -348,7 +349,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           fontWeight: FontWeight.normal,
                                         ),
                                     validator: _model
-                                        .nameFieldControllerValidator
+                                        .nameFieldTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -356,8 +357,9 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 12.0),
                                   child: TextFormField(
-                                    controller: _model.aliasFieldController ??=
-                                        TextEditingController(
+                                    controller:
+                                        _model.aliasFieldTextController ??=
+                                            TextEditingController(
                                       text:
                                           oKFNPayry19FormularioEmpresaCompaniesRecord
                                               ?.alias,
@@ -446,7 +448,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                         ),
                                     maxLength: 18,
                                     validator: _model
-                                        .aliasFieldControllerValidator
+                                        .aliasFieldTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -456,7 +458,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                         0.0, 12.0, 0.0, 12.0),
                                     child: TextFormField(
                                       controller:
-                                          _model.emailFieldController ??=
+                                          _model.emailFieldTextController ??=
                                               TextEditingController(
                                         text:
                                             oKFNPayry19FormularioEmpresaCompaniesRecord
@@ -536,7 +538,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           ),
                                       keyboardType: TextInputType.emailAddress,
                                       validator: _model
-                                          .emailFieldControllerValidator
+                                          .emailFieldTextControllerValidator
                                           .asValidator(context),
                                     ),
                                   ),
@@ -550,9 +552,9 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             6.0, 12.0, 0.0, 12.0),
                                         child: TextFormField(
-                                          controller:
-                                              _model.streetFieldController ??=
-                                                  TextEditingController(
+                                          controller: _model
+                                                  .streetFieldTextController ??=
+                                              TextEditingController(
                                             text:
                                                 oKFNPayry19FormularioEmpresaCompaniesRecord
                                                     ?.street,
@@ -640,7 +642,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 fontWeight: FontWeight.normal,
                                               ),
                                           validator: _model
-                                              .streetFieldControllerValidator
+                                              .streetFieldTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -651,7 +653,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                             6.0, 12.0, 0.0, 12.0),
                                         child: TextFormField(
                                           controller: _model
-                                                  .streetNumberFieldController ??=
+                                                  .streetNumberFieldTextController ??=
                                               TextEditingController(
                                             text:
                                                 oKFNPayry19FormularioEmpresaCompaniesRecord
@@ -738,7 +740,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 fontWeight: FontWeight.normal,
                                               ),
                                           validator: _model
-                                              .streetNumberFieldControllerValidator
+                                              .streetNumberFieldTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -749,9 +751,9 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 12.0),
                                   child: TextFormField(
-                                    controller:
-                                        _model.neighborhoodFieldController ??=
-                                            TextEditingController(
+                                    controller: _model
+                                            .neighborhoodFieldTextController ??=
+                                        TextEditingController(
                                       text:
                                           oKFNPayry19FormularioEmpresaCompaniesRecord
                                               ?.neighborhood,
@@ -830,7 +832,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           fontWeight: FontWeight.normal,
                                         ),
                                     validator: _model
-                                        .neighborhoodFieldControllerValidator
+                                        .neighborhoodFieldTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -838,8 +840,9 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 12.0),
                                   child: TextFormField(
-                                    controller: _model.cityFieldController ??=
-                                        TextEditingController(
+                                    controller:
+                                        _model.cityFieldTextController ??=
+                                            TextEditingController(
                                       text:
                                           oKFNPayry19FormularioEmpresaCompaniesRecord
                                               ?.city,
@@ -917,7 +920,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           fontWeight: FontWeight.normal,
                                         ),
                                     validator: _model
-                                        .cityFieldControllerValidator
+                                        .cityFieldTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -1072,7 +1075,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                       0.0, 12.0, 0.0, 12.0),
                                   child: TextFormField(
                                     controller:
-                                        _model.zipCodeFieldController ??=
+                                        _model.zipCodeFieldTextController ??=
                                             TextEditingController(
                                       text:
                                           oKFNPayry19FormularioEmpresaCompaniesRecord
@@ -1150,7 +1153,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                         ),
                                     keyboardType: TextInputType.number,
                                     validator: _model
-                                        .zipCodeFieldControllerValidator
+                                        .zipCodeFieldTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -1519,7 +1522,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                             0.0, 12.0, 0.0, 12.0),
                                         child: TextFormField(
                                           controller:
-                                              _model.rFCFieldController ??=
+                                              _model.rFCFieldTextController ??=
                                                   TextEditingController(
                                             text:
                                                 oKFNPayry19FormularioEmpresaCompaniesRecord
@@ -1609,7 +1612,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                               ),
                                           maxLength: 13,
                                           validator: _model
-                                              .rFCFieldControllerValidator
+                                              .rFCFieldTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -1804,8 +1807,9 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 12.0),
                                   child: TextFormField(
-                                    controller: _model.couponFieldController ??=
-                                        TextEditingController(
+                                    controller:
+                                        _model.couponFieldTextController ??=
+                                            TextEditingController(
                                       text:
                                           oKFNPayry19FormularioEmpresaCompaniesRecord
                                               ?.coupon,
@@ -1883,7 +1887,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           fontWeight: FontWeight.normal,
                                         ),
                                     validator: _model
-                                        .couponFieldControllerValidator
+                                        .couponFieldTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -1920,31 +1924,34 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 ...createCompaniesRecordData(
                                                   createdBy: currentUserUid,
                                                   name: _model
-                                                      .nameFieldController.text,
+                                                      .nameFieldTextController
+                                                      .text,
                                                   alias: _model
-                                                      .aliasFieldController
+                                                      .aliasFieldTextController
                                                       .text,
                                                   email: '',
                                                   taxRegime: _model
                                                       .taxRegimeDropDownValue,
                                                   rfc: functions.toUppercase(
-                                                      _model.rFCFieldController
+                                                      _model
+                                                          .rFCFieldTextController
                                                           .text),
                                                   street: _model
-                                                      .streetFieldController
+                                                      .streetFieldTextController
                                                       .text,
                                                   streetNumber: _model
-                                                      .streetNumberFieldController
+                                                      .streetNumberFieldTextController
                                                       .text,
                                                   intStreetNumber: '',
                                                   neighborhood: _model
-                                                      .neighborhoodFieldController
+                                                      .neighborhoodFieldTextController
                                                       .text,
                                                   zipcode: _model
-                                                      .zipCodeFieldController
+                                                      .zipCodeFieldTextController
                                                       .text,
                                                   city: _model
-                                                      .cityFieldController.text,
+                                                      .cityFieldTextController
+                                                      .text,
                                                   state:
                                                       _model.stateDropDownValue,
                                                   country: _model
@@ -1981,7 +1988,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                   }(),
                                                   bankid: '',
                                                   coupon: _model
-                                                      .couponFieldController
+                                                      .couponFieldTextController
                                                       .text,
                                                   giroName:
                                                       _model.giroDropDownValue,
@@ -2001,31 +2008,34 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 ...createCompaniesRecordData(
                                                   createdBy: currentUserUid,
                                                   name: _model
-                                                      .nameFieldController.text,
+                                                      .nameFieldTextController
+                                                      .text,
                                                   alias: _model
-                                                      .aliasFieldController
+                                                      .aliasFieldTextController
                                                       .text,
                                                   email: '',
                                                   taxRegime: _model
                                                       .taxRegimeDropDownValue,
                                                   rfc: functions.toUppercase(
-                                                      _model.rFCFieldController
+                                                      _model
+                                                          .rFCFieldTextController
                                                           .text),
                                                   street: _model
-                                                      .streetFieldController
+                                                      .streetFieldTextController
                                                       .text,
                                                   streetNumber: _model
-                                                      .streetNumberFieldController
+                                                      .streetNumberFieldTextController
                                                       .text,
                                                   intStreetNumber: '',
                                                   neighborhood: _model
-                                                      .neighborhoodFieldController
+                                                      .neighborhoodFieldTextController
                                                       .text,
                                                   zipcode: _model
-                                                      .zipCodeFieldController
+                                                      .zipCodeFieldTextController
                                                       .text,
                                                   city: _model
-                                                      .cityFieldController.text,
+                                                      .cityFieldTextController
+                                                      .text,
                                                   state:
                                                       _model.stateDropDownValue,
                                                   country: _model
@@ -2062,7 +2072,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                   }(),
                                                   bankid: '',
                                                   coupon: _model
-                                                      .couponFieldController
+                                                      .couponFieldTextController
                                                       .text,
                                                   giroName:
                                                       _model.giroDropDownValue,
@@ -2259,29 +2269,34 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                       createCompaniesRecordData(
                                                 createdBy: currentUserUid,
                                                 name: _model
-                                                    .nameFieldController.text,
+                                                    .nameFieldTextController
+                                                    .text,
                                                 alias: _model
-                                                    .aliasFieldController.text,
+                                                    .aliasFieldTextController
+                                                    .text,
                                                 email: '',
                                                 taxRegime: _model
                                                     .taxRegimeDropDownValue,
                                                 rfc: functions.toUppercase(
-                                                    _model.rFCFieldController
+                                                    _model
+                                                        .rFCFieldTextController
                                                         .text),
                                                 street: _model
-                                                    .streetFieldController.text,
+                                                    .streetFieldTextController
+                                                    .text,
                                                 streetNumber: _model
-                                                    .streetNumberFieldController
+                                                    .streetNumberFieldTextController
                                                     .text,
                                                 intStreetNumber: '',
                                                 neighborhood: _model
-                                                    .neighborhoodFieldController
+                                                    .neighborhoodFieldTextController
                                                     .text,
                                                 zipcode: _model
-                                                    .zipCodeFieldController
+                                                    .zipCodeFieldTextController
                                                     .text,
                                                 city: _model
-                                                    .cityFieldController.text,
+                                                    .cityFieldTextController
+                                                    .text,
                                                 state:
                                                     _model.stateDropDownValue,
                                                 country:
@@ -2318,7 +2333,8 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 giroCategory:
                                                     _model.giroCatDropDownValue,
                                                 coupon: _model
-                                                    .couponFieldController.text,
+                                                    .couponFieldTextController
+                                                    .text,
                                               ));
                                               await showDialog(
                                                 barrierDismissible: false,

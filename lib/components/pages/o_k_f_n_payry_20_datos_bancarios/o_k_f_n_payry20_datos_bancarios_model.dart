@@ -36,9 +36,10 @@ class OKFNPayry20DatosBancariosModel
   final formKey = GlobalKey<FormState>();
   // State field(s) for ClabeField widget.
   FocusNode? clabeFieldFocusNode;
-  TextEditingController? clabeFieldController;
-  String? Function(BuildContext, String?)? clabeFieldControllerValidator;
-  String? _clabeFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? clabeFieldTextController;
+  String? Function(BuildContext, String?)? clabeFieldTextControllerValidator;
+  String? _clabeFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'La CLABE es requerida';
     }
@@ -55,9 +56,9 @@ class OKFNPayry20DatosBancariosModel
   BankCatalogueRecord? bankCatalogueDocument;
   // State field(s) for BankField widget.
   FocusNode? bankFieldFocusNode;
-  TextEditingController? bankFieldController;
-  String? Function(BuildContext, String?)? bankFieldControllerValidator;
-  String? _bankFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? bankFieldTextController;
+  String? Function(BuildContext, String?)? bankFieldTextControllerValidator;
+  String? _bankFieldTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Debes agregar una CLABE válida para agregar el Banco automáticamente.';
     }
@@ -70,8 +71,8 @@ class OKFNPayry20DatosBancariosModel
 
   @override
   void initState(BuildContext context) {
-    clabeFieldControllerValidator = _clabeFieldControllerValidator;
-    bankFieldControllerValidator = _bankFieldControllerValidator;
+    clabeFieldTextControllerValidator = _clabeFieldTextControllerValidator;
+    bankFieldTextControllerValidator = _bankFieldTextControllerValidator;
   }
 
   @override
@@ -79,9 +80,9 @@ class OKFNPayry20DatosBancariosModel
     agregarDatosBancariosController?.finish();
     unfocusNode.dispose();
     clabeFieldFocusNode?.dispose();
-    clabeFieldController?.dispose();
+    clabeFieldTextController?.dispose();
 
     bankFieldFocusNode?.dispose();
-    bankFieldController?.dispose();
+    bankFieldTextController?.dispose();
   }
 }

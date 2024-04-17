@@ -21,9 +21,10 @@ class OKFNPayry23InvitarUsuarioModel
   final formKey = GlobalKey<FormState>();
   // State field(s) for EmailField widget.
   FocusNode? emailFieldFocusNode;
-  TextEditingController? emailFieldController;
-  String? Function(BuildContext, String?)? emailFieldControllerValidator;
-  String? _emailFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? emailFieldTextController;
+  String? Function(BuildContext, String?)? emailFieldTextControllerValidator;
+  String? _emailFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Debes ingresar un correo electrónico';
     }
@@ -47,13 +48,13 @@ class OKFNPayry23InvitarUsuarioModel
 
   @override
   void initState(BuildContext context) {
-    emailFieldControllerValidator = _emailFieldControllerValidator;
+    emailFieldTextControllerValidator = _emailFieldTextControllerValidator;
   }
 
   @override
   void dispose() {
     unfocusNode.dispose();
     emailFieldFocusNode?.dispose();
-    emailFieldController?.dispose();
+    emailFieldTextController?.dispose();
   }
 }

@@ -60,11 +60,11 @@ class _OKFNPayry15EditProfileWidgetState
       }
     });
 
-    _model.nameFieldController ??=
+    _model.nameFieldTextController ??=
         TextEditingController(text: currentUserDisplayName);
     _model.nameFieldFocusNode ??= FocusNode();
 
-    _model.phoneFieldController ??=
+    _model.phoneFieldTextController ??=
         TextEditingController(text: currentPhoneNumber);
     _model.phoneFieldFocusNode ??= FocusNode();
   }
@@ -272,7 +272,8 @@ class _OKFNPayry15EditProfileWidgetState
                                         0.0, 12.0, 0.0, 12.0),
                                     child: AuthUserStreamWidget(
                                       builder: (context) => TextFormField(
-                                        controller: _model.nameFieldController,
+                                        controller:
+                                            _model.nameFieldTextController,
                                         focusNode: _model.nameFieldFocusNode,
                                         textCapitalization:
                                             TextCapitalization.words,
@@ -350,7 +351,7 @@ class _OKFNPayry15EditProfileWidgetState
                                               fontWeight: FontWeight.normal,
                                             ),
                                         validator: _model
-                                            .nameFieldControllerValidator
+                                            .nameFieldTextControllerValidator
                                             .asValidator(context),
                                       ),
                                     ),
@@ -413,8 +414,8 @@ class _OKFNPayry15EditProfileWidgetState
                                             child: AuthUserStreamWidget(
                                               builder: (context) =>
                                                   TextFormField(
-                                                controller:
-                                                    _model.phoneFieldController,
+                                                controller: _model
+                                                    .phoneFieldTextController,
                                                 focusNode:
                                                     _model.phoneFieldFocusNode,
                                                 readOnly: valueOrDefault<bool>(
@@ -516,7 +517,7 @@ class _OKFNPayry15EditProfileWidgetState
                                                 keyboardType:
                                                     TextInputType.phone,
                                                 validator: _model
-                                                    .phoneFieldControllerValidator
+                                                    .phoneFieldTextControllerValidator
                                                     .asValidator(context),
                                                 inputFormatters: [
                                                   _model.phoneFieldMask
@@ -544,10 +545,10 @@ class _OKFNPayry15EditProfileWidgetState
                                                             false)
                                                         ? null
                                                         : () async {
-                                                            if (_model.phoneFieldController
+                                                            if (_model.phoneFieldTextController
                                                                         .text !=
                                                                     null &&
-                                                                _model.phoneFieldController
+                                                                _model.phoneFieldTextController
                                                                         .text !=
                                                                     '') {
                                                               context.pushNamed(
@@ -557,7 +558,7 @@ class _OKFNPayry15EditProfileWidgetState
                                                                   'phoneNumber':
                                                                       serializeParam(
                                                                     _model
-                                                                        .phoneFieldController
+                                                                        .phoneFieldTextController
                                                                         .text,
                                                                     ParamType
                                                                         .String,
@@ -722,9 +723,10 @@ class _OKFNPayry15EditProfileWidgetState
                                             await currentUserReference!
                                                 .update(createUsersRecordData(
                                               displayName: _model
-                                                  .nameFieldController.text,
+                                                  .nameFieldTextController.text,
                                               phoneNumber: _model
-                                                  .phoneFieldController.text,
+                                                  .phoneFieldTextController
+                                                  .text,
                                               photoUrl: () {
                                                 if (_model.uploadedFileUrl !=
                                                         null &&

@@ -20,23 +20,24 @@ class OKFNPayry05RegisterInvModel
   final formKey = GlobalKey<FormState>();
   // State field(s) for InvNameField widget.
   FocusNode? invNameFieldFocusNode;
-  TextEditingController? invNameFieldController;
-  String? Function(BuildContext, String?)? invNameFieldControllerValidator;
+  TextEditingController? invNameFieldTextController;
+  String? Function(BuildContext, String?)? invNameFieldTextControllerValidator;
   // State field(s) for InvEmailField widget.
   FocusNode? invEmailFieldFocusNode;
-  TextEditingController? invEmailFieldController;
-  String? Function(BuildContext, String?)? invEmailFieldControllerValidator;
+  TextEditingController? invEmailFieldTextController;
+  String? Function(BuildContext, String?)? invEmailFieldTextControllerValidator;
   // State field(s) for inv-password-Create widget.
   FocusNode? invPasswordCreateFocusNode;
-  TextEditingController? invPasswordCreateController;
+  TextEditingController? invPasswordCreateTextController;
   late bool invPasswordCreateVisibility;
-  String? Function(BuildContext, String?)? invPasswordCreateControllerValidator;
+  String? Function(BuildContext, String?)?
+      invPasswordCreateTextControllerValidator;
   // State field(s) for invPasswordConfirm widget.
   FocusNode? invPasswordConfirmFocusNode;
-  TextEditingController? invPasswordConfirmController;
+  TextEditingController? invPasswordConfirmTextController;
   late bool invPasswordConfirmVisibility;
   String? Function(BuildContext, String?)?
-      invPasswordConfirmControllerValidator;
+      invPasswordConfirmTextControllerValidator;
   // Stores action output result for [Backend Call - API (Generate Token)] action in Button widget.
   ApiCallResponse? tokenAC;
   // State field(s) for acceptCheck widget.
@@ -52,15 +53,15 @@ class OKFNPayry05RegisterInvModel
   void dispose() {
     unfocusNode.dispose();
     invNameFieldFocusNode?.dispose();
-    invNameFieldController?.dispose();
+    invNameFieldTextController?.dispose();
 
     invEmailFieldFocusNode?.dispose();
-    invEmailFieldController?.dispose();
+    invEmailFieldTextController?.dispose();
 
     invPasswordCreateFocusNode?.dispose();
-    invPasswordCreateController?.dispose();
+    invPasswordCreateTextController?.dispose();
 
     invPasswordConfirmFocusNode?.dispose();
-    invPasswordConfirmController?.dispose();
+    invPasswordConfirmTextController?.dispose();
   }
 }

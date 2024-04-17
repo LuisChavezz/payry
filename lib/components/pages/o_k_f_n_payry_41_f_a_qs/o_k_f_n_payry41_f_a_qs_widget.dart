@@ -29,7 +29,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
     super.initState();
     _model = createModel(context, () => OKFNPayry41FAQsModel());
 
-    _model.searchFieldController ??= TextEditingController();
+    _model.searchFieldTextController ??= TextEditingController();
     _model.searchFieldFocusNode ??= FocusNode();
   }
 
@@ -135,16 +135,17 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                 children: [
                                   Expanded(
                                     child: TextFormField(
-                                      controller: _model.searchFieldController,
+                                      controller:
+                                          _model.searchFieldTextController,
                                       focusNode: _model.searchFieldFocusNode,
                                       onChanged: (_) => EasyDebounce.debounce(
-                                        '_model.searchFieldController',
+                                        '_model.searchFieldTextController',
                                         Duration(milliseconds: 2000),
                                         () async {
-                                          if (_model.searchFieldController
+                                          if (_model.searchFieldTextController
                                                       .text ==
                                                   null ||
-                                              _model.searchFieldController
+                                              _model.searchFieldTextController
                                                       .text ==
                                                   '') {
                                             setState(() {
@@ -226,7 +227,7 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                             letterSpacing: 0.0,
                                           ),
                                       validator: _model
-                                          .searchFieldControllerValidator
+                                          .searchFieldTextControllerValidator
                                           .asValidator(context),
                                     ),
                                   ),
@@ -248,14 +249,16 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                               .toList(),
                                         )
                                             .search(_model
-                                                .searchFieldController.text)
+                                                .searchFieldTextController.text)
                                             .map((r) => r.object)
                                             .toList();
                                         ;
                                       });
-                                      if (_model.searchFieldController.text !=
+                                      if (_model.searchFieldTextController
+                                                  .text !=
                                               null &&
-                                          _model.searchFieldController.text !=
+                                          _model.searchFieldTextController
+                                                  .text !=
                                               '') {
                                         setState(() {
                                           _model.isSearch = true;
@@ -286,8 +289,8 @@ class _OKFNPayry41FAQsWidgetState extends State<OKFNPayry41FAQsWidget> {
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
                                           setState(() {
-                                            _model.searchFieldController?.text =
-                                                '';
+                                            _model.searchFieldTextController
+                                                ?.text = '';
                                           });
                                           setState(() {
                                             _model.isSearch = false;

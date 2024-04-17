@@ -39,10 +39,11 @@ class OKFNPayry32SolicitarSMSModel
   final formKey = GlobalKey<FormState>();
   // State field(s) for PhoneField widget.
   FocusNode? phoneFieldFocusNode;
-  TextEditingController? phoneFieldController;
+  TextEditingController? phoneFieldTextController;
   final phoneFieldMask = MaskTextInputFormatter(mask: '##########');
-  String? Function(BuildContext, String?)? phoneFieldControllerValidator;
-  String? _phoneFieldControllerValidator(BuildContext context, String? val) {
+  String? Function(BuildContext, String?)? phoneFieldTextControllerValidator;
+  String? _phoneFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'El número de teléfono es requerido';
     }
@@ -54,9 +55,10 @@ class OKFNPayry32SolicitarSMSModel
   dynamic? contact;
   // State field(s) for ConceptField widget.
   FocusNode? conceptFieldFocusNode;
-  TextEditingController? conceptFieldController;
-  String? Function(BuildContext, String?)? conceptFieldControllerValidator;
-  String? _conceptFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? conceptFieldTextController;
+  String? Function(BuildContext, String?)? conceptFieldTextControllerValidator;
+  String? _conceptFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'El concepto es requerido';
     }
@@ -75,9 +77,10 @@ class OKFNPayry32SolicitarSMSModel
 
   // State field(s) for AmountField widget.
   FocusNode? amountFieldFocusNode;
-  TextEditingController? amountFieldController;
-  String? Function(BuildContext, String?)? amountFieldControllerValidator;
-  String? _amountFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? amountFieldTextController;
+  String? Function(BuildContext, String?)? amountFieldTextControllerValidator;
+  String? _amountFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'El importe es requerido';
     }
@@ -98,9 +101,9 @@ class OKFNPayry32SolicitarSMSModel
 
   @override
   void initState(BuildContext context) {
-    phoneFieldControllerValidator = _phoneFieldControllerValidator;
-    conceptFieldControllerValidator = _conceptFieldControllerValidator;
-    amountFieldControllerValidator = _amountFieldControllerValidator;
+    phoneFieldTextControllerValidator = _phoneFieldTextControllerValidator;
+    conceptFieldTextControllerValidator = _conceptFieldTextControllerValidator;
+    amountFieldTextControllerValidator = _amountFieldTextControllerValidator;
     navBarFlotingModel = createModel(context, () => NavBarFlotingModel());
   }
 
@@ -109,13 +112,13 @@ class OKFNPayry32SolicitarSMSModel
     comoCrearUnDiMoController?.finish();
     unfocusNode.dispose();
     phoneFieldFocusNode?.dispose();
-    phoneFieldController?.dispose();
+    phoneFieldTextController?.dispose();
 
     conceptFieldFocusNode?.dispose();
-    conceptFieldController?.dispose();
+    conceptFieldTextController?.dispose();
 
     amountFieldFocusNode?.dispose();
-    amountFieldController?.dispose();
+    amountFieldTextController?.dispose();
 
     navBarFlotingModel.dispose();
   }

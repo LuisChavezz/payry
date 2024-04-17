@@ -74,10 +74,11 @@ class _OKFNPayry20DatosBancariosWidgetState
       await Clipboard.setData(ClipboardData(text: ''));
     });
 
-    _model.clabeFieldController ??= TextEditingController(text: widget.clabe);
+    _model.clabeFieldTextController ??=
+        TextEditingController(text: widget.clabe);
     _model.clabeFieldFocusNode ??= FocusNode();
 
-    _model.bankFieldController ??= TextEditingController(text: widget.bank);
+    _model.bankFieldTextController ??= TextEditingController(text: widget.bank);
     _model.bankFieldFocusNode ??= FocusNode();
   }
 
@@ -182,24 +183,25 @@ class _OKFNPayry20DatosBancariosWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 12.0),
                                   child: TextFormField(
-                                    controller: _model.clabeFieldController,
+                                    controller: _model.clabeFieldTextController,
                                     focusNode: _model.clabeFieldFocusNode,
                                     onChanged: (_) => EasyDebounce.debounce(
-                                      '_model.clabeFieldController',
+                                      '_model.clabeFieldTextController',
                                       Duration(milliseconds: 2000),
                                       () async {
                                         var _shouldSetState = false;
                                         _model.clabeParsed =
                                             await actions.clabeClipboard(
-                                          _model.clabeFieldController.text,
+                                          _model.clabeFieldTextController.text,
                                         );
                                         _shouldSetState = true;
                                         setState(() {
-                                          _model.clabeFieldController?.text =
-                                              _model.clabeParsed!;
+                                          _model.clabeFieldTextController
+                                              ?.text = _model.clabeParsed!;
                                         });
                                         if (functions.validateMinimumLength(
-                                            _model.clabeFieldController.text,
+                                            _model
+                                                .clabeFieldTextController.text,
                                             3)!) {
                                           _model.bankCatalogueDocument =
                                               await queryBankCatalogueRecordOnce(
@@ -208,10 +210,9 @@ class _OKFNPayry20DatosBancariosWidgetState
                                                     bankCatalogueRecord.where(
                                               'key',
                                               isEqualTo: functions
-                                                  .getFirstThreeCharacters(
-                                                      _model
-                                                          .clabeFieldController
-                                                          .text),
+                                                  .getFirstThreeCharacters(_model
+                                                      .clabeFieldTextController
+                                                      .text),
                                             ),
                                             singleRecord: true,
                                           ).then((s) => s.firstOrNull);
@@ -219,14 +220,15 @@ class _OKFNPayry20DatosBancariosWidgetState
                                           if (_model.bankCatalogueDocument !=
                                               null) {
                                             setState(() {
-                                              _model.bankFieldController?.text =
+                                              _model.bankFieldTextController
+                                                      ?.text =
                                                   _model.bankCatalogueDocument!
                                                       .name;
                                             });
                                           } else {
                                             setState(() {
-                                              _model.bankFieldController?.text =
-                                                  '';
+                                              _model.bankFieldTextController
+                                                  ?.text = '';
                                             });
                                           }
 
@@ -234,8 +236,8 @@ class _OKFNPayry20DatosBancariosWidgetState
                                           return;
                                         } else {
                                           setState(() {
-                                            _model.bankFieldController?.text =
-                                                '';
+                                            _model.bankFieldTextController
+                                                ?.text = '';
                                           });
                                           if (_shouldSetState) setState(() {});
                                           return;
@@ -313,7 +315,7 @@ class _OKFNPayry20DatosBancariosWidgetState
                                     maxLength: 18,
                                     keyboardType: TextInputType.number,
                                     validator: _model
-                                        .clabeFieldControllerValidator
+                                        .clabeFieldTextControllerValidator
                                         .asValidator(context),
                                   ).addWalkthrough(
                                     textFieldL7ghthf0,
@@ -324,7 +326,7 @@ class _OKFNPayry20DatosBancariosWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 12.0),
                                   child: TextFormField(
-                                    controller: _model.bankFieldController,
+                                    controller: _model.bankFieldTextController,
                                     focusNode: _model.bankFieldFocusNode,
                                     readOnly: true,
                                     obscureText: false,
@@ -397,7 +399,7 @@ class _OKFNPayry20DatosBancariosWidgetState
                                           fontWeight: FontWeight.normal,
                                         ),
                                     validator: _model
-                                        .bankFieldControllerValidator
+                                        .bankFieldTextControllerValidator
                                         .asValidator(context),
                                   ).addWalkthrough(
                                     textFieldAkh84zc0,
@@ -429,10 +431,11 @@ class _OKFNPayry20DatosBancariosWidgetState
                                                     .update(
                                                         createCompaniesRecordData(
                                                   clabe: _model
-                                                      .clabeFieldController
+                                                      .clabeFieldTextController
                                                       .text,
                                                   bank: _model
-                                                      .bankFieldController.text,
+                                                      .bankFieldTextController
+                                                      .text,
                                                   bankid: _model.bankCatalogueDocument
                                                                   ?.bankid !=
                                                               null &&

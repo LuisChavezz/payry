@@ -51,10 +51,10 @@ class _OKFNPayry30HistorialQRsWidgetState
       length: 2,
       initialIndex: 0,
     )..addListener(() => setState(() {}));
-    _model.searchFieldController1 ??= TextEditingController();
+    _model.searchFieldTextController1 ??= TextEditingController();
     _model.searchFieldFocusNode1 ??= FocusNode();
 
-    _model.searchFieldController2 ??= TextEditingController();
+    _model.searchFieldTextController2 ??= TextEditingController();
     _model.searchFieldFocusNode2 ??= FocusNode();
   }
 
@@ -259,21 +259,21 @@ class _OKFNPayry30HistorialQRsWidgetState
                                                     Expanded(
                                                       child: TextFormField(
                                                         controller: _model
-                                                            .searchFieldController1,
+                                                            .searchFieldTextController1,
                                                         focusNode: _model
                                                             .searchFieldFocusNode1,
                                                         onChanged: (_) =>
                                                             EasyDebounce
                                                                 .debounce(
-                                                          '_model.searchFieldController1',
+                                                          '_model.searchFieldTextController1',
                                                           Duration(
                                                               milliseconds:
                                                                   2000),
                                                           () async {
-                                                            if (_model.searchFieldController1
+                                                            if (_model.searchFieldTextController1
                                                                         .text ==
                                                                     null ||
-                                                                _model.searchFieldController1
+                                                                _model.searchFieldTextController1
                                                                         .text ==
                                                                     '') {
                                                               setState(() {
@@ -409,7 +409,7 @@ class _OKFNPayry30HistorialQRsWidgetState
                                                                       0.0,
                                                                 ),
                                                         validator: _model
-                                                            .searchFieldController1Validator
+                                                            .searchFieldTextController1Validator
                                                             .asValidator(
                                                                 context),
                                                       ),
@@ -440,17 +440,17 @@ class _OKFNPayry30HistorialQRsWidgetState
                                                                 .toList(),
                                                           )
                                                                   .search(_model
-                                                                      .searchFieldController1
+                                                                      .searchFieldTextController1
                                                                       .text)
                                                                   .map((r) =>
                                                                       r.object)
                                                                   .toList();
                                                           ;
                                                         });
-                                                        if (_model.searchFieldController1
+                                                        if (_model.searchFieldTextController1
                                                                     .text !=
                                                                 null &&
-                                                            _model.searchFieldController1
+                                                            _model.searchFieldTextController1
                                                                     .text !=
                                                                 '') {
                                                           FFAppState()
@@ -492,7 +492,7 @@ class _OKFNPayry30HistorialQRsWidgetState
                                                           onTap: () async {
                                                             setState(() {
                                                               _model
-                                                                  .searchFieldController1
+                                                                  .searchFieldTextController1
                                                                   ?.text = '';
                                                             });
                                                             setState(() {
@@ -1071,21 +1071,21 @@ class _OKFNPayry30HistorialQRsWidgetState
                                                     Expanded(
                                                       child: TextFormField(
                                                         controller: _model
-                                                            .searchFieldController2,
+                                                            .searchFieldTextController2,
                                                         focusNode: _model
                                                             .searchFieldFocusNode2,
                                                         onChanged: (_) =>
                                                             EasyDebounce
                                                                 .debounce(
-                                                          '_model.searchFieldController2',
+                                                          '_model.searchFieldTextController2',
                                                           Duration(
                                                               milliseconds:
                                                                   2000),
                                                           () async {
-                                                            if (_model.searchFieldController2
+                                                            if (_model.searchFieldTextController2
                                                                         .text ==
                                                                     null ||
-                                                                _model.searchFieldController2
+                                                                _model.searchFieldTextController2
                                                                         .text ==
                                                                     '') {
                                                               setState(() {
@@ -1221,7 +1221,7 @@ class _OKFNPayry30HistorialQRsWidgetState
                                                                       0.0,
                                                                 ),
                                                         validator: _model
-                                                            .searchFieldController2Validator
+                                                            .searchFieldTextController2Validator
                                                             .asValidator(
                                                                 context),
                                                       ),
@@ -1252,17 +1252,17 @@ class _OKFNPayry30HistorialQRsWidgetState
                                                                 .toList(),
                                                           )
                                                                   .search(_model
-                                                                      .searchFieldController2
+                                                                      .searchFieldTextController2
                                                                       .text)
                                                                   .map((r) =>
                                                                       r.object)
                                                                   .toList();
                                                           ;
                                                         });
-                                                        if (_model.searchFieldController2
+                                                        if (_model.searchFieldTextController2
                                                                     .text !=
                                                                 null &&
-                                                            _model.searchFieldController2
+                                                            _model.searchFieldTextController2
                                                                     .text !=
                                                                 '') {
                                                           FFAppState()
@@ -1304,7 +1304,7 @@ class _OKFNPayry30HistorialQRsWidgetState
                                                           onTap: () async {
                                                             setState(() {
                                                               _model
-                                                                  .searchFieldController2
+                                                                  .searchFieldTextController2
                                                                   ?.text = '';
                                                             });
                                                             setState(() {

@@ -85,13 +85,13 @@ class _OKFNPayry32SolicitarSMSWidgetState
       });
     }
 
-    _model.phoneFieldController ??= TextEditingController();
+    _model.phoneFieldTextController ??= TextEditingController();
     _model.phoneFieldFocusNode ??= FocusNode();
 
-    _model.conceptFieldController ??= TextEditingController();
+    _model.conceptFieldTextController ??= TextEditingController();
     _model.conceptFieldFocusNode ??= FocusNode();
 
-    _model.amountFieldController ??= TextEditingController();
+    _model.amountFieldTextController ??= TextEditingController();
     _model.amountFieldFocusNode ??= FocusNode();
   }
 
@@ -288,7 +288,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                           0.0, 12.0, 0.0, 12.0),
                                                   child: TextFormField(
                                                     controller: _model
-                                                        .phoneFieldController,
+                                                        .phoneFieldTextController,
                                                     focusNode: _model
                                                         .phoneFieldFocusNode,
                                                     obscureText: false,
@@ -383,7 +383,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                     keyboardType:
                                                         TextInputType.phone,
                                                     validator: _model
-                                                        .phoneFieldControllerValidator
+                                                        .phoneFieldTextControllerValidator
                                                         .asValidator(context),
                                                     inputFormatters: [
                                                       _model.phoneFieldMask
@@ -417,7 +417,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                     _model.contact = await actions
                                                         .pickContactFromPhoneBook();
                                                     setState(() {
-                                                      _model.phoneFieldController
+                                                      _model.phoneFieldTextController
                                                               ?.text =
                                                           functions
                                                               .formatPhoneNumber(
@@ -442,8 +442,8 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 12.0, 0.0, 12.0),
                                           child: TextFormField(
-                                            controller:
-                                                _model.conceptFieldController,
+                                            controller: _model
+                                                .conceptFieldTextController,
                                             focusNode:
                                                 _model.conceptFieldFocusNode,
                                             textCapitalization:
@@ -531,7 +531,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                 ),
                                             maxLength: 20,
                                             validator: _model
-                                                .conceptFieldControllerValidator
+                                                .conceptFieldTextControllerValidator
                                                 .asValidator(context),
                                           ).addWalkthrough(
                                             textField3t6or890,
@@ -543,8 +543,8 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 12.0, 0.0, 12.0),
                                           child: TextFormField(
-                                            controller:
-                                                _model.amountFieldController,
+                                            controller: _model
+                                                .amountFieldTextController,
                                             focusNode:
                                                 _model.amountFieldFocusNode,
                                             obscureText: false,
@@ -632,7 +632,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                 .numberWithOptions(
                                                 decimal: true),
                                             validator: _model
-                                                .amountFieldControllerValidator
+                                                .amountFieldTextControllerValidator
                                                 .asValidator(context),
                                           ).addWalkthrough(
                                             textFieldYm31jmhf,
@@ -656,7 +656,7 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                   return;
                                                 }
                                                 if (functions.amountLimit(_model
-                                                    .amountFieldController
+                                                    .amountFieldTextController
                                                     .text)!) {
                                                   var registraCobroRecordReference =
                                                       RegistraCobroRecord
@@ -670,13 +670,13 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                               ?.adminId,
                                                           ''),
                                                       amount: double.tryParse(_model
-                                                          .amountFieldController
+                                                          .amountFieldTextController
                                                           .text),
                                                       concept: _model
-                                                          .conceptFieldController
+                                                          .conceptFieldTextController
                                                           .text,
                                                       phoneNumber: _model
-                                                          .phoneFieldController
+                                                          .phoneFieldTextController
                                                           .text,
                                                       uid: currentUserUid,
                                                       companyId: '',
@@ -702,13 +702,13 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                               ?.adminId,
                                                           ''),
                                                       amount: double.tryParse(_model
-                                                          .amountFieldController
+                                                          .amountFieldTextController
                                                           .text),
                                                       concept: _model
-                                                          .conceptFieldController
+                                                          .conceptFieldTextController
                                                           .text,
                                                       phoneNumber: _model
-                                                          .phoneFieldController
+                                                          .phoneFieldTextController
                                                           .text,
                                                       uid: currentUserUid,
                                                       companyId: '',
@@ -740,6 +740,13 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                         ''),
                                                     r'''$.success''',
                                                   )) {
+                                                    setState(() {
+                                                      FFAppState()
+                                                              .transactionsCount =
+                                                          FFAppState()
+                                                                  .transactionsCount +
+                                                              1.0;
+                                                    });
                                                     await showDialog(
                                                       barrierDismissible: false,
                                                       context: context,
@@ -808,10 +815,6 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                     ).then((value) =>
                                                         setState(() {}));
 
-                                                    if (Navigator.of(context)
-                                                        .canPop()) {
-                                                      context.pop();
-                                                    }
                                                     context.pushNamedAuth(
                                                       'OK_FN_Payry_36_detallesdeSMSCode',
                                                       context.mounted,
