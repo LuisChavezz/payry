@@ -28,6 +28,8 @@ class OKFNPayry13MenumasModel
   ///  State fields for stateful widgets in this page.
 
   TutorialCoachMark? primerosPasosMenuMasController;
+  // Stores action output result for [Custom Action - checkForUpdate] action in OK_FN_Payry_13_Menumas widget.
+  dynamic? checkedForUpdate;
   // Stores action output result for [Backend Call - API (Verify Email)] action in Container widget.
   ApiCallResponse? verifyACCodiMenu;
   // Stores action output result for [Backend Call - API (Verify Email)] action in Container widget.
