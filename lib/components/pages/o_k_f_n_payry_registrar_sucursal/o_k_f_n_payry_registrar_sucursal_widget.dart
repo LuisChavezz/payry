@@ -1,0 +1,492 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_debounce/easy_debounce.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'o_k_f_n_payry_registrar_sucursal_model.dart';
+export 'o_k_f_n_payry_registrar_sucursal_model.dart';
+
+class OKFNPayryRegistrarSucursalWidget extends StatefulWidget {
+  const OKFNPayryRegistrarSucursalWidget({
+    super.key,
+    required this.companyId,
+  });
+
+  final String? companyId;
+
+  @override
+  State<OKFNPayryRegistrarSucursalWidget> createState() =>
+      _OKFNPayryRegistrarSucursalWidgetState();
+}
+
+class _OKFNPayryRegistrarSucursalWidgetState
+    extends State<OKFNPayryRegistrarSucursalWidget> {
+  late OKFNPayryRegistrarSucursalModel _model;
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => OKFNPayryRegistrarSucursalModel());
+
+    _model.nameFieldTextController ??= TextEditingController();
+    _model.nameFieldFocusNode ??= FocusNode();
+
+    _model.streetAddressFieldTextController ??= TextEditingController();
+    _model.streetAddressFieldFocusNode ??= FocusNode();
+
+    _model.clabeFieldTextController ??= TextEditingController();
+    _model.clabeFieldFocusNode ??= FocusNode();
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
+    return GestureDetector(
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          automaticallyImplyLeading: false,
+          leading: InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () async {
+              context.pop();
+            },
+            child: Icon(
+              Icons.chevron_left,
+              color: FlutterFlowTheme.of(context).primaryText,
+              size: 24.0,
+            ),
+          ),
+          title: Text(
+            'Registrar sucursal',
+            style: FlutterFlowTheme.of(context).titleSmall.override(
+                  fontFamily: 'Lexend',
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  letterSpacing: 0.0,
+                ),
+          ),
+          actions: [],
+          centerTitle: true,
+          elevation: 0.0,
+        ),
+        body: SafeArea(
+          top: true,
+          child: Padding(
+            padding: EdgeInsets.all(18.0),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    child: Form(
+                      key: _model.formKey,
+                      autovalidateMode: AutovalidateMode.disabled,
+                      child: Padding(
+                        padding: EdgeInsets.all(18.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 12.0, 0.0, 12.0),
+                              child: TextFormField(
+                                controller: _model.nameFieldTextController,
+                                focusNode: _model.nameFieldFocusNode,
+                                textCapitalization: TextCapitalization.words,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText: 'Nombre',
+                                  labelStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Lexend',
+                                        letterSpacing: 0.0,
+                                      ),
+                                  hintText: 'Ingresa el nombre...',
+                                  hintStyle: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Lexend',
+                                        letterSpacing: 0.0,
+                                      ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  contentPadding:
+                                      EdgeInsetsDirectional.fromSTEB(
+                                          20.0, 24.0, 20.0, 24.0),
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Lexend',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                                validator: _model
+                                    .nameFieldTextControllerValidator
+                                    .asValidator(context),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 12.0, 0.0, 12.0),
+                              child: TextFormField(
+                                controller:
+                                    _model.streetAddressFieldTextController,
+                                focusNode: _model.streetAddressFieldFocusNode,
+                                textCapitalization: TextCapitalization.words,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText: 'Dirección',
+                                  labelStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Lexend',
+                                        letterSpacing: 0.0,
+                                      ),
+                                  hintText: 'Ingresa la dirección...',
+                                  hintStyle: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Lexend',
+                                        letterSpacing: 0.0,
+                                      ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  contentPadding:
+                                      EdgeInsetsDirectional.fromSTEB(
+                                          20.0, 24.0, 20.0, 24.0),
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Lexend',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                                validator: _model
+                                    .streetAddressFieldTextControllerValidator
+                                    .asValidator(context),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 12.0, 0.0, 12.0),
+                              child: TextFormField(
+                                controller: _model.clabeFieldTextController,
+                                focusNode: _model.clabeFieldFocusNode,
+                                onChanged: (_) => EasyDebounce.debounce(
+                                  '_model.clabeFieldTextController',
+                                  Duration(milliseconds: 2000),
+                                  () async {
+                                    _model.clabeParsed =
+                                        await actions.clabeClipboard(
+                                      _model.clabeFieldTextController.text,
+                                    );
+                                    setState(() {
+                                      _model.clabeFieldTextController?.text =
+                                          _model.clabeParsed!;
+                                    });
+
+                                    setState(() {});
+                                  },
+                                ),
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText: 'CLABE',
+                                  labelStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Lexend',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                  hintText: 'Ingresa tu CLABE a 18 dígitos',
+                                  hintStyle: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Lexend',
+                                        color: Color(0xFF8788A5),
+                                        letterSpacing: 0.0,
+                                      ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0xFF8788A5),
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.white,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  contentPadding:
+                                      EdgeInsetsDirectional.fromSTEB(
+                                          20.0, 24.0, 20.0, 24.0),
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Lexend',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      letterSpacing: 0.0,
+                                    ),
+                                maxLength: 18,
+                                keyboardType: TextInputType.number,
+                                validator: _model
+                                    .clabeFieldTextControllerValidator
+                                    .asValidator(context),
+                              ),
+                            ),
+                            Builder(
+                              builder: (context) => Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 12.0, 0.0, 10.0),
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    if (_model.formKey.currentState == null ||
+                                        !_model.formKey.currentState!
+                                            .validate()) {
+                                      return;
+                                    }
+
+                                    var sucursalesRecordReference =
+                                        SucursalesRecord.collection.doc();
+                                    await sucursalesRecordReference
+                                        .set(createSucursalesRecordData(
+                                      nombre:
+                                          _model.nameFieldTextController.text,
+                                      cuenta:
+                                          _model.clabeFieldTextController.text,
+                                      empresaId: widget.companyId,
+                                      direccion: _model
+                                          .streetAddressFieldTextController
+                                          .text,
+                                      adminId: valueOrDefault(
+                                          currentUserDocument?.adminId, ''),
+                                    ));
+                                    _model.createdBranch =
+                                        SucursalesRecord.getDocumentFromData(
+                                            createSucursalesRecordData(
+                                              nombre: _model
+                                                  .nameFieldTextController.text,
+                                              cuenta: _model
+                                                  .clabeFieldTextController
+                                                  .text,
+                                              empresaId: widget.companyId,
+                                              direccion: _model
+                                                  .streetAddressFieldTextController
+                                                  .text,
+                                              adminId: valueOrDefault(
+                                                  currentUserDocument?.adminId,
+                                                  ''),
+                                            ),
+                                            sucursalesRecordReference);
+
+                                    await _model.createdBranch!.reference
+                                        .update(createSucursalesRecordData(
+                                      id: _model.createdBranch?.reference.id,
+                                    ));
+                                    await showDialog(
+                                      barrierDismissible: false,
+                                      context: context,
+                                      builder: (dialogContext) {
+                                        return Dialog(
+                                          elevation: 0,
+                                          insetPadding: EdgeInsets.zero,
+                                          backgroundColor: Colors.transparent,
+                                          alignment: AlignmentDirectional(
+                                                  0.0, 0.0)
+                                              .resolve(
+                                                  Directionality.of(context)),
+                                          child: GestureDetector(
+                                            onTap: () => _model
+                                                    .unfocusNode.canRequestFocus
+                                                ? FocusScope.of(context)
+                                                    .requestFocus(
+                                                        _model.unfocusNode)
+                                                : FocusScope.of(context)
+                                                    .unfocus(),
+                                            child: Container(
+                                              height: MediaQuery.sizeOf(context)
+                                                      .height *
+                                                  0.25,
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.9,
+                                              child: CustomConfirmDialogWidget(
+                                                title: 'Sucursal registrada',
+                                                description:
+                                                    'La sucursal ha sido registrada con éxito.',
+                                                buttonText: 'Aceptar',
+                                                showDismissButton: false,
+                                                dismissAction: () async {
+                                                  Navigator.pop(context);
+                                                },
+                                                mainAction: () async {
+                                                  Navigator.pop(context);
+                                                },
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ).then((value) => setState(() {}));
+
+                                    context.safePop();
+
+                                    setState(() {});
+                                  },
+                                  text: 'Guardar',
+                                  options: FFButtonOptions(
+                                    width: double.infinity,
+                                    height: 50.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: Color(0xFF5E4A98),
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Lexend',
+                                          color: Colors.white,
+                                          letterSpacing: 0.0,
+                                        ),
+                                    elevation: 3.0,
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

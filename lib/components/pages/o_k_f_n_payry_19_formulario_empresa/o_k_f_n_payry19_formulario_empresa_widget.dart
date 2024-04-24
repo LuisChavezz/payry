@@ -1466,6 +1466,85 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
+                                      '¿Crear sucursales?',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Switch.adaptive(
+                                          value: _model.branchSwitchValue ??=
+                                              oKFNPayry19FormularioEmpresaCompaniesRecord !=
+                                                      null
+                                                  ? oKFNPayry19FormularioEmpresaCompaniesRecord!
+                                                      .porSucursal
+                                                  : false,
+                                          onChanged:
+                                              ((oKFNPayry19FormularioEmpresaCompaniesRecord !=
+                                                          null) &&
+                                                      oKFNPayry19FormularioEmpresaCompaniesRecord!
+                                                          .porSucursal)
+                                                  ? null
+                                                  : (newValue) async {
+                                                      setState(() => _model
+                                                              .branchSwitchValue =
+                                                          newValue!);
+                                                    },
+                                          activeColor:
+                                              ((oKFNPayry19FormularioEmpresaCompaniesRecord !=
+                                                          null) &&
+                                                      oKFNPayry19FormularioEmpresaCompaniesRecord!
+                                                          .porSucursal)
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .alternate
+                                                  : FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                          activeTrackColor:
+                                              ((oKFNPayry19FormularioEmpresaCompaniesRecord !=
+                                                          null) &&
+                                                      oKFNPayry19FormularioEmpresaCompaniesRecord!
+                                                          .porSucursal)
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .alternate
+                                                  : FlutterFlowTheme.of(context)
+                                                      .success,
+                                          inactiveTrackColor:
+                                              ((oKFNPayry19FormularioEmpresaCompaniesRecord !=
+                                                          null) &&
+                                                      oKFNPayry19FormularioEmpresaCompaniesRecord!
+                                                          .porSucursal)
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .accent1
+                                                  : FlutterFlowTheme.of(context)
+                                                      .accent1,
+                                          inactiveThumbColor:
+                                              ((oKFNPayry19FormularioEmpresaCompaniesRecord !=
+                                                          null) &&
+                                                      oKFNPayry19FormularioEmpresaCompaniesRecord!
+                                                          .porSucursal)
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .primaryText
+                                                  : FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
                                       '¿Necesitas factura?',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -1994,6 +2073,8 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                       _model.giroDropDownValue,
                                                   giroCategory: _model
                                                       .giroCatDropDownValue,
+                                                  porSucursal:
+                                                      _model.branchSwitchValue,
                                                 ),
                                                 ...mapToFirestore(
                                                   {
@@ -2078,6 +2159,8 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                       _model.giroDropDownValue,
                                                   giroCategory: _model
                                                       .giroCatDropDownValue,
+                                                  porSucursal:
+                                                      _model.branchSwitchValue,
                                                 ),
                                                 ...mapToFirestore(
                                                   {
@@ -2335,6 +2418,8 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 coupon: _model
                                                     .couponFieldTextController
                                                     .text,
+                                                porSucursal:
+                                                    _model.branchSwitchValue,
                                               ));
                                               await showDialog(
                                                 barrierDismissible: false,
@@ -2677,6 +2762,72 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           ),
                                           borderRadius:
                                               BorderRadius.circular(10.0),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                if ((oKFNPayry19FormularioEmpresaCompaniesRecord !=
+                                        null) &&
+                                    oKFNPayry19FormularioEmpresaCompaniesRecord!
+                                        .porSucursal &&
+                                    (oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                ?.bankid !=
+                                            null &&
+                                        oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                ?.bankid !=
+                                            '') &&
+                                    valueOrDefault<bool>(
+                                        currentUserDocument?.isAdmin, false))
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 10.0, 0.0, 10.0),
+                                      child: AuthUserStreamWidget(
+                                        builder: (context) => FFButtonWidget(
+                                          onPressed: () async {
+                                            context.pushNamed(
+                                              'OK_FN_Payry_sucursales',
+                                              queryParameters: {
+                                                'companyId': serializeParam(
+                                                  oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                      ?.reference.id,
+                                                  ParamType.String,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+                                          },
+                                          text: 'Sucursales',
+                                          options: FFButtonOptions(
+                                            width: 300.0,
+                                            height: 50.0,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .accent4,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily: 'Lexend',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            elevation: 3.0,
+                                            borderSide: BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
                                         ),
                                       ),
                                     ),

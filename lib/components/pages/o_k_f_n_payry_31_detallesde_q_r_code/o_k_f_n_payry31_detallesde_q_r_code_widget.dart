@@ -289,6 +289,63 @@ class _OKFNPayry31DetallesdeQRCodeWidgetState
                                           ],
                                         ),
                                       ),
+                                      if (oKFNPayry31DetallesdeQRCodeRegistraCobroRecord
+                                              .hasSucursalId() &&
+                                          (oKFNPayry31DetallesdeQRCodeRegistraCobroRecord
+                                                      .sucursalId !=
+                                                  null &&
+                                              oKFNPayry31DetallesdeQRCodeRegistraCobroRecord
+                                                      .sucursalId !=
+                                                  ''))
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  20.0, 20.0, 20.0, 0.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Sucursal',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                              Expanded(
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          12.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    oKFNPayry31DetallesdeQRCodeRegistraCobroRecord
+                                                        .sucursalName,
+                                                    textAlign: TextAlign.end,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .accent3,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20.0, 20.0, 20.0, 0.0),

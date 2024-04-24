@@ -4,10 +4,12 @@ import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
 import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/walkthroughs/como_crear_un_di_mo.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
@@ -31,6 +33,8 @@ class OKFNPayry32SolicitarSMSModel
   ///  Local state fields for this page.
 
   bool show = false;
+
+  String? selectedBranchId;
 
   ///  State fields for stateful widgets in this page.
 
@@ -92,6 +96,9 @@ class OKFNPayry32SolicitarSMSModel
     return null;
   }
 
+  // State field(s) for branchDropDown widget.
+  String? branchDropDownValue;
+  FormFieldController<String>? branchDropDownValueController;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   RegistraCobroRecord? dimoResp;
   // Stores action output result for [Backend Call - API (Generate Dimo)] action in Button widget.

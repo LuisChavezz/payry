@@ -162,6 +162,11 @@ class CompaniesRecord extends FirestoreRecord {
   String get giroCategory => _giroCategory ?? '';
   bool hasGiroCategory() => _giroCategory != null;
 
+  // "porSucursal" field.
+  bool? _porSucursal;
+  bool get porSucursal => _porSucursal ?? false;
+  bool hasPorSucursal() => _porSucursal != null;
+
   void _initializeFields() {
     _createdBy = snapshotData['created_by'] as String?;
     _name = snapshotData['name'] as String?;
@@ -192,6 +197,7 @@ class CompaniesRecord extends FirestoreRecord {
     _coupon = snapshotData['coupon'] as String?;
     _giroName = snapshotData['giro_name'] as String?;
     _giroCategory = snapshotData['giro_category'] as String?;
+    _porSucursal = snapshotData['porSucursal'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -258,6 +264,7 @@ Map<String, dynamic> createCompaniesRecordData({
   String? coupon,
   String? giroName,
   String? giroCategory,
+  bool? porSucursal,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -290,6 +297,7 @@ Map<String, dynamic> createCompaniesRecordData({
       'coupon': coupon,
       'giro_name': giroName,
       'giro_category': giroCategory,
+      'porSucursal': porSucursal,
     }.withoutNulls,
   );
 
@@ -329,7 +337,8 @@ class CompaniesRecordDocumentEquality implements Equality<CompaniesRecord> {
         e1?.bankid == e2?.bankid &&
         e1?.coupon == e2?.coupon &&
         e1?.giroName == e2?.giroName &&
-        e1?.giroCategory == e2?.giroCategory;
+        e1?.giroCategory == e2?.giroCategory &&
+        e1?.porSucursal == e2?.porSucursal;
   }
 
   @override
@@ -362,7 +371,8 @@ class CompaniesRecordDocumentEquality implements Equality<CompaniesRecord> {
         e?.bankid,
         e?.coupon,
         e?.giroName,
-        e?.giroCategory
+        e?.giroCategory,
+        e?.porSucursal
       ]);
 
   @override

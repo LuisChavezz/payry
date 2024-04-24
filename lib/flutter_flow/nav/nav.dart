@@ -214,6 +214,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   'userEmail',
                   ParamType.String,
                 ),
+                userBranchId: params.getParam(
+                  'userBranchId',
+                  ParamType.String,
+                ),
               ),
             ),
             FFRoute(
@@ -443,6 +447,28 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 createRefund: params.getParam(
                   'createRefund',
                   ParamType.bool,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'OK_FN_Payry_sucursales',
+              path: 'oKFNPayrySucursales',
+              requireAuth: true,
+              builder: (context, params) => OKFNPayrySucursalesWidget(
+                companyId: params.getParam(
+                  'companyId',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'OK_FN_Payry_registrarSucursal',
+              path: 'oKFNPayryRegistrarSucursal',
+              requireAuth: true,
+              builder: (context, params) => OKFNPayryRegistrarSucursalWidget(
+                companyId: params.getParam(
+                  'companyId',
+                  ParamType.String,
                 ),
               ),
             )
