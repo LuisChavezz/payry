@@ -92,6 +92,16 @@ class RegistraCobroRecord extends FirestoreRecord {
   PaymentStatus? get status => _status;
   bool hasStatus() => _status != null;
 
+  // "sucursalId" field.
+  String? _sucursalId;
+  String get sucursalId => _sucursalId ?? '';
+  bool hasSucursalId() => _sucursalId != null;
+
+  // "sucursalName" field.
+  String? _sucursalName;
+  String get sucursalName => _sucursalName ?? '';
+  bool hasSucursalName() => _sucursalName != null;
+
   void _initializeFields() {
     _adminId = snapshotData['admin_id'] as String?;
     _amount = castToType<double>(snapshotData['amount']);
@@ -109,6 +119,8 @@ class RegistraCobroRecord extends FirestoreRecord {
     _numeroReferenciaComercio =
         castToType<double>(snapshotData['numeroReferenciaComercio']);
     _status = deserializeEnum<PaymentStatus>(snapshotData['status']);
+    _sucursalId = snapshotData['sucursalId'] as String?;
+    _sucursalName = snapshotData['sucursalName'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -161,6 +173,8 @@ Map<String, dynamic> createRegistraCobroRecordData({
   bool? errorOcurs,
   double? numeroReferenciaComercio,
   PaymentStatus? status,
+  String? sucursalId,
+  String? sucursalName,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -179,6 +193,8 @@ Map<String, dynamic> createRegistraCobroRecordData({
       'errorOcurs': errorOcurs,
       'numeroReferenciaComercio': numeroReferenciaComercio,
       'status': status,
+      'sucursalId': sucursalId,
+      'sucursalName': sucursalName,
     }.withoutNulls,
   );
 
@@ -205,7 +221,9 @@ class RegistraCobroRecordDocumentEquality
         e1?.errorMessage == e2?.errorMessage &&
         e1?.errorOcurs == e2?.errorOcurs &&
         e1?.numeroReferenciaComercio == e2?.numeroReferenciaComercio &&
-        e1?.status == e2?.status;
+        e1?.status == e2?.status &&
+        e1?.sucursalId == e2?.sucursalId &&
+        e1?.sucursalName == e2?.sucursalName;
   }
 
   @override
@@ -224,7 +242,9 @@ class RegistraCobroRecordDocumentEquality
         e?.errorMessage,
         e?.errorOcurs,
         e?.numeroReferenciaComercio,
-        e?.status
+        e?.status,
+        e?.sucursalId,
+        e?.sucursalName
       ]);
 
   @override

@@ -4,10 +4,12 @@ import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
 import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/walkthroughs/como_generar_un_co_di.dart';
 import 'dart:async';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -29,6 +31,8 @@ class OKFNPayry27SolicitarQRModel
   ///  Local state fields for this page.
 
   bool show = false;
+
+  String? selectedBranchId;
 
   ///  State fields for stateful widgets in this page.
 
@@ -74,6 +78,9 @@ class OKFNPayry27SolicitarQRModel
     return null;
   }
 
+  // State field(s) for branchDropDown widget.
+  String? branchDropDownValue;
+  FormFieldController<String>? branchDropDownValueController;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   RegistraCobroRecord? codiResp;
   // Stores action output result for [Backend Call - API (Generate Codi)] action in Button widget.

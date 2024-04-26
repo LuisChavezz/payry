@@ -72,6 +72,11 @@ class NotificationRecord extends FirestoreRecord {
   String get userName => _userName ?? '';
   bool hasUserName() => _userName != null;
 
+  // "sucursal_id" field.
+  String? _sucursalId;
+  String get sucursalId => _sucursalId ?? '';
+  bool hasSucursalId() => _sucursalId != null;
+
   void _initializeFields() {
     _content = snapshotData['content'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
@@ -84,6 +89,7 @@ class NotificationRecord extends FirestoreRecord {
     _userEmail = snapshotData['user_email'] as String?;
     _userId = snapshotData['user_id'] as String?;
     _userName = snapshotData['user_name'] as String?;
+    _sucursalId = snapshotData['sucursal_id'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -132,6 +138,7 @@ Map<String, dynamic> createNotificationRecordData({
   String? userEmail,
   String? userId,
   String? userName,
+  String? sucursalId,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -146,6 +153,7 @@ Map<String, dynamic> createNotificationRecordData({
       'user_email': userEmail,
       'user_id': userId,
       'user_name': userName,
+      'sucursal_id': sucursalId,
     }.withoutNulls,
   );
 
@@ -168,7 +176,8 @@ class NotificationRecordDocumentEquality
         e1?.registraCobroRef == e2?.registraCobroRef &&
         e1?.userEmail == e2?.userEmail &&
         e1?.userId == e2?.userId &&
-        e1?.userName == e2?.userName;
+        e1?.userName == e2?.userName &&
+        e1?.sucursalId == e2?.sucursalId;
   }
 
   @override
@@ -183,7 +192,8 @@ class NotificationRecordDocumentEquality
         e?.registraCobroRef,
         e?.userEmail,
         e?.userId,
-        e?.userName
+        e?.userName,
+        e?.sucursalId
       ]);
 
   @override

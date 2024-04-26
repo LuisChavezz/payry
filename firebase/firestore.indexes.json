@@ -1,6 +1,20 @@
 {
   "indexes": [
     {
+      "collectionGroup": "sucursales",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "empresa_id",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "nombre",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "users",
       "queryScope": "COLLECTION",
       "fields": [
@@ -31,6 +45,10 @@
           "order": "ASCENDING"
         },
         {
+          "fieldPath": "sucursalId",
+          "order": "ASCENDING"
+        },
+        {
           "fieldPath": "created_time",
           "order": "DESCENDING"
         }
@@ -54,6 +72,10 @@
         },
         {
           "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "sucursalId",
           "order": "ASCENDING"
         },
         {
@@ -112,6 +134,10 @@
         },
         {
           "fieldPath": "status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "sucursalId",
           "order": "ASCENDING"
         },
         {

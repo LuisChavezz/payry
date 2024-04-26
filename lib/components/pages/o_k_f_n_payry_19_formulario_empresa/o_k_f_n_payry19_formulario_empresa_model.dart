@@ -145,6 +145,8 @@ class OKFNPayry19FormularioEmpresaModel
   // State field(s) for giroDropDown widget.
   String? giroDropDownValue;
   FormFieldController<String>? giroDropDownValueController;
+  // State field(s) for branchSwitch widget.
+  bool? branchSwitchValue;
   // State field(s) for RequireBillSwitch widget.
   bool? requireBillSwitchValue;
   // State field(s) for RFCField widget.

@@ -531,6 +531,7 @@ class _OKFNPayry05RegistrateWidgetState
                                                   isAdmin: true,
                                                   isCompanyComplete: false,
                                                   isValidMail: false,
+                                                  sucursalId: '',
                                                 ),
                                                 ...mapToFirestore(
                                                   {

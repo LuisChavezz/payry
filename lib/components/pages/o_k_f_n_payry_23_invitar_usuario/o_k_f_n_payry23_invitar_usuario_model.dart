@@ -2,9 +2,12 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'o_k_f_n_payry23_invitar_usuario_widget.dart'
     show OKFNPayry23InvitarUsuarioWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,6 +18,12 @@ import 'package:provider/provider.dart';
 
 class OKFNPayry23InvitarUsuarioModel
     extends FlutterFlowModel<OKFNPayry23InvitarUsuarioWidget> {
+  ///  Local state fields for this page.
+
+  bool branchCheck = false;
+
+  String? selectedBranchId;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -35,6 +44,11 @@ class OKFNPayry23InvitarUsuarioModel
     return null;
   }
 
+  // State field(s) for RememberMeCheck widget.
+  bool? rememberMeCheckValue;
+  // State field(s) for branchDropDown widget.
+  String? branchDropDownValue;
+  FormFieldController<String>? branchDropDownValueController;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   UsersRecord? existEmail;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.

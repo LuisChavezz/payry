@@ -439,6 +439,11 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                             unreadNotiItemsItem.userEmail,
                                                                             ParamType.String,
                                                                           ),
+                                                                          'userBranchId':
+                                                                              serializeParam(
+                                                                            unreadNotiItemsItem.sucursalId,
+                                                                            ParamType.String,
+                                                                          ),
                                                                         }.withoutNulls,
                                                                       );
 
@@ -861,6 +866,11 @@ class _OKFNPayry40NotificacionesWidgetState
                                                                           'userEmail':
                                                                               serializeParam(
                                                                             readNotiItemsItem.userEmail,
+                                                                            ParamType.String,
+                                                                          ),
+                                                                          'userBranchId':
+                                                                              serializeParam(
+                                                                            readNotiItemsItem.sucursalId,
                                                                             ParamType.String,
                                                                           ),
                                                                         }.withoutNulls,

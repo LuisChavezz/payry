@@ -614,6 +614,9 @@ class _OKFNPayry05RegisterInvWidgetState
                                                       isValidPhoneNumber: false,
                                                       isCompanyComplete: false,
                                                       isValidMail: false,
+                                                      sucursalId:
+                                                          oKFNPayry05RegisterInvUserInvitationsRecord
+                                                              .sucursalId,
                                                     ),
                                                     ...mapToFirestore(
                                                       {

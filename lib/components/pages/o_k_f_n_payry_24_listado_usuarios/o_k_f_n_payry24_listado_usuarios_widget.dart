@@ -255,6 +255,10 @@ class _OKFNPayry24ListadoUsuariosWidgetState
                                           listViewUsersRecord.email,
                                           ParamType.String,
                                         ),
+                                        'userBranchId': serializeParam(
+                                          listViewUsersRecord.sucursalId,
+                                          ParamType.String,
+                                        ),
                                       }.withoutNulls,
                                     );
                                   },

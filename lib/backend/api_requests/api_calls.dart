@@ -168,10 +168,12 @@ class GenerateCodiCall {
   Future<ApiCallResponse> call({
     String? id = '',
     String? token = '',
+    String? sucursalId = '',
   }) async {
     final ffApiRequestBody = '''
 {
-  "id": "${id}"
+  "id": "${id}",
+  "sucursalId": "${sucursalId}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Generate Codi',
@@ -196,10 +198,12 @@ class GenerateDimoCall {
   Future<ApiCallResponse> call({
     String? token = '',
     String? id = '',
+    String? sucursalId = '',
   }) async {
     final ffApiRequestBody = '''
 {
-  "id": "${id}"
+  "id": "${id}",
+  "sucursalId": "${sucursalId}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Generate Dimo',

@@ -69,3 +69,7 @@ export '/components/pages/o_k_f_n_payry_31_detallesde_q_r_code/o_k_f_n_payry31_d
     show OKFNPayry31DetallesdeQRCodeWidget;
 export '/components/pages/o_k_f_n_payry_36_detallesde_s_m_s_code/o_k_f_n_payry36_detallesde_s_m_s_code_widget.dart'
     show OKFNPayry36DetallesdeSMSCodeWidget;
+export '/components/pages/o_k_f_n_payry_sucursales/o_k_f_n_payry_sucursales_widget.dart'
+    show OKFNPayrySucursalesWidget;
+export '/components/pages/o_k_f_n_payry_registrar_sucursal/o_k_f_n_payry_registrar_sucursal_widget.dart'
+    show OKFNPayryRegistrarSucursalWidget;

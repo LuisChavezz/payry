@@ -239,3 +239,43 @@ dynamic calendarFilter(String filter) {
     "endDate": endDate,
   };
 }
+
+String returnBranchId(
+  List<SucursalesRecord> branches,
+  String branchFilterName,
+) {
+  String? branchId;
+
+  for (var branch in branches) {
+    if (branch.nombre == branchFilterName) {
+      branchId = branch.id;
+      break;
+    }
+  }
+
+  return branchId ?? '';
+}
+
+DocumentReference? jsonPathToUserDocRef(String? id) {
+  try {
+    return FirebaseFirestore.instance.collection('users').doc(id);
+  } catch (e) {
+    throw e;
+  }
+}
+
+String returnBranchName(
+  List<SucursalesRecord> branches,
+  String branchFilterId,
+) {
+  String? branchName;
+
+  for (var branch in branches) {
+    if (branch.id == branchFilterId) {
+      branchName = branch.nombre;
+      break;
+    }
+  }
+
+  return branchName ?? '';
+}
