@@ -37,23 +37,53 @@ class SucursalesRecord extends FirestoreRecord {
   String get empresaId => _empresaId ?? '';
   bool hasEmpresaId() => _empresaId != null;
 
-  // "direccion" field.
-  String? _direccion;
-  String get direccion => _direccion ?? '';
-  bool hasDireccion() => _direccion != null;
-
   // "admin_id" field.
   String? _adminId;
   String get adminId => _adminId ?? '';
   bool hasAdminId() => _adminId != null;
+
+  // "bankid" field.
+  String? _bankid;
+  String get bankid => _bankid ?? '';
+  bool hasBankid() => _bankid != null;
+
+  // "created_time" field.
+  DateTime? _createdTime;
+  DateTime? get createdTime => _createdTime;
+  bool hasCreatedTime() => _createdTime != null;
+
+  // "street" field.
+  String? _street;
+  String get street => _street ?? '';
+  bool hasStreet() => _street != null;
+
+  // "street_number" field.
+  String? _streetNumber;
+  String get streetNumber => _streetNumber ?? '';
+  bool hasStreetNumber() => _streetNumber != null;
+
+  // "status" field.
+  bool? _status;
+  bool get status => _status ?? false;
+  bool hasStatus() => _status != null;
+
+  // "bank_name" field.
+  String? _bankName;
+  String get bankName => _bankName ?? '';
+  bool hasBankName() => _bankName != null;
 
   void _initializeFields() {
     _id = snapshotData['id'] as String?;
     _nombre = snapshotData['nombre'] as String?;
     _cuenta = snapshotData['cuenta'] as String?;
     _empresaId = snapshotData['empresa_id'] as String?;
-    _direccion = snapshotData['direccion'] as String?;
     _adminId = snapshotData['admin_id'] as String?;
+    _bankid = snapshotData['bankid'] as String?;
+    _createdTime = snapshotData['created_time'] as DateTime?;
+    _street = snapshotData['street'] as String?;
+    _streetNumber = snapshotData['street_number'] as String?;
+    _status = snapshotData['status'] as bool?;
+    _bankName = snapshotData['bank_name'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -95,8 +125,13 @@ Map<String, dynamic> createSucursalesRecordData({
   String? nombre,
   String? cuenta,
   String? empresaId,
-  String? direccion,
   String? adminId,
+  String? bankid,
+  DateTime? createdTime,
+  String? street,
+  String? streetNumber,
+  bool? status,
+  String? bankName,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -104,8 +139,13 @@ Map<String, dynamic> createSucursalesRecordData({
       'nombre': nombre,
       'cuenta': cuenta,
       'empresa_id': empresaId,
-      'direccion': direccion,
       'admin_id': adminId,
+      'bankid': bankid,
+      'created_time': createdTime,
+      'street': street,
+      'street_number': streetNumber,
+      'status': status,
+      'bank_name': bankName,
     }.withoutNulls,
   );
 
@@ -121,13 +161,29 @@ class SucursalesRecordDocumentEquality implements Equality<SucursalesRecord> {
         e1?.nombre == e2?.nombre &&
         e1?.cuenta == e2?.cuenta &&
         e1?.empresaId == e2?.empresaId &&
-        e1?.direccion == e2?.direccion &&
-        e1?.adminId == e2?.adminId;
+        e1?.adminId == e2?.adminId &&
+        e1?.bankid == e2?.bankid &&
+        e1?.createdTime == e2?.createdTime &&
+        e1?.street == e2?.street &&
+        e1?.streetNumber == e2?.streetNumber &&
+        e1?.status == e2?.status &&
+        e1?.bankName == e2?.bankName;
   }
 
   @override
-  int hash(SucursalesRecord? e) => const ListEquality().hash(
-      [e?.id, e?.nombre, e?.cuenta, e?.empresaId, e?.direccion, e?.adminId]);
+  int hash(SucursalesRecord? e) => const ListEquality().hash([
+        e?.id,
+        e?.nombre,
+        e?.cuenta,
+        e?.empresaId,
+        e?.adminId,
+        e?.bankid,
+        e?.createdTime,
+        e?.street,
+        e?.streetNumber,
+        e?.status,
+        e?.bankName
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is SucursalesRecord;

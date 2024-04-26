@@ -73,3 +73,5 @@ export '/components/pages/o_k_f_n_payry_sucursales/o_k_f_n_payry_sucursales_widg
     show OKFNPayrySucursalesWidget;
 export '/components/pages/o_k_f_n_payry_registrar_sucursal/o_k_f_n_payry_registrar_sucursal_widget.dart'
     show OKFNPayryRegistrarSucursalWidget;
+export '/components/pages/o_k_f_n_payry_editar_sucursal/o_k_f_n_payry_editar_sucursal_widget.dart'
+    show OKFNPayryEditarSucursalWidget;

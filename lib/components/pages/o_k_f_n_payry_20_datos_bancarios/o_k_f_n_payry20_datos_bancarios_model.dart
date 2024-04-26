@@ -66,6 +66,8 @@ class OKFNPayry20DatosBancariosModel
     return null;
   }
 
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  SucursalesRecord? createdBranch;
   // Stores action output result for [Backend Call - API (Report Company)] action in Button widget.
   ApiCallResponse? rcAC;
 

@@ -447,29 +447,107 @@ class _OKFNPayry20DatosBancariosWidgetState
                                                           ?.bankid
                                                       : '',
                                                 ));
+                                                if (!valueOrDefault<bool>(
+                                                    currentUserDocument
+                                                        ?.isCompanyComplete,
+                                                    false)) {
+                                                  var sucursalesRecordReference =
+                                                      SucursalesRecord
+                                                          .collection
+                                                          .doc();
+                                                  await sucursalesRecordReference
+                                                      .set({
+                                                    ...createSucursalesRecordData(
+                                                      nombre:
+                                                          'Matriz (por defecto)',
+                                                      cuenta: _model
+                                                          .clabeFieldTextController
+                                                          .text,
+                                                      empresaId: widget
+                                                          .companyDocRef?.id,
+                                                      adminId: valueOrDefault(
+                                                          currentUserDocument
+                                                              ?.adminId,
+                                                          ''),
+                                                      bankid: _model.bankCatalogueDocument
+                                                                      ?.bankid !=
+                                                                  null &&
+                                                              _model.bankCatalogueDocument
+                                                                      ?.bankid !=
+                                                                  ''
+                                                          ? _model
+                                                              .bankCatalogueDocument
+                                                              ?.bankid
+                                                          : '',
+                                                      street: '',
+                                                      streetNumber: '',
+                                                      status: true,
+                                                      bankName: _model
+                                                          .bankFieldTextController
+                                                          .text,
+                                                    ),
+                                                    ...mapToFirestore(
+                                                      {
+                                                        'created_time': FieldValue
+                                                            .serverTimestamp(),
+                                                      },
+                                                    ),
+                                                  });
+                                                  _model.createdBranch =
+                                                      SucursalesRecord
+                                                          .getDocumentFromData({
+                                                    ...createSucursalesRecordData(
+                                                      nombre:
+                                                          'Matriz (por defecto)',
+                                                      cuenta: _model
+                                                          .clabeFieldTextController
+                                                          .text,
+                                                      empresaId: widget
+                                                          .companyDocRef?.id,
+                                                      adminId: valueOrDefault(
+                                                          currentUserDocument
+                                                              ?.adminId,
+                                                          ''),
+                                                      bankid: _model.bankCatalogueDocument
+                                                                      ?.bankid !=
+                                                                  null &&
+                                                              _model.bankCatalogueDocument
+                                                                      ?.bankid !=
+                                                                  ''
+                                                          ? _model
+                                                              .bankCatalogueDocument
+                                                              ?.bankid
+                                                          : '',
+                                                      street: '',
+                                                      streetNumber: '',
+                                                      status: true,
+                                                      bankName: _model
+                                                          .bankFieldTextController
+                                                          .text,
+                                                    ),
+                                                    ...mapToFirestore(
+                                                      {
+                                                        'created_time':
+                                                            DateTime.now(),
+                                                      },
+                                                    ),
+                                                  }, sucursalesRecordReference);
 
-                                                await currentUserReference!
-                                                    .update(
-                                                        createUsersRecordData(
-                                                  isCompanyComplete: true,
-                                                ));
-                                                _model.rcAC =
-                                                    await SQLReportGroup
-                                                        .reportCompanyCall
-                                                        .call(
-                                                  token:
-                                                      FFAppState().serverToken,
-                                                  id: widget.companyDocRef?.id,
-                                                );
-                                                if (getJsonField(
-                                                  (_model.rcAC?.jsonBody ?? ''),
-                                                  r'''$.success''',
-                                                )) {
-                                                  context.safePop();
-                                                } else {
-                                                  context.safePop();
+                                                  await _model
+                                                      .createdBranch!.reference
+                                                      .update(
+                                                          createSucursalesRecordData(
+                                                    id: _model.createdBranch
+                                                        ?.reference.id,
+                                                  ));
+
+                                                  await currentUserReference!
+                                                      .update(
+                                                          createUsersRecordData(
+                                                    isCompanyComplete: true,
+                                                  ));
                                                 }
-
+                                                context.safePop();
                                                 await showDialog(
                                                   barrierDismissible: false,
                                                   context: context,
@@ -535,6 +613,15 @@ class _OKFNPayry20DatosBancariosWidgetState
                                                   },
                                                 ).then(
                                                     (value) => setState(() {}));
+
+                                                _model.rcAC =
+                                                    await SQLReportGroup
+                                                        .reportCompanyCall
+                                                        .call(
+                                                  token:
+                                                      FFAppState().serverToken,
+                                                  id: widget.companyDocRef?.id,
+                                                );
 
                                                 setState(() {});
                                               },

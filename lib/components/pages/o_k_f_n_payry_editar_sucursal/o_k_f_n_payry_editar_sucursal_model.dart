@@ -6,8 +6,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'o_k_f_n_payry_registrar_sucursal_widget.dart'
-    show OKFNPayryRegistrarSucursalWidget;
+import 'o_k_f_n_payry_editar_sucursal_widget.dart'
+    show OKFNPayryEditarSucursalWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
@@ -16,8 +16,8 @@ import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class OKFNPayryRegistrarSucursalModel
-    extends FlutterFlowModel<OKFNPayryRegistrarSucursalWidget> {
+class OKFNPayryEditarSucursalModel
+    extends FlutterFlowModel<OKFNPayryEditarSucursalWidget> {
   ///  Local state fields for this page.
 
   String? bankId;
@@ -79,8 +79,6 @@ class OKFNPayryRegistrarSucursalModel
   FocusNode? bankFieldFocusNode;
   TextEditingController? bankFieldTextController;
   String? Function(BuildContext, String?)? bankFieldTextControllerValidator;
-  // Stores action output result for [Backend Call - Create Document] action in Button widget.
-  SucursalesRecord? createdBranch;
 
   @override
   void initState(BuildContext context) {
