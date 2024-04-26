@@ -1051,8 +1051,6 @@ class _OKFNPayry27SolicitarQRWidgetState
                                                                   .id,
                                                               token: FFAppState()
                                                                   .serverToken,
-                                                              sucursalId: _model
-                                                                  .selectedBranchId,
                                                             );
                                                             _shouldSetState =
                                                                 true;

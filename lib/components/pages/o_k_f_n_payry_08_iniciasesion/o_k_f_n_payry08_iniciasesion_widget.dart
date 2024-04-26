@@ -522,17 +522,9 @@ class _OKFNPayry08IniciasesionWidgetState
                                                         });
                                                       }
 
-                                                      context.pushNamedAuth(
-                                                        'OK_FN_Payry_13_Menumas',
-                                                        context.mounted,
-                                                        queryParameters: {
-                                                          'showWT':
-                                                              serializeParam(
-                                                            false,
-                                                            ParamType.bool,
-                                                          ),
-                                                        }.withoutNulls,
-                                                      );
+                                                      context.goNamedAuth(
+                                                          'OK_FN_Payry_13_Menumas',
+                                                          context.mounted);
 
                                                       if (_shouldSetState)
                                                         setState(() {});
@@ -613,10 +605,18 @@ class _OKFNPayry08IniciasesionWidgetState
                                                       GoRouter.of(context)
                                                           .clearRedirectLocation();
 
+                                                      context.goNamedAuth(
+                                                          'OK_FN_Payry_08_iniciasesion',
+                                                          context.mounted);
+
                                                       if (_shouldSetState)
                                                         setState(() {});
                                                       return;
                                                     }
+
+                                                    context.goNamedAuth(
+                                                        'OK_FN_Payry_08_iniciasesion',
+                                                        context.mounted);
 
                                                     if (_shouldSetState)
                                                       setState(() {});

@@ -1466,7 +1466,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      '¿Crear sucursales?',
+                                      '¿Quieres configurar sucursales?',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(

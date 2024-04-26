@@ -248,6 +248,12 @@ final parametersBuilderMap =
           'companyId': getParameter<String>(data, 'companyId'),
         },
       ),
+  'OK_FN_Payry_editarSucursal': (data) async => ParameterData(
+        allParams: {
+          'companyId': getParameter<String>(data, 'companyId'),
+          'branchDocRef': getParameter<DocumentReference>(data, 'branchDocRef'),
+        },
+      ),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

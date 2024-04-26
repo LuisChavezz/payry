@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/dynamic_switch_branch_status/dynamic_switch_branch_status_widget.dart';
 import '/components/empty_list/empty_list_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -22,14 +23,28 @@ class OKFNPayrySucursalesModel
   TextEditingController? searchFieldTextController;
   String? Function(BuildContext, String?)? searchFieldTextControllerValidator;
   List<SucursalesRecord> simpleSearchResults = [];
+  // Models for dynamicSwitchBranchStatus dynamic component.
+  late FlutterFlowDynamicModels<DynamicSwitchBranchStatusModel>
+      dynamicSwitchBranchStatusModels1;
+  // Models for dynamicSwitchBranchStatus dynamic component.
+  late FlutterFlowDynamicModels<DynamicSwitchBranchStatusModel>
+      dynamicSwitchBranchStatusModels2;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    dynamicSwitchBranchStatusModels1 =
+        FlutterFlowDynamicModels(() => DynamicSwitchBranchStatusModel());
+    dynamicSwitchBranchStatusModels2 =
+        FlutterFlowDynamicModels(() => DynamicSwitchBranchStatusModel());
+  }
 
   @override
   void dispose() {
     unfocusNode.dispose();
     searchFieldFocusNode?.dispose();
     searchFieldTextController?.dispose();
+
+    dynamicSwitchBranchStatusModels1.dispose();
+    dynamicSwitchBranchStatusModels2.dispose();
   }
 }

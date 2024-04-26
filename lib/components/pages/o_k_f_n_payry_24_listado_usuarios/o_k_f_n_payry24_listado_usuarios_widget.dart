@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/dynamic_switch/dynamic_switch_widget.dart';
+import '/components/dynamic_switch_user_status/dynamic_switch_user_status_widget.dart';
 import '/components/empty_list/empty_list_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -318,7 +318,7 @@ class _OKFNPayry24ListadoUsuariosWidgetState
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
-                                                  DynamicSwitchWidget(
+                                                  DynamicSwitchUserStatusWidget(
                                                     key: Key(
                                                         'Keysgn_${listViewIndex}_of_${listViewUsersRecordList.length}'),
                                                     initialValue:

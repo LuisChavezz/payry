@@ -1282,8 +1282,6 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                                   .id,
                                                               token: FFAppState()
                                                                   .serverToken,
-                                                              sucursalId: _model
-                                                                  .selectedBranchId,
                                                             );
                                                             _shouldSetState =
                                                                 true;

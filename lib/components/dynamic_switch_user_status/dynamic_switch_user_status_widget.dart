@@ -6,11 +6,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'dynamic_switch_model.dart';
-export 'dynamic_switch_model.dart';
+import 'dynamic_switch_user_status_model.dart';
+export 'dynamic_switch_user_status_model.dart';
 
-class DynamicSwitchWidget extends StatefulWidget {
-  const DynamicSwitchWidget({
+class DynamicSwitchUserStatusWidget extends StatefulWidget {
+  const DynamicSwitchUserStatusWidget({
     super.key,
     this.initialValue,
     required this.userDocRef,
@@ -20,11 +20,13 @@ class DynamicSwitchWidget extends StatefulWidget {
   final DocumentReference? userDocRef;
 
   @override
-  State<DynamicSwitchWidget> createState() => _DynamicSwitchWidgetState();
+  State<DynamicSwitchUserStatusWidget> createState() =>
+      _DynamicSwitchUserStatusWidgetState();
 }
 
-class _DynamicSwitchWidgetState extends State<DynamicSwitchWidget> {
-  late DynamicSwitchModel _model;
+class _DynamicSwitchUserStatusWidgetState
+    extends State<DynamicSwitchUserStatusWidget> {
+  late DynamicSwitchUserStatusModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -35,7 +37,7 @@ class _DynamicSwitchWidgetState extends State<DynamicSwitchWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => DynamicSwitchModel());
+    _model = createModel(context, () => DynamicSwitchUserStatusModel());
   }
 
   @override
