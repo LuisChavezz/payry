@@ -284,6 +284,10 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                         containerCompaniesRecord
                                                             ?.reference.id,
                                                   )
+                                                  .where(
+                                                    'status',
+                                                    isEqualTo: true,
+                                                  )
                                                   .orderBy('nombre'),
                                         ),
                                         builder: (context, snapshot) {
@@ -1207,13 +1211,20 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                                 type:
                                                                     PaymentType
                                                                         .SMS,
-                                                                sucursalId: _model
-                                                                    .selectedBranchId,
+                                                                sucursalId: containerCompaniesRecord!
+                                                                        .porSucursal
+                                                                    ? _model
+                                                                        .selectedBranchId
+                                                                    : containerCompaniesRecord
+                                                                        ?.defaultBranchId,
                                                                 sucursalName: functions.returnBranchName(
                                                                     smsFormSucursalesRecordList
                                                                         .toList(),
-                                                                    _model
-                                                                        .selectedBranchId!),
+                                                                    containerCompaniesRecord!.porSucursal
+                                                                        ? _model
+                                                                            .selectedBranchId!
+                                                                        : containerCompaniesRecord!
+                                                                            .defaultBranchId),
                                                               ),
                                                               ...mapToFirestore(
                                                                 {
@@ -1254,13 +1265,20 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                                 type:
                                                                     PaymentType
                                                                         .SMS,
-                                                                sucursalId: _model
-                                                                    .selectedBranchId,
+                                                                sucursalId: containerCompaniesRecord!
+                                                                        .porSucursal
+                                                                    ? _model
+                                                                        .selectedBranchId
+                                                                    : containerCompaniesRecord
+                                                                        ?.defaultBranchId,
                                                                 sucursalName: functions.returnBranchName(
                                                                     smsFormSucursalesRecordList
                                                                         .toList(),
-                                                                    _model
-                                                                        .selectedBranchId!),
+                                                                    containerCompaniesRecord!.porSucursal
+                                                                        ? _model
+                                                                            .selectedBranchId!
+                                                                        : containerCompaniesRecord!
+                                                                            .defaultBranchId),
                                                               ),
                                                               ...mapToFirestore(
                                                                 {

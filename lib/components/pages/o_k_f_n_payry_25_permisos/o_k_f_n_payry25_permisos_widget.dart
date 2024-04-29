@@ -292,13 +292,19 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                               queryBuilder:
                                                   (sucursalesRecord) =>
                                                       sucursalesRecord
-                                                          .where(
-                                                            'empresa_id',
-                                                            isEqualTo:
-                                                                columnCompaniesRecord
-                                                                    ?.reference
-                                                                    .id,
-                                                          )
+                                                          .where(Filter.or(
+                                                            Filter(
+                                                              'empresa_id',
+                                                              isEqualTo:
+                                                                  columnCompaniesRecord
+                                                                      ?.reference
+                                                                      .id,
+                                                            ),
+                                                            Filter(
+                                                              'status',
+                                                              isEqualTo: true,
+                                                            ),
+                                                          ))
                                                           .orderBy('nombre'),
                                             ),
                                             builder: (context, snapshot) {
