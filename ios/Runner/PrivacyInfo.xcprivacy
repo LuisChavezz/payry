@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<<<<<<< HEAD
 <dict>
 	<key>NSPrivacyCollectedDataTypes</key>
 	<array>
@@ -167,7 +166,4 @@
 		</dict>
 	</array>
 </dict>
-=======
-<dict/>
->>>>>>> b8dd684a15de11d8dd18141188830a1e41d7c36b
 </plist>
