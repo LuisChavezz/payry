@@ -279,6 +279,10 @@ class _OKFNPayry27SolicitarQRWidgetState
                                                         containerCompaniesRecord
                                                             ?.reference.id,
                                                   )
+                                                  .where(
+                                                    'status',
+                                                    isEqualTo: true,
+                                                  )
                                                   .orderBy('nombre'),
                                         ),
                                         builder: (context, snapshot) {
@@ -974,13 +978,20 @@ class _OKFNPayry27SolicitarQRWidgetState
                                                                 status:
                                                                     PaymentStatus
                                                                         .PENDIENTE,
-                                                                sucursalId: _model
-                                                                    .selectedBranchId,
+                                                                sucursalId: containerCompaniesRecord!
+                                                                        .porSucursal
+                                                                    ? _model
+                                                                        .selectedBranchId
+                                                                    : containerCompaniesRecord
+                                                                        ?.defaultBranchId,
                                                                 sucursalName: functions.returnBranchName(
                                                                     qrFormSucursalesRecordList
                                                                         .toList(),
-                                                                    _model
-                                                                        .selectedBranchId!),
+                                                                    containerCompaniesRecord!.porSucursal
+                                                                        ? _model
+                                                                            .selectedBranchId!
+                                                                        : containerCompaniesRecord!
+                                                                            .defaultBranchId),
                                                               ),
                                                               ...mapToFirestore(
                                                                 {
@@ -1023,13 +1034,20 @@ class _OKFNPayry27SolicitarQRWidgetState
                                                                 status:
                                                                     PaymentStatus
                                                                         .PENDIENTE,
-                                                                sucursalId: _model
-                                                                    .selectedBranchId,
+                                                                sucursalId: containerCompaniesRecord!
+                                                                        .porSucursal
+                                                                    ? _model
+                                                                        .selectedBranchId
+                                                                    : containerCompaniesRecord
+                                                                        ?.defaultBranchId,
                                                                 sucursalName: functions.returnBranchName(
                                                                     qrFormSucursalesRecordList
                                                                         .toList(),
-                                                                    _model
-                                                                        .selectedBranchId!),
+                                                                    containerCompaniesRecord!.porSucursal
+                                                                        ? _model
+                                                                            .selectedBranchId!
+                                                                        : containerCompaniesRecord!
+                                                                            .defaultBranchId),
                                                               ),
                                                               ...mapToFirestore(
                                                                 {

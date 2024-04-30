@@ -458,8 +458,7 @@ class _OKFNPayry20DatosBancariosWidgetState
                                                   await sucursalesRecordReference
                                                       .set({
                                                     ...createSucursalesRecordData(
-                                                      nombre:
-                                                          'Matriz (por defecto)',
+                                                      nombre: 'Matriz',
                                                       cuenta: _model
                                                           .clabeFieldTextController
                                                           .text,
@@ -497,8 +496,7 @@ class _OKFNPayry20DatosBancariosWidgetState
                                                       SucursalesRecord
                                                           .getDocumentFromData({
                                                     ...createSucursalesRecordData(
-                                                      nombre:
-                                                          'Matriz (por defecto)',
+                                                      nombre: 'Matriz',
                                                       cuenta: _model
                                                           .clabeFieldTextController
                                                           .text,
@@ -541,13 +539,21 @@ class _OKFNPayry20DatosBancariosWidgetState
                                                         ?.reference.id,
                                                   ));
 
+                                                  await widget.companyDocRef!
+                                                      .update(
+                                                          createCompaniesRecordData(
+                                                    defaultBranchId: _model
+                                                        .createdBranch
+                                                        ?.reference
+                                                        .id,
+                                                  ));
+
                                                   await currentUserReference!
                                                       .update(
                                                           createUsersRecordData(
                                                     isCompanyComplete: true,
                                                   ));
                                                 }
-                                                context.safePop();
                                                 await showDialog(
                                                   barrierDismissible: false,
                                                   context: context,
@@ -614,6 +620,7 @@ class _OKFNPayry20DatosBancariosWidgetState
                                                 ).then(
                                                     (value) => setState(() {}));
 
+                                                context.safePop();
                                                 _model.rcAC =
                                                     await SQLReportGroup
                                                         .reportCompanyCall

@@ -334,6 +334,10 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                                           oKFNPayry23InvitarUsuarioCompaniesRecord
                                                               ?.reference.id,
                                                     )
+                                                    .where(
+                                                      'status',
+                                                      isEqualTo: true,
+                                                    )
                                                     .orderBy('nombre'),
                                           ),
                                           builder: (context, snapshot) {
@@ -702,15 +706,22 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                                     .emailFieldTextController
                                                     .text,
                                                 accepted: false,
-                                                sucursalId:
-                                                    (_model.branchDropDownValue !=
-                                                                    null &&
-                                                                _model.branchDropDownValue !=
-                                                                    '') &&
-                                                            _model.branchCheck
-                                                        ? _model
-                                                            .selectedBranchId
-                                                        : '',
+                                                sucursalId: () {
+                                                  if ((_model.branchDropDownValue !=
+                                                              null &&
+                                                          _model.branchDropDownValue !=
+                                                              '') &&
+                                                      _model.branchCheck) {
+                                                    return _model
+                                                        .selectedBranchId;
+                                                  } else if (!oKFNPayry23InvitarUsuarioCompaniesRecord!
+                                                      .porSucursal) {
+                                                    return oKFNPayry23InvitarUsuarioCompaniesRecord
+                                                        ?.defaultBranchId;
+                                                  } else {
+                                                    return '';
+                                                  }
+                                                }(),
                                               ),
                                               ...mapToFirestore(
                                                 {
@@ -731,15 +742,22 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                                     .emailFieldTextController
                                                     .text,
                                                 accepted: false,
-                                                sucursalId:
-                                                    (_model.branchDropDownValue !=
-                                                                    null &&
-                                                                _model.branchDropDownValue !=
-                                                                    '') &&
-                                                            _model.branchCheck
-                                                        ? _model
-                                                            .selectedBranchId
-                                                        : '',
+                                                sucursalId: () {
+                                                  if ((_model.branchDropDownValue !=
+                                                              null &&
+                                                          _model.branchDropDownValue !=
+                                                              '') &&
+                                                      _model.branchCheck) {
+                                                    return _model
+                                                        .selectedBranchId;
+                                                  } else if (!oKFNPayry23InvitarUsuarioCompaniesRecord!
+                                                      .porSucursal) {
+                                                    return oKFNPayry23InvitarUsuarioCompaniesRecord
+                                                        ?.defaultBranchId;
+                                                  } else {
+                                                    return '';
+                                                  }
+                                                }(),
                                               ),
                                               ...mapToFirestore(
                                                 {
