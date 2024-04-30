@@ -52,6 +52,8 @@ class OKFNPayry25PermisosModel
   bool? readStatisticsSwitchValue;
   // State field(s) for ReadTransfersSwitch widget.
   bool? readTransfersSwitchValue;
+  // State field(s) for ReadBranchesSwitch widget.
+  bool? readBranchesSwitchValue;
 
   @override
   void initState(BuildContext context) {}

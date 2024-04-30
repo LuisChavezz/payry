@@ -519,6 +519,11 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                             oKFNPayry26DashboardUserPermissionsRecord?.createRefunds,
                                                                             ParamType.bool,
                                                                           ),
+                                                                          'readAllBranches':
+                                                                              serializeParam(
+                                                                            oKFNPayry26DashboardUserPermissionsRecord?.readBranches,
+                                                                            ParamType.bool,
+                                                                          ),
                                                                         }.withoutNulls,
                                                                       );
                                                                     },
@@ -586,7 +591,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                         )
                                                                         .where(
                                                                           'sucursalId',
-                                                                          isEqualTo: valueOrDefault<bool>(currentUserDocument?.isAdmin, false) || !containerCompaniesRecord!.porSucursal || (valueOrDefault(currentUserDocument?.sucursalId, '') == null || valueOrDefault(currentUserDocument?.sucursalId, '') == '')
+                                                                          isEqualTo: valueOrDefault<bool>(currentUserDocument?.isAdmin, false) || !containerCompaniesRecord!.porSucursal || oKFNPayry26DashboardUserPermissionsRecord!.readBranches || (valueOrDefault(currentUserDocument?.sucursalId, '') == null || valueOrDefault(currentUserDocument?.sucursalId, '') == '')
                                                                               ? null
                                                                               : valueOrDefault(currentUserDocument?.sucursalId, ''),
                                                                         )
@@ -827,6 +832,11 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                             oKFNPayry26DashboardUserPermissionsRecord?.createRefunds,
                                                                             ParamType.bool,
                                                                           ),
+                                                                          'readAllBranches':
+                                                                              serializeParam(
+                                                                            oKFNPayry26DashboardUserPermissionsRecord?.readBranches,
+                                                                            ParamType.bool,
+                                                                          ),
                                                                         }.withoutNulls,
                                                                       );
                                                                     },
@@ -894,7 +904,7 @@ class _OKFNPayry26DashboardWidgetState extends State<OKFNPayry26DashboardWidget>
                                                                         )
                                                                         .where(
                                                                           'sucursalId',
-                                                                          isEqualTo: valueOrDefault<bool>(currentUserDocument?.isAdmin, false) || !containerCompaniesRecord!.porSucursal || (valueOrDefault(currentUserDocument?.sucursalId, '') == null || valueOrDefault(currentUserDocument?.sucursalId, '') == '')
+                                                                          isEqualTo: valueOrDefault<bool>(currentUserDocument?.isAdmin, false) || !containerCompaniesRecord!.porSucursal || oKFNPayry26DashboardUserPermissionsRecord!.readBranches || (valueOrDefault(currentUserDocument?.sucursalId, '') == null || valueOrDefault(currentUserDocument?.sucursalId, '') == '')
                                                                               ? null
                                                                               : valueOrDefault(currentUserDocument?.sucursalId, ''),
                                                                         )

@@ -1085,7 +1085,11 @@ class _OKFNPayry27SolicitarQRWidgetState
                                                                             .transactionsCount +
                                                                         1.0;
                                                               });
-
+                                                              if (Navigator.of(
+                                                                      context)
+                                                                  .canPop()) {
+                                                                context.pop();
+                                                              }
                                                               context
                                                                   .pushNamedAuth(
                                                                 'OK_FN_Payry_31_detallesdeQRCode',
@@ -1370,6 +1374,11 @@ class _OKFNPayry27SolicitarQRWidgetState
                                         ),
                                         'createRefund': serializeParam(
                                           widget.createRefund,
+                                          ParamType.bool,
+                                        ),
+                                        'readAllBranches': serializeParam(
+                                          oKFNPayry27SolicitarQRUserPermissionsRecord
+                                              ?.readBranches,
                                           ParamType.bool,
                                         ),
                                       }.withoutNulls,

@@ -561,6 +561,7 @@ class _OKFNPayry05RegistrateWidgetState
                                                     readCompanies: false,
                                                     readUsers: false,
                                                     readInvoices: false,
+                                                    readBranches: false,
                                                   ));
                                               _model.tokenAC = await AuthGroup
                                                   .generateTokenCall

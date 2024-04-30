@@ -154,12 +154,14 @@ final parametersBuilderMap =
         allParams: {
           'readAll': getParameter<bool>(data, 'readAll'),
           'createRefund': getParameter<bool>(data, 'createRefund'),
+          'readAllBranches': getParameter<bool>(data, 'readAllBranches'),
         },
       ),
   'OK_FN_Payry_35_historialSMS': (data) async => ParameterData(
         allParams: {
           'readAll': getParameter<bool>(data, 'readAll'),
           'createRefund': getParameter<bool>(data, 'createRefund'),
+          'readAllBranches': getParameter<bool>(data, 'readAllBranches'),
         },
       ),
   'OK_FN_Payry_31_detallesdeQR': (data) async => ParameterData(

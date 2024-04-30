@@ -20,10 +20,12 @@ class OKFNPayry30HistorialQRsWidget extends StatefulWidget {
     super.key,
     required this.readAll,
     required this.createRefund,
+    required this.readAllBranches,
   });
 
   final bool? readAll;
   final bool? createRefund;
+  final bool? readAllBranches;
 
   @override
   State<OKFNPayry30HistorialQRsWidget> createState() =>
@@ -246,6 +248,8 @@ class _OKFNPayry30HistorialQRsWidgetState
                                                             false) ||
                                                         !columnCompaniesRecord!
                                                             .porSucursal ||
+                                                        widget
+                                                            .readAllBranches! ||
                                                         (valueOrDefault(
                                                                     currentUserDocument
                                                                         ?.sucursalId,
@@ -1051,6 +1055,8 @@ class _OKFNPayry30HistorialQRsWidgetState
                                                             false) ||
                                                         !columnCompaniesRecord!
                                                             .porSucursal ||
+                                                        widget
+                                                            .readAllBranches! ||
                                                         (valueOrDefault(
                                                                     currentUserDocument
                                                                         ?.sucursalId,

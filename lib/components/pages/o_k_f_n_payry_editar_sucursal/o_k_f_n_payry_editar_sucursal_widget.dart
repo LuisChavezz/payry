@@ -784,20 +784,24 @@ class _OKFNPayryEditarSucursalWidgetState
                                             .update(createSucursalesRecordData(
                                           nombre: _model
                                               .nameFieldTextController.text,
-                                          cuenta: _model
-                                              .clabeFieldTextController.text,
-                                          bankid: _model.bankId != null &&
-                                                  _model.bankId != ''
+                                          cuenta: _model.checkValue!
+                                              ? _model
+                                                  .clabeFieldTextController.text
+                                              : '',
+                                          bankid: (_model.bankId != null &&
+                                                      _model.bankId != '') &&
+                                                  _model.checkValue!
                                               ? _model.bankId
-                                              : oKFNPayryEditarSucursalSucursalesRecord
-                                                  .bankid,
+                                              : '',
                                           street: _model
                                               .streetFieldTextController.text,
                                           streetNumber: _model
                                               .streetNumberFieldTextController
                                               .text,
-                                          bankName: _model
-                                              .bankFieldTextController.text,
+                                          bankName: _model.checkValue!
+                                              ? _model
+                                                  .bankFieldTextController.text
+                                              : '',
                                         ));
                                         await showDialog(
                                           barrierDismissible: false,
