@@ -684,13 +684,16 @@ class _OKFNPayryRegistrarSucursalWidgetState
                                       ...createSucursalesRecordData(
                                         nombre:
                                             _model.nameFieldTextController.text,
-                                        cuenta: _model
-                                            .clabeFieldTextController.text,
+                                        cuenta: _model.checkValue!
+                                            ? _model
+                                                .clabeFieldTextController.text
+                                            : '',
                                         empresaId: widget.companyId,
                                         adminId: valueOrDefault(
                                             currentUserDocument?.adminId, ''),
-                                        bankid: _model.bankId != null &&
-                                                _model.bankId != ''
+                                        bankid: (_model.bankId != null &&
+                                                    _model.bankId != '') &&
+                                                _model.checkValue!
                                             ? _model.bankId
                                             : '',
                                         street: _model
@@ -699,8 +702,10 @@ class _OKFNPayryRegistrarSucursalWidgetState
                                             .streetNumberFieldTextController
                                             .text,
                                         status: true,
-                                        bankName:
-                                            _model.bankFieldTextController.text,
+                                        bankName: _model.checkValue!
+                                            ? _model
+                                                .bankFieldTextController.text
+                                            : '',
                                       ),
                                       ...mapToFirestore(
                                         {
@@ -714,13 +719,16 @@ class _OKFNPayryRegistrarSucursalWidgetState
                                       ...createSucursalesRecordData(
                                         nombre:
                                             _model.nameFieldTextController.text,
-                                        cuenta: _model
-                                            .clabeFieldTextController.text,
+                                        cuenta: _model.checkValue!
+                                            ? _model
+                                                .clabeFieldTextController.text
+                                            : '',
                                         empresaId: widget.companyId,
                                         adminId: valueOrDefault(
                                             currentUserDocument?.adminId, ''),
-                                        bankid: _model.bankId != null &&
-                                                _model.bankId != ''
+                                        bankid: (_model.bankId != null &&
+                                                    _model.bankId != '') &&
+                                                _model.checkValue!
                                             ? _model.bankId
                                             : '',
                                         street: _model
@@ -729,8 +737,10 @@ class _OKFNPayryRegistrarSucursalWidgetState
                                             .streetNumberFieldTextController
                                             .text,
                                         status: true,
-                                        bankName:
-                                            _model.bankFieldTextController.text,
+                                        bankName: _model.checkValue!
+                                            ? _model
+                                                .bankFieldTextController.text
+                                            : '',
                                       ),
                                       ...mapToFirestore(
                                         {

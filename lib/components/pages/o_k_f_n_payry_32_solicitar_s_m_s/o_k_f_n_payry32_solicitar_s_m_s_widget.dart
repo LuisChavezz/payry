@@ -1379,6 +1379,11 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                                                   setState(
                                                                       () {}));
 
+                                                              if (Navigator.of(
+                                                                      context)
+                                                                  .canPop()) {
+                                                                context.pop();
+                                                              }
                                                               context
                                                                   .pushNamedAuth(
                                                                 'OK_FN_Payry_36_detallesdeSMSCode',
@@ -1661,6 +1666,11 @@ class _OKFNPayry32SolicitarSMSWidgetState
                                       ),
                                       'createRefund': serializeParam(
                                         widget.createRefund,
+                                        ParamType.bool,
+                                      ),
+                                      'readAllBranches': serializeParam(
+                                        oKFNPayry32SolicitarSMSUserPermissionsRecord
+                                            ?.readBranches,
                                         ParamType.bool,
                                       ),
                                     }.withoutNulls,

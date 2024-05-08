@@ -248,6 +248,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   'createRefund',
                   ParamType.bool,
                 ),
+                readAllBranches: params.getParam(
+                  'readAllBranches',
+                  ParamType.bool,
+                ),
               ),
             ),
             FFRoute(
@@ -261,6 +265,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
                 createRefund: params.getParam(
                   'createRefund',
+                  ParamType.bool,
+                ),
+                readAllBranches: params.getParam(
+                  'readAllBranches',
                   ParamType.bool,
                 ),
               ),

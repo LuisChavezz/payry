@@ -646,6 +646,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                                         readCompanies: false,
                                                         readUsers: false,
                                                         readInvoices: false,
+                                                        readBranches: false,
                                                       ));
                                                   await AuthGroup
                                                       .verifyEmailCall
