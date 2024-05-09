@@ -1316,7 +1316,7 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                               ),
                                             ),
                                             Text(
-                                              'Ver otras sucursales',
+                                              'Ver todas las sucursales',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
