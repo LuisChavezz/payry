@@ -14,7 +14,7 @@ class DynamicSwitchUserStatusModel
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for Switch widget.
-  bool? switchValue;
+  bool switchValue = true;
 
   @override
   void initState(BuildContext context) {}

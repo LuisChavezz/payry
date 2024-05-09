@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'o_k_f_n_payry05_registrate_widget.dart'
     show OKFNPayry05RegistrateWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -84,6 +85,8 @@ class OKFNPayry05RegistrateModel
     return null;
   }
 
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  UserInvitationsRecord? userInv;
   // Stores action output result for [Backend Call - API (Generate Token)] action in Button widget.
   ApiCallResponse? tokenAC;
   // State field(s) for acceptCheck widget.

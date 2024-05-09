@@ -36,6 +36,7 @@ class OKFNPayry17VerificarOTPModel
   }
 
   // State field(s) for Timer widget.
+  final timerInitialTimeMs = 90000;
   int timerMilliseconds = 90000;
   String timerValue = StopWatchTimer.getDisplayTime(
     90000,
