@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:typed_data';
+import 'package:flutter/foundation.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
@@ -11,7 +12,7 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 /// Start auth Group Code
 
 class AuthGroup {
-  static String baseUrl = 'https://api.payry.mx/auth';
+  static String getBaseUrl() => 'https://api.payry.mx/auth';
   static Map<String, String> headers = {
     'Content-Type': 'application/json',
   };
@@ -25,13 +26,15 @@ class GenerateTokenCall {
   Future<ApiCallResponse> call({
     String? uid = '',
   }) async {
+    final baseUrl = AuthGroup.getBaseUrl();
+
     final ffApiRequestBody = '''
 {
   "uid": "${uid}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Generate Token',
-      apiUrl: '${AuthGroup.baseUrl}/generateToken',
+      apiUrl: '${baseUrl}/generateToken',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
@@ -66,9 +69,11 @@ class SendWelcomeEmailCall {
     String? token = '',
     String? email = '',
   }) async {
+    final baseUrl = AuthGroup.getBaseUrl();
+
     return ApiManager.instance.makeApiCall(
       callName: 'Send Welcome Email',
-      apiUrl: '${AuthGroup.baseUrl}/welcome_email/${email}',
+      apiUrl: '${baseUrl}/welcome_email/${email}',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
@@ -89,13 +94,15 @@ class VerifyEmailCall {
   Future<ApiCallResponse> call({
     String? email = '',
   }) async {
+    final baseUrl = AuthGroup.getBaseUrl();
+
     final ffApiRequestBody = '''
 {
   "email": "${email}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Verify Email',
-      apiUrl: '${AuthGroup.baseUrl}/send-verify-mail',
+      apiUrl: '${baseUrl}/send-verify-mail',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
@@ -117,13 +124,15 @@ class SendInvitationCall {
     String? token = '',
     String? email = '',
   }) async {
+    final baseUrl = AuthGroup.getBaseUrl();
+
     final ffApiRequestBody = '''
 {
   "email": "${email}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Send Invitation',
-      apiUrl: '${AuthGroup.baseUrl}/invite',
+      apiUrl: '${baseUrl}/invite',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
@@ -155,7 +164,7 @@ class SendInvitationCall {
 /// Start STP Group Code
 
 class StpGroup {
-  static String baseUrl = 'https://api.payry.mx/stp';
+  static String getBaseUrl() => 'https://api.payry.mx/stp';
   static Map<String, String> headers = {};
   static GenerateCodiCall generateCodiCall = GenerateCodiCall();
   static GenerateDimoCall generateDimoCall = GenerateDimoCall();
@@ -169,13 +178,15 @@ class GenerateCodiCall {
     String? id = '',
     String? token = '',
   }) async {
+    final baseUrl = StpGroup.getBaseUrl();
+
     final ffApiRequestBody = '''
 {
   "id": "${id}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Generate Codi',
-      apiUrl: '${StpGroup.baseUrl}/cobro-qr',
+      apiUrl: '${baseUrl}/cobro-qr',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -197,13 +208,15 @@ class GenerateDimoCall {
     String? token = '',
     String? id = '',
   }) async {
+    final baseUrl = StpGroup.getBaseUrl();
+
     final ffApiRequestBody = '''
 {
   "id": "${id}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Generate Dimo',
-      apiUrl: '${StpGroup.baseUrl}/cobro-sms',
+      apiUrl: '${baseUrl}/cobro-sms',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -224,9 +237,11 @@ class GetBalanceCall {
   Future<ApiCallResponse> call({
     String? token = '',
   }) async {
+    final baseUrl = StpGroup.getBaseUrl();
+
     return ApiManager.instance.makeApiCall(
       callName: 'Get Balance',
-      apiUrl: '${StpGroup.baseUrl}/balance',
+      apiUrl: '${baseUrl}/balance',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -258,9 +273,11 @@ class GetMiscCompanyCall {
   Future<ApiCallResponse> call({
     String? token = '',
   }) async {
+    final baseUrl = StpGroup.getBaseUrl();
+
     return ApiManager.instance.makeApiCall(
       callName: 'Get MiscCompany',
-      apiUrl: '${StpGroup.baseUrl}/misc',
+      apiUrl: '${baseUrl}/misc',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -280,13 +297,15 @@ class RefundCall {
     String? token = '',
     String? id = '',
   }) async {
+    final baseUrl = StpGroup.getBaseUrl();
+
     final ffApiRequestBody = '''
 {
   "id": "${id}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Refund',
-      apiUrl: '${StpGroup.baseUrl}/refund/${id}',
+      apiUrl: '${baseUrl}/refund/${id}',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -308,7 +327,7 @@ class RefundCall {
 /// Start Users Group Code
 
 class UsersGroup {
-  static String baseUrl = 'https://api.payry.mx/users';
+  static String getBaseUrl() => 'https://api.payry.mx/users';
   static Map<String, String> headers = {};
   static NotifyCreationToAdminCall notifyCreationToAdminCall =
       NotifyCreationToAdminCall();
@@ -319,9 +338,11 @@ class NotifyCreationToAdminCall {
     String? uid = '',
     String? token = '',
   }) async {
+    final baseUrl = UsersGroup.getBaseUrl();
+
     return ApiManager.instance.makeApiCall(
       callName: 'Notify Creation To Admin',
-      apiUrl: '${UsersGroup.baseUrl}/notifyCreationToAdmin/${uid}',
+      apiUrl: '${baseUrl}/notifyCreationToAdmin/${uid}',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -354,7 +375,7 @@ class NotifyCreationToAdminCall {
 /// Start SQL report Group Code
 
 class SQLReportGroup {
-  static String baseUrl = 'https://api.payry.mx/sqlReport';
+  static String getBaseUrl() => 'https://api.payry.mx/sqlReport';
   static Map<String, String> headers = {
     'Content-Type': 'application/json',
   };
@@ -367,9 +388,11 @@ class ReportCompanyCall {
     String? token = '',
     String? id = '',
   }) async {
+    final baseUrl = SQLReportGroup.getBaseUrl();
+
     return ApiManager.instance.makeApiCall(
       callName: 'Report Company',
-      apiUrl: '${SQLReportGroup.baseUrl}/reportCompanyToSQL/${id}',
+      apiUrl: '${baseUrl}/reportCompanyToSQL/${id}',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
@@ -391,9 +414,11 @@ class ReportUserCall {
     String? token = '',
     String? id = '',
   }) async {
+    final baseUrl = SQLReportGroup.getBaseUrl();
+
     return ApiManager.instance.makeApiCall(
       callName: 'Report User',
-      apiUrl: '${SQLReportGroup.baseUrl}/reportUserToSQL/${id}',
+      apiUrl: '${baseUrl}/reportUserToSQL/${id}',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
@@ -659,6 +684,9 @@ String _serializeList(List? list) {
   try {
     return json.encode(list);
   } catch (_) {
+    if (kDebugMode) {
+      print("List serialization failed. Returning empty list.");
+    }
     return '[]';
   }
 }
@@ -668,6 +696,9 @@ String _serializeJson(dynamic jsonVar, [bool isList = false]) {
   try {
     return json.encode(jsonVar);
   } catch (_) {
+    if (kDebugMode) {
+      print("Json serialization failed. Returning empty json.");
+    }
     return isList ? '[]' : '{}';
   }
 }

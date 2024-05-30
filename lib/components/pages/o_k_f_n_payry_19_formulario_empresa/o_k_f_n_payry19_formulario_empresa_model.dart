@@ -146,9 +146,9 @@ class OKFNPayry19FormularioEmpresaModel
   String? giroDropDownValue;
   FormFieldController<String>? giroDropDownValueController;
   // State field(s) for branchSwitch widget.
-  bool branchSwitchValue = true;
+  bool? branchSwitchValue;
   // State field(s) for RequireBillSwitch widget.
-  bool requireBillSwitchValue = true;
+  bool? requireBillSwitchValue;
   // State field(s) for RFCField widget.
   FocusNode? rFCFieldFocusNode;
   TextEditingController? rFCFieldTextController;

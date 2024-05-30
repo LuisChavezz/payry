@@ -19,7 +19,7 @@ class OKFNPayry14PerfilModel extends FlutterFlowModel<OKFNPayry14PerfilWidget> {
   // Stores action output result for [Backend Call - API (Verify Email)] action in Row widget.
   ApiCallResponse? verifyACEmailProfile;
   // State field(s) for Switch widget.
-  bool switchValue = true;
+  bool? switchValue;
 
   @override
   void initState(BuildContext context) {}
