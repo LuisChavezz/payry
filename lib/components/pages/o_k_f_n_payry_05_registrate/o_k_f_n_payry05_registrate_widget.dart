@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -514,10 +515,29 @@ class _OKFNPayry05RegistrateWidgetState
                                                 return;
                                               }
 
+                                              _model.userInv =
+                                                  await queryUserInvitationsRecordOnce(
+                                                queryBuilder:
+                                                    (userInvitationsRecord) =>
+                                                        userInvitationsRecord
+                                                            .where(
+                                                  'invited_user_email',
+                                                  isEqualTo: _model
+                                                      .emailFieldTextController
+                                                      .text,
+                                                ),
+                                                singleRecord: true,
+                                              ).then((s) => s.firstOrNull);
+                                              _shouldSetState = true;
+
                                               await currentUserReference!
                                                   .update({
                                                 ...createUsersRecordData(
-                                                  adminId: currentUserUid,
+                                                  adminId: _model.userInv
+                                                              ?.reference !=
+                                                          null
+                                                      ? _model.userInv?.adminId
+                                                      : currentUserUid,
                                                   email: _model
                                                       .emailFieldTextController
                                                       .text,
@@ -528,10 +548,19 @@ class _OKFNPayry05RegistrateWidgetState
                                                   phoneNumber: '',
                                                   status: true,
                                                   isValidPhoneNumber: false,
-                                                  isAdmin: true,
+                                                  isAdmin: _model.userInv
+                                                              ?.reference !=
+                                                          null
+                                                      ? false
+                                                      : true,
                                                   isCompanyComplete: false,
                                                   isValidMail: false,
-                                                  sucursalId: '',
+                                                  sucursalId: _model.userInv
+                                                              ?.reference !=
+                                                          null
+                                                      ? _model
+                                                          .userInv?.sucursalId
+                                                      : '',
                                                 ),
                                                 ...mapToFirestore(
                                                   {

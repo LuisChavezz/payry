@@ -208,7 +208,7 @@ class _OKFNPayry17VerificarOTPWidgetState
                                   ),
                                 ),
                                 FlutterFlowTimer(
-                                  initialTime: _model.timerMilliseconds,
+                                  initialTime: _model.timerInitialTimeMs,
                                   getDisplayTime: (value) =>
                                       StopWatchTimer.getDisplayTime(
                                     value,

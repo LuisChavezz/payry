@@ -913,6 +913,29 @@ class _OKFNPayry23InvitarUsuarioWidgetState
                                                 },
                                               ).then(
                                                   (value) => setState(() {}));
+
+                                              if (functions.includeTheString(
+                                                  getJsonField(
+                                                    (_model.invitationAC
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                    r'''$.message''',
+                                                  ).toString(),
+                                                  'expirada')!) {
+                                                GoRouter.of(context)
+                                                    .prepareAuthEvent();
+                                                await authManager.signOut();
+                                                GoRouter.of(context)
+                                                    .clearRedirectLocation();
+
+                                                context.goNamedAuth(
+                                                    'OK_FN_Payry_08_iniciasesion',
+                                                    context.mounted);
+
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              }
                                             }
 
                                             context.safePop();
