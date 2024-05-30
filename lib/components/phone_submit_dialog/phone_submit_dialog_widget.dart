@@ -1,5 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/permissions_util.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -46,7 +45,7 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
     super.initState();
     _model = createModel(context, () => PhoneSubmitDialogModel());
 
-    _model.phoneFieldController ??= TextEditingController();
+    _model.phoneFieldTextController ??= TextEditingController();
     _model.phoneFieldFocusNode ??= FocusNode();
   }
 
@@ -132,7 +131,7 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 12.0),
                           child: TextFormField(
-                            controller: _model.phoneFieldController,
+                            controller: _model.phoneFieldTextController,
                             focusNode: _model.phoneFieldFocusNode,
                             obscureText: false,
                             decoration: InputDecoration(
@@ -189,10 +188,9 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
                                   fontFamily: 'Lexend',
                                   letterSpacing: 0.0,
                                 ),
-                            minLines: null,
                             maxLength: 10,
                             keyboardType: TextInputType.phone,
-                            validator: _model.phoneFieldControllerValidator
+                            validator: _model.phoneFieldTextControllerValidator
                                 .asValidator(context),
                             inputFormatters: [_model.phoneFieldMask],
                           ),
@@ -216,7 +214,7 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
                             _model.contact =
                                 await actions.pickContactFromPhoneBook();
                             setState(() {
-                              _model.phoneFieldController?.text =
+                              _model.phoneFieldTextController?.text =
                                   functions.formatPhoneNumber(getJsonField(
                                 _model.contact,
                                 r'''$.phone''',
@@ -237,32 +235,15 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
                         !_model.formKey.currentState!.validate()) {
                       return;
                     }
-                    try {
-                      final result = await FirebaseFunctions.instance
-                          .httpsCallable('sendSms')
-                          .call({
-                        "token": FFAppState().serverToken,
-                        "phoneNumber": '+52${_model.phoneFieldController.text}',
-                        "message":
-                            'Revisa tu recibo de ${widget.companyAlias}: https://www.payry.mx/rdp/?id=${widget.paymentId}',
-                        "test": false,
-                      });
-                      _model.smsResp = SendSmsCloudFunctionCallResponse(
-                        data: result.data,
-                        succeeded: true,
-                        resultAsString: result.data.toString(),
-                        jsonBody: result.data,
-                      );
-                    } on FirebaseFunctionsException catch (error) {
-                      _model.smsResp = SendSmsCloudFunctionCallResponse(
-                        errorCode: error.code,
-                        succeeded: false,
-                      );
-                    }
-
+                    _model.smsAC = await SendSmsCall.call(
+                      token: FFAppState().serverToken,
+                      to: '+52${_model.phoneFieldTextController.text}',
+                      body:
+                          'Revisa tu recibo de ${widget.companyAlias}: https://www.payry.mx/rdp/?id=${widget.paymentId}',
+                    );
                     _shouldSetState = true;
                     if (getJsonField(
-                      _model.smsResp!.jsonBody,
+                      (_model.smsAC?.jsonBody ?? ''),
                       r'''$.success''',
                     )) {
                       await showDialog(
@@ -292,7 +273,7 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
                           return AlertDialog(
                             title: Text('Error'),
                             content: Text(getJsonField(
-                              _model.smsResp!.jsonBody,
+                              (_model.smsAC?.jsonBody ?? ''),
                               r'''$.message''',
                             ).toString()),
                             actions: [
@@ -307,7 +288,7 @@ class _PhoneSubmitDialogWidgetState extends State<PhoneSubmitDialogWidget> {
                       );
                       if (!functions.includeTheString(
                           getJsonField(
-                            _model.smsResp!.jsonBody,
+                            (_model.smsAC?.jsonBody ?? ''),
                             r'''$.message''',
                           ).toString(),
                           'expirada')!) {

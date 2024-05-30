@@ -166,8 +166,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 companyDocRef: params.getParam(
                   'companyDocRef',
                   ParamType.DocumentReference,
-                  false,
-                  ['companies'],
+                  isList: false,
+                  collectionNamePath: ['companies'],
                 ),
                 clabe: params.getParam(
                   'clabe',
@@ -214,6 +214,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   'userEmail',
                   ParamType.String,
                 ),
+                userBranchId: params.getParam(
+                  'userBranchId',
+                  ParamType.String,
+                ),
               ),
             ),
             FFRoute(
@@ -244,6 +248,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   'createRefund',
                   ParamType.bool,
                 ),
+                readAllBranches: params.getParam(
+                  'readAllBranches',
+                  ParamType.bool,
+                ),
               ),
             ),
             FFRoute(
@@ -259,6 +267,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   'createRefund',
                   ParamType.bool,
                 ),
+                readAllBranches: params.getParam(
+                  'readAllBranches',
+                  ParamType.bool,
+                ),
               ),
             ),
             FFRoute(
@@ -269,8 +281,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 registraCobroRef: params.getParam(
                   'registraCobroRef',
                   ParamType.DocumentReference,
-                  false,
-                  ['registraCobro'],
+                  isList: false,
+                  collectionNamePath: ['registraCobro'],
                 ),
                 createRefund: params.getParam(
                   'createRefund',
@@ -279,8 +291,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 detallesCobroRef: params.getParam(
                   'detallesCobroRef',
                   ParamType.DocumentReference,
-                  false,
-                  ['detallesCobro'],
+                  isList: false,
+                  collectionNamePath: ['detallesCobro'],
                 ),
               ),
             ),
@@ -304,8 +316,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 registraCobroRef: params.getParam(
                   'registraCobroRef',
                   ParamType.DocumentReference,
-                  false,
-                  ['registraCobro'],
+                  isList: false,
+                  collectionNamePath: ['registraCobro'],
                 ),
                 createRefund: params.getParam(
                   'createRefund',
@@ -314,8 +326,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 detallesCobroRef: params.getParam(
                   'detallesCobroRef',
                   ParamType.DocumentReference,
-                  false,
-                  ['detallesCobro'],
+                  isList: false,
+                  collectionNamePath: ['detallesCobro'],
                 ),
               ),
             ),
@@ -400,8 +412,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 id: params.getParam(
                   'id',
                   ParamType.DocumentReference,
-                  false,
-                  ['user_invitations'],
+                  isList: false,
+                  collectionNamePath: ['user_invitations'],
                 ),
               ),
             ),
@@ -420,8 +432,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 registraCobroRef: params.getParam(
                   'registraCobroRef',
                   ParamType.DocumentReference,
-                  false,
-                  ['registraCobro'],
+                  isList: false,
+                  collectionNamePath: ['registraCobro'],
                 ),
                 createRefund: params.getParam(
                   'createRefund',
@@ -437,12 +449,51 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 registraCobroRef: params.getParam(
                   'registraCobroRef',
                   ParamType.DocumentReference,
-                  false,
-                  ['registraCobro'],
+                  isList: false,
+                  collectionNamePath: ['registraCobro'],
                 ),
                 createRefund: params.getParam(
                   'createRefund',
                   ParamType.bool,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'OK_FN_Payry_sucursales',
+              path: 'oKFNPayrySucursales',
+              requireAuth: true,
+              builder: (context, params) => OKFNPayrySucursalesWidget(
+                companyId: params.getParam(
+                  'companyId',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'OK_FN_Payry_registrarSucursal',
+              path: 'oKFNPayryRegistrarSucursal',
+              requireAuth: true,
+              builder: (context, params) => OKFNPayryRegistrarSucursalWidget(
+                companyId: params.getParam(
+                  'companyId',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'OK_FN_Payry_editarSucursal',
+              path: 'oKFNPayryEditarSucursal',
+              requireAuth: true,
+              builder: (context, params) => OKFNPayryEditarSucursalWidget(
+                companyId: params.getParam(
+                  'companyId',
+                  ParamType.String,
+                ),
+                branchDocRef: params.getParam(
+                  'branchDocRef',
+                  ParamType.DocumentReference,
+                  isList: false,
+                  collectionNamePath: ['sucursales'],
                 ),
               ),
             )
@@ -523,7 +574,7 @@ extension _GoRouterStateExtensions on GoRouterState {
       extra != null ? extra as Map<String, dynamic> : {};
   Map<String, dynamic> get allParams => <String, dynamic>{}
     ..addAll(pathParameters)
-    ..addAll(queryParameters)
+    ..addAll(uri.queryParameters)
     ..addAll(extraMap);
   TransitionInfo get transitionInfo => extraMap.containsKey(kTransitionInfoKey)
       ? extraMap[kTransitionInfoKey] as TransitionInfo
@@ -542,7 +593,7 @@ class FFParameters {
   // present is the special extra parameter reserved for the transition info.
   bool get isEmpty =>
       state.allParams.isEmpty ||
-      (state.extraMap.length == 1 &&
+      (state.allParams.length == 1 &&
           state.extraMap.containsKey(kTransitionInfoKey));
   bool isAsyncParam(MapEntry<String, dynamic> param) =>
       asyncParams.containsKey(param.key) && param.value is String;
@@ -563,10 +614,10 @@ class FFParameters {
 
   dynamic getParam<T>(
     String paramName,
-    ParamType type, [
+    ParamType type, {
     bool isList = false,
     List<String>? collectionNamePath,
-  ]) {
+  }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
     }
@@ -616,7 +667,7 @@ class FFRoute {
           }
 
           if (requireAuth && !appStateNotifier.loggedIn) {
-            appStateNotifier.setRedirectLocationIfUnset(state.location);
+            appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
             return '/oKFNPayry08Iniciasesion';
           }
           return null;
@@ -702,8 +753,8 @@ class _RouteErrorBuilderState extends State<_RouteErrorBuilder> {
   void initState() {
     super.initState();
     // Handle erroneous links from Firebase Dynamic Links.
-    if (widget.state.location.startsWith('/link') &&
-        widget.state.location.contains('request_ip_version')) {
+    if (widget.state.uri.toString().startsWith('/link') &&
+        widget.state.uri.toString().contains('request_ip_version')) {
       SchedulerBinding.instance.addPostFrameCallback((_) => context.go('/'));
     }
   }
@@ -720,7 +771,7 @@ class RootPageContext {
   static bool isInactiveRootPage(BuildContext context) {
     final rootPageContext = context.read<RootPageContext?>();
     final isRootPage = rootPageContext?.isRootPage ?? false;
-    final location = GoRouter.of(context).location;
+    final location = GoRouterState.of(context).uri.toString();
     return isRootPage &&
         location != '/' &&
         location != rootPageContext?.errorRoute;
@@ -730,4 +781,14 @@ class RootPageContext {
         value: RootPageContext(true, errorRoute),
         child: child,
       );
+}
+
+extension GoRouterLocationExtension on GoRouter {
+  String getCurrentLocation() {
+    final RouteMatch lastMatch = routerDelegate.currentConfiguration.last;
+    final RouteMatchList matchList = lastMatch is ImperativeRouteMatch
+        ? lastMatch.matches
+        : routerDelegate.currentConfiguration;
+    return matchList.uri.toString();
+  }
 }

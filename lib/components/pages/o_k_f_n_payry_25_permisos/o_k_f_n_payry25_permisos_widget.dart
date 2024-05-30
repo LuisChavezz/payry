@@ -1,10 +1,14 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/walkthroughs/asignar_permisos_a_usuarios.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -22,11 +26,13 @@ class OKFNPayry25PermisosWidget extends StatefulWidget {
     required this.uid,
     required this.userName,
     required this.userEmail,
+    required this.userBranchId,
   });
 
   final String? uid;
   final String? userName;
   final String? userEmail;
+  final String? userBranchId;
 
   @override
   State<OKFNPayry25PermisosWidget> createState() =>
@@ -45,22 +51,12 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (getJsonField(
-        FFAppState().walkthroughs,
-        r'''$.user_permissions''',
-      )) {
-        await Future.delayed(const Duration(milliseconds: 300));
+      if (widget.userBranchId != null && widget.userBranchId != '') {
         setState(() {
-          _model.show = true;
+          _model.selectedBranchId = widget.userBranchId;
         });
-        safeSetState(() => _model.asignarPermisosAUsuariosController =
-            createPageWalkthrough(context));
-        _model.asignarPermisosAUsuariosController?.show(context: context);
         return;
       } else {
-        setState(() {
-          _model.show = true;
-        });
         return;
       }
     });
@@ -183,63 +179,52 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
             ),
             body: SafeArea(
               top: true,
-              child: Visibility(
-                visible: _model.show,
-                child: Stack(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(18.0),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(-1.0, -1.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Align(
-                                    alignment: AlignmentDirectional(1.0, 0.0),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        var confirmDialogResponse =
-                                            await showDialog<bool>(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      content: Text(
-                                                          oKFNPayry25PermisosUserPermissionsRecord!
-                                                              .createQr
-                                                              .toString()),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  false),
-                                                          child: Text('Cancel'),
-                                                        ),
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  true),
-                                                          child:
-                                                              Text('Confirm'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                ) ??
-                                                false;
-                                      },
+              child: StreamBuilder<List<CompaniesRecord>>(
+                stream: queryCompaniesRecord(
+                  queryBuilder: (companiesRecord) => companiesRecord.where(
+                    'created_by',
+                    isEqualTo: currentUserUid,
+                  ),
+                  singleRecord: true,
+                ),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 40.0,
+                        height: 40.0,
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            FlutterFlowTheme.of(context).accent3,
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+                  List<CompaniesRecord> stackCompaniesRecordList =
+                      snapshot.data!;
+                  final stackCompaniesRecord =
+                      stackCompaniesRecordList.isNotEmpty
+                          ? stackCompaniesRecordList.first
+                          : null;
+                  return Stack(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(18.0),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Align(
+                                alignment: AlignmentDirectional(-1.0, -1.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Align(
+                                      alignment: AlignmentDirectional(1.0, 0.0),
                                       child: Text(
                                         widget.userName!,
                                         textAlign: TextAlign.center,
@@ -247,36 +232,273 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                             .bodyLarge
                                             .override(
                                               fontFamily: 'Poppins',
+                                              fontSize: 14.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),
+                                  ],
+                                ),
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    valueOrDefault<String>(
+                                      widget.userEmail,
+                                      'a',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 12.0,
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ],
                               ),
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  valueOrDefault<String>(
-                                    widget.userEmail,
-                                    'a',
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyLarge
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        letterSpacing: 0.0,
+                              if (stackCompaniesRecord?.porSucursal ?? true)
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 16.0, 0.0, 16.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Sucursal',
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Lexend',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 4.0, 0.0, 12.0),
+                                            child: StreamBuilder<
+                                                List<SucursalesRecord>>(
+                                              stream: querySucursalesRecord(
+                                                queryBuilder:
+                                                    (sucursalesRecord) =>
+                                                        sucursalesRecord
+                                                            .where(
+                                                              'empresa_id',
+                                                              isEqualTo:
+                                                                  stackCompaniesRecord
+                                                                      ?.reference
+                                                                      .id,
+                                                            )
+                                                            .where(
+                                                              'status',
+                                                              isEqualTo: true,
+                                                            )
+                                                            .orderBy('nombre'),
+                                              ),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 40.0,
+                                                      height: 40.0,
+                                                      child:
+                                                          CircularProgressIndicator(
+                                                        valueColor:
+                                                            AlwaysStoppedAnimation<
+                                                                Color>(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .accent3,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                }
+                                                List<SucursalesRecord>
+                                                    branchDropDownSucursalesRecordList =
+                                                    snapshot.data!;
+                                                return FlutterFlowDropDown<
+                                                    String>(
+                                                  controller: _model
+                                                          .branchDropDownValueController ??=
+                                                      FormFieldController<
+                                                          String>(
+                                                    _model.branchDropDownValue ??=
+                                                        functions.returnBranchName(
+                                                            branchDropDownSucursalesRecordList
+                                                                .toList(),
+                                                            widget
+                                                                .userBranchId!),
+                                                  ),
+                                                  options:
+                                                      branchDropDownSucursalesRecordList
+                                                          .map((e) => e.nombre)
+                                                          .toList(),
+                                                  onChanged: (val) async {
+                                                    setState(() => _model
+                                                            .branchDropDownValue =
+                                                        val);
+                                                    setState(() {
+                                                      _model.selectedBranchId =
+                                                          functions.returnBranchId(
+                                                              branchDropDownSucursalesRecordList
+                                                                  .toList(),
+                                                              _model
+                                                                  .branchDropDownValue!);
+                                                    });
+                                                  },
+                                                  width: double.infinity,
+                                                  textStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color:
+                                                            Color(0xFF8788A5),
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                  hintText:
+                                                      'Selecciona la sucursal...',
+                                                  icon: Icon(
+                                                    Icons
+                                                        .keyboard_arrow_down_rounded,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    size: 24.0,
+                                                  ),
+                                                  elevation: 1.0,
+                                                  borderColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryText,
+                                                  borderWidth: 1.0,
+                                                  borderRadius: 8.0,
+                                                  margin: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          16.0, 4.0, 16.0, 4.0),
+                                                  hidesUnderline: true,
+                                                  isSearchable: false,
+                                                  isMultiSelect: false,
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                        ],
                                       ),
+                                      Builder(
+                                        builder: (context) => FFButtonWidget(
+                                          onPressed: () async {
+                                            await functions
+                                                .jsonPathToUserDocRef(
+                                                    widget.uid)!
+                                                .update(createUsersRecordData(
+                                                  sucursalId:
+                                                      _model.selectedBranchId,
+                                                ));
+                                            await showDialog(
+                                              barrierDismissible: false,
+                                              context: context,
+                                              builder: (dialogContext) {
+                                                return Dialog(
+                                                  elevation: 0,
+                                                  insetPadding: EdgeInsets.zero,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                              0.0, 0.0)
+                                                          .resolve(
+                                                              Directionality.of(
+                                                                  context)),
+                                                  child: GestureDetector(
+                                                    onTap: () => _model
+                                                            .unfocusNode
+                                                            .canRequestFocus
+                                                        ? FocusScope.of(context)
+                                                            .requestFocus(_model
+                                                                .unfocusNode)
+                                                        : FocusScope.of(context)
+                                                            .unfocus(),
+                                                    child: Container(
+                                                      height: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .height *
+                                                          0.25,
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          0.9,
+                                                      child:
+                                                          CustomConfirmDialogWidget(
+                                                        title:
+                                                            'Sucursal asignada',
+                                                        description:
+                                                            'Se ha asignado con éxito, la sucursal \"${_model.branchDropDownValue}\" al usuario: ${widget.userName}',
+                                                        buttonText: 'Aceptar',
+                                                        showDismissButton:
+                                                            false,
+                                                        dismissAction:
+                                                            () async {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        mainAction: () async {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                      ),
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            ).then((value) => setState(() {}));
+                                          },
+                                          text: 'Asignar sucursal',
+                                          options: FFButtonOptions(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                1.0,
+                                            height: 50.0,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: Color(0xFF5E4A98),
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily: 'Lexend',
+                                                      color: Colors.white,
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            elevation: 3.0,
+                                            borderSide: BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ],
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 12.0, 0.0, 0.0),
-                              child: Column(
+                              Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Row(
@@ -1072,15 +1294,95 @@ class _OKFNPayry25PermisosWidgetState extends State<OKFNPayry25PermisosWidget> {
                                       ),
                                     ],
                                   ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Flexible(
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 16.0, 0.0),
+                                              child: Icon(
+                                                Icons.business,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                size: 20.0,
+                                              ),
+                                            ),
+                                            Text(
+                                              'Ver todas las sucursales',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Switch.adaptive(
+                                        value: _model
+                                                .readBranchesSwitchValue ??=
+                                            oKFNPayry25PermisosUserPermissionsRecord!
+                                                .readBranches,
+                                        onChanged: (newValue) async {
+                                          setState(() =>
+                                              _model.readBranchesSwitchValue =
+                                                  newValue!);
+                                          if (newValue!) {
+                                            await oKFNPayry25PermisosUserPermissionsRecord!
+                                                .reference
+                                                .update(
+                                                    createUserPermissionsRecordData(
+                                              readBranches: _model
+                                                  .readBranchesSwitchValue,
+                                            ));
+                                          } else {
+                                            await oKFNPayry25PermisosUserPermissionsRecord!
+                                                .reference
+                                                .update(
+                                                    createUserPermissionsRecordData(
+                                              readBranches: _model
+                                                  .readBranchesSwitchValue,
+                                            ));
+                                          }
+                                        },
+                                        activeColor:
+                                            FlutterFlowTheme.of(context)
+                                                .accent1,
+                                        activeTrackColor:
+                                            FlutterFlowTheme.of(context)
+                                                .success,
+                                        inactiveTrackColor:
+                                            FlutterFlowTheme.of(context)
+                                                .alternate,
+                                        inactiveThumbColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                      ),
+                                    ],
+                                  ),
                                 ].divide(SizedBox(height: 5.0)),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  );
+                },
               ),
             ),
           ),

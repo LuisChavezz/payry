@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
+import 'backend/api_requests/api_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'dart:convert';
@@ -47,6 +48,19 @@ class FFAppState extends ChangeNotifier {
           print("Can't decode persisted json. Error: $e.");
         }
       }
+    });
+    _safeInit(() {
+      _transactionsCount =
+          prefs.getDouble('ff_transactionsCount') ?? _transactionsCount;
+    });
+    _safeInit(() {
+      _rateAppSkipDay = prefs.containsKey('ff_rateAppSkipDay')
+          ? DateTime.fromMillisecondsSinceEpoch(
+              prefs.getInt('ff_rateAppSkipDay')!)
+          : _rateAppSkipDay;
+    });
+    _safeInit(() {
+      _isRatedApp = prefs.getBool('ff_isRatedApp') ?? _isRatedApp;
     });
   }
 
@@ -96,6 +110,30 @@ class FFAppState extends ChangeNotifier {
   set walkthroughs(dynamic _value) {
     _walkthroughs = _value;
     prefs.setString('ff_walkthroughs', jsonEncode(_value));
+  }
+
+  double _transactionsCount = 0.0;
+  double get transactionsCount => _transactionsCount;
+  set transactionsCount(double _value) {
+    _transactionsCount = _value;
+    prefs.setDouble('ff_transactionsCount', _value);
+  }
+
+  DateTime? _rateAppSkipDay =
+      DateTime.fromMillisecondsSinceEpoch(1713275820000);
+  DateTime? get rateAppSkipDay => _rateAppSkipDay;
+  set rateAppSkipDay(DateTime? _value) {
+    _rateAppSkipDay = _value;
+    _value != null
+        ? prefs.setInt('ff_rateAppSkipDay', _value.millisecondsSinceEpoch)
+        : prefs.remove('ff_rateAppSkipDay');
+  }
+
+  bool _isRatedApp = false;
+  bool get isRatedApp => _isRatedApp;
+  set isRatedApp(bool _value) {
+    _isRatedApp = _value;
+    prefs.setBool('ff_isRatedApp', _value);
   }
 }
 

@@ -14,14 +14,14 @@ class OKFNPayry11OlvidecontrasenanuevaModel
 
   // State field(s) for new-password widget.
   FocusNode? newPasswordFocusNode1;
-  TextEditingController? newPasswordController1;
+  TextEditingController? newPasswordTextController1;
   late bool newPasswordVisibility1;
-  String? Function(BuildContext, String?)? newPasswordController1Validator;
+  String? Function(BuildContext, String?)? newPasswordTextController1Validator;
   // State field(s) for new-password widget.
   FocusNode? newPasswordFocusNode2;
-  TextEditingController? newPasswordController2;
+  TextEditingController? newPasswordTextController2;
   late bool newPasswordVisibility2;
-  String? Function(BuildContext, String?)? newPasswordController2Validator;
+  String? Function(BuildContext, String?)? newPasswordTextController2Validator;
 
   @override
   void initState(BuildContext context) {
@@ -32,9 +32,9 @@ class OKFNPayry11OlvidecontrasenanuevaModel
   @override
   void dispose() {
     newPasswordFocusNode1?.dispose();
-    newPasswordController1?.dispose();
+    newPasswordTextController1?.dispose();
 
     newPasswordFocusNode2?.dispose();
-    newPasswordController2?.dispose();
+    newPasswordTextController2?.dispose();
   }
 }

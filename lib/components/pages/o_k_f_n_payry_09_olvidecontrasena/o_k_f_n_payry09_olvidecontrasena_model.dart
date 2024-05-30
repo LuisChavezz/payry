@@ -18,8 +18,8 @@ class OKFNPayry09OlvidecontrasenaModel
 
   // State field(s) for emailAddress widget.
   FocusNode? emailAddressFocusNode;
-  TextEditingController? emailAddressController;
-  String? Function(BuildContext, String?)? emailAddressControllerValidator;
+  TextEditingController? emailAddressTextController;
+  String? Function(BuildContext, String?)? emailAddressTextControllerValidator;
   // Stores action output result for [Firestore Query - Query a collection] action in Button-Login widget.
   UsersRecord? userResp;
 
@@ -29,6 +29,6 @@ class OKFNPayry09OlvidecontrasenaModel
   @override
   void dispose() {
     emailAddressFocusNode?.dispose();
-    emailAddressController?.dispose();
+    emailAddressTextController?.dispose();
   }
 }

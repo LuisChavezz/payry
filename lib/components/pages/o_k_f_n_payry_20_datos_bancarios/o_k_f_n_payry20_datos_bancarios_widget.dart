@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
+import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -11,7 +12,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -74,10 +74,11 @@ class _OKFNPayry20DatosBancariosWidgetState
       await Clipboard.setData(ClipboardData(text: ''));
     });
 
-    _model.clabeFieldController ??= TextEditingController(text: widget.clabe);
+    _model.clabeFieldTextController ??=
+        TextEditingController(text: widget.clabe);
     _model.clabeFieldFocusNode ??= FocusNode();
 
-    _model.bankFieldController ??= TextEditingController(text: widget.bank);
+    _model.bankFieldTextController ??= TextEditingController(text: widget.bank);
     _model.bankFieldFocusNode ??= FocusNode();
   }
 
@@ -182,24 +183,25 @@ class _OKFNPayry20DatosBancariosWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 12.0),
                                   child: TextFormField(
-                                    controller: _model.clabeFieldController,
+                                    controller: _model.clabeFieldTextController,
                                     focusNode: _model.clabeFieldFocusNode,
                                     onChanged: (_) => EasyDebounce.debounce(
-                                      '_model.clabeFieldController',
+                                      '_model.clabeFieldTextController',
                                       Duration(milliseconds: 2000),
                                       () async {
                                         var _shouldSetState = false;
                                         _model.clabeParsed =
                                             await actions.clabeClipboard(
-                                          _model.clabeFieldController.text,
+                                          _model.clabeFieldTextController.text,
                                         );
                                         _shouldSetState = true;
                                         setState(() {
-                                          _model.clabeFieldController?.text =
-                                              _model.clabeParsed!;
+                                          _model.clabeFieldTextController
+                                              ?.text = _model.clabeParsed!;
                                         });
                                         if (functions.validateMinimumLength(
-                                            _model.clabeFieldController.text,
+                                            _model
+                                                .clabeFieldTextController.text,
                                             3)!) {
                                           _model.bankCatalogueDocument =
                                               await queryBankCatalogueRecordOnce(
@@ -208,10 +210,9 @@ class _OKFNPayry20DatosBancariosWidgetState
                                                     bankCatalogueRecord.where(
                                               'key',
                                               isEqualTo: functions
-                                                  .getFirstThreeCharacters(
-                                                      _model
-                                                          .clabeFieldController
-                                                          .text),
+                                                  .getFirstThreeCharacters(_model
+                                                      .clabeFieldTextController
+                                                      .text),
                                             ),
                                             singleRecord: true,
                                           ).then((s) => s.firstOrNull);
@@ -219,14 +220,15 @@ class _OKFNPayry20DatosBancariosWidgetState
                                           if (_model.bankCatalogueDocument !=
                                               null) {
                                             setState(() {
-                                              _model.bankFieldController?.text =
+                                              _model.bankFieldTextController
+                                                      ?.text =
                                                   _model.bankCatalogueDocument!
                                                       .name;
                                             });
                                           } else {
                                             setState(() {
-                                              _model.bankFieldController?.text =
-                                                  '';
+                                              _model.bankFieldTextController
+                                                  ?.text = '';
                                             });
                                           }
 
@@ -234,8 +236,8 @@ class _OKFNPayry20DatosBancariosWidgetState
                                           return;
                                         } else {
                                           setState(() {
-                                            _model.bankFieldController?.text =
-                                                '';
+                                            _model.bankFieldTextController
+                                                ?.text = '';
                                           });
                                           if (_shouldSetState) setState(() {});
                                           return;
@@ -310,11 +312,10 @@ class _OKFNPayry20DatosBancariosWidgetState
                                               .primaryText,
                                           letterSpacing: 0.0,
                                         ),
-                                    minLines: null,
                                     maxLength: 18,
                                     keyboardType: TextInputType.number,
                                     validator: _model
-                                        .clabeFieldControllerValidator
+                                        .clabeFieldTextControllerValidator
                                         .asValidator(context),
                                   ).addWalkthrough(
                                     textFieldL7ghthf0,
@@ -325,7 +326,7 @@ class _OKFNPayry20DatosBancariosWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 12.0),
                                   child: TextFormField(
-                                    controller: _model.bankFieldController,
+                                    controller: _model.bankFieldTextController,
                                     focusNode: _model.bankFieldFocusNode,
                                     readOnly: true,
                                     obscureText: false,
@@ -397,9 +398,8 @@ class _OKFNPayry20DatosBancariosWidgetState
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
                                         ),
-                                    minLines: null,
                                     validator: _model
-                                        .bankFieldControllerValidator
+                                        .bankFieldTextControllerValidator
                                         .asValidator(context),
                                   ).addWalkthrough(
                                     textFieldAkh84zc0,
@@ -408,133 +408,263 @@ class _OKFNPayry20DatosBancariosWidgetState
                                 ),
                                 Align(
                                   alignment: AlignmentDirectional(0.0, 0.0),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 30.0, 0.0, 10.0),
-                                    child: FFButtonWidget(
-                                      onPressed: (_model.bankCatalogueDocument
-                                                  ?.reference ==
-                                              null)
-                                          ? null
-                                          : () async {
-                                              if (_model.formKey.currentState ==
-                                                      null ||
-                                                  !_model.formKey.currentState!
-                                                      .validate()) {
-                                                return;
-                                              }
+                                  child: Builder(
+                                    builder: (context) => Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 30.0, 0.0, 10.0),
+                                      child: FFButtonWidget(
+                                        onPressed: (_model.bankCatalogueDocument
+                                                    ?.reference ==
+                                                null)
+                                            ? null
+                                            : () async {
+                                                if (_model.formKey
+                                                            .currentState ==
+                                                        null ||
+                                                    !_model
+                                                        .formKey.currentState!
+                                                        .validate()) {
+                                                  return;
+                                                }
 
-                                              await widget.companyDocRef!
-                                                  .update(
-                                                      createCompaniesRecordData(
-                                                clabe: _model
-                                                    .clabeFieldController.text,
-                                                bank: _model
-                                                    .bankFieldController.text,
-                                                bankid: _model.bankCatalogueDocument
-                                                                ?.bankid !=
-                                                            null &&
-                                                        _model.bankCatalogueDocument
-                                                                ?.bankid !=
-                                                            ''
-                                                    ? _model
-                                                        .bankCatalogueDocument
-                                                        ?.bankid
-                                                    : '',
-                                              ));
+                                                await widget.companyDocRef!
+                                                    .update(
+                                                        createCompaniesRecordData(
+                                                  clabe: _model
+                                                      .clabeFieldTextController
+                                                      .text,
+                                                  bank: _model
+                                                      .bankFieldTextController
+                                                      .text,
+                                                  bankid: _model.bankCatalogueDocument
+                                                                  ?.bankid !=
+                                                              null &&
+                                                          _model.bankCatalogueDocument
+                                                                  ?.bankid !=
+                                                              ''
+                                                      ? _model
+                                                          .bankCatalogueDocument
+                                                          ?.bankid
+                                                      : '',
+                                                ));
+                                                if (!valueOrDefault<bool>(
+                                                    currentUserDocument
+                                                        ?.isCompanyComplete,
+                                                    false)) {
+                                                  var sucursalesRecordReference =
+                                                      SucursalesRecord
+                                                          .collection
+                                                          .doc();
+                                                  await sucursalesRecordReference
+                                                      .set({
+                                                    ...createSucursalesRecordData(
+                                                      nombre: 'Matriz',
+                                                      cuenta: _model
+                                                          .clabeFieldTextController
+                                                          .text,
+                                                      empresaId: widget
+                                                          .companyDocRef?.id,
+                                                      adminId: valueOrDefault(
+                                                          currentUserDocument
+                                                              ?.adminId,
+                                                          ''),
+                                                      bankid: _model.bankCatalogueDocument
+                                                                      ?.bankid !=
+                                                                  null &&
+                                                              _model.bankCatalogueDocument
+                                                                      ?.bankid !=
+                                                                  ''
+                                                          ? _model
+                                                              .bankCatalogueDocument
+                                                              ?.bankid
+                                                          : '',
+                                                      street: '',
+                                                      streetNumber: '',
+                                                      status: true,
+                                                      bankName: _model
+                                                          .bankFieldTextController
+                                                          .text,
+                                                    ),
+                                                    ...mapToFirestore(
+                                                      {
+                                                        'created_time': FieldValue
+                                                            .serverTimestamp(),
+                                                      },
+                                                    ),
+                                                  });
+                                                  _model.createdBranch =
+                                                      SucursalesRecord
+                                                          .getDocumentFromData({
+                                                    ...createSucursalesRecordData(
+                                                      nombre: 'Matriz',
+                                                      cuenta: _model
+                                                          .clabeFieldTextController
+                                                          .text,
+                                                      empresaId: widget
+                                                          .companyDocRef?.id,
+                                                      adminId: valueOrDefault(
+                                                          currentUserDocument
+                                                              ?.adminId,
+                                                          ''),
+                                                      bankid: _model.bankCatalogueDocument
+                                                                      ?.bankid !=
+                                                                  null &&
+                                                              _model.bankCatalogueDocument
+                                                                      ?.bankid !=
+                                                                  ''
+                                                          ? _model
+                                                              .bankCatalogueDocument
+                                                              ?.bankid
+                                                          : '',
+                                                      street: '',
+                                                      streetNumber: '',
+                                                      status: true,
+                                                      bankName: _model
+                                                          .bankFieldTextController
+                                                          .text,
+                                                    ),
+                                                    ...mapToFirestore(
+                                                      {
+                                                        'created_time':
+                                                            DateTime.now(),
+                                                      },
+                                                    ),
+                                                  }, sucursalesRecordReference);
 
-                                              await currentUserReference!
-                                                  .update(createUsersRecordData(
-                                                isCompanyComplete: true,
-                                              ));
-                                              try {
-                                                final result =
-                                                    await FirebaseFunctions
-                                                        .instance
-                                                        .httpsCallable(
-                                                            'reportCompany')
-                                                        .call({
-                                                  "token":
-                                                      FFAppState().serverToken,
-                                                  "id":
-                                                      widget.companyDocRef!.id,
-                                                  "test": false,
-                                                });
-                                                _model.reportCompFC =
-                                                    ReportCompanyCloudFunctionCallResponse(
-                                                  data: result.data,
-                                                  succeeded: true,
-                                                  resultAsString:
-                                                      result.data.toString(),
-                                                  jsonBody: result.data,
-                                                );
-                                              } on FirebaseFunctionsException catch (error) {
-                                                _model.reportCompFC =
-                                                    ReportCompanyCloudFunctionCallResponse(
-                                                  errorCode: error.code,
-                                                  succeeded: false,
-                                                );
-                                              }
+                                                  await _model
+                                                      .createdBranch!.reference
+                                                      .update(
+                                                          createSucursalesRecordData(
+                                                    id: _model.createdBranch
+                                                        ?.reference.id,
+                                                  ));
 
-                                              if (_model
-                                                  .reportCompFC!.succeeded!) {
-                                                context.safePop();
-                                              } else {
-                                                context.safePop();
-                                              }
+                                                  await widget.companyDocRef!
+                                                      .update(
+                                                          createCompaniesRecordData(
+                                                    defaultBranchId: _model
+                                                        .createdBranch
+                                                        ?.reference
+                                                        .id,
+                                                  ));
 
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title: Text(
-                                                        'Datos actualizados'),
-                                                    content: Text(
-                                                        'Los datos bancarios de tu empresa han sido actualizados con éxito.'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: Text('Ok'),
+                                                  await currentUserReference!
+                                                      .update(
+                                                          createUsersRecordData(
+                                                    isCompanyComplete: true,
+                                                  ));
+                                                }
+                                                await showDialog(
+                                                  barrierDismissible: false,
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: GestureDetector(
+                                                        onTap: () => _model
+                                                                .unfocusNode
+                                                                .canRequestFocus
+                                                            ? FocusScope.of(
+                                                                    context)
+                                                                .requestFocus(_model
+                                                                    .unfocusNode)
+                                                            : FocusScope.of(
+                                                                    context)
+                                                                .unfocus(),
+                                                        child: Container(
+                                                          height:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .height *
+                                                                  0.25,
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  0.9,
+                                                          child:
+                                                              CustomConfirmDialogWidget(
+                                                            title:
+                                                                'Datos actualizados',
+                                                            description:
+                                                                'Los datos bancarios de tu empresa han sido actualizados con éxito.',
+                                                            buttonText:
+                                                                'Aceptar',
+                                                            showDismissButton:
+                                                                false,
+                                                            dismissAction:
+                                                                () async {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            mainAction:
+                                                                () async {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                          ),
+                                                        ),
                                                       ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
+                                                    );
+                                                  },
+                                                ).then(
+                                                    (value) => setState(() {}));
 
-                                              setState(() {});
-                                            },
-                                      text: 'Guardar',
-                                      options: FFButtonOptions(
-                                        width: 300.0,
-                                        height: 50.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 0.0),
-                                        iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: Color(0xFF5E4A98),
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color: Colors.white,
-                                              letterSpacing: 0.0,
-                                            ),
-                                        elevation: 3.0,
-                                        borderSide: BorderSide(
-                                          color: Colors.transparent,
-                                          width: 1.0,
+                                                context.safePop();
+                                                _model.rcAC =
+                                                    await SQLReportGroup
+                                                        .reportCompanyCall
+                                                        .call(
+                                                  token:
+                                                      FFAppState().serverToken,
+                                                  id: widget.companyDocRef?.id,
+                                                );
+
+                                                setState(() {});
+                                              },
+                                        text: 'Guardar',
+                                        options: FFButtonOptions(
+                                          width: 300.0,
+                                          height: 50.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: Color(0xFF5E4A98),
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Lexend',
+                                                    color: Colors.white,
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          elevation: 3.0,
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
+                                          disabledColor: Color(0x83CCCCCC),
+                                          disabledTextColor: Color(0xFFA1A1A1),
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                        disabledColor: Color(0x83CCCCCC),
-                                        disabledTextColor: Color(0xFFA1A1A1),
+                                      ).addWalkthrough(
+                                        buttonK3vkl7p3,
+                                        _model.agregarDatosBancariosController,
                                       ),
-                                    ).addWalkthrough(
-                                      buttonK3vkl7p3,
-                                      _model.agregarDatosBancariosController,
                                     ),
                                   ),
                                 ),

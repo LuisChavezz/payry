@@ -1,11 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
+import '/backend/api_requests/api_calls.dart';
+import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'o_k_f_n_payry08_iniciasesion_widget.dart'
     show OKFNPayry08IniciasesionWidget;
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -18,9 +18,10 @@ class OKFNPayry08IniciasesionModel
   final formKey = GlobalKey<FormState>();
   // State field(s) for emailField widget.
   FocusNode? emailFieldFocusNode;
-  TextEditingController? emailFieldController;
-  String? Function(BuildContext, String?)? emailFieldControllerValidator;
-  String? _emailFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? emailFieldTextController;
+  String? Function(BuildContext, String?)? emailFieldTextControllerValidator;
+  String? _emailFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'El correo electrónico es requerido...';
     }
@@ -33,10 +34,11 @@ class OKFNPayry08IniciasesionModel
 
   // State field(s) for passwordField widget.
   FocusNode? passwordFieldFocusNode;
-  TextEditingController? passwordFieldController;
+  TextEditingController? passwordFieldTextController;
   late bool passwordFieldVisibility;
-  String? Function(BuildContext, String?)? passwordFieldControllerValidator;
-  String? _passwordFieldControllerValidator(BuildContext context, String? val) {
+  String? Function(BuildContext, String?)? passwordFieldTextControllerValidator;
+  String? _passwordFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'La contraseña es requerida';
     }
@@ -50,23 +52,24 @@ class OKFNPayry08IniciasesionModel
 
   // State field(s) for RememberMeCheck widget.
   bool? rememberMeCheckValue;
-  // Stores action output result for [Cloud Function - generateToken] action in Button-Login widget.
-  GenerateTokenCloudFunctionCallResponse? genToken;
+  // Stores action output result for [Backend Call - API (Generate Token)] action in Button-Login widget.
+  ApiCallResponse? generateTokenResp;
 
   @override
   void initState(BuildContext context) {
-    emailFieldControllerValidator = _emailFieldControllerValidator;
+    emailFieldTextControllerValidator = _emailFieldTextControllerValidator;
     passwordFieldVisibility = false;
-    passwordFieldControllerValidator = _passwordFieldControllerValidator;
+    passwordFieldTextControllerValidator =
+        _passwordFieldTextControllerValidator;
   }
 
   @override
   void dispose() {
     unfocusNode.dispose();
     emailFieldFocusNode?.dispose();
-    emailFieldController?.dispose();
+    emailFieldTextController?.dispose();
 
     passwordFieldFocusNode?.dispose();
-    passwordFieldController?.dispose();
+    passwordFieldTextController?.dispose();
   }
 }

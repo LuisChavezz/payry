@@ -27,13 +27,13 @@ class OKFNPayry35HistorialSMSModel
 
   // State field(s) for SearchField widget.
   FocusNode? searchFieldFocusNode1;
-  TextEditingController? searchFieldController1;
-  String? Function(BuildContext, String?)? searchFieldController1Validator;
+  TextEditingController? searchFieldTextController1;
+  String? Function(BuildContext, String?)? searchFieldTextController1Validator;
   List<DetallesCobroRecord> simpleSearchResults1 = [];
   // State field(s) for SearchField widget.
   FocusNode? searchFieldFocusNode2;
-  TextEditingController? searchFieldController2;
-  String? Function(BuildContext, String?)? searchFieldController2Validator;
+  TextEditingController? searchFieldTextController2;
+  String? Function(BuildContext, String?)? searchFieldTextController2Validator;
   List<RegistraCobroRecord> simpleSearchResults2 = [];
 
   @override
@@ -44,9 +44,9 @@ class OKFNPayry35HistorialSMSModel
     unfocusNode.dispose();
     tabBarController?.dispose();
     searchFieldFocusNode1?.dispose();
-    searchFieldController1?.dispose();
+    searchFieldTextController1?.dispose();
 
     searchFieldFocusNode2?.dispose();
-    searchFieldController2?.dispose();
+    searchFieldTextController2?.dispose();
   }
 }

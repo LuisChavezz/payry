@@ -37,11 +37,17 @@ class UserInvitationsRecord extends FirestoreRecord {
   bool get accepted => _accepted ?? false;
   bool hasAccepted() => _accepted != null;
 
+  // "sucursalId" field.
+  String? _sucursalId;
+  String get sucursalId => _sucursalId ?? '';
+  bool hasSucursalId() => _sucursalId != null;
+
   void _initializeFields() {
     _adminId = snapshotData['admin_id'] as String?;
     _invitedUserEmail = snapshotData['invited_user_email'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
     _accepted = snapshotData['accepted'] as bool?;
+    _sucursalId = snapshotData['sucursalId'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -83,6 +89,7 @@ Map<String, dynamic> createUserInvitationsRecordData({
   String? invitedUserEmail,
   DateTime? createdTime,
   bool? accepted,
+  String? sucursalId,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -90,6 +97,7 @@ Map<String, dynamic> createUserInvitationsRecordData({
       'invited_user_email': invitedUserEmail,
       'created_time': createdTime,
       'accepted': accepted,
+      'sucursalId': sucursalId,
     }.withoutNulls,
   );
 
@@ -105,12 +113,18 @@ class UserInvitationsRecordDocumentEquality
     return e1?.adminId == e2?.adminId &&
         e1?.invitedUserEmail == e2?.invitedUserEmail &&
         e1?.createdTime == e2?.createdTime &&
-        e1?.accepted == e2?.accepted;
+        e1?.accepted == e2?.accepted &&
+        e1?.sucursalId == e2?.sucursalId;
   }
 
   @override
-  int hash(UserInvitationsRecord? e) => const ListEquality()
-      .hash([e?.adminId, e?.invitedUserEmail, e?.createdTime, e?.accepted]);
+  int hash(UserInvitationsRecord? e) => const ListEquality().hash([
+        e?.adminId,
+        e?.invitedUserEmail,
+        e?.createdTime,
+        e?.accepted,
+        e?.sucursalId
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is UserInvitationsRecord;

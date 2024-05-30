@@ -1,7 +1,8 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -12,7 +13,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'o_k_f_n_payry19_formulario_empresa_widget.dart'
     show OKFNPayry19FormularioEmpresaWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -34,9 +34,9 @@ class OKFNPayry19FormularioEmpresaModel
 
   // State field(s) for NameField widget.
   FocusNode? nameFieldFocusNode;
-  TextEditingController? nameFieldController;
-  String? Function(BuildContext, String?)? nameFieldControllerValidator;
-  String? _nameFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? nameFieldTextController;
+  String? Function(BuildContext, String?)? nameFieldTextControllerValidator;
+  String? _nameFieldTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'El nombre es requerido';
     }
@@ -46,9 +46,10 @@ class OKFNPayry19FormularioEmpresaModel
 
   // State field(s) for AliasField widget.
   FocusNode? aliasFieldFocusNode;
-  TextEditingController? aliasFieldController;
-  String? Function(BuildContext, String?)? aliasFieldControllerValidator;
-  String? _aliasFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? aliasFieldTextController;
+  String? Function(BuildContext, String?)? aliasFieldTextControllerValidator;
+  String? _aliasFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'El alias es requerido';
     }
@@ -58,13 +59,14 @@ class OKFNPayry19FormularioEmpresaModel
 
   // State field(s) for EmailField widget.
   FocusNode? emailFieldFocusNode;
-  TextEditingController? emailFieldController;
-  String? Function(BuildContext, String?)? emailFieldControllerValidator;
+  TextEditingController? emailFieldTextController;
+  String? Function(BuildContext, String?)? emailFieldTextControllerValidator;
   // State field(s) for StreetField widget.
   FocusNode? streetFieldFocusNode;
-  TextEditingController? streetFieldController;
-  String? Function(BuildContext, String?)? streetFieldControllerValidator;
-  String? _streetFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? streetFieldTextController;
+  String? Function(BuildContext, String?)? streetFieldTextControllerValidator;
+  String? _streetFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'La calle es requerida';
     }
@@ -74,9 +76,10 @@ class OKFNPayry19FormularioEmpresaModel
 
   // State field(s) for StreetNumberField widget.
   FocusNode? streetNumberFieldFocusNode;
-  TextEditingController? streetNumberFieldController;
-  String? Function(BuildContext, String?)? streetNumberFieldControllerValidator;
-  String? _streetNumberFieldControllerValidator(
+  TextEditingController? streetNumberFieldTextController;
+  String? Function(BuildContext, String?)?
+      streetNumberFieldTextControllerValidator;
+  String? _streetNumberFieldTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'El número de calle es requerido';
@@ -87,9 +90,10 @@ class OKFNPayry19FormularioEmpresaModel
 
   // State field(s) for NeighborhoodField widget.
   FocusNode? neighborhoodFieldFocusNode;
-  TextEditingController? neighborhoodFieldController;
-  String? Function(BuildContext, String?)? neighborhoodFieldControllerValidator;
-  String? _neighborhoodFieldControllerValidator(
+  TextEditingController? neighborhoodFieldTextController;
+  String? Function(BuildContext, String?)?
+      neighborhoodFieldTextControllerValidator;
+  String? _neighborhoodFieldTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'La colonia es requerida';
@@ -100,9 +104,9 @@ class OKFNPayry19FormularioEmpresaModel
 
   // State field(s) for CityField widget.
   FocusNode? cityFieldFocusNode;
-  TextEditingController? cityFieldController;
-  String? Function(BuildContext, String?)? cityFieldControllerValidator;
-  String? _cityFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? cityFieldTextController;
+  String? Function(BuildContext, String?)? cityFieldTextControllerValidator;
+  String? _cityFieldTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'La ciudad es requerida';
     }
@@ -118,9 +122,10 @@ class OKFNPayry19FormularioEmpresaModel
   FormFieldController<String>? countryDropDownValueController;
   // State field(s) for ZipCodeField widget.
   FocusNode? zipCodeFieldFocusNode;
-  TextEditingController? zipCodeFieldController;
-  String? Function(BuildContext, String?)? zipCodeFieldControllerValidator;
-  String? _zipCodeFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? zipCodeFieldTextController;
+  String? Function(BuildContext, String?)? zipCodeFieldTextControllerValidator;
+  String? _zipCodeFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'El código postal es requerido';
     }
@@ -140,13 +145,15 @@ class OKFNPayry19FormularioEmpresaModel
   // State field(s) for giroDropDown widget.
   String? giroDropDownValue;
   FormFieldController<String>? giroDropDownValueController;
+  // State field(s) for branchSwitch widget.
+  bool? branchSwitchValue;
   // State field(s) for RequireBillSwitch widget.
   bool? requireBillSwitchValue;
   // State field(s) for RFCField widget.
   FocusNode? rFCFieldFocusNode;
-  TextEditingController? rFCFieldController;
-  String? Function(BuildContext, String?)? rFCFieldControllerValidator;
-  String? _rFCFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? rFCFieldTextController;
+  String? Function(BuildContext, String?)? rFCFieldTextControllerValidator;
+  String? _rFCFieldTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'El RFC es requerido';
     }
@@ -165,62 +172,60 @@ class OKFNPayry19FormularioEmpresaModel
   FormFieldController<String>? cFDIDropDownValueController;
   // State field(s) for CouponField widget.
   FocusNode? couponFieldFocusNode;
-  TextEditingController? couponFieldController;
-  String? Function(BuildContext, String?)? couponFieldControllerValidator;
+  TextEditingController? couponFieldTextController;
+  String? Function(BuildContext, String?)? couponFieldTextControllerValidator;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   CompaniesRecord? companyCreatedResp;
-  // Stores action output result for [Cloud Function - reportCompany] action in Button widget.
-  ReportCompanyCloudFunctionCallResponse? rccdCF;
-  // Stores action output result for [Cloud Function - reportCompany] action in Button widget.
-  ReportCompanyCloudFunctionCallResponse? rcudCF;
-  // Stores action output result for [Cloud Function - generateToken] action in Button widget.
-  GenerateTokenCloudFunctionCallResponse? genToken;
+  // Stores action output result for [Backend Call - API (Report Company)] action in Button widget.
+  ApiCallResponse? rccAC;
+  // Stores action output result for [Backend Call - API (Report Company)] action in Button widget.
+  ApiCallResponse? recAC;
 
   @override
   void initState(BuildContext context) {
-    nameFieldControllerValidator = _nameFieldControllerValidator;
-    aliasFieldControllerValidator = _aliasFieldControllerValidator;
-    streetFieldControllerValidator = _streetFieldControllerValidator;
-    streetNumberFieldControllerValidator =
-        _streetNumberFieldControllerValidator;
-    neighborhoodFieldControllerValidator =
-        _neighborhoodFieldControllerValidator;
-    cityFieldControllerValidator = _cityFieldControllerValidator;
-    zipCodeFieldControllerValidator = _zipCodeFieldControllerValidator;
-    rFCFieldControllerValidator = _rFCFieldControllerValidator;
+    nameFieldTextControllerValidator = _nameFieldTextControllerValidator;
+    aliasFieldTextControllerValidator = _aliasFieldTextControllerValidator;
+    streetFieldTextControllerValidator = _streetFieldTextControllerValidator;
+    streetNumberFieldTextControllerValidator =
+        _streetNumberFieldTextControllerValidator;
+    neighborhoodFieldTextControllerValidator =
+        _neighborhoodFieldTextControllerValidator;
+    cityFieldTextControllerValidator = _cityFieldTextControllerValidator;
+    zipCodeFieldTextControllerValidator = _zipCodeFieldTextControllerValidator;
+    rFCFieldTextControllerValidator = _rFCFieldTextControllerValidator;
   }
 
   @override
   void dispose() {
     unfocusNode.dispose();
     nameFieldFocusNode?.dispose();
-    nameFieldController?.dispose();
+    nameFieldTextController?.dispose();
 
     aliasFieldFocusNode?.dispose();
-    aliasFieldController?.dispose();
+    aliasFieldTextController?.dispose();
 
     emailFieldFocusNode?.dispose();
-    emailFieldController?.dispose();
+    emailFieldTextController?.dispose();
 
     streetFieldFocusNode?.dispose();
-    streetFieldController?.dispose();
+    streetFieldTextController?.dispose();
 
     streetNumberFieldFocusNode?.dispose();
-    streetNumberFieldController?.dispose();
+    streetNumberFieldTextController?.dispose();
 
     neighborhoodFieldFocusNode?.dispose();
-    neighborhoodFieldController?.dispose();
+    neighborhoodFieldTextController?.dispose();
 
     cityFieldFocusNode?.dispose();
-    cityFieldController?.dispose();
+    cityFieldTextController?.dispose();
 
     zipCodeFieldFocusNode?.dispose();
-    zipCodeFieldController?.dispose();
+    zipCodeFieldTextController?.dispose();
 
     rFCFieldFocusNode?.dispose();
-    rFCFieldController?.dispose();
+    rFCFieldTextController?.dispose();
 
     couponFieldFocusNode?.dispose();
-    couponFieldController?.dispose();
+    couponFieldTextController?.dispose();
   }
 }

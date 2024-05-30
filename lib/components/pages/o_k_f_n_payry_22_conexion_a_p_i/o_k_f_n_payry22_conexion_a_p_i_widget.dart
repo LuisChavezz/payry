@@ -163,7 +163,6 @@ class _OKFNPayry22ConexionAPIWidgetState
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
-                          minLines: null,
                           keyboardType: const TextInputType.numberWithOptions(
                               decimal: true),
                           validator: _model.textController1Validator
@@ -233,7 +232,6 @@ class _OKFNPayry22ConexionAPIWidgetState
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
-                          minLines: null,
                           keyboardType: const TextInputType.numberWithOptions(
                               decimal: true),
                           validator: _model.textController2Validator

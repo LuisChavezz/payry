@@ -1,12 +1,15 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/backend/schema/enums/enums.dart';
+import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/components/nav_bar_floting/nav_bar_floting_widget.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/walkthroughs/como_crear_un_di_mo.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
@@ -17,7 +20,6 @@ import 'o_k_f_n_payry32_solicitar_s_m_s_widget.dart'
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
@@ -32,6 +34,8 @@ class OKFNPayry32SolicitarSMSModel
 
   bool show = false;
 
+  String? selectedBranchId;
+
   ///  State fields for stateful widgets in this page.
 
   TutorialCoachMark? comoCrearUnDiMoController;
@@ -39,10 +43,11 @@ class OKFNPayry32SolicitarSMSModel
   final formKey = GlobalKey<FormState>();
   // State field(s) for PhoneField widget.
   FocusNode? phoneFieldFocusNode;
-  TextEditingController? phoneFieldController;
+  TextEditingController? phoneFieldTextController;
   final phoneFieldMask = MaskTextInputFormatter(mask: '##########');
-  String? Function(BuildContext, String?)? phoneFieldControllerValidator;
-  String? _phoneFieldControllerValidator(BuildContext context, String? val) {
+  String? Function(BuildContext, String?)? phoneFieldTextControllerValidator;
+  String? _phoneFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'El número de teléfono es requerido';
     }
@@ -54,9 +59,10 @@ class OKFNPayry32SolicitarSMSModel
   dynamic? contact;
   // State field(s) for ConceptField widget.
   FocusNode? conceptFieldFocusNode;
-  TextEditingController? conceptFieldController;
-  String? Function(BuildContext, String?)? conceptFieldControllerValidator;
-  String? _conceptFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? conceptFieldTextController;
+  String? Function(BuildContext, String?)? conceptFieldTextControllerValidator;
+  String? _conceptFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'El concepto es requerido';
     }
@@ -75,9 +81,10 @@ class OKFNPayry32SolicitarSMSModel
 
   // State field(s) for AmountField widget.
   FocusNode? amountFieldFocusNode;
-  TextEditingController? amountFieldController;
-  String? Function(BuildContext, String?)? amountFieldControllerValidator;
-  String? _amountFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? amountFieldTextController;
+  String? Function(BuildContext, String?)? amountFieldTextControllerValidator;
+  String? _amountFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'El importe es requerido';
     }
@@ -89,18 +96,21 @@ class OKFNPayry32SolicitarSMSModel
     return null;
   }
 
+  // State field(s) for branchDropDown widget.
+  String? branchDropDownValue;
+  FormFieldController<String>? branchDropDownValueController;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   RegistraCobroRecord? dimoResp;
-  // Stores action output result for [Cloud Function - generateDimo] action in Button widget.
-  GenerateDimoCloudFunctionCallResponse? dimoCF;
+  // Stores action output result for [Backend Call - API (Generate Dimo)] action in Button widget.
+  ApiCallResponse? dimoAC;
   // Model for NavBarFloting component.
   late NavBarFlotingModel navBarFlotingModel;
 
   @override
   void initState(BuildContext context) {
-    phoneFieldControllerValidator = _phoneFieldControllerValidator;
-    conceptFieldControllerValidator = _conceptFieldControllerValidator;
-    amountFieldControllerValidator = _amountFieldControllerValidator;
+    phoneFieldTextControllerValidator = _phoneFieldTextControllerValidator;
+    conceptFieldTextControllerValidator = _conceptFieldTextControllerValidator;
+    amountFieldTextControllerValidator = _amountFieldTextControllerValidator;
     navBarFlotingModel = createModel(context, () => NavBarFlotingModel());
   }
 
@@ -109,13 +119,13 @@ class OKFNPayry32SolicitarSMSModel
     comoCrearUnDiMoController?.finish();
     unfocusNode.dispose();
     phoneFieldFocusNode?.dispose();
-    phoneFieldController?.dispose();
+    phoneFieldTextController?.dispose();
 
     conceptFieldFocusNode?.dispose();
-    conceptFieldController?.dispose();
+    conceptFieldTextController?.dispose();
 
     amountFieldFocusNode?.dispose();
-    amountFieldController?.dispose();
+    amountFieldTextController?.dispose();
 
     navBarFlotingModel.dispose();
   }

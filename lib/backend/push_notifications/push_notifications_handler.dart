@@ -149,6 +149,7 @@ final parametersBuilderMap =
           'uid': getParameter<String>(data, 'uid'),
           'userName': getParameter<String>(data, 'userName'),
           'userEmail': getParameter<String>(data, 'userEmail'),
+          'userBranchId': getParameter<String>(data, 'userBranchId'),
         },
       ),
   'OK_FN_Payry_27_solicitarQR': (data) async => ParameterData(
@@ -161,12 +162,14 @@ final parametersBuilderMap =
         allParams: {
           'readAll': getParameter<bool>(data, 'readAll'),
           'createRefund': getParameter<bool>(data, 'createRefund'),
+          'readAllBranches': getParameter<bool>(data, 'readAllBranches'),
         },
       ),
   'OK_FN_Payry_35_historialSMS': (data) async => ParameterData(
         allParams: {
           'readAll': getParameter<bool>(data, 'readAll'),
           'createRefund': getParameter<bool>(data, 'createRefund'),
+          'readAllBranches': getParameter<bool>(data, 'readAllBranches'),
         },
       ),
   'OK_FN_Payry_31_detallesdeQR': (data) async => ParameterData(
@@ -235,6 +238,22 @@ final parametersBuilderMap =
           'registraCobroRef':
               getParameter<DocumentReference>(data, 'registraCobroRef'),
           'createRefund': getParameter<bool>(data, 'createRefund'),
+        },
+      ),
+  'OK_FN_Payry_sucursales': (data) async => ParameterData(
+        allParams: {
+          'companyId': getParameter<String>(data, 'companyId'),
+        },
+      ),
+  'OK_FN_Payry_registrarSucursal': (data) async => ParameterData(
+        allParams: {
+          'companyId': getParameter<String>(data, 'companyId'),
+        },
+      ),
+  'OK_FN_Payry_editarSucursal': (data) async => ParameterData(
+        allParams: {
+          'companyId': getParameter<String>(data, 'companyId'),
+          'branchDocRef': getParameter<DocumentReference>(data, 'branchDocRef'),
         },
       ),
 };

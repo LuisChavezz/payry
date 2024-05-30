@@ -1,12 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -37,15 +36,15 @@ class _OKFNPayry05RegisterInvWidgetState
     super.initState();
     _model = createModel(context, () => OKFNPayry05RegisterInvModel());
 
-    _model.invNameFieldController ??= TextEditingController();
+    _model.invNameFieldTextController ??= TextEditingController();
     _model.invNameFieldFocusNode ??= FocusNode();
 
     _model.invEmailFieldFocusNode ??= FocusNode();
 
-    _model.invPasswordCreateController ??= TextEditingController();
+    _model.invPasswordCreateTextController ??= TextEditingController();
     _model.invPasswordCreateFocusNode ??= FocusNode();
 
-    _model.invPasswordConfirmController ??= TextEditingController();
+    _model.invPasswordConfirmTextController ??= TextEditingController();
     _model.invPasswordConfirmFocusNode ??= FocusNode();
   }
 
@@ -58,6 +57,8 @@ class _OKFNPayry05RegisterInvWidgetState
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<UserInvitationsRecord>(
       stream: UserInvitationsRecord.getDocument(widget.id!),
       builder: (context, snapshot) {
@@ -149,7 +150,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                             0.0, 12.0, 0.0, 12.0),
                                         child: TextFormField(
                                           controller:
-                                              _model.invNameFieldController,
+                                              _model.invNameFieldTextController,
                                           focusNode:
                                               _model.invNameFieldFocusNode,
                                           textCapitalization:
@@ -224,9 +225,8 @@ class _OKFNPayry05RegisterInvWidgetState
                                                 fontFamily: 'Lexend',
                                                 letterSpacing: 0.0,
                                               ),
-                                          minLines: null,
                                           validator: _model
-                                              .invNameFieldControllerValidator
+                                              .invNameFieldTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -234,9 +234,9 @@ class _OKFNPayry05RegisterInvWidgetState
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 12.0, 0.0, 12.0),
                                         child: TextFormField(
-                                          controller:
-                                              _model.invEmailFieldController ??=
-                                                  TextEditingController(
+                                          controller: _model
+                                                  .invEmailFieldTextController ??=
+                                              TextEditingController(
                                             text: oKFNPayry05RegisterInvUserInvitationsRecord
                                                             .invitedUserEmail !=
                                                         null &&
@@ -322,11 +322,10 @@ class _OKFNPayry05RegisterInvWidgetState
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.normal,
                                               ),
-                                          minLines: null,
                                           keyboardType:
                                               TextInputType.emailAddress,
                                           validator: _model
-                                              .invEmailFieldControllerValidator
+                                              .invEmailFieldTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -335,7 +334,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                             0.0, 12.0, 0.0, 12.0),
                                         child: TextFormField(
                                           controller: _model
-                                              .invPasswordCreateController,
+                                              .invPasswordCreateTextController,
                                           focusNode:
                                               _model.invPasswordCreateFocusNode,
                                           obscureText: !_model
@@ -428,9 +427,8 @@ class _OKFNPayry05RegisterInvWidgetState
                                                         .primaryText,
                                                 letterSpacing: 0.0,
                                               ),
-                                          minLines: null,
                                           validator: _model
-                                              .invPasswordCreateControllerValidator
+                                              .invPasswordCreateTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -439,7 +437,7 @@ class _OKFNPayry05RegisterInvWidgetState
                                             0.0, 12.0, 0.0, 12.0),
                                         child: TextFormField(
                                           controller: _model
-                                              .invPasswordConfirmController,
+                                              .invPasswordConfirmTextController,
                                           focusNode: _model
                                               .invPasswordConfirmFocusNode,
                                           obscureText: !_model
@@ -537,9 +535,8 @@ class _OKFNPayry05RegisterInvWidgetState
                                                         .primaryText,
                                                 letterSpacing: 0.0,
                                               ),
-                                          minLines: null,
                                           validator: _model
-                                              .invPasswordConfirmControllerValidator
+                                              .invPasswordConfirmTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -566,10 +563,10 @@ class _OKFNPayry05RegisterInvWidgetState
                                                   GoRouter.of(context)
                                                       .prepareAuthEvent();
                                                   if (_model
-                                                          .invPasswordCreateController
+                                                          .invPasswordCreateTextController
                                                           .text !=
                                                       _model
-                                                          .invPasswordConfirmController
+                                                          .invPasswordConfirmTextController
                                                           .text) {
                                                     ScaffoldMessenger.of(
                                                             context)
@@ -587,10 +584,10 @@ class _OKFNPayry05RegisterInvWidgetState
                                                       .createAccountWithEmail(
                                                     context,
                                                     _model
-                                                        .invEmailFieldController
+                                                        .invEmailFieldTextController
                                                         .text,
                                                     _model
-                                                        .invPasswordCreateController
+                                                        .invPasswordCreateTextController
                                                         .text,
                                                   );
                                                   if (user == null) {
@@ -606,10 +603,10 @@ class _OKFNPayry05RegisterInvWidgetState
                                                           : currentUserUid,
                                                       isAdmin: false,
                                                       email: _model
-                                                          .invEmailFieldController
+                                                          .invEmailFieldTextController
                                                           .text,
                                                       displayName: _model
-                                                          .invNameFieldController
+                                                          .invNameFieldTextController
                                                           .text,
                                                       photoUrl: '',
                                                       phoneNumber: '',
@@ -617,6 +614,9 @@ class _OKFNPayry05RegisterInvWidgetState
                                                       isValidPhoneNumber: false,
                                                       isCompanyComplete: false,
                                                       isValidMail: false,
+                                                      sucursalId:
+                                                          oKFNPayry05RegisterInvUserInvitationsRecord
+                                                              .sucursalId,
                                                     ),
                                                     ...mapToFirestore(
                                                       {
@@ -646,65 +646,26 @@ class _OKFNPayry05RegisterInvWidgetState
                                                         readCompanies: false,
                                                         readUsers: false,
                                                         readInvoices: false,
+                                                        readBranches: false,
                                                       ));
-                                                  try {
-                                                    final result =
-                                                        await FirebaseFunctions
-                                                            .instance
-                                                            .httpsCallable(
-                                                                'verifyEmail')
-                                                            .call({
-                                                      "email": currentUserEmail,
-                                                    });
-                                                    _model.cfve =
-                                                        VerifyEmailCloudFunctionCallResponse(
-                                                      data: result.data,
-                                                      succeeded: true,
-                                                      resultAsString: result
-                                                          .data
-                                                          .toString(),
-                                                      jsonBody: result.data,
-                                                    );
-                                                  } on FirebaseFunctionsException catch (error) {
-                                                    _model.cfve =
-                                                        VerifyEmailCloudFunctionCallResponse(
-                                                      errorCode: error.code,
-                                                      succeeded: false,
-                                                    );
-                                                  }
-
-                                                  _shouldSetState = true;
-                                                  try {
-                                                    final result =
-                                                        await FirebaseFunctions
-                                                            .instance
-                                                            .httpsCallable(
-                                                                'generateToken')
-                                                            .call({
-                                                      "uid": currentUserUid,
-                                                      "test": false,
-                                                    });
-                                                    _model.genToken =
-                                                        GenerateTokenCloudFunctionCallResponse(
-                                                      data: result.data,
-                                                      succeeded: true,
-                                                      resultAsString: result
-                                                          .data
-                                                          .toString(),
-                                                      jsonBody: result.data,
-                                                    );
-                                                  } on FirebaseFunctionsException catch (error) {
-                                                    _model.genToken =
-                                                        GenerateTokenCloudFunctionCallResponse(
-                                                      errorCode: error.code,
-                                                      succeeded: false,
-                                                    );
-                                                  }
-
+                                                  await AuthGroup
+                                                      .verifyEmailCall
+                                                      .call(
+                                                    email: currentUserEmail,
+                                                  );
+                                                  _model.tokenAC =
+                                                      await AuthGroup
+                                                          .generateTokenCall
+                                                          .call(
+                                                    uid: currentUserUid,
+                                                  );
                                                   _shouldSetState = true;
                                                   FFAppState().serverToken =
-                                                      _model.genToken!.jsonBody!
-                                                          .toString();
+                                                      getJsonField(
+                                                    (_model.tokenAC?.jsonBody ??
+                                                        ''),
+                                                    r'''$.data.token''',
+                                                  ).toString();
                                                   FFAppState().walkthroughs =
                                                       <String, bool?>{
                                                     'menu_mas': true,
@@ -794,54 +755,93 @@ class _OKFNPayry05RegisterInvWidgetState
                                                     }.withoutNulls,
                                                   );
 
-                                                  try {
-                                                    final result =
-                                                        await FirebaseFunctions
-                                                            .instance
-                                                            .httpsCallable(
-                                                                'sendWelcomeEmail')
-                                                            .call({
-                                                      "email": _model
-                                                          .invEmailFieldController
-                                                          .text,
-                                                    });
-                                                    _model.cloudFunctionxin =
-                                                        SendWelcomeEmailCloudFunctionCallResponse(
-                                                      succeeded: true,
-                                                    );
-                                                  } on FirebaseFunctionsException catch (error) {
-                                                    _model.cloudFunctionxin =
-                                                        SendWelcomeEmailCloudFunctionCallResponse(
-                                                      errorCode: error.code,
-                                                      succeeded: false,
-                                                    );
-                                                  }
-
-                                                  _shouldSetState = true;
+                                                  await AuthGroup
+                                                      .sendWelcomeEmailCall
+                                                      .call(
+                                                    token: FFAppState()
+                                                        .serverToken,
+                                                    email: _model
+                                                        .invEmailFieldTextController
+                                                        .text,
+                                                  );
+                                                  await UsersGroup
+                                                      .notifyCreationToAdminCall
+                                                      .call(
+                                                    uid: currentUserUid,
+                                                    token: FFAppState()
+                                                        .serverToken,
+                                                  );
                                                   if (_shouldSetState)
                                                     setState(() {});
                                                   return;
                                                 } else {
                                                   await showDialog(
+                                                    barrierDismissible: false,
                                                     context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        title: Text(
-                                                            'Terminos y condiciones'),
-                                                        content: Text(
-                                                            'Debes aceptar terminos y condiciones para poder realizar el registro.'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
+                                                    builder: (dialogContext) {
+                                                      return Dialog(
+                                                        elevation: 0,
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        child: GestureDetector(
+                                                          onTap: () => _model
+                                                                  .unfocusNode
+                                                                  .canRequestFocus
+                                                              ? FocusScope.of(
+                                                                      context)
+                                                                  .requestFocus(
+                                                                      _model
+                                                                          .unfocusNode)
+                                                              : FocusScope.of(
+                                                                      context)
+                                                                  .unfocus(),
+                                                          child: Container(
+                                                            height: MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
+                                                                    .height *
+                                                                0.25,
+                                                            width: MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
+                                                                    .width *
+                                                                0.9,
+                                                            child:
+                                                                CustomConfirmDialogWidget(
+                                                              title:
+                                                                  'Terminos y condiciones',
+                                                              description:
+                                                                  'Debes aceptar terminos y condiciones para poder realizar el registro.',
+                                                              buttonText:
+                                                                  'Aceptar',
+                                                              showDismissButton:
+                                                                  false,
+                                                              dismissAction:
+                                                                  () async {
                                                                 Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: Text('Ok'),
+                                                                    context);
+                                                              },
+                                                              mainAction:
+                                                                  () async {
+                                                                Navigator.pop(
+                                                                    context);
+                                                              },
+                                                            ),
                                                           ),
-                                                        ],
+                                                        ),
                                                       );
                                                     },
-                                                  );
+                                                  ).then((value) =>
+                                                      setState(() {}));
+
                                                   if (_shouldSetState)
                                                     setState(() {});
                                                   return;
@@ -986,6 +986,13 @@ class _OKFNPayry05RegisterInvWidgetState
                                                               .acceptCheckValue =
                                                           newValue!);
                                                     },
+                                                    side: BorderSide(
+                                                      width: 2,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                    ),
                                                     activeColor:
                                                         FlutterFlowTheme.of(
                                                                 context)

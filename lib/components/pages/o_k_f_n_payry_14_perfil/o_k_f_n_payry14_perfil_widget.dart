@@ -1,10 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
+import '/backend/api_requests/api_calls.dart';
+import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -259,377 +259,623 @@ class _OKFNPayry14PerfilWidgetState extends State<OKFNPayry14PerfilWidget> {
                           ),
                           if (valueOrDefault<bool>(
                               currentUserDocument?.isAdmin, false))
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 8.0),
-                              child: AuthUserStreamWidget(
-                                builder: (context) => InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    var _shouldSetState = false;
-                                    if (valueOrDefault<bool>(
-                                        currentUserDocument?.isValidMail,
-                                        false)) {
+                            Builder(
+                              builder: (context) => Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 8.0),
+                                child: AuthUserStreamWidget(
+                                  builder: (context) => InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      var _shouldSetState = false;
                                       if (valueOrDefault<bool>(
-                                              currentUserDocument
-                                                  ?.isValidPhoneNumber,
-                                              false) ==
-                                          true) {
-                                        context.pushNamed(
-                                            'OK_FN_Payry_19_formularioEmpresa');
-
-                                        if (_shouldSetState) setState(() {});
-                                        return;
-                                      } else {
-                                        var confirmDialogResponse =
-                                            await showDialog<bool>(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'Acceso denegado'),
-                                                      content: Text(
-                                                          'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  false),
-                                                          child: Text('Cancel'),
-                                                        ),
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  true),
-                                                          child: Text(
-                                                              'Verificar número'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                ) ??
-                                                false;
-                                        if (confirmDialogResponse) {
+                                          currentUserDocument?.isValidMail,
+                                          false)) {
+                                        if (valueOrDefault<bool>(
+                                                currentUserDocument
+                                                    ?.isValidPhoneNumber,
+                                                false) ==
+                                            true) {
                                           context.pushNamed(
-                                              'OK_FN_Payry_15_EditProfile');
+                                              'OK_FN_Payry_19_formularioEmpresa');
 
                                           if (_shouldSetState) setState(() {});
                                           return;
                                         } else {
+                                          await showDialog(
+                                            barrierDismissible: false,
+                                            context: context,
+                                            builder: (dialogContext) {
+                                              return Dialog(
+                                                elevation: 0,
+                                                insetPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                alignment: AlignmentDirectional(
+                                                        0.0, 0.0)
+                                                    .resolve(Directionality.of(
+                                                        context)),
+                                                child: GestureDetector(
+                                                  onTap: () => _model
+                                                          .unfocusNode
+                                                          .canRequestFocus
+                                                      ? FocusScope.of(context)
+                                                          .requestFocus(_model
+                                                              .unfocusNode)
+                                                      : FocusScope.of(context)
+                                                          .unfocus(),
+                                                  child: Container(
+                                                    height: MediaQuery.sizeOf(
+                                                                context)
+                                                            .height *
+                                                        0.3,
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        0.9,
+                                                    child:
+                                                        CustomConfirmDialogWidget(
+                                                      title: 'Acceso denegado',
+                                                      description:
+                                                          'No es posible acceder ya que falta realizar la verificación de tu número de teléfono.',
+                                                      buttonText:
+                                                          'Verificar número',
+                                                      showDismissButton: true,
+                                                      dismissAction: () async {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      mainAction: () async {
+                                                        context.pushNamed(
+                                                            'OK_FN_Payry_15_EditProfile');
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          ).then((value) => setState(() {}));
+
                                           if (_shouldSetState) setState(() {});
                                           return;
                                         }
-                                      }
-                                    } else {
-                                      var confirmDialogResponse =
-                                          await showDialog<bool>(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title:
-                                                        Text('Acceso denegado'),
-                                                    content: Text(
-                                                        'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                false),
-                                                        child: Text('Cancel'),
-                                                      ),
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                true),
-                                                        child: Text('Reenviar'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              ) ??
-                                              false;
-                                      if (confirmDialogResponse) {
-                                        try {
-                                          final result = await FirebaseFunctions
-                                              .instance
-                                              .httpsCallable('verifyEmail')
-                                              .call({
-                                            "email": currentUserEmail,
-                                          });
-                                          _model.verifyEmailResp =
-                                              VerifyEmailCloudFunctionCallResponse(
-                                            data: result.data,
-                                            succeeded: true,
-                                            resultAsString:
-                                                result.data.toString(),
-                                            jsonBody: result.data,
-                                          );
-                                        } on FirebaseFunctionsException catch (error) {
-                                          _model.verifyEmailResp =
-                                              VerifyEmailCloudFunctionCallResponse(
-                                            errorCode: error.code,
-                                            succeeded: false,
-                                          );
-                                        }
-
-                                        _shouldSetState = true;
-                                        if (_model
-                                            .verifyEmailResp!.succeeded!) {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: Text(
-                                                    'Verificación enviada'),
-                                                content: Text(
-                                                    'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
-                                        } else {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: Text('Error'),
-                                                content: Text(
-                                                    'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
-                                        }
-
-                                        if (_shouldSetState) setState(() {});
-                                        return;
                                       } else {
+                                        await showDialog(
+                                          barrierDismissible: false,
+                                          context: context,
+                                          builder: (dialogContext) {
+                                            return Dialog(
+                                              elevation: 0,
+                                              insetPadding: EdgeInsets.zero,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              alignment:
+                                                  AlignmentDirectional(0.0, 0.0)
+                                                      .resolve(
+                                                          Directionality.of(
+                                                              context)),
+                                              child: GestureDetector(
+                                                onTap: () => _model.unfocusNode
+                                                        .canRequestFocus
+                                                    ? FocusScope.of(context)
+                                                        .requestFocus(
+                                                            _model.unfocusNode)
+                                                    : FocusScope.of(context)
+                                                        .unfocus(),
+                                                child: Container(
+                                                  height:
+                                                      MediaQuery.sizeOf(context)
+                                                              .height *
+                                                          0.3,
+                                                  width:
+                                                      MediaQuery.sizeOf(context)
+                                                              .width *
+                                                          0.9,
+                                                  child:
+                                                      CustomConfirmDialogWidget(
+                                                    title: 'Acceso denegado',
+                                                    description:
+                                                        'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.',
+                                                    buttonText: 'Reenviar',
+                                                    showDismissButton: true,
+                                                    dismissAction: () async {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    mainAction: () async {
+                                                      var _shouldSetState =
+                                                          false;
+                                                      _model.verifyACCompnayProfile =
+                                                          await AuthGroup
+                                                              .verifyEmailCall
+                                                              .call(
+                                                        email: currentUserEmail,
+                                                      );
+                                                      _shouldSetState = true;
+                                                      if (getJsonField(
+                                                        (_model.verifyACCompnayProfile
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                        r'''$.success''',
+                                                      )) {
+                                                        Navigator.pop(context);
+                                                        await showDialog(
+                                                          barrierDismissible:
+                                                              false,
+                                                          context: context,
+                                                          builder:
+                                                              (dialogContext) {
+                                                            return Dialog(
+                                                              elevation: 0,
+                                                              insetPadding:
+                                                                  EdgeInsets
+                                                                      .zero,
+                                                              backgroundColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              alignment: AlignmentDirectional(
+                                                                      0.0, 0.0)
+                                                                  .resolve(
+                                                                      Directionality.of(
+                                                                          context)),
+                                                              child:
+                                                                  GestureDetector(
+                                                                onTap: () => _model
+                                                                        .unfocusNode
+                                                                        .canRequestFocus
+                                                                    ? FocusScope.of(
+                                                                            context)
+                                                                        .requestFocus(_model
+                                                                            .unfocusNode)
+                                                                    : FocusScope.of(
+                                                                            context)
+                                                                        .unfocus(),
+                                                                child:
+                                                                    Container(
+                                                                  height: MediaQuery.sizeOf(
+                                                                              context)
+                                                                          .height *
+                                                                      0.25,
+                                                                  width: MediaQuery.sizeOf(
+                                                                              context)
+                                                                          .width *
+                                                                      0.9,
+                                                                  child:
+                                                                      CustomConfirmDialogWidget(
+                                                                    title:
+                                                                        'Verificación enviada',
+                                                                    description:
+                                                                        'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.',
+                                                                    buttonText:
+                                                                        'Aceptar',
+                                                                    showDismissButton:
+                                                                        false,
+                                                                    dismissAction:
+                                                                        () async {
+                                                                      Navigator.pop(
+                                                                          context);
+                                                                    },
+                                                                    mainAction:
+                                                                        () async {
+                                                                      Navigator.pop(
+                                                                          context);
+                                                                    },
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            );
+                                                          },
+                                                        ).then((value) =>
+                                                            setState(() {}));
+
+                                                        return;
+                                                      } else {
+                                                        Navigator.pop(context);
+                                                        await showDialog(
+                                                          barrierDismissible:
+                                                              false,
+                                                          context: context,
+                                                          builder:
+                                                              (dialogContext) {
+                                                            return Dialog(
+                                                              elevation: 0,
+                                                              insetPadding:
+                                                                  EdgeInsets
+                                                                      .zero,
+                                                              backgroundColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              alignment: AlignmentDirectional(
+                                                                      0.0, 0.0)
+                                                                  .resolve(
+                                                                      Directionality.of(
+                                                                          context)),
+                                                              child:
+                                                                  GestureDetector(
+                                                                onTap: () => _model
+                                                                        .unfocusNode
+                                                                        .canRequestFocus
+                                                                    ? FocusScope.of(
+                                                                            context)
+                                                                        .requestFocus(_model
+                                                                            .unfocusNode)
+                                                                    : FocusScope.of(
+                                                                            context)
+                                                                        .unfocus(),
+                                                                child:
+                                                                    Container(
+                                                                  height: MediaQuery.sizeOf(
+                                                                              context)
+                                                                          .height *
+                                                                      0.25,
+                                                                  width: MediaQuery.sizeOf(
+                                                                              context)
+                                                                          .width *
+                                                                      0.9,
+                                                                  child:
+                                                                      CustomConfirmDialogWidget(
+                                                                    title:
+                                                                        'Error',
+                                                                    description:
+                                                                        getJsonField(
+                                                                      (_model.verifyACCompnayProfile
+                                                                              ?.jsonBody ??
+                                                                          ''),
+                                                                      r'''$.message''',
+                                                                    ).toString(),
+                                                                    buttonText:
+                                                                        'Aceptar',
+                                                                    showDismissButton:
+                                                                        false,
+                                                                    dismissAction:
+                                                                        () async {
+                                                                      Navigator.pop(
+                                                                          context);
+                                                                    },
+                                                                    mainAction:
+                                                                        () async {
+                                                                      Navigator.pop(
+                                                                          context);
+                                                                    },
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            );
+                                                          },
+                                                        ).then((value) =>
+                                                            setState(() {}));
+
+                                                        return;
+                                                      }
+                                                    },
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => setState(() {}));
+
                                         if (_shouldSetState) setState(() {});
                                         return;
                                       }
-                                    }
 
-                                    if (_shouldSetState) setState(() {});
-                                  },
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 8.0, 16.0, 8.0),
-                                        child: Icon(
-                                          FFIcons.kempresa,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          size: 20.0,
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Padding(
+                                      if (_shouldSetState) setState(() {});
+                                    },
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 12.0, 0.0),
-                                          child: Text(
-                                            'Datos de Empresa',
-                                            textAlign: TextAlign.start,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                  letterSpacing: 0.0,
-                                                ),
+                                                  0.0, 8.0, 16.0, 8.0),
+                                          child: Icon(
+                                            FFIcons.kempresa,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 20.0,
                                           ),
                                         ),
-                                      ),
-                                      Icon(
-                                        Icons.chevron_right_rounded,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        size: 24.0,
-                                      ),
-                                    ],
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 12.0, 0.0),
+                                            child: Text(
+                                              'Datos de Empresa',
+                                              textAlign: TextAlign.start,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                          ),
+                                        ),
+                                        Icon(
+                                          Icons.chevron_right_rounded,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          size: 24.0,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                           if (!valueOrDefault<bool>(
                               currentUserDocument?.isValidMail, false))
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 8.0),
-                              child: AuthUserStreamWidget(
-                                builder: (context) => InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    var _shouldSetState = false;
-                                    var confirmDialogResponse =
-                                        await showDialog<bool>(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text(
-                                                      'Verificar correo electrónico'),
-                                                  content: Text(
-                                                      '¿Deseas recibir un correo electrónico de verficación?'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext,
-                                                              false),
-                                                      child: Text('Cancelar'),
-                                                    ),
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext,
-                                                              true),
-                                                      child: Text('Aceptar'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            ) ??
-                                            false;
-                                    if (confirmDialogResponse) {
-                                      try {
-                                        final result = await FirebaseFunctions
-                                            .instance
-                                            .httpsCallable('verifyEmail')
-                                            .call({
-                                          "email": currentUserEmail,
-                                        });
-                                        _model.verifyEmailResp1 =
-                                            VerifyEmailCloudFunctionCallResponse(
-                                          data: result.data,
-                                          succeeded: true,
-                                          resultAsString:
-                                              result.data.toString(),
-                                          jsonBody: result.data,
-                                        );
-                                      } on FirebaseFunctionsException catch (error) {
-                                        _model.verifyEmailResp1 =
-                                            VerifyEmailCloudFunctionCallResponse(
-                                          errorCode: error.code,
-                                          succeeded: false,
-                                        );
-                                      }
+                            Builder(
+                              builder: (context) => Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 8.0),
+                                child: AuthUserStreamWidget(
+                                  builder: (context) => InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      await showDialog(
+                                        barrierDismissible: false,
+                                        context: context,
+                                        builder: (dialogContext) {
+                                          return Dialog(
+                                            elevation: 0,
+                                            insetPadding: EdgeInsets.zero,
+                                            backgroundColor: Colors.transparent,
+                                            alignment: AlignmentDirectional(
+                                                    0.0, 0.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                            child: GestureDetector(
+                                              onTap: () => _model.unfocusNode
+                                                      .canRequestFocus
+                                                  ? FocusScope.of(context)
+                                                      .requestFocus(
+                                                          _model.unfocusNode)
+                                                  : FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: Container(
+                                                height:
+                                                    MediaQuery.sizeOf(context)
+                                                            .height *
+                                                        0.3,
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        0.9,
+                                                child:
+                                                    CustomConfirmDialogWidget(
+                                                  title: 'Acceso denegado',
+                                                  description:
+                                                      'No es posible acceder ya que falta realizar la verificación de tu correo electrónico. Revisa tu email o reenvia para verificar.',
+                                                  buttonText: 'Reenviar',
+                                                  showDismissButton: true,
+                                                  dismissAction: () async {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  mainAction: () async {
+                                                    var _shouldSetState = false;
+                                                    _model.verifyACEmailProfile =
+                                                        await AuthGroup
+                                                            .verifyEmailCall
+                                                            .call(
+                                                      email: currentUserEmail,
+                                                    );
+                                                    _shouldSetState = true;
+                                                    if (getJsonField(
+                                                      (_model.verifyACEmailProfile
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                      r'''$.success''',
+                                                    )) {
+                                                      Navigator.pop(context);
+                                                      await showDialog(
+                                                        barrierDismissible:
+                                                            false,
+                                                        context: context,
+                                                        builder:
+                                                            (dialogContext) {
+                                                          return Dialog(
+                                                            elevation: 0,
+                                                            insetPadding:
+                                                                EdgeInsets.zero,
+                                                            backgroundColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            alignment: AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () => _model
+                                                                      .unfocusNode
+                                                                      .canRequestFocus
+                                                                  ? FocusScope.of(
+                                                                          context)
+                                                                      .requestFocus(
+                                                                          _model
+                                                                              .unfocusNode)
+                                                                  : FocusScope.of(
+                                                                          context)
+                                                                      .unfocus(),
+                                                              child: Container(
+                                                                height: MediaQuery.sizeOf(
+                                                                            context)
+                                                                        .height *
+                                                                    0.25,
+                                                                width: MediaQuery.sizeOf(
+                                                                            context)
+                                                                        .width *
+                                                                    0.9,
+                                                                child:
+                                                                    CustomConfirmDialogWidget(
+                                                                  title:
+                                                                      'Verificación enviada',
+                                                                  description:
+                                                                      'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.',
+                                                                  buttonText:
+                                                                      'Aceptar',
+                                                                  showDismissButton:
+                                                                      false,
+                                                                  dismissAction:
+                                                                      () async {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  },
+                                                                  mainAction:
+                                                                      () async {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  },
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                      ).then((value) =>
+                                                          setState(() {}));
 
-                                      _shouldSetState = true;
-                                      if (_model.verifyEmailResp1!.succeeded!) {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title:
-                                                  Text('Verificación enviada'),
-                                              content: Text(
-                                                  'Se ha enviado la verificación a su correo electrónico, favor de entrar en el enlace enviado.'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: Text('Ok'),
+                                                      return;
+                                                    } else {
+                                                      Navigator.pop(context);
+                                                      await showDialog(
+                                                        barrierDismissible:
+                                                            false,
+                                                        context: context,
+                                                        builder:
+                                                            (dialogContext) {
+                                                          return Dialog(
+                                                            elevation: 0,
+                                                            insetPadding:
+                                                                EdgeInsets.zero,
+                                                            backgroundColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            alignment: AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () => _model
+                                                                      .unfocusNode
+                                                                      .canRequestFocus
+                                                                  ? FocusScope.of(
+                                                                          context)
+                                                                      .requestFocus(
+                                                                          _model
+                                                                              .unfocusNode)
+                                                                  : FocusScope.of(
+                                                                          context)
+                                                                      .unfocus(),
+                                                              child: Container(
+                                                                height: MediaQuery.sizeOf(
+                                                                            context)
+                                                                        .height *
+                                                                    0.25,
+                                                                width: MediaQuery.sizeOf(
+                                                                            context)
+                                                                        .width *
+                                                                    0.9,
+                                                                child:
+                                                                    CustomConfirmDialogWidget(
+                                                                  title:
+                                                                      'Error',
+                                                                  description:
+                                                                      getJsonField(
+                                                                    (_model.verifyACEmailProfile
+                                                                            ?.jsonBody ??
+                                                                        ''),
+                                                                    r'''$.message''',
+                                                                  ).toString(),
+                                                                  buttonText:
+                                                                      'Aceptar',
+                                                                  showDismissButton:
+                                                                      false,
+                                                                  dismissAction:
+                                                                      () async {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  },
+                                                                  mainAction:
+                                                                      () async {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  },
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                      ).then((value) =>
+                                                          setState(() {}));
+
+                                                      return;
+                                                    }
+                                                  },
                                                 ),
-                                              ],
-                                            );
-                                          },
-                                        );
-                                      } else {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text('Error'),
-                                              content: Text(
-                                                  'Error al enviar verificación de correo electrónico. Porfavor intentelo de nuevo. Si el error persiste póngase en contacto con el soporte técnico.'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
-                                      }
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ).then((value) => setState(() {}));
 
-                                      if (_shouldSetState) setState(() {});
-                                      return;
-                                    } else {
-                                      if (_shouldSetState) setState(() {});
-                                      return;
-                                    }
-
-                                    if (_shouldSetState) setState(() {});
-                                  },
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 8.0, 16.0, 8.0),
-                                        child: Icon(
-                                          Icons.mark_email_read_outlined,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          size: 20.0,
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Padding(
+                                      setState(() {});
+                                    },
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 12.0, 0.0),
-                                          child: Text(
-                                            'Verificar email',
-                                            textAlign: TextAlign.start,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Lexend',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                  letterSpacing: 0.0,
-                                                ),
+                                                  0.0, 8.0, 16.0, 8.0),
+                                          child: Icon(
+                                            Icons.mark_email_read_outlined,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 20.0,
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 12.0, 0.0),
+                                            child: Text(
+                                              'Verificar email',
+                                              textAlign: TextAlign.start,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Lexend',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),

@@ -1,7 +1,8 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/components/custom_confirm_dialog/custom_confirm_dialog_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -10,7 +11,6 @@ import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -269,8 +269,9 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 12.0),
                                   child: TextFormField(
-                                    controller: _model.nameFieldController ??=
-                                        TextEditingController(
+                                    controller:
+                                        _model.nameFieldTextController ??=
+                                            TextEditingController(
                                       text:
                                           oKFNPayry19FormularioEmpresaCompaniesRecord
                                               ?.name,
@@ -347,9 +348,8 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
                                         ),
-                                    minLines: null,
                                     validator: _model
-                                        .nameFieldControllerValidator
+                                        .nameFieldTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -357,8 +357,9 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 12.0),
                                   child: TextFormField(
-                                    controller: _model.aliasFieldController ??=
-                                        TextEditingController(
+                                    controller:
+                                        _model.aliasFieldTextController ??=
+                                            TextEditingController(
                                       text:
                                           oKFNPayry19FormularioEmpresaCompaniesRecord
                                               ?.alias,
@@ -445,10 +446,9 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
                                         ),
-                                    minLines: null,
                                     maxLength: 18,
                                     validator: _model
-                                        .aliasFieldControllerValidator
+                                        .aliasFieldTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -458,7 +458,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                         0.0, 12.0, 0.0, 12.0),
                                     child: TextFormField(
                                       controller:
-                                          _model.emailFieldController ??=
+                                          _model.emailFieldTextController ??=
                                               TextEditingController(
                                         text:
                                             oKFNPayry19FormularioEmpresaCompaniesRecord
@@ -536,10 +536,9 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.normal,
                                           ),
-                                      minLines: null,
                                       keyboardType: TextInputType.emailAddress,
                                       validator: _model
-                                          .emailFieldControllerValidator
+                                          .emailFieldTextControllerValidator
                                           .asValidator(context),
                                     ),
                                   ),
@@ -553,9 +552,9 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             6.0, 12.0, 0.0, 12.0),
                                         child: TextFormField(
-                                          controller:
-                                              _model.streetFieldController ??=
-                                                  TextEditingController(
+                                          controller: _model
+                                                  .streetFieldTextController ??=
+                                              TextEditingController(
                                             text:
                                                 oKFNPayry19FormularioEmpresaCompaniesRecord
                                                     ?.street,
@@ -642,9 +641,8 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.normal,
                                               ),
-                                          minLines: null,
                                           validator: _model
-                                              .streetFieldControllerValidator
+                                              .streetFieldTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -655,7 +653,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                             6.0, 12.0, 0.0, 12.0),
                                         child: TextFormField(
                                           controller: _model
-                                                  .streetNumberFieldController ??=
+                                                  .streetNumberFieldTextController ??=
                                               TextEditingController(
                                             text:
                                                 oKFNPayry19FormularioEmpresaCompaniesRecord
@@ -741,9 +739,8 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.normal,
                                               ),
-                                          minLines: null,
                                           validator: _model
-                                              .streetNumberFieldControllerValidator
+                                              .streetNumberFieldTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -754,9 +751,9 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 12.0),
                                   child: TextFormField(
-                                    controller:
-                                        _model.neighborhoodFieldController ??=
-                                            TextEditingController(
+                                    controller: _model
+                                            .neighborhoodFieldTextController ??=
+                                        TextEditingController(
                                       text:
                                           oKFNPayry19FormularioEmpresaCompaniesRecord
                                               ?.neighborhood,
@@ -834,9 +831,8 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
                                         ),
-                                    minLines: null,
                                     validator: _model
-                                        .neighborhoodFieldControllerValidator
+                                        .neighborhoodFieldTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -844,8 +840,9 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 12.0),
                                   child: TextFormField(
-                                    controller: _model.cityFieldController ??=
-                                        TextEditingController(
+                                    controller:
+                                        _model.cityFieldTextController ??=
+                                            TextEditingController(
                                       text:
                                           oKFNPayry19FormularioEmpresaCompaniesRecord
                                               ?.city,
@@ -922,9 +919,8 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
                                         ),
-                                    minLines: null,
                                     validator: _model
-                                        .cityFieldControllerValidator
+                                        .cityFieldTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -1079,7 +1075,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                       0.0, 12.0, 0.0, 12.0),
                                   child: TextFormField(
                                     controller:
-                                        _model.zipCodeFieldController ??=
+                                        _model.zipCodeFieldTextController ??=
                                             TextEditingController(
                                       text:
                                           oKFNPayry19FormularioEmpresaCompaniesRecord
@@ -1155,10 +1151,9 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
                                         ),
-                                    minLines: null,
                                     keyboardType: TextInputType.number,
                                     validator: _model
-                                        .zipCodeFieldControllerValidator
+                                        .zipCodeFieldTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -1471,6 +1466,85 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
+                                      '¿Quieres configurar sucursales?',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Switch.adaptive(
+                                          value: _model.branchSwitchValue ??=
+                                              oKFNPayry19FormularioEmpresaCompaniesRecord !=
+                                                      null
+                                                  ? oKFNPayry19FormularioEmpresaCompaniesRecord!
+                                                      .porSucursal
+                                                  : false,
+                                          onChanged:
+                                              ((oKFNPayry19FormularioEmpresaCompaniesRecord !=
+                                                          null) &&
+                                                      oKFNPayry19FormularioEmpresaCompaniesRecord!
+                                                          .porSucursal)
+                                                  ? null
+                                                  : (newValue) async {
+                                                      setState(() => _model
+                                                              .branchSwitchValue =
+                                                          newValue!);
+                                                    },
+                                          activeColor:
+                                              ((oKFNPayry19FormularioEmpresaCompaniesRecord !=
+                                                          null) &&
+                                                      oKFNPayry19FormularioEmpresaCompaniesRecord!
+                                                          .porSucursal)
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .alternate
+                                                  : FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                          activeTrackColor:
+                                              ((oKFNPayry19FormularioEmpresaCompaniesRecord !=
+                                                          null) &&
+                                                      oKFNPayry19FormularioEmpresaCompaniesRecord!
+                                                          .porSucursal)
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .alternate
+                                                  : FlutterFlowTheme.of(context)
+                                                      .success,
+                                          inactiveTrackColor:
+                                              ((oKFNPayry19FormularioEmpresaCompaniesRecord !=
+                                                          null) &&
+                                                      oKFNPayry19FormularioEmpresaCompaniesRecord!
+                                                          .porSucursal)
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .accent1
+                                                  : FlutterFlowTheme.of(context)
+                                                      .accent1,
+                                          inactiveThumbColor:
+                                              ((oKFNPayry19FormularioEmpresaCompaniesRecord !=
+                                                          null) &&
+                                                      oKFNPayry19FormularioEmpresaCompaniesRecord!
+                                                          .porSucursal)
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .primaryText
+                                                  : FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
                                       '¿Necesitas factura?',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -1527,7 +1601,7 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                             0.0, 12.0, 0.0, 12.0),
                                         child: TextFormField(
                                           controller:
-                                              _model.rFCFieldController ??=
+                                              _model.rFCFieldTextController ??=
                                                   TextEditingController(
                                             text:
                                                 oKFNPayry19FormularioEmpresaCompaniesRecord
@@ -1615,10 +1689,9 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.normal,
                                               ),
-                                          minLines: null,
                                           maxLength: 13,
                                           validator: _model
-                                              .rFCFieldControllerValidator
+                                              .rFCFieldTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -1813,8 +1886,9 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 12.0),
                                   child: TextFormField(
-                                    controller: _model.couponFieldController ??=
-                                        TextEditingController(
+                                    controller:
+                                        _model.couponFieldTextController ??=
+                                            TextEditingController(
                                       text:
                                           oKFNPayry19FormularioEmpresaCompaniesRecord
                                               ?.coupon,
@@ -1891,430 +1965,367 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
                                         ),
-                                    minLines: null,
                                     validator: _model
-                                        .couponFieldControllerValidator
+                                        .couponFieldTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
                                 Align(
                                   alignment: AlignmentDirectional(0.0, 0.0),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 10.0, 0.0, 10.0),
-                                    child: FFButtonWidget(
-                                      onPressed: () async {
-                                        var _shouldSetState = false;
-                                        if (_model.formKey.currentState ==
-                                                null ||
-                                            !_model.formKey.currentState!
-                                                .validate()) {
-                                          return;
-                                        }
-                                        if ((_model.giroCatDropDownValue !=
-                                                    null &&
-                                                _model.giroCatDropDownValue !=
-                                                    '') &&
-                                            (_model.giroDropDownValue != null &&
-                                                _model.giroDropDownValue !=
-                                                    '')) {
-                                          if (!(oKFNPayry19FormularioEmpresaCompaniesRecord !=
-                                              null)) {
-                                            var companiesRecordReference =
-                                                CompaniesRecord.collection
-                                                    .doc();
-                                            await companiesRecordReference.set({
-                                              ...createCompaniesRecordData(
-                                                createdBy: currentUserUid,
-                                                name: _model
-                                                    .nameFieldController.text,
-                                                alias: _model
-                                                    .aliasFieldController.text,
-                                                email: '',
-                                                taxRegime: _model
-                                                    .taxRegimeDropDownValue,
-                                                rfc: functions.toUppercase(
-                                                    _model.rFCFieldController
-                                                        .text),
-                                                street: _model
-                                                    .streetFieldController.text,
-                                                streetNumber: _model
-                                                    .streetNumberFieldController
-                                                    .text,
-                                                intStreetNumber: '',
-                                                neighborhood: _model
-                                                    .neighborhoodFieldController
-                                                    .text,
-                                                zipcode: _model
-                                                    .zipCodeFieldController
-                                                    .text,
-                                                city: _model
-                                                    .cityFieldController.text,
-                                                state:
-                                                    _model.stateDropDownValue,
-                                                country:
-                                                    _model.countryDropDownValue,
-                                                status: true,
-                                                allowTip: false,
-                                                requireBill: _model
-                                                    .requireBillSwitchValue,
-                                                cfdi: _model.cFDIDropDownValue,
-                                                bank: '',
-                                                clabe: '',
-                                                verifiedClabe: false,
-                                                apiKey: '',
-                                                apiSecret: '',
-                                                imageUrl: () {
-                                                  if (_model.uploadedFileUrl !=
-                                                          null &&
-                                                      _model.uploadedFileUrl !=
-                                                          '') {
-                                                    return _model
-                                                        .uploadedFileUrl;
-                                                  } else if (oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                              ?.imageUrl !=
-                                                          null &&
-                                                      oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                              ?.imageUrl !=
-                                                          '') {
-                                                    return oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                        ?.imageUrl;
-                                                  } else {
-                                                    return null;
-                                                  }
-                                                }(),
-                                                bankid: '',
-                                                coupon: _model
-                                                    .couponFieldController.text,
-                                                giroName:
-                                                    _model.giroDropDownValue,
-                                                giroCategory:
-                                                    _model.giroCatDropDownValue,
-                                              ),
-                                              ...mapToFirestore(
-                                                {
-                                                  'created_time': FieldValue
-                                                      .serverTimestamp(),
-                                                },
-                                              ),
-                                            });
-                                            _model.companyCreatedResp =
-                                                CompaniesRecord
-                                                    .getDocumentFromData({
-                                              ...createCompaniesRecordData(
-                                                createdBy: currentUserUid,
-                                                name: _model
-                                                    .nameFieldController.text,
-                                                alias: _model
-                                                    .aliasFieldController.text,
-                                                email: '',
-                                                taxRegime: _model
-                                                    .taxRegimeDropDownValue,
-                                                rfc: functions.toUppercase(
-                                                    _model.rFCFieldController
-                                                        .text),
-                                                street: _model
-                                                    .streetFieldController.text,
-                                                streetNumber: _model
-                                                    .streetNumberFieldController
-                                                    .text,
-                                                intStreetNumber: '',
-                                                neighborhood: _model
-                                                    .neighborhoodFieldController
-                                                    .text,
-                                                zipcode: _model
-                                                    .zipCodeFieldController
-                                                    .text,
-                                                city: _model
-                                                    .cityFieldController.text,
-                                                state:
-                                                    _model.stateDropDownValue,
-                                                country:
-                                                    _model.countryDropDownValue,
-                                                status: true,
-                                                allowTip: false,
-                                                requireBill: _model
-                                                    .requireBillSwitchValue,
-                                                cfdi: _model.cFDIDropDownValue,
-                                                bank: '',
-                                                clabe: '',
-                                                verifiedClabe: false,
-                                                apiKey: '',
-                                                apiSecret: '',
-                                                imageUrl: () {
-                                                  if (_model.uploadedFileUrl !=
-                                                          null &&
-                                                      _model.uploadedFileUrl !=
-                                                          '') {
-                                                    return _model
-                                                        .uploadedFileUrl;
-                                                  } else if (oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                              ?.imageUrl !=
-                                                          null &&
-                                                      oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                              ?.imageUrl !=
-                                                          '') {
-                                                    return oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                        ?.imageUrl;
-                                                  } else {
-                                                    return null;
-                                                  }
-                                                }(),
-                                                bankid: '',
-                                                coupon: _model
-                                                    .couponFieldController.text,
-                                                giroName:
-                                                    _model.giroDropDownValue,
-                                                giroCategory:
-                                                    _model.giroCatDropDownValue,
-                                              ),
-                                              ...mapToFirestore(
-                                                {
-                                                  'created_time':
-                                                      DateTime.now(),
-                                                },
-                                              ),
-                                            }, companiesRecordReference);
-                                            _shouldSetState = true;
-                                            try {
-                                              final result =
-                                                  await FirebaseFunctions
-                                                      .instance
-                                                      .httpsCallable(
-                                                          'reportCompany')
-                                                      .call({
-                                                "token":
-                                                    FFAppState().serverToken,
-                                                "id": _model.companyCreatedResp!
-                                                    .reference.id,
-                                                "test": false,
+                                  child: Builder(
+                                    builder: (context) => Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 10.0, 0.0, 10.0),
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          var _shouldSetState = false;
+                                          if (_model.formKey.currentState ==
+                                                  null ||
+                                              !_model.formKey.currentState!
+                                                  .validate()) {
+                                            return;
+                                          }
+                                          if ((_model.giroCatDropDownValue !=
+                                                      null &&
+                                                  _model.giroCatDropDownValue !=
+                                                      '') &&
+                                              (_model.giroDropDownValue !=
+                                                      null &&
+                                                  _model.giroDropDownValue !=
+                                                      '')) {
+                                            if (!(oKFNPayry19FormularioEmpresaCompaniesRecord !=
+                                                null)) {
+                                              var companiesRecordReference =
+                                                  CompaniesRecord.collection
+                                                      .doc();
+                                              await companiesRecordReference
+                                                  .set({
+                                                ...createCompaniesRecordData(
+                                                  createdBy: currentUserUid,
+                                                  name: _model
+                                                      .nameFieldTextController
+                                                      .text,
+                                                  alias: _model
+                                                      .aliasFieldTextController
+                                                      .text,
+                                                  email: '',
+                                                  taxRegime: _model
+                                                      .taxRegimeDropDownValue,
+                                                  rfc: functions.toUppercase(
+                                                      _model
+                                                          .rFCFieldTextController
+                                                          .text),
+                                                  street: _model
+                                                      .streetFieldTextController
+                                                      .text,
+                                                  streetNumber: _model
+                                                      .streetNumberFieldTextController
+                                                      .text,
+                                                  intStreetNumber: '',
+                                                  neighborhood: _model
+                                                      .neighborhoodFieldTextController
+                                                      .text,
+                                                  zipcode: _model
+                                                      .zipCodeFieldTextController
+                                                      .text,
+                                                  city: _model
+                                                      .cityFieldTextController
+                                                      .text,
+                                                  state:
+                                                      _model.stateDropDownValue,
+                                                  country: _model
+                                                      .countryDropDownValue,
+                                                  status: true,
+                                                  allowTip: false,
+                                                  requireBill: _model
+                                                      .requireBillSwitchValue,
+                                                  cfdi:
+                                                      _model.cFDIDropDownValue,
+                                                  bank: '',
+                                                  clabe: '',
+                                                  verifiedClabe: false,
+                                                  apiKey: '',
+                                                  apiSecret: '',
+                                                  imageUrl: () {
+                                                    if (_model.uploadedFileUrl !=
+                                                            null &&
+                                                        _model.uploadedFileUrl !=
+                                                            '') {
+                                                      return _model
+                                                          .uploadedFileUrl;
+                                                    } else if (oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                                ?.imageUrl !=
+                                                            null &&
+                                                        oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                                ?.imageUrl !=
+                                                            '') {
+                                                      return oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                          ?.imageUrl;
+                                                    } else {
+                                                      return null;
+                                                    }
+                                                  }(),
+                                                  bankid: '',
+                                                  coupon: _model
+                                                      .couponFieldTextController
+                                                      .text,
+                                                  giroName:
+                                                      _model.giroDropDownValue,
+                                                  giroCategory: _model
+                                                      .giroCatDropDownValue,
+                                                  porSucursal:
+                                                      _model.branchSwitchValue,
+                                                ),
+                                                ...mapToFirestore(
+                                                  {
+                                                    'created_time': FieldValue
+                                                        .serverTimestamp(),
+                                                  },
+                                                ),
                                               });
-                                              _model.rccdCF =
-                                                  ReportCompanyCloudFunctionCallResponse(
-                                                data: result.data,
-                                                succeeded: true,
-                                                resultAsString:
-                                                    result.data.toString(),
-                                                jsonBody: result.data,
-                                              );
-                                            } on FirebaseFunctionsException catch (error) {
-                                              _model.rccdCF =
-                                                  ReportCompanyCloudFunctionCallResponse(
-                                                errorCode: error.code,
-                                                succeeded: false,
-                                              );
-                                            }
-
-                                            _shouldSetState = true;
-                                            if (_model.rccdCF!.succeeded!) {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title: Text(
-                                                        'Empresa registrada'),
-                                                    content: Text(
-                                                        'La empresa ha sido registrada con éxito'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
-                                            } else {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title: Text('Error'),
-                                                    content: Text(
-                                                        'Ha ocurrido un error en nuestros servidores.'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
-                                            }
-
-                                            context.pushNamed(
-                                              'OK_FN_Payry_20_datosBancarios',
-                                              queryParameters: {
-                                                'companyDocRef': serializeParam(
-                                                  _model.companyCreatedResp
-                                                      ?.reference,
-                                                  ParamType.DocumentReference,
+                                              _model.companyCreatedResp =
+                                                  CompaniesRecord
+                                                      .getDocumentFromData({
+                                                ...createCompaniesRecordData(
+                                                  createdBy: currentUserUid,
+                                                  name: _model
+                                                      .nameFieldTextController
+                                                      .text,
+                                                  alias: _model
+                                                      .aliasFieldTextController
+                                                      .text,
+                                                  email: '',
+                                                  taxRegime: _model
+                                                      .taxRegimeDropDownValue,
+                                                  rfc: functions.toUppercase(
+                                                      _model
+                                                          .rFCFieldTextController
+                                                          .text),
+                                                  street: _model
+                                                      .streetFieldTextController
+                                                      .text,
+                                                  streetNumber: _model
+                                                      .streetNumberFieldTextController
+                                                      .text,
+                                                  intStreetNumber: '',
+                                                  neighborhood: _model
+                                                      .neighborhoodFieldTextController
+                                                      .text,
+                                                  zipcode: _model
+                                                      .zipCodeFieldTextController
+                                                      .text,
+                                                  city: _model
+                                                      .cityFieldTextController
+                                                      .text,
+                                                  state:
+                                                      _model.stateDropDownValue,
+                                                  country: _model
+                                                      .countryDropDownValue,
+                                                  status: true,
+                                                  allowTip: false,
+                                                  requireBill: _model
+                                                      .requireBillSwitchValue,
+                                                  cfdi:
+                                                      _model.cFDIDropDownValue,
+                                                  bank: '',
+                                                  clabe: '',
+                                                  verifiedClabe: false,
+                                                  apiKey: '',
+                                                  apiSecret: '',
+                                                  imageUrl: () {
+                                                    if (_model.uploadedFileUrl !=
+                                                            null &&
+                                                        _model.uploadedFileUrl !=
+                                                            '') {
+                                                      return _model
+                                                          .uploadedFileUrl;
+                                                    } else if (oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                                ?.imageUrl !=
+                                                            null &&
+                                                        oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                                ?.imageUrl !=
+                                                            '') {
+                                                      return oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                          ?.imageUrl;
+                                                    } else {
+                                                      return null;
+                                                    }
+                                                  }(),
+                                                  bankid: '',
+                                                  coupon: _model
+                                                      .couponFieldTextController
+                                                      .text,
+                                                  giroName:
+                                                      _model.giroDropDownValue,
+                                                  giroCategory: _model
+                                                      .giroCatDropDownValue,
+                                                  porSucursal:
+                                                      _model.branchSwitchValue,
                                                 ),
-                                                'clabe': serializeParam(
-                                                  oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                      ?.clabe,
-                                                  ParamType.String,
+                                                ...mapToFirestore(
+                                                  {
+                                                    'created_time':
+                                                        DateTime.now(),
+                                                  },
                                                 ),
-                                                'bank': serializeParam(
-                                                  oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                      ?.bank,
-                                                  ParamType.String,
-                                                ),
-                                              }.withoutNulls,
-                                            );
-                                          } else {
-                                            await oKFNPayry19FormularioEmpresaCompaniesRecord!
-                                                .reference
-                                                .update(
-                                                    createCompaniesRecordData(
-                                              createdBy: currentUserUid,
-                                              name: _model
-                                                  .nameFieldController.text,
-                                              alias: _model
-                                                  .aliasFieldController.text,
-                                              email: '',
-                                              taxRegime:
-                                                  _model.taxRegimeDropDownValue,
-                                              rfc: functions.toUppercase(_model
-                                                  .rFCFieldController.text),
-                                              street: _model
-                                                  .streetFieldController.text,
-                                              streetNumber: _model
-                                                  .streetNumberFieldController
-                                                  .text,
-                                              intStreetNumber: '',
-                                              neighborhood: _model
-                                                  .neighborhoodFieldController
-                                                  .text,
-                                              zipcode: _model
-                                                  .zipCodeFieldController.text,
-                                              city: _model
-                                                  .cityFieldController.text,
-                                              state: _model.stateDropDownValue,
-                                              country:
-                                                  _model.countryDropDownValue,
-                                              status: true,
-                                              allowTip: false,
-                                              requireBill:
-                                                  _model.requireBillSwitchValue,
-                                              cfdi: _model.cFDIDropDownValue,
-                                              verifiedClabe: false,
-                                              apiKey: '',
-                                              apiSecret: '',
-                                              imageUrl: () {
-                                                if (_model.uploadedFileUrl !=
-                                                        null &&
-                                                    _model.uploadedFileUrl !=
-                                                        '') {
-                                                  return _model.uploadedFileUrl;
-                                                } else if (oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                            ?.imageUrl !=
-                                                        null &&
-                                                    oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                            ?.imageUrl !=
-                                                        '') {
-                                                  return oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                      ?.imageUrl;
-                                                } else {
-                                                  return null;
-                                                }
-                                              }(),
-                                              giroName:
-                                                  _model.giroDropDownValue,
-                                              giroCategory:
-                                                  _model.giroCatDropDownValue,
-                                              coupon: _model
-                                                  .couponFieldController.text,
-                                            ));
-                                            try {
-                                              final result =
-                                                  await FirebaseFunctions
-                                                      .instance
-                                                      .httpsCallable(
-                                                          'reportCompany')
-                                                      .call({
-                                                "token":
-                                                    FFAppState().serverToken,
-                                                "id":
-                                                    oKFNPayry19FormularioEmpresaCompaniesRecord!
-                                                        .reference.id,
-                                                "test": false,
-                                              });
-                                              _model.rcudCF =
-                                                  ReportCompanyCloudFunctionCallResponse(
-                                                data: result.data,
-                                                succeeded: true,
-                                                resultAsString:
-                                                    result.data.toString(),
-                                                jsonBody: result.data,
+                                              }, companiesRecordReference);
+                                              _shouldSetState = true;
+                                              _model.rccAC =
+                                                  await SQLReportGroup
+                                                      .reportCompanyCall
+                                                      .call(
+                                                token: FFAppState().serverToken,
+                                                id: _model.companyCreatedResp
+                                                    ?.reference.id,
                                               );
-                                            } on FirebaseFunctionsException catch (error) {
-                                              _model.rcudCF =
-                                                  ReportCompanyCloudFunctionCallResponse(
-                                                errorCode: error.code,
-                                                succeeded: false,
-                                              );
-                                            }
-
-                                            _shouldSetState = true;
-                                            if (_model.rcudCF!.succeeded!) {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title: Text(
-                                                        'Empresa actualizada'),
-                                                    content: Text(
-                                                        'La empresa ha sido actualizada con éxito'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: Text('Ok'),
+                                              _shouldSetState = true;
+                                              if (getJsonField(
+                                                (_model.rccAC?.jsonBody ?? ''),
+                                                r'''$.success''',
+                                              )) {
+                                                await showDialog(
+                                                  barrierDismissible: false,
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: GestureDetector(
+                                                        onTap: () => _model
+                                                                .unfocusNode
+                                                                .canRequestFocus
+                                                            ? FocusScope.of(
+                                                                    context)
+                                                                .requestFocus(_model
+                                                                    .unfocusNode)
+                                                            : FocusScope.of(
+                                                                    context)
+                                                                .unfocus(),
+                                                        child: Container(
+                                                          height:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .height *
+                                                                  0.25,
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  0.9,
+                                                          child:
+                                                              CustomConfirmDialogWidget(
+                                                            title:
+                                                                'Empresa registrada',
+                                                            description:
+                                                                'La empresa ha sido registrada con éxito.',
+                                                            buttonText:
+                                                                'Aceptar',
+                                                            showDismissButton:
+                                                                false,
+                                                            dismissAction:
+                                                                () async {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            mainAction:
+                                                                () async {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                          ),
+                                                        ),
                                                       ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
-                                            } else {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title: Text('Error'),
-                                                    content: Text(
-                                                        'Ha ocurrido un error en nuestros servidores.'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: Text('Ok'),
+                                                    );
+                                                  },
+                                                ).then(
+                                                    (value) => setState(() {}));
+                                              } else {
+                                                await showDialog(
+                                                  barrierDismissible: false,
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: GestureDetector(
+                                                        onTap: () => _model
+                                                                .unfocusNode
+                                                                .canRequestFocus
+                                                            ? FocusScope.of(
+                                                                    context)
+                                                                .requestFocus(_model
+                                                                    .unfocusNode)
+                                                            : FocusScope.of(
+                                                                    context)
+                                                                .unfocus(),
+                                                        child: Container(
+                                                          height:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .height *
+                                                                  0.25,
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  0.9,
+                                                          child:
+                                                              CustomConfirmDialogWidget(
+                                                            title: 'Error',
+                                                            description:
+                                                                getJsonField(
+                                                              (_model.rccAC
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                              r'''$.message''',
+                                                            ).toString(),
+                                                            buttonText:
+                                                                'Aceptar',
+                                                            showDismissButton:
+                                                                false,
+                                                            dismissAction:
+                                                                () async {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            mainAction:
+                                                                () async {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                          ),
+                                                        ),
                                                       ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
-                                            }
+                                                    );
+                                                  },
+                                                ).then(
+                                                    (value) => setState(() {}));
+                                              }
 
-                                            if (oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                        ?.bankid ==
-                                                    null ||
-                                                oKFNPayry19FormularioEmpresaCompaniesRecord
-                                                        ?.bankid ==
-                                                    '') {
                                               context.pushNamed(
                                                 'OK_FN_Payry_20_datosBancarios',
                                                 queryParameters: {
                                                   'companyDocRef':
                                                       serializeParam(
-                                                    oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                    _model.companyCreatedResp
                                                         ?.reference,
                                                     ParamType.DocumentReference,
                                                   ),
@@ -2330,90 +2341,364 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                                   ),
                                                 }.withoutNulls,
                                               );
-                                            }
-                                          }
 
-                                          try {
-                                            final result =
-                                                await FirebaseFunctions.instance
-                                                    .httpsCallable(
-                                                        'generateToken')
-                                                    .call({
-                                              "uid": currentUserUid,
-                                              "test": false,
-                                            });
-                                            _model.genToken =
-                                                GenerateTokenCloudFunctionCallResponse(
-                                              data: result.data,
-                                              succeeded: true,
-                                              resultAsString:
-                                                  result.data.toString(),
-                                              jsonBody: result.data,
-                                            );
-                                          } on FirebaseFunctionsException catch (error) {
-                                            _model.genToken =
-                                                GenerateTokenCloudFunctionCallResponse(
-                                              errorCode: error.code,
-                                              succeeded: false,
-                                            );
-                                          }
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            } else {
+                                              await oKFNPayry19FormularioEmpresaCompaniesRecord!
+                                                  .reference
+                                                  .update(
+                                                      createCompaniesRecordData(
+                                                createdBy: currentUserUid,
+                                                name: _model
+                                                    .nameFieldTextController
+                                                    .text,
+                                                alias: _model
+                                                    .aliasFieldTextController
+                                                    .text,
+                                                email: '',
+                                                taxRegime: _model
+                                                    .taxRegimeDropDownValue,
+                                                rfc: functions.toUppercase(
+                                                    _model
+                                                        .rFCFieldTextController
+                                                        .text),
+                                                street: _model
+                                                    .streetFieldTextController
+                                                    .text,
+                                                streetNumber: _model
+                                                    .streetNumberFieldTextController
+                                                    .text,
+                                                intStreetNumber: '',
+                                                neighborhood: _model
+                                                    .neighborhoodFieldTextController
+                                                    .text,
+                                                zipcode: _model
+                                                    .zipCodeFieldTextController
+                                                    .text,
+                                                city: _model
+                                                    .cityFieldTextController
+                                                    .text,
+                                                state:
+                                                    _model.stateDropDownValue,
+                                                country:
+                                                    _model.countryDropDownValue,
+                                                status: true,
+                                                allowTip: false,
+                                                requireBill: _model
+                                                    .requireBillSwitchValue,
+                                                cfdi: _model.cFDIDropDownValue,
+                                                verifiedClabe: false,
+                                                apiKey: '',
+                                                apiSecret: '',
+                                                imageUrl: () {
+                                                  if (_model.uploadedFileUrl !=
+                                                          null &&
+                                                      _model.uploadedFileUrl !=
+                                                          '') {
+                                                    return _model
+                                                        .uploadedFileUrl;
+                                                  } else if (oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                              ?.imageUrl !=
+                                                          null &&
+                                                      oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                              ?.imageUrl !=
+                                                          '') {
+                                                    return oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                        ?.imageUrl;
+                                                  } else {
+                                                    return null;
+                                                  }
+                                                }(),
+                                                giroName:
+                                                    _model.giroDropDownValue,
+                                                giroCategory:
+                                                    _model.giroCatDropDownValue,
+                                                coupon: _model
+                                                    .couponFieldTextController
+                                                    .text,
+                                                porSucursal:
+                                                    _model.branchSwitchValue,
+                                              ));
+                                              await showDialog(
+                                                barrierDismissible: false,
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: GestureDetector(
+                                                      onTap: () => _model
+                                                              .unfocusNode
+                                                              .canRequestFocus
+                                                          ? FocusScope.of(
+                                                                  context)
+                                                              .requestFocus(_model
+                                                                  .unfocusNode)
+                                                          : FocusScope.of(
+                                                                  context)
+                                                              .unfocus(),
+                                                      child: Container(
+                                                        height:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .height *
+                                                                0.25,
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.9,
+                                                        child:
+                                                            CustomConfirmDialogWidget(
+                                                          title:
+                                                              'Empresa actualizada',
+                                                          description:
+                                                              'La empresa ha sido actualizada con éxito.',
+                                                          buttonText: 'Aceptar',
+                                                          showDismissButton:
+                                                              false,
+                                                          dismissAction:
+                                                              () async {
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          mainAction: () async {
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ).then(
+                                                  (value) => setState(() {}));
 
-                                          _shouldSetState = true;
-                                          FFAppState().serverToken = _model
-                                              .genToken!.jsonBody!
-                                              .toString();
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        } else {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: Text('Error'),
-                                                content: Text(
-                                                    'Debes seleccionar la categoria y giro de tu empresa.'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
+                                              _model.recAC =
+                                                  await SQLReportGroup
+                                                      .reportCompanyCall
+                                                      .call(
+                                                token: FFAppState().serverToken,
+                                                id: oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                    ?.reference.id,
                                               );
-                                            },
-                                          );
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        }
+                                              _shouldSetState = true;
+                                              if (!getJsonField(
+                                                (_model.recAC?.jsonBody ?? ''),
+                                                r'''$.success''',
+                                              )) {
+                                                await showDialog(
+                                                  barrierDismissible: false,
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: GestureDetector(
+                                                        onTap: () => _model
+                                                                .unfocusNode
+                                                                .canRequestFocus
+                                                            ? FocusScope.of(
+                                                                    context)
+                                                                .requestFocus(_model
+                                                                    .unfocusNode)
+                                                            : FocusScope.of(
+                                                                    context)
+                                                                .unfocus(),
+                                                        child: Container(
+                                                          height:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .height *
+                                                                  0.25,
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  0.9,
+                                                          child:
+                                                              CustomConfirmDialogWidget(
+                                                            title: 'Error',
+                                                            description:
+                                                                getJsonField(
+                                                              (_model.recAC
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                              r'''$.message''',
+                                                            ).toString(),
+                                                            buttonText:
+                                                                'Aceptar',
+                                                            showDismissButton:
+                                                                false,
+                                                            dismissAction:
+                                                                () async {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            mainAction:
+                                                                () async {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                ).then(
+                                                    (value) => setState(() {}));
+                                              }
+                                              if (oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                          ?.bankid ==
+                                                      null ||
+                                                  oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                          ?.bankid ==
+                                                      '') {
+                                                context.pushNamed(
+                                                  'OK_FN_Payry_20_datosBancarios',
+                                                  queryParameters: {
+                                                    'companyDocRef':
+                                                        serializeParam(
+                                                      oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                          ?.reference,
+                                                      ParamType
+                                                          .DocumentReference,
+                                                    ),
+                                                    'clabe': serializeParam(
+                                                      oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                          ?.clabe,
+                                                      ParamType.String,
+                                                    ),
+                                                    'bank': serializeParam(
+                                                      oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                          ?.bank,
+                                                      ParamType.String,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
 
-                                        if (_shouldSetState) setState(() {});
-                                      },
-                                      text: 'Guardar',
-                                      options: FFButtonOptions(
-                                        width: 300.0,
-                                        height: 50.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 0.0),
-                                        iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color: Colors.white,
-                                              letterSpacing: 0.0,
-                                            ),
-                                        elevation: 3.0,
-                                        borderSide: BorderSide(
-                                          color: Colors.transparent,
-                                          width: 1.0,
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              } else {
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              }
+                                            }
+                                          } else {
+                                            await showDialog(
+                                              barrierDismissible: false,
+                                              context: context,
+                                              builder: (dialogContext) {
+                                                return Dialog(
+                                                  elevation: 0,
+                                                  insetPadding: EdgeInsets.zero,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                              0.0, 0.0)
+                                                          .resolve(
+                                                              Directionality.of(
+                                                                  context)),
+                                                  child: GestureDetector(
+                                                    onTap: () => _model
+                                                            .unfocusNode
+                                                            .canRequestFocus
+                                                        ? FocusScope.of(context)
+                                                            .requestFocus(_model
+                                                                .unfocusNode)
+                                                        : FocusScope.of(context)
+                                                            .unfocus(),
+                                                    child: Container(
+                                                      height: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .height *
+                                                          0.25,
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          0.9,
+                                                      child:
+                                                          CustomConfirmDialogWidget(
+                                                        title: 'Error',
+                                                        description:
+                                                            'Debes seleccionar la categoria y giro de tu empresa.',
+                                                        buttonText: 'Aceptar',
+                                                        showDismissButton:
+                                                            false,
+                                                        dismissAction:
+                                                            () async {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        mainAction: () async {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                      ),
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            ).then((value) => setState(() {}));
+
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          }
+
+                                          if (_shouldSetState) setState(() {});
+                                        },
+                                        text: 'Guardar',
+                                        options: FFButtonOptions(
+                                          width: 300.0,
+                                          height: 50.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Lexend',
+                                                    color: Colors.white,
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          elevation: 3.0,
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
                                       ),
                                     ),
                                   ),
@@ -2477,6 +2762,72 @@ class _OKFNPayry19FormularioEmpresaWidgetState
                                           ),
                                           borderRadius:
                                               BorderRadius.circular(10.0),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                if ((oKFNPayry19FormularioEmpresaCompaniesRecord !=
+                                        null) &&
+                                    oKFNPayry19FormularioEmpresaCompaniesRecord!
+                                        .porSucursal &&
+                                    (oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                ?.bankid !=
+                                            null &&
+                                        oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                ?.bankid !=
+                                            '') &&
+                                    valueOrDefault<bool>(
+                                        currentUserDocument?.isAdmin, false))
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 10.0, 0.0, 10.0),
+                                      child: AuthUserStreamWidget(
+                                        builder: (context) => FFButtonWidget(
+                                          onPressed: () async {
+                                            context.pushNamed(
+                                              'OK_FN_Payry_sucursales',
+                                              queryParameters: {
+                                                'companyId': serializeParam(
+                                                  oKFNPayry19FormularioEmpresaCompaniesRecord
+                                                      ?.reference.id,
+                                                  ParamType.String,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+                                          },
+                                          text: 'Sucursales',
+                                          options: FFButtonOptions(
+                                            width: 300.0,
+                                            height: 50.0,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .accent4,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily: 'Lexend',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            elevation: 3.0,
+                                            borderSide: BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
                                         ),
                                       ),
                                     ),

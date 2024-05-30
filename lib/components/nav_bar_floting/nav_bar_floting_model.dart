@@ -1,11 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/backend/custom_cloud_functions/custom_cloud_function_response_manager.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
+import '/custom_code/actions/index.dart' as actions;
 import 'nav_bar_floting_widget.dart' show NavBarFlotingWidget;
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -13,12 +13,12 @@ import 'package:provider/provider.dart';
 class NavBarFlotingModel extends FlutterFlowModel<NavBarFlotingWidget> {
   ///  State fields for stateful widgets in this component.
 
-  // Stores action output result for [Cloud Function - verifyEmail] action in Column widget.
-  VerifyEmailCloudFunctionCallResponse? verifyEmailRespN1;
-  // Stores action output result for [Cloud Function - verifyEmail] action in Column widget.
-  VerifyEmailCloudFunctionCallResponse? verifyEmailRespN2;
-  // Stores action output result for [Cloud Function - verifyEmail] action in Column widget.
-  VerifyEmailCloudFunctionCallResponse? verifyEmailRespN3;
+  // Stores action output result for [Backend Call - API (Verify Email)] action in Column widget.
+  ApiCallResponse? verifyACDashNav;
+  // Stores action output result for [Backend Call - API (Verify Email)] action in Column widget.
+  ApiCallResponse? verifyACCodiNav;
+  // Stores action output result for [Backend Call - API (Verify Email)] action in Column widget.
+  ApiCallResponse? verifyACDimoNav;
 
   @override
   void initState(BuildContext context) {}

@@ -77,6 +77,11 @@ class UsersRecord extends FirestoreRecord {
   bool get isValidMail => _isValidMail ?? false;
   bool hasIsValidMail() => _isValidMail != null;
 
+  // "sucursalId" field.
+  String? _sucursalId;
+  String get sucursalId => _sucursalId ?? '';
+  bool hasSucursalId() => _sucursalId != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -90,6 +95,7 @@ class UsersRecord extends FirestoreRecord {
     _adminId = snapshotData['adminId'] as String?;
     _isCompanyComplete = snapshotData['is_company_complete'] as bool?;
     _isValidMail = snapshotData['is_valid_mail'] as bool?;
+    _sucursalId = snapshotData['sucursalId'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -138,6 +144,7 @@ Map<String, dynamic> createUsersRecordData({
   String? adminId,
   bool? isCompanyComplete,
   bool? isValidMail,
+  String? sucursalId,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -153,6 +160,7 @@ Map<String, dynamic> createUsersRecordData({
       'adminId': adminId,
       'is_company_complete': isCompanyComplete,
       'is_valid_mail': isValidMail,
+      'sucursalId': sucursalId,
     }.withoutNulls,
   );
 
@@ -175,7 +183,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.isAdmin == e2?.isAdmin &&
         e1?.adminId == e2?.adminId &&
         e1?.isCompanyComplete == e2?.isCompanyComplete &&
-        e1?.isValidMail == e2?.isValidMail;
+        e1?.isValidMail == e2?.isValidMail &&
+        e1?.sucursalId == e2?.sucursalId;
   }
 
   @override
@@ -191,7 +200,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.isAdmin,
         e?.adminId,
         e?.isCompanyComplete,
-        e?.isValidMail
+        e?.isValidMail,
+        e?.sucursalId
       ]);
 
   @override
