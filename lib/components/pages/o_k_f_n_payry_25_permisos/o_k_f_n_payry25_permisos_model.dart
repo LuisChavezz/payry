@@ -33,27 +33,27 @@ class OKFNPayry25PermisosModel
   String? branchDropDownValue;
   FormFieldController<String>? branchDropDownValueController;
   // State field(s) for CreateQrSwitch widget.
-  bool createQrSwitchValue = true;
+  bool? createQrSwitchValue;
   // State field(s) for ReadQrSwitch widget.
-  bool readQrSwitchValue = true;
+  bool? readQrSwitchValue;
   // State field(s) for CreateSmsSwitch widget.
-  bool createSmsSwitchValue = true;
+  bool? createSmsSwitchValue;
   // State field(s) for ReadSmsSwitch widget.
-  bool readSmsSwitchValue = true;
+  bool? readSmsSwitchValue;
   // State field(s) for CreateRefundSwitch widget.
-  bool createRefundSwitchValue = true;
+  bool? createRefundSwitchValue;
   // State field(s) for ReadCompaniesSwitch widget.
-  bool readCompaniesSwitchValue = true;
+  bool? readCompaniesSwitchValue;
   // State field(s) for ReadInvoicesSwitch widget.
-  bool readInvoicesSwitchValue = true;
+  bool? readInvoicesSwitchValue;
   // State field(s) for ReadUsersSwitch widget.
-  bool readUsersSwitchValue = true;
+  bool? readUsersSwitchValue;
   // State field(s) for ReadStatisticsSwitch widget.
-  bool readStatisticsSwitchValue = true;
+  bool? readStatisticsSwitchValue;
   // State field(s) for ReadTransfersSwitch widget.
-  bool readTransfersSwitchValue = true;
+  bool? readTransfersSwitchValue;
   // State field(s) for ReadBranchesSwitch widget.
-  bool readBranchesSwitchValue = true;
+  bool? readBranchesSwitchValue;
 
   @override
   void initState(BuildContext context) {}
